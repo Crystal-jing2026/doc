@@ -82,6 +82,17 @@ cd $HOME/.config/clash/
 127.0.0.1:7891
 ```
 
+* stellar
+先从[链接2](https://stellar.dog/signup?c=vyhcgy)中注册并下载Ubuntu的客户端
+```shell
+# 安装客户单
+sudo dpkg -i stellar_10.2.2_amd64.deb
+# 登录账号后启动代理
+```
+![](./img/dev/stellar.png)
+
+如果不能正常代理上网，尝试使用全局模式。
+
 #### TortoiseGit 网络代理配置
 如果使用TortoiseGit作为git的图形化界面软件，首页在文件资源管理器空白位置右键，选择`TortoiseGit->Setting`，然后在弹出的界面进行如下配置：
 ![ImageDepth](img/build/internet.jpg)
