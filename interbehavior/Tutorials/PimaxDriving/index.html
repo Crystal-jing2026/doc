@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Pimax Dream Air 手柄驾驶 - 开源孪创</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../../extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Pimax Dream Air \u624b\u67c4\u9a7e\u9a76";
+        var mkdocs_page_input_path = "interbehavior/Tutorials/PimaxDriving.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> 开源孪创
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="搜索文档" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">载具</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../vehicle/">无人车</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="https://openhutb.github.io/air_doc/dev/Carla_Air/">无人机</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="https://openhutb.github.io/mujoco_plugin/underwater/">潜水器</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">模拟</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../concept/">概念</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../modules/">模块</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../development/">开发</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">场景</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../map_twin/">地图孪生</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../assert_twin/">资产孪生</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../unreal_engine/">模拟引擎</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">其他</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../ref/">参考目录</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../ecology/">生态系统</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../contribution/">贡献指南</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">开源孪创</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Pimax Dream Air 手柄驾驶</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/OpenHUTB/doc/edit/master/docs/interbehavior/Tutorials/PimaxDriving.md"> 编辑页面</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="pimax-dream-air">Pimax Dream Air 手柄驾驶</h1>
+<p>本页介绍如何在 OpenHUTB（DReyeVR）中使用 Pimax Dream Air 系列头显（Dream Air / Dream Air Lite）搭配 Pimax Crystal 手柄进行驾驶。</p>
+<h2 id="_1">效果预览</h2>
+<p>设备图样：Pimax Dream Air 头显与 Crystal 手柄置于桌面，显示器同步输出旁观（spectator）画面，红字 <code>0 R</code> 表示当前车速 0、倒挡。</p>
+<p><img alt="设备图样" src="../../Figures/PimaxDriving_Setup.jpg" /></p>
+<p>手柄驾驶：显示器为座舱视角，方向盘随左摇杆实时转动，红字 <code>33 D</code> 表示时速 33 km/h、前进挡。</p>
+<p><img alt="手柄驾驶" src="../../Figures/PimaxDriving_Driving.jpg" /></p>
+<h2 id="_2">工作原理</h2>
+<p>Pimax 的 SteamVR 驱动（aapvr）会把 Crystal 手柄上报为 <code>oculus_touch</code> 设备类型，而 DReyeVR 的 SteamVR 输入绑定本身就包含 oculus_touch 的配置文件，因此<strong>手柄即插即用，无需修改引擎代码</strong>。驾驶功能通过以下配置实现：</p>
+<ul>
+<li><code>CarlaUE4/Config/SteamVRBindings/steamvr_manifest.json</code>：声明输入 action（转向为 vector2 类型，油门/刹车为 axis，按钮为 boolean）；</li>
+<li><code>CarlaUE4/Config/SteamVRBindings/oculus_touch.json</code>：把手柄物理按键映射到上述 action；</li>
+<li><code>CarlaUE4/Config/DefaultInput.ini</code>：把 SteamVR action 绑定到 DReyeVR 的按键事件（如 <code>OculusTouch_Right_A_Click</code>）。</li>
+</ul>
+<h2 id="_3">运行方法</h2>
+<ol>
+<li>启动 Pimax Play，确认头显与手柄已连接、SteamVR 就绪；</li>
+<li>启动模拟器（打包版示例）：</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="p">.\</span><span class="n">CarlaUE4</span><span class="p">.</span><span class="n">exe</span> <span class="p">/</span><span class="n">Game</span><span class="p">/</span><span class="n">Carla</span><span class="p">/</span><span class="n">Maps</span><span class="p">/</span><span class="n">Town02</span><span class="k">?</span><span class="n">GAME</span><span class="p">=</span><span class="n">VR</span> <span class="n">-vr</span>
+</code></pre></div>
+<ol>
+<li>戴上头显即可开始驾驶；显示器上同步显示旁观画面，可供旁观者确认车辆状态（速度/挡位）。</li>
+</ol>
+<h2 id="_4">手柄键位</h2>
+<table>
+<thead>
+<tr>
+<th>功能</th>
+<th>操作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>转向（比例）</td>
+<td>左摇杆左右</td>
+</tr>
+<tr>
+<td>油门（比例）</td>
+<td>右手扳机</td>
+</tr>
+<tr>
+<td>刹车（比例）</td>
+<td>左手扳机</td>
+</tr>
+<tr>
+<td>倒挡/前进挡切换</td>
+<td>A</td>
+</tr>
+<tr>
+<td>左转向灯</td>
+<td>X</td>
+</tr>
+<tr>
+<td>右转向灯</td>
+<td>B</td>
+</tr>
+<tr>
+<td>下一个摄像机视角</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>上一个摄像机视角</td>
+<td>右摇杆按下</td>
+</tr>
+<tr>
+<td>自车/旁观视角切换</td>
+<td>左摇杆按下</td>
+</tr>
+<tr>
+<td>座椅升高 / 降低</td>
+<td>右手柄握把 / 左手柄握把</td>
+</tr>
+<tr>
+<td>座椅前后左右移动</td>
+<td>右摇杆四向</td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>OpenHUTB 版权所有 &copy; 2026</p>
+  </div>
+
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/OpenHUTB/doc" style="color: #fcfcfc">OpenHUTB</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="https://cdn.rawgit.com/knsv/mermaid/6.0.0/dist/mermaid.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/js-sequence-diagrams/1.0.6/sequence-diagram-min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/flowchart/1.6.5/flowchart.min.js"></script>
+      <script src="../../../js/umlconvert.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
