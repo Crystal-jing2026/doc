@@ -30,7 +30,7 @@ float32 speed   # m/s
 创建 `LibCarla/source/carla/ros2/types/msg/MyType.h` 文件。规则：
 
 - 该结构体位于命名空间 `namespace carla::ros2::msg` 中。
-- 仅包含 `<array>`、`<vector>`、`<string>`、`<cstdint>` 以及同级的 `msg/*.h` 头文件 - 不包含 DDS 或 Fast-CDR。
+- 仅包含 `<array>`、`<vector>`、`<string>`、`<cstdint>` 以及同级的 `msg/*.h` 头文件 - 禁止引入 DDS、Fast-CDR 相关头文件与依赖。
 - 将基本类型字段初始化为零，使用 `= 0` 或 `= 0.0`。 
 - 对于固定长度数组，使用 `std::array<T, N>`；对于无界序列，使用 `std::vector<T>`。
 - 按值嵌套其他消息类型。
@@ -68,7 +68,7 @@ struct MyComposite {
   Header header;
   std::string frame_id;
   Vector3 velocity;
-  std::array<double, 9> covariance = {};   // 固定的 3x3 矩阵
+  std::array<double, 9> covariance = {};   // 车辆运动协方差3×3固定矩阵
 };
 
 }}} // namespace carla::ros2::msg
@@ -222,7 +222,7 @@ inline void deserialize_cdr(
 }
 ```
 
-对于 `std::vector<uint8_t>`（字节数组，例如 `Image::data`），FastCDR 会自动处理长度前缀，只需使用 `cdr << m.data` 即可，无需手动循环。
+对于 `std::vector<uint8_t>`（字节数组，例如 `Image::data`），FastCDR 会自动处理长度前缀，只需使用 `cdr << m.data` 即可，无需手动遍历循环处理，由 FastCDR 自动解析。
 
 ---
 
@@ -288,7 +288,7 @@ template<> struct CdrTopicInfo<msg::MyComposite> {
 
 此外，请在 `CdrTopicInfo.h` 文件顶部添加新头文件的 `#include` 指令。
 
-**`type_name()`:** 遵循 ROS 2 RMW 使用的 DDS 名称混淆约定：`<package>::msg::dds_::<TypeName>_`（注意末尾的下划线）。
+**`type_name()`:** 遵循 ROS 2 RMW 使用的DDS 名称修饰约定：`<package>::msg::dds_::<TypeName>_`（注意末尾的下划线）。
 
 **`type_hash()`:** REP-2011 类型哈希值，由所有写入器和读取器在 `USER_DATA` QoS 字段中发布（REP-2016 有效载荷 `typehash=RIHS01_<hex>;`）。对等 ROS 2 RMW 在发现过程中读取此哈希值，以执行基于类型哈希值的端点匹配，并且在 Jazzy 及更高版本中，用于抑制`Failed to parse type hash for topic ...`警告。
 
