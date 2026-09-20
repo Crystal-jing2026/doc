@@ -100,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="carla">Carla 消息参考</h1>
+                <div><h1 id="carla">Carla 消息参考</h1>
 <p>以下参考列出了 ROS 桥中可用的所有 Carla 消息。</p>
 <p>对这些消息或 Carla-ROS 桥的任何疑问都可以在论坛中解决。</p>
 <div class="build-buttons">
@@ -111,7 +111,7 @@ Carla 论坛</a>
 </p>
 </div>
 
-<hr />
+<hr>
 <h2 id="carlaactorinfomsg">CarlaActorInfo.msg</h2>
 <p>ROS 和 Carla 之间共享有关参与者的信息。</p>
 <table>
@@ -145,7 +145,7 @@ Carla 论坛</a>
 </tr>
 </tbody>
 </table>
-<hr />
+<hr>
 <h2 id="carlaactorlistmsg">CarlaActorList.msg</h2>
 <p>包含 Carla 参与者一些基本信息的消息列表。</p>
 <table>
@@ -164,7 +164,7 @@ Carla 论坛</a>
 </tr>
 </tbody>
 </table>
-<hr />
+<hr>
 <h2 id="carlacollisioneventmsg">CarlaCollisionEvent.msg</h2>
 <p>检索由参与者的碰撞传感器检测到的碰撞事件的数据。</p>
 <table>
@@ -193,7 +193,7 @@ Carla 论坛</a>
 </tr>
 </tbody>
 </table>
-<hr />
+<hr>
 <h2 id="carlacontrolmsg">CarlaControl.msg</h2>
 <p>这些消息在同步、非被动模式下控制模拟。定义的常量被翻译为步进命令。</p>
 <table>
@@ -212,7 +212,7 @@ Carla 论坛</a>
 </tr>
 </tbody>
 </table>
-<hr />
+<hr>
 <h2 id="carlaegovehiclecontrolmsg">CarlaEgoVehicleControl.msg</h2>
 <p>发送消息以在自动驾驶和手动两种模式下对车辆进行控制。这些内容以堆栈形式发布。</p>
 <table>
@@ -266,7 +266,7 @@ Carla 论坛</a>
 </tr>
 </tbody>
 </table>
-<hr />
+<hr>
 <h2 id="carlaegovehicleinfomsg">CarlaEgoVehicleInfo.msg</h2>
 <p>有关车辆的静态信息，主要是用于定义车辆物理特性的属性。 </p>
 <table>
@@ -360,7 +360,7 @@ Carla 论坛</a>
 </tr>
 </tbody>
 </table>
-<hr />
+<hr>
 <h2 id="carlaegovehicleinfowheelmsg">CarlaEgoVehicleInfoWheel.msg</h2>
 <p>有关车轮的静态信息将成为 <a href="#carlaegovehicleinfomsg">CarlaEgoVehicleInfo.msg</a> 消息的一部分。</p>
 <table>
@@ -409,7 +409,7 @@ Carla 论坛</a>
 </tr>
 </tbody>
 </table>
-<hr />
+<hr>
 <h2 id="carlaegovehiclestatusmsg">CarlaEgoVehicleStatus.msg</h2>
 <p>车辆作为世界上物体的当前状态。</p>
 <table>
@@ -448,7 +448,7 @@ Carla 论坛</a>
 </tr>
 </tbody>
 </table>
-<hr />
+<hr>
 <h2 id="carlalaneinvasioneventmsg">CarlaLaneInvasionEvent.msg</h2>
 <p>这些消息发布由连接到车辆的压线传感器检测到的压线。最后一步中检测到的入侵将作为具有常量定义的列表传递，以识别穿过的车道。</p>
 <table>
@@ -472,7 +472,7 @@ Carla 论坛</a>
 </tr>
 </tbody>
 </table>
-<hr />
+<hr>
 <h2 id="carlascenariomsg">CarlaScenario.msg</h2>
 <p>测试场景的详细信息。</p>
 <table>
@@ -506,7 +506,7 @@ Carla 论坛</a>
 </tr>
 </tbody>
 </table>
-<hr />
+<hr>
 <h2 id="carlascenariolistmsg">CarlaScenarioList.msg</h2>
 <p>要在 ScenarioRunner 中运行的测试场景列表。</p>
 <table>
@@ -525,7 +525,7 @@ Carla 论坛</a>
 </tr>
 </tbody>
 </table>
-<hr />
+<hr>
 <h2 id="carlascenariorunnerstatusmsg">CarlaScenarioRunnerStatus.msg</h2>
 <p>ScenarioRunner 的当前状态。它是使用常量来管理的。</p>
 <table>
@@ -544,7 +544,7 @@ Carla 论坛</a>
 </tr>
 </tbody>
 </table>
-<hr />
+<hr>
 <h2 id="carlastatusmsg">CarlaStatus.msg</h2>
 <p>当前世界的模拟设置。 </p>
 <table>
@@ -578,7 +578,7 @@ Carla 论坛</a>
 </tr>
 </tbody>
 </table>
-<hr />
+<hr>
 <h2 id="carlatrafficlightstatusmsg">CarlaTrafficLightStatus.msg</h2>
 <p>关于交通信号灯状态的恒定定义。</p>
 <table>
@@ -602,7 +602,7 @@ Carla 论坛</a>
 </tr>
 </tbody>
 </table>
-<hr />
+<hr>
 <h2 id="carlatrafficlightstatuslistmsg">CarlaTrafficLightStatusList.msg</h2>
 <p>交通信号灯列表及其状态。</p>
 <table>
@@ -621,7 +621,7 @@ Carla 论坛</a>
 </tr>
 </tbody>
 </table>
-<hr />
+<hr>
 <h2 id="carlawalkercontrolmsg">CarlaWalkerControl.msg</h2>
 <p>将运动控制器应用于行人所需的信息。</p>
 <table>
@@ -650,7 +650,7 @@ Carla 论坛</a>
 </tr>
 </tbody>
 </table>
-<hr />
+<hr>
 <h2 id="carlawaypointmsg">CarlaWaypoint.msg</h2>
 <p>路径点对象中包含的数据。</p>
 <table>
@@ -689,7 +689,7 @@ Carla 论坛</a>
 </tr>
 </tbody>
 </table>
-<hr />
+<hr>
 <h2 id="carlaworldinfomsg">CarlaWorldInfo.msg</h2>
 <p>有关当前 Carla 地图的信息。</p>
 <table>
@@ -713,7 +713,7 @@ Carla 论坛</a>
 </tr>
 </tbody>
 </table>
-<hr />
+<hr>
 <h2 id="egovehiclecontrolcurrentmsg">EgoVehicleControlCurrent.msg</h2>
 <p>车辆的当前时间、速度和加速度值。由控制器使用。它是<code>Carla_Ackermann_Control.EgoVehicleControlInfo.msg</code>消息的一部分。</p>
 <table>
@@ -747,7 +747,7 @@ Carla 论坛</a>
 </tr>
 </tbody>
 </table>
-<hr />
+<hr>
 <h2 id="egovehiclecontrolinfomsg">EgoVehicleControlInfo.msg</h2>
 <p>阿克曼控制器内的当前值。这些消息对于调试很有用。</p>
 <table>
@@ -791,7 +791,7 @@ Carla 论坛</a>
 </tr>
 </tbody>
 </table>
-<hr />
+<hr>
 <h2 id="egovehiclecontrolmaximamsg">EgoVehicleControlMaxima.msg</h2>
 <p>控制器限制（极限值）。它是<code>Carla_Ackermann_Control.EgoVehicleControlInfo.msg</code>消息的一部分。</p>
 <table>
@@ -835,7 +835,7 @@ Carla 论坛</a>
 </tr>
 </tbody>
 </table>
-<hr />
+<hr>
 <h2 id="egovehiclecontrolstatusmsg">EgoVehicleControlStatus.msg</h2>
 <p>自主车辆控制器的当前状态。它是<code>Carla_Ackermann_Control.EgoVehicleControlInfo.msg</code>消息的一部分。</p>
 <table>
@@ -889,7 +889,7 @@ Carla 论坛</a>
 </tr>
 </tbody>
 </table>
-<hr />
+<hr>
 <h2 id="egovehiclecontroltargetmsg">EgoVehicleControlTarget.msg</h2>
 <p>自主车辆控制器的目标值。它是<code>Carla_Ackermann_Control.EgoVehicleControlInfo.msg</code>消息的一部分。</p>
 <table>
@@ -928,7 +928,7 @@ Carla 论坛</a>
 </tr>
 </tbody>
 </table>
-<p><br></p>
+<p><br></p></div>
               
             </div>
           </div><footer>

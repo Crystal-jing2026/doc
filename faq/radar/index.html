@@ -100,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="_1"><a href="https://mp.weixin.qq.com/s/eM8z9EElqiz8txnTrw9fCw">雷达</a></h1>
+                <div><h1 id="_1"><a href="https://mp.weixin.qq.com/s/eM8z9EElqiz8txnTrw9fCw">雷达</a></h1>
 <h2 id="radar">Radar/雷达</h2>
 <p>1、CARLA自带雷达受天气影响吗？</p>
 <blockquote>
@@ -136,7 +136,7 @@
 <p>答：上一个问题的论文也实现过。但原理是：计算第一次发射的强度，如果大于50%，就在击中点延入射方向与击中点法线的角度再发。第二次发射击中的点为点云的坐标。 </p>
 <p>个人理解：假。</p>
 <p>个人愚见：Lidar是通过盘码角和TTF决定点云位置的，盘码角决定点云方向，TTF（time to fly，飞行时间）决定距离。看了知乎雪岭飞花在<a href="https://www.zhihu.com/question/59025491/answer/3524212461">《激光雷达lidar目前的技术难点在哪，关键技术都有哪些？》</a> 下的回答 ，我大概知道鬼影和膨胀的原因。所以多次反射能生成点云最重要的一点是：多次路径反射后，最终能被接收器感知。并且点云的方向只受盘码角决定，不是两次反射击中的点就是最终的点云的位置！（当然，理解了原理，也就有可能去实现了，性能消耗估计不小）
-<img alt="" src="../../img/faq/radar.jpg" /></p>
+<img alt="" src="../../img/faq/radar.jpg"></p>
 </blockquote>
 <p>6、怎么实现不同物体不同反射率？</p>
 <blockquote>
@@ -155,7 +155,7 @@
 <p>1、CARLA有没有超声波雷达？</p>
 <blockquote>
 <p>答：没有。基本上这类主动发射探测性雷达，底层都是RayCast。</p>
-</blockquote>
+</blockquote></div>
               
             </div>
           </div><footer>

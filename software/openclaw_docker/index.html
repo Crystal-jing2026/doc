@@ -100,18 +100,18 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="openclaw-siliconflow">🦞 OpenClaw + SiliconFlow 六模型专家矩阵部署方案</h1>
-<p><img alt="Docker" src="https://img.shields.io/badge/Docker-Ready-blue?logo=docker&amp;logoColor=white" />
-<img alt="Windows 11" src="https://img.shields.io/badge/OS-Windows_11-0078D4?logo=windows&amp;logoColor=white" />
-<img alt="SiliconFlow" src="https://img.shields.io/badge/API-SiliconFlow-black" />
-<img alt="License" src="https://img.shields.io/badge/License-MIT-green" /></p>
+                <div><h1 id="openclaw-siliconflow">🦞 OpenClaw + SiliconFlow 六模型专家矩阵部署方案</h1>
+<p><img alt="Docker" src="https://img.shields.io/badge/Docker-Ready-blue?logo=docker&amp;logoColor=white">
+<img alt="Windows 11" src="https://img.shields.io/badge/OS-Windows_11-0078D4?logo=windows&amp;logoColor=white">
+<img alt="SiliconFlow" src="https://img.shields.io/badge/API-SiliconFlow-black">
+<img alt="License" src="https://img.shields.io/badge/License-MIT-green"></p>
 <p>本项目提供一个完整的实战教程，演示如何在 Windows 11 环境下使用 Docker 部署 OpenClaw 具身智能代理底座。针对原生架构在多模态与本地资源管理上的局限，本方案通过自建 <strong>MAS (Multi-Agent Surrogate) 智能路由代理</strong>，成功对接 SiliconFlow 平台，实现了多模态专家模型（DeepSeek 与 Qwen 系列）的动态分发，并内置了严密的物理隔离与资源熔断防线。</p>
 <p>本教程记录了从底层重构到部署落地的所有详细步骤与<strong>海量踩坑经验</strong>，极具实战参考价值。</p>
 <h2 id="_1">示意图</h2>
-<p><img alt="OpenClaw Experts Matrix Architecture" src="../../img/software/expert-matrix.svg" /></p>
+<p><img alt="OpenClaw Experts Matrix Architecture" src="../../img/software/expert-matrix.svg"></p>
 <h2 id="table-of-contents">📑 Table of Contents / 目录</h2>
 <ul>
-<li><a href="#️_1">🖥️ 环境信息</a></li>
+<li><a href="#%EF%B8%8F_1">🖥️ 环境信息</a></li>
 <li><a href="#_2">📋 前置准备 (必看)</a></li>
 <li><a href="#10">🚀 部署步骤 (核心 10 步)</a></li>
 <li><a href="#_6">🎉 部署成功示例</a></li>
@@ -121,7 +121,7 @@
 <li><a href="#_15">📚 参考资料</a></li>
 <li><a href="#_16">👤 关于作者</a></li>
 </ul>
-<hr />
+<hr>
 <h2 id="_2">🖥️ 环境信息</h2>
 <p>以下是本系统实测通过的软硬件环境配置：</p>
 <table>
@@ -158,7 +158,7 @@
 </tr>
 </tbody>
 </table>
-<hr />
+<hr>
 <h2 id="_3">📋 前置准备 (必看)</h2>
 <h3 id="1-windows-wsl2">1. 开启 Windows 虚拟化与 WSL2 (核心避坑)</h3>
 <p>在 Windows 11 上运行 Docker 强依赖 WSL2：</p>
@@ -168,14 +168,14 @@
 </li>
 <li>
 <p>打开 PowerShell（以管理员身份运行），执行以下命令安装 WSL，<strong>安装完成后请重启电脑</strong>：
-<div class="highlight"><pre><span></span><code><span class="n">wsl</span> <span class="p">-</span><span class="n">-install</span>
-</code></pre></div></p>
+</p><div class="highlight"><pre><span></span><code><span class="n">wsl</span> <span class="p">-</span><span class="n">-install</span>
+</code></pre></div>
 </li>
 </ol>
 <h3 id="2-git">2. 安装 Git</h3>
 <p>前往 <a href="https://git-scm.com">Git</a> 下载安装，安装后在 PowerShell 验证：
-<div class="highlight"><pre><span></span><code><span class="n">git</span> <span class="p">-</span><span class="n">-version</span>
-</code></pre></div></p>
+</p><div class="highlight"><pre><span></span><code><span class="n">git</span> <span class="p">-</span><span class="n">-version</span>
+</code></pre></div>
 <h3 id="3-docker-desktop">3. 安装 Docker Desktop</h3>
 <p>前往 <a href="https://www.docker.com">Docker Desktop</a> 下载安装。</p>
 <div class="admonition 注意">
@@ -199,19 +199,19 @@
 <p>向量嵌入记忆 (Embed)</p>
 </li>
 </ul>
-<hr />
+<hr>
 <h2 id="10">🚀 部署步骤 (核心 10 步)</h2>
 <h3 id="git">第一步：配置 Git 代理（如有需要）</h3>
 <p>国内网络访问 GitHub 较慢，建议配置代理（端口根据自己的代理软件填写）：
-<div class="highlight"><pre><span></span><code><span class="n">git</span> <span class="n">config</span> <span class="p">-</span><span class="n">-global</span> <span class="n">http</span><span class="p">.</span><span class="n">proxy</span> <span class="n">http</span><span class="p">://</span><span class="n">127</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span><span class="p">:</span><span class="n">10808</span>
+</p><div class="highlight"><pre><span></span><code><span class="n">git</span> <span class="n">config</span> <span class="p">-</span><span class="n">-global</span> <span class="n">http</span><span class="p">.</span><span class="n">proxy</span> <span class="n">http</span><span class="p">://</span><span class="n">127</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span><span class="p">:</span><span class="n">10808</span>
 <span class="n">git</span> <span class="n">config</span> <span class="p">-</span><span class="n">-global</span> <span class="n">https</span><span class="p">.</span><span class="n">proxy</span> <span class="n">http</span><span class="p">://</span><span class="n">127</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span><span class="p">:</span><span class="n">10808</span>
-</code></pre></div></p>
+</code></pre></div>
 <h3 id="openclaw">第二步：克隆 OpenClaw 仓库</h3>
 <p>建议使用 <code>--depth 1</code> 只克隆最新版本，速度更快：
-<div class="highlight"><pre><span></span><code><span class="nb">cd </span><span class="n">D</span><span class="p">:\</span><span class="n">AI</span>   <span class="c"># 切换到你想存放项目的目录</span>
+</p><div class="highlight"><pre><span></span><code><span class="nb">cd </span><span class="n">D</span><span class="p">:\</span><span class="n">AI</span>   <span class="c"># 切换到你想存放项目的目录</span>
 <span class="n">git</span> <span class="n">clone</span> <span class="p">-</span><span class="n">-depth</span> <span class="n">1</span> <span class="n">https</span><span class="p">://</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">openclaw</span><span class="p">/</span><span class="n">openclaw</span>
 <span class="nb">cd </span><span class="n">openclaw</span>
-</code></pre></div></p>
+</code></pre></div>
 <h3 id="_4">第三步：部署架构重构模板与魔改工具库</h3>
 <div class="highlight"><pre><span></span><code><span class="c"># 克隆本仓库部署模板</span>
 <span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">://</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">Syysean</span><span class="p">/</span><span class="n">openclaw-expert-matrix</span> <span class="n">D</span><span class="p">:\</span><span class="n">AI</span><span class="p">\</span><span class="n">openclaw-deploy</span>
@@ -228,7 +228,7 @@
 </code></pre></div>
 <h3 id="_5">第四步：配置环境变量 (⚠️ 极易踩坑)</h3>
 <p>复制模板文件并编辑：
-<div class="highlight"><pre><span></span><code><span class="nb">Copy-Item</span> <span class="p">.</span><span class="n">env</span><span class="p">.</span><span class="n">example</span> <span class="p">.</span><span class="n">env</span>
+</p><div class="highlight"><pre><span></span><code><span class="nb">Copy-Item</span> <span class="p">.</span><span class="n">env</span><span class="p">.</span><span class="n">example</span> <span class="p">.</span><span class="n">env</span>
 <span class="n">notepad</span> <span class="p">.</span><span class="n">env</span>
 </code></pre></div>
 在 <code>.env</code> 文件中填写以下多路计费凭证：
@@ -242,7 +242,7 @@ SILICONFLOW_VISION_API_KEY=sk-...
 SILICONFLOW_REASONING_API_KEY=sk-...
 SILICONFLOW_CODE_API_KEY=sk-...
 SILICONFLOW_EMBED_API_KEY=sk-...
-</code></pre></div></p>
+</code></pre></div>
 <blockquote>
 <p>🔴 <strong>血泪教训</strong>：变量名和等号前后<strong>绝对不能有空格</strong>，否则 Key 解析必报错！</p>
 </blockquote>
@@ -254,7 +254,7 @@ SILICONFLOW_EMBED_API_KEY=sk-...
 </blockquote>
 <h3 id="_6">第六步：启动容器与物理熔断机制</h3>
 <p>本系统的 <code>docker-compose.yml</code> 已内置针对 Proxy 的 <code>512MB</code> 内存物理锁：
-<div class="highlight"><pre><span></span><code><span class="n">docker</span> <span class="n">compose</span> <span class="n">up</span> <span class="n">-d</span>
+</p><div class="highlight"><pre><span></span><code><span class="n">docker</span> <span class="n">compose</span> <span class="n">up</span> <span class="n">-d</span>
 <span class="n">docker</span> <span class="n">compose</span> <span class="nb">ps</span>
 </code></pre></div>
 验证智能路由代理是否正常挂载：
@@ -264,11 +264,11 @@ SILICONFLOW_EMBED_API_KEY=sk-...
 <div class="highlight"><pre><span></span><code>[proxy]  中央大脑 (text/tool) -&gt; Pro/deepseek-ai/DeepSeek-V3.2
 [proxy]  视觉专家 (vision)   -&gt; Qwen/Qwen3-VL-32B-Instruct
 ...
-</code></pre></div></p>
-<h3 id="_7">第七步：运行配置向导</h3>
-<p><div class="highlight"><pre><span></span><code><span class="n">docker</span> <span class="n">compose</span> <span class="n">run</span> <span class="p">-</span><span class="n">-rm</span> <span class="n">openclaw-cli</span> <span class="n">configure</span>
 </code></pre></div>
-按照向导提示依次配置：</p>
+<h3 id="_7">第七步：运行配置向导</h3>
+<p></p><div class="highlight"><pre><span></span><code><span class="n">docker</span> <span class="n">compose</span> <span class="n">run</span> <span class="p">-</span><span class="n">-rm</span> <span class="n">openclaw-cli</span> <span class="n">configure</span>
+</code></pre></div>
+按照向导提示依次配置：
 <ul>
 <li>
 <p><strong>Gateway 位置</strong>：选 <code>Local (this machine)</code></p>
@@ -293,11 +293,11 @@ SILICONFLOW_EMBED_API_KEY=sk-...
 </li>
 </ul>
 <h3 id="_8">第八步：健康检查</h3>
-<p><div class="highlight"><pre><span></span><code><span class="n">docker</span> <span class="n">compose</span> <span class="n">run</span> <span class="p">-</span><span class="n">-rm</span> <span class="n">openclaw-cli</span> <span class="n">health</span>
+<p></p><div class="highlight"><pre><span></span><code><span class="n">docker</span> <span class="n">compose</span> <span class="n">run</span> <span class="p">-</span><span class="n">-rm</span> <span class="n">openclaw-cli</span> <span class="n">health</span>
 </code></pre></div>
-看到 <code>Gateway: reachable</code> 说明路由底座配置成功。</p>
+看到 <code>Gateway: reachable</code> 说明路由底座配置成功。
 <h3 id="cli">第九步：测试多模态透传交互 (CLI)</h3>
-<div class="highlight"><pre><span></span><code><span class="n">docker</span> <span class="n">compose</span> <span class="n">run</span> <span class="p">-</span><span class="n">-rm</span> <span class="n">openclaw-cli</span> <span class="n">agent</span> <span class="p">-</span><span class="n">-session-id</span> <span class="n">test01</span> <span class="n">-m</span> <span class="s2">&quot;你好，请调用代码专家写一段底层单片机控制代码&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="n">docker</span> <span class="n">compose</span> <span class="n">run</span> <span class="p">-</span><span class="n">-rm</span> <span class="n">openclaw-cli</span> <span class="n">agent</span> <span class="p">-</span><span class="n">-session-id</span> <span class="n">test01</span> <span class="n">-m</span> <span class="s2">"你好，请调用代码专家写一段底层单片机控制代码"</span>
 </code></pre></div>
 <h3 id="webui">第十步：访问网页界面 (WebUI) 并批准设备</h3>
 <ol>
@@ -312,13 +312,13 @@ SILICONFLOW_EMBED_API_KEY=sk-...
 </code></pre></div>
 批准后刷新网页即可接管全局节点。</li>
 </ol>
-<hr />
+<hr>
 <h2 id="_9">🎉 部署成功示例</h2>
 <h3 id="_10">终端对话</h3>
-<p><img alt="终端对话截图" src="../../img/software/screenshot-cli.png" /></p>
+<p><img alt="终端对话截图" src="../../img/software/screenshot-cli.png"></p>
 <h3 id="_11">网页界面</h3>
-<p><img alt="网页界面截图" src="../../img/software/screenshot-webui.png" /></p>
-<hr />
+<p><img alt="网页界面截图" src="../../img/software/screenshot-webui.png"></p>
+<hr>
 <h2 id="_12">🛑 服务管理与停止</h2>
 <ul>
 <li><strong>停止并保留数据</strong>：<code>docker compose stop</code></li>
@@ -326,7 +326,7 @@ SILICONFLOW_EMBED_API_KEY=sk-...
 <li><strong>查看实时日志</strong>：<code>docker compose logs -f</code></li>
 <li><strong>只看智能路由链路日志</strong>：<code>docker compose logs -f siliconflow-proxy</code></li>
 </ul>
-<hr />
+<hr>
 <h2 id="_13">❗ 常见报错与解决方法</h2>
 <h4 id="_14">[容器与镜像级异常]</h4>
 <p><strong>1. <code>pull access denied for openclaw</code></strong>
@@ -367,17 +367,17 @@ SILICONFLOW_EMBED_API_KEY=sk-...
 <li>Gateway Token 泄露后，请重新生成并更新 <code>.env</code> 文件，随后执行 <code>docker compose restart openclaw-gateway</code> 重启服务。</li>
 <li>任何底层配置变更后，必须重启受影响的容器。</li>
 </ol>
-<hr />
+<hr>
 <p><strong>底层智能分发逻辑</strong>：
-<div class="highlight"><pre><span></span><code>Incoming Request -&gt; [Payload Inspector]
+</p><div class="highlight"><pre><span></span><code>Incoming Request -&gt; [Payload Inspector]
     │
     ├─ 匹配专家标识 (reason/code/vision) ──→ 专家模型直连通道 (专属 API Key)
     │
     ├─ 检测到工具调度 (tools 数组存在) ───→ DeepSeek-V3.2 (TOOL_KEY 独立计费池)
     │
     └─ 常规纯文本请求 (Default) ─────────→ DeepSeek-V3.2 (TEXT_KEY 通用池)
-</code></pre></div></p>
-<hr />
+</code></pre></div>
+<hr>
 <h2 id="_19">📚 参考资料</h2>
 <ul>
 <li><a href="https://docs.openclaw.ai">Openclaw 官方文档</a></li>
@@ -385,10 +385,10 @@ SILICONFLOW_EMBED_API_KEY=sk-...
 <li><a href="https://nodejs.org/api/stream.html">Node.js Streams API</a></li>
 <li><a href="https://www.docker.com">Docker Desktop 官网</a></li>
 </ul>
-<hr />
+<hr>
 <h2 id="_20">👤 关于作者</h2>
 <p><strong>湖南工商大学 机器人工程专业 本科在读</strong> </p>
-<p>欢迎大家进行讨论和复现。如有问题或优化建议，欢迎提交 <a href="https://github.com/Syysean/openclaw-expert-matrix/issues">Issue</a> 或 PR！</p>
+<p>欢迎大家进行讨论和复现。如有问题或优化建议，欢迎提交 <a href="https://github.com/Syysean/openclaw-expert-matrix/issues">Issue</a> 或 PR！</p></div>
               
             </div>
           </div><footer>

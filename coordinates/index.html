@@ -100,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="_1">坐标和转换</h1>
+                <div><h1 id="_1">坐标和转换</h1>
 <p>本页详细介绍了 HUTB 中使用的坐标约定以及如何通过 HUTB Python API 处理坐标。</p>
 <ul>
 <li><strong><a href="#global-coordinates">全局坐标</a></strong></li>
@@ -113,7 +113,7 @@
 </li>
 <li><strong><a href="#actor-coordinates">地理坐标 Geocoordinates</a></strong></li>
 </ul>
-<hr />
+<hr>
 <h2 id="_2">全局坐标</h2>
 <p>HUTB 基于虚幻引擎 4.26 版本构建，并采用相同的<strong>左手坐标系</strong>。您可以在 <a href="https://openhutb.github.io/engine_doc/zh-CN/Basics/CoordinateSpace/index.html">模拟引擎文档</a> 中了解更多关于 <a href="https://dev.epicgames.com/documentation/en-us/unreal-engine/coordinate-system-and-spaces-in-unreal-engine">虚幻引擎坐标系</a> 的详细信息。</p>
 <p>对于站在原点、面向 X 轴正方向的观察者，适用以下关系：</p>
@@ -122,14 +122,14 @@
 <li><strong>Y</strong> - <strong>右</strong></li>
 <li><strong>Z</strong> - <strong>上</strong></li>
 </ul>
-<p><img alt="carla_lh_coordinates" src="../img/carla_left_handed_coordinates.png" /></p>
-<p><img alt="" src="./img/ue/left_hand_rule.png" /></p>
+<p><img alt="carla_lh_coordinates" src="../img/carla_left_handed_coordinates.png"></p>
+<p><img alt="" src="./img/ue/left_hand_rule.png"></p>
 <p>在 HUTB API 中，距离以米为单位测量，角度以度为单位测量。因此，当 HUTB 与其他可能使用<strong>右手坐标系</strong>、角度使用弧度、距离使用厘米或英制单位的应用程序交互时，进行相关的单位转换至关重要。</p>
-<hr />
+<hr>
 <h2 id="actor">Actor 坐标</h2>
 <p>车辆和其他 actors（如行人）都有自己的局部坐标系，以帮助保持局部一致的坐标关系，例如传感器位置。</p>
 <p>按照惯例，HUTB 车辆的设置方式为：车头指向 X 轴正方向，车身右侧指向 Y 轴正方向，车顶指向 Z 轴正方向。车辆坐标系的中心通常靠近 X 轴和 Y 轴方向的边界框中心，并且非常靠近 Z 轴方向边界框的最低面。</p>
-<p><img alt="carla_vehicle_coordinates" src="../img/carla_vehicle_axes.png" /></p>
+<p><img alt="carla_vehicle_coordinates" src="../img/carla_vehicle_axes.png"></p>
 <p>HUTB 行人模型的设置方式也类似，行人面向 X 轴正方向，右臂指向 Y 轴正方向，头部指向 Z 轴正方向。通常情况下，行人模型的坐标中心在静止状态下位于边界框的中心。</p>
 <h2 id="hutb-api">通过 HUTB API 处理坐标：</h2>
 <p>HUTB API 具有多个用于处理坐标和坐标变换的实用对象。</p>
@@ -146,7 +146,7 @@
 <span class="n">location</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Location</span><span class="p">()</span> <span class="c1"># x=y=z=0</span>
 </code></pre></div>
 <p>可以省略任何或所有关键字参数，相关轴的值将设置为零。</p>
-<hr />
+<hr>
 <h3 id="_3">旋转</h3>
 <p><a href="../python_api/#carlarotation">Rotation 对象</a> 用于定义 HUTB 坐标系中的旋转。旋转以度为单位，顺序为<strong>俯仰角</strong>、<strong>偏航角</strong> 和 <strong>横滚角</strong>。而虚幻引擎旋转是<strong>偏航、俯仰、横滚</strong>。</p>
 <p>以下代码展示了如何创建一个旋转对象，使其横滚角为 10 度，俯仰角为 10 度，偏航角为 90 度：</p>
@@ -160,7 +160,7 @@
 <span class="n">rotation</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Rotation</span><span class="p">()</span> <span class="c1"># pitch=yaw=roll=0</span>
 </code></pre></div>
 <p>可以省略任何或所有关键字参数，相关角度将设置为零。</p>
-<hr />
+<hr>
 <h3 id="transform">变换 Transform</h3>
 <p>HUTB <a href="../python_api/#carlatransform">Transform 对象</a> 用于包含有关对象姿态的所有信息，包括其 3D 位置和旋转。可以使用 Location 和 Rotation 创建一个新的 Transform 对象：</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 设置位置和旋转</span>
@@ -195,16 +195,16 @@ vehicle_transform = vehicle.get_transform()
 transformed_location = vehicle_transform.inverse_transform(location)
 </code></pre></div>
 <p>这对于向自动驾驶感知堆栈交换附近车辆或物体的数据非常重要，因为它需要车辆自身坐标系中的数据。</p>
-<hr />
+<hr>
 <h2 id="geocoordinates">地理坐标 Geocoordinates</h2>
 <p>地理坐标是以<strong>纬度</strong>、<strong>经度</strong>和<strong>海拔高度</strong>格式表示的大地坐标，用于表示地球表面上的位置。OpenDRIVE 对 HUTB 地图（<code>.xodr</code> 文件）的定义允许在其元数据中包含地理参考信息。有关 OpenDRIVE 标准中地理参考的更多信息，请参阅 <a href="https://releases.asam.net/OpenDRIVE/1.6.0/ASAM_OpenDRIVE_BS_V1-6-0.html#_georeferencing_in_opendrive">此文档</a> 。</p>
-<p>在 OpenDRIVE 文件中，地理参考信息将以 <geoReference> 标签的形式在文件头信息中提供：</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<p>在 OpenDRIVE 文件中，地理参考信息将以 <georeference> 标签的形式在文件头信息中提供：</georeference></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="nt">&lt;OpenDRIVE&gt;</span>
-<span class="w">    </span><span class="nt">&lt;header</span><span class="w"> </span><span class="na">revMajor=</span><span class="s">&quot;1&quot;</span><span class="w"> </span><span class="na">revMinor=</span><span class="s">&quot;4&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;&quot;</span><span class="w"> </span><span class="na">version=</span><span class="s">&quot;1&quot;</span><span class="w"> </span><span class="na">date=</span><span class="s">&quot;2020-07-28T22:34:58&quot;</span><span class="w"> </span><span class="na">north=</span><span class="s">&quot;9.9112975471922624e+1&quot;</span><span class="w"> </span><span class="na">south=</span><span class="s">&quot;-1.7159821787367417e+2&quot;</span><span class="w"> </span><span class="na">east=</span><span class="s">&quot;1.4036590163241959e+2&quot;</span><span class="w"> </span><span class="na">west=</span><span class="s">&quot;-1.4497769211633769e+2&quot;</span><span class="w"> </span><span class="na">vendor=</span><span class="s">&quot;VectorZero&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;header</span><span class="w"> </span><span class="na">revMajor=</span><span class="s">"1"</span><span class="w"> </span><span class="na">revMinor=</span><span class="s">"4"</span><span class="w"> </span><span class="na">name=</span><span class="s">""</span><span class="w"> </span><span class="na">version=</span><span class="s">"1"</span><span class="w"> </span><span class="na">date=</span><span class="s">"2020-07-28T22:34:58"</span><span class="w"> </span><span class="na">north=</span><span class="s">"9.9112975471922624e+1"</span><span class="w"> </span><span class="na">south=</span><span class="s">"-1.7159821787367417e+2"</span><span class="w"> </span><span class="na">east=</span><span class="s">"1.4036590163241959e+2"</span><span class="w"> </span><span class="na">west=</span><span class="s">"-1.4497769211633769e+2"</span><span class="w"> </span><span class="na">vendor=</span><span class="s">"VectorZero"</span><span class="nt">&gt;</span>
 <span class="w">        </span><span class="nt">&lt;geoReference&gt;</span><span class="cp">&lt;![CDATA[+proj=tmerc +lat_0=0 +lon_0=0 +k=1 +x_0=0 +y_0=0 +datum=WGS84 +units=m +geoidgrids=egm96_15.gtx +vunits=m +no_defs ]]&gt;</span><span class="nt">&lt;/geoReference&gt;</span>
 <span class="w">        </span><span class="nt">&lt;userData&gt;</span>
-<span class="w">            </span><span class="nt">&lt;vectorScene</span><span class="w"> </span><span class="na">program=</span><span class="s">&quot;RoadRunner&quot;</span><span class="w"> </span><span class="na">version=</span><span class="s">&quot;2019.2.12 (build 5161c1572)&quot;</span><span class="nt">/&gt;</span>
+<span class="w">            </span><span class="nt">&lt;vectorScene</span><span class="w"> </span><span class="na">program=</span><span class="s">"RoadRunner"</span><span class="w"> </span><span class="na">version=</span><span class="s">"2019.2.12 (build 5161c1572)"</span><span class="nt">/&gt;</span>
 <span class="w">        </span><span class="nt">&lt;/userData&gt;</span>
 <span class="w">    </span><span class="nt">&lt;/header&gt;</span>
 
@@ -225,7 +225,7 @@ transformed_location = vehicle_transform.inverse_transform(location)
 <span class="nb">print</span><span class="p">(</span><span class="n">carla_map</span><span class="o">.</span><span class="n">geolocation_to_transform</span><span class="p">(</span><span class="n">geolocation</span><span class="p">))</span>
 
 <span class="o">&gt;&gt;&gt;</span><span class="n">Location</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">10.014747</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">11.016221</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mf">1.000000</span><span class="p">)</span>
-</code></pre></div>
+</code></pre></div></div>
               
             </div>
           </div><footer>

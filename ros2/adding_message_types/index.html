@@ -100,15 +100,15 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="carla-ros-2">向 Carla 添加新的 ROS 2 消息类型</h1>
+                <div><h1 id="carla-ros-2">向 Carla 添加新的 ROS 2 消息类型</h1>
 <p>Carla 使用 Fast-CDR（Common Data Representation）将手写的 C++ POD （Plain Old Data）结构体直接序列化到 CDR 字节缓冲区，从而发布 ROS 2 数据。构建时没有 IDL（Interface Definition Language）编译器或代码生成步骤。因此，支持新的消息类型需要手动完成 7 个步骤。本指南将逐步介绍每个步骤。</p>
 <h2 id="_1">前提条件</h2>
 <ul>
 <li>已安装并运行 Docker（仅在步骤 <a href="#step_4">4</a> 中需要）。</li>
 <li>要添加的类型的 <code>.msg</code> 文件。标准的 ROS 2 类型（例如 <code>sensor_msgs/msg/NavSatFix</code>）在任何 ROS 2 安装中都已存在。如果您要定义新的 <code>carla_msgs</code> 类型，请先编写它（参见步骤 <a href="#step_1">1</a>）。 </li>
 </ul>
-<hr />
-<h2 id="1-msg-ros-2">步骤 1 - 编写 <code>.msg</code> 文件（标准 ROS 2 类型可跳过此步骤） <span id='step_1'></span></h2>
+<hr>
+<h2 id="1-msg-ros-2">步骤 1 - 编写 <code>.msg</code> 文件（标准 ROS 2 类型可跳过此步骤） <span id="step_1"></span></h2>
 <p>如果该类型已存在于标准 ROS 2 包中，请跳过此步骤，并在步骤 <a href="#step_4">4</a> 中使用现有的 <code>.msg</code> 文件。</p>
 <p>对于新的 <code>carla_msgs</code> 类型，请按照 <a href="https://design.ros2.org/articles/legacy_interface_definition.html">ROS 2 接口定义格式</a> 创建 <code>.msg</code> 文件。每行要么是字段声明，要么是注释（<code># ...</code>）：</p>
 <div class="highlight"><pre><span></span><code># carla_msgs/msg/CarlaSpeedometer.msg
@@ -116,8 +116,8 @@ std_msgs/Header header
 float32 speed   # m/s
 </code></pre></div>
 <p>嵌套类型的字段类型名称使用 <code>pkg_name/TypeName</code>（字段行本身不包含 <code>msg/</code>）。支持的基本类型：<code>bool</code>、<code>int8</code>、<code>uint8</code>、<code>int16</code>、<code>uint16</code>、<code>int32</code>、<code>uint32</code>、<code>int64</code>、<code>uint64</code>、<code>float32</code>、<code>float64</code>、<code>string</code>。固定数组使用 <code>type[N]</code>；无界序列使用 <code>type[]</code>。</p>
-<hr />
-<h2 id="2-c-pod">步骤 2 - 创建 C++ POD 结构体  <span id='step_2'></span></h2>
+<hr>
+<h2 id="2-c-pod">步骤 2 - 创建 C++ POD 结构体  <span id="step_2"></span></h2>
 <p>创建 <code>LibCarla/source/carla/ros2/types/msg/MyType.h</code> 文件。规则：</p>
 <ul>
 <li>该结构体位于命名空间 <code>namespace carla::ros2::msg</code> 中。</li>
@@ -145,8 +145,8 @@ float32 speed   # m/s
 <span class="cp">#pragma once</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;array&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;carla/ros2/types/msg/Header.h&quot;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;carla/ros2/types/msg/Vector3.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">"carla/ros2/types/msg/Header.h"</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">"carla/ros2/types/msg/Vector3.h"</span>
 
 <span class="k">namespace</span><span class="w"> </span><span class="nn">carla</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">ros2</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">msg</span><span class="w"> </span><span class="p">{</span>
 
@@ -163,7 +163,7 @@ float32 speed   # m/s
 <div class="highlight"><pre><span></span><code><span class="c1">// LibCarla/source/carla/ros2/types/msg/MyList.h</span>
 <span class="cp">#pragma once</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;carla/ros2/types/msg/SomeElement.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">"carla/ros2/types/msg/SomeElement.h"</span>
 
 <span class="k">namespace</span><span class="w"> </span><span class="nn">carla</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">ros2</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">msg</span><span class="w"> </span><span class="p">{</span>
 
@@ -189,9 +189,9 @@ float64[9] linear_acceleration_covariance
 <div class="highlight"><pre><span></span><code><span class="c1">// LibCarla/source/carla/ros2/types/msg/Imu.h</span>
 <span class="cp">#pragma once</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;array&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;carla/ros2/types/msg/Header.h&quot;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;carla/ros2/types/msg/Quaternion.h&quot;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;carla/ros2/types/msg/Vector3.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">"carla/ros2/types/msg/Header.h"</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">"carla/ros2/types/msg/Quaternion.h"</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">"carla/ros2/types/msg/Vector3.h"</span>
 
 <span class="k">namespace</span><span class="w"> </span><span class="nn">carla</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">ros2</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">msg</span><span class="w"> </span><span class="p">{</span>
 
@@ -246,8 +246,8 @@ float64[9] linear_acceleration_covariance
 <p class="admonition-title">注意</p>
 <p><code>type_name()</code> 函数（步骤 <a href="#step_5">5</a>）中的 <code>dds_::Imu_</code> 类型修饰以及 DDS 线格式均通过 Fast-CDR 从此 POD 布局自动派生；无需维护单独的 IDL 定义。</p>
 </div>
-<hr />
-<h2 id="3-cdr">步骤 3 - 注册 CDR 序列化  <span id='step_3'></span></h2>
+<hr>
+<h2 id="3-cdr">步骤 3 - 注册 CDR 序列化  <span id="step_3"></span></h2>
 <p>打开 <a href="https://github.com/OpenHUTB/hutb/blob/hutb/LibCarla/source/carla/ros2/types/CdrSerialization.h">LibCarla/source/carla/ros2/types/CdrSerialization.h</a> 文件并添加：</p>
 <ol>
 <li>在文件顶部添加一个包含新头文件的 <code>#include</code> 语句。</li>
@@ -300,7 +300,7 @@ float64[9] linear_acceleration_covariance
 <span class="w">  </span><span class="n">cdr</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span>
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">kMaxCdrSequenceElements</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="n">eprosima</span><span class="o">::</span><span class="n">fastcdr</span><span class="o">::</span><span class="n">exception</span><span class="o">::</span><span class="n">BadParamException</span><span class="p">(</span>
-<span class="w">        </span><span class="s">&quot;MyList::items length exceeds sane CDR sequence cap&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="s">"MyList::items length exceeds sane CDR sequence cap"</span><span class="p">);</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="w">  </span><span class="n">m</span><span class="p">.</span><span class="n">items</span><span class="p">.</span><span class="n">resize</span><span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">size_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">n</span><span class="p">));</span>
 <span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">item</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">items</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -309,10 +309,10 @@ float64[9] linear_acceleration_covariance
 <span class="p">}</span>
 </code></pre></div>
 <p>对于 <code>std::vector&lt;uint8_t&gt;</code>（字节数组，例如 <code>Image::data</code>），FastCDR 会自动处理长度前缀，只需使用 <code>cdr &lt;&lt; m.data</code> 即可，无需手动循环。</p>
-<hr />
-<h2 id="4-rihs01">步骤 4 - 计算 RIHS01 类型哈希  <span id='step_4'></span></h2>
+<hr>
+<h2 id="4-rihs01">步骤 4 - 计算 RIHS01 类型哈希  <span id="step_4"></span></h2>
 <p>ROS 2 Iron 及更高版本会在两个节点相互发现时检查 DDS <code>USER_DATA</code> QoS 字段中的类型哈希。如果哈希不存在，则每个端点都会记录：</p>
-<div class="highlight"><pre><span></span><code>[WARN] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic &#39;rt/...&#39;
+<div class="highlight"><pre><span></span><code>[WARN] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/...'
 </code></pre></div>
 <p>Carla 会在每种消息类型的 <code>CdrTopicInfo&lt;T&gt;::type_hash()</code> 函数中嵌入一个硬编码的 RIHS01 哈希值。使用 <code>Util/ros2/compute_type_hash.sh</code> 脚本可以获取特定类型的正确哈希值。此脚本仅需 Docker 容器，无需本地安装 ROS 2。</p>
 <p><strong>标准 ROS 2 类型</strong>（<code>.msg</code> 文件已安装在容器内）：</p>
@@ -337,16 +337,16 @@ Util/ros2/compute_type_hash.sh<span class="w"> </span>sensor_msgs/msg/Imu<span c
 <p class="admonition-title">故障排除</p>
 <p>如果在 Docker 中构建 colcon（<code>colcon build</code>）失败，最常见的原因是缺少 <code>.msg</code> 依赖项，而该依赖项不在标准的 <code>jazzy</code> 安装包中。请将缺失的软件包添加到 <code>rosidl_generate_interfaces</code> 工作区，或者，对于最新版本的软件包，请切换到更新的 <code>osrf/ros</code> 标签。</p>
 </div>
-<hr />
-<h2 id="5-cdrtopicinfoh">步骤 5 - 在 <code>CdrTopicInfo.h</code> 中注册  <span id='step_5'></span></h2>
+<hr>
+<h2 id="5-cdrtopicinfoh">步骤 5 - 在 <code>CdrTopicInfo.h</code> 中注册  <span id="step_5"></span></h2>
 <p>向 <a href="https://github.com/OpenHUTB/hutb/blob/hutb/LibCarla/source/carla/ros2/types/CdrTopicInfo.h">LibCarla/source/carla/ros2/types/CdrTopicInfo.h</a> 添加一个特化（specialization）：</p>
 <div class="highlight"><pre><span></span><code><span class="k">template</span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">CdrTopicInfo</span><span class="o">&lt;</span><span class="n">msg</span><span class="o">::</span><span class="n">MyComposite</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="nf">type_name</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// DDS 名称混淆：&lt;package&gt;::msg::dds_::&lt;TypeName&gt;_</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;my_pkg::msg::dds_::MyComposite_&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">"my_pkg::msg::dds_::MyComposite_"</span><span class="p">;</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="w">  </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="nf">type_hash</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;RIHS01_&lt;hash from Step 4&gt;&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">"RIHS01_&lt;hash from Step 4&gt;"</span><span class="p">;</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="w">  </span><span class="k">static</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="nf">max_serialized_size</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="o">&lt;</span><span class="n">byte</span><span class="w"> </span><span class="n">count</span><span class="o">&gt;</span><span class="n">u</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 <span class="p">};</span>
@@ -357,7 +357,7 @@ Util/ros2/compute_type_hash.sh<span class="w"> </span>sensor_msgs/msg/Imu<span c
 <p>粘贴步骤 <a href="#step_4">4</a> 中的  <code>RIHS01_...</code> 字符串。哈希值是按消息定义固定的；如果 <code>.msg</code> 定义发生更改，请更新它。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// 典型案例：固定根据 .msg 定义计算出的哈希值</span>
 <span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="nf">type_hash</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;RIHS01_7d9a00ff...&quot;</span><span class="p">;</span><span class="w">  </span><span class="c1">// “RIHS01_”之后的64个十六进制字符</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="s">"RIHS01_7d9a00ff..."</span><span class="p">;</span><span class="w">  </span><span class="c1">// “RIHS01_”之后的64个十六进制字符</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>仅当无法为该类型计算规范哈希值时（例如，没有对应 <code>.msg</code> 文件的自定义有效负载），才返回 <code>nullptr</code>。此时，中间件会为该端点发出一个空的 <code>USER_DATA</code> 有效负载；对等方会在 Jazzy 日志中记录缺失类型哈希值的警告，但连接仍然会建立。</p>
@@ -377,21 +377,21 @@ Util/ros2/compute_type_hash.sh<span class="w"> </span>sensor_msgs/msg/Imu<span c
 <li><code>std::array&lt;double, 9&gt;</code>: 72 字节</li>
 <li>嵌套结构体：递归地对其字段求和</li>
 </ul>
-<hr />
-<h2 id="6-">步骤 6 - 添加测试  <span id='step_6'></span></h2>
+<hr>
+<h2 id="6-">步骤 6 - 添加测试  <span id="step_6"></span></h2>
 <p>打开 <a href="https://github.com/OpenHUTB/hutb/tree/hutb/LibCarla/source/test/server">LibCarla/source/test/server/test_type_hash.cpp</a> 文件并添加：</p>
 <ol>
 <li>在 <code>TEST(TypeHash, FormatAllTypes)</code> 函数内添加一个 <code>CHECK_HASH(MyComposite)</code> 调用。 </li>
 <li>在 <code>TEST(TypeHash, UniqueAcrossAllTypes)</code> 函数内，在哈希向量中添加一个 <code>CdrTopicInfo&lt;msg::MyComposite&gt;::type_hash()</code> 条目。</li>
 </ol>
 <p>这两个测试验证哈希字符串是否符合 <code>RIHS01_&lt;64 hex&gt;</code> 格式，并且在所有已注册的类型中是唯一的。</p>
-<hr />
-<h2 id="7-">步骤 7 - 构建并验证  <span id='step_7'></span></h2>
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>carla-development-ue4-20.04<span class="w"> </span>make<span class="w"> </span>LibCarla<span class="w"> </span><span class="nv">ARGS</span><span class="o">=</span><span class="s2">&quot;--ros2&quot;</span>
+<hr>
+<h2 id="7-">步骤 7 - 构建并验证  <span id="step_7"></span></h2>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>carla-development-ue4-20.04<span class="w"> </span>make<span class="w"> </span>LibCarla<span class="w"> </span><span class="nv">ARGS</span><span class="o">=</span><span class="s2">"--ros2"</span>
 docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>carla-development-ue4-20.04<span class="w"> </span>make<span class="w"> </span>check.LibCarla
 </code></pre></div>
 <p>所有测试必须通过。如果哈希值格式错误或重复，新的 <code>CHECK_HASH</code> 条目将失败。</p>
-<hr />
+<hr>
 <h2 id="_2">常见问题解答</h2>
 <ul>
 <li><strong>为什么哈希值是硬编码的？</strong></li>
@@ -411,11 +411,11 @@ docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </spa
 <li><a href="https://ros.org/reps/rep-2011.html">REP-2011</a> (RIHS01 哈希算法)</li>
 <li><a href="https://ros.org/reps/rep-2016.html">REP-2016</a> (USER_DATA 键值格式)</li>
 </ul>
-<hr />
+<hr>
 <h2 id="_3">参考资料</h2>
 <ul>
 <li><a href="https://www.omg.org/spec/DDSI-RTPS/2.5/PDF">OMG DDSI-RTPS v2.5 规范（PDF）</a></li>
-</ul>
+</ul></div>
               
             </div>
           </div><footer>

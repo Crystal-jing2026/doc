@@ -100,88 +100,88 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <p>@@ -0,0 +1,200 @@
+                <div><p>@@ -0,0 +1,200 @@
  # CARLA 导航模块技术文档 (Navigation.cpp)</p>
-<hr />
-<p>## 目录<br />
- 1. <a href="#模块概述">模块概述</a><br />
- 2. <a href="#核心功能">核心功能</a><br />
- 3. <a href="#类与方法详解">类与方法详解</a><br />
- 4. <a href="#坐标系统与数据结构">坐标系统与数据结构</a><br />
- 5. <a href="#关键流程">关键流程</a><br />
- 6. <a href="#配置参数">配置参数</a><br />
- 7. <a href="#注意事项">注意事项</a><br />
- 8. <a href="#示例代码">示例代码</a><br />
- 9. <a href="#附录">附录</a>  </p>
-<hr />
-<p>## 模块概述<br />
-<code>Navigation</code> 是 HUTB 模拟器中实现智能体（行人、车辆）导航的核心模块，基于 <strong>Recast/Detour</strong> 库实现以下功能：<br />
- - <strong>导航网格加载</strong>：支持多瓦片（Tile）动态加载<br />
- - <strong>路径规划</strong>：基于区域类型（道路/草地）的路径搜索与优化<br />
- - <strong>人群模拟</strong>：支持500+代理的动态管理（避障、转向预测、分离行为）<br />
- - <strong>动态障碍物处理</strong>：车辆包围盒（OBB）的实时更新<br />
+<hr>
+<p>## 目录<br>
+ 1. <a href="#%E6%A8%A1%E5%9D%97%E6%A6%82%E8%BF%B0">模块概述</a><br>
+ 2. <a href="#%E6%A0%B8%E5%BF%83%E5%8A%9F%E8%83%BD">核心功能</a><br>
+ 3. <a href="#%E7%B1%BB%E4%B8%8E%E6%96%B9%E6%B3%95%E8%AF%A6%E8%A7%A3">类与方法详解</a><br>
+ 4. <a href="#%E5%9D%90%E6%A0%87%E7%B3%BB%E7%BB%9F%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">坐标系统与数据结构</a><br>
+ 5. <a href="#%E5%85%B3%E9%94%AE%E6%B5%81%E7%A8%8B">关键流程</a><br>
+ 6. <a href="#%E9%85%8D%E7%BD%AE%E5%8F%82%E6%95%B0">配置参数</a><br>
+ 7. <a href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9">注意事项</a><br>
+ 8. <a href="#%E7%A4%BA%E4%BE%8B%E4%BB%A3%E7%A0%81">示例代码</a><br>
+ 9. <a href="#%E9%99%84%E5%BD%95">附录</a>  </p>
+<hr>
+<p>## 模块概述<br>
+<code>Navigation</code> 是 HUTB 模拟器中实现智能体（行人、车辆）导航的核心模块，基于 <strong>Recast/Detour</strong> 库实现以下功能：<br>
+ - <strong>导航网格加载</strong>：支持多瓦片（Tile）动态加载<br>
+ - <strong>路径规划</strong>：基于区域类型（道路/草地）的路径搜索与优化<br>
+ - <strong>人群模拟</strong>：支持500+代理的动态管理（避障、转向预测、分离行为）<br>
+ - <strong>动态障碍物处理</strong>：车辆包围盒（OBB）的实时更新<br>
  - <strong>多线程安全</strong>：通过 <code>std::mutex</code> 保证关键操作原子性  </p>
-<hr />
-<p>## 核心功能<br />
- ### 1. 导航数据加载<br />
- - <strong>二进制文件解析</strong><br />
-   <div class="highlight"><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="nf">Load</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">filename</span><span class="p">);</span><span class="w">  </span><span class="c1">// 从文件加载</span>
+<hr>
+<p>## 核心功能<br>
+ ### 1. 导航数据加载<br>
+ - <strong>二进制文件解析</strong><br>
+   </p><div class="highlight"><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="nf">Load</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">filename</span><span class="p">);</span><span class="w">  </span><span class="c1">// 从文件加载</span>
 <span class="kt">bool</span><span class="w"> </span><span class="nf">Load</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">content</span><span class="p">);</span><span class="w"> </span><span class="c1">// 从内存加载</span>
 </code></pre></div>
-   - 支持多瓦片动态加载（<code>NavMeshSetHeader</code> 结构体）<br />
-   - 内存管理：使用 <code>dtAllocNavMesh</code> 和 <code>dtFreeNavMesh</code> 分配/释放资源  </p>
-<p>### 2. 路径规划<br />
- - <strong>三步查询流程</strong><br />
-   1. <strong>最近多边形查询</strong>：<code>findNearestPoly()</code><br />
-   2. <strong>路径搜索</strong>：<code>findPath()</code> 获取多边形序列<br />
-   3. <strong>路径优化</strong>：<code>findStraightPath()</code> 转换为直线路径点<br />
-   <div class="highlight"><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="nf">GetPath</span><span class="p">(</span><span class="n">Location</span><span class="w"> </span><span class="n">from</span><span class="p">,</span><span class="w"> </span><span class="n">Location</span><span class="w"> </span><span class="n">to</span><span class="p">,</span><span class="w"> </span><span class="n">dtQueryFilter</span><span class="o">*</span><span class="w"> </span><span class="n">filter</span><span class="p">,</span><span class="w"> </span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Location</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">path</span><span class="p">,</span><span class="w"> </span><span class="n">vector</span><span class="o">&lt;</span><span class="n">byte</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">area</span><span class="p">);</span>
-</code></pre></div></p>
-<p>### 3. 人群管理<br />
+   - 支持多瓦片动态加载（<code>NavMeshSetHeader</code> 结构体）<br>
+   - 内存管理：使用 <code>dtAllocNavMesh</code> 和 <code>dtFreeNavMesh</code> 分配/释放资源  
+<p>### 2. 路径规划<br>
+ - <strong>三步查询流程</strong><br>
+   1. <strong>最近多边形查询</strong>：<code>findNearestPoly()</code><br>
+   2. <strong>路径搜索</strong>：<code>findPath()</code> 获取多边形序列<br>
+   3. <strong>路径优化</strong>：<code>findStraightPath()</code> 转换为直线路径点<br>
+   </p><div class="highlight"><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="nf">GetPath</span><span class="p">(</span><span class="n">Location</span><span class="w"> </span><span class="n">from</span><span class="p">,</span><span class="w"> </span><span class="n">Location</span><span class="w"> </span><span class="n">to</span><span class="p">,</span><span class="w"> </span><span class="n">dtQueryFilter</span><span class="o">*</span><span class="w"> </span><span class="n">filter</span><span class="p">,</span><span class="w"> </span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Location</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">path</span><span class="p">,</span><span class="w"> </span><span class="n">vector</span><span class="o">&lt;</span><span class="n">byte</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">area</span><span class="p">);</span>
+</code></pre></div>
+<p>### 3. 人群管理<br>
  | 方法                | 功能描述                               |
  |---------------------|----------------------------------------|
  | <code>AddWalker()</code>       | 添加行人代理，配置半径/高度/最大速度  |
  | <code>AddOrUpdateVehicle()</code> | 更新车辆OBB，标记为动态障碍物        |
  | <code>UpdateCrowd()</code>     | 每帧更新代理状态（位置/速度/避障）     |
  | <code>RemoveAgent()</code>     | 移除代理并清理映射关系               |</p>
-<p>### 4. 动态避障<br />
- - <strong>车辆包围盒计算</strong><br />
-   <div class="highlight"><pre><span></span><code><span class="c1">// 计算旋转后的OBB角点</span>
+<p>### 4. 动态避障<br>
+ - <strong>车辆包围盒计算</strong><br>
+   </p><div class="highlight"><pre><span></span><code><span class="c1">// 计算旋转后的OBB角点</span>
 <span class="n">Vector3D</span><span class="w"> </span><span class="n">box_corner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RotatePointOnOrigin2D</span><span class="p">(</span><span class="n">corner</span><span class="p">,</span><span class="w"> </span><span class="n">yaw_angle</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">vehicle</span><span class="p">.</span><span class="n">location</span><span class="p">;</span>
 </code></pre></div>
- - <strong>避障参数配置</strong><br />
+ - <strong>避障参数配置</strong><br>
    <div class="highlight"><pre><span></span><code><span class="n">params</span><span class="p">.</span><span class="n">obstacleAvoidanceType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="c1">// 避障品质（0-3对应低到高）</span>
-</code></pre></div></p>
-<hr />
-<p>## 类与方法详解<br />
- ### <code>Navigation</code> 类<br />
- #### 关键方法<br />
+</code></pre></div>
+<hr>
+<p>## 类与方法详解<br>
+ ### <code>Navigation</code> 类<br>
+ #### 关键方法<br>
  | 方法                      | 参数说明                              | 返回值  |
  |--------------------------|---------------------------------------|---------|
  | <code>CreateCrowd()</code>          | 初始化人群管理器，配置过滤器和避障参数 | void    |
  | <code>GetRandomLocation()</code>    | 生成可行走区域的随机位置              | bool    |
  | <code>SetPedestriansCrossFactor()</code> | 设置行人过马路概率（0.0-1.0）      | void    |</p>
-<p>#### 内部状态管理<br />
- - <strong>映射表</strong><br />
-   <div class="highlight"><pre><span></span><code><span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">ActorId</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">_mapped_walkers_id</span><span class="p">;</span><span class="w">  </span><span class="c1">// 行人ID到索引</span>
+<p>#### 内部状态管理<br>
+ - <strong>映射表</strong><br>
+   </p><div class="highlight"><pre><span></span><code><span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">ActorId</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">_mapped_walkers_id</span><span class="p">;</span><span class="w">  </span><span class="c1">// 行人ID到索引</span>
 <span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">ActorId</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">_mapped_vehicles_id</span><span class="p">;</span><span class="w"> </span><span class="c1">// 车辆ID到索引</span>
-</code></pre></div></p>
-<hr />
-<p>## 坐标系统与数据结构<br />
- ### 坐标系转换<br />
+</code></pre></div>
+<hr>
+<p>## 坐标系统与数据结构<br>
+ ### 坐标系转换<br>
  | 系统        | 坐标顺序 | 转换示例                     |
  |-------------|----------|------------------------------|
  | CARLA (UE)  | (X, Y, Z)| <code>from.x, from.y, from.z</code>     |
  | Recast      | (X, Z, Y)| <code>float pos[3] = {x, z, y};</code>  |</p>
-<p>### 数据结构<br />
- - <strong>导航网格头</strong><br />
-   <div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">NavMeshSetHeader</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">magic</span><span class="p">;</span><span class="w">             </span><span class="c1">// 魔术字 &#39;MSET&#39;</span>
+<p>### 数据结构<br>
+ - <strong>导航网格头</strong><br>
+   </p><div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">NavMeshSetHeader</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">magic</span><span class="p">;</span><span class="w">             </span><span class="c1">// 魔术字 'MSET'</span>
 <span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">version</span><span class="p">;</span><span class="w">           </span><span class="c1">// 版本号</span>
 <span class="w">  </span><span class="n">dtNavMeshParams</span><span class="w"> </span><span class="n">params</span><span class="p">;</span><span class="c1">// 网格参数（原点/瓦片尺寸）</span>
 <span class="p">};</span>
-</code></pre></div></p>
-<hr />
+</code></pre></div>
+<hr>
 <p>## 关键流程  </p>
 <h3 id="1">1. 路径规划流程</h3>
 <ol>
@@ -267,7 +267,7 @@
 <div class="highlight"><pre><span></span><code><span class="n">dtFreeNavMeshQuery</span><span class="p">(</span><span class="n">query</span><span class="p">);</span>
 <span class="k">return</span><span class="w"> </span><span class="o">!</span><span class="n">path</span><span class="p">.</span><span class="n">empty</span><span class="p">();</span>
 </code></pre></div>
-<hr />
+<hr>
 <h3 id="2">2. 动态障碍物处理流程</h3>
 <ol>
 <li><strong>更新车辆包围盒</strong></li>
@@ -399,12 +399,12 @@
 <span class="p">}</span>
 </code></pre></div>
 <p>日志接口集成 <code>spdlog</code>：</p>
-<div class="highlight"><pre><span></span><code><span class="n">SPDLOG_INFO</span><span class="p">(</span><span class="s">&quot;Loaded NavMesh tile {} at ({}, {})&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">tileId</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">);</span>
-<span class="n">SPDLOG_DEBUG</span><span class="p">(</span><span class="s">&quot;Computed path with {} points&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">path</span><span class="p">.</span><span class="n">size</span><span class="p">());</span>
+<div class="highlight"><pre><span></span><code><span class="n">SPDLOG_INFO</span><span class="p">(</span><span class="s">"Loaded NavMesh tile {} at ({}, {})"</span><span class="p">,</span><span class="w"> </span><span class="n">tileId</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">);</span>
+<span class="n">SPDLOG_DEBUG</span><span class="p">(</span><span class="s">"Computed path with {} points"</span><span class="p">,</span><span class="w"> </span><span class="n">path</span><span class="p">.</span><span class="n">size</span><span class="p">());</span>
 </code></pre></div>
 <p>通过在 CI 中捕获渲染输出和日志，可对路径正确性和性能进行可视化回归测试。
 以下是“社交驾驶行为建模”功能的详细介绍及示例伪代码，供文档中直接引用或改写。</p>
-<hr />
+<hr>
 <h3 id="5-social-driving-behavior-modeling">5. 社交驾驶行为建模（Social Driving Behavior Modeling）</h3>
 <p>社交驾驶行为建模旨在让自动驾驶主体（车辆或行人）在多-agent环境中展现更加“自然”“人性化”的行为，例如礼让行人、智能变道、遵守交通礼仪等。核心思路可以基于以下两种方法之一或结合：</p>
 <ol>
@@ -547,21 +547,21 @@
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<hr />
-<p>## 配置参数<br />
- ### 静态常量<br />
- <div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">MAX_AGENTS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">500</span><span class="p">;</span><span class="w">     </span><span class="c1">// 最大代理数</span>
+<hr>
+<p>## 配置参数<br>
+ ### 静态常量<br>
+ </p><div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">MAX_AGENTS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">500</span><span class="p">;</span><span class="w">     </span><span class="c1">// 最大代理数</span>
 <span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">AGENT_RADIUS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.3f</span><span class="p">;</span><span class="w"> </span><span class="c1">// 碰撞半径</span>
 <span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">AREA_ROAD_COST</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">10.0f</span><span class="p">;</span><span class="w"> </span><span class="c1">// 道路区域路径成本</span>
-</code></pre></div></p>
-<p>### 避障参数<br />
+</code></pre></div>
+<p>### 避障参数<br>
  | 参数                  | 值    | 描述                |
  |-----------------------|-------|---------------------|
  | <code>adaptiveDivs</code>        | 7     | 采样细分次数        |
  | <code>separationWeight</code>   | 0.5f  | 分离行为权重        |</p>
-<hr />
+<hr>
 <p>在 CARLA 的导航模块中，使用 <code>std::mutex</code> 对关键操作加锁的主要目的是确保多线程环境下的数据一致性和线程安全性。以下是对加锁必要性的详细说明，可补充至“注意事项”部分：</p>
-<hr />
+<hr>
 <h2 id="_3">注意事项</h2>
 <ol>
 <li>
@@ -575,14 +575,14 @@
 </li>
 <li>
 <p>所有修改 <code>dtCrowd</code> 状态的操作需加锁：</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">lock_guard</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">mutex</span><span class="o">&gt;</span><span class="w"> </span><span class="n">lock</span><span class="p">(</span><span class="n">_mutex</span><span class="p">);</span>
+<p></p><div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">lock_guard</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">mutex</span><span class="o">&gt;</span><span class="w"> </span><span class="n">lock</span><span class="p">(</span><span class="n">_mutex</span><span class="p">);</span>
 </code></pre></div>
    * <strong>加锁的必要性</strong>：
  * <strong>避免数据竞争</strong>：在多线程环境中，多个线程可能同时访问和修改共享资源（如导航网格、代理状态等）。如果不加锁，可能导致数据竞争，产生不可预测的行为。
  * <strong>确保操作的原子性</strong>：加锁可以确保对共享资源的操作是原子的，即操作在执行过程中不会被其他线程打断，从而保持数据的一致性。
  * <strong>防止死锁和资源泄漏</strong>：通过合理使用锁机制，可以避免死锁的发生，并确保资源在使用完毕后被正确释放。
  * <strong>提高程序的稳定性和可靠性</strong>：加锁可以防止由于并发访问导致的程序崩溃或异常，提高系统的稳定性。
- * <strong>参考资料</strong>：关于多线程加锁的详细解释，请参阅 <a href="https://blog.csdn.net/ke1ying/article/details/109531062">CSDN博客</a>。</p>
+ * <strong>参考资料</strong>：关于多线程加锁的详细解释，请参阅 <a href="https://blog.csdn.net/ke1ying/article/details/109531062">CSDN博客</a>。
 </li>
 <li>
 <p><strong>性能限制</strong></p>
@@ -591,7 +591,7 @@
 <p><code>MAX_POLYS=256</code> 和 <code>MAX_AGENTS=500</code> 影响计算复杂度。</p>
 </li>
 </ol>
-<hr />
+<hr>
 <table>
 <thead>
 <tr>
@@ -618,7 +618,7 @@
 </tr>
 </tbody>
 </table>
-<hr />
+<hr>
 <h2 id="_4">内存管理</h2>
 <p>Recast/Detour 在 HUTB 中负责导航网格的加载、切割与查询，需手动释放相应资源以防泄漏。</p>
 <ul>
@@ -637,7 +637,7 @@
 <li><strong>节点池与开放列表</strong></li>
 </ul>
 <p>上述资源均在 CARLA 源码的 <code>LibCarla/Navigation</code> 模块中通过 Recast/Detour API 管理，必须成对使用 <code>dtAlloc…</code> 与 <code>dtFree…</code>。</p>
-<hr />
+<hr>
 <h2 id="_5">线程安全</h2>
 <p>CARLA 支持同时更新数百个行人和车辆，底层依赖 Detour 的并发模型，但自身并未对 Detour 做线程封装，需在应用层自行加锁。</p>
 <ul>
@@ -672,7 +672,7 @@
 <li><strong>防止资源泄漏</strong>：锁可确保在异常抛出时，析构保护会释放 <code>_mutex</code> 并允许后续清理逻辑正确执行。</li>
 <li><strong>提升可靠性</strong>：虽有性能开销，但对关键操作加锁能极大降低生产环境下的随机崩溃风险([Google 群组][2])。</li>
 </ul>
-<hr />
+<hr>
 <h2 id="_6">性能限制</h2>
 <p>CARLA 在导航模块中对路径搜索与人群模拟规模做了上限，以控制查询与避障计算复杂度。</p>
 <ul>
@@ -701,38 +701,38 @@
 <p>虽可为每线程创建独立 <code>dtNavMeshQuery</code> 实例并发运行查询，但若导航网格需动态更新（<code>addTile()</code>/<code>removeTile()</code>），更新时仍需全局锁定以防查询中断([Google 群组][5])。</p>
 </li>
 </ul>
-<hr />
+<hr>
 <p>## 示例代码  </p>
 <div class="highlight"><pre><span></span><code><span class="c1">// ===== NavigationExample.cpp =====</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Navigation.h&quot;</span><span class="c1">        // 包含 Navigation 类声明</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;geom/Location.h&quot;</span><span class="c1">     // CARLA 几何库</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;geom/Rotator.h&quot;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Logging.h&quot;</span><span class="c1">           // 假设有统一的日志接口</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">"Navigation.h"</span><span class="c1">        // 包含 Navigation 类声明</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">"geom/Location.h"</span><span class="c1">     // CARLA 几何库</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">"geom/Rotator.h"</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">"Logging.h"</span><span class="c1">           // 假设有统一的日志接口</span>
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="o">**</span><span class="w"> </span><span class="n">argv</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="c1">// 1. 创建导航实例并加载 NavMesh</span>
 <span class="w">    </span><span class="n">Navigation</span><span class="w"> </span><span class="n">nav</span><span class="p">;</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">navmesh_file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;city_navmesh.bin&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">navmesh_file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"city_navmesh.bin"</span><span class="p">;</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">nav</span><span class="p">.</span><span class="n">Load</span><span class="p">(</span><span class="n">navmesh_file</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">logging</span><span class="o">::</span><span class="n">error</span><span class="p">(</span><span class="s">&quot;导航数据加载失败: %s&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">navmesh_file</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
+<span class="w">        </span><span class="n">logging</span><span class="o">::</span><span class="n">error</span><span class="p">(</span><span class="s">"导航数据加载失败: %s"</span><span class="p">,</span><span class="w"> </span><span class="n">navmesh_file</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="n">logging</span><span class="o">::</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;成功加载导航网格：%s&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">navmesh_file</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
+<span class="w">    </span><span class="n">logging</span><span class="o">::</span><span class="n">info</span><span class="p">(</span><span class="s">"成功加载导航网格：%s"</span><span class="p">,</span><span class="w"> </span><span class="n">navmesh_file</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
 
 <span class="w">    </span><span class="c1">// 2. 创建人群管理器，配置避障和路径过滤参数</span>
 <span class="w">    </span><span class="n">nav</span><span class="p">.</span><span class="n">CreateCrowd</span><span class="p">();</span>
 <span class="w">    </span><span class="c1">// 设置行人越过道路的概率</span>
 <span class="w">    </span><span class="n">nav</span><span class="p">.</span><span class="n">SetPedestriansCrossFactor</span><span class="p">(</span><span class="mf">0.2f</span><span class="p">);</span>
-<span class="w">    </span><span class="n">logging</span><span class="o">::</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;人群管理器初始化完成&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">logging</span><span class="o">::</span><span class="n">info</span><span class="p">(</span><span class="s">"人群管理器初始化完成"</span><span class="p">);</span>
 
 <span class="w">    </span><span class="c1">// 3. 添加行人代理</span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">walker_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1001</span><span class="p">;</span>
 <span class="w">    </span><span class="n">geom</span><span class="o">::</span><span class="n">Location</span><span class="w"> </span><span class="n">walker_spawn</span><span class="p">{</span><span class="mf">10.0f</span><span class="p">,</span><span class="w"> </span><span class="mf">20.0f</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5f</span><span class="p">};</span><span class="w"> </span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">nav</span><span class="p">.</span><span class="n">AddWalker</span><span class="p">(</span><span class="n">walker_id</span><span class="p">,</span><span class="w"> </span><span class="n">walker_spawn</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">logging</span><span class="o">::</span><span class="n">warn</span><span class="p">(</span><span class="s">&quot;添加行人 %llu 失败&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">walker_id</span><span class="p">);</span>
+<span class="w">        </span><span class="n">logging</span><span class="o">::</span><span class="n">warn</span><span class="p">(</span><span class="s">"添加行人 %llu 失败"</span><span class="p">,</span><span class="w"> </span><span class="n">walker_id</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">logging</span><span class="o">::</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;行人 %llu 已添加，初始位置 (%.2f, %.2f, %.2f)&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="n">logging</span><span class="o">::</span><span class="n">info</span><span class="p">(</span><span class="s">"行人 %llu 已添加，初始位置 (%.2f, %.2f, %.2f)"</span><span class="p">,</span>
 <span class="w">                      </span><span class="n">walker_id</span><span class="p">,</span>
 <span class="w">                      </span><span class="n">walker_spawn</span><span class="p">.</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">walker_spawn</span><span class="p">.</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">walker_spawn</span><span class="p">.</span><span class="n">z</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
@@ -740,9 +740,9 @@
 <span class="w">    </span><span class="c1">// 4. 设置行人目标点</span>
 <span class="w">    </span><span class="n">geom</span><span class="o">::</span><span class="n">Location</span><span class="w"> </span><span class="n">walker_target</span><span class="p">{</span><span class="mf">50.0f</span><span class="p">,</span><span class="w"> </span><span class="mf">30.0f</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5f</span><span class="p">};</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">nav</span><span class="p">.</span><span class="n">SetWalkerTarget</span><span class="p">(</span><span class="n">walker_id</span><span class="p">,</span><span class="w"> </span><span class="n">walker_target</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">logging</span><span class="o">::</span><span class="n">warn</span><span class="p">(</span><span class="s">&quot;设置行人 %llu 目标失败&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">walker_id</span><span class="p">);</span>
+<span class="w">        </span><span class="n">logging</span><span class="o">::</span><span class="n">warn</span><span class="p">(</span><span class="s">"设置行人 %llu 目标失败"</span><span class="p">,</span><span class="w"> </span><span class="n">walker_id</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">logging</span><span class="o">::</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;行人 %llu 目标设置为 (%.2f, %.2f, %.2f)&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="n">logging</span><span class="o">::</span><span class="n">info</span><span class="p">(</span><span class="s">"行人 %llu 目标设置为 (%.2f, %.2f, %.2f)"</span><span class="p">,</span>
 <span class="w">                      </span><span class="n">walker_id</span><span class="p">,</span>
 <span class="w">                      </span><span class="n">walker_target</span><span class="p">.</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">walker_target</span><span class="p">.</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">walker_target</span><span class="p">.</span><span class="n">z</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
@@ -752,9 +752,9 @@
 <span class="w">    </span><span class="n">geom</span><span class="o">::</span><span class="n">Location</span><span class="w"> </span><span class="n">vehicle_loc</span><span class="p">{</span><span class="mf">15.0f</span><span class="p">,</span><span class="w"> </span><span class="mf">25.0f</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0f</span><span class="p">};</span>
 <span class="w">    </span><span class="n">geom</span><span class="o">::</span><span class="n">Rotator</span><span class="w"> </span><span class="n">vehicle_rot</span><span class="p">{</span><span class="mf">0.0f</span><span class="p">,</span><span class="w"> </span><span class="mf">90.0f</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0f</span><span class="p">};</span><span class="w">  </span><span class="c1">// 车辆朝向 90°</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">nav</span><span class="p">.</span><span class="n">AddOrUpdateVehicle</span><span class="p">(</span><span class="n">vehicle_id</span><span class="p">,</span><span class="w"> </span><span class="n">vehicle_loc</span><span class="p">,</span><span class="w"> </span><span class="n">vehicle_rot</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">logging</span><span class="o">::</span><span class="n">warn</span><span class="p">(</span><span class="s">&quot;添加/更新车辆 %llu 失败&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">vehicle_id</span><span class="p">);</span>
+<span class="w">        </span><span class="n">logging</span><span class="o">::</span><span class="n">warn</span><span class="p">(</span><span class="s">"添加/更新车辆 %llu 失败"</span><span class="p">,</span><span class="w"> </span><span class="n">vehicle_id</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">logging</span><span class="o">::</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;车辆 %llu 已注册为动态障碍物，位置 (%.2f, %.2f, %.2f), 偏航角 %.2f°&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="n">logging</span><span class="o">::</span><span class="n">info</span><span class="p">(</span><span class="s">"车辆 %llu 已注册为动态障碍物，位置 (%.2f, %.2f, %.2f), 偏航角 %.2f°"</span><span class="p">,</span>
 <span class="w">                      </span><span class="n">vehicle_id</span><span class="p">,</span>
 <span class="w">                      </span><span class="n">vehicle_loc</span><span class="p">.</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">vehicle_loc</span><span class="p">.</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">vehicle_loc</span><span class="p">.</span><span class="n">z</span><span class="p">,</span>
 <span class="w">                      </span><span class="n">vehicle_rot</span><span class="p">.</span><span class="n">yaw</span><span class="p">);</span>
@@ -777,7 +777,7 @@
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="c1">// 7. 退出前清理资源（析构时自动释放 NavMesh、Crowd 等）</span>
-<span class="w">    </span><span class="n">logging</span><span class="o">::</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;导航模拟结束，开始清理资源&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">logging</span><span class="o">::</span><span class="n">info</span><span class="p">(</span><span class="s">"导航模拟结束，开始清理资源"</span><span class="p">);</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -807,9 +807,9 @@
 </li>
 <li>将行人更新和车辆更新放在同一循环中，保证多代理场景下一致性。</li>
 </ol>
-<hr />
-<p>## 附录<br />
- ### 依赖项<br />
+<hr>
+<p>## 附录<br>
+ ### 依赖项<br>
  - <strong>Recast(重铸)</strong>：负责在三维场景中构建正确的寻路网格（NavMesh）
  - <strong>Detour(绕行)</strong>: 使用寻路算法（如A<em>和Dijkstra）在构建的网格中进行寻路。
  - </em><em>HUTB 几何库</em>*：<code>geom::Location</code>, <code>geom::Math</code>  </p>
@@ -817,15 +817,15 @@
 <p>1.<strong>体素化（Voxel）</strong>：将三维场景进行体素化，类似于二维场景中的光栅化。这一过程的主要目的是简化寻路中不必要的模型细节，以提高计算效率。</p>
 <p>2.<strong>区域过滤</strong>（Filter）:根据当前的导航配置，过滤出可行走的区域。通过设置可行走区域的参数，确保代理能够有效地在环境中移动。</p>
 <p>3.<strong>多边形生成</strong>（Poly）:将可行走区域按照一定规则切分为导航多边形。后续的寻路算法将在这些多边形基础上进行运算。</p>
-<p>### 调试支持<br />
- - <strong>断言检查</strong>：<br />
-   <div class="highlight"><pre><span></span><code><span class="n">DEBUG_ASSERT</span><span class="p">(</span><span class="n">_nav_query</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">);</span><span class="w"> </span><span class="c1">// 确保查询对象已初始化</span>
+<p>### 调试支持<br>
+ - <strong>断言检查</strong>：<br>
+   </p><div class="highlight"><pre><span></span><code><span class="n">DEBUG_ASSERT</span><span class="p">(</span><span class="n">_nav_query</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">);</span><span class="w"> </span><span class="c1">// 确保查询对象已初始化</span>
 </code></pre></div>
- - <strong>日志输出</strong>：<br />
-   <div class="highlight"><pre><span></span><code><span class="n">logging</span><span class="o">::</span><span class="n">log</span><span class="p">(</span><span class="s">&quot;Nav: failed to create crowd&quot;</span><span class="p">);</span>
-</code></pre></div></p>
+ - <strong>日志输出</strong>：<br>
+   <div class="highlight"><pre><span></span><code><span class="n">logging</span><span class="o">::</span><span class="n">log</span><span class="p">(</span><span class="s">"Nav: failed to create crowd"</span><span class="p">);</span>
+</code></pre></div>
 <p><strong>补充说明</strong>：增加调试支持说明，帮助定位运行时错误和状态异常。</p>
-<hr />
+<hr>
 <h2 id="_7">扩展功能</h2>
 <h3 id="1-tilecache">1. 运行时导航网格切割与TileCache</h3>
 <ul>
@@ -848,7 +848,7 @@
 <li><strong>多线程分桶调度</strong>：将 <code>UpdateCrowd</code> 分成多个分区并行执行，每个线程处理一组代理，合并结果时加锁保障一致性。</li>
 <li><strong>代理批量更新</strong>：对相邻或相似路径的代理进行合并查询，利用局部空间相似性降低调用次数。</li>
 </ul>
-<hr />
+<hr>
 <h2 id="_8">典型应用案例</h2>
 <h3 id="_9">异步获取路径</h3>
 <div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">future</span><span class="o">&lt;</span><span class="n">PathResult</span><span class="o">&gt;</span><span class="w"> </span><span class="n">async_get_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">async</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">launch</span><span class="o">::</span><span class="n">async</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="o">&amp;</span><span class="n">nav</span><span class="p">,</span><span class="n">from</span><span class="p">,</span><span class="n">to</span><span class="p">,</span><span class="n">filter</span><span class="p">](){</span>
@@ -866,7 +866,7 @@
 </code></pre></div>
 <ul>
 <li><strong>补充说明</strong>：通过动态调节 <code>dtQueryFilter</code> 中的区域成本，可实现行人或车辆对不同地形偏好的模拟。</li>
-</ul>
+</ul></div>
               
             </div>
           </div><footer>

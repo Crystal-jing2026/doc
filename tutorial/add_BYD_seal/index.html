@@ -100,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="_1">步骤</h2>
+                <div><h2 id="_1">步骤</h2>
 <p>1.在<strong>内容浏览器</strong>中，
 将<code>Unreal/CarlaUE4/Content/Carla/Static/Car/4Wheeled/Tesla</code>复制到当前文件夹并重命名为<code>BYD</code>，
 将<code>Unreal/CarlaUE4/Content/Carla/Blueprints/Vehicles/Tesla</code>复制到当前文件夹并重命名为<code>BYD</code>。</p>
@@ -115,15 +115,15 @@
 <li>编译并保存。</li>
 </ul>
 <p>测试代码：
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>manual_control.py<span class="w"> </span>--filter<span class="w"> </span>vehicle.BYD.seal
+</p><div class="highlight"><pre><span></span><code>python<span class="w"> </span>manual_control.py<span class="w"> </span>--filter<span class="w"> </span>vehicle.BYD.seal
 python<span class="w"> </span>manual_control.py<span class="w"> </span>--filter<span class="w"> </span>vehicle.tesla.model3
-</code></pre></div></p>
+</code></pre></div>
 <p>如果车辆配置不对，生成玩家的代码一致返回为空：
-<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">player</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">world</span><span class="o">.</span><span class="n">try_spawn_actor</span><span class="p">(</span><span class="n">blueprint</span><span class="p">,</span> <span class="n">spawn_point</span><span class="p">)</span>
-</code></pre></div></p>
+</p><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">player</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">world</span><span class="o">.</span><span class="n">try_spawn_actor</span><span class="p">(</span><span class="n">blueprint</span><span class="p">,</span> <span class="n">spawn_point</span><span class="p">)</span>
+</code></pre></div>
 <p>方法<code>try_spawn_actor()</code>是从<code>carla/PythonAPI/carla/source/libcarla/World.cpp</code> 的<code>.def("try_spawn_actor", SPAWN_ACTOR_WITHOUT_GIL(TrySpawnActor))</code> 传递给 C++ 端的。</p>
 <p>LibCarla的调用过程：
-<div class="highlight"><pre><span></span><code>LibCarla/source/carla/client/World.cpp
+</p><div class="highlight"><pre><span></span><code>LibCarla/source/carla/client/World.cpp
 SharedPtr&lt;Actor&gt; World::TrySpawnActor()
 SharedPtr&lt;Actor&gt; World::SpawnActor()
 
@@ -133,7 +133,7 @@ actor = _client.SpawnActor()
 
 LibCarla/source/carla/client/detail/Client.cpp
 rpc::Actor Client::SpawnActor()
-_pimpl-&gt;CallAndWait&lt;rpc::Actor&gt;(&quot;spawn_actor&quot;, description, transform);
+_pimpl-&gt;CallAndWait&lt;rpc::Actor&gt;("spawn_actor", description, transform);
 auto CallAndWait(const std::string &amp;function, Args &amp;&amp; ... args)
 auto object = RawCall(function, std::forward&lt;Args&gt;(args) ...);
 auto RawCall(const std::string &amp;function, Args &amp;&amp; ... args)
@@ -143,9 +143,9 @@ LibCarla/source/carla/rpc/Client.h
 auto call(const std::string &amp;function, Args &amp;&amp;... args)
 // 远程调用（_client里保存了IP地址和端口号）
 return _client.call(function, Metadata::MakeSync(), std::forward&lt;Args&gt;(args)...);
-</code></pre></div></p>
+</code></pre></div>
 <p>CarlaUE4的调用过程：
-<div class="highlight"><pre><span></span><code>Server/CarlaServer.cpp
+</p><div class="highlight"><pre><span></span><code>Server/CarlaServer.cpp
 auto Result = Episode-&gt;SpawnActorWithInfo(Transform, std::move(Description));
 
 Game/CarlaEpisode.cpp
@@ -165,7 +165,7 @@ void UActorDispatcher::Bind(ACarlaActorFactory &amp;ActorFactory)
     });
   }
 }
-</code></pre></div></p>
+</code></pre></div>
 <h2 id="_2">新加内容的分析</h2>
 <h3 id="static">Static 资产</h3>
 <p>新加的车辆静态资产位于<code>Carla\Static\Car\4Wheeled\BYD</code>，包括：
@@ -184,7 +184,7 @@ void UActorDispatcher::Bind(ACarlaActorFactory &amp;ActorFactory)
 <p>目录<code>Carla\Static\Car\4Wheeled\BYD</code>下有两个动画蓝图，删除其中的一个并参考 <a href="">8. 配置车辆蓝图</a> 重新将动画蓝图 <code>BYD_Animation</code> 绑定到车辆蓝图<code>Carla/Blueprints/Vehicles/{Vehicle_Name}/BP_BYDseal</code>。</p>
 <h2 id="_6">参考</h2>
 <p><a href="https://www.dongchedi.com/article/7119344427587813891">比亚迪海豹PK特斯拉Model 3</a></p>
-<p><a href="https://blog.csdn.net/csdncyn/article/details/136691547">跟踪和解决spawn_actor指令引发的问题：UnknownError while spawning the actor</a></p>
+<p><a href="https://blog.csdn.net/csdncyn/article/details/136691547">跟踪和解决spawn_actor指令引发的问题：UnknownError while spawning the actor</a></p></div>
               
             </div>
           </div><footer>

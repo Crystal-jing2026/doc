@@ -100,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="carla-docker-ubuntu-2204">CARLA Docker 开发环境 (Ubuntu 22.04)</h1>
+                <div><h1 id="carla-docker-ubuntu-2204">CARLA Docker 开发环境 (Ubuntu 22.04)</h1>
 <p>此存储库提供了 <strong>2 种</strong> 不同的基于 Docker 的方法，用于在 <strong>Ubuntu Jammy（22.04）</strong> 上构建和运行 <strong>CARLA（版本 UE4）</strong>：</p>
 <ol>
 <li><strong>整体(Monolithic)</strong>  </li>
@@ -117,7 +117,7 @@
 <li>构建速度更快，但依赖于本地编译的虚幻引擎文件夹。</li>
 </ol>
 <p>在<strong>整体</strong>和<strong>轻量级</strong>之间的选择主要取决于磁盘空间、构建时间以及您是否喜欢完全独立的环境（整体）或重用本地编译的虚幻引擎（轻量级）的设置。</p>
-<hr />
+<hr>
 <h2 id="_1">概述</h2>
 <p><code>Scripts/</code> 目录中的两个主要脚本负责管理 Docker 容器的构建和启动：</p>
 <ol>
@@ -133,7 +133,7 @@
 <li>检查是否提供了 <code>--monolith</code> 并选择相应的 Dockerfile。 </li>
 <li>处理在单片模式下克隆和构建虚幻引擎所需的 Epic 凭证（来自 <code>.env</code> 文件）。 </li>
 </ol>
-<hr />
+<hr>
 <h2 id="utildocker-dockerfiles"><code>Util/Docker/</code> 中的容器文件(Dockerfiles)</h2>
 <h3 id="carladockerfile-devcontainer"><code>carla.dockerfile</code> (轻量级开发容器 Devcontainer)</h3>
 <ul>
@@ -153,7 +153,7 @@ docker<span class="w"> </span>cp<span class="w"> </span>temp_container:/workspac
 docker<span class="w"> </span>rm<span class="w"> </span>temp_container
 </code></pre></div>
 <p>如果担心磁盘使用情况并且不需要最终打包的工件，则可以注释掉 <code>carla-ue4.dockerfile</code> 中的 <code>make build.utils</code> 和 <code>make package</code>，或者切换到轻量级方法。</p>
-<hr />
+<hr>
 <h2 id="ue4-devcontainer">构建 UE4 (轻量级开发容器 Devcontainer 的先决条件)</h2>
 <blockquote>
 <p>注意: 在尝试克隆之前，请确保您的 GitHub 帐户已链接到 Epic 的 UnrealEngine 存储库。</p>
@@ -219,46 +219,46 @@ make<span class="w"> </span>package
 <li>在一个 Docker 镜像中构建 UE4 和 CARLA（通常超过 200 GB）。 </li>
 <li>在大多数硬件上需要花费大量时间（数小时）。</li>
 </ul>
-<hr />
+<hr>
 <h2 id="devcontainer-carla">使用 Devcontainer 进行 CARLA 服务器/客户端开发</h2>
 <p>您可以使用 <strong>Visual Studio Code devcontainer</strong>，并采用轻量级方法。此设置会将主机目录（包括 UE4）挂载到 Docker 环境中。请注意，整体镜像不太适合开发容器，因为它会将所有内容存储在镜像中。</p>
 <p>在您的 CARLA 存储库中创建 <code>.devcontainer/devcontainer.json</code>：</p>
 <div class="highlight"><pre><span></span><code>{
-    &quot;name&quot;: &quot;CARLA UE4 Dev (jammy)&quot;,
-    &quot;image&quot;: &quot;carla-ue4-jammy-dev&quot;,
+    "name": "CARLA UE4 Dev (jammy)",
+    "image": "carla-ue4-jammy-dev",
 
-    &quot;initializeCommand&quot;: &quot;./Scripts/build_image.sh&quot;,
+    "initializeCommand": "./Scripts/build_image.sh",
 
-    // We do NOT need to set &quot;remoteUser&quot; if the Dockerfile&#39;s default user is already correct
-    // but you can if you want to be explicit. Also &quot;updateRemoteUserUID&quot; can be false, since
+    // We do NOT need to set "remoteUser" if the Dockerfile's default user is already correct
+    // but you can if you want to be explicit. Also "updateRemoteUserUID" can be false, since
     // our Dockerfile already set the user to our exact UID/GID.
-    &quot;updateRemoteUserUID&quot;: false,
+    "updateRemoteUserUID": false,
 
-    &quot;customizations&quot;: {
-      &quot;vscode&quot;: {
-        &quot;settings&quot;: {
-          &quot;terminal.integrated.shell.linux&quot;: &quot;bash&quot;
+    "customizations": {
+      "vscode": {
+        "settings": {
+          "terminal.integrated.shell.linux": "bash"
         },
-        &quot;extensions&quot;: [
-          &quot;ms-vscode.cpptools&quot;
+        "extensions": [
+          "ms-vscode.cpptools"
         ]
       }
     },
 
-    &quot;postStartCommand&quot;: &quot;bash&quot;,
+    "postStartCommand": "bash",
 
     // NOTE1: DO NOT pass --user here (we want the Dockerfile default user, not an override)
     // NOTE2: Make sure /usr/share/vulkan/icd.d/nvidia_icd.json exist in the host
     // NOTE3: Ensure UE4_ROOT environment variable is defined in host
-    &quot;runArgs&quot;: [
-      &quot;--rm&quot;,
-      &quot;--name&quot;, &quot;carla-ue4-jammy-devcontainer&quot;,
-      &quot;--hostname&quot;, &quot;carla-devcontainer&quot;,
-      &quot;--env&quot;, &quot;DISPLAY=${localEnv:DISPLAY}&quot;,
-      &quot;--volume&quot;, &quot;/tmp/.X11-unix:/tmp/.X11-unix&quot;,
-      &quot;--volume&quot;, &quot;/usr/share/vulkan/icd.d/nvidia_icd.json:/usr/share/vulkan/icd.d/nvidia_icd.json&quot;,
-      &quot;--volume&quot;, &quot;${localEnv:UE4_ROOT}:/opt/UE4.26&quot;,
-      &quot;--gpus&quot;, &quot;all&quot;
+    "runArgs": [
+      "--rm",
+      "--name", "carla-ue4-jammy-devcontainer",
+      "--hostname", "carla-devcontainer",
+      "--env", "DISPLAY=${localEnv:DISPLAY}",
+      "--volume", "/tmp/.X11-unix:/tmp/.X11-unix",
+      "--volume", "/usr/share/vulkan/icd.d/nvidia_icd.json:/usr/share/vulkan/icd.d/nvidia_icd.json",
+      "--volume", "${localEnv:UE4_ROOT}:/opt/UE4.26",
+      "--gpus", "all"
     ]
 }
 </code></pre></div>
@@ -269,15 +269,15 @@ make<span class="w"> </span>package
 <li><strong>UE4_ROOT 环境变量</strong>: 必须在您的主机上定义，以便 devcontainer 可以挂载 UE4 目录。</li>
 <li><strong>Vulkan 支持</strong>: <code>/usr/share/vulkan/icd.d/nvidia_icd.json</code> 必须存在于您的主机中，以便 devcontainer 可以挂载 vulkan 配置。</li>
 </ol>
-<hr />
+<hr>
 <h2 id="_3">提示和注意事项</h2>
 <ul>
 <li>
-<p><strong>NVIDIA GPU</strong><br />
+<p><strong>NVIDIA GPU</strong><br>
   对于硬件加速，请安装 <a href="https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html">NVIDIA Container Toolkit</a>.</p>
 </li>
 <li>
-<p><strong>磁盘空间</strong><br />
+<p><strong>磁盘空间</strong><br>
   完整镜像可能超过 <strong>200 GB</strong>（例如，某些版本约为 221 GB）。在选择此方案之前，请确保您有足够的空间。</p>
 </li>
 <li>
@@ -288,44 +288,44 @@ make<span class="w"> </span>package
 <p>轻量级模式：由于重用了本地 UE4 构建，因此速度更快。</p>
 </li>
 <li>
-<p><strong>卷</strong><br />
+<p><strong>卷</strong><br>
   对于轻量级模式，<code>$UE4_ROOT</code> 必须指向已完全编译的 UE4。如果错误或缺失，构建将失败。</p>
 </li>
 <li>
-<p><strong>Epic 凭证</strong><br />
+<p><strong>Epic 凭证</strong><br>
   在单片模式下，将 <code>EPIC_USER</code> 和 <code>EPIC_PASS</code> 存储在项目根目录中的 <code>.env</code> 文件中。</p>
 </li>
 <li>
-<p><strong>在主机上运行二进制文件</strong><br />
-  在容器中构建后，<strong>请勿</strong>在主机上运行 <code>make launch</code> 或 <code>make launch-only</code>，因为内部容器路径（例如，<code>/opt/UE4.26</code>）与您的主机环境不匹配。<br />
+<p><strong>在主机上运行二进制文件</strong><br>
+  在容器中构建后，<strong>请勿</strong>在主机上运行 <code>make launch</code> 或 <code>make launch-only</code>，因为内部容器路径（例如，<code>/opt/UE4.26</code>）与您的主机环境不匹配。<br>
   如果您需要主机访问 CARLA 二进制文件，请首先构建一个发行包（<code>make build.utils &amp;&amp; make package</code>），然后从主机上的 <code>Dist/</code> 中的结果文件运行它们。</p>
 </li>
 <li>
-<p><strong>挂载目录</strong><br />
+<p><strong>挂载目录</strong><br>
   如果您使用的是 VS Code devcontainers，请避免修改 <code>/workspaces</code>，因为这可能会强制重新构建。容器的内部路径通常与主机不同，因此直接在主机上启动会出现问题。</p>
 </li>
 <li>
-<p><strong><code>Dist</code> 文件夹处理</strong><br />
+<p><strong><code>Dist</code> 文件夹处理</strong><br>
    整体模式保留 <code>Dist</code> 以便直接使用。如果您需要较小的镜像，请删除或调整 <code>make build.utils</code> 和 <code>make package</code>。 </p>
 </li>
 </ul>
-<hr />
+<hr>
 <h2 id="_4">已知问题</h2>
 <ol>
 <li>
-<p><strong><code>./Update.sh</code> 中的输出被截断</strong><br />
+<p><strong><code>./Update.sh</code> 中的输出被截断</strong><br>
    有时，CARLA 存储库中的 <code>./Update.sh</code> 可能会截断日志。一种解决方法是将输出重定向到文件并对其进行尾部处理。</p>
 </li>
 <li>
-<p><strong>音频支持</strong><br />
+<p><strong>音频支持</strong><br>
    ALSA 或 PulseAudio 未预先配置，因此音频功能可能默认不起作用。</p>
 </li>
 <li>
-<p><strong>UE4Editor 重新构建</strong><br />
+<p><strong>UE4Editor 重新构建</strong><br>
    在某些情况下，一旦打开 <code>UE4Editor</code>（内置于 UE4.26）或使用其构建 CARLA，它可能会拒绝再次打开，除非重新构建。可能会出现缺少插件的错误，这种情况在本地（非 Docker）设置中也会出现。解决方法是使用容器或开发容器从存储库重新构建，或者仔细调整配置文件。</p>
 </li>
 </ol>
-<hr />
+<hr></div>
               
             </div>
           </div><footer>

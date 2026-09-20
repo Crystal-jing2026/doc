@@ -100,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="_1">对你的代理进行基准测试</h1>
+                <div><h1 id="_1">对你的代理进行基准测试</h1>
 <p>在本教程中我们展示：</p>
 <ul>
 <li><a href="#defining-the-agent">如何定义一个具有前向策略的简单代理</a> </li>
@@ -110,7 +110,7 @@
 <li><a href="#build_experiment">构建实验</a></li>
 <li><a href="#predicted_result">预期结果</a></li>
 </ul>
-<p><img alt="" src="../img/benchmark_diagram_small.jpg" /></p>
+<p><img alt="" src="../img/benchmark_diagram_small.jpg"></p>
 <p>驾驶基准测试与其他两个模块相关联。代理模块是另一个模块（实验套件）中执行的控制器。这两个模块都是抽象类，必须由用户重新定义。</p>
 <p>以下代码摘录是如何应用驾驶基准的示例；</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 我们实例化了一个转发代理，这是一个简单的策略，</span>
@@ -137,9 +137,9 @@
 </code></pre></div>
 <p>为了评估其性能，<code>ForwardAgent</code> 派生类必须 重新定义<code>run_step</code>函数，如下面摘录的那样：</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">run_step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">measurements</span><span class="p">,</span> <span class="n">sensor_data</span><span class="p">,</span> <span class="n">directions</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    在CARLA车辆中运行控制步骤的函数。</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">control</span> <span class="o">=</span> <span class="n">VehicleControl</span><span class="p">()</span>
     <span class="n">control</span><span class="o">.</span><span class="n">throttle</span> <span class="o">=</span> <span class="mf">0.9</span>
     <span class="k">return</span> <span class="n">control</span>
@@ -161,34 +161,34 @@
 </ul>
 <h2 id="_4">定义 <span id="defining"></span></h2>
 <p>定义的实验集必须派生 <code>ExperimentSuite</code> 类，如下面的代码摘录所示：
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">carla.agent_benchmark.experiment</span> <span class="kn">import</span> <span class="n">Experiment</span>
+</p><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">carla.agent_benchmark.experiment</span> <span class="kn">import</span> <span class="n">Experiment</span>
 <span class="kn">from</span> <span class="nn">carla.sensor</span> <span class="kn">import</span> <span class="n">Camera</span>
 <span class="kn">from</span> <span class="nn">carla.settings</span> <span class="kn">import</span> <span class="n">CarlaSettings</span>
 
 <span class="kn">from</span> <span class="nn">.experiment_suite</span> <span class="kn">import</span> <span class="n">ExperimentSuite</span>
 
 <span class="k">class</span> <span class="nc">BasicExperimentSuite</span><span class="p">(</span><span class="n">ExperimentSuite</span><span class="p">):</span>
-</code></pre></div></p>
+</code></pre></div>
 <h2 id="_5">定义测试和训练天气条件 <span id="define_weather"></span></h2>
 <p>用户必须选择要使用的天气。应该选择一组测试天气和一组训练天气。这被定义为类属性，如下例所示：
-<div class="highlight"><pre><span></span><code><span class="nd">@property</span>
+</p><div class="highlight"><pre><span></span><code><span class="nd">@property</span>
 <span class="k">def</span> <span class="nf">train_weathers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="k">return</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 <span class="nd">@property</span>
 <span class="k">def</span> <span class="nf">test_weathers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="k">return</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-</code></pre></div></p>
+</code></pre></div>
 <h2 id="_6">构建实验 <span id="build_experiment"></span></h2>
 <p>实验由一组姿势定义的任务组成。让我们从选择其中一个城市的姿势开始，以 Town01 为例。首先，我们需要查看所有可能的位置，为此，在终端中运行 CARLA 模拟器，运行 <a href="https://github.com/OpenHUTB/Self_Driving_Car_Trajectory_Tracking/blob/main/PythonClient/view_start_positions.py">view_start_positions.py</a> ：
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>view_start_positions.py
-</code></pre></div></p>
-<p><img alt="" src="../img/benchmark_creating/town01_positions.jpg" /></p>
+</p><div class="highlight"><pre><span></span><code>python<span class="w"> </span>view_start_positions.py
+</code></pre></div>
+<p><img alt="" src="../img/benchmark_creating/town01_positions.jpg"></p>
 <p>现在让我们选择 140 作为起始位置，134 作为终止位置。这两个位置可以通过运行以下命令来可视化：
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>view_start_positions.py<span class="w"> </span>--pos<span class="w"> </span><span class="m">140</span>,134<span class="w"> </span>--no-labels
-</code></pre></div></p>
-<p><img alt="" src="../img/benchmark_creating/town01_140_134.png" /></p>
+</p><div class="highlight"><pre><span></span><code>python<span class="w"> </span>view_start_positions.py<span class="w"> </span>--pos<span class="w"> </span><span class="m">140</span>,134<span class="w"> </span>--no-labels
+</code></pre></div>
+<p><img alt="" src="../img/benchmark_creating/town01_140_134.png"></p>
 <p>我们再选择两个姿势，一个用于直行，另一个用于简单转弯。此外，我们还为 Town02 选择三个姿势：</p>
-<p><img alt="" src="../img/benchmark_creating/initial_positions.jpg" /></p>
+<p><img alt="" src="../img/benchmark_creating/initial_positions.jpg"></p>
 <p>图：此基本实验套件示例中使用的姿势。姿势是目标导向情节的开始和结束位置的元组。开始位置显示为蓝色，结束位置显示为红色。左：直线姿势，其中目标与起始位置直线距离。中：一个转弯情节，其中目标与起点相距一个转弯。右：任意位置，目标距离起始位置较远，通常超过一个转弯。</p>
 <p>我们将每个姿势定义为一项任务。此外，我们还为每个任务设置动态对象的数量，并重复任意位置任务，使其也使用动态对象进行定义。在下面的代码摘录中，我们展示了每个任务的最终定义位置和动态对象的数量：</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Define the start/end position below as tasks</span>
@@ -233,16 +233,16 @@
 <p>完整代码可以在 <a href="https://github.com/OpenHUTB/Self_Driving_Car_Trajectory_Tracking/blob/main/PythonClient/carla/driving_benchmark/experiment_suites/basic_experiment_suite.py">basic_experiment_suite.py</a> 找到。</p>
 <h2 id="_7">预期结果 <span id="predicted_result"></span></h2>
 <p>首先，您需要一个以固定时间步长运行的 Carla 模拟器 ，这样您获得的结果将或多或少具有可重复性。为此，您应该按如下方式运行 Carla 模拟器：
-<div class="highlight"><pre><span></span><code>./CarlaUE4.sh<span class="w"> </span>/Game/Maps/&lt;Town_name&gt;<span class="w"> </span>-windowed<span class="w"> </span>-world-port<span class="o">=</span><span class="m">2000</span><span class="w">  </span>-benchmark<span class="w"> </span>-fps<span class="o">=</span><span class="m">10</span>
+</p><div class="highlight"><pre><span></span><code>./CarlaUE4.sh<span class="w"> </span>/Game/Maps/&lt;Town_name&gt;<span class="w"> </span>-windowed<span class="w"> </span>-world-port<span class="o">=</span><span class="m">2000</span><span class="w">  </span>-benchmark<span class="w"> </span>-fps<span class="o">=</span><span class="m">10</span>
 </code></pre></div>
 本教程中提供的示例可以针对 Town01 执行，如下所示：
 <div class="highlight"><pre><span></span><code>./driving_benchmark_example.py<span class="w"> </span>-c<span class="w"> </span>Town01
 </code></pre></div>
-您应该期望得到以下结果：<a href="https://carla.readthedocs.io/en/stable/benchmark_basic_results_town01">town01_basic_forward_results</a></p>
+您应该期望得到以下结果：<a href="https://carla.readthedocs.io/en/stable/benchmark_basic_results_town01">town01_basic_forward_results</a>
 <p>对于 Town02：
-<div class="highlight"><pre><span></span><code>./driving_benchmark_example.py<span class="w"> </span>-c<span class="w"> </span>Town02
+</p><div class="highlight"><pre><span></span><code>./driving_benchmark_example.py<span class="w"> </span>-c<span class="w"> </span>Town02
 </code></pre></div>
-您应该期望得到以下结果：<a href="https://carla.readthedocs.io/en/stable/benchmark_basic_results_town02">town01_basic_forward_results</a> </p>
+您应该期望得到以下结果：<a href="https://carla.readthedocs.io/en/stable/benchmark_basic_results_town02">town01_basic_forward_results</a> </div>
               
             </div>
           </div><footer>

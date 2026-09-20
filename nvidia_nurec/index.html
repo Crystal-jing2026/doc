@@ -100,11 +100,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="nvidia-hutb">将 NVIDIA 神经重建与 HUTB 结合使用</h1>
+                <div><h1 id="nvidia-hutb">将 NVIDIA 神经重建与 HUTB 结合使用</h1>
 <p>NVIDIA 神经重建 (Neural Reconstruction, NuRec) 是指 NVIDIA 提供的重建和渲染模型及服务，支持无缝提取真实世界数据并将其转换为适合训练和测试物理 AI 代理（包括机器人和自动驾驶系统）的模拟环境。</p>
 <p>借助 NuRec，开发者可以将记录的摄像头和激光雷达数据转换为 3D 场景。NuRec 使用多个 AI 网络创建交互式 3D 测试环境，开发者可以在其中修改场景并观察外部环境的反应。开发者可以更改场景、添加合成对象并应用随机化效果（例如，孩子跟随弹跳的球冲向道路），从而让初始场景更具挑战性。借助 NuRec gRPC API，开发者可以将渲染服务直接引入他们选择的模拟平台，例如 HUTB。</p>
 <p>NuRec gRPC API 充当 HUTB 回放和 NuRec 容器之间的数据和渲染管道，场景在 NuRec 容器中重建和渲染。您可以从 NVIDIA 自动驾驶汽车物理 AI 数据集加载预先训练的场景，并使用 NuRec gRPC API 在 Python 脚本 (<code>replay_recording.py</code>) 中定义场景。下图进一步说明了 NuRec 与 HUTB 之间的关系。</p>
-<p><img alt="NVIDIA NuRec and HUTB" src="../img/hutb_nurec_api.jpg" /></p>
+<p><img alt="NVIDIA NuRec and HUTB" src="../img/hutb_nurec_api.jpg"></p>
 <p>运行回放脚本时，<strong>HUTB</strong> 会通过 <strong>HUTB API</strong> 从 <strong>HUTB 服务器</strong> 加载地图和 Actor。脚本中的渲染请求会通过 <strong>NuRec gRPC API</strong> 从 <strong>NuRec 容器</strong> 返回帧。这两个 API 均可作为 HUTB 和 NuRec 服务器的便捷接口，为您的模拟提供无缝更新。</p>
 <p>要在 HUTB 模拟中使用神经渲染，请使用 NVIDIA 神经重建 API 和 <strong>NVIDIA 物理 AI 数据</strong> 集中的数据。请按照本指南中的说明进行操作。</p>
 <ul>
@@ -124,7 +124,7 @@
 <li><strong><a href="#run-the-carla-nurec-replays">Run the CARLA NuRec replays</a></strong></li>
 <li><strong><a href="#command-line-parameters">Command line parameters</a></strong></li>
 </ul>
-<hr />
+<hr>
 <h2 id="_1">开始之前</h2>
 <h3 id="_2">先决条件</h3>
 <p>在开始之前，请确保您已满足以下先决条件：</p>
@@ -140,13 +140,13 @@
 <li>如果您还没有 Hugging Face 帐户，请 <a href="https://huggingface.co/join">创建一个</a> 并登录。 </li>
 <li>同意分享您的联系信息以访问数据集：<ul>
 <li>点击 <a href="https://huggingface.co/datasets/nvidia/PhysicalAI-Autonomous-Vehicles-NuRec">此处</a> 查找 Hugging face 网站上的数据集 </li>
-<li>点击 <em>&#10004; 同意并访问仓库</em></li>
+<li>点击 <em>✔ 同意并访问仓库</em></li>
 </ul>
 </li>
 <li><a href="https://huggingface.co/settings/tokens">创建</a> 具有<em>读取</em>权限的令牌 <a href="https://huggingface.co/settings/tokens">Create a token</a> </li>
 <li>将令牌保存在安全的地方，并在安装过程中出现提示时输入</li>
 </ul>
-<hr />
+<hr>
 <h2 id="_3">设置</h2>
 <p>要开始使用 NVIDIA 的示例数据集，请使用安装程序脚本。如果您希望自定义数据集，请按照说明从 HuggingFace 获取资源并手动设置环境。</p>
 <h3 id="_4">使用安装程序脚本</h3>
@@ -170,7 +170,7 @@
 <ul>
 <li>
 <p><code>NUREC_IMAGE</code> 是必需的，必须将其设置为 HUTB 仓库中 NuRec 镜像的完整路径。运行以下命令进行设置： </p>
-<div class="highlight"><pre><span></span><code>export NUREC_IMAGE=&quot;docker.io/carlasimulator/nvidia-nurec-grpc:0.1.0&quot;
+<div class="highlight"><pre><span></span><code>export NUREC_IMAGE="docker.io/carlasimulator/nvidia-nurec-grpc:0.1.0"
 </code></pre></div>
 </li>
 <li>
@@ -255,7 +255,7 @@ python example_save_images.py --usdz-filename /path/to/scenario.usdz --output-di
 <li><a href="../ue/HUTB_NUREC_integration/">HUTB - NUREC 集成</a></li>
 <li><a href="../ue/tools/">NUREC 集成工具</a></li>
 <li><a href="../ue/grpc_proto/">NVIDIA 神经重建引擎 gRPC 协议缓冲区</a></li>
-</ul>
+</ul></div>
               
             </div>
           </div><footer>

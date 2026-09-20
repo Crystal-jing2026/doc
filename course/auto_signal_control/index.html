@@ -100,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="_1">自动信号控制</h1>
+                <div><h1 id="_1">自动信号控制</h1>
 <p>这是一个基于Flask的应用程序，用于控制 <a href="https://pan.baidu.com/s/15T1hGoWJ70tVmsTX7-zcSw?pwd=hutb">Carla模拟环境</a> 中的交通信号灯。该应用程序通过检测路口的交通流量动态调整交通信号灯的时长，以优化交通通行效率。</p>
 <h4 id="_2">主要功能</h4>
 <p><a href="https://github.com/OpenHUTB/doc/blob/master/src/course/auto_signal_control.py">应用程序</a> 主要功能包括：
@@ -113,24 +113,24 @@
 </ul>
 <h4 id="_4">核心实现步骤</h4>
 <p><strong>1.初始化和连接Carla服务器</strong>：获取世界对象并设置模拟参数。</p>
-<p><div class="highlight"><pre><span></span><code>    client = carla.Client(&#39;localhost&#39;, 2000)
+<p></p><div class="highlight"><pre><span></span><code>    client = carla.Client('localhost', 2000)
     client.set_timeout(10.0)
     world = client.get_world()
 </code></pre></div>
-<strong>2.获取路口信息</strong>：通过中心位置获取指定路口的交通信号灯信息。</p>
+<strong>2.获取路口信息</strong>：通过中心位置获取指定路口的交通信号灯信息。
 <p>为了保证每次请求不会往该路口的交通信号灯集合中新加重复的交通信号灯，先用集合存储交通信号灯的唯一ID</p>
 <div class="highlight"><pre><span></span><code>traffics_in_junction = set()
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>def get_traffic_lights_in_junction(world, junction):
-    &quot;&quot;&quot;获取路口的所有交通信号灯&quot;&quot;&quot;
-    traffic_lights = world.get_actors().filter(&#39;traffic.traffic_light&#39;)
+    """获取路口的所有交通信号灯"""
+    traffic_lights = world.get_actors().filter('traffic.traffic_light')
     for traffic_light in traffic_lights:
         if get_distance(traffic_light.get_location(), center_location[0]) &lt;= 50:
             id = traffic_light.get_opendrive_id()
             traffics_in_junction.add(id)
 </code></pre></div>
-<p><div class="highlight"><pre><span></span><code>def get_light(all_traffic_lights):
-    &quot;&quot;&quot;根据交通信号灯ID列表获取对应的交通信号灯对象&quot;&quot;&quot;
+<p></p><div class="highlight"><pre><span></span><code>def get_light(all_traffic_lights):
+    """根据交通信号灯ID列表获取对应的交通信号灯对象"""
     drive_list = list(traffics_in_junction)
     traffic_lights = []
     for traffic_light in all_traffic_lights:
@@ -138,10 +138,10 @@
             traffic_lights.append(traffic_light)
     return traffic_lights
 </code></pre></div>
-<strong>3.计算交通流量</strong>：检测指定范围内的车辆数量。</p>
-<p><div class="highlight"><pre><span></span><code>def get_vehicles_in_intersection(world, intersection_location, intersection_radius):
-    &quot;&quot;&quot;获取路口范围内的车辆数量&quot;&quot;&quot;
-    vehicles = world.get_actors().filter(&#39;vehicle.*&#39;)
+<strong>3.计算交通流量</strong>：检测指定范围内的车辆数量。
+<p></p><div class="highlight"><pre><span></span><code>def get_vehicles_in_intersection(world, intersection_location, intersection_radius):
+    """获取路口范围内的车辆数量"""
+    vehicles = world.get_actors().filter('vehicle.*')
     vehicles_in_intersection = []
 
     for vehicle in vehicles:
@@ -151,8 +151,8 @@
 
     return len(vehicles_in_intersection)
 </code></pre></div>
-<strong>4.调整交通信号灯时长</strong>：根据交通流量动态调整交通信号灯的时长。</p>
-<p><div class="highlight"><pre><span></span><code> if junction_flow &gt; 15:
+<strong>4.调整交通信号灯时长</strong>：根据交通流量动态调整交通信号灯的时长。
+<p></p><div class="highlight"><pre><span></span><code> if junction_flow &gt; 15:
         for traffic_light in get_light(all_traffic_lights):
             traffic_light.set_green_time(GREEN_TIME + 15)
             last_green_time = GREEN_TIME + 15
@@ -169,12 +169,12 @@
             traffic_light.set_green_time(GREEN_TIME)
             last_green_time = GREEN_TIME
 </code></pre></div>
-<strong>5.返回结果</strong>：返回当前交通信号灯的状态和调整后的时长信息。</p>
+<strong>5.返回结果</strong>：返回当前交通信号灯的状态和调整后的时长信息。
 <div class="highlight"><pre><span></span><code>response_data = {
-        &quot;traffic_lights&quot;: [
-            {&quot;id&quot;: traffic_ids},
-            {&quot;init_green_time&quot;: traffic_init_green_time},
-            {&quot;last_green_time&quot;: last_green_time}
+        "traffic_lights": [
+            {"id": traffic_ids},
+            {"init_green_time": traffic_init_green_time},
+            {"last_green_time": last_green_time}
         ]
     }
 </code></pre></div>
@@ -188,7 +188,7 @@
 </ol>
 <div class="highlight"><pre><span></span><code>http://127.0.0.1:5000/set_traffic_light
 </code></pre></div>
-<p>通过这些步骤和说明，用户可以使用该应用程序动态调整Carla模拟环境中的交通信号灯时长，以优化交通通行效率。</p>
+<p>通过这些步骤和说明，用户可以使用该应用程序动态调整Carla模拟环境中的交通信号灯时长，以优化交通通行效率。</p></div>
               
             </div>
           </div><footer>

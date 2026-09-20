@@ -100,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="_1">游戏模式</h1>
+                <div><h1 id="_1">游戏模式</h1>
 <h2 id="_2">模块概述</h2>
 <p>DReyeVRGameMode 是 DReyeVR 扩展模块的核心游戏模式类，负责管理游戏的核心逻辑，包括玩家控制、EgoVehicle（主驾驶车辆）、重播系统、音效控制和调试可视化。该模块基于 Unreal Engine 的 ACarlaGameModeBase 扩展，集成 Carla 仿真环境与 DReyeVR 的自定义功能。</p>
 <h2 id="_3">类结构</h2>
@@ -117,22 +117,22 @@
 <tbody>
 <tr>
 <td>Player</td>
-<td>TWeakObjectPtr<APlayerController></td>
+<td>TWeakObjectPtr<aplayercontroller></aplayercontroller></td>
 <td>玩家控制器弱引用</td>
 </tr>
 <tr>
 <td>DReyeVR_Pawn</td>
-<td>TWeakObjectPtr<ADReyeVRPawn></td>
+<td>TWeakObjectPtr<adreyevrpawn></adreyevrpawn></td>
 <td>DReyeVR 主视角 Pawn 弱引用</td>
 </tr>
 <tr>
 <td>EgoVehiclePtr</td>
-<td>TWeakObjectPtr<AEgoVehicle></td>
+<td>TWeakObjectPtr<aegovehicle></aegovehicle></td>
 <td>EgoVehicle 弱引用</td>
 </tr>
 <tr>
 <td>SpectatorPtr</td>
-<td>TWeakObjectPtr<APawn></td>
+<td>TWeakObjectPtr<apawn></apawn></td>
 <td>观察者视角 Pawn 弱引用</td>
 </tr>
 <tr>
@@ -260,8 +260,8 @@
 <li>
 <p>动态音量调整</p>
 <p>根据配置参数调整 EgoVehicle、非 Ego 车辆和环境音效的音量，例如：
-<div class="highlight"><pre><span></span><code><span class="n">ACarlaWheeledVehicle</span><span class="o">::</span><span class="n">Volume</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NonEgoVolumePercent</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">100.f</span><span class="p">;</span>
-</code></pre></div></p>
+</p><div class="highlight"><pre><span></span><code><span class="n">ACarlaWheeledVehicle</span><span class="o">::</span><span class="n">Volume</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NonEgoVolumePercent</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">100.f</span><span class="p">;</span>
+</code></pre></div>
 </li>
 <li>
 <p>调试可视化</p>
@@ -269,15 +269,15 @@
 <li>
 <p>边界框绘制</p>
 <p>在编辑器模式下绘制所有车辆的调试边界框，便于观察物体位置：
-<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">ADReyeVRGameMode::DrawBBoxes</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</p><div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">ADReyeVRGameMode::DrawBBoxes</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// 使用 FDebugDraw 绘制包围盒</span>
 <span class="p">}</span>
-</code></pre></div></p>
+</code></pre></div>
 </li>
 </ul>
 <h2 id="_6">配置参数</h2>
 <p>通过 GeneralParams 读取 DReyeVRConfig.ini 配置文件，关键参数包括：
-<div class="highlight"><pre><span></span><code><span class="p p-Indicator">[</span><span class="nv">Sound</span><span class="p p-Indicator">]</span>
+</p><div class="highlight"><pre><span></span><code><span class="p p-Indicator">[</span><span class="nv">Sound</span><span class="p p-Indicator">]</span>
 <span class="l l-Scalar l-Scalar-Plain">EgoVolumePercent=80</span>
 <span class="l l-Scalar l-Scalar-Plain">NonEgoVolumePercent=50</span>
 
@@ -288,21 +288,21 @@
 <span class="l l-Scalar l-Scalar-Plain">[Replayer]</span>
 <span class="l l-Scalar l-Scalar-Plain">UseCarlaSpectator=false</span>
 <span class="l l-Scalar l-Scalar-Plain">ReplayInterpolation=true</span>
-</code></pre></div></p>
+</code></pre></div>
 <h2 id="_7">使用示例</h2>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">// 在 BeginPlay 中初始化游戏模式</span>
 <span class="l l-Scalar l-Scalar-Plain">void ADReyeVRGameMode::BeginPlay() {</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">Super::BeginPlay();</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">SetupPlayerInputComponent();</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">SetupDReyeVRPawn();</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">if (GeneralParams.Get&lt;bool&gt;(&quot;Game&quot;, &quot;AutomaticallySpawnEgo&quot;)) {</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">if (GeneralParams.Get&lt;bool&gt;("Game", "AutomaticallySpawnEgo")) {</span>
 <span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">SetupEgoVehicle();</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">}</span>
 <span class="l l-Scalar l-Scalar-Plain">}</span>
 
 <span class="l l-Scalar l-Scalar-Plain">// 绑定输入动作</span>
 <span class="l l-Scalar l-Scalar-Plain">void ADReyeVRGameMode::SetupPlayerInputComponent() {</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">InputComponent-&gt;BindAction(&quot;ReplayPlayPause&quot;, IE_Pressed, this, &amp;ADReyeVRGameMode::ReplayPlayPause);</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">InputComponent-&gt;BindAction("ReplayPlayPause", IE_Pressed, this, &amp;ADReyeVRGameMode::ReplayPlayPause);</span>
 <span class="l l-Scalar l-Scalar-Plain">}</span>
 </code></pre></div>
 <h2 id="_8">依赖模块</h2>
@@ -323,7 +323,7 @@
 <p>调试工具</p>
 <p>集成 DrawDebugString 显示实时车辆状态（速度、方向）。</p>
 </li>
-</ol>
+</ol></div>
               
             </div>
           </div><footer>

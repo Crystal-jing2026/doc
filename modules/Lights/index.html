@@ -100,48 +100,48 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="lights">灯光模块(Lights)说明文档</h1>
+                <div><h1 id="lights">灯光模块(Lights)说明文档</h1>
 <h2 id="_1">目录</h2>
 <ul>
-<li><a href="#1-模块概述"><strong>1. 模块概述</strong></a><ul>
-<li><a href="#11-UCarlaLightSubsystem介绍">1.1 UCarlaLightSubsystem介绍</a><ul>
-<li><a href="#111-主要功能">1.1.1 主要功能</a></li>
+<li><a href="#1-%E6%A8%A1%E5%9D%97%E6%A6%82%E8%BF%B0"><strong>1. 模块概述</strong></a><ul>
+<li><a href="#11-UCarlaLightSubsystem%E4%BB%8B%E7%BB%8D">1.1 UCarlaLightSubsystem介绍</a><ul>
+<li><a href="#111-%E4%B8%BB%E8%A6%81%E5%8A%9F%E8%83%BD">1.1.1 主要功能</a></li>
 </ul>
 </li>
-<li><a href="#12-ucarlalight介绍">1.2 UCarlaLight介绍</a><ul>
-<li><a href="#121-主要功能">1.2.1 主要功能</a></li>
-<li><a href="#122-组件核心功能">1.2.2 组件核心功能</a></li>
+<li><a href="#12-ucarlalight%E4%BB%8B%E7%BB%8D">1.2 UCarlaLight介绍</a><ul>
+<li><a href="#121-%E4%B8%BB%E8%A6%81%E5%8A%9F%E8%83%BD">1.2.1 主要功能</a></li>
+<li><a href="#122-%E7%BB%84%E4%BB%B6%E6%A0%B8%E5%BF%83%E5%8A%9F%E8%83%BD">1.2.2 组件核心功能</a></li>
 </ul>
 </li>
-<li><a href="#13-灯光模块">1.3 灯光模块</a></li>
+<li><a href="#13-%E7%81%AF%E5%85%89%E6%A8%A1%E5%9D%97">1.3 灯光模块</a></li>
 </ul>
 </li>
-<li><a href="#2-模块关系总览"><strong>2. 模块关系总览</strong></a><ul>
-<li><a href="#21-灯光模块(Lights)与其他模块关系总览">2.1 灯光模块(Lights)与其他模块关系总览</a></li>
-<li><a href="#22-模块控制关系">2.2 模块控制关系</a><ul>
-<li><a href="#221-交通信号控制流程">2.2.1 交通信号控制流程</a></li>
-<li><a href="#222-天气影响灯光">2.2.2 天气影响灯光</a></li>
+<li><a href="#2-%E6%A8%A1%E5%9D%97%E5%85%B3%E7%B3%BB%E6%80%BB%E8%A7%88"><strong>2. 模块关系总览</strong></a><ul>
+<li><a href="#21-%E7%81%AF%E5%85%89%E6%A8%A1%E5%9D%97(Lights)%E4%B8%8E%E5%85%B6%E4%BB%96%E6%A8%A1%E5%9D%97%E5%85%B3%E7%B3%BB%E6%80%BB%E8%A7%88">2.1 灯光模块(Lights)与其他模块关系总览</a></li>
+<li><a href="#22-%E6%A8%A1%E5%9D%97%E6%8E%A7%E5%88%B6%E5%85%B3%E7%B3%BB">2.2 模块控制关系</a><ul>
+<li><a href="#221-%E4%BA%A4%E9%80%9A%E4%BF%A1%E5%8F%B7%E6%8E%A7%E5%88%B6%E6%B5%81%E7%A8%8B">2.2.1 交通信号控制流程</a></li>
+<li><a href="#222-%E5%A4%A9%E6%B0%94%E5%BD%B1%E5%93%8D%E7%81%AF%E5%85%89">2.2.2 天气影响灯光</a></li>
 </ul>
 </li>
-<li><a href="#23-场景示例图">2.3 场景示例图</a></li>
+<li><a href="#23-%E5%9C%BA%E6%99%AF%E7%A4%BA%E4%BE%8B%E5%9B%BE">2.3 场景示例图</a></li>
 </ul>
 </li>
-<li><a href="#3-技术实现"><strong>3. 技术实现</strong></a><ul>
-<li><a href="#31-核心类函数">3.1 核心类函数</a></li>
-<li><a href="#32-灯光注册与注销">3.2 灯光注册与注销</a></li>
-<li><a href="#33-属性控制函数">3.3 属性控制函数</a></li>
-<li><a href="#34-辅助功能">3.4 辅助功能</a></li>
+<li><a href="#3-%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0"><strong>3. 技术实现</strong></a><ul>
+<li><a href="#31-%E6%A0%B8%E5%BF%83%E7%B1%BB%E5%87%BD%E6%95%B0">3.1 核心类函数</a></li>
+<li><a href="#32-%E7%81%AF%E5%85%89%E6%B3%A8%E5%86%8C%E4%B8%8E%E6%B3%A8%E9%94%80">3.2 灯光注册与注销</a></li>
+<li><a href="#33-%E5%B1%9E%E6%80%A7%E6%8E%A7%E5%88%B6%E5%87%BD%E6%95%B0">3.3 属性控制函数</a></li>
+<li><a href="#34-%E8%BE%85%E5%8A%A9%E5%8A%9F%E8%83%BD">3.4 辅助功能</a></li>
 </ul>
 </li>
-<li><a href="#4-使用场景"><strong>4. 使用场景</strong></a><ul>
-<li><a href="#41-动态环境光照">4.1 动态环境光照</a></li>
-<li><a href="#42-车辆信号灯同步">4.2 车辆信号灯同步</a></li>
-<li><a href="#43-仿真事件回放">4.3 仿真事件回放</a></li>
+<li><a href="#4-%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><strong>4. 使用场景</strong></a><ul>
+<li><a href="#41-%E5%8A%A8%E6%80%81%E7%8E%AF%E5%A2%83%E5%85%89%E7%85%A7">4.1 动态环境光照</a></li>
+<li><a href="#42-%E8%BD%A6%E8%BE%86%E4%BF%A1%E5%8F%B7%E7%81%AF%E5%90%8C%E6%AD%A5">4.2 车辆信号灯同步</a></li>
+<li><a href="#43-%E4%BB%BF%E7%9C%9F%E4%BA%8B%E4%BB%B6%E5%9B%9E%E6%94%BE">4.3 仿真事件回放</a></li>
 </ul>
 </li>
-<li><a href="#5-注意事项"><strong>5. 注意事项</strong></a></li>
+<li><a href="#5-%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><strong>5. 注意事项</strong></a></li>
 </ul>
-<hr />
+<hr>
 <h2 id="1">1. 模块概述 <a id="1-模块概述"></a></h2>
 <h3 id="11-ucarlalightsubsystem">1.1 UCarlaLightSubsystem介绍 <a id="11-UCarlaLightSubsystem介绍"></a></h3>
 <p><code>UCarlaLightSubsystem</code>是 carla 仿真平台中用于管理动态灯光的核心组件类，属于 carla 的虚幻引擎插件(CarlaUnreal)的一部分。这个子系统主要负责管理 carla 世界中的灯光（如交通灯、路灯等），并处理客户端与灯光状态的同步。<a href="https://openhutb.github.io/carla_cpp/d3/d13/CarlaLightSubsystem_8cpp_source.html">UCarlaLightSubsystem源代码</a></p>
@@ -178,13 +178,13 @@
 <li>展示灯光模块与其他核心模块的全局依赖关系，帮助 lights 在 carla 系统中的定位。快速了解模块间上下游关系，设计新功能时避免遗漏依赖。</li>
 <li>核心枢纽：灯光模块直接控制交通信号，间接影响车辆、行人、传感器等模块。</li>
 </ul>
-<p><img alt="light model relationship" src="../../img/Lights/light_model_relationship.png" /></p>
+<p><img alt="light model relationship" src="../../img/Lights/light_model_relationship.png"></p>
 <h3 id="22">2.2 关键交互图<a id="22-关键交互图"></a></h3>
 <h4 id="221">2.2.1 交通信号控制流程 <a id="221-交通信号控制流程"></a></h4>
 <ul>
 <li>描述信号灯状态变化时，系统如何协调车辆和行人的行为。例如，在测试场景中交通管理器强制设置红灯，灯光子系统通知所有车辆和行人，车辆触发刹车逻辑，行人停止移动。</li>
 <li>应用场景：调试交通灯同步问题；验证自动驾驶算法对红灯的响应等。<blockquote>
-<p><img alt="traffic impact" src="../../img/Lights/traffic_impact.png" /></p>
+<p><img alt="traffic impact" src="../../img/Lights/traffic_impact.png"></p>
 </blockquote>
 </li>
 <li>流程顺序：交通管理器 → 灯光模块 → 车辆/行人响应。</li>
@@ -195,7 +195,7 @@
 <li>应用场景：模拟极端天气下的传感器性能；测试车辆在低能见度下的行为。</li>
 </ul>
 <blockquote>
-<p><img alt="light change" src="../../img/Lights/light_change.png" /></p>
+<p><img alt="light change" src="../../img/Lights/light_change.png"></p>
 </blockquote>
 <ul>
 <li>数据流：天气事件 → 灯光强度调整 → 传感器数据 → 车辆控制。</li>
@@ -204,7 +204,7 @@
 <ul>
 <li>场景：模拟暴雨天气下的交通系统响应。</li>
 <li>天气系统触发能见度下降；交通管理器延长绿灯时间以缓解拥堵；传感器数据用于算法性能分析。<blockquote>
-<p><img alt="data flow" src="../../img/Lights/data_flow.png" /></p>
+<p><img alt="data flow" src="../../img/Lights/data_flow.png"></p>
 </blockquote>
 </li>
 </ul>
@@ -293,17 +293,17 @@
 <h2 id="4">4. 使用场景<a id="4-使用场景"></a></h2>
 <h3 id="41">4.1 动态环境光照<a id="41-动态环境光照"></a></h3>
 <p>CARLA 支持高度灵活的动态光照系统，允许用户通过代码实时调整场景中的光照效果，以模拟不同时间、天气条件下的真实环境。代码示例展示路灯夜间自动开启，通过 Unreal Engine 的 <code>LightComponent</code> 控制光照属性：
-<div class="highlight"><pre><span></span><code><span class="c1">// 脚本控制路灯夜间自动开启</span>
+</p><div class="highlight"><pre><span></span><code><span class="c1">// 脚本控制路灯夜间自动开启</span>
 <span class="n">LightComponent</span><span class="o">-&gt;</span><span class="n">SetLightOn</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span><span class="w">  </span><span class="c1">//启用路灯</span>
 <span class="n">LightComponent</span><span class="o">-&gt;</span><span class="n">SetLightIntensity</span><span class="p">(</span><span class="mf">5000.0f</span><span class="p">);</span><span class="w">  </span><span class="c1">//设置光照强度</span>
 <span class="n">LightComponent</span><span class="o">-&gt;</span><span class="n">SetLightColor</span><span class="p">(</span><span class="n">FLinearColor</span><span class="p">(</span><span class="mf">0.9f</span><span class="p">,</span><span class="w"> </span><span class="mf">0.9f</span><span class="p">,</span><span class="w"> </span><span class="mf">0.8f</span><span class="p">));</span><span class="w">  </span><span class="c1">//设置光照颜色</span>
 </code></pre></div>
   - 开关控制（<code>SetLightOn</code>）可通过布尔值 true/false 动态开启或关闭路灯，适用于昼夜循环仿真。
   - 光照强度（<code>SetLightIntensity</code>）调整光源亮度（如 5000.0f 模拟高亮度路灯），影响场景的明暗表现。
-  - 光照颜色（<code>SetLightColor</code>）使用 <code>FLinearColor</code> 设置 RGB 值（如 (0.9, 0.9, 0.8) 接近自然暖白光），匹配现实世界的光谱特性。</p>
+  - 光照颜色（<code>SetLightColor</code>）使用 <code>FLinearColor</code> 设置 RGB 值（如 (0.9, 0.9, 0.8) 接近自然暖白光），匹配现实世界的光谱特性。
 <h3 id="42">4.2 车辆信号灯同步<a id="42-车辆信号灯同步"></a></h3>
 <p>CARLA 提供了精细化的车辆信号灯控制系统，允许用户通过代码实时调整车灯状态（如刹车灯、转向灯等），以模拟真实车辆的灯光行为。以下是一个典型的刹车灯状态同步示例代码，展示如何通过 RPC（远程过程调用）协议动态更新车灯状态：
-<div class="highlight"><pre><span></span><code><span class="c1">// 同步刹车灯状态到 RPC 协议</span>
+</p><div class="highlight"><pre><span></span><code><span class="c1">// 同步刹车灯状态到 RPC 协议</span>
 <span class="n">carla</span><span class="o">::</span><span class="n">rpc</span><span class="o">::</span><span class="n">LightState</span><span class="w"> </span><span class="n">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LightComponent</span><span class="o">-&gt;</span><span class="n">GetLightState</span><span class="p">();</span>
 <span class="n">state</span><span class="p">.</span><span class="n">_color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FLinearColor</span><span class="o">::</span><span class="n">Red</span><span class="p">;</span><span class="w">  </span><span class="c1">// 设置刹车灯颜色为红色</span>
 <span class="n">state</span><span class="p">.</span><span class="n">_active</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bIsBraking</span><span class="p">;</span><span class="w">  </span><span class="c1">// 根据刹车状态激活/关闭刹车灯  </span>
@@ -311,7 +311,7 @@
 </code></pre></div>
   - 灯光状态获取（<code>GetLightState</code>）通过<code>carla::rpc::LightState</code> 结构体读取当前车灯的颜色、亮度、开关状态等参数。
   - 动态灯光控制（<code>SetLightState</code>）可实时修改<code>_color</code>（如<code>FLinearColor::Red</code> 设为红色）和<code>_active</code>（布尔值控制开关）。
-  - 与车辆行为同步，示例中的 <code>bIsBraking</code> 可绑定到车辆的刹车信号，实现刹车时自动亮红灯。</p>
+  - 与车辆行为同步，示例中的 <code>bIsBraking</code> 可绑定到车辆的刹车信号，实现刹车时自动亮红灯。
 <h3 id="43">4.3 仿真事件回放<a id="43-仿真事件回放"></a></h3>
 <p>CARLA 提供事件回放（Replay）功能，允许用户记录并复现仿真过程中的关键状态变化，例如车辆运动、信号灯切换、天气变化等。通过调用<code>RecordLightChange()</code>，可以精确记录灯光状态（如开关、颜色、强度）的修改时间点，并在回放时按时间轴还原这些变化。
   - <strong>事件回放的特点：</strong>
@@ -324,7 +324,7 @@
 <li><strong>线程安全</strong>：避免在非游戏线程（如异步任务）中直接调用 <code>SetLightXxx</code> 函数。</li>
 <li><strong>大型地图支持</strong>：使用 <code>GetLocation()</code> 而非直接获取 Actor 坐标以确保跨地图兼容性。</li>
 </ul>
-<hr />
+<hr></div>
               
             </div>
           </div><footer>

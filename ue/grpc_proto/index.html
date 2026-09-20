@@ -100,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="nvidia-grpc">NVIDIA 神经重建引擎 gRPC 协议缓冲区</h1>
+                <div><h1 id="nvidia-grpc">NVIDIA 神经重建引擎 gRPC 协议缓冲区</h1>
 <p>该软件包包含 NVIDIA 神经重建引擎 (NuRec) gRPC API 的协议缓冲区定义和 Python 生成工具。</p>
 <h2 id="_1">内容</h2>
 <ul>
@@ -113,8 +113,8 @@
 <h2 id="_2">快速入门</h2>
 <h3 id="1">1. 安装依赖项</h3>
 <p>使用 pip：
-<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
-</code></pre></div></p>
+</p><div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</code></pre></div>
 <h3 id="2-python">2. 生成 Python 代码</h3>
 <p>运行生成脚本以从 proto 定义创建 Python 文件：</p>
 <div class="highlight"><pre><span></span><code>python<span class="w"> </span>PythonAPI/examples/nvidia/grpc/update_generated.py
@@ -132,7 +132,7 @@
 
 <span class="c1"># 创建 gRPC 通道和存根</span>
 <span class="kn">import</span> <span class="nn">grpc</span>
-<span class="n">channel</span> <span class="o">=</span> <span class="n">grpc</span><span class="o">.</span><span class="n">insecure_channel</span><span class="p">(</span><span class="s1">&#39;localhost:50051&#39;</span><span class="p">)</span>
+<span class="n">channel</span> <span class="o">=</span> <span class="n">grpc</span><span class="o">.</span><span class="n">insecure_channel</span><span class="p">(</span><span class="s1">'localhost:50051'</span><span class="p">)</span>
 <span class="n">stub</span> <span class="o">=</span> <span class="n">sensorsim_pb2_grpc</span><span class="o">.</span><span class="n">SensorsimServiceStub</span><span class="p">(</span><span class="n">channel</span><span class="p">)</span>
 
 <span class="c1"># 使用服务</span>
@@ -160,7 +160,7 @@
 <h2 id="_5">支持</h2>
 <p>如果对此 API 有疑问，请联系 NVIDIA 支持或参阅官方文档。</p>
 <h2 id="_6">许可证</h2>
-<p>Copyright (c) 2025 NVIDIA CORPORATION &amp; AFFILIATES. All rights reserved.</p>
+<p>Copyright (c) 2025 NVIDIA CORPORATION &amp; AFFILIATES. All rights reserved.</p></div>
               
             </div>
           </div><footer>

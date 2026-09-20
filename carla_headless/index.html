@@ -100,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="carla-gpu">无显示屏运行 CARLA 并选择 GPU</h1>
+                <div><h1 id="carla-gpu">无显示屏运行 CARLA 并选择 GPU</h1>
 <div class="admonition 笔记">
 <p class="admonition-title">笔记</p>
 <p>请参阅 <a href="https://github.com/carla-simulator/carla/issues/225">#225</a> 了解替代方法。</p>
@@ -123,8 +123,8 @@
 <p>下载并安装 <a href="http://www.nvidia.es/Download/index.aspx">NVIDIA 驱动程序</a> 以及典型教程。</p>
 <h3 id="opengl">OpenGL</h3>
 <p>Openg GL 是 Virtual GL 所必需的。通常可以通过 apt 安装 OpenGL。
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>freeglut3-dev<span class="w"> </span>mesa-utils
-</code></pre></div></p>
+</p><div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>freeglut3-dev<span class="w"> </span>mesa-utils
+</code></pre></div>
 <h3 id="vgl">VGL</h3>
 <p>按照本教程安装 vgl： <a href="https://virtualgl.org/vgldoc/2_2_1/#hd004001">安装 VGL</a> </p>
 <h3 id="turbovnc">TurboVNC</h3>
@@ -140,17 +140,17 @@
 </code></pre></div>
 <h2 id="_3">模拟虚拟显示</h2>
 <p>运行你自己的 Xorg。这里我使用数字 7，但它可以标记为任何自由数字
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>nohup<span class="w"> </span>Xorg<span class="w"> </span>:7<span class="w"> </span><span class="p">&amp;</span>
-</code></pre></div></p>
+</p><div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>nohup<span class="w"> </span>Xorg<span class="w"> </span>:7<span class="w"> </span><span class="p">&amp;</span>
+</code></pre></div>
 <p>运行辅助远程 VNC-Xserver。这将创建虚拟显示器“8”。</p>
 <div class="highlight"><pre><span></span><code>/opt/TurboVNC/bin/vncserver<span class="w"> </span>:8
 </code></pre></div>
 <p>如果一切正常，以下命令应该可以顺利运行。
-<div class="highlight"><pre><span></span><code><span class="nv">DISPLAY</span><span class="o">=</span>:8<span class="w"> </span>vglrun<span class="w"> </span>-d<span class="w"> </span>:7.0<span class="w"> </span>glxinfo
-</code></pre></div></p>
+</p><div class="highlight"><pre><span></span><code><span class="nv">DISPLAY</span><span class="o">=</span>:8<span class="w"> </span>vglrun<span class="w"> </span>-d<span class="w"> </span>:7.0<span class="w"> </span>glxinfo
+</code></pre></div>
 <p>注意。这将在 Xserver 7、设备 0 上运行 glxinfo。这意味着您正在选择机器上的 GPU 0。要在其他 GPU（例如 GPU 1）上运行，请运行：
-<div class="highlight"><pre><span></span><code><span class="nv">DISPLAY</span><span class="o">=</span>:8<span class="w"> </span>vglrun<span class="w"> </span>-d<span class="w"> </span>:7.1<span class="w"> </span>glxinfo
-</code></pre></div></p>
+</p><div class="highlight"><pre><span></span><code><span class="nv">DISPLAY</span><span class="o">=</span>:8<span class="w"> </span>vglrun<span class="w"> </span>-d<span class="w"> </span>:7.1<span class="w"> </span>glxinfo
+</code></pre></div>
 <h3 id="_4">额外的</h3>
 <p>如果您希望在创建“nohup Xorg”时禁用 sudo，请转到“/etc/X11/Xwrapper.config”文件并将“allowed_users=console”更改为“allowed_users=anybody”</p>
 <p>在运行 nohup Xorg 之前可能需要停止所有 Xorg 服务器。该命令可能因您的系统而异。通常对于 Ubuntu 16.04，您应该使用：</p>
@@ -158,8 +158,8 @@
 </code></pre></div>
 <h2 id="carla">运行 CARLA</h2>
 <p>现在，最后，要在某个 $CARLA_PATH 中的某个 gpu_number 上运行 CARLA，请运行。
-<div class="highlight"><pre><span></span><code><span class="nv">DISPLAY</span><span class="o">=</span>:8<span class="w"> </span>vglrun<span class="w"> </span>-d<span class="w"> </span>:7.&lt;gpu_number&gt;<span class="w"> </span><span class="nv">$CARLA_PATH</span>/CarlaUE4/Binaries/Linux/CarlaUE4
-</code></pre></div></p>
+</p><div class="highlight"><pre><span></span><code><span class="nv">DISPLAY</span><span class="o">=</span>:8<span class="w"> </span>vglrun<span class="w"> </span>-d<span class="w"> </span>:7.&lt;gpu_number&gt;<span class="w"> </span><span class="nv">$CARLA_PATH</span>/CarlaUE4/Binaries/Linux/CarlaUE4
+</code></pre></div></div>
               
             </div>
           </div><footer>

@@ -100,10 +100,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="_1">实例分割传感器</h1>
+                <div><h1 id="_1">实例分割传感器</h1>
 <p><strong>实例分割(Instance segmentation)</strong> 相机是一种新型相机传感器，可为场景中的每个对象生成唯一的像素值。这与语义分割传感器形成对比，语义分割传感器对于相同对象类的实例（例如车辆）具有相同的 ID。</p>
 <p>要生成语义分割相机，我们需要<code>sensor.camera.instance_segmentation</code>蓝图：</p>
-<div class="highlight"><pre><span></span><code><span class="n">instance_camera_bp</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">get_blueprint_library</span><span class="p">()</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;sensor.camera.instance_segmentation&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">instance_camera_bp</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">get_blueprint_library</span><span class="p">()</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'sensor.camera.instance_segmentation'</span><span class="p">)</span>
 </code></pre></div>
 <h1 id="_2">示例</h1>
 <p>我们将首先设置一个带有实例分割相机的世界，并在场景中生成大量车辆。</p>
@@ -114,7 +114,7 @@
 <span class="kn">import</span> <span class="nn">queue</span>
 
 <span class="c1"># 连接到客户端并将Carla服务器设置为同步模式</span>
-<span class="n">client</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="s1">'localhost'</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
 <span class="n">world</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_world</span><span class="p">()</span>
 <span class="n">settings</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">get_settings</span><span class="p">()</span>
 <span class="n">settings</span><span class="o">.</span><span class="n">synchronous_mode</span> <span class="o">=</span> <span class="kc">True</span>
@@ -132,12 +132,12 @@
 <span class="n">spectator</span><span class="o">.</span><span class="n">set_transform</span><span class="p">(</span><span class="n">camera_transform</span><span class="p">)</span>
 
 <span class="c1"># 获取语义相机蓝图和生成相机</span>
-<span class="n">instance_camera_bp</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">get_blueprint_library</span><span class="p">()</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;sensor.camera.instance_segmentation&#39;</span><span class="p">)</span>
+<span class="n">instance_camera_bp</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">get_blueprint_library</span><span class="p">()</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'sensor.camera.instance_segmentation'</span><span class="p">)</span>
 <span class="n">instance_camera</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">try_spawn_actor</span><span class="p">(</span><span class="n">instance_camera_bp</span><span class="p">,</span> <span class="n">camera_transform</span><span class="p">)</span>
 </code></pre></div>
 <p>在摄像机周围生成车辆，用大量对象实例填充场景。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 在相机周围80米内生成车辆</span>
-<span class="n">vehicle_bp_library</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">get_blueprint_library</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="s1">&#39;*vehicle*&#39;</span><span class="p">)</span>
+<span class="n">vehicle_bp_library</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">get_blueprint_library</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="s1">'*vehicle*'</span><span class="p">)</span>
 <span class="n">radius</span> <span class="o">=</span> <span class="mi">80</span>
 <span class="k">for</span> <span class="n">spawn_point</span> <span class="ow">in</span> <span class="n">spawn_points</span><span class="p">:</span>
     <span class="n">vec</span> <span class="o">=</span> <span class="p">[</span><span class="n">spawn_point</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">cam_location</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">spawn_point</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">cam_location</span><span class="o">.</span><span class="n">y</span><span class="p">]</span>
@@ -151,11 +151,11 @@
 <span class="n">instance_camera</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="n">instance_image_queue</span><span class="o">.</span><span class="n">put</span><span class="p">)</span>
 <span class="n">world</span><span class="o">.</span><span class="n">tick</span><span class="p">()</span>
 <span class="n">instance_image</span><span class="o">=</span><span class="n">instance_image_queue</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-<span class="n">instance_image</span><span class="o">.</span><span class="n">save_to_disk</span><span class="p">(</span><span class="s1">&#39;instance_segmentation.png&#39;</span><span class="p">)</span>
+<span class="n">instance_image</span><span class="o">.</span><span class="n">save_to_disk</span><span class="p">(</span><span class="s1">'instance_segmentation.png'</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="_3">图像输出</h2>
 <p>保存到磁盘的实例分割图像的实例 ID 编码在 RGB 图像文件的 G 和 B 通道中。R通道包含标准语义ID。</p>
-<p><img alt="instance_segmentation" src="../img/instance_segmentation.png" /></p>
+<p><img alt="instance_segmentation" src="../img/instance_segmentation.png"></p></div>
               
             </div>
           </div><footer>

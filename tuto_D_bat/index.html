@@ -100,14 +100,14 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="_1">批处理脚本</h2>
-<p><div class="highlight"><pre><span></span><code>%~dp0
+                <div><h2 id="_1">批处理脚本</h2>
+<p></p><div class="highlight"><pre><span></span><code>%~dp0
 </code></pre></div>
-~ 是扩展的意思，变量扩充(下面详细介绍)，相当于把一个相对路径转换绝对路径</p>
+~ 是扩展的意思，变量扩充(下面详细介绍)，相当于把一个相对路径转换绝对路径
 <p>%0             代指批处理文件自身（绝对路径 "D:\test\bat\test.bat"，注意有双引号）</p>
 <p>%~d0         是指批处理所在的盘符，其中d代表<code>drive</code>。(扩充到盘符 D: )</p>
 <p>%~p0         是指批处理所在的目录，其中p代表<code>path</code>。(扩充到路径 \test\bat\ ，注意最后有个<code>\</code>）</p>
-<p>%~dp0       是批处理所在的盘符加路径。（扩充到盘符和路径 ：D:\test\bat\）</p>
+<p>%~dp0       是批处理所在的盘符加路径。（扩充到盘符和路径 ：D:\test\bat\）</p></div>
               
             </div>
           </div><footer>

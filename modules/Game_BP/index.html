@@ -100,13 +100,13 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="_1">游戏蓝图</h1>
+                <div><h1 id="_1">游戏蓝图</h1>
 <h2 id="spectator">观察者 <a href="https://bitbucket.org/carla-simulator/carla-content/src/master/Blueprints/Game/Spectator.uasset">Spectator</a></h2>
 <p>CARLA 的 Spectator（观察者）是一个用于自由视角浏览模拟世界的角色。该蓝图控制了相机的移动、旋转、视场角（FOV）调整及相关输入响应行为，适用于调试、观察交通场景或记录图像等任务。</p>
 <h2 id="camera-controller">实现步骤（Camera Controller）</h2>
 <ol>
 <li>
-<p><strong>初始化输入绑定</strong><br />
+<p><strong>初始化输入绑定</strong><br>
 在蓝图中，为“前后左右上下”、<code>Shift</code>、鼠标右键、滚轮等操作设置事件监听。</p>
 </li>
 <li>
@@ -192,7 +192,7 @@
 <li><strong>可配置快捷键</strong>：将按键映射集中到数据表或配置文件中，便于重定义；</li>
 <li><strong>位置记录/回放</strong>：允许记录当前摄像机轨迹并进行回放操作（适用于自动巡航场景演示）；</li>
 <li><strong>头部跟踪集成</strong>：接入 VR 设备或头戴追踪器，实现更自然的观察体验。</li>
-</ul>
+</ul></div>
               
             </div>
           </div><footer>

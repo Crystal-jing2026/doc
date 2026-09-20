@@ -100,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="_1">物理引擎</h1>
+                <div><h1 id="_1">物理引擎</h1>
 <p>权衡：要么慢但硬（PhyX），要么快但软。</p>
 <p>每个仿真步要解决的问题大致是:「这一瞬间，所有接触力、约束力、摩擦力应该是多少，才能满足物理定律？」如果按硬约束路线，这是个非凸的、棘手的 LCP 问题（线性互补问题）。MuJoCo 是通过把「硬接触」放松成「软接触」，把这个本来非凸的问题重新包装成了一个凸优化问题——变成了一个干净漂亮的碗，每一步都保证能滚到碗底。代价就是接触会显得软一点。</p>
 <h2 id="mujoco">Mujoco</h2>
@@ -127,7 +127,7 @@
 <p>TODO: 支持 PhysX 5.1 GPU 的 UE4。</p>
 <h3 id="isaac-sim">Isaac Sim</h3>
 <p>基于 NVIDIA Omniverse（NVIDIA 用于物理 AI 开发的库和微服务集合，社区包含<a href="https://github.com/NVIDIA-Omniverse/PhysX/tree/main">PhysX</a>） 的 <a href="https://docs.robotsfan.com/isaaclab_v1/source/setup/faq.html">Isaac Sim 是闭源的（基于 PhysX）</a>，其上层 Isaac Lab 是一个开源平台。</p>
-<p><img alt="" src="https://developer.download.nvidia.com/images/isaac/lab/how-nvidia-isaac-lab-works.jpg" /></p>
+<p><img alt="" src="https://developer.download.nvidia.com/images/isaac/lab/how-nvidia-isaac-lab-works.jpg"></p>
 <h3 id="chaos">Chaos</h3>
 <p><a href="https://github.com/carla-simulator/carla/pull/8141">此 PR</a> 更新了 VehiclePhysicsControl 相关代码，以反映从 PhysX 到 Chaos 的切换。</p>
 <h2 id="chrono">学术界 Chrono</h2>
@@ -146,7 +146,7 @@
 <li>
 <p><a href="https://zhuanlan.zhihu.com/p/647129953">UE4 物理系统的调试</a></p>
 </li>
-</ul>
+</ul></div>
               
             </div>
           </div><footer>

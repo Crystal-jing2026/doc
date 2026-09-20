@@ -100,24 +100,24 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="vr">配置可驾驶的 VR 玩家</h1>
+                <div><h1 id="vr">配置可驾驶的 VR 玩家</h1>
 <h3 id="_1">先决条件</h3>
 <p>我们需要安装并确保 <strong>VR 模式</strong>功能完备，请参阅 <a href="VR-mode.md">VR-mode.md</a>。</p>
 <p>默认的客户端-服务器（模拟器）会将你以“观察者(Spectator)”身份生成。这意味着你默认处于“穿墙”（no-clip）模式，可通过 <code>WASD</code> 键和<code>鼠标</code>进行控制。</p>
 <h4 id="_2">默认的穿墙观察者模式</h4>
-<p><img alt="SpectatorMode" src="../Figures/DefaultSpectatorMode.png" />
+<p><img alt="SpectatorMode" src="../Figures/DefaultSpectatorMode.png">
 此外，当以 <code>-vr</code> 模式运行此服务器时，我们会出生在默认的中心位置，且没有动作控制，仅支持摄像机移动：</p>
 <h4 id="vr_1">默认的 VR 观察者模式</h4>
-<p><img alt="SpectatorMode" src="../Figures/VRSpectatorMode.png" /></p>
+<p><img alt="SpectatorMode" src="../Figures/VRSpectatorMode.png"></p>
 <p>如果仅使用外部客户端，这样做是可以的。然而，由于我们需要一个支持 VR 控制的玩家角色，且服务器端（UE4）也支持 VR，因此我们需要在服务器内生成该玩家角色。</p>
 <h2 id="_3">在模拟器中创建自定义玩家</h2>
 <p>首先，若要在 Carla 模拟器的 VR 实例中创建一辆可驾驶的车辆，我们需要选择一款车辆模型。</p>
 <h3 id="i">I. 查找车辆模型</h3>
 <p>Carla 在 <code>Content/Carla/Blueprints/Vehicles</code> 路径下提供了多种载具参与者的蓝图。本教程以 <strong>Tesla Model 3</strong> 为例，但该方法同样适用于其他任何车辆蓝图。</p>
-<p><img alt="TeslaFolder" src="../Figures/TeslaFolder.png" /></p>
+<p><img alt="TeslaFolder" src="../Figures/TeslaFolder.png"></p>
 <h3 id="ii">II. 创建新的载具蓝图</h3>
 <p>最简单的方法是复制您想要使用的现有载具蓝图并重命名。在本指南中，我们将该车辆重命名为 <code>BP_TeslaM3_DReyeVR</code>。
-<img alt="TeslaDuplicate" src="../Figures/TeslaDuplicate.png" /></p>
+<img alt="TeslaDuplicate" src="../Figures/TeslaDuplicate.png"></p>
 <h3 id="iii-vr">III. 添加第一人称摄像机与 VR 根节点</h3>
 <p>首先，我们需要双击上一节中创建的 <code>BP_TeslaM3_DReyeVR</code> 文件，这将打开一个新的蓝图窗口（如下图所示）。默认情况下，窗口会以“事件图表”（Event Graph）视图打开，但我们目前需要在“视口”（Viewport）区域进行操作。</p>
 <ol>
@@ -143,7 +143,7 @@
 </ol>
 </li>
 </ol>
-<p><img alt="VR_root" src="../Figures/VR_Root.png" /></p>
+<p><img alt="VR_root" src="../Figures/VR_Root.png"></p>
 <h3 id="iv">IV. 向场景中添加控制输入</h3>
 <p>既然已将摄像机附加到 Actor（角色/对象）上，我们需要一种方式，以便在模拟器的 VR（或非 VR）模式下控制该载具。</p>
 <p>返回主编辑器窗口，点击“设置”（Settings）&gt;“项目设置”（Project Settings），即可打开“项目设置（Project Settings）”窗口，在此处我们可以添加自定义输入事件。</p>
@@ -162,7 +162,7 @@
 <p>某些控件具有负缩放比例。</p>
 </div>
 <p>例如，如果将<code>Mouse Y</code>设置为 +1，会导致鼠标视角控制反转。</p>
-<p><img alt="Inputs" src="../Figures/Inputs.png" /></p>
+<p><img alt="Inputs" src="../Figures/Inputs.png"></p>
 <h3 id="v">V. 在事件图表中编写控制方案</h3>
 <p>为了让 UE4 能够接收并实际使用这些输入，我们需要明确哪些输入对应哪些操作。这可以通过蓝图窗口中的“事件图表”（Event Graph）来实现。</p>
 <p>请注意，若要创建节点（block），只需在窗口中右键点击并搜索相应的节点即可。按照控制方案中关键机制的顺序，具体步骤如下：</p>
@@ -190,13 +190,13 @@
 </li>
 </ol>
 <p>最终，您的事件图应该类似于这样：</p>
-<p><img alt="EventGraph" src="../Figures/EventGraph.png" /></p>
+<p><img alt="EventGraph" src="../Figures/EventGraph.png"></p>
 <h3 id="vi">VI. 将参与者放置到场景中并使用它</h3>
 <p>至此，该 Actor 应已制作完成并可驾驶；最后一步是将我们新建的 <code>BP_TeslaM3_DReyeVR</code> 蓝图放入场景中。只需将该蓝图拖放到地图上即可完成此操作。</p>
 <p>将 Actor 放置到场景中并选中它后，你应该能看到摄像机视角——该视角应位于驾驶座位置！</p>
 <p>接下来，进入右侧的“细节”（Details）面板，搜索“Auto Possess Player”（自动占有玩家）。将其设置从“Disabled”（禁用）更改为“Player 0”（玩家 0），这样观察者（Spectator）就能按预期直接生成在驾驶座上。</p>
 <p>参考截图：
-<img alt="FinishedBP" src="../Figures/FinishedBP.png" /></p>
+<img alt="FinishedBP" src="../Figures/FinishedBP.png"></p>
 <div class="admonition 重要">
 <p class="admonition-title">重要</p>
 <p><strong>移除旧的出生点</strong>：最后一步是移除地图中现有的 <code>SpawnPlayer</code> 组件。例如，在默认的 <code>Town03</code> 地图中，Carla 默认将玩家放置在此处。</p>
@@ -204,12 +204,12 @@
 <ul>
 <li>删除该出生点后，服务器将默认把玩家放置在 <code>BP_TeslaM3_DReyeVR</code> 蓝图中。</li>
 </ul>
-<p><img alt="SpwanPlayer" src="../Figures/SpawnPlayer.png" /></p>
+<p><img alt="SpwanPlayer" src="../Figures/SpawnPlayer.png"></p>
 <p>至此，你应该已经在 VR 驾驶模拟器中拥有了一个功能完备的玩家/观察者角色！</p>
 <h2 id="_4">参考</h2>
 <ul>
 <li><a href="https://github.com/GustavoSilvera/VR-Carla-Docs/blob/main/VRPlayer.md">Configuring a drivable VR player</a></li>
-</ul>
+</ul></div>
               
             </div>
           </div><footer>

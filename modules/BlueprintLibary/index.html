@@ -100,32 +100,32 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="carla-blueprintlibary-mapgenfunctionlibrary">CARLA BlueprintLibary 模块技术文档 (MapGenFunctionLibrary)</h1>
-<hr />
+                <div><h1 id="carla-blueprintlibary-mapgenfunctionlibrary">CARLA BlueprintLibary 模块技术文档 (MapGenFunctionLibrary)</h1>
+<hr>
 <h2 id="_1">目录</h2>
 <ol>
-<li><a href="#模块概述">模块概述</a>  </li>
-<li><a href="#核心功能">核心功能</a>  </li>
-<li><a href="#类与方法详解">类与方法详解</a>  </li>
-<li><a href="#数据结构与配置">数据结构与配置</a>  </li>
-<li><a href="#关键流程">关键流程</a>  </li>
-<li><a href="#配置参数">配置参数</a>  </li>
-<li><a href="#注意事项">注意事项</a>  </li>
-<li><a href="#示例配置">示例配置</a>  </li>
-<li><a href="#附录">附录</a>  </li>
+<li><a href="#%E6%A8%A1%E5%9D%97%E6%A6%82%E8%BF%B0">模块概述</a>  </li>
+<li><a href="#%E6%A0%B8%E5%BF%83%E5%8A%9F%E8%83%BD">核心功能</a>  </li>
+<li><a href="#%E7%B1%BB%E4%B8%8E%E6%96%B9%E6%B3%95%E8%AF%A6%E8%A7%A3">类与方法详解</a>  </li>
+<li><a href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E9%85%8D%E7%BD%AE">数据结构与配置</a>  </li>
+<li><a href="#%E5%85%B3%E9%94%AE%E6%B5%81%E7%A8%8B">关键流程</a>  </li>
+<li><a href="#%E9%85%8D%E7%BD%AE%E5%8F%82%E6%95%B0">配置参数</a>  </li>
+<li><a href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9">注意事项</a>  </li>
+<li><a href="#%E7%A4%BA%E4%BE%8B%E9%85%8D%E7%BD%AE">示例配置</a>  </li>
+<li><a href="#%E9%99%84%E5%BD%95">附录</a>  </li>
 </ol>
-<hr />
+<hr>
 <h2 id="_2">模块概述</h2>
-<p><code>MapGenFunctionLibrary</code> 是 CARLA 中用于地图生成和几何处理的蓝图函数库，提供以下核心能力：<br />
-- <strong>静态网格生成</strong>：从程序化数据创建符合 UE 规范的静态网格资产<br />
-- <strong>坐标投影转换</strong>：实现横向墨卡托投影，支持 OSM 坐标到 UE 坐标系的转换<br />
-- <strong>异步控制</strong>：提供线程休眠与渲染命令刷新接口<br />
+<p><code>MapGenFunctionLibrary</code> 是 CARLA 中用于地图生成和几何处理的蓝图函数库，提供以下核心能力：<br>
+- <strong>静态网格生成</strong>：从程序化数据创建符合 UE 规范的静态网格资产<br>
+- <strong>坐标投影转换</strong>：实现横向墨卡托投影，支持 OSM 坐标到 UE 坐标系的转换<br>
+- <strong>异步控制</strong>：提供线程休眠与渲染命令刷新接口<br>
 - <strong>资源管理</strong>：自动化资产创建/保存流程及引擎资源清理  </p>
-<hr />
+<hr>
 <h2 id="_3">核心功能</h2>
 <h3 id="1">1. 静态网格构建</h3>
 <ul>
-<li><strong>几何数据转换</strong><br />
+<li><strong>几何数据转换</strong><br>
   <div class="highlight"><pre><span></span><code><span class="n">FMeshDescription</span><span class="w"> </span><span class="nf">BuildMeshDescriptionFromData</span><span class="p">(...);</span>
 </code></pre></div></li>
 <li>将顶点/三角形数据转换为 UE 的 FMeshDescription 结构  </li>
@@ -133,16 +133,16 @@
 <p>支持法线、切线、UV 等多通道属性配置  </p>
 </li>
 <li>
-<p><strong>资产创建与保存</strong><br />
-  <div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="n">UStaticMesh</span><span class="o">*</span><span class="w"> </span><span class="nf">CreateMesh</span><span class="p">(...);</span>
-</code></pre></div></p>
+<p><strong>资产创建与保存</strong><br>
+  </p><div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="n">UStaticMesh</span><span class="o">*</span><span class="w"> </span><span class="nf">CreateMesh</span><span class="p">(...);</span>
+</code></pre></div>
 </li>
 <li>自动生成 StaticMesh 资产并保存到指定包路径  </li>
 <li>内置碰撞体生成（CTF_UseComplexAsSimple）  </li>
 </ul>
 <h3 id="2">2. 地理坐标转换</h3>
 <ul>
-<li><strong>横向墨卡托投影</strong><br />
+<li><strong>横向墨卡托投影</strong><br>
   <div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="n">FVector2D</span><span class="w"> </span><span class="nf">GetTransversemercProjection</span><span class="p">(...);</span>
 </code></pre></div></li>
 <li>实现经纬度到平面坐标的精确转换  </li>
@@ -151,11 +151,11 @@
 </ul>
 <h3 id="3">3. 系统级控制</h3>
 <ul>
-<li><strong>渲染管线同步</strong><br />
+<li><strong>渲染管线同步</strong><br>
   <div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">FlushRenderingCommandsInBlueprint</span><span class="p">();</span>
 </code></pre></div></li>
 <li>强制刷新渲染线程命令队列  </li>
-<li>确保资源修改实时生效<br />
+<li>确保资源修改实时生效<br>
 <pre class="mermaid"><code>   sequenceDiagram
   participant GameThread
   participant RenderThread
@@ -226,7 +226,7 @@ static const float OSMToCentimetersScaleFactor = 100.0f;</code></pre></li>
 <li>OSM 单位到厘米的转换系数（1 OSM单位 = 100厘米） </li>
 <li>应用于 <code>GetTransversemercProjection()</code> 输出坐标  </li>
 </ul>
-<hr />
+<hr>
 <h2 id="_4">关键流程</h2>
 <h3 id="_5">静态网格生成流程</h3>
 <ol>
@@ -236,13 +236,13 @@ static const float OSMToCentimetersScaleFactor = 100.0f;</code></pre></li>
 <p>准备材质实例（需提前加载到内存）  </p>
 </li>
 <li>
-<p><strong>网格描述构建</strong><br />
-   <pre class="mermaid"><code>graph LR
+<p><strong>网格描述构建</strong><br>
+   </p><pre class="mermaid"><code>graph LR
   A[顶点数据] --&gt; B(创建VertexID)
   C[三角形索引] --&gt; D(生成VertexInstance)
   D --&gt; E[设置法线/UV/切线]
   E --&gt; F(构建Polygon)
-  F --&gt; G[生成FMeshDescription]</code></pre></p>
+  F --&gt; G[生成FMeshDescription]</code></pre>
 </li>
 <li>
 <p><strong>资产序列化</strong>  </p>
@@ -251,16 +251,16 @@ static const float OSMToCentimetersScaleFactor = 100.0f;</code></pre></li>
 <li>资产命名规范：<code>MeshName</code> 参数指定  </li>
 </ol>
 <h3 id="_6">坐标转换算法</h3>
-<p>横向墨卡托投影公式：<br />
-<div class="highlight"><pre><span></span><code>x = R * asinh(sin(Δλ) / sqrt(tan²φ + cos²Δλ))  
+<p>横向墨卡托投影公式：<br>
+</p><div class="highlight"><pre><span></span><code>x = R * asinh(sin(Δλ) / sqrt(tan²φ + cos²Δλ))  
 y = R * atan(tanφ / cosΔλ)  
 Result = (x, y_ref - y) * OSMToCentimetersScaleFactor  
 </code></pre></div>
-其中：<br />
-- φ, λ：目标点的纬度/经度（弧度）<br />
-- φ0, λ0：参考原点纬度/经度（弧度）<br />
-- R：地球半径（6373000 米）  </p>
-<hr />
+其中：<br>
+- φ, λ：目标点的纬度/经度（弧度）<br>
+- φ0, λ0：参考原点纬度/经度（弧度）<br>
+- R：地球半径（6373000 米）  
+<hr>
 <h2 id="_7">配置参数</h2>
 <h3 id="createmesh">CreateMesh 参数约束</h3>
 <table>
@@ -316,7 +316,7 @@ Result = (x, y_ref - y) * OSMToCentimetersScaleFactor
 </tr>
 </tbody>
 </table>
-<hr />
+<hr>
 <h2 id="_9">注意事项</h2>
 <ol>
 <li><strong>线程安全</strong>  </li>
@@ -373,7 +373,7 @@ Result = (x, y_ref - y) * OSMToCentimetersScaleFactor
 <li><strong>并发处理</strong>  </li>
 <li>使用 <code>AsyncTask</code> 封装耗时操作  </li>
 <li>避免在渲染线程操作顶点数据  </li>
-<li>推荐线程模型：<br />
+<li>推荐线程模型：<br>
      <pre class="mermaid"><code>graph TD
   A[主线程] --&gt; B{数据量&gt;1M?}
   B --&gt;|是| C[启动Worker线程]
@@ -413,7 +413,7 @@ Result = (x, y_ref - y) * OSMToCentimetersScaleFactor
 <div class="highlight"><pre><span></span><code><span class="k">try</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">UStaticMesh</span><span class="o">*</span><span class="w"> </span><span class="n">Mesh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UMapGenFunctionLibrary</span><span class="o">::</span><span class="n">CreateMesh</span><span class="p">(...);</span>
 <span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">FMapGenException</span><span class="o">&amp;</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogCarlaMapGen</span><span class="p">,</span><span class="w"> </span><span class="n">Error</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;错误代码 %d: %s&quot;</span><span class="p">),</span><span class="w"> </span>
+<span class="w">    </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogCarlaMapGen</span><span class="p">,</span><span class="w"> </span><span class="n">Error</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">"错误代码 %d: %s"</span><span class="p">),</span><span class="w"> </span>
 <span class="w">        </span><span class="n">e</span><span class="p">.</span><span class="n">GetErrorCode</span><span class="p">(),</span><span class="w"> </span><span class="o">*</span><span class="n">e</span><span class="p">.</span><span class="n">GetMessage</span><span class="p">());</span>
 <span class="p">}</span>
 <span class="o">---</span>
@@ -431,13 +431,13 @@ Result = (x, y_ref - y) * OSMToCentimetersScaleFactor
 <span class="n">UStaticMesh</span><span class="o">*</span><span class="w"> </span><span class="n">RoadMesh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UMapGenFunctionLibrary</span><span class="o">::</span><span class="n">CreateMesh</span><span class="p">(</span>
 <span class="w">    </span><span class="n">RoadData</span><span class="p">,</span><span class="w"> </span>
 <span class="w">    </span><span class="n">TArray</span><span class="o">&lt;</span><span class="n">FProcMeshTangent</span><span class="o">&gt;</span><span class="p">(),</span><span class="w"> </span>
-<span class="w">    </span><span class="n">LoadObject</span><span class="o">&lt;</span><span class="n">UMaterialInstance</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;.../Asphalt_Inst&quot;</span><span class="p">),</span>
-<span class="w">    </span><span class="s">&quot;SanFrancisco&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s">&quot;Roads&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="n">FName</span><span class="p">(</span><span class="s">&quot;MainRoad_Section1&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">LoadObject</span><span class="o">&lt;</span><span class="n">UMaterialInstance</span><span class="o">&gt;</span><span class="p">(</span><span class="s">".../Asphalt_Inst"</span><span class="p">),</span>
+<span class="w">    </span><span class="s">"SanFrancisco"</span><span class="p">,</span>
+<span class="w">    </span><span class="s">"Roads"</span><span class="p">,</span>
+<span class="w">    </span><span class="n">FName</span><span class="p">(</span><span class="s">"MainRoad_Section1"</span><span class="p">)</span>
 <span class="p">);</span>
 </code></pre></div>
-<hr />
+<hr>
 <h2 id="_14">附录</h2>
 <h3 id="_15">依赖项</h3>
 <ul>
@@ -482,8 +482,8 @@ Result = (x, y_ref - y) * OSMToCentimetersScaleFactor
 </table>
 <h3 id="_17">调试支持</h3>
 <ul>
-<li><strong>日志追踪</strong><br />
-  <div class="highlight"><pre><span></span><code><span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogCarlaMapGenFunctionLibrary</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;MaterialInstance is nullptr&quot;</span><span class="p">));</span>
+<li><strong>日志追踪</strong><br>
+  <div class="highlight"><pre><span></span><code><span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogCarlaMapGenFunctionLibrary</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">"MaterialInstance is nullptr"</span><span class="p">));</span>
 </code></pre></div></li>
 <li><strong>实时预览</strong>  </li>
 <li>在编辑器中运行 <code>CleanupGEngine()</code> 可刷新资产状态  </li>
@@ -573,7 +573,7 @@ Result = (x, y_ref - y) * OSMToCentimetersScaleFactor
 <td></td>
 </tr>
 </tbody>
-</table>
+</table></div>
               
             </div>
           </div><footer>

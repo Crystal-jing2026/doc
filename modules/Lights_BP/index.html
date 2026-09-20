@@ -100,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="_1">灯光蓝图</h1>
+                <div><h1 id="_1">灯光蓝图</h1>
 <ul>
 <li>灯光 <a href="https://bitbucket.org/carla-simulator/carla-content/src/master/Blueprints/Lights/BP_Lights.uasset">BP_Lights</a></li>
 <li>多灯 <a href="https://bitbucket.org/carla-simulator/carla-content/src/master/Blueprints/Lights/BP_multipleLights.uasset">BP_multipleLights</a></li>
@@ -109,14 +109,14 @@
 <h1 id="_2">人车模拟器虚幻场景灯光系统技术文档</h1>
 <h2 id="_3">目录</h2>
 <ol>
-<li><a href="#1项目概述">项目概述</a></li>
-<li><a href="#2核心组件与蓝图结构">核心组件与蓝图结构</a></li>
-<li><a href="#3关键功能实现">关键功能实现</a></li>
-<li><a href="#4工作流程">工作流程</a></li>
-<li><a href="#5优化与扩展建议">优化与扩展建议</a></li>
-<li><a href="#6总结">总结</a></li>
+<li><a href="#1%E9%A1%B9%E7%9B%AE%E6%A6%82%E8%BF%B0">项目概述</a></li>
+<li><a href="#2%E6%A0%B8%E5%BF%83%E7%BB%84%E4%BB%B6%E4%B8%8E%E8%93%9D%E5%9B%BE%E7%BB%93%E6%9E%84">核心组件与蓝图结构</a></li>
+<li><a href="#3%E5%85%B3%E9%94%AE%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0">关键功能实现</a></li>
+<li><a href="#4%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B">工作流程</a></li>
+<li><a href="#5%E4%BC%98%E5%8C%96%E4%B8%8E%E6%89%A9%E5%B1%95%E5%BB%BA%E8%AE%AE">优化与扩展建议</a></li>
+<li><a href="#6%E6%80%BB%E7%BB%93">总结</a></li>
 </ol>
-<hr />
+<hr>
 <h2 id="1">1. 项目概述</h2>
 <p>本模块以 Unreal Engine 作为渲染核心，通过蓝图化体系对场景中的人工光源（路灯、建筑投光、交通信号灯等）进行结构化管理。所有灯具参数（光强、色温、衰减曲线、IES 曲线等）均以 Data Asset 形式数据化保存，并通过统一的 Blueprint 接口实现对光强、色彩与闪烁效果的编程控制，实时响应昼夜循环、气象系统和交通信号相位等全局事件。借鉴 CARLA 在蓝图组织和资产管理方面的最佳实践，本系统采用 C++ 与蓝图混合开发，兼顾高性能渲染与后续扩展维护的灵活性。在夜间、黄昏、黎明及雨雾等特殊场景下，高精度的人工灯光渲染不仅提升了视觉真实感，也显著增强了车载摄像头和深度传感器的环境感知准确性，为自动驾驶仿真提供了可靠的数据支撑。</p>
 <h3 id="_4">模块依赖与集成</h3>
@@ -127,9 +127,9 @@
 <li><strong>模拟器控制接口 (例如 Python API)</strong>: 外部系统可能需要通过 ID 等方式控制特定灯光的开关或属性。</li>
 <li><strong>动态环境系统 (昼夜循环/天气)</strong>: 灯光系统需要接收来自这些系统的指令，根据时间和天气自动调整状态。</li>
 </ul>
-<p><img alt="灯光系统依赖草图" src="../../img/light_BP.png" />
+<p><img alt="灯光系统依赖草图" src="../../img/light_BP.png">
 该图展示了灯光系统模块如何与虚幻引擎渲染、场景管理以及模拟器的动态系统交互，提供受控的人工照明。</p>
-<hr />
+<hr>
 <h2 id="2">2. 核心组件与蓝图结构</h2>
 <p>本灯光系统由以下核心蓝图资产构成，它们组织在虚幻引擎的内容浏览器中，例如位于 <code>/Game/Blueprints/Scene/Lights/</code> 目录下：</p>
 <h3 id="21-bp_baselight">2.1. BP_BaseLight</h3>
@@ -163,16 +163,16 @@
 <span class="c1">// Blueprint Pseudo-Code: 高级灯光配置加载</span>
 <span class="n">Event</span><span class="w"> </span><span class="n">BeginPlay</span>
 <span class="w">    </span><span class="c1">// 1. 加载场景光照参数数据资产</span>
-<span class="w">    </span><span class="n">Const</span><span class="w"> </span><span class="n">UDataAsset</span><span class="o">*</span><span class="w"> </span><span class="n">SceneLightingDA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Cast</span><span class="o">&lt;</span><span class="n">UDataAsset</span><span class="o">&gt;</span><span class="p">(</span><span class="n">LoadAsset</span><span class="p">(</span><span class="s">&quot;/Game/Configs/SceneLighting/SceneLightingParams&quot;</span><span class="p">));</span>
+<span class="w">    </span><span class="n">Const</span><span class="w"> </span><span class="n">UDataAsset</span><span class="o">*</span><span class="w"> </span><span class="n">SceneLightingDA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Cast</span><span class="o">&lt;</span><span class="n">UDataAsset</span><span class="o">&gt;</span><span class="p">(</span><span class="n">LoadAsset</span><span class="p">(</span><span class="s">"/Game/Configs/SceneLighting/SceneLightingParams"</span><span class="p">));</span>
 <span class="w">    </span><span class="n">If</span><span class="w"> </span><span class="n">Not</span><span class="w"> </span><span class="n">IsValid</span><span class="p">(</span><span class="n">SceneLightingDA</span><span class="p">)</span>
-<span class="w">        </span><span class="n">LogError</span><span class="p">(</span><span class="s">&quot;SceneLightingParams 加载失败，检查资产路径或引用&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="n">LogError</span><span class="p">(</span><span class="s">"SceneLightingParams 加载失败，检查资产路径或引用"</span><span class="p">)</span>
 <span class="w">        </span><span class="n">Return</span>
 <span class="w">    </span><span class="n">End</span><span class="w"> </span><span class="n">If</span>
 
 <span class="w">    </span><span class="c1">// 2. 按 LightTypeIdentifier 查找对应的配置，失败时使用默认</span>
 <span class="w">    </span><span class="n">FLightConfig</span><span class="w"> </span><span class="n">LightCfg</span>
 <span class="w">    </span><span class="n">If</span><span class="w"> </span><span class="n">Not</span><span class="w"> </span><span class="n">SceneLightingDA</span><span class="p">.</span><span class="n">GetConfigByType</span><span class="p">(</span><span class="n">LightTypeIdentifier</span><span class="p">,</span><span class="w"> </span><span class="n">Out</span><span class="w"> </span><span class="n">LightCfg</span><span class="p">)</span>
-<span class="w">        </span><span class="n">LogWarning</span><span class="p">(</span><span class="s">&quot;未找到 LightType &#39;%s&#39; 的配置，采用 DefaultConfig&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">LightTypeIdentifier</span><span class="p">.</span><span class="n">ToString</span><span class="p">())</span>
+<span class="w">        </span><span class="n">LogWarning</span><span class="p">(</span><span class="s">"未找到 LightType '%s' 的配置，采用 DefaultConfig"</span><span class="p">,</span><span class="w"> </span><span class="n">LightTypeIdentifier</span><span class="p">.</span><span class="n">ToString</span><span class="p">())</span>
 <span class="w">        </span><span class="n">LightCfg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SceneLightingDA</span><span class="p">.</span><span class="n">DefaultConfig</span>
 <span class="w">    </span><span class="n">End</span><span class="w"> </span><span class="n">If</span>
 
@@ -225,7 +225,7 @@
 <span class="w">    </span><span class="c1">// 1. 获取场景中所有继承自 BP_LightBase 的 Actor</span>
 <span class="w">    </span><span class="n">Local</span><span class="w"> </span><span class="n">Variable</span><span class="w"> </span><span class="n">LightActors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetAllActorsOfClass</span><span class="p">(</span><span class="n">BP_LightBase</span><span class="p">)</span>
 <span class="w">    </span><span class="n">If</span><span class="w"> </span><span class="n">LightActors</span><span class="p">.</span><span class="n">IsEmpty</span><span class="p">()</span>
-<span class="w">        </span><span class="n">LogWarning</span><span class="p">(</span><span class="s">&quot;AssignUniqueLightActorIDs：未发现任何 BP_LightBase 实例，跳过 ID 分配&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="n">LogWarning</span><span class="p">(</span><span class="s">"AssignUniqueLightActorIDs：未发现任何 BP_LightBase 实例，跳过 ID 分配"</span><span class="p">)</span>
 <span class="w">        </span><span class="n">Return</span>
 <span class="w">    </span><span class="n">End</span><span class="w"> </span><span class="n">If</span>
 
@@ -238,11 +238,11 @@
 
 <span class="w">        </span><span class="c1">// 2.1 生成全局唯一 GUID</span>
 <span class="w">        </span><span class="n">Local</span><span class="w"> </span><span class="n">Variable</span><span class="w"> </span><span class="n">NewGUID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FGuid</span><span class="p">.</span><span class="n">NewGuid</span><span class="p">()</span>
-<span class="w">        </span><span class="n">Local</span><span class="w"> </span><span class="n">Variable</span><span class="w"> </span><span class="n">IDString</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;LightID_&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">NewGUID</span><span class="p">.</span><span class="n">ToString</span><span class="p">(</span><span class="n">EGuidFormats</span><span class="p">.</span><span class="n">DigitsWithHyphens</span><span class="p">)</span>
+<span class="w">        </span><span class="n">Local</span><span class="w"> </span><span class="n">Variable</span><span class="w"> </span><span class="n">IDString</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"LightID_"</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">NewGUID</span><span class="p">.</span><span class="n">ToString</span><span class="p">(</span><span class="n">EGuidFormats</span><span class="p">.</span><span class="n">DigitsWithHyphens</span><span class="p">)</span>
 
 <span class="w">        </span><span class="c1">// 2.2 移除旧的 LightID_ 标签（如有）并添加新标签</span>
 <span class="w">        </span><span class="n">For</span><span class="w"> </span><span class="n">Each</span><span class="w"> </span><span class="n">Tag</span><span class="w"> </span><span class="n">In</span><span class="w"> </span><span class="n">Actor</span><span class="p">.</span><span class="n">Tags</span>
-<span class="w">            </span><span class="n">If</span><span class="w"> </span><span class="n">Tag</span><span class="p">.</span><span class="n">ToString</span><span class="p">().</span><span class="n">StartsWith</span><span class="p">(</span><span class="s">&quot;LightID_&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="n">If</span><span class="w"> </span><span class="n">Tag</span><span class="p">.</span><span class="n">ToString</span><span class="p">().</span><span class="n">StartsWith</span><span class="p">(</span><span class="s">"LightID_"</span><span class="p">)</span>
 <span class="w">                </span><span class="n">Actor</span><span class="p">.</span><span class="n">RemoveTag</span><span class="p">(</span><span class="n">Tag</span><span class="p">)</span>
 <span class="w">            </span><span class="n">End</span><span class="w"> </span><span class="n">If</span>
 <span class="w">        </span><span class="n">End</span><span class="w"> </span><span class="n">For</span>
@@ -253,7 +253,7 @@
 <span class="w">        </span><span class="n">If</span><span class="w"> </span><span class="n">IsValid</span><span class="p">(</span><span class="n">LightBaseRef</span><span class="p">)</span>
 <span class="w">            </span><span class="n">LightBaseRef</span><span class="p">.</span><span class="n">LightID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">IDString</span>
 <span class="w">        </span><span class="n">Else</span>
-<span class="w">            </span><span class="n">LogError</span><span class="p">(</span><span class="s">&quot;AssignUniqueLightActorIDs：Actor {0} 无法转换为 BP_LightBase&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Actor</span><span class="p">.</span><span class="n">GetName</span><span class="p">())</span>
+<span class="w">            </span><span class="n">LogError</span><span class="p">(</span><span class="s">"AssignUniqueLightActorIDs：Actor {0} 无法转换为 BP_LightBase"</span><span class="p">,</span><span class="w"> </span><span class="n">Actor</span><span class="p">.</span><span class="n">GetName</span><span class="p">())</span>
 <span class="w">        </span><span class="n">End</span><span class="w"> </span><span class="n">If</span>
 <span class="w">    </span><span class="n">End</span><span class="w"> </span><span class="n">For</span>
 <span class="n">End</span><span class="w"> </span><span class="n">Function</span>
@@ -350,7 +350,7 @@
 <li><strong>更高级的交通信号灯</strong>: 实现复杂的交通信号灯逻辑，包括多种模式、闪烁、故障等。</li>
 </ul>
 <h3 id="6">6. 总结</h3>
-<p>本技术文档系统地阐述了基于 Unreal Engine 的车载模拟器人工光源蓝图架构，涵盖框架设计、核心组件、关键功能实现及运行流程。系统以 C++ 与蓝图混合开发为基础，采用继承化组件结构承载各类灯具逻辑，依托集中化 Data Asset 管理光照参数，并通过全局唯一 ID 驱动的控制接口实现运行时统一调度与扩展。方案原生支持路灯、建筑投光、交通信号灯等多种光源类型，并能与昼夜循环、气象系统、交通信号等子系统深度联动，为夜间、黄昏、雨雾等复杂场景下的高保真渲染提供坚实基础。未来可沿着物理渲染精度优化、Lightmass 预计算加速、IES 曲线及体积光效增强等方向持续迭代，以进一步提升系统的性能、真实感和功能复杂度。</p>
+<p>本技术文档系统地阐述了基于 Unreal Engine 的车载模拟器人工光源蓝图架构，涵盖框架设计、核心组件、关键功能实现及运行流程。系统以 C++ 与蓝图混合开发为基础，采用继承化组件结构承载各类灯具逻辑，依托集中化 Data Asset 管理光照参数，并通过全局唯一 ID 驱动的控制接口实现运行时统一调度与扩展。方案原生支持路灯、建筑投光、交通信号灯等多种光源类型，并能与昼夜循环、气象系统、交通信号等子系统深度联动，为夜间、黄昏、雨雾等复杂场景下的高保真渲染提供坚实基础。未来可沿着物理渲染精度优化、Lightmass 预计算加速、IES 曲线及体积光效增强等方向持续迭代，以进一步提升系统的性能、真实感和功能复杂度。</p></div>
               
             </div>
           </div><footer>

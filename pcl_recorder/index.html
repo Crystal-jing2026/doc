@@ -100,24 +100,24 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="_1">点云地图创建</h1>
+                <div><h1 id="_1">点云地图创建</h1>
 <p><a href="https://github.com/carla-simulator/ros-bridge/tree/master/pcl_recorder">PCL记录器</a> 包允许您从 Carla 地图创建点云地图。</p>
-<hr />
+<hr>
 <h2 id="_2">在你开始之前</h2>
 <p>安装 <code>pcl-tools</code> 库：</p>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>pcl-tools
 </code></pre></div>
-<hr />
+<hr>
 <h2 id="pcl">使用 PCL 记录器</h2>
 <p>PCL 记录器包将生成一辆自主车辆，可以通过键盘或 Carla PythonAPI 中的自动驾驶功能进行控制。</p>
 <p><strong>1.</strong> 启动 Carla 服务器后，在新终端中运行以下命令来启动 PCL 记录器包：</p>
-<p><div class="highlight"><pre><span></span><code><span class="c1"># ROS 1</span>
+<p></p><div class="highlight"><pre><span></span><code><span class="c1"># ROS 1</span>
 roslaunch<span class="w"> </span>pcl_recorder<span class="w"> </span>pcl_recorder.launch
 
 <span class="c1"># ROS 2</span>
 ros2<span class="w"> </span>launch<span class="w"> </span>pcl_recorder<span class="w"> </span>pcl_recorder.launch.py
 </code></pre></div>
-<strong>2.</strong> 捕获驱动完成后，减小点云的整体大小：</p>
+<strong>2.</strong> 捕获驱动完成后，减小点云的整体大小：
 <div class="highlight"><pre><span></span><code># 创建一个点云文件
 pcl_concatenate_points_pcd /tmp/pcl_capture/*.pcd
 
@@ -126,7 +126,7 @@ pcl_voxel_grid -leaf 0.1,0.1,0.1 output.pcd map.pcd
 </code></pre></div>
 <p><strong>3.</strong> 验证结果：</p>
 <div class="highlight"><pre><span></span><code>pcl_viewer<span class="w"> </span>map.pcd
-</code></pre></div>
+</code></pre></div></div>
               
             </div>
           </div><footer>

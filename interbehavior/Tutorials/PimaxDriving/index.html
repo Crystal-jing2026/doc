@@ -100,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="pimax-dream-air">Pimax Dream Air 驾驶与眼动追踪</h1>
+                <div><h1 id="pimax-dream-air">Pimax Dream Air 驾驶与眼动追踪</h1>
 <p>本页介绍如何在 OpenHUTB（DReyeVR）中使用 Pimax Dream Air 系列头显和 Crystal 手柄，包括手柄驾驶、连续调整座椅、combined gaze 眼动追踪以及蓝色注视线显示。</p>
 <p>手柄功能适用于 Pimax SteamVR 驱动识别为 <code>oculus_touch</code> 的设备；眼动追踪目前已在 <strong>Pimax Dream Air + Windows + Pimax Play + SteamVR</strong> 环境中完成实机验证。</p>
 <p>对应代码改动：</p>
@@ -149,52 +149,26 @@
 </table>
 <h2 id="_2">效果预览</h2>
 <p>静止注视：车辆停止时，蓝色视线随眼球移动并指向道路左前方目标。</p>
-<p><img alt="Dream Air 静止眼动追踪" src="../../Figures/PimaxEyeTracking_Static.jpg" /></p>
-<p>行驶跟随：车辆以约 20 km/h 行驶时，蓝色视线保持附着于头显相机，不会落在车辆后方。</p>
-<p><img alt="Dream Air 行驶中眼动追踪" src="../../Figures/PimaxEyeTracking_Driving.jpg" /></p>
+<p><img alt="Dream Air 静止眼动追踪" src="../../Figures/PimaxEyeTracking_Static.jpg"></p>
+<p>行驶跟随：车辆行驶时，蓝色视线保持附着于头显相机。</p>
+<p><img alt="Dream Air 行驶中眼动追踪" src="../../Figures/PimaxEyeTracking_Driving.jpg"></p>
 <p>注视转移：车辆继续行驶时，视线能够转向道路右侧目标，展示 combined gaze 的连续变化。</p>
-<p><img alt="Dream Air 行驶中转移注视点" src="../../Figures/PimaxEyeTracking_GazeShift.jpg" /></p>
+<p><img alt="Dream Air 行驶中转移注视点" src="../../Figures/PimaxEyeTracking_GazeShift.jpg"></p>
 <p>下面的视频为 Dream Air 实机内录。蓝色注视线的起点固定在头显前方，终点随眼球注视方向移动；车辆行驶时，视线会跟随相机，不会落在车辆后方。</p>
-<video controls width="100%" preload="metadata" poster="../Figures/PimaxDreamAir_EyeTracking_Poster.jpg">
-  <source src="../Videos/PimaxDreamAir_EyeTracking.mp4" type="video/mp4">
-  当前浏览器不支持内嵌视频，请使用下方链接观看。
-</video>
-
-<p><a href="../../Videos/PimaxDreamAir_EyeTracking.mp4">下载或单独观看 Pimax Dream Air 眼动追踪演示</a></p>
+<p><div class="video-container"><video style="position:relative;width:100%;height:22.172vw" loop controls autoplay alt="type:video"><source src="../../Videos/PimaxDreamAir_EyeTracking.mp4" type="video/mp4"></source></video></div></p>
 <p>设备图样：Pimax Dream Air 头显与 Crystal 手柄置于桌面，显示器同步输出旁观画面，红字 <code>0 R</code> 表示当前车速 0、倒挡。</p>
-<p><img alt="设备图样" src="../../Figures/PimaxDriving_Setup.jpg" /></p>
-<p>手柄驾驶：显示器为座舱视角，方向盘随左摇杆实时转动，红字 <code>33 D</code> 表示时速 33 km/h、前进挡。</p>
-<p><img alt="手柄驾驶" src="../../Figures/PimaxDriving_Driving.jpg" /></p>
-<h2 id="_3">工作原理</h2>
-<h3 id="_4">手柄输入</h3>
-<p>Pimax 的 SteamVR 驱动（aapvr）会把 Crystal 手柄上报为 <code>oculus_touch</code>。OpenHUTB 使用 SteamVR action 将手柄输入传递给 DReyeVR：</p>
-<ul>
-<li><code>CarlaUE4/Config/SteamVRBindings/steamvr_manifest.json</code>：声明转向、油门、刹车、换挡和座椅调整 action；</li>
-<li><code>CarlaUE4/Config/SteamVRBindings/oculus_touch.json</code>：将 Crystal 手柄按键映射到 action；</li>
-<li><code>CarlaUE4/Config/DefaultInput.ini</code>：将 SteamVR action 绑定到 DReyeVR 输入；</li>
-<li>右摇杆使用标准 <code>vector2 position</code>，座椅移动使用 15% 死区并按帧时间计算，避免松开摇杆后漂移或不同帧率下速度不一致。</li>
-</ul>
-<h3 id="_5">眼动追踪</h3>
-<p>Pimax 眼动后端在 Windows 上运行时加载 <code>libPVRClient64.dll</code>，因此编译 OpenHUTB 时不需要安装 Pimax SDK，也不会随项目分发 Pimax 二进制文件。</p>
-<p>后端通过 PVR 1.26 接口读取 combined gaze，将方向转换为 Unreal Engine 坐标系，并接入 DReyeVR 原有的注视射线、目标检测、记录器和 Python API。读取过程中会检查设备状态、时间戳、有限值、可信范围和数据新鲜度；设备断开或读取失败后会自动重连。</p>
-<h3 id="_6">蓝色注视线</h3>
-<p>蓝色注视线作为组件附着于 VR 相机：</p>
-<ul>
-<li>起点固定在头显前约 30 cm；</li>
-<li>眼球移动只改变射线方向和终点；</li>
-<li>在相机姿态更新后刷新，避免车辆行驶时射线落后；</li>
-<li>样本无效、过期或时间戳为 0 时自动隐藏。</li>
-</ul>
-<p>该显示方式只影响调试视线，不改变记录器或 Python API 中的眼动数据。</p>
-<h2 id="_7">使用前准备</h2>
+<p><img alt="设备图样" src="../../Figures/PimaxDriving_Setup.jpg"></p>
+<p>手柄驾驶：显示器为座舱视角，方向盘随左摇杆实时转动，红字 <code>33 D</code> 表示车速读数 33、前进挡。</p>
+<p><img alt="手柄驾驶" src="../../Figures/PimaxDriving_Driving.jpg"></p>
+<h2 id="_3">使用前准备</h2>
 <ol>
-<li>安装并启动 Pimax Play，连接 Dream Air 和 Crystal 手柄；</li>
+<li>安装并启动 Pimax Play，连接 Dream Air 和 Crystal 手柄。所需运行库随 Pimax Play 安装，无需手动复制 DLL；</li>
 <li>在 Pimax Play 中开启眼动追踪并完成眼动校准；</li>
-<li>启动 SteamVR，确认头显和手柄图标为正常连接状态；</li>
-<li>使用包含 <a href="https://github.com/OpenHUTB/hutb/pull/3670">OpenHUTB/hutb#3670</a> 的版本；</li>
+<li>从 Steam 安装 SteamVR，首次手动运行一次并确认头显和手柄正常连接；之后可由启动脚本自动拉起；</li>
+<li>使用包含 <a href="https://github.com/OpenHUTB/hutb/pull/3670">OpenHUTB/hutb#3670</a> 的已编译版本；</li>
 <li>建议先关闭不需要的高开销功能，例如三个实时后视镜。</li>
 </ol>
-<h2 id="_8">配置</h2>
+<h2 id="_4">配置</h2>
 <p>在 <code>Unreal/CarlaUE4/Config/DReyeVRConfig.ini</code> 中确认以下配置：</p>
 <div class="highlight"><pre><span></span><code><span class="k">[CameraParams]</span>
 <span class="na">SeatMoveSpeedCmPerSecond</span><span class="o">=</span><span class="s">75.0</span>
@@ -212,24 +186,70 @@
 <span class="na">GazeInvertHorizontal</span><span class="o">=</span><span class="s">False</span>
 <span class="na">GazeInvertVertical</span><span class="o">=</span><span class="s">False</span>
 </code></pre></div>
-<p>其中 <code>0x0044</code> 为本次实测 Dream Air 的产品 ID。若后续验证其他 Pimax 型号，应确认其 VID/PID 后再加入白名单，不建议长期使用 <code>AllowUnknownPimaxDevice=True</code>。</p>
-<h2 id="_9">启动方法</h2>
-<ol>
-<li>依次启动 Pimax Play 和 SteamVR；</li>
-<li>确认眼动追踪开关已开启并完成校准；</li>
-<li>启动模拟器（打包版示例）：</li>
-</ol>
-<div class="highlight"><pre><span></span><code><span class="p">.\</span><span class="n">CarlaUE4</span><span class="p">.</span><span class="n">exe</span> <span class="p">/</span><span class="n">Game</span><span class="p">/</span><span class="n">Carla</span><span class="p">/</span><span class="n">Maps</span><span class="p">/</span><span class="n">Town02</span><span class="k">?</span><span class="n">GAME</span><span class="p">=</span><span class="n">VR</span> <span class="n">-vr</span>
+<p>Dream Air 的产品 ID 为 <code>0x0044</code>。使用其他型号时，确认其 VID/PID 后再加入白名单。</p>
+<h2 id="_5">启动方法</h2>
+<h3 id="_6">推荐：带检查的启动脚本</h3>
+<p>在<strong>新版打包程序的根目录</strong>打开 64 位 Windows PowerShell，执行：</p>
+<div class="highlight"><pre><span></span><code><span class="n">powershell</span> <span class="n">-NoProfile</span> <span class="n">-ExecutionPolicy</span> <span class="n">Bypass</span> <span class="o">-File</span> <span class="p">.\</span><span class="n">StartPimaxVR</span><span class="p">.</span><span class="n">ps1</span>
 </code></pre></div>
-<ol>
-<li>戴上头显开始驾驶；显示器同步画面可供旁观和录制；</li>
-<li>检查日志中是否出现：</li>
-</ol>
+<p>默认地图为 Town02。切换地图时添加 <code>-Map /Game/Carla/Maps/Town10HD_Opt</code>，所选地图须已安装或打包。</p>
+<p><strong>源码开发版</strong>需要先编译引擎和 <code>CarlaUE4Editor Win64 Development</code>，然后在源码根目录执行（引擎路径按实际位置修改）：</p>
+<div class="highlight"><pre><span></span><code><span class="n">powershell</span> <span class="n">-NoProfile</span> <span class="n">-ExecutionPolicy</span> <span class="n">Bypass</span> <span class="o">-File</span> <span class="p">.\</span><span class="n">StartPimaxVR</span><span class="p">.</span><span class="n">ps1</span> <span class="n">-UE4Root</span> <span class="s1">'H:\hutb-dev\UE4-hutb'</span> <span class="n">-Map</span> <span class="p">/</span><span class="n">Game</span><span class="p">/</span><span class="n">Carla</span><span class="p">/</span><span class="n">Maps</span><span class="p">/</span><span class="n">Town10HD_Opt</span>
+</code></pre></div>
+<p>脚本检查 VR 配置、手柄绑定和运行库，自动启动 Pimax Play、SteamVR，再启动游戏。检查失败时，按提示修正后重试。</p>
+<p>只检查、不启动任何程序时，在上述命令末尾添加 <code>-CheckOnly</code>。SteamVR 路径未登记时可指定 <code>-SteamVRRoot 'D:\steam\steamapps\common\SteamVR'</code>。</p>
+<p>自行编译/打包时，先在 <code>CarlaUE4.uproject</code> 中启用 SteamVR 插件，再使用 <code>Util/BuildTools/Package.bat</code> 打包，携带启动脚本及所需配置。</p>
+<h3 id="_7">手动启动与成功判据</h3>
+<p>已手动启动 Pimax Play 和 SteamVR 时，打包版的实际游戏命令为：</p>
+<div class="highlight"><pre><span></span><code><span class="p">.\</span><span class="n">CarlaUE4</span><span class="p">.</span><span class="n">exe</span> <span class="p">/</span><span class="n">Game</span><span class="p">/</span><span class="n">Carla</span><span class="p">/</span><span class="n">Maps</span><span class="p">/</span><span class="n">Town02</span><span class="k">?</span><span class="n">game</span><span class="p">=/</span><span class="n">Script</span><span class="p">/</span><span class="n">CarlaUE4</span><span class="p">.</span><span class="n">DReyeVRGameMode</span> <span class="n">-game</span> <span class="n">-vr</span>
+</code></pre></div>
+<p>戴上头显，确认显示和手柄正常，并在游戏日志中检查：</p>
 <div class="highlight"><pre><span></span><code>Using Pimax PVR eye tracking
 Pimax PVR: first valid eye sample
 </code></pre></div>
-<p>出现以上日志且蓝色视线能够随注视方向移动，说明眼动数据链正常。</p>
-<h2 id="_10">手柄键位</h2>
+<p>确认样本持续更新，蓝色视线随注视方向移动，车辆行驶时视线跟随相机。</p>
+<h2 id="_8">自动测试（不需要连接头显）</h2>
+<p>需要 Windows 上已编译的引擎、项目 Editor 模块及项目资源，无需连接头显或安装 Pimax SDK。</p>
+<p>在<strong>源码根目录</strong>执行：</p>
+<div class="highlight"><pre><span></span><code><span class="n">powershell</span> <span class="n">-NoProfile</span> <span class="n">-ExecutionPolicy</span> <span class="n">Bypass</span> <span class="o">-File</span> <span class="p">.\</span><span class="n">Util</span><span class="p">\</span><span class="n">Tests</span><span class="p">\</span><span class="n">RunPimaxTests</span><span class="p">.</span><span class="n">ps1</span> <span class="n">-UE4Root</span> <span class="s1">'H:\hutb-dev\UE4-hutb'</span>
+</code></pre></div>
+<p>脚本运行以下 5 项测试：</p>
+<table>
+<thead>
+<tr>
+<th>测试名称</th>
+<th>检查内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>HUTB.Pimax.EyeTracking.Freshness</code></td>
+<td>眼动样本时间戳与新鲜度判断</td>
+</tr>
+<tr>
+<td><code>HUTB.Pimax.GazeDisplay.CameraAttachment</code></td>
+<td>调试视线附着于相机及更新依赖</td>
+</tr>
+<tr>
+<td><code>HUTB.Pimax.GazeDisplay.FixedAnchor</code></td>
+<td>视线起点固定、终点跟随注视方向</td>
+</tr>
+<tr>
+<td><code>HUTB.Pimax.SeatInput.DeadZone</code></td>
+<td>座椅输入死区与连续移动计算</td>
+</tr>
+<tr>
+<td><code>HUTB.Pimax.Runtime.DiscoveryPaths</code></td>
+<td>非 C 盘系统、自定义安装路径、去重及拒绝相对路径覆盖</td>
+</tr>
+</tbody>
+</table>
+<p>报告保存在 <code>Unreal/CarlaUE4/Saved/Automation/Pimax-时间戳/</code>，也可用 <code>-ReportPath 'D:\HUTB-test\run-001'</code> 指定尚不存在的目录。输出 <code>PASS</code>、退出码为 0 表示全部通过；失败时查看报告中的 <code>automation.log</code> 和 <code>index.json</code>。</p>
+<p>启动脚本另外提供 7 项轻量隔离测试，只需 Windows PowerShell 5.1，无需 UE4、Pimax Play 或 SteamVR：</p>
+<div class="highlight"><pre><span></span><code><span class="n">powershell</span> <span class="n">-NoProfile</span> <span class="n">-ExecutionPolicy</span> <span class="n">Bypass</span> <span class="o">-File</span> <span class="p">.\</span><span class="n">Util</span><span class="p">\</span><span class="n">Tests</span><span class="p">\</span><span class="n">TestPimaxLauncher</span><span class="p">.</span><span class="n">ps1</span>
+</code></pre></div>
+<p>该测试模拟启动过程，检查配置拦截、启动顺序及参数，不会实际启动软件。发布前还需连接头显验证 VR 画面、眼动、手柄操作及断连恢复。</p>
+<h2 id="_9">手柄键位</h2>
 <table>
 <thead>
 <tr>
@@ -284,8 +304,15 @@ Pimax PVR: first valid eye sample
 </tr>
 </tbody>
 </table>
-<h2 id="_11">常见问题</h2>
-<h3 id="_12">能识别设备，但没有眼动数据</h3>
+<h2 id="_10">常见问题</h2>
+<h3 id="pimax-play-steamvr">找不到 Pimax Play、运行库或 SteamVR</h3>
+<p>先确认 Pimax Play 和 SteamVR 已安装。自定义安装目录时，在启动命令末尾添加对应参数（路径按实际位置修改）：</p>
+<div class="highlight"><pre><span></span><code><span class="n">-PimaxRoot</span> <span class="s1">'E:\VR\Pimax'</span>
+<span class="n">-PvrDllPath</span> <span class="s1">'E:\VR\Pimax\Runtime\libPVRClient64.dll'</span>
+<span class="n">-SteamVRRoot</span> <span class="s1">'D:\steam\steamapps\common\SteamVR'</span>
+</code></pre></div>
+<p>DLL 路径须为 Pimax Play 所安装文件的本地绝对路径。</p>
+<h3 id="_11">能识别设备，但没有眼动数据</h3>
 <p>如果日志持续出现 <code>timestamp-zero</code>，或者没有 <code>first valid eye sample</code>：</p>
 <ol>
 <li>退出模拟器；</li>
@@ -294,32 +321,29 @@ Pimax PVR: first valid eye sample
 <li>若仍无数据，重启 Pimax Play 或 Pimax 眼动运行时；</li>
 <li>确认眼动数据恢复后再启动模拟器。</li>
 </ol>
-<p>时间戳为 0 时，后端会拒绝该样本，避免用无效数据绘制或录制视线。</p>
-<h3 id="_13">有眼动数据，但看不到蓝色视线</h3>
+<h3 id="_12">有眼动数据，但看不到蓝色视线</h3>
 <p>确认 <code>DrawDebugFocusTrace=True</code> 和 <code>UseCameraRelativeGazeDisplay=True</code>，修改配置后重新启动模拟器。还应检查样本是否因时间戳停止更新而被判定为过期。</p>
-<h3 id="_14">视线方向左右或上下相反</h3>
+<h3 id="_13">视线方向左右或上下相反</h3>
 <p>完成眼动校准后再测试。如坐标方向仍然相反，可分别调整：</p>
 <div class="highlight"><pre><span></span><code><span class="na">GazeInvertHorizontal</span><span class="o">=</span><span class="s">True</span>
 <span class="na">GazeInvertVertical</span><span class="o">=</span><span class="s">True</span>
 </code></pre></div>
 <p>只修改实际相反的轴。</p>
-<h3 id="_15">右摇杆无法连续调整座椅</h3>
-<p>确认 SteamVR 使用当前应用的 Pimax/<code>oculus_touch</code> 绑定，并检查右摇杆是否绑定到标准 <code>vector2 position</code> action。旧的 <code>joystick::x/y</code> 或 dpad 绑定可能导致输入静默失效。</p>
-<h3 id="_16">注视后视镜时严重掉帧</h3>
+<h3 id="_14">右摇杆无法连续调整座椅</h3>
+<p>确认 SteamVR 使用当前应用的 Pimax/<code>oculus_touch</code> 绑定，并检查右摇杆是否绑定到标准 <code>vector2 position</code> action。</p>
+<h3 id="_15">注视后视镜时严重掉帧</h3>
 <p>DReyeVR 的三个后视镜会额外渲染场景，VR 中开销较高。测试眼动追踪时可在车辆配置中暂时关闭：</p>
 <div class="highlight"><pre><span></span><code><span class="na">RearMirrorEnabled</span><span class="o">=</span><span class="s">False</span>
 <span class="na">LeftMirrorEnabled</span><span class="o">=</span><span class="s">False</span>
 <span class="na">RightMirrorEnabled</span><span class="o">=</span><span class="s">False</span>
 </code></pre></div>
-<p>这是性能选项，不是 Pimax 眼动功能的必要条件。</p>
-<h2 id="_17">已知限制</h2>
+<h2 id="_16">已知限制</h2>
 <ul>
 <li>眼动后端目前只在 Windows 和 Pimax Dream Air 上完成实机验证；</li>
 <li>PVR 1.26 当前只提供 combined gaze 和设备时间戳，单眼原点、瞳孔直径和眼睛开合度保持无效状态；</li>
 <li>Pimax Runtime 更新 ABI 或安装位置后，可能需要同步更新后端；</li>
 <li>SRanipal 和 Pimax 眼动后端同时开启时，DReyeVR 优先使用 SRanipal；</li>
-<li>Dream Air 初始视角位置偏高的问题不属于本次适配范围。</li>
-</ul>
+</ul></div>
               
             </div>
           </div><footer>

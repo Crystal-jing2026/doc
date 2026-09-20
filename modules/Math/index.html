@@ -100,15 +100,15 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="fdvector">FDVector 头文件文档</h1>
+                <div><h1 id="fdvector">FDVector 头文件文档</h1>
 <p>该文档详细介绍 <strong><font color="#f8805a">FDVector</font></strong> 头文件中所有变量、构造函数、方法以及操作符重载。该结构在 <a href="https://github.com/carla-simulator/carla">Carla Simulator</a> 项目中主要用于高效执行向量运算及类型转换，避免直接使用 Unreal Engine 的向量类型带来的性能损耗。</p>
 <h2 id="_1">概述</h2>
 <p><strong><font color="#f8805a">FDVector</font></strong> 是一个轻量级的三维向量结构，提供了向量的基本数学运算、类型转换以及便于调试的字符串输出功能。</p>
 <h2 id="_2">构造函数</h2>
 <ul>
-<li><strong><font color="#7fb800">FDVector()</font></strong><br />
-  默认构造函数，将 <strong><font color="#f8805a">X</font></strong>、<strong><font color="#f8805a">Y</font></strong>、<strong><font color="#f8805a">Z</font></strong> 均初始化为 0.0.<br />
-<strong>示例：</strong><br />
+<li><strong><font color="#7fb800">FDVector()</font></strong><br>
+  默认构造函数，将 <strong><font color="#f8805a">X</font></strong>、<strong><font color="#f8805a">Y</font></strong>、<strong><font color="#f8805a">Z</font></strong> 均初始化为 0.0.<br>
+<strong>示例：</strong><br>
 <div class="highlight"><pre><span></span><code><span class="n">FDVector</span><span class="w"> </span><span class="n">vec1</span><span class="p">;</span>
 <span class="c1">// vec1.X = 0.0, vec1.Y = 0.0, vec1.Z = 0.0</span>
 </code></pre></div></li>
@@ -139,11 +139,11 @@
 <li><strong><font color="#f8805a">Z</font></strong>：表示向量在 Z 轴的坐标。</li>
 </ul>
 <p><strong>示例：</strong>
-<div class="highlight"><pre><span></span><code><span class="n">FDVector</span><span class="w"> </span><span class="n">vec</span><span class="p">;</span>
+</p><div class="highlight"><pre><span></span><code><span class="n">FDVector</span><span class="w"> </span><span class="n">vec</span><span class="p">;</span>
 <span class="n">vec</span><span class="p">.</span><span class="n">X</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">10.0</span><span class="p">;</span>
 <span class="n">vec</span><span class="p">.</span><span class="n">Y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">20.0</span><span class="p">;</span>
 <span class="n">vec</span><span class="p">.</span><span class="n">Z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">30.0</span><span class="p">;</span>
-</code></pre></div></p>
+</code></pre></div>
 <h2 id="_4">主要方法</h2>
 <ul>
 <li><strong><font color="#7fb800">Size()</font></strong>
@@ -194,7 +194,7 @@ d(\mathbf{v_1},\mathbf{v_2})=\sqrt{(x_2-x_1)^2+(y_2-y_1)^2+(z_2-z_1)^2}
 <strong>示例：</strong>
 <div class="highlight"><pre><span></span><code><span class="n">FDVector</span><span class="w"> </span><span class="nf">vec</span><span class="p">(</span><span class="mf">1.2345</span><span class="p">,</span><span class="w"> </span><span class="mf">2.3456</span><span class="p">,</span><span class="w"> </span><span class="mf">3.4567</span><span class="p">);</span>
 <span class="n">FString</span><span class="w"> </span><span class="n">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vec</span><span class="p">.</span><span class="n">ToString</span><span class="p">();</span>
-<span class="c1">// str 为 &quot;X=1.23 Y=2.35 Z=3.46&quot;</span>
+<span class="c1">// str 为 "X=1.23 Y=2.35 Z=3.46"</span>
 </code></pre></div></li>
 <li><strong><font color="#7fb800">ToFIntVector()</font></strong>
 将 <font color="#f8805a">FDVector</font> 转换为 Unreal Engine 的 FIntVector 类型，采用强制类型转换。
@@ -209,7 +209,7 @@ d(\mathbf{v_1},\mathbf{v_2})=\sqrt{(x_2-x_1)^2+(y_2-y_1)^2+(z_2-z_1)^2}
 - <strong><font color="#7fb800">operator=</font></strong>
 赋值操作符，将另一个 <font color="#f8805a">FDVector</font> 的值复制给当前对象。
 <strong>示例：</strong>
-<div class="highlight"><pre><span></span><code><span class="n">FDVector</span><span class="w"> </span><span class="nf">a</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="p">,</span><span class="w"> </span><span class="mf">3.0</span><span class="p">);</span>
+</p><div class="highlight"><pre><span></span><code><span class="n">FDVector</span><span class="w"> </span><span class="nf">a</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="p">,</span><span class="w"> </span><span class="mf">3.0</span><span class="p">);</span>
 <span class="n">FDVector</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
 <span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">;</span><span class="w">  </span><span class="c1">// b 的值变为 (1.0, 2.0, 3.0)</span>
 </code></pre></div>
@@ -242,7 +242,7 @@ d(\mathbf{v_1},\mathbf{v_2})=\sqrt{(x_2-x_1)^2+(y_2-y_1)^2+(z_2-z_1)^2}
 <span class="n">FDVector</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="w">  </span><span class="c1">// c 的值为 (4.0, 5.0, 6.0)</span>
 </code></pre></div>
 - <font color="#7fb800">operator-=(const FIntVector&amp; V)</font>
-  提供两种重载：</p>
+  提供两种重载：
 <ol>
 <li>返回新的向量而不修改原向量。
   <strong>示例：</strong>
@@ -292,7 +292,7 @@ d(\mathbf{v_1},\mathbf{v_2})=\sqrt{(x_2-x_1)^2+(y_2-y_1)^2+(z_2-z_1)^2}
 <ul>
 <li>高效计算：用于执行频繁的向量运算（如位置计算、距离判定、碰撞检测等），减少直接使用 Unreal Engine 内置向量类可能带来的性能损耗。</li>
 <li>类型转换：便于与 Unreal Engine 的 <strong>FVector</strong> 和 <strong>FIntVector</strong> 类型之间的互转，保持各模块间数据传递的一致性和高效性。</li>
-</ul>
+</ul></div>
               
             </div>
           </div><footer>

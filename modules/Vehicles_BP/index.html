@@ -100,13 +100,13 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="_1">载具蓝图</h1>
+                <div><h1 id="_1">载具蓝图</h1>
 <h2 id="bp_base2wheelednew">新两轮基座 <a href="https://bitbucket.org/carla-simulator/carla-content/src/master/Blueprints/Vehicles/2Wheeled/BP_Base2wheeledNew.uasset">BP_Base2wheeledNew</a></h2>
 <h2 id="basevehiclepawn">车辆棋子基座 <a href="https://bitbucket.org/carla-simulator/carla-content/src/master/Blueprints/Vehicles/BaseVehiclePawn.uasset">BaseVehiclePawn</a></h2>
 <p>其中<code>事件图表</code>中的<code>中断VehicleControl</code>模块接受<code>Vehicle/VehicleControl.h</code>中所定义的车辆控制变量：
-<div class="highlight"><pre><span></span><code><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Vehicle Control&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">EditAnywhere</span><span class="p">,</span><span class="w"> </span><span class="n">BlueprintReadWrite</span><span class="p">)</span>
+</p><div class="highlight"><pre><span></span><code><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Vehicle Control"</span><span class="p">,</span><span class="w"> </span><span class="n">EditAnywhere</span><span class="p">,</span><span class="w"> </span><span class="n">BlueprintReadWrite</span><span class="p">)</span>
 <span class="kt">float</span><span class="w"> </span><span class="n">Brake</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0f</span><span class="p">;</span>
-</code></pre></div></p>
+</code></pre></div>
 <h2 id="n-basevehiclepawnnw"><a href="../../tuto_A_add_vehicle/#add-a-n-wheeled-vehicle">N轮车辆棋子基座</a> <a href="https://bitbucket.org/carla-simulator/carla-content/src/master/Blueprints/Vehicles/BaseVehiclePawnNW.uasset">BaseVehiclePawnNW</a></h2>
 <h2 id="vehiclefactory">车辆工厂 <a href="https://bitbucket.org/carla-simulator/carla-content/src/master/Blueprints/Vehicles/VehicleFactory.uasset">VehicleFactory</a></h2>
 <h2 id="2wheeled">两轮载具 <a href="https://bitbucket.org/carla-simulator/carla-content/src/master/Blueprints/Vehicles/2Wheeled/">2Wheeled</a></h2>
@@ -140,18 +140,18 @@
 </code></pre></div>
 <h3 id="32">3.2 查询和筛选</h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># 查找特定车辆模型</span>
-<span class="n">vehicle_bp</span> <span class="o">=</span> <span class="n">blueprint_library</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;vehicle.tesla.model3&#39;</span><span class="p">)</span>
+<span class="n">vehicle_bp</span> <span class="o">=</span> <span class="n">blueprint_library</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'vehicle.tesla.model3'</span><span class="p">)</span>
 
 <span class="c1"># 选择所有车辆蓝图并随机选择</span>
-<span class="n">vehicle_blueprints</span> <span class="o">=</span> <span class="n">blueprint_library</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="s1">&#39;vehicle.*&#39;</span><span class="p">)</span>
+<span class="n">vehicle_blueprints</span> <span class="o">=</span> <span class="n">blueprint_library</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="s1">'vehicle.*'</span><span class="p">)</span>
 <span class="n">chosen_bp</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">vehicle_blueprints</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="33">3.3 修改属性</h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># 设置车辆颜色为红色</span>
-<span class="n">vehicle_bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">&#39;color&#39;</span><span class="p">,</span> <span class="s1">&#39;255,0,0&#39;</span><span class="p">)</span>
+<span class="n">vehicle_bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">'color'</span><span class="p">,</span> <span class="s1">'255,0,0'</span><span class="p">)</span>
 
 <span class="c1"># 调整发动机功率</span>
-<span class="n">vehicle_bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">&#39;engine_power&#39;</span><span class="p">,</span> <span class="s1">&#39;300&#39;</span><span class="p">)</span>
+<span class="n">vehicle_bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">'engine_power'</span><span class="p">,</span> <span class="s1">'300'</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="34">3.4 生成车辆实例</h3>
 <div class="highlight"><pre><span></span><code><span class="n">transform</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Transform</span><span class="p">(</span><span class="n">carla</span><span class="o">.</span><span class="n">Location</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">230</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">195</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">40</span><span class="p">),</span> <span class="n">carla</span><span class="o">.</span><span class="n">Rotation</span><span class="p">(</span><span class="n">yaw</span><span class="o">=</span><span class="mi">180</span><span class="p">))</span>
@@ -178,7 +178,7 @@
 </ul>
 <h2 id="6">6. 结论</h2>
 <p>在Carla虚幻场景中，车辆蓝图作为动态对象的核心定义，不仅关系到场景的视觉效果，还直接影响仿真中的行为表现和实验结果。对蓝图的深入理解与合理配置，是实现高质量自动驾驶仿真的关键环节。</p>
-<hr />
+<hr></div>
               
             </div>
           </div><footer>

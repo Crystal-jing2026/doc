@@ -100,11 +100,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="carla-cosmos-transfer">Carla 和 Cosmos Transfer 协同工作</h1>
+                <div><h1 id="carla-cosmos-transfer">Carla 和 Cosmos Transfer 协同工作</h1>
 <p>Carla 可以连接到 NVIDIA Cosmos Transfer，以创建 Carla 中生成的合成数据的超逼真变体。</p>
-<p><img alt="" src="../img/rendering/transfer_scene.jpg" /></p>
+<p><img alt="" src="../img/rendering/transfer_scene.jpg"></p>
 <p>在此集成中，Carla 生成一系列视频，包括 RGB 图像、语义分割图像、深度图像和边缘图像，用于控制 Cosmos Transfer。这些控制视频由 <code>carla_cosmos_gen.py</code> 脚本生成。Cosmos Transfer 将这些控制视频与文本提示和一些额外的调整参数结合使用，以生成视频的新变体。</p>
-<p><img alt="" src="../img/rendering/transfer_sensor.jpg" /></p>
+<p><img alt="" src="../img/rendering/transfer_sensor.jpg"></p>
 <p>此集成采用客户端-服务器架构。<code>cosmos_client.py</code> 脚本向 Cosmos Transfer 服务器发送查询，服务器负责完成请求并将视频发送回客户端（此过程需要 1-2 分钟）。为此，用户需要先部署 Cosmos Transfer 服务。下一节将介绍部署您自己的 Cosmos Transfer 服务的不同选项。</p>
 <ul>
 <li><strong><a href="#deploying-a-cosmos-transfer-server">部署 Cosmos Transfer 服务器</a></strong><ul>
@@ -120,32 +120,32 @@
 </ul>
 </li>
 </ul>
-<hr />
+<hr>
 <h1 id="cosmos-transfer">部署 Cosmos Transfer 服务器</h1>
 <p>Cosmos Transfer 需要高性能数据中心 GPU，例如 NVIDIA H100。我们创建了多种轻松部署 Cosmos Transfer 服务器的方法。</p>
 <h2 id="1-nvidia-brev">方案 1：在 NVIDIA Brev 上一键部署</h2>
 <p>Carla 团队创建了一个 Brev 启动器，使用户能够轻松创建自己的 Cosmos Transfer 服务器。为此：</p>
 <p><strong>1.</strong> 点击 <a href="https://login.brev.nvidia.com/signin">此处</a> 注册Brev账号。请按照网站上的说明为您的账户充值。</p>
 <p><strong>2.</strong> 请访问链接 <a href="https://brev.nvidia.com/launchable/deploy/now?launchableID=env-32CoARmRgbQdxkQeHHkWfvRj87T">carla-x-cosmos-transfer1-lambda</a> 。点击“部署可启动项(Deploy Launchable)”。
-<img alt="Brev launchable" src="../img/cosmos_transfer/brev_01.png" /></p>
+<img alt="Brev launchable" src="../img/cosmos_transfer/brev_01.png"></p>
 <p><strong>3.</strong> 点击“前往实例页面(Go to Instance Page)”。
-<img alt="Go to Instance Page" src="../img/cosmos_transfer/brev_02.png" /></p>
+<img alt="Go to Instance Page" src="../img/cosmos_transfer/brev_02.png"></p>
 <p><strong>4.</strong> 等待实例启动。
-<img alt="Started instance" src="../img/cosmos_transfer/brev_05.png" /></p>
+<img alt="Started instance" src="../img/cosmos_transfer/brev_05.png"></p>
 <p><strong>5.</strong> 将 URL 公开。</p>
 <blockquote>
 <p>点击“编辑访问权限(Edit Access)”（记下共享网址(<em>Shareable URL</em>)和端口）：</p>
 </blockquote>
-<p><img alt="Edit URL" src="../img/cosmos_transfer/brev_06.png" /></p>
-<p><img alt="Public URL" src="../img/cosmos_transfer/brev_07.png" /></p>
+<p><img alt="Edit URL" src="../img/cosmos_transfer/brev_06.png"></p>
+<p><img alt="Public URL" src="../img/cosmos_transfer/brev_07.png"></p>
 <p><strong>6.</strong> 您的 Cosmos Transfer 服务已准备就绪！</p>
 <div class="admonition 注意">
 <p class="admonition-title">注意</p>
 <p>您可能会遇到特定云服务商提供的 GPU 实例数量有限的情况。在这种情况下，请尝试按以下步骤切换到其他云服务商： 
-<img alt="Edit compute" src="../img/cosmos_transfer/brev_03.png" />
-<img alt="Select new cloud" src="../img/cosmos_transfer/brev_04.png" /></p>
+<img alt="Edit compute" src="../img/cosmos_transfer/brev_03.png">
+<img alt="Select new cloud" src="../img/cosmos_transfer/brev_04.png"></p>
 </div>
-<hr />
+<hr>
 <h2 id="2">方案 2：将您自己的服务部署到其他地方</h2>
 <p>如果您拥有合适的硬件，可以将 Cosmos Transfer 部署在 Docker 容器中。构建服务器镜像所需的文件位于 Carla 安装目录或软件包根目录下的 <code>PythonAPI/examples/nvidia/cosmos/server</code> 目录中。请按照以下步骤构建和部署 Cosmos Transfer 服务器：</p>
 <p><strong>1.</strong> <strong>安装 Docker</strong>: 如果您的系统上尚未安装 Docker，<a href="https://docs.docker.com/engine/install/">请安装它</a> 。</p>
@@ -172,7 +172,7 @@
 </blockquote>
 <div class="highlight"><pre><span></span><code>python<span class="w"> </span>cosmos_client.py<span class="w"> </span>http://localhost:8080<span class="w"> </span>example_data/prompts/rain.toml
 </code></pre></div>
-<hr />
+<hr>
 <h1 id="carla-x-cosmos-transfer">使用 Carla x Cosmos Transfer 客户端</h1>
 <p>要开始生成视频，您需要安装 Cosmos Transfer 客户端的 <a href="#installing-dependencies">依赖项</a> 。Cosmos Transfer 生成过程包括两个步骤：</p>
 <p><strong>1.</strong> <a href="#generating-cosmos-transfer-control-inputs"><strong>使用 Carla 为 Cosmos Transfer 生成控制视频</strong></a></p>
@@ -192,7 +192,7 @@
 <p>此步骤使用 Cosmos Transfer1 模型生成原始控制视频的风格迁移变体。Carla 生成的控制视频被发送到运行 Cosmos Transfer1 模型的服务器。请求通过使用 <code>cosmos_client.py</code> 脚本的简单 API 发送到服务器。 </p>
 <p>Cosmos Transfer1 模型可以通过 TOML 文件中定义的提示符和其他几个控制参数进行控制。您可以在 <code>client/example_data/prompts</code> 目录中找到许多 Cosmos Transfer1 配置示例。</p>
 </blockquote>
-<hr />
+<hr>
 <h2 id="_1">依赖项安装</h2>
 <p><strong>1.</strong> 下载 Carla <a href="https://github.com/carla-simulator/carla/releases/tag/0.9.16">0.9.16</a> 或者 <a href="https://carla.readthedocs.io/en/latest/download/#nightly-build">最新的夜晚构建</a></p>
 <p><strong>2.</strong> 下载完成后，解压缩文件：</p>
@@ -200,7 +200,7 @@
 </code></pre></div>
 <p><strong>3.</strong> 请按照 <a href="https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html">这些说明</a> 安装 <code>conda</code>。如果您的系统已安装 conda，则可以跳过此步骤。</p>
 <p><strong>4.</strong> 创建一个 conda 环境（例如 <code>carla-cosmos-client</code>），并安装所有依赖项：</p>
-<p><div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>PythonAPI/examples/nvidia/cosmos
+<p></p><div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>PythonAPI/examples/nvidia/cosmos
 <span class="c1"># 创建 carla-cosmos-client conda 环境</span>
 conda<span class="w"> </span>env<span class="w"> </span>create<span class="w"> </span>--file<span class="w"> </span>client/carla-cosmos-client.yaml
 <span class="c1"># 激活 carla-cosmos-client conda 环境</span>
@@ -212,14 +212,14 @@ pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </s
 <strong>5.</strong> 要安装 Carla Python 客户端，请导航至 Carla 安装目录下的 <code>PythonAPI/carla/dist</code> 文件夹。找到与您的 Python 版本对应的 .<code>.whl</code> 文件（例如，<code>carla-0.9.16-cp310-cp310-linux_x86_64.whl</code>）： 
 <div class="highlight"><pre><span></span><code><span class="c1"># 将 carla-0.9.16-cp310-cp310-linux_x86_64.whl 替换为您的实际文件名</span>
 pip<span class="w"> </span>install<span class="w"> </span>carla-0.9.16-cp310-cp310-linux_x86_64.whl
-</code></pre></div></p>
-<hr />
+</code></pre></div>
+<hr>
 <h2 id="cosmos-transfer_1">生成 Cosmos-Transfer 控制输入</h2>
 <p><strong>1.</strong> <strong>启动 Carla</strong></p>
 <blockquote>
 <p>导航至 Carla 安装的根文件夹并执行启动脚本：
-<div class="highlight"><pre><span></span><code>./CarlaUE4.sh
-</code></pre></div></p>
+</p><div class="highlight"><pre><span></span><code>./CarlaUE4.sh
+</code></pre></div>
 </blockquote>
 <p><strong>2.</strong> <strong>从 Carla 日志生成控制视频</strong></p>
 <blockquote>
@@ -243,7 +243,7 @@ python<span class="w"> </span>carla_cosmos_gen.py<span class="w"> </span>-f<span
 <p><strong>注意</strong>: 对于示例日志，请将 <code>ego_sim_id</code> 替换为 4641。</p>
 <p>这将生成一系列视频，这些视频随后将用于控制 Cosmos Transfer。</p>
 </blockquote>
-<hr />
+<hr>
 <h2 id="cosmos-transfer_2">使用 Cosmos Transfer 生成风格迁移变体</h2>
 <p>准备好一组工件，并且 Cosmos Transfer 服务已部署并激活后，即可使用 <code>cosmos_client.py</code> 脚本发出请求。以下命令将根据 <code>client/example_data/prompts</code> 目录下的 <code>rain.toml</code> 示例配置文件中的提示和参数，生成 Cosmos Transfer 风格迁移视频。</p>
 <div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>PythonAPI/examples/nvidia/cosmos/client
@@ -263,7 +263,7 @@ python<span class="w"> </span>cosmos_client.py<span class="w"> </span>http://url
 <span class="w">  </span>--vis-video<span class="w"> </span>example_data/artifacts/vis_control.mp4<span class="w"> </span><span class="se">\ </span><span class="c1"># optional</span>
 <span class="w">  </span>--seed<span class="w"> </span><span class="m">2048</span>
 </code></pre></div>
-<hr />
+<hr>
 <h2 id="cosmos-transfer_3">了解 Cosmos-Transfer 配置</h2>
 <p>本节介绍 TOML 配置（参见 <code>example_data/prompts/rain.toml</code>）。客户端接受如下所示的扁平模式，也支持将相同的键嵌套在顶层 <code>controlnet_specs</code> 表中。</p>
 <h3 id="_2">必填字段</h3>
@@ -460,7 +460,7 @@ python<span class="w"> </span>cosmos_client.py<span class="w"> </span>http://url
 <td>获取作业结果的超时时间（秒）（默认值：120）</td>
 </tr>
 </tbody>
-</table>
+</table></div>
               
             </div>
           </div><footer>

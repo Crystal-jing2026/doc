@@ -100,36 +100,36 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="windows-openradioss">Windows 下 OpenRadioss 的使用</h2>
+                <div><h2 id="windows-openradioss">Windows 下 OpenRadioss 的使用</h2>
 <h3 id="_1">测试实例</h3>
 <p>测试例子是 <a href="https://openradioss.atlassian.net/wiki/spaces/OPENRADIOSS/pages/47546369/HPC+Benchmark+Models#Taurus-10-Million-finite-elements">车辆撞墙模拟</a> 的 <a href="https://openradioss.atlassian.net/wiki/download/attachments/47546369/Neon1m11_2017.zip?api=v2">模型文件</a> 。</p>
 <h3 id="_2">处理步骤</h3>
 <ol>
 <li>
 <p>模型初始化
-<div class="highlight"><pre><span></span><code>starter_win64_sp.exe<span class="w"> </span>-i<span class="w"> </span>NEON1M11_0000.rad<span class="w"> </span>-nt<span class="w"> </span><span class="m">8</span>
-</code></pre></div></p>
+</p><div class="highlight"><pre><span></span><code>starter_win64_sp.exe<span class="w"> </span>-i<span class="w"> </span>NEON1M11_0000.rad<span class="w"> </span>-nt<span class="w"> </span><span class="m">8</span>
+</code></pre></div>
 </li>
 <li>
 <p>引擎求解
-<div class="highlight"><pre><span></span><code>engine_win64_sp.exe<span class="w"> </span>-i<span class="w"> </span>NEON1M11_0001.rad<span class="w"> </span>-nt<span class="w"> </span><span class="m">8</span>
+</p><div class="highlight"><pre><span></span><code>engine_win64_sp.exe<span class="w"> </span>-i<span class="w"> </span>NEON1M11_0001.rad<span class="w"> </span>-nt<span class="w"> </span><span class="m">8</span>
 </code></pre></div>
-输出文件：NEON1M11A00{1-17}。</p>
+输出文件：NEON1M11A00{1-17}。
 </li>
 <li>
 <p>将输出转化为可视化模型文件
-<div class="highlight"><pre><span></span><code>anim_to_vtk_win64.exe<span class="w"> </span>NEON1M11A017<span class="w"> </span>&gt;<span class="w"> </span>view.vtk
-</code></pre></div></p>
+</p><div class="highlight"><pre><span></span><code>anim_to_vtk_win64.exe<span class="w"> </span>NEON1M11A017<span class="w"> </span>&gt;<span class="w"> </span>view.vtk
+</code></pre></div>
 </li>
 <li>
 <p>使用 <a href="https://www.paraview.org/download/">paraview</a> 可视化模型文件
-<div class="highlight"><pre><span></span><code>paraview<span class="w"> </span>view.vtk
+</p><div class="highlight"><pre><span></span><code>paraview<span class="w"> </span>view.vtk
 </code></pre></div>
-并点击左下角<code>Properties</code>中的<code>Apply</code>。</p>
+并点击左下角<code>Properties</code>中的<code>Apply</code>。
 </li>
 </ol>
 <h4 id="_3">运行结果</h4>
-<p><img alt="汽车碰撞" src="../figure/crashing.gif" /></p>
+<p><img alt="汽车碰撞" src="../figure/crashing.gif"></p></div>
               
             </div>
           </div><footer>

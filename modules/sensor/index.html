@@ -100,178 +100,178 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="table-of-contents">📑 目录（Table of Contents）</h2>
+                <div><h2 id="table-of-contents">📑 目录（Table of Contents）</h2>
 <h3 id="sensorothercollision">第一章：<a href="https://openhutb.github.io/doc/ref_sensors/#collision-detector">碰撞事件传感器</a> （sensor.other.collision）</h3>
 <ul>
-<li><a href="#第一章carla-碰撞事件传感器系统sensorothercollision">第一章：CARLA 碰撞事件传感器系统（sensor.other.collision）</a></li>
-<li><a href="#1-模块概览">1 模块概览</a></li>
-<li><a href="#2-传感器注册与调用原理">2 传感器注册与调用原理</a></li>
-<li><a href="#3-数据结构collisionevent">3 数据结构：CollisionEvent</a></li>
-<li><a href="#4-序列化器分析collisioneventserializer">4 序列化器分析</a></li>
-<li><a href="#5-rawdata-与-sensordata-概述">5 RawData 与 SensorData 概述</a></li>
-<li><a href="#6-python-api-使用示例">6 Python API 使用示例</a></li>
-<li><a href="#7-小结与拓展">7 小结与拓展</a></li>
+<li><a href="#%E7%AC%AC%E4%B8%80%E7%AB%A0carla-%E7%A2%B0%E6%92%9E%E4%BA%8B%E4%BB%B6%E4%BC%A0%E6%84%9F%E5%99%A8%E7%B3%BB%E7%BB%9Fsensorothercollision">第一章：CARLA 碰撞事件传感器系统（sensor.other.collision）</a></li>
+<li><a href="#1-%E6%A8%A1%E5%9D%97%E6%A6%82%E8%A7%88">1 模块概览</a></li>
+<li><a href="#2-%E4%BC%A0%E6%84%9F%E5%99%A8%E6%B3%A8%E5%86%8C%E4%B8%8E%E8%B0%83%E7%94%A8%E5%8E%9F%E7%90%86">2 传感器注册与调用原理</a></li>
+<li><a href="#3-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84collisionevent">3 数据结构：CollisionEvent</a></li>
+<li><a href="#4-%E5%BA%8F%E5%88%97%E5%8C%96%E5%99%A8%E5%88%86%E6%9E%90collisioneventserializer">4 序列化器分析</a></li>
+<li><a href="#5-rawdata-%E4%B8%8E-sensordata-%E6%A6%82%E8%BF%B0">5 RawData 与 SensorData 概述</a></li>
+<li><a href="#6-python-api-%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B">6 Python API 使用示例</a></li>
+<li><a href="#7-%E5%B0%8F%E7%BB%93%E4%B8%8E%E6%8B%93%E5%B1%95">7 小结与拓展</a></li>
 </ul>
 <h3 id="sensorothernoop">第二章：空传感器（sensor.other.noop）</h3>
 <ul>
-<li><a href="#第二章carla-空传感器系统sensorothernoop">第二章：CARLA 空传感器系统（sensor.other.noop）</a></li>
-<li><a href="#1-模块概览-1">1 模块概览</a></li>
-<li><a href="#2-传感器注册与调用原理-1">2 传感器注册与调用原理</a></li>
-<li><a href="#3-序列化器分析noopserializer">3 序列化器分析</a></li>
-<li><a href="#4-数据结构与传输机制">4 数据结构与传输机制</a></li>
-<li><a href="#5-python-api-使用示例-1">5 Python API 使用示例</a></li>
-<li><a href="#6-小结与拓展-1">6 小结与拓展</a></li>
+<li><a href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0carla-%E7%A9%BA%E4%BC%A0%E6%84%9F%E5%99%A8%E7%B3%BB%E7%BB%9Fsensorothernoop">第二章：CARLA 空传感器系统（sensor.other.noop）</a></li>
+<li><a href="#1-%E6%A8%A1%E5%9D%97%E6%A6%82%E8%A7%88-1">1 模块概览</a></li>
+<li><a href="#2-%E4%BC%A0%E6%84%9F%E5%99%A8%E6%B3%A8%E5%86%8C%E4%B8%8E%E8%B0%83%E7%94%A8%E5%8E%9F%E7%90%86-1">2 传感器注册与调用原理</a></li>
+<li><a href="#3-%E5%BA%8F%E5%88%97%E5%8C%96%E5%99%A8%E5%88%86%E6%9E%90noopserializer">3 序列化器分析</a></li>
+<li><a href="#4-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E4%BC%A0%E8%BE%93%E6%9C%BA%E5%88%B6">4 数据结构与传输机制</a></li>
+<li><a href="#5-python-api-%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B-1">5 Python API 使用示例</a></li>
+<li><a href="#6-%E5%B0%8F%E7%BB%93%E4%B8%8E%E6%8B%93%E5%B1%95-1">6 小结与拓展</a></li>
 </ul>
 <h3 id="sensorotherimu">第三章：<a href="https://openhutb.github.io/doc/ref_sensors/#imu-sensor">惯性测量单元传感器</a> （sensor.other.imu）</h3>
 <ul>
-<li><a href="#第三章carla惯性测量单元传感器系统sensorotherimu">第三章：CARLA惯性测量单元传感器系统（sensor.other.imu）</a></li>
-<li><a href="#1-模块概览-2">1 模块概览</a></li>
-<li><a href="#2-工作流程与序列化机制">2 工作流程与序列化机制</a></li>
-<li><a href="#3-数据结构详解">3 数据结构详解</a></li>
-<li><a href="#4-python-api-调用示例">4 Python API 调用示例</a></li>
-<li><a href="#5-拓展用例与集成应用">5 拓展用例与集成应用</a></li>
-<li><a href="#6-限制与对比分析">6 限制与对比分析</a></li>
-<li><a href="#7-总结与建议-1">7 总结与建议</a></li>
+<li><a href="#%E7%AC%AC%E4%B8%89%E7%AB%A0carla%E6%83%AF%E6%80%A7%E6%B5%8B%E9%87%8F%E5%8D%95%E5%85%83%E4%BC%A0%E6%84%9F%E5%99%A8%E7%B3%BB%E7%BB%9Fsensorotherimu">第三章：CARLA惯性测量单元传感器系统（sensor.other.imu）</a></li>
+<li><a href="#1-%E6%A8%A1%E5%9D%97%E6%A6%82%E8%A7%88-2">1 模块概览</a></li>
+<li><a href="#2-%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E4%B8%8E%E5%BA%8F%E5%88%97%E5%8C%96%E6%9C%BA%E5%88%B6">2 工作流程与序列化机制</a></li>
+<li><a href="#3-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AF%A6%E8%A7%A3">3 数据结构详解</a></li>
+<li><a href="#4-python-api-%E8%B0%83%E7%94%A8%E7%A4%BA%E4%BE%8B">4 Python API 调用示例</a></li>
+<li><a href="#5-%E6%8B%93%E5%B1%95%E7%94%A8%E4%BE%8B%E4%B8%8E%E9%9B%86%E6%88%90%E5%BA%94%E7%94%A8">5 拓展用例与集成应用</a></li>
+<li><a href="#6-%E9%99%90%E5%88%B6%E4%B8%8E%E5%AF%B9%E6%AF%94%E5%88%86%E6%9E%90">6 限制与对比分析</a></li>
+<li><a href="#7-%E6%80%BB%E7%BB%93%E4%B8%8E%E5%BB%BA%E8%AE%AE-1">7 总结与建议</a></li>
 </ul>
 <h3 id="sensorothergnss">第四章：<a href="https://openhutb.github.io/doc/ref_sensors/#gnss-sensor">全球导航卫星系统传感器</a> （sensor.other.gnss）</h3>
 <ul>
-<li><a href="#第四章carla-全球导航卫星系统传感器sensorothergnss">第四章：CARLA 全球导航卫星系统传感器（sensor.other.gnss）</a></li>
-<li><a href="#1-模块概览-3">1 模块概览</a></li>
-<li><a href="#2-工作流程与传输机制">2 工作流程与传输机制</a></li>
-<li><a href="#3-数据结构解析">3 数据结构解析</a></li>
-<li><a href="#4-序列化机制分析">4 序列化机制分析</a></li>
-<li><a href="#5-python-api-使用示例-2">5 Python API 使用示例</a></li>
-<li><a href="#6-应用拓展与组合使用">6 应用拓展与组合使用</a></li>
-<li><a href="#7-总结与建议-2">7 总结与建议</a></li>
+<li><a href="#%E7%AC%AC%E5%9B%9B%E7%AB%A0carla-%E5%85%A8%E7%90%83%E5%AF%BC%E8%88%AA%E5%8D%AB%E6%98%9F%E7%B3%BB%E7%BB%9F%E4%BC%A0%E6%84%9F%E5%99%A8sensorothergnss">第四章：CARLA 全球导航卫星系统传感器（sensor.other.gnss）</a></li>
+<li><a href="#1-%E6%A8%A1%E5%9D%97%E6%A6%82%E8%A7%88-3">1 模块概览</a></li>
+<li><a href="#2-%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E4%B8%8E%E4%BC%A0%E8%BE%93%E6%9C%BA%E5%88%B6">2 工作流程与传输机制</a></li>
+<li><a href="#3-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%A7%A3%E6%9E%90">3 数据结构解析</a></li>
+<li><a href="#4-%E5%BA%8F%E5%88%97%E5%8C%96%E6%9C%BA%E5%88%B6%E5%88%86%E6%9E%90">4 序列化机制分析</a></li>
+<li><a href="#5-python-api-%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B-2">5 Python API 使用示例</a></li>
+<li><a href="#6-%E5%BA%94%E7%94%A8%E6%8B%93%E5%B1%95%E4%B8%8E%E7%BB%84%E5%90%88%E4%BD%BF%E7%94%A8">6 应用拓展与组合使用</a></li>
+<li><a href="#7-%E6%80%BB%E7%BB%93%E4%B8%8E%E5%BB%BA%E8%AE%AE-2">7 总结与建议</a></li>
 </ul>
 <h3 id="sensorotherlane_invasion">第五章：<a href="https://openhutb.github.io/doc/ref_sensors/#lane-invasion-detector">车道入侵传感器</a> （sensor.other.lane_invasion）</h3>
 <ul>
 <li>
-<p><a href="#第五章carla-车道入侵传感器系统sensorotherlane_invasion">第五章：CARLA 车道入侵传感器系统（sensor.other.lane_invasion）</a></p>
+<p><a href="#%E7%AC%AC%E4%BA%94%E7%AB%A0carla-%E8%BD%A6%E9%81%93%E5%85%A5%E4%BE%B5%E4%BC%A0%E6%84%9F%E5%99%A8%E7%B3%BB%E7%BB%9Fsensorotherlane_invasion">第五章：CARLA 车道入侵传感器系统（sensor.other.lane_invasion）</a></p>
 </li>
 <li>
-<p><a href="#1-模块概览-4">1 模块概览</a></p>
+<p><a href="#1-%E6%A8%A1%E5%9D%97%E6%A6%82%E8%A7%88-4">1 模块概览</a></p>
 </li>
-<li><a href="#2-检测流程与回调机制">2 检测流程与回调机制</a></li>
-<li><a href="#3-数据结构laneinvasionevent">3 数据结构：LaneInvasionEvent</a></li>
-<li><a href="#4-序列化机制分析-1">4 序列化机制分析</a></li>
-<li><a href="#5-python-api-使用示例-3">5 Python API 使用示例</a></li>
-<li><a href="#6-应用案例与拓展建议">6 应用案例与拓展建议</a></li>
-<li><a href="#7-小结">7 小结</a></li>
+<li><a href="#2-%E6%A3%80%E6%B5%8B%E6%B5%81%E7%A8%8B%E4%B8%8E%E5%9B%9E%E8%B0%83%E6%9C%BA%E5%88%B6">2 检测流程与回调机制</a></li>
+<li><a href="#3-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84laneinvasionevent">3 数据结构：LaneInvasionEvent</a></li>
+<li><a href="#4-%E5%BA%8F%E5%88%97%E5%8C%96%E6%9C%BA%E5%88%B6%E5%88%86%E6%9E%90-1">4 序列化机制分析</a></li>
+<li><a href="#5-python-api-%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B-3">5 Python API 使用示例</a></li>
+<li><a href="#6-%E5%BA%94%E7%94%A8%E6%A1%88%E4%BE%8B%E4%B8%8E%E6%8B%93%E5%B1%95%E5%BB%BA%E8%AE%AE">6 应用案例与拓展建议</a></li>
+<li><a href="#7-%E5%B0%8F%E7%BB%93">7 小结</a></li>
 </ul>
 <h3 id="sensorlidarray_cast">第六章：<a href="https://openhutb.github.io/doc/ref_sensors/#lidar-sensor">激光雷达传感器</a> （sensor.lidar.ray_cast）</h3>
 <ul>
 <li>
-<p><a href="#第六章carla-激光雷达传感器系统sensorlidarray_cast">第六章：CARLA 激光雷达传感器系统（sensor.lidar.ray_cast）</a></p>
+<p><a href="#%E7%AC%AC%E5%85%AD%E7%AB%A0carla-%E6%BF%80%E5%85%89%E9%9B%B7%E8%BE%BE%E4%BC%A0%E6%84%9F%E5%99%A8%E7%B3%BB%E7%BB%9Fsensorlidarray_cast">第六章：CARLA 激光雷达传感器系统（sensor.lidar.ray_cast）</a></p>
 </li>
 <li>
-<p><a href="#1-模块概览-5">1 模块概览</a></p>
+<p><a href="#1-%E6%A8%A1%E5%9D%97%E6%A6%82%E8%A7%88-5">1 模块概览</a></p>
 </li>
-<li><a href="#2-工作机制与原理">2 工作机制与原理</a></li>
-<li><a href="#3-数据结构与点云格式">3 数据结构与点云格式</a></li>
-<li><a href="#4-序列化与反序列化流程">4 序列化与反序列化流程</a></li>
-<li><a href="#5-python-api-示例与配置参数">5 Python API 示例与配置参数</a></li>
-<li><a href="#6-应用场景与可拓展方向">6 应用场景与可拓展方向</a></li>
-<li><a href="#7-总结-1">7 总结</a></li>
+<li><a href="#2-%E5%B7%A5%E4%BD%9C%E6%9C%BA%E5%88%B6%E4%B8%8E%E5%8E%9F%E7%90%86">2 工作机制与原理</a></li>
+<li><a href="#3-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%82%B9%E4%BA%91%E6%A0%BC%E5%BC%8F">3 数据结构与点云格式</a></li>
+<li><a href="#4-%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%B5%81%E7%A8%8B">4 序列化与反序列化流程</a></li>
+<li><a href="#5-python-api-%E7%A4%BA%E4%BE%8B%E4%B8%8E%E9%85%8D%E7%BD%AE%E5%8F%82%E6%95%B0">5 Python API 示例与配置参数</a></li>
+<li><a href="#6-%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF%E4%B8%8E%E5%8F%AF%E6%8B%93%E5%B1%95%E6%96%B9%E5%90%91">6 应用场景与可拓展方向</a></li>
+<li><a href="#7-%E6%80%BB%E7%BB%93-1">7 总结</a></li>
 </ul>
 <h3 id="sensorotherobstacle">第七章：<a href="https://openhutb.github.io/doc/ref_sensors/#obstacle-detector">障碍物检测传感器</a> （sensor.other.obstacle）</h3>
 <ul>
 <li>
-<p><a href="#第七章carla-障碍物检测传感器系统sensorotherobstacle">第七章：CARLA 障碍物检测传感器系统（sensor.other.obstacle）</a></p>
+<p><a href="#%E7%AC%AC%E4%B8%83%E7%AB%A0carla-%E9%9A%9C%E7%A2%8D%E7%89%A9%E6%A3%80%E6%B5%8B%E4%BC%A0%E6%84%9F%E5%99%A8%E7%B3%BB%E7%BB%9Fsensorotherobstacle">第七章：CARLA 障碍物检测传感器系统（sensor.other.obstacle）</a></p>
 </li>
 <li>
-<p><a href="#1-模块概览-6">1 模块概览</a></p>
+<p><a href="#1-%E6%A8%A1%E5%9D%97%E6%A6%82%E8%A7%88-6">1 模块概览</a></p>
 </li>
-<li><a href="#2-触发机制与事件流程">2 触发机制与事件流程</a></li>
-<li><a href="#3-数据结构解析obstacledetectionevent">3 数据结构解析：ObstacleDetectionEvent</a></li>
-<li><a href="#4-序列化机制说明">4 序列化机制说明</a></li>
-<li><a href="#5-python-api-使用示例-4">5 Python API 使用示例</a></li>
-<li><a href="#6-应用场景与扩展建议">6 应用场景与扩展建议</a></li>
-<li><a href="#7-小结-1">7 小结</a></li>
+<li><a href="#2-%E8%A7%A6%E5%8F%91%E6%9C%BA%E5%88%B6%E4%B8%8E%E4%BA%8B%E4%BB%B6%E6%B5%81%E7%A8%8B">2 触发机制与事件流程</a></li>
+<li><a href="#3-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%A7%A3%E6%9E%90obstacledetectionevent">3 数据结构解析：ObstacleDetectionEvent</a></li>
+<li><a href="#4-%E5%BA%8F%E5%88%97%E5%8C%96%E6%9C%BA%E5%88%B6%E8%AF%B4%E6%98%8E">4 序列化机制说明</a></li>
+<li><a href="#5-python-api-%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B-4">5 Python API 使用示例</a></li>
+<li><a href="#6-%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF%E4%B8%8E%E6%89%A9%E5%B1%95%E5%BB%BA%E8%AE%AE">6 应用场景与扩展建议</a></li>
+<li><a href="#7-%E5%B0%8F%E7%BB%93-1">7 小结</a></li>
 </ul>
 <h3 id="rgb-sensorcamerargb">第八章：<a href="https://openhutb.github.io/doc/ref_sensors/#rgb-camera">RGB 摄像头传感器</a> （sensor.camera.rgb）</h3>
 <ul>
 <li>
-<p><a href="#第八章carla-rgb-摄像头传感器系统sensorcamerargb">第八章：CARLA RGB 摄像头传感器系统（sensor.camera.rgb）</a></p>
+<p><a href="#%E7%AC%AC%E5%85%AB%E7%AB%A0carla-rgb-%E6%91%84%E5%83%8F%E5%A4%B4%E4%BC%A0%E6%84%9F%E5%99%A8%E7%B3%BB%E7%BB%9Fsensorcamerargb">第八章：CARLA RGB 摄像头传感器系统（sensor.camera.rgb）</a></p>
 </li>
 <li>
-<p><a href="#1-模块概览-7">1 模块概览</a></p>
+<p><a href="#1-%E6%A8%A1%E5%9D%97%E6%A6%82%E8%A7%88-7">1 模块概览</a></p>
 </li>
-<li><a href="#2-图像采集与传输机制">2 图像采集与传输机制</a></li>
-<li><a href="#3-数据结构说明image">3 数据结构说明：Image</a></li>
-<li><a href="#4-序列化与编码流程">4 序列化与编码流程</a></li>
-<li><a href="#5-python-api-使用示例-5">5 Python API 使用示例</a></li>
-<li><a href="#6-应用方向与参数优化">6 应用方向与参数优化</a></li>
-<li><a href="#7-小结-2">7 小结</a></li>
+<li><a href="#2-%E5%9B%BE%E5%83%8F%E9%87%87%E9%9B%86%E4%B8%8E%E4%BC%A0%E8%BE%93%E6%9C%BA%E5%88%B6">2 图像采集与传输机制</a></li>
+<li><a href="#3-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AF%B4%E6%98%8Eimage">3 数据结构说明：Image</a></li>
+<li><a href="#4-%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E7%BC%96%E7%A0%81%E6%B5%81%E7%A8%8B">4 序列化与编码流程</a></li>
+<li><a href="#5-python-api-%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B-5">5 Python API 使用示例</a></li>
+<li><a href="#6-%E5%BA%94%E7%94%A8%E6%96%B9%E5%90%91%E4%B8%8E%E5%8F%82%E6%95%B0%E4%BC%98%E5%8C%96">6 应用方向与参数优化</a></li>
+<li><a href="#7-%E5%B0%8F%E7%BB%93-2">7 小结</a></li>
 </ul>
 <h3 id="sensorcameradepth">第九章：<a href="https://openhutb.github.io/doc/ref_sensors/#depth-camera">深度相机传感器</a> （sensor.camera.depth）</h3>
 <ul>
 <li>
-<p><a href="#第九章carla-深度图摄像头传感器系统sensorcameradepth">第九章：CARLA 深度图摄像头传感器系统（sensor.camera.depth）</a></p>
+<p><a href="#%E7%AC%AC%E4%B9%9D%E7%AB%A0carla-%E6%B7%B1%E5%BA%A6%E5%9B%BE%E6%91%84%E5%83%8F%E5%A4%B4%E4%BC%A0%E6%84%9F%E5%99%A8%E7%B3%BB%E7%BB%9Fsensorcameradepth">第九章：CARLA 深度图摄像头传感器系统（sensor.camera.depth）</a></p>
 </li>
 <li>
-<p><a href="#1-模块概览-8">1 模块概览</a></p>
+<p><a href="#1-%E6%A8%A1%E5%9D%97%E6%A6%82%E8%A7%88-8">1 模块概览</a></p>
 </li>
-<li><a href="#2-成像原理与深度编码">2 成像原理与深度编码</a></li>
-<li><a href="#3-数据结构说明">3 数据结构说明</a></li>
-<li><a href="#4-序列化与解码流程">4 序列化与解码流程</a></li>
-<li><a href="#5-python-api-使用示例-6">5 Python API 使用示例</a></li>
-<li><a href="#6-深度图应用场景">6 深度图应用场景</a></li>
-<li><a href="#7-小结-3">7 小结</a></li>
+<li><a href="#2-%E6%88%90%E5%83%8F%E5%8E%9F%E7%90%86%E4%B8%8E%E6%B7%B1%E5%BA%A6%E7%BC%96%E7%A0%81">2 成像原理与深度编码</a></li>
+<li><a href="#3-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AF%B4%E6%98%8E">3 数据结构说明</a></li>
+<li><a href="#4-%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E8%A7%A3%E7%A0%81%E6%B5%81%E7%A8%8B">4 序列化与解码流程</a></li>
+<li><a href="#5-python-api-%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B-6">5 Python API 使用示例</a></li>
+<li><a href="#6-%E6%B7%B1%E5%BA%A6%E5%9B%BE%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF">6 深度图应用场景</a></li>
+<li><a href="#7-%E5%B0%8F%E7%BB%93-3">7 小结</a></li>
 </ul>
 <h3 id="sensorcamerasemantic_segmentation">第十章：<a href="https://openhutb.github.io/doc/ref_sensors/#semantic-segmentation-camera">语义分割相机传感器</a>（sensor.camera.semantic_segmentation）</h3>
 <ul>
 <li>
-<p><a href="#第十章carla-语义分割摄像头传感器系统sensorcamerasemantic_segmentation">第十章：CARLA 语义分割摄像头传感器系统（sensor.camera.semantic_segmentation）</a></p>
+<p><a href="#%E7%AC%AC%E5%8D%81%E7%AB%A0carla-%E8%AF%AD%E4%B9%89%E5%88%86%E5%89%B2%E6%91%84%E5%83%8F%E5%A4%B4%E4%BC%A0%E6%84%9F%E5%99%A8%E7%B3%BB%E7%BB%9Fsensorcamerasemantic_segmentation">第十章：CARLA 语义分割摄像头传感器系统（sensor.camera.semantic_segmentation）</a></p>
 </li>
 <li>
-<p><a href="#1-模块概览-9">1 模块概览</a></p>
+<p><a href="#1-%E6%A8%A1%E5%9D%97%E6%A6%82%E8%A7%88-9">1 模块概览</a></p>
 </li>
-<li><a href="#2-输出内容与标签定义">2 输出内容与标签定义</a></li>
-<li><a href="#3-数据结构与格式说明">3 数据结构与格式说明</a></li>
-<li><a href="#4-序列化机制说明-1">4 序列化机制说明</a></li>
-<li><a href="#5-python-api-使用示例-7">5 Python API 使用示例</a></li>
-<li><a href="#6-应用与扩展方向">6 应用与扩展方向</a></li>
-<li><a href="#7-小结-4">7 小结</a></li>
+<li><a href="#2-%E8%BE%93%E5%87%BA%E5%86%85%E5%AE%B9%E4%B8%8E%E6%A0%87%E7%AD%BE%E5%AE%9A%E4%B9%89">2 输出内容与标签定义</a></li>
+<li><a href="#3-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E6%A0%BC%E5%BC%8F%E8%AF%B4%E6%98%8E">3 数据结构与格式说明</a></li>
+<li><a href="#4-%E5%BA%8F%E5%88%97%E5%8C%96%E6%9C%BA%E5%88%B6%E8%AF%B4%E6%98%8E-1">4 序列化机制说明</a></li>
+<li><a href="#5-python-api-%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B-7">5 Python API 使用示例</a></li>
+<li><a href="#6-%E5%BA%94%E7%94%A8%E4%B8%8E%E6%89%A9%E5%B1%95%E6%96%B9%E5%90%91">6 应用与扩展方向</a></li>
+<li><a href="#7-%E5%B0%8F%E7%BB%93-4">7 小结</a></li>
 </ul>
 <h3 id="sensorradarray_cast">第十一章：<a href="https://openhutb.github.io/doc/ref_sensors/#radar-sensor">雷达传感器</a>（sensor.radar.ray_cast）</h3>
 <ul>
 <li>
-<p><a href="#第十一章carla-雷达传感器系统sensorradarray_cast">第十一章：CARLA 雷达传感器系统（sensor.radar.ray_cast）</a></p>
+<p><a href="#%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0carla-%E9%9B%B7%E8%BE%BE%E4%BC%A0%E6%84%9F%E5%99%A8%E7%B3%BB%E7%BB%9Fsensorradarray_cast">第十一章：CARLA 雷达传感器系统（sensor.radar.ray_cast）</a></p>
 </li>
 <li>
-<p><a href="#1-模块概览-10">1 模块概览</a></p>
+<p><a href="#1-%E6%A8%A1%E5%9D%97%E6%A6%82%E8%A7%88-10">1 模块概览</a></p>
 </li>
-<li><a href="#2-扫描原理与数据描述">2 扫描原理与数据描述</a></li>
-<li><a href="#3-数据结构解析radardetection">3 数据结构解析：RadarDetection</a></li>
-<li><a href="#4-序列化与传输机制">4 序列化与传输机制</a></li>
-<li><a href="#5-python-api-使用示例-8">5 Python API 使用示例</a></li>
-<li><a href="#6-应用与对比分析">6 应用与对比分析</a></li>
-<li><a href="#7-小结-5">7 小结</a></li>
+<li><a href="#2-%E6%89%AB%E6%8F%8F%E5%8E%9F%E7%90%86%E4%B8%8E%E6%95%B0%E6%8D%AE%E6%8F%8F%E8%BF%B0">2 扫描原理与数据描述</a></li>
+<li><a href="#3-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%A7%A3%E6%9E%90radardetection">3 数据结构解析：RadarDetection</a></li>
+<li><a href="#4-%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E4%BC%A0%E8%BE%93%E6%9C%BA%E5%88%B6">4 序列化与传输机制</a></li>
+<li><a href="#5-python-api-%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B-8">5 Python API 使用示例</a></li>
+<li><a href="#6-%E5%BA%94%E7%94%A8%E4%B8%8E%E5%AF%B9%E6%AF%94%E5%88%86%E6%9E%90">6 应用与对比分析</a></li>
+<li><a href="#7-%E5%B0%8F%E7%BB%93-5">7 小结</a></li>
 </ul>
 <h3 id="sensorotherrss">第十二章：<a href="https://openhutb.github.io/doc/ref_sensors/#rss-sensor">责任敏感安全传感器</a>（sensor.other.rss）</h3>
 <ul>
 <li>
-<p><a href="#第十二章carla-rss-责任敏感安全传感器系统sensorotherrss">第十二章：CARLA RSS 责任敏感安全传感器系统（sensor.other.rss）</a></p>
+<p><a href="#%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AB%A0carla-rss-%E8%B4%A3%E4%BB%BB%E6%95%8F%E6%84%9F%E5%AE%89%E5%85%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E7%B3%BB%E7%BB%9Fsensorotherrss">第十二章：CARLA RSS 责任敏感安全传感器系统（sensor.other.rss）</a></p>
 </li>
 <li>
-<p><a href="#1-模块概览-11">1 模块概览</a></p>
+<p><a href="#1-%E6%A8%A1%E5%9D%97%E6%A6%82%E8%A7%88-11">1 模块概览</a></p>
 </li>
-<li><a href="#2-rss-模型简介与传感器原理">2 RSS 模型简介与传感器原理</a></li>
-<li><a href="#3-数据结构说明rssresponse">3 数据结构说明：RssResponse</a></li>
-<li><a href="#4-序列化与触发机制">4 序列化与触发机制</a></li>
-<li><a href="#5-python-api-使用示例-9">5 Python API 使用示例</a></li>
-<li><a href="#6-应用案例与扩展分析">6 应用案例与扩展分析</a></li>
-<li><a href="#7-小结-6">7 小结</a></li>
+<li><a href="#2-rss-%E6%A8%A1%E5%9E%8B%E7%AE%80%E4%BB%8B%E4%B8%8E%E4%BC%A0%E6%84%9F%E5%99%A8%E5%8E%9F%E7%90%86">2 RSS 模型简介与传感器原理</a></li>
+<li><a href="#3-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AF%B4%E6%98%8Erssresponse">3 数据结构说明：RssResponse</a></li>
+<li><a href="#4-%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E8%A7%A6%E5%8F%91%E6%9C%BA%E5%88%B6">4 序列化与触发机制</a></li>
+<li><a href="#5-python-api-%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B-9">5 Python API 使用示例</a></li>
+<li><a href="#6-%E5%BA%94%E7%94%A8%E6%A1%88%E4%BE%8B%E4%B8%8E%E6%89%A9%E5%B1%95%E5%88%86%E6%9E%90">6 应用案例与扩展分析</a></li>
+<li><a href="#7-%E5%B0%8F%E7%BB%93-6">7 小结</a></li>
 </ul>
-<hr />
+<hr>
 <h1 id="sensorothercollision_1">第一章：<a href="https://openhutb.github.io/doc/ref_sensors/#collision-detector">碰撞事件传感器</a>（sensor.other.collision）</h1>
-<hr />
+<hr>
 <h2 id="1">1 模块概览</h2>
-<p><img alt="flowchart_1.png" src="../../img/modules/flowchart_1.png" /></p>
+<p><img alt="flowchart_1.png" src="../../img/modules/flowchart_1.png"></p>
 <p>本章详细讲解 CARLA 模拟器中的一类简单传感器：<code>sensor.other.collision</code>，即碰撞事件传感器。该传感器不输出连续的数据流信息，而是在检测到实体碰撞时以事件形式即时触发。其设计初衷是为用户提供车辆与环境中其他对象之间物理交互的监控能力。</p>
 <p>在自动驾驶仿真、强化学习安全评估或碰撞规避算法验证中，<code>sensor.other.collision</code> 提供了关键的反馈信号。通过对其数据结构、序列化机制与客户端回调触发流程的深入解析，可全面理解该传感器在 CARLA 感知系统中的运行机制及其工程实现。</p>
-<hr />
+<hr>
 <h2 id="2">2 传感器注册与调用原理</h2>
 <p>CARLA 所有传感器，包括 <code>sensor.other.collision</code>，均基于统一的 Actor 注册与绑定框架。其创建与工作流程可分为以下几个核心阶段：</p>
 <ul>
@@ -286,7 +286,7 @@
 <li>注入回调函数中进行处理
 该流程构成事件捕捉 → 数据序列化 → 网络传输 → 解码还原 → 客户端处理的完整通路。</li>
 </ul>
-<hr />
+<hr>
 <h2 id="3-collisionevent">3 数据结构：CollisionEvent</h2>
 <p>定义文件：<a href="https://github.com/OpenHUTB/carla_cpp/blob/dev/LibCarla/source/carla/sensor/data/CollisionEvent.h"><code>carla/sensor/data/CollisionEvent.h</code></a></p>
 <div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">CollisionEvent</span><span class="w"> </span><span class="p">{</span>
@@ -300,10 +300,10 @@
 <li><code>other_actor</code>：碰撞对象（如障碍物、NPC）</li>
 <li><code>normal_impulse</code>：冲击力矢量，反映碰撞强度与方向</li>
 </ul>
-<hr />
+<hr>
 <h2 id="4-collisioneventserializer">4 序列化器分析：CollisionEventSerializer</h2>
-<p>定义文件：<br />
-<a href="https://github.com/OpenHUTB/carla_cpp/blob/dev/LibCarla/source/carla/sensor/s11n/CollisionEventSerializer.h"><code>CollisionEventSerializer.h</code></a><br />
+<p>定义文件：<br>
+<a href="https://github.com/OpenHUTB/carla_cpp/blob/dev/LibCarla/source/carla/sensor/s11n/CollisionEventSerializer.h"><code>CollisionEventSerializer.h</code></a><br>
 <a href="https://github.com/OpenHUTB/carla_cpp/blob/dev/LibCarla/source/carla/sensor/s11n/CollisionEventSerializer.cpp"><code>CollisionEventSerializer.cpp</code></a></p>
 <div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">Data</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">rpc</span><span class="o">::</span><span class="n">Actor</span><span class="w"> </span><span class="n">self_actor</span><span class="p">;</span>
@@ -325,10 +325,10 @@
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">SharedPtr</span><span class="o">&lt;</span><span class="n">SensorData</span><span class="o">&gt;</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">data</span><span class="o">::</span><span class="n">CollisionEvent</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">data</span><span class="p">)));</span>
 <span class="p">}</span>
 </code></pre></div>
-<hr />
+<hr>
 <h2 id="5-rawdata-sensordata">5 RawData 与 SensorData 概述</h2>
-<p>数据结构定义：<br />
-<a href="https://github.com/OpenHUTB/carla_cpp/blob/dev/LibCarla/source/carla/sensor/RawData.h"><code>RawData.h</code></a><br />
+<p>数据结构定义：<br>
+<a href="https://github.com/OpenHUTB/carla_cpp/blob/dev/LibCarla/source/carla/sensor/RawData.h"><code>RawData.h</code></a><br>
 <a href="https://github.com/OpenHUTB/carla_cpp/blob/dev/LibCarla/source/carla/sensor/SensorData.h"><code>SensorData.h</code></a></p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">RawData</span><span class="w"> </span><span class="p">{</span>
 <span class="k">public</span><span class="o">:</span>
@@ -344,21 +344,21 @@
 <span class="w">  </span><span class="n">SensorData</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">frame</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">timestamp</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">rpc</span><span class="o">::</span><span class="n">Transform</span><span class="w"> </span><span class="o">&amp;</span><span class="n">sensor_transform</span><span class="p">);</span>
 <span class="p">};</span>
 </code></pre></div>
-<hr />
+<hr>
 <h2 id="6-python-api">6 Python API 使用示例</h2>
 <p>参考文件：<a href="https://github.com/OpenHUTB/doc/blob/dev/src/examples/collision_sensor.py"><code>collision_sensor.py</code></a></p>
 <div class="highlight"><pre><span></span><code>def on_collision(event):
     actor = event.other_actor
     impulse = event.normal_impulse
-    print(f&quot;发生碰撞！对象类型：{actor.type_id}，冲击向量：{impulse}&quot;)
+    print(f"发生碰撞！对象类型：{actor.type_id}，冲击向量：{impulse}")
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>blueprint_library = world.get_blueprint_library()
-bp = blueprint_library.find(&#39;sensor.other.collision&#39;)
+bp = blueprint_library.find('sensor.other.collision')
 transform = carla.Transform(carla.Location(x=0, y=0, z=2.0))
 sensor = world.spawn_actor(bp, transform, attach_to=vehicle)
 sensor.listen(on_collision)
 </code></pre></div>
-<hr />
+<hr>
 <h2 id="7">7 小结与拓展</h2>
 <ul>
 <li><code>sensor.other.collision</code> 是轻量、事件驱动的传感器</li>
@@ -371,11 +371,11 @@ sensor.listen(on_collision)
 <li>结合图像、GNSS 数据实现回溯系统</li>
 <li>与强化学习结合生成动态规避策略</li>
 </ul>
-<hr />
+<hr>
 <h1 id="carla-sensorothernoop">第二章：CARLA 空传感器系统（sensor.other.noop）</h1>
-<hr />
+<hr>
 <h2 id="1_1">1 模块概览</h2>
-<p><img alt="flowchart_2.png" src="../../img/modules/flowchart_2.png" /></p>
+<p><img alt="flowchart_2.png" src="../../img/modules/flowchart_2.png"></p>
 <p>本章介绍 CARLA 模拟器中最为简化的一类传感器：<code>sensor.other.noop</code>，即“无操作传感器”（No-Operation Sensor）。顾名思义，该传感器不会向客户端发送任何数据，其存在的意义更多是作为客户端挂载传感器的占位符、功能测试器或新传感器开发的最小模板。</p>
 <p><code>sensor.other.noop</code> 适用于以下场景：</p>
 <ul>
@@ -385,7 +385,7 @@ sensor.listen(on_collision)
 <li>模拟传感器失败或无响应场景下的系统行为。</li>
 </ul>
 <p>其核心特征是：<strong>不参与数据流的任何阶段</strong>，服务端不会推送数据，客户端接收到数据则立即报错。</p>
-<hr />
+<hr>
 <h2 id="2_1">2 传感器注册与调用原理</h2>
 <p><code>sensor.other.noop</code> 遵循 CARLA 所有传感器统一的注册、挂载、通信框架，其调用流程包括以下几个阶段：</p>
 <ul>
@@ -396,7 +396,7 @@ sensor.listen(on_collision)
 <li>但由于此传感器不会生成任何事件，回调函数永远不会被实际调用；</li>
 <li>若数据进入系统，将由序列化器直接拒绝并抛出异常。</li>
 </ul>
-<hr />
+<hr>
 <h2 id="3-noopserializer">3 序列化器分析：NoopSerializer</h2>
 <p>该序列化器专为“客户端不接收数据”的传感器设计，核心逻辑是禁止任何数据反序列化。</p>
 <h3 id="31">3.1 接口定义</h3>
@@ -413,7 +413,7 @@ sensor.listen(on_collision)
 </ul>
 <h3 id="32">3.2 函数实现</h3>
 <div class="highlight"><pre><span></span><code><span class="n">SharedPtr</span><span class="o">&lt;</span><span class="n">SensorData</span><span class="o">&gt;</span><span class="w"> </span><span class="n">NoopSerializer</span><span class="o">::</span><span class="n">Deserialize</span><span class="p">(</span><span class="n">RawData</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">throw_exception</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">runtime_error</span><span class="p">(</span><span class="s">&quot;NoopSerializer: Invalid data received.&quot;</span><span class="p">));</span>
+<span class="w">  </span><span class="n">throw_exception</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">runtime_error</span><span class="p">(</span><span class="s">"NoopSerializer: Invalid data received."</span><span class="p">));</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>说明：</p>
@@ -422,7 +422,7 @@ sensor.listen(on_collision)
 <li>一旦客户端尝试处理此类型数据，即触发中断错误；</li>
 <li>该机制确保 <code>sensor.other.noop</code> 无法被误用。</li>
 </ul>
-<hr />
+<hr>
 <h2 id="4">4 数据结构与传输机制</h2>
 <p>该传感器不绑定任何结构化数据类型：</p>
 <ul>
@@ -432,15 +432,15 @@ sensor.listen(on_collision)
 <li>虽然支持 <code>.listen()</code> 注册机制，但永不触发。</li>
 </ul>
 <p>因此，<code>sensor.other.noop</code> 是一种“存在但不发声”的传感器，仅用于挂载占位或调试目的。</p>
-<hr />
+<hr>
 <h2 id="5-python-api">5 Python API 使用示例</h2>
 <p>虽然该传感器不传输数据，仍可正常在 Python 中创建与注册监听。</p>
 <div class="highlight"><pre><span></span><code># 定义回调函数（注意：不会被调用）
 def on_noop_event(event):
-    print(&quot;此处不应出现任何输出&quot;)
+    print("此处不应出现任何输出")
 
 # 获取蓝图库并查找蓝图
-bp = world.get_blueprint_library().find(&#39;sensor.other.noop&#39;)
+bp = world.get_blueprint_library().find('sensor.other.noop')
 
 # 设置传感器相对位置
 transform = carla.Transform(carla.Location(x=0, y=0, z=2.0))
@@ -457,7 +457,7 @@ noop_sensor.listen(on_noop_event)
 <li>可调用 <code>.destroy()</code> 观察销毁逻辑；</li>
 <li>可组合多个传感器观察 <code>.listen()</code> 机制行为。</li>
 </ul>
-<hr />
+<hr>
 <h2 id="6">6 小结与拓展</h2>
 <ul>
 <li><code>sensor.other.noop</code> 是 CARLA 中结构最简、用途最特殊的一类传感器；</li>
@@ -471,11 +471,11 @@ noop_sensor.listen(on_noop_event)
 <li>模拟传感器故障、异常或丢包处理机制；</li>
 <li>可组合图像、IMU 等实际传感器测试是否发生调用竞争或系统冲突。</li>
 </ul>
-<hr />
+<hr>
 <h1 id="sensorotherimu_1">第三章：<a href="https://openhutb.github.io/doc/ref_sensors/#imu-sensor">惯性测量单元传感器</a> （sensor.other.imu）</h1>
-<hr />
+<hr>
 <h2 id="1_2">1 模块概览</h2>
-<p><img alt="flowchart_3.png" src="../../img/modules/flowchart_3.png" /></p>
+<p><img alt="flowchart_3.png" src="../../img/modules/flowchart_3.png"></p>
 <p><code>sensor.other.imu</code> 是 CARLA 提供的惯性测量单元（IMU）传感器，用于捕捉车辆的三维加速度、角速度及方向信息，广泛应用于轨迹估计、姿态解算、导航融合等自动驾驶仿真任务中。</p>
 <p>该传感器会周期性发送事件，传递以下数据：</p>
 <ul>
@@ -484,7 +484,7 @@ noop_sensor.listen(on_noop_event)
 <li><strong>罗盘</strong>：航向角（方向朝向），单位弧度</li>
 </ul>
 <p>默认以 20Hz 更新频率输出，支持在蓝图中调整采样速率。</p>
-<hr />
+<hr>
 <h2 id="2_2">2 工作流程与序列化机制</h2>
 <p>IMU 传感器的数据流程如下：</p>
 <ol>
@@ -494,7 +494,7 @@ noop_sensor.listen(on_noop_event)
 <li><strong>数据还原</strong>：客户端通过 <code>IMUMeasurement</code> 类将字节流还原为结构化对象</li>
 <li><strong>回调触发</strong>：Python 层注册的 <code>.listen()</code> 回调函数获得该事件并执行处理逻辑</li>
 </ol>
-<hr />
+<hr>
 <h2 id="3">3 数据结构详解</h2>
 <p>IMU 数据通过 <code>IMUMeasurement</code> 类对外暴露，定义位置：</p>
 <p>📄 <a href="https://github.com/carla-simulator/carla/blob/dev/LibCarla/source/carla/sensor/data/IMUMeasurement.h"><code>carla/sensor/data/IMUMeasurement.h</code></a></p>
@@ -519,27 +519,27 @@ public:
 };
 </code></pre></div>
 <p>通过 <code>MSGPACK_DEFINE_ARRAY(acc, gyro, compass)</code> 支持 MsgPack 自动编码。</p>
-<hr />
+<hr>
 <h2 id="4-python-api">4 Python API 调用示例</h2>
 <p>以下代码展示如何部署 IMU 传感器、注册监听器，并处理接收到的数据：</p>
 <div class="highlight"><pre><span></span><code>def on_imu(event):
     acc = event.accelerometer
     gyro = event.gyroscope
     compass = event.compass
-    print(f&quot;[IMU] 加速度: {acc} | 角速度: {gyro} | 罗盘: {compass}&quot;)
+    print(f"[IMU] 加速度: {acc} | 角速度: {gyro} | 罗盘: {compass}")
 
 # 创建传感器
-bp = world.get_blueprint_library().find(&#39;sensor.other.imu&#39;)
+bp = world.get_blueprint_library().find('sensor.other.imu')
 transform = carla.Transform(carla.Location(x=0, y=0, z=1.0))
 imu_sensor = world.spawn_actor(bp, transform, attach_to=vehicle)
 imu_sensor.listen(on_imu)
 </code></pre></div>
-<hr />
+<hr>
 <h2 id="5">5 拓展用例与集成应用</h2>
 <p>IMU 常与 GNSS、相机、雷达等传感器联用，实现高级状态估计：</p>
 <p><strong>与 GNSS 融合：</strong></p>
 <div class="highlight"><pre><span></span><code>def on_gnss(gnss):
-    print(f&quot;[GNSS] 纬度: {gnss.latitude}, 经度: {gnss.longitude}&quot;)
+    print(f"[GNSS] 纬度: {gnss.latitude}, 经度: {gnss.longitude}")
 
 imu_sensor.listen(on_imu)
 gnss_sensor.listen(on_gnss)
@@ -554,9 +554,9 @@ def on_imu_integration(imu):
     velocity.x += a.x * dt
     velocity.y += a.y * dt
     velocity.z += a.z * dt
-    print(f&quot;估算速度: {velocity}&quot;)
+    print(f"估算速度: {velocity}")
 </code></pre></div>
-<hr />
+<hr>
 <h2 id="6_1">6 限制与对比分析</h2>
 <table>
 <thead>
@@ -589,7 +589,7 @@ def on_imu_integration(imu):
 </tr>
 </tbody>
 </table>
-<hr />
+<hr>
 <h2 id="7_1">7 总结与建议</h2>
 <ul>
 <li><code>sensor.other.imu</code> 提供结构清晰、易用的姿态/运动状态反馈能力；</li>
@@ -597,11 +597,11 @@ def on_imu_integration(imu):
 <li>建议与 <code>sensor.other.gnss</code>、<code>sensor.camera.rgb</code> 联合使用，支持轨迹分析、三维重建等研究任务；</li>
 <li>后续可引入 IMU 噪声模拟模块、数据导出功能。</li>
 </ul>
-<hr />
+<hr>
 <h1 id="sensorothergnss_1">第四章：<a href="https://openhutb.github.io/doc/ref_sensors/#gnss-sensor">全球导航卫星系统传感器</a> （sensor.other.gnss）</h1>
-<hr />
+<hr>
 <h2 id="1_3">1 模块概览</h2>
-<p><img alt="flowchart_4.png" src="../../img/modules/flowchart_4.png" /></p>
+<p><img alt="flowchart_4.png" src="../../img/modules/flowchart_4.png"></p>
 <p><code>sensor.other.gnss</code> 是 CARLA 中用于获取地理位置信息的传感器，模拟真实世界中的全球导航卫星系统（GNSS）设备，如 GPS、北斗等。传感器输出包括：</p>
 <ul>
 <li><strong>经度（longitude）</strong>：单位°，范围 $-180°, 180°$</li>
@@ -609,7 +609,7 @@ def on_imu_integration(imu):
 <li><strong>海拔（altitude）</strong>：单位为米，代表相对于海平面的高度</li>
 </ul>
 <p>该传感器可用于场景定位、路径重建、轨迹分析等仿真任务中，常与 IMU、地图匹配模块联合使用。</p>
-<hr />
+<hr>
 <h2 id="2_3">2 工作流程与传输机制</h2>
 <p>GNSS 的数据传输流程如下：</p>
 <ol>
@@ -619,7 +619,7 @@ def on_imu_integration(imu):
 <li><strong>数据还原</strong>：客户端使用 <code>GnssMeasurement</code> 类解码 <code>RawData</code>，得到结构化数据</li>
 <li><strong>Python 层监听</strong>：<code>.listen()</code> 接口注册的函数在每次更新中触发回调</li>
 </ol>
-<hr />
+<hr>
 <h2 id="3_1">3 数据结构解析</h2>
 <p>定义位置：<a href="https://github.com/OpenHUTB/carla_cpp/blob/dev/LibCarla/source/carla/sensor/data/GnssMeasurement.h"><code>GnssMeasurement.h</code></a></p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">GnssMeasurement</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">SensorData</span><span class="w"> </span><span class="p">{</span>
@@ -662,7 +662,7 @@ def on_imu_integration(imu):
 </tr>
 </tbody>
 </table>
-<hr />
+<hr>
 <h2 id="4_1">4 序列化机制分析</h2>
 <p>定义文件：
 <a href="https://github.com/OpenHUTB/carla_cpp/blob/dev/LibCarla/source/carla/sensor/s11n/GnssSerializer.h"><code>GnssSerializer.h</code></a>
@@ -681,17 +681,17 @@ def on_imu_integration(imu):
 <span class="p">};</span>
 </code></pre></div>
 <p>该机制保证 GNSS 数据体积小、解码快，适合高频传输与跨语言兼容。</p>
-<hr />
+<hr>
 <h2 id="5-python-api_1">5 Python API 使用示例</h2>
 <div class="highlight"><pre><span></span><code><span class="c1"># 定义回调函数</span>
 <span class="k">def</span> <span class="nf">on_gnss</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
     <span class="n">lat</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">latitude</span>
     <span class="n">lon</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">longitude</span>
     <span class="n">alt</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">altitude</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[GNSS] 纬度: </span><span class="si">{</span><span class="n">lat</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">, 经度: </span><span class="si">{</span><span class="n">lon</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">, 海拔: </span><span class="si">{</span><span class="n">alt</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">m&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[GNSS] 纬度: </span><span class="si">{</span><span class="n">lat</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">, 经度: </span><span class="si">{</span><span class="n">lon</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">, 海拔: </span><span class="si">{</span><span class="n">alt</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">m"</span><span class="p">)</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># 创建并绑定传感器</span>
-<span class="n">bp</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">get_blueprint_library</span><span class="p">()</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;sensor.other.gnss&#39;</span><span class="p">)</span>
+<span class="n">bp</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">get_blueprint_library</span><span class="p">()</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'sensor.other.gnss'</span><span class="p">)</span>
 <span class="n">transform</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Transform</span><span class="p">(</span><span class="n">carla</span><span class="o">.</span><span class="n">Location</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mf">1.6</span><span class="p">))</span>
 <span class="n">gnss_sensor</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">spawn_actor</span><span class="p">(</span><span class="n">bp</span><span class="p">,</span> <span class="n">transform</span><span class="p">,</span> <span class="n">attach_to</span><span class="o">=</span><span class="n">vehicle</span><span class="p">)</span>
 <span class="n">gnss_sensor</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="n">on_gnss</span><span class="p">)</span>
@@ -713,7 +713,7 @@ def on_imu_integration(imu):
 </tr>
 </tbody>
 </table>
-<hr />
+<hr>
 <h2 id="6_2">6 应用拓展与组合使用</h2>
 <p>GNSS 传感器常用于以下场景：</p>
 <ul>
@@ -725,24 +725,24 @@ def on_imu_integration(imu):
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">on_fused_data</span><span class="p">(</span><span class="n">gnss</span><span class="p">,</span> <span class="n">imu</span><span class="p">):</span>
     <span class="n">location</span> <span class="o">=</span> <span class="p">(</span><span class="n">gnss</span><span class="o">.</span><span class="n">latitude</span><span class="p">,</span> <span class="n">gnss</span><span class="o">.</span><span class="n">longitude</span><span class="p">)</span>
     <span class="n">acceleration</span> <span class="o">=</span> <span class="n">imu</span><span class="o">.</span><span class="n">accelerometer</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[FUSION] 坐标: </span><span class="si">{</span><span class="n">location</span><span class="si">}</span><span class="s2">, 加速度: </span><span class="si">{</span><span class="n">acceleration</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[FUSION] 坐标: </span><span class="si">{</span><span class="n">location</span><span class="si">}</span><span class="s2">, 加速度: </span><span class="si">{</span><span class="n">acceleration</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </code></pre></div>
 <p>该模式可用于轨迹重建、地理围栏检测、自动驾驶行为控制等任务。</p>
-<hr />
+<hr>
 <h2 id="7_2">7 总结与建议</h2>
 <ul>
 <li><code>sensor.other.gnss</code> 提供高精度地理位置信息，是自动驾驶仿真系统中的关键模块；</li>
 <li>与 IMU、摄像头、地图等配合可实现高级 SLAM 与定位算法验证；</li>
 <li>若需实现更真实的模型，可拓展添加噪声模型、地形遮挡、信号丢失模拟等功能。</li>
 </ul>
-<hr />
+<hr>
 <h1 id="sensorotherlane_invasion_1">第五章：<a href="https://openhutb.github.io/doc/ref_sensors/#lane-invasion-detector">车道入侵传感器系统</a> （sensor.other.lane_invasion）</h1>
-<hr />
+<hr>
 <h2 id="1_4">1 模块概览</h2>
-<p><img alt="flowchart_5.png" src="../../img/modules/flowchart_5.png" />
+<p><img alt="flowchart_5.png" src="../../img/modules/flowchart_5.png">
 <code>sensor.other.lane_invasion</code> 是 CARLA 提供的一类事件型传感器，用于监测车辆是否跨越车道线。该传感器在每次检测到入侵车道标线时触发事件，并将跨越的车道线类型（如实线、虚线）以枚举列表形式返回。</p>
 <p>在自动驾驶安全策略、强化学习训练以及车道保持辅助系统（LKA）中，<code>lane_invasion</code> 传感器常用于实现惩罚反馈、路径修正与轨迹约束。</p>
-<hr />
+<hr>
 <h2 id="2_4">2 检测流程与回调机制</h2>
 <p>其工作流程为：</p>
 <ol>
@@ -752,7 +752,7 @@ def on_imu_integration(imu):
 <li><strong>网络传输</strong>：通过 RPC 系统发送至客户端；</li>
 <li><strong>Python 接收</strong>：回调函数被 <code>.listen()</code> 注册监听，获取并解析车道入侵信息。</li>
 </ol>
-<hr />
+<hr>
 <h2 id="3-laneinvasionevent">3 数据结构：LaneInvasionEvent</h2>
 <p>定义文件：<a href="https://github.com/carla-simulator/carla/blob/dev/LibCarla/source/carla/sensor/data/LaneInvasionEvent.h"><code>carla/sensor/data/LaneInvasionEvent.h</code></a></p>
 <div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">LaneInvasionEvent</span><span class="w"> </span><span class="p">{</span>
@@ -765,7 +765,7 @@ def on_imu_integration(imu):
 <li><code>crossed_lane_markings</code>：当前帧中车辆所跨越的所有车道线类型（可为多个），类型为枚举，如 <code>Broken</code>, <code>Solid</code>, <code>DoubleSolid</code> 等。</li>
 </ul>
 <p>该结构紧凑、频次高，适合用于连续动态监测。</p>
-<hr />
+<hr>
 <h2 id="4_2">4 序列化机制分析</h2>
 <p>定义文件：
 <a href="https://github.com/carla-simulator/carla/blob/dev/LibCarla/source/carla/sensor/s11n/LaneInvasionEventSerializer.h"><code>LaneInvasionEventSerializer.h</code></a>
@@ -790,20 +790,20 @@ def on_imu_integration(imu):
 <li>序列化结构以 Actor + 多个 LaneMarking 构成，采用 MsgPack 自动打包；</li>
 <li><code>RawData</code> 解码后重建 <code>LaneInvasionEvent</code> 对象并回调处理。</li>
 </ul>
-<hr />
+<hr>
 <h2 id="5-python-api_2">5 Python API 使用示例</h2>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">on_lane_invasion</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
     <span class="n">markings</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">crossed_lane_markings</span>
     <span class="n">types</span> <span class="o">=</span> <span class="p">[</span><span class="n">m</span><span class="o">.</span><span class="n">type</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">markings</span><span class="p">]</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[LANE INVASION] 跨越线型: </span><span class="si">{</span><span class="n">types</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[LANE INVASION] 跨越线型: </span><span class="si">{</span><span class="n">types</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
 <span class="c1"># 注册传感器</span>
-<span class="n">bp</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">get_blueprint_library</span><span class="p">()</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;sensor.other.lane_invasion&#39;</span><span class="p">)</span>
+<span class="n">bp</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">get_blueprint_library</span><span class="p">()</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'sensor.other.lane_invasion'</span><span class="p">)</span>
 <span class="n">transform</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Transform</span><span class="p">(</span><span class="n">carla</span><span class="o">.</span><span class="n">Location</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mf">1.0</span><span class="p">))</span>
 <span class="n">sensor</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">spawn_actor</span><span class="p">(</span><span class="n">bp</span><span class="p">,</span> <span class="n">transform</span><span class="p">,</span> <span class="n">attach_to</span><span class="o">=</span><span class="n">vehicle</span><span class="p">)</span>
 <span class="n">sensor</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="n">on_lane_invasion</span><span class="p">)</span>
 </code></pre></div>
-<hr />
+<hr>
 <h2 id="6_3">6 应用案例与拓展建议</h2>
 <p>该传感器在以下任务中具有实用价值：</p>
 <ul>
@@ -818,21 +818,21 @@ def on_imu_integration(imu):
 <li>支持配置忽略特定线型（如仅监控实线跨越）；</li>
 <li>将入侵事件导出为 CSV/JSON 用于行为可视化分析。</li>
 </ul>
-<hr />
+<hr>
 <h2 id="7_3">7 小结</h2>
 <ul>
 <li><code>sensor.other.lane_invasion</code> 是 CARLA 中重要的语义事件传感器；</li>
 <li>它以低带宽方式提供关键路径偏离信息，适用于控制反馈与安全分析；</li>
 <li>未来可与地图标注、规划模块更深度融合，支持高精轨迹约束与驾驶决策研究。</li>
 </ul>
-<hr />
+<hr>
 <h1 id="sensorlidarray_cast_1">第六章：<a href="https://openhutb.github.io/doc/ref_sensors/#lidar-sensor">激光雷达传感器系统</a> （sensor.lidar.ray_cast）</h1>
-<hr />
+<hr>
 <h2 id="1_5">1 模块概览</h2>
-<p><img alt="flowchart_6.png" src="../../img/modules/flowchart_6.png" /></p>
+<p><img alt="flowchart_6.png" src="../../img/modules/flowchart_6.png"></p>
 <p><code>sensor.lidar.ray_cast</code> 是 CARLA 模拟器中最常用的激光雷达传感器，基于光线投射（ray casting）机制模拟真实 LiDAR 装置的点云采集过程。它可高效模拟不同线数、角度、旋转频率和噪声模型的激光扫描设备（如 Velodyne HDL-64、Ouster OS1 等）。</p>
 <p>激光雷达传感器在 3D 感知、环境建图、障碍物检测与路径规划等任务中具有核心地位，其输出为连续的三维点云流数据。</p>
-<hr />
+<hr>
 <h2 id="2_5">2 工作机制与原理</h2>
 <p><code>sensor.lidar.ray_cast</code> 基于服务端的射线仿真实现：</p>
 <ol>
@@ -844,7 +844,7 @@ def on_imu_integration(imu):
 <li><strong>解码还原</strong>：客户端使用 <code>LidarMeasurement</code> 解码并提供访问接口。</li>
 </ol>
 <p>该传感器支持设定旋转频率、扫描范围、垂直角分布、点密度、噪声模型等，是极为灵活的仿真组件。</p>
-<hr />
+<hr>
 <h2 id="3_2">3 数据结构与点云格式</h2>
 <p>定义文件：<a href="https://github.com/carla-simulator/carla/blob/dev/LibCarla/source/carla/sensor/data/LidarMeasurement.h"><code>carla/sensor/data/LidarMeasurement.h</code></a></p>
 <div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">LidarDetection</span><span class="w"> </span><span class="p">{</span>
@@ -863,7 +863,7 @@ def on_imu_integration(imu):
 <span class="p">};</span>
 </code></pre></div>
 <p>每个点均包含空间坐标和强度，单位均为米（<code>m</code>），强度为 0\~1 之间的浮点数。</p>
-<hr />
+<hr>
 <h2 id="4_3">4 序列化与反序列化流程</h2>
 <p>定义文件：
 <a href="https://github.com/carla-simulator/carla/blob/dev/LibCarla/source/carla/sensor/s11n/LidarSerializer.h"><code>LidarSerializer.h</code></a>
@@ -877,18 +877,18 @@ def on_imu_integration(imu):
 <span class="p">}</span>
 </code></pre></div>
 <p>点云被连续存储为 <code>[float x, y, z, intensity] * N</code> 形式，传输高效，占用带宽较低，适合高频实时仿真。</p>
-<hr />
+<hr>
 <h2 id="5-python-api_3">5 Python API 示例与配置参数</h2>
 <p>以下代码展示如何部署 LiDAR 传感器，并处理点云数据：</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">on_lidar</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
     <span class="n">points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">frombuffer</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">raw_data</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[LIDAR] 点数: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)</span><span class="si">}</span><span class="s2">, 第一个点: </span><span class="si">{</span><span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[LIDAR] 点数: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)</span><span class="si">}</span><span class="s2">, 第一个点: </span><span class="si">{</span><span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
-<span class="n">bp</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">get_blueprint_library</span><span class="p">()</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;sensor.lidar.ray_cast&#39;</span><span class="p">)</span>
-<span class="n">bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">&#39;range&#39;</span><span class="p">,</span> <span class="s1">&#39;100.0&#39;</span><span class="p">)</span>
-<span class="n">bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">&#39;rotation_frequency&#39;</span><span class="p">,</span> <span class="s1">&#39;10.0&#39;</span><span class="p">)</span>
-<span class="n">bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">&#39;channels&#39;</span><span class="p">,</span> <span class="s1">&#39;32&#39;</span><span class="p">)</span>
-<span class="n">bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">&#39;points_per_second&#39;</span><span class="p">,</span> <span class="s1">&#39;56000&#39;</span><span class="p">)</span>
+<span class="n">bp</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">get_blueprint_library</span><span class="p">()</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'sensor.lidar.ray_cast'</span><span class="p">)</span>
+<span class="n">bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">'range'</span><span class="p">,</span> <span class="s1">'100.0'</span><span class="p">)</span>
+<span class="n">bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">'rotation_frequency'</span><span class="p">,</span> <span class="s1">'10.0'</span><span class="p">)</span>
+<span class="n">bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">'channels'</span><span class="p">,</span> <span class="s1">'32'</span><span class="p">)</span>
+<span class="n">bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">'points_per_second'</span><span class="p">,</span> <span class="s1">'56000'</span><span class="p">)</span>
 
 <span class="n">transform</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Transform</span><span class="p">(</span><span class="n">carla</span><span class="o">.</span><span class="n">Location</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mf">2.5</span><span class="p">))</span>
 <span class="n">lidar_sensor</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">spawn_actor</span><span class="p">(</span><span class="n">bp</span><span class="p">,</span> <span class="n">transform</span><span class="p">,</span> <span class="n">attach_to</span><span class="o">=</span><span class="n">vehicle</span><span class="p">)</span>
@@ -936,7 +936,7 @@ def on_imu_integration(imu):
 </tr>
 </tbody>
 </table>
-<hr />
+<hr>
 <h2 id="6_4">6 应用场景与可拓展方向</h2>
 <h3 id="_4">应用场景：</h3>
 <ul>
@@ -953,18 +953,18 @@ def on_imu_integration(imu):
 <li>与相机坐标联合投影，实现点云图像融合；</li>
 <li>点云导出为 PCD 格式供后处理工具使用（如 Open3D、PCL）。</li>
 </ul>
-<hr />
+<hr>
 <h2 id="7_4">7 总结</h2>
 <p><code>sensor.lidar.ray_cast</code> 是 CARLA 中仿真精度最高、功能最丰富的连续型传感器。其基于 GPU 加速射线投射，提供高频、高密度、可配置的点云数据输出。</p>
 <p>该模块适用于感知、规划、重建、避障等任务，是自动驾驶研究不可或缺的重要组件。</p>
-<hr />
+<hr>
 <h1 id="sensorotherobstacle_1">第七章：<a href="https://openhutb.github.io/doc/ref_sensors/#obstacle-detector">障碍物检测传感器系统</a> （sensor.other.obstacle）</h1>
-<hr />
+<hr>
 <h2 id="1_6">1 模块概览</h2>
-<p><img alt="flowchart_7.png" src="../../img/modules/flowchart_7.png" /></p>
+<p><img alt="flowchart_7.png" src="../../img/modules/flowchart_7.png"></p>
 <p><code>sensor.other.obstacle</code> 是 CARLA 提供的一类事件触发型传感器，用于在仿真环境中检测车辆或行人前方的潜在障碍物。与 <code>collision</code> 传感器不同，它在实际碰撞发生<strong>之前</strong>触发，为自动驾驶决策提供提前预警。</p>
 <p>该传感器通常被附着于主控实体（如车辆），当检测到其前方存在障碍物进入指定感知半径时，触发 <code>ObstacleDetectionEvent</code>，并返回障碍物的相对位置、速度、Actor ID 等信息。</p>
-<hr />
+<hr>
 <h2 id="2_6">2 触发机制与事件流程</h2>
 <p>该传感器通过连续评估障碍物与传感器附着体（通常为车辆）的相对几何关系触发事件：</p>
 <ol>
@@ -975,7 +975,7 @@ def on_imu_integration(imu):
 <li><strong>回调触发</strong>：客户端通过 <code>.listen()</code> 注册的 Python 回调函数接收该事件。</li>
 </ol>
 <p>该机制支持近实时检测与事件压缩传输，适用于高频控制反馈与行为建模。</p>
-<hr />
+<hr>
 <h2 id="3-obstacledetectionevent">3 数据结构解析：ObstacleDetectionEvent</h2>
 <p>定义文件：<a href="https://github.com/carla-simulator/carla/blob/dev/LibCarla/source/carla/sensor/data/ObstacleDetectionEvent.h"><code>carla/sensor/data/ObstacleDetectionEvent.h</code></a></p>
 <div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">ObstacleDetectionEvent</span><span class="w"> </span><span class="p">{</span>
@@ -992,7 +992,7 @@ def on_imu_integration(imu):
 <li><code>distance</code>：两者之间的欧式距离；</li>
 <li><code>normal</code>：从障碍物指向车辆的法向向量，用于判断障碍方向与应对策略。</li>
 </ul>
-<hr />
+<hr>
 <h2 id="4_4">4 序列化机制说明</h2>
 <p>定义文件：
 <a href="https://github.com/carla-simulator/carla/blob/dev/LibCarla/source/carla/sensor/s11n/ObstacleDetectionEventSerializer.h"><code>ObstacleDetectionEventSerializer.h</code></a>
@@ -1022,14 +1022,14 @@ def on_imu_integration(imu):
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">SharedPtr</span><span class="o">&lt;</span><span class="n">SensorData</span><span class="o">&gt;</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">data</span><span class="o">::</span><span class="n">ObstacleDetectionEvent</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">data</span><span class="p">)));</span>
 <span class="p">}</span>
 </code></pre></div>
-<hr />
+<hr>
 <h2 id="5-python-api_4">5 Python API 使用示例</h2>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">on_obstacle</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
     <span class="n">obstacle</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">other_actor</span>
     <span class="n">distance</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">distance</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[OBSTACLE] 检测到障碍物 ID=</span><span class="si">{</span><span class="n">obstacle</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2"> 距离=</span><span class="si">{</span><span class="n">distance</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> m&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[OBSTACLE] 检测到障碍物 ID=</span><span class="si">{</span><span class="n">obstacle</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2"> 距离=</span><span class="si">{</span><span class="n">distance</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> m"</span><span class="p">)</span>
 
-<span class="n">bp</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">get_blueprint_library</span><span class="p">()</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;sensor.other.obstacle&#39;</span><span class="p">)</span>
+<span class="n">bp</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">get_blueprint_library</span><span class="p">()</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'sensor.other.obstacle'</span><span class="p">)</span>
 <span class="n">transform</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Transform</span><span class="p">(</span><span class="n">carla</span><span class="o">.</span><span class="n">Location</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mf">1.2</span><span class="p">))</span>
 <span class="n">sensor</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">spawn_actor</span><span class="p">(</span><span class="n">bp</span><span class="p">,</span> <span class="n">transform</span><span class="p">,</span> <span class="n">attach_to</span><span class="o">=</span><span class="n">vehicle</span><span class="p">)</span>
 <span class="n">sensor</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="n">on_obstacle</span><span class="p">)</span>
@@ -1056,7 +1056,7 @@ def on_imu_integration(imu):
 </tr>
 </tbody>
 </table>
-<hr />
+<hr>
 <h2 id="6_5">6 应用场景与扩展建议</h2>
 <h3 id="_6">应用场景：</h3>
 <ul>
@@ -1073,18 +1073,18 @@ def on_imu_integration(imu):
 <li>支持障碍物类别过滤（如忽略行人、静态桩）；</li>
 <li>联合摄像头进行视觉语义增强。</li>
 </ul>
-<hr />
+<hr>
 <h2 id="7_5">7 小结</h2>
 <ul>
 <li><code>sensor.other.obstacle</code> 提供动态障碍预警机制，是事件驱动型传感器；</li>
 <li>可提前于碰撞生成预警信号，在路径规划与行为建模中广泛使用；</li>
 <li>推荐与 Collision、IMU、Radar 等模块联合使用，实现更完整的行为感知。</li>
 </ul>
-<hr />
+<hr>
 <h1 id="rgb-sensorcamerargb_1">第八章：<a href="https://openhutb.github.io/doc/ref_sensors/#rgb-camera">RGB 摄像头传感器系统</a>（sensor.camera.rgb）</h1>
-<hr />
+<hr>
 <h2 id="1_7">1 模块概览</h2>
-<p><img alt="flowchart_8.png" src="../../img/modules/flowchart_8.png" /></p>
+<p><img alt="flowchart_8.png" src="../../img/modules/flowchart_8.png"></p>
 <p><code>sensor.camera.rgb</code> 是 CARLA 中最基础且最常用的图像传感器，模拟真实世界中的 RGB 相机输出，生成三通道图像（Red, Green, Blue），支持用户自定义分辨率、视场角、帧率等参数。</p>
 <p>该传感器广泛应用于以下任务：</p>
 <ul>
@@ -1093,7 +1093,7 @@ def on_imu_integration(imu):
 <li>多传感器融合（如与 LiDAR、IMU 联合使用）；</li>
 <li>场景渲染与仿真回放。</li>
 </ul>
-<hr />
+<hr>
 <h2 id="2_7">2 图像采集与传输机制</h2>
 <p>RGB 相机传感器的数据处理流程如下：</p>
 <ol>
@@ -1103,7 +1103,7 @@ def on_imu_integration(imu):
 <li><strong>数据还原</strong>：客户端自动解码为 <code>sensor.data.Image</code> 实例；</li>
 <li><strong>Python 处理</strong>：注册的 <code>.listen()</code> 回调函数处理图像帧，通常用于保存或神经网络推理。</li>
 </ol>
-<hr />
+<hr>
 <h2 id="3-image">3 数据结构说明：Image</h2>
 <p>定义文件：<a href="https://github.com/carla-simulator/carla/blob/dev/LibCarla/source/carla/sensor/data/Image.h"><code>carla/sensor/data/Image.h</code></a></p>
 <p>图像结构定义如下：</p>
@@ -1119,7 +1119,7 @@ def on_imu_integration(imu):
 <li>图像以 <code>uint8_t</code> 字节序存储，每像素 4 通道（Red, Green, Blue, Alpha）；</li>
 <li>可以在 Python 中转为 <code>np.array</code> 或保存为 <code>PIL.Image</code>。</li>
 </ul>
-<hr />
+<hr>
 <h2 id="4_5">4 序列化与编码流程</h2>
 <p>定义文件：
 <a href="https://github.com/carla-simulator/carla/blob/dev/LibCarla/source/carla/sensor/s11n/ImageSerializer.h"><code>ImageSerializer.h</code></a></p>
@@ -1132,16 +1132,16 @@ def on_imu_integration(imu):
 <span class="p">}</span>
 </code></pre></div>
 <p>整个流程无需额外结构化数据编码，依赖图像本体作为主数据内容，适合大吞吐图像序列传输。</p>
-<hr />
+<hr>
 <h2 id="5-python-api_5">5 Python API 使用示例</h2>
 <p>以下示例展示如何部署 RGB 相机，并保存或处理帧图像：</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">save_rgb_image</span><span class="p">(</span><span class="n">image</span><span class="p">):</span>
-    <span class="n">image</span><span class="o">.</span><span class="n">save_to_disk</span><span class="p">(</span><span class="s1">&#39;output/rgb_</span><span class="si">%06d</span><span class="s1">.png&#39;</span> <span class="o">%</span> <span class="n">image</span><span class="o">.</span><span class="n">frame</span><span class="p">)</span>
+    <span class="n">image</span><span class="o">.</span><span class="n">save_to_disk</span><span class="p">(</span><span class="s1">'output/rgb_</span><span class="si">%06d</span><span class="s1">.png'</span> <span class="o">%</span> <span class="n">image</span><span class="o">.</span><span class="n">frame</span><span class="p">)</span>
 
-<span class="n">bp</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">get_blueprint_library</span><span class="p">()</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;sensor.camera.rgb&#39;</span><span class="p">)</span>
-<span class="n">bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">&#39;image_size_x&#39;</span><span class="p">,</span> <span class="s1">&#39;800&#39;</span><span class="p">)</span>
-<span class="n">bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">&#39;image_size_y&#39;</span><span class="p">,</span> <span class="s1">&#39;600&#39;</span><span class="p">)</span>
-<span class="n">bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">&#39;fov&#39;</span><span class="p">,</span> <span class="s1">&#39;90&#39;</span><span class="p">)</span>
+<span class="n">bp</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">get_blueprint_library</span><span class="p">()</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'sensor.camera.rgb'</span><span class="p">)</span>
+<span class="n">bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">'image_size_x'</span><span class="p">,</span> <span class="s1">'800'</span><span class="p">)</span>
+<span class="n">bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">'image_size_y'</span><span class="p">,</span> <span class="s1">'600'</span><span class="p">)</span>
+<span class="n">bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">'fov'</span><span class="p">,</span> <span class="s1">'90'</span><span class="p">)</span>
 
 <span class="n">transform</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Transform</span><span class="p">(</span><span class="n">carla</span><span class="o">.</span><span class="n">Location</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mf">2.4</span><span class="p">))</span>
 <span class="n">camera</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">spawn_actor</span><span class="p">(</span><span class="n">bp</span><span class="p">,</span> <span class="n">transform</span><span class="p">,</span> <span class="n">attach_to</span><span class="o">=</span><span class="n">vehicle</span><span class="p">)</span>
@@ -1154,7 +1154,7 @@ def on_imu_integration(imu):
     <span class="n">array</span> <span class="o">=</span> <span class="n">array</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">image</span><span class="o">.</span><span class="n">height</span><span class="p">,</span> <span class="n">image</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="mi">4</span><span class="p">))[:,</span> <span class="p">:,</span> <span class="p">:</span><span class="mi">3</span><span class="p">]</span>  <span class="c1"># RGB</span>
     <span class="k">return</span> <span class="n">array</span>
 </code></pre></div>
-<hr />
+<hr>
 <h2 id="6_6">6 应用方向与参数优化</h2>
 <table>
 <thead>
@@ -1200,15 +1200,15 @@ def on_imu_integration(imu):
 <li>与语义图（<code>sensor.camera.semantic_segmentation</code>）联合生成 GT 标注图像；</li>
 <li>将图像与 GNSS/IMU 时间对齐生成时空标注序列。</li>
 </ul>
-<hr />
+<hr>
 <h2 id="7_6">7 小结</h2>
 <p><code>sensor.camera.rgb</code> 是 CARLA 感知系统中的基础视觉模块，提供稳定、高质量、可配置的图像输出能力。其在自动驾驶系统开发、视觉模型训练与多模态感知实验中具有不可替代的作用。</p>
 <p>推荐配合其他传感器（IMU、GNSS、Depth、LiDAR）使用，构建完整的数据生成与处理流水线。</p>
-<hr />
+<hr>
 <h1 id="sensorcameradepth_1">第九章：<a href="https://openhutb.github.io/doc/ref_sensors/#depth-camera">深度相机传感器系统</a> （sensor.camera.depth）</h1>
-<hr />
+<hr>
 <h2 id="1_8">1 模块概览</h2>
-<p><img alt="flowchart_9.png" src="../../img/modules/flowchart_9.png" /></p>
+<p><img alt="flowchart_9.png" src="../../img/modules/flowchart_9.png"></p>
 <p><code>sensor.camera.depth</code> 是 CARLA 提供的专用深度图相机传感器，用于模拟相机视角下的每像素距离场景物体的真实物理距离（单位为米）。其输出为 4 通道图像（RGBA），其中 RGB 通道编码深度信息，Alpha 通道通常为 255。</p>
 <p>该传感器常用于：</p>
 <ul>
@@ -1218,7 +1218,7 @@ def on_imu_integration(imu):
 <li>三维重建与视觉 SLAM；</li>
 <li>自动驾驶下游任务中的几何感知。</li>
 </ul>
-<hr />
+<hr>
 <h2 id="2_8">2 成像原理与深度编码</h2>
 <p>CARLA 中的深度相机使用如下逻辑将真实距离值编码为图像格式：</p>
 <h3 id="_9">编码方式（在渲染端）：</h3>
@@ -1229,7 +1229,7 @@ def on_imu_integration(imu):
 <li>可解码为每像素 0–1000 米内的精度深度图；</li>
 <li>图像格式为 8-bit 无符号整数，每像素 4 字节（RGBA）。</li>
 </ul>
-<hr />
+<hr>
 <h2 id="3_3">3 数据结构说明</h2>
 <p>深度图使用与 RGB 图像相同的数据结构：</p>
 <p>定义位置：<a href="https://github.com/carla-simulator/carla/blob/dev/LibCarla/source/carla/sensor/data/Image.h"><code>carla/sensor/data/Image.h</code></a></p>
@@ -1244,7 +1244,7 @@ def on_imu_integration(imu):
 <li>图像以 <code>uint8_t</code> 存储，布局为 RGBA；</li>
 <li>深度编码在 RGB 通道，Alpha 通道可忽略。</li>
 </ul>
-<hr />
+<hr>
 <h2 id="4_6">4 序列化与解码流程</h2>
 <p>该传感器复用了 <code>ImageSerializer</code>：</p>
 <p>定义文件：<a href="https://github.com/carla-simulator/carla/blob/dev/LibCarla/source/carla/sensor/s11n/ImageSerializer.h"><code>ImageSerializer.h</code></a></p>
@@ -1254,7 +1254,7 @@ def on_imu_integration(imu):
 <li>Python 层通过 <code>.raw_data</code> 解码深度。</li>
 </ul>
 <p>无 MsgPack 序列化，采用原始流传输，更高效适配图像数据密度。</p>
-<hr />
+<hr>
 <h2 id="5-python-api_6">5 Python API 使用示例</h2>
 <p>以下代码展示如何部署深度相机并转换为实际深度图：</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -1267,16 +1267,16 @@ def on_imu_integration(imu):
     <span class="k">return</span> <span class="n">depth</span>
 
 <span class="c1"># 创建传感器</span>
-<span class="n">bp</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">get_blueprint_library</span><span class="p">()</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;sensor.camera.depth&#39;</span><span class="p">)</span>
-<span class="n">bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">&#39;image_size_x&#39;</span><span class="p">,</span> <span class="s1">&#39;800&#39;</span><span class="p">)</span>
-<span class="n">bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">&#39;image_size_y&#39;</span><span class="p">,</span> <span class="s1">&#39;600&#39;</span><span class="p">)</span>
+<span class="n">bp</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">get_blueprint_library</span><span class="p">()</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'sensor.camera.depth'</span><span class="p">)</span>
+<span class="n">bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">'image_size_x'</span><span class="p">,</span> <span class="s1">'800'</span><span class="p">)</span>
+<span class="n">bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">'image_size_y'</span><span class="p">,</span> <span class="s1">'600'</span><span class="p">)</span>
 
 <span class="n">transform</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Transform</span><span class="p">(</span><span class="n">carla</span><span class="o">.</span><span class="n">Location</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mf">2.4</span><span class="p">))</span>
 <span class="n">camera</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">spawn_actor</span><span class="p">(</span><span class="n">bp</span><span class="p">,</span> <span class="n">transform</span><span class="p">,</span> <span class="n">attach_to</span><span class="o">=</span><span class="n">vehicle</span><span class="p">)</span>
 <span class="n">camera</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="k">lambda</span> <span class="n">image</span><span class="p">:</span> <span class="n">decode_depth</span><span class="p">(</span><span class="n">image</span><span class="p">))</span>
 </code></pre></div>
 <p>也可保存为深度图图像（伪彩）或导出为 PFM 格式。</p>
-<hr />
+<hr>
 <h2 id="6_7">6 深度图应用场景</h2>
 <h3 id="_10">常见用途：</h3>
 <ul>
@@ -1286,18 +1286,18 @@ def on_imu_integration(imu):
 <li><strong>三维重建</strong>：将连续帧深度图拼接成稠密点云；</li>
 <li><strong>视觉 SLAM</strong>：与 ORB-SLAM2、ElasticFusion 等框架结合使用。</li>
 </ul>
-<hr />
+<hr>
 <h2 id="7_7">7 小结</h2>
 <p><code>sensor.camera.depth</code> 提供高精度、连续、结构一致的深度图像输出，在自动驾驶视觉研究中是不可替代的重要组件。</p>
 <p>推荐与 RGB、语义分割、IMU/GNSS 联合使用，用于高质量数据生成、深度估计模型训练与三维结构重建。</p>
-<hr />
+<hr>
 <h1 id="sensorcamerasemantic_segmentation_1">第十章：<a href="https://openhutb.github.io/doc/ref_sensors/#semantic-segmentation-camera">语义分割摄像头传感器系统</a> （sensor.camera.semantic_segmentation）</h1>
-<hr />
+<hr>
 <h2 id="1_9">1 模块概览</h2>
-<p><img alt="flowchart_10.png" src="../../img/modules/flowchart_10.png" /></p>
+<p><img alt="flowchart_10.png" src="../../img/modules/flowchart_10.png"></p>
 <p><code>sensor.camera.semantic_segmentation</code> 是 CARLA 提供的语义感知型图像传感器。它将模拟环境中可见物体（如车辆、行人、道路等）按照类别进行像素级别的标注，每帧输出一张语义分割图像，用于训练自动驾驶模型中的感知网络或环境理解模块。</p>
 <p>该传感器在数据采集、分割模型训练、语义地图构建、端到端学习等任务中具有广泛应用价值。</p>
-<hr />
+<hr>
 <h2 id="2_9">2 输出内容与标签定义</h2>
 <p>该传感器输出为<strong>单通道图像</strong>，每个像素为一个整数值，表示该像素所属的语义类别。默认图像格式为：</p>
 <ul>
@@ -1367,7 +1367,7 @@ def on_imu_integration(imu):
 </tr>
 </tbody>
 </table>
-<hr />
+<hr>
 <h2 id="3_4">3 数据结构与格式说明</h2>
 <p>语义分割图像复用图像类结构：</p>
 <p>定义位置：<a href="https://github.com/carla-simulator/carla/blob/dev/LibCarla/source/carla/sensor/data/Image.h"><code>carla/sensor/data/Image.h</code></a></p>
@@ -1383,7 +1383,7 @@ def on_imu_integration(imu):
 <li>虽然为 RGBA 图像，但只有红色通道包含有效的语义类别；</li>
 <li>可直接用 <code>image.raw_data</code> → <code>np.uint8</code> → <code>reshape</code> 转换为二维语义图。</li>
 </ul>
-<hr />
+<hr>
 <h2 id="4_7">4 序列化机制说明</h2>
 <p><code>sensor.camera.semantic_segmentation</code> 复用 <code>ImageSerializer</code>：</p>
 <p>定义文件：<a href="https://github.com/carla-simulator/carla/blob/dev/LibCarla/source/carla/sensor/s11n/ImageSerializer.h"><code>ImageSerializer.h</code></a></p>
@@ -1396,15 +1396,15 @@ def on_imu_integration(imu):
 <li>每帧语义图由服务端生成（Unreal Engine 渲染）后通过 RPC 系统推送；</li>
 <li>客户端将数据解码为 <code>Image</code> 实例并触发回调。</li>
 </ul>
-<hr />
+<hr>
 <h2 id="5-python-api_7">5 Python API 使用示例</h2>
 <p>以下示例展示如何创建语义分割传感器，并将图像保存或解析为标签矩阵：</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">save_semantic</span><span class="p">(</span><span class="n">image</span><span class="p">):</span>
-    <span class="n">image</span><span class="o">.</span><span class="n">save_to_disk</span><span class="p">(</span><span class="s1">&#39;output/seg_</span><span class="si">%06d</span><span class="s1">.png&#39;</span> <span class="o">%</span> <span class="n">image</span><span class="o">.</span><span class="n">frame</span><span class="p">,</span> <span class="n">carla</span><span class="o">.</span><span class="n">ColorConverter</span><span class="o">.</span><span class="n">CityScapesPalette</span><span class="p">)</span>
+    <span class="n">image</span><span class="o">.</span><span class="n">save_to_disk</span><span class="p">(</span><span class="s1">'output/seg_</span><span class="si">%06d</span><span class="s1">.png'</span> <span class="o">%</span> <span class="n">image</span><span class="o">.</span><span class="n">frame</span><span class="p">,</span> <span class="n">carla</span><span class="o">.</span><span class="n">ColorConverter</span><span class="o">.</span><span class="n">CityScapesPalette</span><span class="p">)</span>
 
-<span class="n">bp</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">get_blueprint_library</span><span class="p">()</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;sensor.camera.semantic_segmentation&#39;</span><span class="p">)</span>
-<span class="n">bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">&#39;image_size_x&#39;</span><span class="p">,</span> <span class="s1">&#39;800&#39;</span><span class="p">)</span>
-<span class="n">bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">&#39;image_size_y&#39;</span><span class="p">,</span> <span class="s1">&#39;600&#39;</span><span class="p">)</span>
+<span class="n">bp</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">get_blueprint_library</span><span class="p">()</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'sensor.camera.semantic_segmentation'</span><span class="p">)</span>
+<span class="n">bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">'image_size_x'</span><span class="p">,</span> <span class="s1">'800'</span><span class="p">)</span>
+<span class="n">bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">'image_size_y'</span><span class="p">,</span> <span class="s1">'600'</span><span class="p">)</span>
 <span class="n">transform</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Transform</span><span class="p">(</span><span class="n">carla</span><span class="o">.</span><span class="n">Location</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mf">2.4</span><span class="p">))</span>
 
 <span class="n">seg_sensor</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">spawn_actor</span><span class="p">(</span><span class="n">bp</span><span class="p">,</span> <span class="n">transform</span><span class="p">,</span> <span class="n">attach_to</span><span class="o">=</span><span class="n">vehicle</span><span class="p">)</span>
@@ -1418,7 +1418,7 @@ def on_imu_integration(imu):
     <span class="n">seg_labels</span> <span class="o">=</span> <span class="n">array</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">image</span><span class="o">.</span><span class="n">height</span><span class="p">,</span> <span class="n">image</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="mi">4</span><span class="p">))[:,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">]</span>  <span class="c1"># R通道为语义标签</span>
     <span class="k">return</span> <span class="n">seg_labels</span>
 </code></pre></div>
-<hr />
+<hr>
 <h2 id="6_8">6 应用与扩展方向</h2>
 <h3 id="_13">应用场景：</h3>
 <ul>
@@ -1435,14 +1435,14 @@ def on_imu_integration(imu):
 <li>配合 <code>ColorConverter</code> 自定义彩色编码方案；</li>
 <li>输出压缩格式（如 JPEG8）以节省带宽。</li>
 </ul>
-<hr />
+<hr>
 <h2 id="7_8">7 小结</h2>
 <p><code>sensor.camera.semantic_segmentation</code> 是 CARLA 中唯一原生支持像素级语义标注的传感器。它提供标准化标签图，适合用于多种感知任务，尤其在构建多视图、多模态、高频率自动驾驶数据集方面扮演关键角色。</p>
 <p>推荐与 <code>RGB/Depth/LiDAR</code> 联合使用，支持多任务模型训练与语义地图制作。</p>
-<hr />
+<hr>
 <h2 id="carla-sensorradarray_cast">第十一章：CARLA 雷达传感器系统（sensor.radar.ray_cast）</h2>
 <h3 id="1_10">1 模块概览</h3>
-<p><img alt="flowchart_11.png" src="../../img/modules/flowchart_11.png" />
+<p><img alt="flowchart_11.png" src="../../img/modules/flowchart_11.png">
 CARLA 中的 <code>sensor.radar.ray_cast</code> 模拟车载雷达的基本特性，通过射线投射模拟雷达波束在三维空间中遇到物体后的反射点。该模块适用于低分辨率目标检测、运动分析、障碍识别等任务。</p>
 <table>
 <thead>
@@ -1470,7 +1470,7 @@ CARLA 中的 <code>sensor.radar.ray_cast</code> 模拟车载雷达的基本特�
 </tr>
 </tbody>
 </table>
-<hr />
+<hr>
 <h3 id="2_10">2 扫描原理与数据描述</h3>
 <p>该传感器通过以下参数定义雷达扫描区域：</p>
 <ul>
@@ -1485,7 +1485,7 @@ CARLA 中的 <code>sensor.radar.ray_cast</code> 模拟车载雷达的基本特�
 <li><code>altitude</code>: 俯仰角（rad）</li>
 <li><code>velocity</code>: 相对于车辆的径向速度（m/s）</li>
 </ul>
-<hr />
+<hr>
 <h3 id="3-radardetection">3 数据结构解析：<code>RadarDetection</code></h3>
 <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">carla</span><span class="o">.</span><span class="n">RadarDetection</span><span class="p">:</span>
     <span class="n">depth</span><span class="p">:</span> <span class="nb">float</span>       <span class="c1"># 目标距离（m）</span>
@@ -1498,7 +1498,7 @@ CARLA 中的 <code>sensor.radar.ray_cast</code> 模拟车载雷达的基本特�
 <li><code>velocity</code> 可用于区分静止物体与移动目标；</li>
 <li>无 ID，需自行跟踪识别。</li>
 </ul>
-<hr />
+<hr>
 <h3 id="4_8">4 序列化与传输机制</h3>
 <p>CARLA 将 <code>RadarMeasurement</code> 数据序列化为 <code>RawData</code>，通过 RPC 管道传输至客户端。与其他传感器不同，雷达数据较小，传输效率高。</p>
 <table>
@@ -1523,28 +1523,28 @@ CARLA 中的 <code>sensor.radar.ray_cast</code> 模拟车载雷达的基本特�
 </tr>
 </tbody>
 </table>
-<hr />
+<hr>
 <h3 id="5-python-api_8">5 Python API 使用示例</h3>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">carla</span>
 
 <span class="k">def</span> <span class="nf">radar_callback</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">detection</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Distance: </span><span class="si">{</span><span class="n">detection</span><span class="o">.</span><span class="n">depth</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> m, Speed: </span><span class="si">{</span><span class="n">detection</span><span class="o">.</span><span class="n">velocity</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> m/s&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Distance: </span><span class="si">{</span><span class="n">detection</span><span class="o">.</span><span class="n">depth</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> m, Speed: </span><span class="si">{</span><span class="n">detection</span><span class="o">.</span><span class="n">velocity</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> m/s"</span><span class="p">)</span>
 
 <span class="n">world</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_world</span><span class="p">()</span>
 <span class="n">bp_lib</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">get_blueprint_library</span><span class="p">()</span>
-<span class="n">radar_bp</span> <span class="o">=</span> <span class="n">bp_lib</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;sensor.radar.ray_cast&#39;</span><span class="p">)</span>
+<span class="n">radar_bp</span> <span class="o">=</span> <span class="n">bp_lib</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'sensor.radar.ray_cast'</span><span class="p">)</span>
 
-<span class="n">radar_bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">&#39;horizontal_fov&#39;</span><span class="p">,</span> <span class="s1">&#39;35&#39;</span><span class="p">)</span>
-<span class="n">radar_bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">&#39;vertical_fov&#39;</span><span class="p">,</span> <span class="s1">&#39;10&#39;</span><span class="p">)</span>
-<span class="n">radar_bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">&#39;range&#39;</span><span class="p">,</span> <span class="s1">&#39;50&#39;</span><span class="p">)</span>
+<span class="n">radar_bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">'horizontal_fov'</span><span class="p">,</span> <span class="s1">'35'</span><span class="p">)</span>
+<span class="n">radar_bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">'vertical_fov'</span><span class="p">,</span> <span class="s1">'10'</span><span class="p">)</span>
+<span class="n">radar_bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">'range'</span><span class="p">,</span> <span class="s1">'50'</span><span class="p">)</span>
 
 <span class="n">spawn_point</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Transform</span><span class="p">(</span><span class="n">carla</span><span class="o">.</span><span class="n">Location</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mf">1.0</span><span class="p">))</span>
 <span class="n">radar</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">spawn_actor</span><span class="p">(</span><span class="n">radar_bp</span><span class="p">,</span> <span class="n">spawn_point</span><span class="p">,</span> <span class="n">attach_to</span><span class="o">=</span><span class="n">vehicle</span><span class="p">)</span>
 
 <span class="n">radar</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="k">lambda</span> <span class="n">data</span><span class="p">:</span> <span class="n">radar_callback</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
 </code></pre></div>
-<hr />
+<hr>
 <h3 id="6_9">6 应用与对比分析</h3>
 <table>
 <thead>
@@ -1571,18 +1571,18 @@ CARLA 中的 <code>sensor.radar.ray_cast</code> 模拟车载雷达的基本特�
 <blockquote>
 <p>需注意：雷达检测精度有限，不能替代 LiDAR 或相机的精确识别能力，适合作为冗余传感器或动态监测模块。</p>
 </blockquote>
-<hr />
+<hr>
 <h3 id="7_9">7 小结</h3>
 <ul>
 <li><code>sensor.radar.ray_cast</code> 是 CARLA 提供的轻量级雷达仿真模块；</li>
 <li>支持实时回调并提供速度信息；</li>
 <li>易于部署和组合，但需注意精度限制。</li>
 </ul>
-<hr />
+<hr>
 <h1 id="sensorotherrss_1">第十二章：<a href="https://openhutb.github.io/doc/ref_sensors/#rss-sensor">责任敏感安全传感器系统</a>（sensor.other.rss）</h1>
-<hr />
+<hr>
 <h2 id="1_11">1 模块概览</h2>
-<p><img alt="flowchart_12.png" src="../../img/modules/flowchart_12.png" />
+<p><img alt="flowchart_12.png" src="../../img/modules/flowchart_12.png">
 CARLA 中的 <code>sensor.other.rss</code> 是对 <a href="https://www.mobileye.com/responsibility-sensitive-safety/">Mobileye 提出的 RSS（Responsibility-Sensitive Safety）模型</a> 的仿真实现。它评估当前车辆是否在纵向和横向方向上满足合理安全距离，若违反安全规则，则通过事件输出提供结构化响应。</p>
 <p>该传感器广泛应用于以下领域：</p>
 <ul>
@@ -1590,7 +1590,7 @@ CARLA 中的 <code>sensor.other.rss</code> 是对 <a href="https://www.mobileye.
 <li>安全冗余感知与<strong>控制系统回退逻辑验证</strong></li>
 <li>车辆规划/控制模块中的<strong>AEB 与干预触发检测</strong></li>
 </ul>
-<hr />
+<hr>
 <h2 id="2-rss">2 RSS 模型简介与传感器原理</h2>
 <p>RSS 模型基于一套形式化定义的安全距离计算规则。CARLA 内置实现使用以下核心规则：</p>
 <table>
@@ -1622,14 +1622,14 @@ CARLA 中的 <code>sensor.other.rss</code> 是对 <a href="https://www.mobileye.
 <li><strong>通过 RPC 通道传递给客户端</strong></li>
 <li><strong>Python 层接收结构化安全状态信息</strong></li>
 </ol>
-<hr />
+<hr>
 <h2 id="3-rssresponse">3 数据结构说明：<code>RssResponse</code></h2>
 <p>定义位置：<code>carla/sensor/data/RssResponse.h</code></p>
 <div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">RssResponse</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="n">is_safe</span><span class="p">;</span><span class="w">                 </span><span class="c1">// 是否符合安全规则</span>
 <span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="n">longitudinal_safe</span><span class="p">;</span><span class="w">       </span><span class="c1">// 纵向是否安全</span>
 <span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="n">lateral_safe</span><span class="p">;</span><span class="w">            </span><span class="c1">// 横向是否安全</span>
-<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">response_status</span><span class="p">;</span><span class="w">  </span><span class="c1">// 可为 &quot;Safe&quot;, &quot;Brake&quot;, &quot;Warning&quot;</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">response_status</span><span class="p">;</span><span class="w">  </span><span class="c1">// 可为 "Safe", "Brake", "Warning"</span>
 <span class="p">};</span>
 </code></pre></div>
 <p>说明：</p>
@@ -1638,7 +1638,7 @@ CARLA 中的 <code>sensor.other.rss</code> 是对 <a href="https://www.mobileye.
 <li>若任一方向违反规则，<code>response_status</code> 将标识对应响应等级</li>
 <li>可拓展为枚举式响应策略触发器</li>
 </ul>
-<hr />
+<hr>
 <h2 id="4_9">4 序列化与触发机制</h2>
 <p>CARLA 使用专属的 <code>RssResponseSerializer</code> 对结构体进行 MsgPack 编码：</p>
 <div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">Data</span><span class="w"> </span><span class="p">{</span>
@@ -1656,20 +1656,20 @@ CARLA 中的 <code>sensor.other.rss</code> 是对 <a href="https://www.mobileye.
 <li>客户端使用 <code>Deserialize()</code> 恢复为 <code>SensorData</code> 实例</li>
 <li><code>.listen()</code> 回调函数进行实时判断/记录/控制触发</li>
 </ol>
-<hr />
+<hr>
 <h2 id="5-python-api_9">5 Python API 使用示例</h2>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">rss_callback</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">event</span><span class="o">.</span><span class="n">is_safe</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[RSS] 安全违规：状态=</span><span class="si">{</span><span class="n">event</span><span class="o">.</span><span class="n">response_status</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[RSS] 安全违规：状态=</span><span class="si">{</span><span class="n">event</span><span class="o">.</span><span class="n">response_status</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[RSS] 安全状态良好&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"[RSS] 安全状态良好"</span><span class="p">)</span>
 
-<span class="n">bp</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">get_blueprint_library</span><span class="p">()</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;sensor.other.rss&#39;</span><span class="p">)</span>
+<span class="n">bp</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">get_blueprint_library</span><span class="p">()</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'sensor.other.rss'</span><span class="p">)</span>
 <span class="n">rss_sensor</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">spawn_actor</span><span class="p">(</span><span class="n">bp</span><span class="p">,</span> <span class="n">carla</span><span class="o">.</span><span class="n">Transform</span><span class="p">(),</span> <span class="n">attach_to</span><span class="o">=</span><span class="n">vehicle</span><span class="p">)</span>
 <span class="n">rss_sensor</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="n">rss_callback</span><span class="p">)</span>
 </code></pre></div>
 <p>该传感器无空间坐标要求，直接附着于车辆即可。内部逻辑自动检测与其他交通参与者的 RSS 状态。</p>
-<hr />
+<hr>
 <h2 id="6_10">6 应用案例与扩展分析</h2>
 <table>
 <thead>
@@ -1700,10 +1700,10 @@ CARLA 中的 <code>sensor.other.rss</code> 是对 <a href="https://www.mobileye.
 <blockquote>
 <p>可将 <code>response_status</code> 输出为 CSV、图像覆盖等形式进行对比标注。</p>
 </blockquote>
-<hr />
+<hr>
 <h2 id="7_10">7 小结</h2>
 <p><code>sensor.other.rss</code> 提供了对 Mobileye-RSS 安全规则的结构化支持，是自动驾驶系统安全性评估与回退逻辑验证的重要传感器。其输出直观、数据小、结构清晰，适合嵌入任意仿真任务中。</p>
-<hr />
+<hr></div>
               
             </div>
           </div><footer>

@@ -100,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <div class="admonition 警告">
+                <div><div class="admonition 警告">
 <p class="admonition-title">警告</p>
 <p>这是一项正在进行的工作！！这个版本的 Carla 不被认为是一个稳定的版本。在接下来的几个月里，这个分支可能会发生许多重大变化，这可能会破坏您所做的任何修改。我们建议你把这个分支当作实验性的。</p>
 </div>
@@ -138,7 +138,7 @@ bash<span class="w"> </span>-x<span class="w"> </span>Setup.sh
 <li>配置：</li>
 </ul>
 <div class="highlight"><pre><span></span><code>cmake<span class="w"> </span>-G<span class="w"> </span>Ninja<span class="w"> </span>-S<span class="w"> </span>.<span class="w"> </span>-B<span class="w"> </span>Build<span class="w"> </span>--toolchain<span class="o">=</span><span class="nv">$PWD</span>/CMake/LinuxToolchain.cmake<span class="w"> </span><span class="se">\</span>
--DLAUNCH_ARGS<span class="o">=</span><span class="s2">&quot;-prefernvidia&quot;</span><span class="w"> </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Release<span class="w"> </span>-DENABLE_ROS2<span class="o">=</span>ON<span class="w"> </span><span class="se">\</span>
+-DLAUNCH_ARGS<span class="o">=</span><span class="s2">"-prefernvidia"</span><span class="w"> </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Release<span class="w"> </span>-DENABLE_ROS2<span class="o">=</span>ON<span class="w"> </span><span class="se">\</span>
 -DBUILD_CARLA_UNREAL<span class="o">=</span>ON<span class="w"> </span>-DCARLA_UNREAL_ENGINE_PATH<span class="o">=</span><span class="nv">$CARLA_UNREAL_ENGINE_PATH</span>
 </code></pre></div>
 <ul>
@@ -176,31 +176,31 @@ bash<span class="w"> </span>-x<span class="w"> </span>Setup.sh
 <p>Ubuntu 20.04 没有g++-12的源，只有g++-9的源。而Ubuntu 22.04 有g++-12的源。</p>
 <p>解决 <a href="https://blog.csdn.net/qq_16963597/article/details/94715979">ubuntu 安装过程中 安装界面黑屏</a> 的问题：
 u盘启动过程中，会出现选择界面，try ubuntu 、install ubuntu等，此时点“e”键，会出现一个黑框，此时在倒数第二行左右，找到
-<div class="highlight"><pre><span></span><code>quiet<span class="w"> </span>splash<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>改成<span class="w"> </span>quiet<span class="w"> </span>splash<span class="w"> </span><span class="nv">acpi</span><span class="o">=</span>off
+</p><div class="highlight"><pre><span></span><code>quiet<span class="w"> </span>splash<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>改成<span class="w"> </span>quiet<span class="w"> </span>splash<span class="w"> </span><span class="nv">acpi</span><span class="o">=</span>off
 </code></pre></div>
-acpi=off是关闭高级电源管理接口。如果必须添加acpi = off使ubuntu成功启动，则表示计算机上的ACPI与该版本的ubuntu不兼容。</p>
+acpi=off是关闭高级电源管理接口。如果必须添加acpi = off使ubuntu成功启动，则表示计算机上的ACPI与该版本的ubuntu不兼容。
 <p>再次启动时，仍然会黑屏，进不去。
 需要<a href="https://blog.51cto.com/u_15075507/4517000">禁用nouveau</a> ，然后再进入系统中安装显卡驱动。
-<div class="highlight"><pre><span></span><code>vi<span class="w"> </span>/etc/modprobe.d/blacklist.conf
+</p><div class="highlight"><pre><span></span><code>vi<span class="w"> </span>/etc/modprobe.d/blacklist.conf
 </code></pre></div>
 最后一行加上<code>blacklist nouveau</code>。
 使之生效：
 <div class="highlight"><pre><span></span><code>update-initramfs<span class="w"> </span>-u
 </code></pre></div>
-然后输入<code>reboot</code>重启。</p>
+然后输入<code>reboot</code>重启。
 <h3 id="_5">编译</h3>
-<p><div class="highlight"><pre><span></span><code>bin/clang<span class="s2">&quot; is not able to compile a simple test program.</span>
+<p></p><div class="highlight"><pre><span></span><code>bin/clang<span class="s2">" is not able to compile a simple test program.</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>clang++<span class="w"> </span>--version
 </code></pre></div>
 确定clang没有安装，执行：
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>clang
 </code></pre></div>
-还是找不到！！！</p>
+还是找不到！！！
 <h3 id="carla">Carla</h3>
 <p>切换到<code>ue5-dev</code>分支：
-<div class="highlight"><pre><span></span><code>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>ue5-dev<span class="w"> </span>origin/ue5-dev
-</code></pre></div></p>
+</p><div class="highlight"><pre><span></span><code>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>ue5-dev<span class="w"> </span>origin/ue5-dev
+</code></pre></div>
 <p><code>bash -x</code>中的参数<code>-x</code>会列出shell指定语句的顺序并将其打印。</p>
 <ul>
 <li>报错：<code>error: externally-managed-environment</code></li>
@@ -211,7 +211,7 @@ acpi=off是关闭高级电源管理接口。如果必须添加acpi = off使ubunt
 </blockquote>
 <ul>
 <li>cmake时候报错：<code>cannot find /lib64/ld-linux-x86-64.so.2</code></li>
-</ul>
+</ul></div>
               
             </div>
           </div><footer>

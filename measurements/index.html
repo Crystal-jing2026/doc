@@ -100,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="_1">测量</h1>
+                <div><h1 id="_1">测量</h1>
 <div class="admonition 重要">
 <p class="admonition-title">重要</p>
 <p>自 0.8.0 版起，客户端接收的测量值采用国际单位制。所有位置均已转换为 <code>米</code>，速度也已转换为 <code>米/秒</code>。</p>
@@ -289,13 +289,13 @@
 </tbody>
 </table>
 <p>要从客户端激活自动驾驶仪，请将<code>autopilot_control</code>发送回服务器。请注意，您可以在将其发送回之前对其进行修改。
-<div class="highlight"><pre><span></span><code><span class="n">measurements</span><span class="p">,</span> <span class="n">sensor_data</span> <span class="o">=</span> <span class="n">carla_client</span><span class="o">.</span><span class="n">read_data</span><span class="p">()</span>
+</p><div class="highlight"><pre><span></span><code><span class="n">measurements</span><span class="p">,</span> <span class="n">sensor_data</span> <span class="o">=</span> <span class="n">carla_client</span><span class="o">.</span><span class="n">read_data</span><span class="p">()</span>
 <span class="n">control</span> <span class="o">=</span> <span class="n">measurements</span><span class="o">.</span><span class="n">player_measurements</span><span class="o">.</span><span class="n">autopilot_control</span>
 <span class="c1"># modify here control if wanted.</span>
 <span class="n">carla_client</span><span class="o">.</span><span class="n">send_control</span><span class="p">(</span><span class="n">control</span><span class="p">)</span>
 </code></pre></div>
-(*) 实际转向角度取决于所用车辆。默认 Mustang 的最大转向角度为 70 度（可在车辆前轮蓝图中查看）。</p>
-<p><img alt="" src="../img/steering_angle_mustang.png" /></p>
+(*) 实际转向角度取决于所用车辆。默认 Mustang 的最大转向角度为 70 度（可在车辆前轮蓝图中查看）。
+<p><img alt="" src="../img/steering_angle_mustang.png"></p></div>
               
             </div>
           </div><footer>

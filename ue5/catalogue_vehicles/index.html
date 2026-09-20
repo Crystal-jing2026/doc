@@ -100,13 +100,13 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="_1">车辆目录</h2>
+                <div><h2 id="_1">车辆目录</h2>
 <h3 id="_2">检查模拟器中的车辆</h3>
 <p>运行以下脚本通过第一视角进行矿卡驾驶：
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>manual_control.py<span class="w"> </span>--filter<span class="w"> </span>vehicle.miningtruck.miningtruck
-</code></pre></div></p>
+</p><div class="highlight"><pre><span></span><code>python<span class="w"> </span>manual_control.py<span class="w"> </span>--filter<span class="w"> </span>vehicle.miningtruck.miningtruck
+</code></pre></div>
 <p>要从目录中检查车辆，请使用以下代码，从下面的车辆详细信息中检索蓝图 ID，并将其粘贴到行 <code>bp_lib.find('blueprint.id.goes_here')</code> 中 ：
-<div class="highlight"><pre><span></span><code><span class="n">client</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
+</p><div class="highlight"><pre><span></span><code><span class="n">client</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="s1">'localhost'</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
 <span class="n">world</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_world</span><span class="p">()</span>
 <span class="n">bp_lib</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">get_blueprint_library</span><span class="p">()</span>
 <span class="n">spectator</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">get_spectator</span><span class="p">()</span>
@@ -117,7 +117,7 @@
 <span class="n">vehicle_trans</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Transform</span><span class="p">(</span><span class="n">vehicle_loc</span><span class="p">,</span><span class="n">vehicle_rot</span><span class="p">)</span>
 
 <span class="c1"># 将蓝图ID粘贴到这里：</span>
-<span class="n">vehicle_bp</span> <span class="o">=</span> <span class="n">bp_lib</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;vehicle.lincoln.mkz&#39;</span><span class="p">)</span> 
+<span class="n">vehicle_bp</span> <span class="o">=</span> <span class="n">bp_lib</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'vehicle.lincoln.mkz'</span><span class="p">)</span> 
 
 <span class="c1"># 设置观看变换：</span>
 <span class="n">camera_loc</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Location</span><span class="p">(</span><span class="n">x</span><span class="o">=-</span><span class="mf">48.7</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">24.8</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mf">1.7</span><span class="p">)</span>
@@ -129,10 +129,10 @@
 
 <span class="c1"># 移动观察者</span>
 <span class="n">spectator</span><span class="o">.</span><span class="n">set_transform</span><span class="p">(</span><span class="n">camera_trans</span><span class="p">)</span>
-</code></pre></div></p>
+</code></pre></div>
 <p>在尝试生成另一辆车辆之前，不要忘记先销毁该车辆以避免碰撞：</p>
 <div class="highlight"><pre><span></span><code><span class="n">vehicle</span><span class="o">.</span><span class="n">destroy</span><span class="p">()</span>
-</code></pre></div>
+</code></pre></div></div>
               
             </div>
           </div><footer>

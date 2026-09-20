@@ -100,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="_1">如何添加新传感器</h1>
+                <div><h1 id="_1">如何添加新传感器</h1>
 <p>本教程介绍了向 Carla 添加新传感器的基础知识。它提供了在虚幻引擎 4 中实现传感器并通过 Carla 的 Python API 公开其数据的必要步骤。我们将通过创建新传感器作为示例来遵循所有步骤。</p>
 <ul>
 <li><a href="#prerequisites"><strong>先决条件</strong></a>  </li>
@@ -120,17 +120,17 @@
 </ul>
 </li>
 </ul>
-<hr />
+<hr>
 <h2 id="_2">先决条件 <span id="prerequisites"></span></h2>
 <p>为了实现新的传感器，您需要编译 Carla 源代码，有关如何实现此目的的详细说明，请参阅 <a href="../build_linux/">从源代码构建</a> 。</p>
 <p>本教程还假设读者精通 C++ 编程。</p>
-<hr />
+<hr>
 <h2 id="_3">介绍 <span id="introduction"></span></h2>
 <p>Carla 中的传感器是一种特殊类型的参与者，可以产生数据流。有些传感器每次更新时都会连续产生数据，而另一些传感器仅在某些事件发生后才产生数据。例如，相机在每次更新时都会生成图像，但碰撞传感器仅在发生碰撞时才会触发。</p>
 <p>尽管大多数传感器在服务器端（虚幻引擎 4）中计算测量结果，但值得注意的是，某些传感器仅在客户端中运行。此类传感器的一个例子是 LaneInvasion，每次越过车道标记时它都会发出通知。有关更多详细信息，请参阅 <a href="#appendix-client-side-sensors">附录：客户端传感器</a> 。</p>
 <p>在本教程中，我们将重点关注服务器端传感器。</p>
 <p>为了让虚幻引擎 4 内运行的传感器将数据一路发送到 Python 客户端，我们需要覆盖整个通信管道。</p>
-<p><img alt="Communication pipeline" src="../img/build_modules.jpg" /></p>
+<p><img alt="Communication pipeline" src="../img/build_modules.jpg"></p>
 <p>因此，我们需要以下类来涵盖管道的不同步骤</p>
 <ul>
 <li>
@@ -150,11 +150,11 @@
 <p class="admonition-title">笔记</p>
 <p>为了确保最佳性能，传感器使用基于模板元编程的“编译时插件系统”进行注册和调度。最有可能的是，在所有部分都存在之前，代码不会编译。</p>
 </div>
-<hr />
+<hr>
 <h2 id="_4">创建新传感器 <span id="creating-a-new-sensor"></span></h2>
 <p><a href="https://gist.github.com/nsubiron/011fd1b9767cd441b1d8467dc11e00f9"><strong>完整源代码在这里。</strong></a></p>
 <p>我们将创建一个传感器来检测车辆周围的其他参与者。为此，我们将创建一个触发盒来检测其中的物体，并且每次车辆进入触发盒时我们都会向客户端报告状态。我们称之为 <em>安全距离传感器</em> 。</p>
-<p><img alt="Trigger box" src="../img/safe_distance_sensor.jpg" /></p>
+<p><img alt="Trigger box" src="../img/safe_distance_sensor.jpg"></p>
 <p><em>为了简单起见，我们不会考虑所有的边缘情况，也不会以最有效的方式实现。这只是一个说明性示例。</em></p>
 <h3 id="1-">1- 创建新传感器 <span id="1-sensor-actor"></span></h3>
 <p>这是我们要创建的最复杂的类。这里我们在虚幻引擎框架内运行，虚幻引擎 4 API 的知识将非常有帮助，但不是必不可少的，我们假设读者以前从未使用过虚幻引擎 4。</p>
@@ -168,14 +168,14 @@
 <p>最起码，传感器需要继承<code>ASensor</code>，并提供获取传感器属性定义的静态方法<code>GetSensorDefinition</code>；但我们还将重写<code>Set</code>、<code>SetOwner</code>、<code>Tick</code>方法。该传感器还需要一个触发盒来检测我们周围的其他参与者。有了这个和一些必需的虚幻引擎 4 样板代码，头文件看起来像</p>
 <div class="highlight"><pre><span></span><code><span class="cp">#pragma once</span>
 
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Carla/Sensor/Sensor.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">"Carla/Sensor/Sensor.h"</span>
 
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Carla/Actor/ActorDefinition.h&quot;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Carla/Actor/ActorDescription.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">"Carla/Actor/ActorDefinition.h"</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">"Carla/Actor/ActorDescription.h"</span>
 
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Components/BoxComponent.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">"Components/BoxComponent.h"</span>
 
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;SafeDistanceSensor.generated.h&quot;</span><span class="c1">  // 反射机制，通过UHT生成*.generated.h</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">"SafeDistanceSensor.generated.h"</span><span class="c1">  // 反射机制，通过UHT生成*.generated.h</span>
 
 <span class="n">UCLASS</span><span class="p">()</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">CARLA_API</span><span class="w"> </span><span class="n">ASafeDistanceSensor</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">ASensor</span>
@@ -201,49 +201,49 @@
 <span class="p">};</span>
 </code></pre></div>
 <p>在 cpp 文件中，首先我们需要一些包含</p>
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Carla.h&quot;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Carla/Sensor/SafeDistanceSensor.h&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">"Carla.h"</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">"Carla/Sensor/SafeDistanceSensor.h"</span>
 
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Carla/Actor/ActorBlueprintFunctionLibrary.h&quot;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Carla/Game/CarlaEpisode.h&quot;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Carla/Util/BoundingBoxCalculator.h&quot;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Carla/Vehicle/CarlaWheeledVehicle.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">"Carla/Actor/ActorBlueprintFunctionLibrary.h"</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">"Carla/Game/CarlaEpisode.h"</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">"Carla/Util/BoundingBoxCalculator.h"</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">"Carla/Vehicle/CarlaWheeledVehicle.h"</span>
 </code></pre></div>
 <p>然后我们就可以继续实现该功能了。构造函数将创建触发框，并告诉虚幻引擎4 我们希望调用我们的勾选函数。如果我们的传感器没有使用节拍功能，我们可以在此处禁用它以避免不必要的节拍：
-<div class="highlight"><pre><span></span><code><span class="n">ASafeDistanceSensor</span><span class="o">::</span><span class="n">ASafeDistanceSensor</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">FObjectInitializer</span><span class="w"> </span><span class="o">&amp;</span><span class="n">ObjectInitializer</span><span class="p">)</span>
+</p><div class="highlight"><pre><span></span><code><span class="n">ASafeDistanceSensor</span><span class="o">::</span><span class="n">ASafeDistanceSensor</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">FObjectInitializer</span><span class="w"> </span><span class="o">&amp;</span><span class="n">ObjectInitializer</span><span class="p">)</span>
 <span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">Super</span><span class="p">(</span><span class="n">ObjectInitializer</span><span class="p">)</span>
 <span class="p">{</span>
-<span class="w">  </span><span class="n">Box</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CreateDefaultSubobject</span><span class="o">&lt;</span><span class="n">UBoxComponent</span><span class="o">&gt;</span><span class="p">(</span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;BoxOverlap&quot;</span><span class="p">));</span>
+<span class="w">  </span><span class="n">Box</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CreateDefaultSubobject</span><span class="o">&lt;</span><span class="n">UBoxComponent</span><span class="o">&gt;</span><span class="p">(</span><span class="n">TEXT</span><span class="p">(</span><span class="s">"BoxOverlap"</span><span class="p">));</span>
 <span class="w">  </span><span class="n">Box</span><span class="o">-&gt;</span><span class="n">SetupAttachment</span><span class="p">(</span><span class="n">RootComponent</span><span class="p">);</span>
 <span class="w">  </span><span class="n">Box</span><span class="o">-&gt;</span><span class="n">SetHiddenInGame</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span><span class="w"> </span><span class="c1">// Disable for debugging.</span>
-<span class="w">  </span><span class="n">Box</span><span class="o">-&gt;</span><span class="n">SetCollisionProfileName</span><span class="p">(</span><span class="n">FName</span><span class="p">(</span><span class="s">&quot;OverlapAll&quot;</span><span class="p">));</span>
+<span class="w">  </span><span class="n">Box</span><span class="o">-&gt;</span><span class="n">SetCollisionProfileName</span><span class="p">(</span><span class="n">FName</span><span class="p">(</span><span class="s">"OverlapAll"</span><span class="p">));</span>
 
 <span class="w">  </span><span class="n">PrimaryActorTick</span><span class="p">.</span><span class="n">bCanEverTick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div></p>
+</code></pre></div>
 <p>现在我们需要告诉 Carla 这个传感器有什么属性，这将用于在我们的蓝图库中创建一个新的蓝图，用户可以使用这个蓝图来配置和生成这个传感器。我们将在这里定义触发框的属性，在本例中我们将仅公开 X 和 Y 安全距离</p>
 <div class="highlight"><pre><span></span><code><span class="n">FActorDefinition</span><span class="w"> </span><span class="nf">ASafeDistanceSensor::GetSensorDefinition</span><span class="p">()</span>
 <span class="p">{</span>
 <span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">Definition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UActorBlueprintFunctionLibrary</span><span class="o">::</span><span class="n">MakeGenericSensorDefinition</span><span class="p">(</span>
-<span class="w">      </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;other&quot;</span><span class="p">),</span>
-<span class="w">      </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;safe_distance&quot;</span><span class="p">));</span>
+<span class="w">      </span><span class="n">TEXT</span><span class="p">(</span><span class="s">"other"</span><span class="p">),</span>
+<span class="w">      </span><span class="n">TEXT</span><span class="p">(</span><span class="s">"safe_distance"</span><span class="p">));</span>
 
 <span class="w">  </span><span class="n">FActorVariation</span><span class="w"> </span><span class="n">Front</span><span class="p">;</span>
-<span class="w">  </span><span class="n">Front</span><span class="p">.</span><span class="n">Id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;safe_distance_front&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="n">Front</span><span class="p">.</span><span class="n">Id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">"safe_distance_front"</span><span class="p">);</span>
 <span class="w">  </span><span class="n">Front</span><span class="p">.</span><span class="n">Type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">EActorAttributeType</span><span class="o">::</span><span class="n">Float</span><span class="p">;</span>
-<span class="w">  </span><span class="n">Front</span><span class="p">.</span><span class="n">RecommendedValues</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;1.0&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">};</span>
+<span class="w">  </span><span class="n">Front</span><span class="p">.</span><span class="n">RecommendedValues</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">"1.0"</span><span class="p">)</span><span class="w"> </span><span class="p">};</span>
 <span class="w">  </span><span class="n">Front</span><span class="p">.</span><span class="n">bRestrictToRecommended</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 
 <span class="w">  </span><span class="n">FActorVariation</span><span class="w"> </span><span class="n">Back</span><span class="p">;</span>
-<span class="w">  </span><span class="n">Back</span><span class="p">.</span><span class="n">Id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;safe_distance_back&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="n">Back</span><span class="p">.</span><span class="n">Id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">"safe_distance_back"</span><span class="p">);</span>
 <span class="w">  </span><span class="n">Back</span><span class="p">.</span><span class="n">Type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">EActorAttributeType</span><span class="o">::</span><span class="n">Float</span><span class="p">;</span>
-<span class="w">  </span><span class="n">Back</span><span class="p">.</span><span class="n">RecommendedValues</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;0.5&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">};</span>
+<span class="w">  </span><span class="n">Back</span><span class="p">.</span><span class="n">RecommendedValues</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">"0.5"</span><span class="p">)</span><span class="w"> </span><span class="p">};</span>
 <span class="w">  </span><span class="n">Back</span><span class="p">.</span><span class="n">bRestrictToRecommended</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 
 <span class="w">  </span><span class="n">FActorVariation</span><span class="w"> </span><span class="n">Lateral</span><span class="p">;</span>
-<span class="w">  </span><span class="n">Lateral</span><span class="p">.</span><span class="n">Id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;safe_distance_lateral&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="n">Lateral</span><span class="p">.</span><span class="n">Id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">"safe_distance_lateral"</span><span class="p">);</span>
 <span class="w">  </span><span class="n">Lateral</span><span class="p">.</span><span class="n">Type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">EActorAttributeType</span><span class="o">::</span><span class="n">Float</span><span class="p">;</span>
-<span class="w">  </span><span class="n">Lateral</span><span class="p">.</span><span class="n">RecommendedValues</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;0.5&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">};</span>
+<span class="w">  </span><span class="n">Lateral</span><span class="p">.</span><span class="n">RecommendedValues</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">"0.5"</span><span class="p">)</span><span class="w"> </span><span class="p">};</span>
 <span class="w">  </span><span class="n">Lateral</span><span class="p">.</span><span class="n">bRestrictToRecommended</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 
 <span class="w">  </span><span class="n">Definition</span><span class="p">.</span><span class="n">Variations</span><span class="p">.</span><span class="n">Append</span><span class="p">({</span><span class="w"> </span><span class="n">Front</span><span class="p">,</span><span class="w"> </span><span class="n">Back</span><span class="p">,</span><span class="w"> </span><span class="n">Lateral</span><span class="w"> </span><span class="p">});</span>
@@ -257,15 +257,15 @@
 <span class="w">  </span><span class="n">Super</span><span class="o">::</span><span class="n">Set</span><span class="p">(</span><span class="n">Description</span><span class="p">);</span>
 
 <span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">Front</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UActorBlueprintFunctionLibrary</span><span class="o">::</span><span class="n">RetrieveActorAttributeToFloat</span><span class="p">(</span>
-<span class="w">      </span><span class="s">&quot;safe_distance_front&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s">"safe_distance_front"</span><span class="p">,</span>
 <span class="w">      </span><span class="n">Description</span><span class="p">.</span><span class="n">Variations</span><span class="p">,</span>
 <span class="w">      </span><span class="mf">1.0f</span><span class="p">);</span>
 <span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">Back</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UActorBlueprintFunctionLibrary</span><span class="o">::</span><span class="n">RetrieveActorAttributeToFloat</span><span class="p">(</span>
-<span class="w">      </span><span class="s">&quot;safe_distance_back&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s">"safe_distance_back"</span><span class="p">,</span>
 <span class="w">      </span><span class="n">Description</span><span class="p">.</span><span class="n">Variations</span><span class="p">,</span>
 <span class="w">      </span><span class="mf">0.5f</span><span class="p">);</span>
 <span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">Lateral</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UActorBlueprintFunctionLibrary</span><span class="o">::</span><span class="n">RetrieveActorAttributeToFloat</span><span class="p">(</span>
-<span class="w">      </span><span class="s">&quot;safe_distance_lateral&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s">"safe_distance_lateral"</span><span class="p">,</span>
 <span class="w">      </span><span class="n">Description</span><span class="p">.</span><span class="n">Variations</span><span class="p">,</span>
 <span class="w">      </span><span class="mf">0.5f</span><span class="p">);</span>
 
@@ -364,8 +364,8 @@
 <p>该对象相当于参与者 ID 列表。为此，我们将从 Array 模板派生</p>
 <div class="highlight"><pre><span></span><code><span class="cp">#pragma once</span>
 
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;carla/rpc/ActorId.h&quot;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;carla/sensor/data/Array.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">"carla/rpc/ActorId.h"</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">"carla/sensor/data/Array.h"</span>
 
 <span class="k">namespace</span><span class="w"> </span><span class="nn">carla</span><span class="w"> </span><span class="p">{</span>
 <span class="k">namespace</span><span class="w"> </span><span class="nn">sensor</span><span class="w"> </span><span class="p">{</span>
@@ -389,10 +389,10 @@
 <span class="w">    </span><span class="n">bases</span><span class="o">&lt;</span><span class="n">cs</span><span class="o">::</span><span class="n">SensorData</span><span class="o">&gt;</span><span class="p">,</span><span class="w">                     </span><span class="c1">// 父类型</span>
 <span class="w">    </span><span class="n">boost</span><span class="o">::</span><span class="n">noncopyable</span><span class="p">,</span><span class="w">                        </span><span class="c1">// 禁用拷贝</span>
 <span class="w">    </span><span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">csd</span><span class="o">::</span><span class="n">SafeDistanceEvent</span><span class="o">&gt;</span><span class="w">  </span><span class="c1">// 使用智能指针 shared_ptr.</span>
-<span class="w">  </span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;SafeDistanceEvent&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">no_init</span><span class="p">)</span><span class="w">              </span><span class="c1">// 名字, 禁用构造</span>
-<span class="w">  </span><span class="p">.</span><span class="n">def</span><span class="p">(</span><span class="s">&quot;__len__&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">csd</span><span class="o">::</span><span class="n">SafeDistanceEvent</span><span class="o">::</span><span class="n">size</span><span class="p">)</span>
-<span class="w">  </span><span class="p">.</span><span class="n">def</span><span class="p">(</span><span class="s">&quot;__iter__&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">iterator</span><span class="o">&lt;</span><span class="n">csd</span><span class="o">::</span><span class="n">SafeDistanceEvent</span><span class="o">&gt;</span><span class="p">())</span>
-<span class="w">  </span><span class="p">.</span><span class="n">def</span><span class="p">(</span><span class="s">&quot;__getitem__&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="p">[](</span><span class="k">const</span><span class="w"> </span><span class="n">csd</span><span class="o">::</span><span class="n">SafeDistanceEvent</span><span class="w"> </span><span class="o">&amp;</span><span class="n">self</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">pos</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">cr</span><span class="o">::</span><span class="n">ActorId</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="o">&gt;</span><span class="p">(</span><span class="s">"SafeDistanceEvent"</span><span class="p">,</span><span class="w"> </span><span class="n">no_init</span><span class="p">)</span><span class="w">              </span><span class="c1">// 名字, 禁用构造</span>
+<span class="w">  </span><span class="p">.</span><span class="n">def</span><span class="p">(</span><span class="s">"__len__"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">csd</span><span class="o">::</span><span class="n">SafeDistanceEvent</span><span class="o">::</span><span class="n">size</span><span class="p">)</span>
+<span class="w">  </span><span class="p">.</span><span class="n">def</span><span class="p">(</span><span class="s">"__iter__"</span><span class="p">,</span><span class="w"> </span><span class="n">iterator</span><span class="o">&lt;</span><span class="n">csd</span><span class="o">::</span><span class="n">SafeDistanceEvent</span><span class="o">&gt;</span><span class="p">())</span>
+<span class="w">  </span><span class="p">.</span><span class="n">def</span><span class="p">(</span><span class="s">"__getitem__"</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="p">[](</span><span class="k">const</span><span class="w"> </span><span class="n">csd</span><span class="o">::</span><span class="n">SafeDistanceEvent</span><span class="w"> </span><span class="o">&amp;</span><span class="n">self</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">pos</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">cr</span><span class="o">::</span><span class="n">ActorId</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">pos</span><span class="p">);</span>
 <span class="w">  </span><span class="p">})</span>
 <span class="p">;</span>
@@ -410,7 +410,7 @@
 <h3 id="5-">5- 使用示例 <span id="5-usage-example"></span></h3>
 <p>最后，我们已经包含了传感器，并且已经完成了重新编译，现在我们的传感器应该可以在 Python 中使用。</p>
 <p>要生成这个传感器，我们只需在蓝图库中找到它，如果一切顺利，传感器工厂应该已将我们的传感器添加到库中</p>
-<div class="highlight"><pre><span></span><code><span class="n">blueprint</span> <span class="o">=</span> <span class="n">blueprint_library</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;sensor.other.safe_distance&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">blueprint</span> <span class="o">=</span> <span class="n">blueprint_library</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'sensor.other.safe_distance'</span><span class="p">)</span>
 <span class="n">sensor</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">spawn_actor</span><span class="p">(</span><span class="n">blueprint</span><span class="p">,</span> <span class="n">carla</span><span class="o">.</span><span class="n">Transform</span><span class="p">(),</span> <span class="n">attach_to</span><span class="o">=</span><span class="n">vehicle</span><span class="p">)</span>
 </code></pre></div>
 <p>现在我们可以通过注册回调函数来开始监听事件</p>
@@ -419,16 +419,16 @@
 <span class="k">def</span> <span class="nf">callback</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">actor_id</span> <span class="ow">in</span> <span class="n">event</span><span class="p">:</span>
         <span class="n">vehicle</span> <span class="o">=</span> <span class="n">world_ref</span><span class="p">()</span><span class="o">.</span><span class="n">get_actor</span><span class="p">(</span><span class="n">actor_id</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Vehicle too close: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">type_id</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">'Vehicle too close: </span><span class="si">%s</span><span class="s1">'</span> <span class="o">%</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">type_id</span><span class="p">)</span>
 
 <span class="n">sensor</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="n">callback</span><span class="p">)</span>
 </code></pre></div>
 <p>此回调将执行另一辆车在我们的安全距离框中的每次更新，例如：
-<div class="highlight"><pre><span></span><code>Vehicle too close: vehicle.audi.a2
+</p><div class="highlight"><pre><span></span><code>Vehicle too close: vehicle.audi.a2
 Vehicle too close: vehicle.mercedes-benz.coupe
-</code></pre></div></p>
+</code></pre></div>
 <p>就是这样，我们有一个新的传感器正在工作！</p>
-<hr />
+<hr>
 <h2 id="_5">附录 <span id="appendix"></span></h2>
 <h3 id="_6">重用缓冲区 <span id="reusing-buffers"></span></h3>
 <p>为了优化内存使用，我们可以利用每个传感器发送相似大小缓冲区的事实；特别是，在相机的情况下，图像的大小在执行期间是恒定的。在这些情况下，我们可以通过重用帧之间分配的内存来节省大量资源。</p>
@@ -463,7 +463,7 @@ Vehicle too close: vehicle.mercedes-benz.coupe
 <p>通常的方法是在服务器端创建一个“虚拟”传感器，以便模拟器知道这样的参与者的存在。然而，这个虚拟传感器不会发出节拍信号，也不会发送任何类型的数据。然而，它在客户端的对应部分注册了一个“on tick”回调，以便在每次新更新时执行一些代码。例如，压线 LaneInvasion 传感器会注册一个回调，每次越过车道标记时都会发出通知。</p>
 <p>考虑到客户端的“on tick”回调是并发执行的，即相同的方法可能由不同的线程同时执行，这一点非常重要。访问的任何数据都必须正确同步，可以使用互斥体、使用原子，或者更好地确保所有访问的成员保持不变。</p>
 <h2 id="_9">其他</h2>
-<p><a href="https://blog.csdn.net/zataji/article/details/140858585">操作步骤博客</a></p>
+<p><a href="https://blog.csdn.net/zataji/article/details/140858585">操作步骤博客</a></p></div>
               
             </div>
           </div><footer>

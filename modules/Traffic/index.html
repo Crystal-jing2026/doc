@@ -100,75 +100,75 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="traffic">Traffic 模块</h1>
+                <div><h1 id="traffic">Traffic 模块</h1>
 <h1 id="_1">目录</h1>
 <ul>
-<li><a href="#概述">概述</a></li>
-<li><a href="#系统架构流程图">系统架构流程图</a></li>
-<li><a href="#核心功能">核心功能</a></li>
-<li><a href="#1-车辆生成系统">1. 车辆生成系统</a><ul>
-<li><a href="#功能描述">功能描述</a></li>
-<li><a href="#参数配置表">参数配置表</a></li>
-<li><a href="#模块逻辑">模块逻辑</a></li>
-<li><a href="#工程应用场景">工程应用场景</a></li>
-<li><a href="#车辆类型配置示例">车辆类型配置示例</a></li>
+<li><a href="#%E6%A6%82%E8%BF%B0">概述</a></li>
+<li><a href="#%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E6%B5%81%E7%A8%8B%E5%9B%BE">系统架构流程图</a></li>
+<li><a href="#%E6%A0%B8%E5%BF%83%E5%8A%9F%E8%83%BD">核心功能</a></li>
+<li><a href="#1-%E8%BD%A6%E8%BE%86%E7%94%9F%E6%88%90%E7%B3%BB%E7%BB%9F">1. 车辆生成系统</a><ul>
+<li><a href="#%E5%8A%9F%E8%83%BD%E6%8F%8F%E8%BF%B0">功能描述</a></li>
+<li><a href="#%E5%8F%82%E6%95%B0%E9%85%8D%E7%BD%AE%E8%A1%A8">参数配置表</a></li>
+<li><a href="#%E6%A8%A1%E5%9D%97%E9%80%BB%E8%BE%91">模块逻辑</a></li>
+<li><a href="#%E5%B7%A5%E7%A8%8B%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF">工程应用场景</a></li>
+<li><a href="#%E8%BD%A6%E8%BE%86%E7%B1%BB%E5%9E%8B%E9%85%8D%E7%BD%AE%E7%A4%BA%E4%BE%8B">车辆类型配置示例</a></li>
 </ul>
 </li>
-<li><a href="#2-行人ai系统">2. 行人AI系统</a><ul>
-<li><a href="#功能特性">功能特性</a></li>
-<li><a href="#模块逻辑">模块逻辑</a></li>
-<li><a href="#工程应用场景">工程应用场景</a></li>
-<li><a href="#人群密度配置表">人群密度配置表</a></li>
+<li><a href="#2-%E8%A1%8C%E4%BA%BAai%E7%B3%BB%E7%BB%9F">2. 行人AI系统</a><ul>
+<li><a href="#%E5%8A%9F%E8%83%BD%E7%89%B9%E6%80%A7">功能特性</a></li>
+<li><a href="#%E6%A8%A1%E5%9D%97%E9%80%BB%E8%BE%91">模块逻辑</a></li>
+<li><a href="#%E5%B7%A5%E7%A8%8B%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF">工程应用场景</a></li>
+<li><a href="#%E4%BA%BA%E7%BE%A4%E5%AF%86%E5%BA%A6%E9%85%8D%E7%BD%AE%E8%A1%A8">人群密度配置表</a></li>
 </ul>
 </li>
-<li><a href="#3-交通信号控制">3. 交通信号控制</a><ul>
-<li><a href="#功能组件">功能组件</a></li>
-<li><a href="#信号相位时序表">信号相位时序表</a></li>
+<li><a href="#3-%E4%BA%A4%E9%80%9A%E4%BF%A1%E5%8F%B7%E6%8E%A7%E5%88%B6">3. 交通信号控制</a><ul>
+<li><a href="#%E5%8A%9F%E8%83%BD%E7%BB%84%E4%BB%B6">功能组件</a></li>
+<li><a href="#%E4%BF%A1%E5%8F%B7%E7%9B%B8%E4%BD%8D%E6%97%B6%E5%BA%8F%E8%A1%A8">信号相位时序表</a></li>
 </ul>
 </li>
-<li><a href="#4-路径规划系统">4. 路径规划系统</a></li>
-<li><a href="#5-性能优化">5. 性能优化</a></li>
-<li><a href="#接口定义">接口定义</a></li>
+<li><a href="#4-%E8%B7%AF%E5%BE%84%E8%A7%84%E5%88%92%E7%B3%BB%E7%BB%9F">4. 路径规划系统</a></li>
+<li><a href="#5-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96">5. 性能优化</a></li>
+<li><a href="#%E6%8E%A5%E5%8F%A3%E5%AE%9A%E4%B9%89">接口定义</a></li>
 <li><a href="#python-api">Python API</a></li>
-<li><a href="#控制协议">控制协议</a></li>
-<li><a href="#常见问题">常见问题</a></li>
-<li><a href="#配置与依赖">配置与依赖</a></li>
-<li><a href="#必要组件">必要组件</a></li>
-<li><a href="#安装步骤">安装步骤</a></li>
-<li><a href="#使用示例">使用示例</a></li>
-<li><a href="#基础车辆生成">基础车辆生成</a><ul>
-<li><a href="#车辆生成流程图">车辆生成流程图</a></li>
+<li><a href="#%E6%8E%A7%E5%88%B6%E5%8D%8F%E8%AE%AE">控制协议</a></li>
+<li><a href="#%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98">常见问题</a></li>
+<li><a href="#%E9%85%8D%E7%BD%AE%E4%B8%8E%E4%BE%9D%E8%B5%96">配置与依赖</a></li>
+<li><a href="#%E5%BF%85%E8%A6%81%E7%BB%84%E4%BB%B6">必要组件</a></li>
+<li><a href="#%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4">安装步骤</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B">使用示例</a></li>
+<li><a href="#%E5%9F%BA%E7%A1%80%E8%BD%A6%E8%BE%86%E7%94%9F%E6%88%90">基础车辆生成</a><ul>
+<li><a href="#%E8%BD%A6%E8%BE%86%E7%94%9F%E6%88%90%E6%B5%81%E7%A8%8B%E5%9B%BE">车辆生成流程图</a></li>
 </ul>
 </li>
-<li><a href="#交通信号配置">交通信号配置</a><ul>
-<li><a href="#交通信号控制流程图">交通信号控制流程图</a></li>
+<li><a href="#%E4%BA%A4%E9%80%9A%E4%BF%A1%E5%8F%B7%E9%85%8D%E7%BD%AE">交通信号配置</a><ul>
+<li><a href="#%E4%BA%A4%E9%80%9A%E4%BF%A1%E5%8F%B7%E6%8E%A7%E5%88%B6%E6%B5%81%E7%A8%8B%E5%9B%BE">交通信号控制流程图</a></li>
 </ul>
 </li>
-<li><a href="#高级配置">高级配置</a></li>
-<li><a href="#自定义行为模型">自定义行为模型</a></li>
-<li><a href="#路径网络调试">路径网络调试</a><ul>
-<li><a href="#路径网络验证流程">路径网络验证流程</a></li>
+<li><a href="#%E9%AB%98%E7%BA%A7%E9%85%8D%E7%BD%AE">高级配置</a></li>
+<li><a href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E8%A1%8C%E4%B8%BA%E6%A8%A1%E5%9E%8B">自定义行为模型</a></li>
+<li><a href="#%E8%B7%AF%E5%BE%84%E7%BD%91%E7%BB%9C%E8%B0%83%E8%AF%95">路径网络调试</a><ul>
+<li><a href="#%E8%B7%AF%E5%BE%84%E7%BD%91%E7%BB%9C%E9%AA%8C%E8%AF%81%E6%B5%81%E7%A8%8B">路径网络验证流程</a></li>
 </ul>
 </li>
-<li><a href="#性能优化">性能优化</a><ul>
-<li><a href="#硬件配置推荐">硬件配置推荐</a></li>
-<li><a href="#渲染参数">渲染参数</a></li>
+<li><a href="#%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96">性能优化</a><ul>
+<li><a href="#%E7%A1%AC%E4%BB%B6%E9%85%8D%E7%BD%AE%E6%8E%A8%E8%8D%90">硬件配置推荐</a></li>
+<li><a href="#%E6%B8%B2%E6%9F%93%E5%8F%82%E6%95%B0">渲染参数</a></li>
 </ul>
 </li>
-<li><a href="#调试诊断">调试诊断</a></li>
-<li><a href="#错误代码表">错误代码表</a></li>
-<li><a href="#性能监控">性能监控</a></li>
-<li><a href="#注意事项">注意事项</a></li>
+<li><a href="#%E8%B0%83%E8%AF%95%E8%AF%8A%E6%96%AD">调试诊断</a></li>
+<li><a href="#%E9%94%99%E8%AF%AF%E4%BB%A3%E7%A0%81%E8%A1%A8">错误代码表</a></li>
+<li><a href="#%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7">性能监控</a></li>
+<li><a href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9">注意事项</a></li>
 </ul>
 <h2 id="_2">概述</h2>
 <p>CarlaUnreal 的 Traffic 模块用于在虚幻引擎中模拟动态城市交通系统，支持：
 - 自动驾驶仿真中的复杂交通流生成
 - 车辆、行人、交通信号等元素的自动化行为控制
 - 基于规则的交通行为模型配置</p>
-<hr />
+<hr>
 <h2 id="_3">系统架构</h2>
 <h3 id="_4">模块交互逻辑</h3>
-<p><pre class="mermaid"><code>graph TD
+<p></p><pre class="mermaid"><code>graph TD
   subgraph 输入层
     A[高精地图] --&gt; B[路径网络]
     C[行为配置文件] --&gt; D[规则引擎]
@@ -188,11 +188,11 @@
   end
 
   J --&gt; D[规则引擎]</code></pre>
-<strong>工程实践要点</strong>：<br />
-1. <strong>数据驱动配置</strong>：通过JSON文件定义不同城市场景的交通特征参数<br />
-2. <strong>分层调试</strong>：可独立运行信号控制或车辆生成模块进行单元测试<br />
-3. <strong>实时热更新</strong>：支持运行时动态调整<code>SpawnDensity</code>等关键参数  </p>
-<hr />
+<strong>工程实践要点</strong>：<br>
+1. <strong>数据驱动配置</strong>：通过JSON文件定义不同城市场景的交通特征参数<br>
+2. <strong>分层调试</strong>：可独立运行信号控制或车辆生成模块进行单元测试<br>
+3. <strong>实时热更新</strong>：支持运行时动态调整<code>SpawnDensity</code>等关键参数  
+<hr>
 <h2 id="_5">核心功能</h2>
 <h3 id="trafficlightbase">交通灯(TrafficLightBase)</h3>
 <p>需要了解 TrafficLightBase 如何与 OpenDRIVE 集成，如何生成触发区域，以及如何与车辆控制器交互。此外，状态管理机制和冻结功能也是关键点。相关的子类如 停车标志( <a href="https://github.com/OpenHUTB/carla/blob/OpenHUTB/Unreal/CarlaUE4/Plugins/Carla/Source/Carla/Traffic/StopSignComponent.cpp">StopSignComponent</a> ) 和 让行标志( <a href="https://github.com/OpenHUTB/carla/blob/OpenHUTB/Unreal/CarlaUE4/Plugins/Carla/Source/Carla/Traffic/YieldSignComponent.cpp">YieldSignComponent</a> ) ，虽然它们处理不同的信号类型，但共享类似的机制。</p>
@@ -299,7 +299,7 @@
 </tbody>
 </table>
 <h4 id="_10">模块逻辑</h4>
-<p><pre class="mermaid"><code>graph LR
+<p></p><pre class="mermaid"><code>graph LR
   A[路径网络加载] --&gt; B[生成策略计算]
   B --&gt; C{密度控制}
   C --&gt;|达标| D[车型选择]
@@ -307,19 +307,19 @@
   D --&gt; F[行为树注入]
   F --&gt; G[物理实体生成]
   G --&gt; H[生命周期监控]</code></pre>
-<strong>工程应用场景</strong>：<br />
-- <strong>自动驾驶压力测试</strong>：通过调节<code>SpawnDensity=200</code>模拟高峰流量，验证感知系统对密集车流的处理能力<br />
-- <strong>特殊车辆调度</strong>：设置<code>EmergencyVehicleRatio=0.2</code>模拟紧急救援通道，测试优先通行算法<br />
-- <strong>区域限流测试</strong>：配置<code>SpawnRadius=300</code>聚焦特定路段的交通流建模</p>
+<strong>工程应用场景</strong>：<br>
+- <strong>自动驾驶压力测试</strong>：通过调节<code>SpawnDensity=200</code>模拟高峰流量，验证感知系统对密集车流的处理能力<br>
+- <strong>特殊车辆调度</strong>：设置<code>EmergencyVehicleRatio=0.2</code>模拟紧急救援通道，测试优先通行算法<br>
+- <strong>区域限流测试</strong>：配置<code>SpawnRadius=300</code>聚焦特定路段的交通流建模
 <h4 id="_11">车辆类型配置示例</h4>
 <div class="highlight"><pre><span></span><code><span class="nt">VehicleMix</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Blueprint</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/Game/Carla/Blueprints/Vehicles/Sedan&quot;</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Blueprint</span><span class="p">:</span><span class="w"> </span><span class="s">"/Game/Carla/Blueprints/Vehicles/Sedan"</span>
 <span class="w">    </span><span class="nt">Weight</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.6</span>
 <span class="w">    </span><span class="nt">Attributes</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">MaxSpeed</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">160</span><span class="w">   </span><span class="c1"># km/h</span>
 <span class="w">      </span><span class="nt">ColorVariants</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
 </code></pre></div>
-<hr />
+<hr>
 <h3 id="2-ai">2. 行人AI系统</h3>
 <h4 id="_12">功能特性</h4>
 <ul>
@@ -336,7 +336,7 @@
 </li>
 </ul>
 <h4 id="_13">模块逻辑</h4>
-<p><pre class="mermaid"><code>flowchart TB
+<p></p><pre class="mermaid"><code>flowchart TB
   Start[导航请求] --&gt; PathCheck{路径有效性}
   PathCheck -- 有效 --&gt; BehaviorSelect[行为模式选择]
   PathCheck -- 无效 --&gt; Replan[重新规划]
@@ -349,11 +349,11 @@
   ObstacleCheck -- 无 --&gt; Continue[保持移动]
 
   Group --&gt; Formation[保持队形]</code></pre>
-<strong>工程应用场景</strong>：<br />
-- <strong>十字路口仿真</strong>：配置<code>路口等待概率=0.8</code>模拟行人遵守信号灯行为<br />
-- <strong>紧急疏散模拟</strong>：设置<code>群体跟随系数=0.95</code>测试密集人流下的路径规划性能<br />
-- <strong>商业区建模</strong>：应用<code>时段波动系数+0.3</code>实现白天高峰人流自动调节</p>
-<hr />
+<strong>工程应用场景</strong>：<br>
+- <strong>十字路口仿真</strong>：配置<code>路口等待概率=0.8</code>模拟行人遵守信号灯行为<br>
+- <strong>紧急疏散模拟</strong>：设置<code>群体跟随系数=0.95</code>测试密集人流下的路径规划性能<br>
+- <strong>商业区建模</strong>：应用<code>时段波动系数+0.3</code>实现白天高峰人流自动调节
+<hr>
 <h4 id="_14">人群密度配置表</h4>
 <table>
 <thead>
@@ -376,7 +376,7 @@
 </tr>
 </tbody>
 </table>
-<hr />
+<hr>
 <h3 id="3">3. 交通信号控制</h3>
 <h4 id="_15">功能组件</h4>
 <ul>
@@ -408,7 +408,7 @@
 </tbody>
 </table>
 <h4 id="_17">交通信号控制流程图</h4>
-<p><pre class="mermaid"><code>stateDiagram-v2
+<p></p><pre class="mermaid"><code>stateDiagram-v2
   [*] --&gt; 信号检测
   信号检测 --&gt; 相位决策
   相位决策 --&gt; 绿灯: 车流&gt;阈值
@@ -417,11 +417,11 @@
   红灯 --&gt; 相位决策: 周期循环
   绿灯 --&gt; 紧急优先检测
   紧急优先检测 --&gt; 强制黄灯: 检测到应急车辆</code></pre>
-<strong>工程应用场景</strong>：<br />
-- <strong>智能信号优化</strong>：部署感应式控制策略，使路口通行效率提升40%<br />
-- <strong>公交优先系统</strong>：通过<code>priority_vehicle_types</code>定义公交车辆，实现绿灯延长<br />
-- <strong>夜间模式</strong>：配置<code>Flashing</code>相位降低能耗，同时保证基本通行安全  </p>
-<hr />
+<strong>工程应用场景</strong>：<br>
+- <strong>智能信号优化</strong>：部署感应式控制策略，使路口通行效率提升40%<br>
+- <strong>公交优先系统</strong>：通过<code>priority_vehicle_types</code>定义公交车辆，实现绿灯延长<br>
+- <strong>夜间模式</strong>：配置<code>Flashing</code>相位降低能耗，同时保证基本通行安全  
+<hr>
 <h3 id="4">4. 路径规划系统</h3>
 <ul>
 <li>基于Waypoint的路由网络</li>
@@ -434,7 +434,7 @@
 <li>LOD控制机制</li>
 <li>多线程路径计算</li>
 </ul>
-<hr />
+<hr>
 <h2 id="_18">接口定义</h2>
 <h3 id="python-api">Python API</h3>
 <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">TrafficManager</span><span class="p">:</span>
@@ -442,11 +442,11 @@
 </code></pre></div>
 <h3 id="_19">控制协议</h3>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;spawn_vehicle&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sedan&quot;</span><span class="p">}</span>
+<span class="w">  </span><span class="nt">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"spawn_vehicle"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sedan"</span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<hr />
+<hr>
 <h2 id="_20">常见问题</h2>
 <p><strong>Q: 车辆无法生成</strong>
 - 检查Waypoint文件路径有效性
@@ -457,7 +457,7 @@
 <p><strong>Q: 交通流导致性能下降</strong>
 - 降低GlobalDensity参数
 - 启用bEnableDynamicLOD</p>
-<hr />
+<hr>
 <h2 id="_21">配置与依赖</h2>
 <h3 id="_22">必要组件</h3>
 <ol>
@@ -477,7 +477,7 @@
    <div class="highlight"><pre><span></span><code><span class="n">UTrafficManager</span><span class="o">::</span><span class="n">CreateTrafficSystem</span><span class="p">(</span><span class="n">World</span><span class="p">);</span>
 </code></pre></div></li>
 </ol>
-<hr />
+<hr>
 <h2 id="_24">使用示例</h2>
 <h3 id="_25">基础车辆生成</h3>
 <ol>
@@ -505,7 +505,7 @@
   World-&gt;&gt;AI: 挂载控制组件
   AI-&gt;&gt;Graph: 实时路径查询
   AI-&gt;&gt;World: 执行移动指令</code></pre>
-<hr />
+<hr>
 <h2 id="_27">高级配置</h2>
 <h3 id="_28">自定义行为模型</h3>
 <ol>
@@ -526,7 +526,7 @@
    <div class="highlight"><pre><span></span><code><span class="n">road_graph</span><span class="o">.</span><span class="n">validate_connectivity</span><span class="p">()</span>
 </code></pre></div></li>
 </ol>
-<hr />
+<hr>
 <h3 id="_30">路径网络验证流程</h3>
 <h2 id="graph-lr-a-b-b-c-c-d-c-e-e-f-f-b-d-g"><pre class="mermaid"><code>graph LR
   A[原始路径数据] --&gt; B[拓扑分析]
@@ -558,7 +558,7 @@
 <div class="highlight"><pre><span></span><code><span class="na">bEnableLOD</span><span class="o">=</span><span class="s">True</span>
 <span class="na">LODThresholds</span><span class="o">=</span><span class="s">(Distance=5000, ActorCount=50)</span>
 </code></pre></div>
-<hr />
+<hr>
 <h2 id="_34">调试诊断</h2>
 <h3 id="_35">错误代码表</h3>
 <table>
@@ -584,7 +584,7 @@
 </table>
 <h3 id="_36">性能监控</h3>
 <div class="highlight"><pre><span></span><code><span class="n">TrafficMonitor</span><span class="o">.</span><span class="n">GetMetrics</span><span class="p">(</span>
-    <span class="n">Metrics</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Vehicles.Alive&quot;</span><span class="p">,</span> <span class="s2">&quot;FPS.Main&quot;</span><span class="p">]</span>
+    <span class="n">Metrics</span><span class="o">=</span><span class="p">[</span><span class="s2">"Vehicles.Alive"</span><span class="p">,</span> <span class="s2">"FPS.Main"</span><span class="p">]</span>
 <span class="p">)</span>
 </code></pre></div>
 <h2 id="_37">注意事项</h2>
@@ -604,7 +604,7 @@
 - 性能优化参数参考值
 - 与ROS/自动驾驶栈的接口示例
 - 实际项目部署的最佳实践
-```</p>
+```</p></div>
               
             </div>
           </div><footer>

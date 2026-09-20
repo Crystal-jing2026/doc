@@ -100,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="_1">指标模块</h1>
+                <div><h1 id="_1">指标模块</h1>
 <p>指标模块依靠 <a href="https://carla.readthedocs.io/en/latest/adv_recorder/">CARLA 记录器</a> 来方便计算和监控任何类型的参数。场景完成后，记录器存储模拟信息。然后，用户可以定义自己的指标，并检查相应的结果，而无需一次又一次地进行模拟。</p>
 <p>本节介绍了构成该模块的不同元素的说明、如何创建新指标的分步教程以及查询记录和定义指标的函数的参考。</p>
 <ul>
@@ -125,7 +125,7 @@
 </ul>
 </li>
 </ul>
-<hr />
+<hr>
 <h2 id="_2">模块结构</h2>
 <p>与主 ScenarioRunner 模块类似，Metrics 模块使用主脚本 运行，<code>metrics_manager.py</code>其余信息包含在文件夹结构内。这里简单介绍一下主要脚本。</p>
 <ul>
@@ -160,7 +160,7 @@
 </ul>
 </li>
 </ul>
-<hr />
+<hr>
 <h2 id="_3">如何使用指标模块</h2>
 <h3 id="1">1. 记录一个场景</h3>
 <p>指标模块需要记录模拟才能工作。否则，它没有数据来进行指标计算。</p>
@@ -239,15 +239,15 @@ def _create_metric(self, town_map, log, criteria):
 <p>示例指标<code>DistanceBetweenVehicles</code>计算本车与其跟随的汽车（对手）之间的距离。为此，需要<code>id</code>两辆车的配合。这些可以使用<code>get_ego_vehicle_id()</code>和<code>get_actor_ids_with_role_name("scenario")[0]</code>函数从日志中检索。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 获取两个车辆的 ID </span>
 <span class="n">ego_id</span> <span class="o">=</span> <span class="n">log</span><span class="o">.</span><span class="n">get_ego_vehicle_id</span><span class="p">()</span>
-<span class="n">adv_id</span> <span class="o">=</span> <span class="n">log</span><span class="o">.</span><span class="n">get_actor_ids_with_role_name</span><span class="p">(</span><span class="s2">&quot;scenario&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># Could have also used its type_id</span>
+<span class="n">adv_id</span> <span class="o">=</span> <span class="n">log</span><span class="o">.</span><span class="n">get_actor_ids_with_role_name</span><span class="p">(</span><span class="s2">"scenario"</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># Could have also used its type_id</span>
 </code></pre></div>
 <p>它们<code>id</code>用<code>get_actor_alive_frames(actor_id)</code>检索车辆处于活动状态的帧。
-<div class="highlight"><pre><span></span><code><span class="c1"># 获取活跃的两个参与者的帧</span>
+</p><div class="highlight"><pre><span></span><code><span class="c1"># 获取活跃的两个参与者的帧</span>
 <span class="n">start_ego</span><span class="p">,</span> <span class="n">end_ego</span> <span class="o">=</span> <span class="n">log</span><span class="o">.</span><span class="n">get_actor_alive_frames</span><span class="p">(</span><span class="n">ego_id</span><span class="p">)</span>
 <span class="n">start_adv</span><span class="p">,</span> <span class="n">end_adv</span> <span class="o">=</span> <span class="n">log</span><span class="o">.</span><span class="n">get_actor_alive_frames</span><span class="p">(</span><span class="n">adv_id</span><span class="p">)</span>
 <span class="n">start</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">start_ego</span><span class="p">,</span> <span class="n">start_adv</span><span class="p">)</span>
 <span class="n">end</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">end_ego</span><span class="p">,</span> <span class="n">end_adv</span><span class="p">)</span>
-</code></pre></div></p>
+</code></pre></div>
 <p>现在一切准备就绪，可以循环这些帧，获取它们的变换并计算距离。使用<code>get_actor_transform(actor_id, frame)</code> 获得变换，</p>
 <div class="highlight"><pre><span></span><code><span class="n">dist_list</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">frames_list</span> <span class="o">=</span> <span class="p">[]</span>
@@ -277,9 +277,9 @@ def _create_metric(self, town_map, log, criteria):
 <p>最后，使用 <a href="https://matplotlib.org/">matplotlib</a> 定义运行 <code>metrics_manager.py</code> 时指标的输出。 </p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 使用 matplotlib 展示结果</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">frames_list</span><span class="p">,</span> <span class="n">dist_list</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Distance [m]&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Frame number&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distance between the ego vehicle and the adversary over time&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'Distance [m]'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'Frame number'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Distance between the ego vehicle and the adversary over time'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div>
 <h3 id="3">3. 运行指标管理器</h3>
@@ -291,21 +291,21 @@ def _create_metric(self, town_map, log, criteria):
 <p>模拟必须正在运行。否则，模块将无法访问地图API。</p>
 </div>
 <p>这将创建一个新窗口，其中绘制了结果。在输出窗口关闭之前，脚本不会完成。</p>
-<p><img alt="metrics_plot" src="../img/metrics_example.jpg" /></p>
-<hr />
+<p><img alt="metrics_plot" src="../img/metrics_example.jpg"></p>
+<hr>
 <h2 id="_4">记录查询参考</h2>
 <p>定义指标时，有关场景的所有信息都通过类<code>MetricsLog</code>（<code>_create_metric()</code>函数中的<code>log</code>参数）访问。该类位于<code>srunner/metrics/tools/metrics_log.py</code>，该引用是其中包含的函数的后续部分。</p>
 <h3 id="_5">通用参与者数据</h3>
 <ul>
 <li>
-<p><a name="get_ego_vehicle_id"></a><strong><font color="#7fb800">get_ego_vehicle_id</font></strong>(<font color="#00a6ed"><strong>self</strong></font>)<br />
+<p><a name="get_ego_vehicle_id"></a><strong><font color="#7fb800">get_ego_vehicle_id</font></strong>(<font color="#00a6ed"><strong>self</strong></font>)<br>
 返回自主车辆的 <code>id</code>。</p>
 <ul>
 <li><strong>Return —</strong> int</li>
 </ul>
 </li>
 <li>
-<p><a name="get_actor_ids_with_role_name"></a><strong><font color="#7fb800">get_actor_ids_with_role_name</font></strong>(<font color="#00a6ed"><strong>self</strong></font>, <font color="#00a6ed"><strong>role_name</strong></font>)<br />
+<p><a name="get_actor_ids_with_role_name"></a><strong><font color="#7fb800">get_actor_ids_with_role_name</font></strong>(<font color="#00a6ed"><strong>self</strong></font>, <font color="#00a6ed"><strong>role_name</strong></font>)<br>
 返回与给定<code>role_name</code>匹配的参与者<code>id</code>列表。</p>
 <ul>
 <li><strong>Return —</strong> list</li>
@@ -316,7 +316,7 @@ def _create_metric(self, town_map, log, criteria):
 </ul>
 </li>
 <li>
-<p><a name="get_actor_ids_with_type_id"></a><strong><font color="#7fb800">get_actor_ids_with_type_id</font></strong>(<font color="#00a6ed"><strong>self</strong></font>, <font color="#00a6ed"><strong>type_id</strong></font>)<br />
+<p><a name="get_actor_ids_with_type_id"></a><strong><font color="#7fb800">get_actor_ids_with_type_id</font></strong>(<font color="#00a6ed"><strong>self</strong></font>, <font color="#00a6ed"><strong>type_id</strong></font>)<br>
 根据 fnmatch 标准，返回与给定匹配的参与者 <code>id</code> 列表。</p>
 <ul>
 <li><strong>Return —</strong> list</li>
@@ -327,7 +327,7 @@ def _create_metric(self, town_map, log, criteria):
 </ul>
 </li>
 <li>
-<p><a name="get_actor_attributes"></a><strong><font color="#7fb800">get_actor_attributes</font></strong>(<font color="#00a6ed"><strong>self</strong></font>, <font color="#00a6ed"><strong>actor_id</strong></font>)<br />
+<p><a name="get_actor_attributes"></a><strong><font color="#7fb800">get_actor_attributes</font></strong>(<font color="#00a6ed"><strong>self</strong></font>, <font color="#00a6ed"><strong>actor_id</strong></font>)<br>
 返回包含参与者所有属性的字典。</p>
 <ul>
 <li><strong>Return —</strong> dict</li>
@@ -338,7 +338,7 @@ def _create_metric(self, town_map, log, criteria):
 </ul>
 </li>
 <li>
-<p><a name="get_actor_bounding_box"></a><strong><font color="#7fb800">get_actor_bounding_box</font></strong>(<font color="#00a6ed"><strong>self</strong></font>, <font color="#00a6ed"><strong>actor_id</strong></font>)<br />
+<p><a name="get_actor_bounding_box"></a><strong><font color="#7fb800">get_actor_bounding_box</font></strong>(<font color="#00a6ed"><strong>self</strong></font>, <font color="#00a6ed"><strong>actor_id</strong></font>)<br>
 返回指定参与者的边界框。</p>
 <ul>
 <li><strong>Return —</strong> <a href="https://carla.readthedocs.io/en/latest/python_api/#carlaboundingbox">carla.BoundingBox</a></li>
@@ -349,7 +349,7 @@ def _create_metric(self, town_map, log, criteria):
 </ul>
 </li>
 <li>
-<p><a name="get_traffic_light_trigger_volume"></a><strong><font color="#7fb800">get_traffic_light_trigger_volume</font></strong>(<font color="#00a6ed"><strong>self</strong></font>, <font color="#00a6ed"><strong>traffic_light_id</strong></font>)<br />
+<p><a name="get_traffic_light_trigger_volume"></a><strong><font color="#7fb800">get_traffic_light_trigger_volume</font></strong>(<font color="#00a6ed"><strong>self</strong></font>, <font color="#00a6ed"><strong>traffic_light_id</strong></font>)<br>
 返回指定交通信号灯的 trigger volume。</p>
 <ul>
 <li><strong>Return —</strong> <a href="https://carla.readthedocs.io/en/latest/python_api/#carlaboundingbox">carla.BoundingBox</a></li>
@@ -360,7 +360,7 @@ def _create_metric(self, town_map, log, criteria):
 </ul>
 </li>
 <li>
-<p><a name="get_actor_alive_frames"></a><strong><font color="#7fb800">get_actor_alive_frames</font></strong>(<font color="#00a6ed"><strong>self</strong></font>, <font color="#00a6ed"><strong>actor_id</strong></font>)<br />
+<p><a name="get_actor_alive_frames"></a><strong><font color="#7fb800">get_actor_alive_frames</font></strong>(<font color="#00a6ed"><strong>self</strong></font>, <font color="#00a6ed"><strong>actor_id</strong></font>)<br>
 返回一个元组，其中包含参与者活跃的第一帧和最后一帧。请注意，帧从 1 开始，而不是从 0 开始。</p>
 <ul>
 <li><strong>Return —</strong> tuple</li>
@@ -374,7 +374,7 @@ def _create_metric(self, town_map, log, criteria):
 <h3 id="_6">通用模拟数据</h3>
 <ul>
 <li>
-<p><a name="get_collisions"></a><strong><font color="#7fb800">get_collisions</font></strong>(<font color="#00a6ed"><strong>self</strong></font>,<font color="#00a6ed"><strong>actor_id</strong></font>)<br />
+<p><a name="get_collisions"></a><strong><font color="#7fb800">get_collisions</font></strong>(<font color="#00a6ed"><strong>self</strong></font>,<font color="#00a6ed"><strong>actor_id</strong></font>)<br>
 返回具有两个键的字典列表。<code>frame</code>是碰撞的帧编号， 是<code>other_id</code> 参与者在该帧发生碰撞的 id 列表。</p>
 <ul>
 <li><strong>Return —</strong> list</li>
@@ -385,14 +385,14 @@ def _create_metric(self, town_map, log, criteria):
 </ul>
 </li>
 <li>
-<p><a name="get_total_frame_count"></a><strong><font color="#7fb800">get_total_frame_count</font></strong>(<font color="#00a6ed"><strong>self</strong></font>)<br />
+<p><a name="get_total_frame_count"></a><strong><font color="#7fb800">get_total_frame_count</font></strong>(<font color="#00a6ed"><strong>self</strong></font>)<br>
 返回一个 int 值，其中包含模拟持续的帧总数。</p>
 <ul>
 <li><strong>Return —</strong> int</li>
 </ul>
 </li>
 <li>
-<p><a name="get_elapsed_time"></a><strong><font color="#7fb800">get_elapsed_time</font></strong>(<font color="#00a6ed"><strong>self</strong></font>, <font color="#00a6ed"><strong>frame</strong></font>)<br />
+<p><a name="get_elapsed_time"></a><strong><font color="#7fb800">get_elapsed_time</font></strong>(<font color="#00a6ed"><strong>self</strong></font>, <font color="#00a6ed"><strong>frame</strong></font>)<br>
 返回一个包含特定帧的已用时间的浮点数。</p>
 <ul>
 <li><strong>Return —</strong> float</li>
@@ -403,7 +403,7 @@ def _create_metric(self, town_map, log, criteria):
 </ul>
 </li>
 <li>
-<p><a name="get_delta_time"></a><strong><font color="#7fb800">get_delta_time</font></strong>(<font color="#00a6ed"><strong>self</strong></font>, <font color="#00a6ed"><strong>frame</strong></font>)<br />
+<p><a name="get_delta_time"></a><strong><font color="#7fb800">get_delta_time</font></strong>(<font color="#00a6ed"><strong>self</strong></font>, <font color="#00a6ed"><strong>frame</strong></font>)<br>
 返回具有特定帧的增量时间的浮点数。R</p>
 <ul>
 <li><strong>Return —</strong> float</li>
@@ -414,7 +414,7 @@ def _create_metric(self, town_map, log, criteria):
 </ul>
 </li>
 <li>
-<p><a name="get_platform_time"></a><strong><font color="#7fb800">get_platform_time</font></strong>(<font color="#00a6ed"><strong>self</strong></font>, <font color="#00a6ed"><strong>frame</strong></font>)<br />
+<p><a name="get_platform_time"></a><strong><font color="#7fb800">get_platform_time</font></strong>(<font color="#00a6ed"><strong>self</strong></font>, <font color="#00a6ed"><strong>frame</strong></font>)<br>
 返回具有特定帧的平台时间的浮点数。</p>
 <ul>
 <li><strong>Return —</strong> float</li>
@@ -428,7 +428,7 @@ def _create_metric(self, town_map, log, criteria):
 <h3 id="_7">参与者加速度</h3>
 <ul>
 <li>
-<p><a name="get_actor_acceleration"></a><strong><font color="#7fb800">get_actor_acceleration</font></strong>(<font color="#00a6ed"><strong>self</strong></font>, <font color="#00a6ed"><strong>actor_id</strong></font>, <font color="#00a6ed"><strong>frame</strong></font>)<br />
+<p><a name="get_actor_acceleration"></a><strong><font color="#7fb800">get_actor_acceleration</font></strong>(<font color="#00a6ed"><strong>self</strong></font>, <font color="#00a6ed"><strong>actor_id</strong></font>, <font color="#00a6ed"><strong>frame</strong></font>)<br>
 返回给定帧处参与者的加速度。如果参与者<code>id</code>不存在、参与者没有加速度或者参与者在该帧中不存在，则返回<b>None</b> 。</p>
 <ul>
 <li><strong>Return —</strong> <a href="https://carla.readthedocs.io/en/latest/python_api/#carlavector3d">carla.Vector3D</a></li>
@@ -440,7 +440,7 @@ def _create_metric(self, town_map, log, criteria):
 </ul>
 </li>
 <li>
-<p><a name="get_all_actor_accelerations"></a><strong><font color="#7fb800">get_all_actor_accelerations</font></strong>(<font color="#00a6ed"><strong>self</strong></font>, <font color="#00a6ed"><strong>actor_id</strong></font>, <font color="#00a6ed"><strong>first_frame</strong>=None</font>, <font color="#00a6ed"><strong>last_frame</strong>=None</font>)<br />
+<p><a name="get_all_actor_accelerations"></a><strong><font color="#7fb800">get_all_actor_accelerations</font></strong>(<font color="#00a6ed"><strong>self</strong></font>, <font color="#00a6ed"><strong>actor_id</strong></font>, <font color="#00a6ed"><strong>first_frame</strong>=None</font>, <font color="#00a6ed"><strong>last_frame</strong>=None</font>)<br>
 返回包含参与者在帧间隔内的所有加速度的列表。默认情况下，帧间隔包含所有记录。</p>
 <ul>
 <li><strong>Return —</strong> list(carla.Vector3D)</li>
@@ -453,7 +453,7 @@ def _create_metric(self, town_map, log, criteria):
 </ul>
 </li>
 <li>
-<p><a name="get_actor_accelerations_at_frame"></a><strong><font color="#7fb800">get_actor_accelerations_at_frame</font></strong>(<font color="#00a6ed"><strong>self</strong></font>, <font color="#00a6ed"><strong>frame</strong></font>, <font color="#00a6ed"><strong>actor_list</strong>=None</font>)<br />
+<p><a name="get_actor_accelerations_at_frame"></a><strong><font color="#7fb800">get_actor_accelerations_at_frame</font></strong>(<font color="#00a6ed"><strong>self</strong></font>, <font color="#00a6ed"><strong>frame</strong></font>, <font color="#00a6ed"><strong>actor_list</strong>=None</font>)<br>
 返回一个字典，其中键是帧编号，值是给定帧处参与者的 carla.Vector3D。默认情况下，会考虑所有参与者，但如果传递了<em>actor_list</em>，则仅检查列表中的参与者。</p>
 <ul>
 <li><strong>Return —</strong> list(carla.Vector3D)</li>
@@ -468,7 +468,7 @@ def _create_metric(self, town_map, log, criteria):
 <h3 id="_8">参与者角速度</h3>
 <ul>
 <li>
-<p><a name="get_actor_angular_velocity"></a><strong><font color="#7fb800">get_actor_angular_velocity</font></strong>(<font color="#00a6ed"><strong>self</strong></font>, <font color="#00a6ed"><strong>actor_id</strong></font>, <font color="#00a6ed"><strong>frame</strong></font>)<br />
+<p><a name="get_actor_angular_velocity"></a><strong><font color="#7fb800">get_actor_angular_velocity</font></strong>(<font color="#00a6ed"><strong>self</strong></font>, <font color="#00a6ed"><strong>actor_id</strong></font>, <font color="#00a6ed"><strong>frame</strong></font>)<br>
 返回给定帧处参与者的角速度。如果参与者 id 不存在、参与者没有角速度或者参与者在该帧中不存在，则返回<b>None</b> 。</p>
 <ul>
 <li><strong>Return —</strong> carla.Vector3D</li>
@@ -480,7 +480,7 @@ def _create_metric(self, town_map, log, criteria):
 </ul>
 </li>
 <li>
-<p><a name="get_all_actor_angular_velocities"></a><strong><font color="#7fb800">get_all_actor_angular_velocities</font></strong>(<font color="#00a6ed"><strong>self</strong></font>, <font color="#00a6ed"><strong>actor_id</strong></font>, <font color="#00a6ed"><strong>first_frame</strong>=None</font>, <font color="#00a6ed"><strong>last_frame</strong>=None</font>)<br />
+<p><a name="get_all_actor_angular_velocities"></a><strong><font color="#7fb800">get_all_actor_angular_velocities</font></strong>(<font color="#00a6ed"><strong>self</strong></font>, <font color="#00a6ed"><strong>actor_id</strong></font>, <font color="#00a6ed"><strong>first_frame</strong>=None</font>, <font color="#00a6ed"><strong>last_frame</strong>=None</font>)<br>
 返回包含参与者在帧间隔内的所有角速度的列表。默认情况下，帧间隔包含所有记录。</p>
 <ul>
 <li><strong>Return —</strong> list(carla.Vector3D)</li>
@@ -493,7 +493,7 @@ def _create_metric(self, town_map, log, criteria):
 </ul>
 </li>
 <li>
-<p><a name="get_actor_angular_velocities_at_frame"></a><strong><font color="#7fb800">get_actor_angular_velocities_at_frame</font></strong>(<font color="#00a6ed"><strong>self</strong></font>, <font color="#00a6ed"><strong>frame</strong></font>, <font color="#00a6ed"><strong>actor_list</strong>=None</font>)<br />
+<p><a name="get_actor_angular_velocities_at_frame"></a><strong><font color="#7fb800">get_actor_angular_velocities_at_frame</font></strong>(<font color="#00a6ed"><strong>self</strong></font>, <font color="#00a6ed"><strong>frame</strong></font>, <font color="#00a6ed"><strong>actor_list</strong>=None</font>)<br>
 返回一个字典，其中键是帧编号，值是给定帧处参与者的<a href="https://carla.readthedocs.io/en/latest/python_api/#carlavector3d">carla.Vector3D</a> 。默认情况下，会考虑所有参与者，但如果传递<code>actor_list</code>，则仅检查列表中的参与者。 </p>
 <ul>
 <li><strong>Return —</strong> list(<a href="https://carla.readthedocs.io/en/latest/python_api/#carlavector3d">carla.Vector3D</a>)</li>
@@ -508,7 +508,7 @@ def _create_metric(self, town_map, log, criteria):
 <h3 id="_9">参与者控制</h3>
 <ul>
 <li>
-<p><a name="get_vehicle_control"></a><strong><font color="#7fb800">get_vehicle_control</font></strong>(<font color="#00a6ed"><strong>self</strong></font>, <font color="#00a6ed"><strong>vehicle_id</strong></font>, <font color="#00a6ed"><strong>frame</strong></font>)<br />
+<p><a name="get_vehicle_control"></a><strong><font color="#7fb800">get_vehicle_control</font></strong>(<font color="#00a6ed"><strong>self</strong></font>, <font color="#00a6ed"><strong>vehicle_id</strong></font>, <font color="#00a6ed"><strong>frame</strong></font>)<br>
 返回给定帧处车辆的控制。该 <code>manual_gear_shift</code> 属性将始终为 False。</p>
 <ul>
 <li><strong>Return —</strong> <a href="https://carla.readthedocs.io/en/latest/python_api/#carlavehiclecontrol">carla.VehicleControl</a></li>
@@ -520,7 +520,7 @@ def _create_metric(self, town_map, log, criteria):
 </ul>
 </li>
 <li>
-<p><a name="get_vehicle_physics_control"></a><strong><font color="#7fb800">get_vehicle_physics_control</font></strong>(<font color="#00a6ed"><strong>self</strong></font>, <font color="#00a6ed"><strong>vehicle_id</strong></font>, <font color="#00a6ed"><strong>frame</strong></font>)<br />
+<p><a name="get_vehicle_physics_control"></a><strong><font color="#7fb800">get_vehicle_physics_control</font></strong>(<font color="#00a6ed"><strong>self</strong></font>, <font color="#00a6ed"><strong>vehicle_id</strong></font>, <font color="#00a6ed"><strong>frame</strong></font>)<br>
 返回给定帧处车辆的物理控制。</p>
 <ul>
 <li><strong>Return —</strong> <a href="https://carla.readthedocs.io/en/latest/python_api/#carlavehiclephysicscontrol">carla.VehiclePhysicsControl</a></li>
@@ -532,7 +532,7 @@ def _create_metric(self, town_map, log, criteria):
 </ul>
 </li>
 <li>
-<p><a name="get_walker_speed"></a><strong><font color="#7fb800">get_walker_speed</font></strong>(<font color="#00a6ed"><strong>self</strong></font>, <font color="#00a6ed"><strong>walker_id</strong></font>, <font color="#00a6ed"><strong>frame</strong></font>)<br />
+<p><a name="get_walker_speed"></a><strong><font color="#7fb800">get_walker_speed</font></strong>(<font color="#00a6ed"><strong>self</strong></font>, <font color="#00a6ed"><strong>walker_id</strong></font>, <font color="#00a6ed"><strong>frame</strong></font>)<br>
 返回给定帧处行人的速度。</p>
 <ul>
 <li><strong>Return —</strong> <a href="https://carla.readthedocs.io/en/latest/python_api/#carlavector3d">carla.Vector3D</a></li>
@@ -547,7 +547,7 @@ def _create_metric(self, town_map, log, criteria):
 <h3 id="_10">参与者变换</h3>
 <ul>
 <li>
-<p><a name="get_actor_transform"></a><strong><font color="#7fb800">get_actor_transform</font></strong>(<font color="#00a6ed"><strong>self</strong></font>, <font color="#00a6ed"><strong>actor_id</strong></font>, <font color="#00a6ed"><strong>frame</strong></font>)<br />
+<p><a name="get_actor_transform"></a><strong><font color="#7fb800">get_actor_transform</font></strong>(<font color="#00a6ed"><strong>self</strong></font>, <font color="#00a6ed"><strong>actor_id</strong></font>, <font color="#00a6ed"><strong>frame</strong></font>)<br>
 返回给定帧处参与者的变换。如果参与者 id 不存在、参与者没有变换或者参与者在该帧中不存在，则返回<b>None</b> 。</p>
 <ul>
 <li><strong>Return —</strong> <a href="https://carla.readthedocs.io/en/latest/python_api/#carlatransform">carla.Transform</a></li>
@@ -559,7 +559,7 @@ def _create_metric(self, town_map, log, criteria):
 </ul>
 </li>
 <li>
-<p><a name="get_all_actor_transforms"></a><strong><font color="#7fb800">get_all_actor_transforms</font></strong>(<font color="#00a6ed"><strong>self</strong></font>, <font color="#00a6ed"><strong>actor_id</strong></font>, <font color="#00a6ed"><strong>first_frame</strong>=None</font>, <font color="#00a6ed"><strong>last_frame</strong>=None</font>)<br />
+<p><a name="get_all_actor_transforms"></a><strong><font color="#7fb800">get_all_actor_transforms</font></strong>(<font color="#00a6ed"><strong>self</strong></font>, <font color="#00a6ed"><strong>actor_id</strong></font>, <font color="#00a6ed"><strong>first_frame</strong>=None</font>, <font color="#00a6ed"><strong>last_frame</strong>=None</font>)<br>
 返回一个列表，其中包含参与者在帧间隔内的所有变换。默认情况下，帧间隔包含所有记录。 </p>
 <ul>
 <li><strong>Return —</strong> list(<a href="https://carla.readthedocs.io/en/latest/python_api/#carlatransform">carla.Transform</a>)</li>
@@ -572,7 +572,7 @@ def _create_metric(self, town_map, log, criteria):
 </ul>
 </li>
 <li>
-<p><a name="get_actor_transforms_at_frame"></a><strong><font color="#7fb800">get_actor_transforms_at_frame</font></strong>(<font color="#00a6ed"><strong>self</strong></font>, <font color="#00a6ed"><strong>frame</strong></font>, <font color="#00a6ed"><strong>actor_list</strong>=None</font>)<br />
+<p><a name="get_actor_transforms_at_frame"></a><strong><font color="#7fb800">get_actor_transforms_at_frame</font></strong>(<font color="#00a6ed"><strong>self</strong></font>, <font color="#00a6ed"><strong>frame</strong></font>, <font color="#00a6ed"><strong>actor_list</strong>=None</font>)<br>
 返回一个字典，其中键是帧编号，值是给定帧处参与者的 <a href="https://carla.readthedocs.io/en/latest/python_api/#carlatransform">carla.Transform</a>。默认情况下，会考虑所有参与者，但如果 <code>actor_list</code> 通过，则仅检查列表中的参与者。</p>
 <ul>
 <li><strong>Return —</strong> list(<a href="https://carla.readthedocs.io/en/latest/python_api/#carlatransform">carla.Transform</a>)</li>
@@ -587,7 +587,7 @@ def _create_metric(self, town_map, log, criteria):
 <h3 id="_11">参与者速度</h3>
 <ul>
 <li>
-<p><a name="get_actor_velocity"></a><strong><font color="#7fb800">get_actor_velocity</font></strong>(<font color="#00a6ed"><strong>self</strong></font>, <font color="#00a6ed"><strong>actor_id</strong></font>, <font color="#00a6ed"><strong>frame</strong></font>)<br />
+<p><a name="get_actor_velocity"></a><strong><font color="#7fb800">get_actor_velocity</font></strong>(<font color="#00a6ed"><strong>self</strong></font>, <font color="#00a6ed"><strong>actor_id</strong></font>, <font color="#00a6ed"><strong>frame</strong></font>)<br>
 返回给定帧处参与者的速度。如果参与者 id 不存在、参与者没有速度或者参与者在该帧中不存在，则返回<b>None</b> 。 </p>
 <ul>
 <li><strong>Return —</strong> <a href="https://carla.readthedocs.io/en/latest/python_api/#carlavector3d">carla.Vector3D</a></li>
@@ -599,7 +599,7 @@ def _create_metric(self, town_map, log, criteria):
 </ul>
 </li>
 <li>
-<p><a name="get_all_actor_velocities"></a><strong><font color="#7fb800">get_all_actor_velocities</font></strong>(<font color="#00a6ed"><strong>self</strong></font>, <font color="#00a6ed"><strong>actor_id</strong></font>, <font color="#00a6ed"><strong>first_frame</strong>=None</font>, <font color="#00a6ed"><strong>last_frame</strong>=None</font>)<br />
+<p><a name="get_all_actor_velocities"></a><strong><font color="#7fb800">get_all_actor_velocities</font></strong>(<font color="#00a6ed"><strong>self</strong></font>, <font color="#00a6ed"><strong>actor_id</strong></font>, <font color="#00a6ed"><strong>first_frame</strong>=None</font>, <font color="#00a6ed"><strong>last_frame</strong>=None</font>)<br>
 返回包含参与者在帧间隔内的所有速度的列表。默认情况下，帧间隔包含所有记录。 </p>
 <ul>
 <li><strong>Return —</strong> list(<a href="https://carla.readthedocs.io/en/latest/python_api/#carlavector3d">carla.Vector3D</a>)</li>
@@ -612,7 +612,7 @@ def _create_metric(self, town_map, log, criteria):
 </ul>
 </li>
 <li>
-<p><a name="get_actor_velocities_at_frame"></a><strong><font color="#7fb800">get_actor_velocities_at_frame</font></strong>(<font color="#00a6ed"><strong>self</strong></font>, <font color="#00a6ed"><strong>frame</strong></font>, <font color="#00a6ed"><strong>actor_list</strong>=None</font>)<br />
+<p><a name="get_actor_velocities_at_frame"></a><strong><font color="#7fb800">get_actor_velocities_at_frame</font></strong>(<font color="#00a6ed"><strong>self</strong></font>, <font color="#00a6ed"><strong>frame</strong></font>, <font color="#00a6ed"><strong>actor_list</strong>=None</font>)<br>
 返回一个字典，其中键是帧编号，值是给定帧处参与者的 carla.Vector3D。默认情况下，会考虑所有参与者，但如果传递了<em>actor_list</em>，则仅检查列表中的参与者。 </p>
 <ul>
 <li><strong>Return —</strong> list(<a href="https://carla.readthedocs.io/en/latest/python_api/#carlavector3d">carla.Vector3D</a></li>
@@ -626,7 +626,7 @@ def _create_metric(self, town_map, log, criteria):
 </ul>
 <h3 id="_12">场景灯</h3>
 <ul>
-<li><a name="get_scene_light_state"></a><strong><font color="#7fb800">get_scene_light_state</font></strong>(<font color="#00a6ed"><strong>self</strong></font>, <font color="#00a6ed"><strong>light</strong></font>, <font color="#00a6ed"><strong>vehicle_id</strong></font>, <font color="#00a6ed"><strong>frame</strong></font>)<br />
+<li><a name="get_scene_light_state"></a><strong><font color="#7fb800">get_scene_light_state</font></strong>(<font color="#00a6ed"><strong>self</strong></font>, <font color="#00a6ed"><strong>light</strong></font>, <font color="#00a6ed"><strong>vehicle_id</strong></font>, <font color="#00a6ed"><strong>frame</strong></font>)<br>
 Returns the state of a scene light for a given frame. The light state group will always be <a href="https://carla.readthedocs.io/en/latest/python_api/#carlalightgroup">carla.LightGroup.None</a>.<ul>
 <li><strong>Return —</strong> carla.LightState</li>
 <li><strong>Parameters</strong><ul>
@@ -640,7 +640,7 @@ Returns the state of a scene light for a given frame. The light state group will
 <h3 id="_13">交通信号灯</h3>
 <ul>
 <li>
-<p><a name="get_traffic_light_state"></a><strong><font color="#7fb800">get_traffic_light_state</font></strong>(<font color="#00a6ed"><strong>self</strong></font>, <font color="#00a6ed"><strong>traffic_light_id</strong></font>, <font color="#00a6ed"><strong>frame</strong></font>)<br />
+<p><a name="get_traffic_light_state"></a><strong><font color="#7fb800">get_traffic_light_state</font></strong>(<font color="#00a6ed"><strong>self</strong></font>, <font color="#00a6ed"><strong>traffic_light_id</strong></font>, <font color="#00a6ed"><strong>frame</strong></font>)<br>
 返回给定帧的交通信号灯状态。</p>
 <ul>
 <li><strong>Return —</strong> <a href="https://carla.readthedocs.io/en/latest/python_api/#carlatrafficlightstate">carla.TrafficLightState</a>.</li>
@@ -652,7 +652,7 @@ Returns the state of a scene light for a given frame. The light state group will
 </ul>
 </li>
 <li>
-<p><a name="is_traffic_light_frozen"></a><strong><font color="#7fb800">is_traffic_light_frozen</font></strong>(<font color="#00a6ed"><strong>self</strong></font>, <font color="#00a6ed"><strong>traffic_light_id</strong></font>, <font color="#00a6ed"><strong>frame</strong></font>)<br />
+<p><a name="is_traffic_light_frozen"></a><strong><font color="#7fb800">is_traffic_light_frozen</font></strong>(<font color="#00a6ed"><strong>self</strong></font>, <font color="#00a6ed"><strong>traffic_light_id</strong></font>, <font color="#00a6ed"><strong>frame</strong></font>)<br>
 返回交通信号灯是否冻结在给定帧。</p>
 <ul>
 <li><strong>Return —</strong> bool</li>
@@ -664,7 +664,7 @@ Returns the state of a scene light for a given frame. The light state group will
 </ul>
 </li>
 <li>
-<p><a name="get_traffic_light_elapsed_time"></a><strong><font color="#7fb800">get_traffic_light_elapsed_time</font></strong>(<font color="#00a6ed"><strong>self</strong></font>, <font color="#00a6ed"><strong>traffic_light_id</strong></font>, <font color="#00a6ed"><strong>frame</strong></font>)<br />
+<p><a name="get_traffic_light_elapsed_time"></a><strong><font color="#7fb800">get_traffic_light_elapsed_time</font></strong>(<font color="#00a6ed"><strong>self</strong></font>, <font color="#00a6ed"><strong>traffic_light_id</strong></font>, <font color="#00a6ed"><strong>frame</strong></font>)<br>
 返回给定帧处交通信号灯的经过时间。</p>
 <ul>
 <li><strong>Return —</strong> float</li>
@@ -676,7 +676,7 @@ Returns the state of a scene light for a given frame. The light state group will
 </ul>
 </li>
 <li>
-<p><a name="get_traffic_light_state_time"></a><strong><font color="#7fb800">get_traffic_light_state_time</font></strong>(<font color="#00a6ed"><strong>self</strong></font>, <font color="#00a6ed"><strong>traffic_light_id</strong></font>, <font color="#00a6ed"><strong>state</strong></font>, <font color="#00a6ed"><strong>frame</strong></font>)<br />
+<p><a name="get_traffic_light_state_time"></a><strong><font color="#7fb800">get_traffic_light_state_time</font></strong>(<font color="#00a6ed"><strong>self</strong></font>, <font color="#00a6ed"><strong>traffic_light_id</strong></font>, <font color="#00a6ed"><strong>state</strong></font>, <font color="#00a6ed"><strong>frame</strong></font>)<br>
 返回给定帧处交通信号灯特定状态的最长时间。</p>
 <ul>
 <li><strong>Return —</strong> float</li>
@@ -692,7 +692,7 @@ Returns the state of a scene light for a given frame. The light state group will
 <h3 id="_14">车灯</h3>
 <ul>
 <li>
-<p><a name="get_vehicle_lights"></a><strong><font color="#7fb800">get_vehicle_lights</font></strong>(<font color="#00a6ed"><strong>self</strong></font>, <font color="#00a6ed"><strong>vehicle_id</strong></font>, <font color="#00a6ed"><strong>frame</strong></font>)<br />
+<p><a name="get_vehicle_lights"></a><strong><font color="#7fb800">get_vehicle_lights</font></strong>(<font color="#00a6ed"><strong>self</strong></font>, <font color="#00a6ed"><strong>vehicle_id</strong></font>, <font color="#00a6ed"><strong>frame</strong></font>)<br>
 返回一个列表，其中包含给定帧处特定车辆的活动灯。</p>
 <ul>
 <li><strong>Return —</strong> list(<a href="https://carla.readthedocs.io/en/latest/python_api/#carlavehiclelightstate">carla.VehicleLightState</a>)</li>
@@ -704,7 +704,7 @@ Returns the state of a scene light for a given frame. The light state group will
 </ul>
 </li>
 <li>
-<p><a name="is_vehicle_light_active"></a><strong><font color="#7fb800">is_vehicle_light_active</font></strong>(<font color="#00a6ed"><strong>self</strong></font>, <font color="#00a6ed"><strong>light</strong></font>, <font color="#00a6ed"><strong>vehicle_id</strong></font>, <font color="#00a6ed"><strong>frame</strong></font>)<br />
+<p><a name="is_vehicle_light_active"></a><strong><font color="#7fb800">is_vehicle_light_active</font></strong>(<font color="#00a6ed"><strong>self</strong></font>, <font color="#00a6ed"><strong>light</strong></font>, <font color="#00a6ed"><strong>vehicle_id</strong></font>, <font color="#00a6ed"><strong>frame</strong></font>)<br>
 检查给定车辆灯在特定帧是否处于活动状态。</p>
 <ul>
 <li><strong>Return —</strong> bool</li>
@@ -716,7 +716,7 @@ Returns the state of a scene light for a given frame. The light state group will
 </li>
 </ul>
 </li>
-</ul>
+</ul></div>
               
             </div>
           </div><footer>

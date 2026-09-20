@@ -100,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="_1">车辆按地图选点进行移动</h1>
+                <div><h1 id="_1">车辆按地图选点进行移动</h1>
 <p>​   此示例支持在 <strong>pygame</strong> 窗口对显示区域进行车辆生成并进行移动。</p>
 <h2 id="_2"><strong>环境依赖</strong></h2>
 <ul>
@@ -118,11 +118,11 @@
 <div class="highlight"><pre><span></span><code>def __init__(self, width, height):
     self.width = width
     self.height = height
-    self.client = carla.Client(&#39;localhost&#39;, 2000)
+    self.client = carla.Client('localhost', 2000)
     self.client.set_timeout(10.0)
     self.world = self.client.get_world()
     self.blueprint_library = self.world.get_blueprint_library()
-    self.vehicle_bp = self.blueprint_library.filter(&#39;vehicle.*&#39;)[0]
+    self.vehicle_bp = self.blueprint_library.filter('vehicle.*')[0]
     self.camera = None
     self.vehicles = []
     self.fov = VIEW_FOV
@@ -130,10 +130,10 @@
 <h3 id="setup_camera">setup_camera函数</h3>
 <p>​   设置相机，定义相机的蓝图、分辨率、视场角（FOV），并将相机生成在指定的位置和角度。</p>
 <div class="highlight"><pre><span></span><code>def setup_camera(self):
-    camera_bp = self.blueprint_library.find(&#39;sensor.camera.rgb&#39;)
-    camera_bp.set_attribute(&#39;image_size_x&#39;, str(self.width))
-    camera_bp.set_attribute(&#39;image_size_y&#39;, str(self.height))
-    camera_bp.set_attribute(&#39;fov&#39;, str(self.fov))
+    camera_bp = self.blueprint_library.find('sensor.camera.rgb')
+    camera_bp.set_attribute('image_size_x', str(self.width))
+    camera_bp.set_attribute('image_size_y', str(self.height))
+    camera_bp.set_attribute('fov', str(self.fov))
     camera_transform = carla.Transform(carla.Location(x=0, y=0, z=50), carla.Rotation(yaw=270, pitch=-90))
     self.camera = self.world.spawn_actor(camera_bp, camera_transform)
 </code></pre></div>
@@ -200,7 +200,7 @@
     self.camera.destroy()
     pygame.quit()
 </code></pre></div>
-<p><img alt="" src="../../img/traffic_course_img/locate_moving.gif" /></p>
+<p><img alt="" src="../../img/traffic_course_img/locate_moving.gif"></p></div>
               
             </div>
           </div><footer>

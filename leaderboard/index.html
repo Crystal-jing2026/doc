@@ -100,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="_1"><a href="https://leaderboard.carla.org/">概述</a></h1>
+                <div><h1 id="_1"><a href="https://leaderboard.carla.org/">概述</a></h1>
 <!-- 翻译：https://www.cnblogs.com/kin-zhang/p/16395716.html -->
 <p>Carla 自动驾驶排行榜的主要目标是评估自动驾驶人员在现实交通场景中的驾驶熟练程度。排行榜作为社区的开放平台，对自动驾驶汽车代理进行公平且可重复的评估，简化了不同方法之间的比较。排行榜目前为 2.0 版本，仍支持 1.0 版本。</p>
 <ul>
@@ -111,7 +111,7 @@
 </ul>
 <h1 id="_2">任务</h1>
 <p>Carla 自动驾驶排行榜要求自动驾驶代理驾驶通过一组预定义的路线。对于每条路线，代理将在起点进行初始化，并引导其行驶至目的地点，并通过 GPS 样式坐标、地图坐标或路线指令提供路线描述。路线是在多种情况下定义的，包括高速公路、城市地区、住宅区和乡村环境。排行榜评估各种天气条件下的自动驾驶代理，包括日光场景、日落、雨、雾和夜晚等。</p>
-<p><img alt="motif_large" src="../img/leaderboard/motif_large.png" /></p>
+<p><img alt="motif_large" src="../img/leaderboard/motif_large.png"></p>
 <h1 id="_3">应用场景</h1>
 <p>代理将面临基于 NHTSA 类型的多种交通场景。可以在此页面中查看交通场景的完整列表，但这里有一些示例。</p>
 <ul>
@@ -123,9 +123,9 @@
 <li>给紧急车辆让行。</li>
 <li>应对行人、骑自行车的人和其他因素。</li>
 </ul>
-<p><img alt="motif_large" src="../img/leaderboard/TR1.png" />
-<img alt="motif_large" src="../img/leaderboard/TR2.png" />
-<img alt="motif_large" src="../img/leaderboard/TR3.png" /></p>
+<p><img alt="motif_large" src="../img/leaderboard/TR1.png">
+<img alt="motif_large" src="../img/leaderboard/TR2.png">
+<img alt="motif_large" src="../img/leaderboard/TR3.png"></p>
 <p>Carla 自动驾驶排行榜中的交通状况图解。</p>
 <h1 id="_4">参与方式</h1>
 <p>排行榜提供两种参与方式：SENSORS 和 MAP。这些方式的不同之处在于您的代理可以从平台请求的输入数据类型。</p>
@@ -214,23 +214,23 @@
 <li><strong>模拟超时</strong>——如果在几秒钟内无法建立客户端-服务器通信60。</li>
 <li><strong>路线超时</strong>- 如果路线模拟花费太长时间才能完成。
 每次发生上述任何情况时，都会记录一些详细信息，这些详细信息将显示为列表，供您查看路线的各个指标。以下是代理闯红灯并偏离路线的路线示例。
-<div class="highlight"><pre><span></span><code><span class="nt">&quot;infractions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;Collisions with layout&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
-<span class="w">  </span><span class="nt">&quot;Collisions with pedestrians&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
-<span class="w">  </span><span class="nt">&quot;Collisions with vehicles&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
-<span class="w">  </span><span class="nt">&quot;Red lights infractions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="s2">&quot;Agent ran a red light 203 at (x=341.25, y=209.1, z=0.104)&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">"infractions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nt">"Collisions with layout"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">  </span><span class="nt">"Collisions with pedestrians"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">  </span><span class="nt">"Collisions with vehicles"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">  </span><span class="nt">"Red lights infractions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">"Agent ran a red light 203 at (x=341.25, y=209.1, z=0.104)"</span>
 <span class="w">  </span><span class="p">],</span>
-<span class="w">  </span><span class="nt">&quot;Stop sign infractions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
-<span class="w">  </span><span class="nt">&quot;Off-road infractions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
-<span class="w">  </span><span class="nt">&quot;Min speed infractions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
-<span class="w">  </span><span class="nt">&quot;Yield to emergency vehicle infractions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
-<span class="w">  </span><span class="nt">&quot;Scenario timeouts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
-<span class="w">  </span><span class="nt">&quot;Route deviations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="s2">&quot;Agent deviated from the route at (x=95.92, y=165.673, z=0.138)&quot;</span>
+<span class="w">  </span><span class="nt">"Stop sign infractions"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">  </span><span class="nt">"Off-road infractions"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">  </span><span class="nt">"Min speed infractions"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">  </span><span class="nt">"Yield to emergency vehicle infractions"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">  </span><span class="nt">"Scenario timeouts"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">  </span><span class="nt">"Route deviations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">"Agent deviated from the route at (x=95.92, y=165.673, z=0.138)"</span>
 <span class="w">  </span><span class="p">],</span>
-<span class="w">  </span><span class="nt">&quot;Agent blocked&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
-<span class="w">  </span><span class="nt">&quot;Route timeouts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<span class="w">  </span><span class="nt">"Agent blocked"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">  </span><span class="nt">"Route timeouts"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
 <span class="p">}</span>
 </code></pre></div></li>
 </ul>
@@ -250,7 +250,7 @@
 <p>提交津贴每月自动补充。 Carla 排行榜的组织者保留向团队分配额外津贴的权利。该组织还保留修改每月提交津贴默认值的权利。</p>
 <p>严格禁止滥用或攻击 Carla 排行榜的基础设施，包括用于运行服务的所有软件和硬件。偏离 Carla 排行榜精神的行为可能会导致团队解散。</p>
 <p>如需进一步说明，请阅读条款和条件。</p>
-<p><a href="https://paperswithcode.com/sota/autonomous-driving-on-carla-leaderboard">性能排行榜</a> </p>
+<p><a href="https://paperswithcode.com/sota/autonomous-driving-on-carla-leaderboard">性能排行榜</a> </p></div>
               
             </div>
           </div><footer>

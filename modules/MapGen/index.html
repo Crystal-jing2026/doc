@@ -100,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="citymapmeshholder">CityMapMeshHolder 模块说明文档</h1>
+                <div><h1 id="citymapmeshholder">CityMapMeshHolder 模块说明文档</h1>
 <h2 id="_1">概述</h2>
 <p>本模块为虚幻引擎 HUTB 项目提供城市道路网格实例化管理功能，主要负责道路网格的生成、更新和销毁操作。核心类ACityMapMeshHolder继承自AActor，包含网格实例化、坐标转换、资源管理等功能，支持编辑器环境下的实时更新。</p>
 <h2 id="_2">核心功能架构</h2>
@@ -125,19 +125,19 @@
 <ul>
 <li>
 <p>初始化流程
-<div class="highlight"><pre><span></span><code>创建静态场景根组件（Mobility<span class="o">=</span>Static）
+</p><div class="highlight"><pre><span></span><code>创建静态场景根组件（Mobility<span class="o">=</span>Static）
 
 预初始化所有标签类型的静态网格容器
 
 禁用Actor<span class="w"> </span>Tick功能
-</code></pre></div></p>
+</code></pre></div>
 </li>
 <li>
 <p>关键参数
-<div class="highlight"><pre><span></span><code>ObjectInitializer：虚幻引擎对象初始化器
+</p><div class="highlight"><pre><span></span><code>ObjectInitializer：虚幻引擎对象初始化器
 
 NUMBER_OF_TAGS：通过CityMapMeshTag::GetNumberOfTags<span class="o">()</span>获取标签总数
-</code></pre></div></p>
+</code></pre></div>
 </li>
 </ul>
 <h3 id="2-postinitializecomponents">2. PostInitializeComponents</h3>
@@ -178,7 +178,7 @@ void<span class="w"> </span>AddInstance<span class="o">(</span>ECityMapMeshTag<s
 遍历并销毁带CARLA_ROAD_TAG标签的附加Actor
 </code></pre></div>
 <p>设计特点
-<div class="highlight"><pre><span></span><code>逆向遍历删除确保索引安全
+</p><div class="highlight"><pre><span></span><code>逆向遍历删除确保索引安全
 //<span class="w"> </span>示例1：传统数组遍历
 <span class="k">for</span><span class="o">(</span>int32<span class="w"> </span><span class="nv">i</span><span class="o">=</span><span class="m">0</span><span class="p">;</span><span class="w"> </span>i&lt;oldcomponents.Num<span class="o">()</span><span class="p">;</span><span class="w"> </span>i++<span class="o">)</span><span class="w"> </span><span class="o">{</span>
 <span class="w">    </span>oldcomponents<span class="o">[</span>i<span class="o">]</span>-&gt;DestroyComponent<span class="o">()</span><span class="p">;</span>
@@ -190,7 +190,7 @@ void<span class="w"> </span>AddInstance<span class="o">(</span>ECityMapMeshTag<s
 <span class="w">        </span>roadpieces<span class="o">[</span>i<span class="o">]</span>-&gt;Destroy<span class="o">()</span><span class="p">;</span>
 <span class="w">    </span><span class="o">}</span>
 <span class="o">}</span>
-</code></pre></div></p>
+</code></pre></div>
 <h3 id="_4">存在的问题</h3>
 <ul>
 <li>
@@ -277,7 +277,7 @@ TagMap  内部维护的映射表
 <p>自动处理空指针情况</p>
 <p>使用示例</p>
 <p>典型工作流
-<div class="highlight"><pre><span></span><code>//<span class="w"> </span>初始化生成器
+</p><div class="highlight"><pre><span></span><code>//<span class="w"> </span>初始化生成器
 ACityMapMeshHolder*<span class="w"> </span><span class="nv">Holder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>...<span class="p">;</span>
 
 //<span class="w"> </span>生成十字路口
@@ -290,15 +290,15 @@ Holder-&gt;AddInstance<span class="o">(</span>RoadTwoLanes,<span class="w"> </sp
 <span class="w">    </span>Holder-&gt;AddInstance<span class="o">(</span>RoadFourLanes,<span class="w"> </span>i,<span class="w"> </span><span class="m">3</span><span class="o">)</span><span class="p">;</span>
 <span class="o">}</span>
 //<span class="w"> </span>编辑器属性更新后自动触发重建
-</code></pre></div></p>
+</code></pre></div>
 <p>性能优化建议</p>
 <p>实例合并：替换为InstancedStaticMeshComponent提升渲染效率</p>
 <p>空间分区：实现基于位置的网格加载/卸载</p>
 <p>异步生成：复杂地图采用分帧生成策略</p>
 <p>资源池：复用已生成的静态网格Actor</p>
 <p>调试技巧
-<div class="highlight"><pre><span></span><code>//<span class="w"> </span>打印当前地图信息
-UE_LOG<span class="o">(</span>LogCarla,<span class="w"> </span>Display,<span class="w"> </span>TEXT<span class="o">(</span><span class="s2">&quot;MapScale: %.2f&quot;</span><span class="o">)</span>,<span class="w"> </span>MapScale<span class="o">)</span><span class="p">;</span>
+</p><div class="highlight"><pre><span></span><code>//<span class="w"> </span>打印当前地图信息
+UE_LOG<span class="o">(</span>LogCarla,<span class="w"> </span>Display,<span class="w"> </span>TEXT<span class="o">(</span><span class="s2">"MapScale: %.2f"</span><span class="o">)</span>,<span class="w"> </span>MapScale<span class="o">)</span><span class="p">;</span>
 
 //<span class="w"> </span>可视化调试
 DrawDebugBox<span class="o">(</span>GetWorld<span class="o">()</span>,<span class="w"> </span>GetTileLocation<span class="o">(</span>X,Y<span class="o">)</span>,<span class="w"> </span>FVector<span class="o">(</span>MapScale/2<span class="o">)</span>,<span class="w"> </span>FColor::Green<span class="o">)</span><span class="p">;</span>
@@ -312,7 +312,7 @@ DrawDebugBox<span class="o">(</span>GetWorld<span class="o">()</span>,<span clas
 FVector<span class="w"> </span>GetTileLocation3D<span class="o">(</span>uint32<span class="w"> </span>X,<span class="w"> </span>uint32<span class="w"> </span>Y,<span class="w"> </span>float<span class="w"> </span>Z<span class="o">)</span><span class="w"> </span><span class="o">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">{</span>X*MapScale,<span class="w"> </span>Y*MapScale,<span class="w"> </span>Z<span class="o">}</span><span class="p">;</span>
 <span class="o">}</span>
-</code></pre></div></p>
+</code></pre></div>
 <h1 id="citymapmeshtag">CityMapMeshTag 模块说明文档</h1>
 <h2 id="_6">概述</h2>
 <p>本模块为虚幻引擎（Unreal Engine）的Carla项目提供城市道路网格标签处理功能，包含基础标签获取、交叉路口尺寸定义以及枚举标签转字符串功能。所有定义均在 CityMapMeshTag 命名空间下。</p>
@@ -352,7 +352,7 @@ Tag<span class="w"> </span><span class="o">(</span>ECityMapMeshTag<span class="o
 返回值
 对应枚举值的字符串名称
 
-若枚举类型未找到则返回<span class="w"> </span><span class="s2">&quot;Invalid&quot;</span>
+若枚举类型未找到则返回<span class="w"> </span><span class="s2">"Invalid"</span>
 </code></pre></div>
 <p>实现细节</p>
 <ul>
@@ -387,8 +387,8 @@ uint32<span class="w"> </span><span class="nv">IntersectionSize</span><span clas
 
 //<span class="w"> </span>枚举值转字符串
 FString<span class="w"> </span><span class="nv">TagName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>CityMapMeshTag::ToString<span class="o">(</span>ECityMapMeshTag::RoadFourLanes_LaneLeft<span class="o">)</span><span class="p">;</span>
-//<span class="w"> </span>输出结果：<span class="s2">&quot;RoadFourLanes_LaneLeft&quot;</span>
-</code></pre></div>
+//<span class="w"> </span>输出结果：<span class="s2">"RoadFourLanes_LaneLeft"</span>
+</code></pre></div></div>
               
             </div>
           </div><footer>

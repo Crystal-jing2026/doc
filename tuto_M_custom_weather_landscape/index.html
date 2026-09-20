@@ -100,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="_1"><a href="https://carla.readthedocs.io/en/latest/tuto_M_custom_weather_landscape/">自定义地图：天气和景观</a></h1>
+                <div><h1 id="_1"><a href="https://carla.readthedocs.io/en/latest/tuto_M_custom_weather_landscape/">自定义地图：天气和景观</a></h1>
 <p>Carla 提供了多个蓝图，可帮助您轻松创建地图的默认天气设置，并使用序列化网格（例如路灯、电线等）填充景观。</p>
 <p>本指南将解释每个蓝图的位置以及如何使用和配置它们。</p>
 <ul>
@@ -122,7 +122,7 @@
 <p class="admonition-title">重要</p>
 <p>本教程仅适用于使用源代码构建并有权访问虚幻编辑器的用户。</p>
 </div>
-<hr />
+<hr>
 <h2 id="_2">天气定制 <span id="weather-customization"></span></h2>
 <p>本节介绍如何在设置地图的默认天气之前尝试不同的天气参数，以及在对设置感到满意后如何为地图配置默认天气参数。</p>
 <h3 id="bp_sky">天空蓝图 BP_Sky <span id="bp_sky"></span></h3>
@@ -142,7 +142,7 @@
 <p>在<code>BP_Weather</code>窗口中间选中 <em>Default Weathers</em>，在 <em>细节(Details)</em> 面板中，转到  <em>Default Weathers</em> 部分并将您的城镇添加到数组中。</p>
 <p><strong>3. 配置默认天气参数。</strong></p>
 <p>对于每个天气参数，设置您想要的值。完成后，按 <em>编译(Compile)</em> ，然后按 <em>保存(Save)</em> 并关闭。</p>
-<p><img alt="bp_weather_pic" src="../img/map_customization/BP_Weather.jpg" /><br></p>
+<p><img alt="bp_weather_pic" src="../img/map_customization/BP_Weather.jpg"><br></p>
 <div class="div" style="text-align: center">
 <i>包含每个 Carla 地图的默认天气参数的数组。打开 Town10HD_Opt</i></div>
 <p><br></p>
@@ -154,7 +154,7 @@
 </style>
 
 <p>天气的具体实现请参考 <a href="../modules/Weather/">链接</a> 。</p>
-<hr />
+<hr>
 <h2 id="_3">添加序列化网格 <span id="add-serial-meshes"></span></h2>
 <p>有四种蓝图可用于添加沿一个方向对齐的道具，例如墙壁、电线、路灯。这些蓝图使用一系列沿贝塞尔曲线分布的网格。每一个都以相同的方式初始化：</p>
 <p><strong>1.  初始化序列。</strong></p>
@@ -176,7 +176,7 @@
 <li><em>EndPoint</em> — 如果选择此选项，将在曲线的终点节点添加一个元素。</li>
 <li><em>Collision enabled</em> — 设置为网格启用的碰撞类型。</li>
 </ul>
-<p><img alt="bp_repspline_pic" src="../img/map_customization/BP_Repspline.jpg" /></p>
+<p><img alt="bp_repspline_pic" src="../img/map_customization/BP_Repspline.jpg"></p>
 <div class="div" style="text-align: center"><i>BP_RepSpline 示例</i></div>
 
 <style>
@@ -192,7 +192,7 @@
 <ul>
 <li><em>Gap distance</em> — 在元素之间添加间隔。</li>
 </ul>
-<p><img alt="bp_spline_pic" src="../img/map_customization/BP_Spline.jpg" /></p>
+<p><img alt="bp_spline_pic" src="../img/map_customization/BP_Spline.jpg"></p>
 <div class="div" style="text-align: center"><i>BP_Spline 示例</i></div>
 
 <h3 id="bp_wall">BP_Wall <span id="bp_wall"></span></h3>
@@ -202,7 +202,7 @@
 <li><em>Vertically aligned</em> — 如果选择此选项，元素将相对于世界轴垂直对齐。</li>
 <li><em>Scale offset</em> — 缩放网格的长度以完善元素之间的连接。</li>
 </ul>
-<p><img alt="bp_wall_pic" src="../img/map_customization/BP_Wall.jpg" /></p>
+<p><img alt="bp_wall_pic" src="../img/map_customization/BP_Wall.jpg"></p>
 <div class="div" style="text-align: center"><i>BP_Wall 示例</i></div>
 
 <h3 id="bp_splinepoweline">BP_SplinePoweLine <span id="bp_splinepoweline"></span></h3>
@@ -214,7 +214,7 @@
 <li>展开 <em>Array Meshes</em> 并根据您的需要添加或更改它。</li>
 <li>点击 <em>Compile</em> ，然后保存并关闭窗口。</li>
 </ol>
-<p><img alt="bp_splinepowerline_pic" src="../img/map_customization/BP_Splinepowerline.jpg" /></p>
+<p><img alt="bp_splinepowerline_pic" src="../img/map_customization/BP_Splinepowerline.jpg"></p>
 <div class="div" style="text-align: center"><i>BP_SplinePowerLine 示例</i></div>
 
 <p>要改变电源线的线张力：</p>
@@ -229,14 +229,14 @@
 <li>转到 <em>Socket Manager</em> 面板。</li>
 <li>配置现有套接字或通过单击 <em>Create Socket</em> 添加新套接字。插座是代表电源线连接点的空网格。在两极之间从插座到插座创建电线。</li>
 </ol>
-<p><img alt="bp_powerline_socket_pic" src="../img/map_customization/BP_Splinepowerline_Sockets.jpg" /></p>
+<p><img alt="bp_powerline_socket_pic" src="../img/map_customization/BP_Splinepowerline_Sockets.jpg"></p>
 <div class="div" style="text-align: center"><i>BP_SplinePowerLine 套接字的可视化</i></div>
 <p><br></p>
 <div class="admonition 重要">
 <p class="admonition-title">重要</p>
 <p>各极之间的插座数量及名称应一致。否则，可能会出现可视化问题。</p>
 </div>
-<hr />
+<hr>
 <h2 id="_4">下一步  <span id="next-steps"></span></h2>
 <p>使用以下工具和指南继续自定义您的地图：</p>
 <ul>
@@ -247,8 +247,8 @@
 <li><a href="./#add-serial-meshes">使用序列化网格自定义景观。</a></li>
 </ul>
 <p>完成定制后，您可以 <a href="../tuto_M_generate_pedestrian_navigation/">生成行人导航信息</a> 。</p>
-<hr />
-<p>如果您对文档有任何疑问，可以在 <a href="https://github.com/OpenHUTB/doc/issues">讨论页面</a> 中提问。</p>
+<hr>
+<p>如果您对文档有任何疑问，可以在 <a href="https://github.com/OpenHUTB/doc/issues">讨论页面</a> 中提问。</p></div>
               
             </div>
           </div><footer>

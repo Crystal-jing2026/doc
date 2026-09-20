@@ -100,12 +100,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="_1">经常问的问题</h1>
+                <div><h1 id="_1">经常问的问题</h1>
 <h2 id="typeerror-instancemethod-object-has-no-attribute-getitem">在代理导航中收到错误 "TypeError: 'instancemethod' object has no attribute '<strong>getitem</strong>'"</h2>
 <p>此问题很可能是由 Python Networkx 包的过时版本引起的。请删除当前安装（例如 sudo apt-get remove python-networkx）并使用“pip install --user networkx==2.2”进行安装。</p>
 <h2 id="no-more-scenarios-exiting">没有可见的场景，我收到消息 "No more scenarios .... Exiting"</h2>
 <p>如果您收到以下输出
-<div class="highlight"><pre><span></span><code>Preparing scenario: FollowLeadingVehicle_1
+</p><div class="highlight"><pre><span></span><code>Preparing scenario: FollowLeadingVehicle_1
 ScenarioManager: Running scenario FollowVehicle
 Resetting ego-vehicle!
 Failure!
@@ -113,14 +113,14 @@ Resetting ego-vehicle!
 ERROR: failed to destroy actor 527 : unable to destroy actor: not found
 No more scenarios .... Exiting
 </code></pre></div>
-如果您没有看到任何事情发生，很可能是因为您没有启动控制自主车辆的程序。运行例如manual_control.py，您现在应该看到发生了一些事情。 </p>
+如果您没有看到任何事情发生，很可能是因为您没有启动控制自主车辆的程序。运行例如manual_control.py，您现在应该看到发生了一些事情。 
 <h2 id="-debug-scenario-runner">使用 --debug 命令行参数时，Scenario Runner 退出并出现错误</h2>
 <p>如果您收到以下输出
-<div class="highlight"><pre><span></span><code>UnicodeEncodeError: &#39;ascii&#39; codec can&#39;t encode character &#39;\u2713&#39; in position 58: ordinal not in range(128)
+</p><div class="highlight"><pre><span></span><code>UnicodeEncodeError: 'ascii' codec can't encode character '\u2713' in position 58: ordinal not in range(128)
 </code></pre></div>
 请设置环境变量
 <div class="highlight"><pre><span></span><code>PYTHONIOENCODING=utf-8
-</code></pre></div></p>
+</code></pre></div></div>
               
             </div>
           </div><footer>

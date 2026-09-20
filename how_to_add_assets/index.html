@@ -100,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="_1">如何添加资产</h1>
+                <div><h1 id="_1">如何添加资产</h1>
 <p><em>本文档尚在编写中，可能不完整。</em></p>
 <h2 id="_2">添加车辆</h2>
 <p>按照 <a href="https://docs.unrealengine.com/latest/INT/Engine/Physics/Vehicles/VehcileContentCreation/index.html">艺术指南</a> 创建骨架网格体和物理资产。 其余部分请参阅 <a href="https://docs.unrealengine.com/latest/INT/Engine/Physics/Vehicles/VehicleUserGuide/">车辆用户指南</a> 。</p>
@@ -132,59 +132,59 @@
 <p>测试一下，进入 CarlaGameMode 蓝图并将“Default Pawn Class”更改为新创建的汽车蓝图。</p>
 <h2 id="_3">地图生成</h2>
 <p>对于道路生成，预计会找到以下网格
-<div class="highlight"><pre><span></span><code># Enum                            Filepath
-RoadTwoLanes_LaneLeft          at &quot;Content/Static/Road/St_Road_TileRoad_RoadL.uasset&quot;
-RoadTwoLanes_LaneRight         at &quot;Content/Static/Road/St_Road_TileRoad_RoadR.uasset&quot;
-RoadTwoLanes_SidewalkLeft      at &quot;Content/Static/SideWalk/St_Road_TileRoad_SidewalkL.uasset&quot;
-RoadTwoLanes_SidewalkRight     at &quot;Content/Static/SideWalk/St_Road_TileRoad_SidewalkR.uasset&quot;
-RoadTwoLanes_LaneMarkingSolid  at &quot;Content/Static/RoadLines/St_Road_TileRoad_LaneMarkingSolid.uasset&quot;
-RoadTwoLanes_LaneMarkingBroken at &quot;Content/Static/RoadLines/St_Road_TileRoad_LaneMarkingBroken.uasset&quot;
+</p><div class="highlight"><pre><span></span><code># Enum                            Filepath
+RoadTwoLanes_LaneLeft          at "Content/Static/Road/St_Road_TileRoad_RoadL.uasset"
+RoadTwoLanes_LaneRight         at "Content/Static/Road/St_Road_TileRoad_RoadR.uasset"
+RoadTwoLanes_SidewalkLeft      at "Content/Static/SideWalk/St_Road_TileRoad_SidewalkL.uasset"
+RoadTwoLanes_SidewalkRight     at "Content/Static/SideWalk/St_Road_TileRoad_SidewalkR.uasset"
+RoadTwoLanes_LaneMarkingSolid  at "Content/Static/RoadLines/St_Road_TileRoad_LaneMarkingSolid.uasset"
+RoadTwoLanes_LaneMarkingBroken at "Content/Static/RoadLines/St_Road_TileRoad_LaneMarkingBroken.uasset"
 
-Road90DegTurn_Lane0            at &quot;Content/Static/Road/St_Road_Curve_Road1.uasset&quot;
-Road90DegTurn_Lane1            at &quot;Content/Static/Road/St_Road_Curve_Road2.uasset&quot;
-Road90DegTurn_Lane2            at &quot;Content/Static/Road/St_Road_Curve_Road3.uasset&quot;
-Road90DegTurn_Lane3            at &quot;Content/Static/Road/St_Road_Curve_Road4.uasset&quot;
-Road90DegTurn_Lane3            at &quot;Content/Static/Road/St_Road_Curve_Road5.uasset&quot;
-Road90DegTurn_Lane3            at &quot;Content/Static/Road/St_Road_Curve_Road6.uasset&quot;
-Road90DegTurn_Lane3            at &quot;Content/Static/Road/St_Road_Curve_Road7.uasset&quot;
-Road90DegTurn_Lane3            at &quot;Content/Static/Road/St_Road_Curve_Road8.uasset&quot;
-Road90DegTurn_Lane3            at &quot;Content/Static/Road/St_Road_Curve_Road9.uasset&quot;
-Road90DegTurn_Sidewalk0        at &quot;Content/Static/SideWalk/St_Road_Curve_Sidewalk1.uasset&quot;
-Road90DegTurn_Sidewalk1        at &quot;Content/Static/SideWalk/St_Road_Curve_Sidewalk2.uasset&quot;
-Road90DegTurn_Sidewalk2        at &quot;Content/Static/SideWalk/St_Road_Curve_Sidewalk3.uasset&quot;
-Road90DegTurn_Sidewalk3        at &quot;Content/Static/SideWalk/St_Road_Curve_Sidewalk4.uasset&quot;
-Road90DegTurn_LaneMarking      at &quot;Content/Static/Road/St_Road_Curve_LaneMarking.uasset&quot;
+Road90DegTurn_Lane0            at "Content/Static/Road/St_Road_Curve_Road1.uasset"
+Road90DegTurn_Lane1            at "Content/Static/Road/St_Road_Curve_Road2.uasset"
+Road90DegTurn_Lane2            at "Content/Static/Road/St_Road_Curve_Road3.uasset"
+Road90DegTurn_Lane3            at "Content/Static/Road/St_Road_Curve_Road4.uasset"
+Road90DegTurn_Lane3            at "Content/Static/Road/St_Road_Curve_Road5.uasset"
+Road90DegTurn_Lane3            at "Content/Static/Road/St_Road_Curve_Road6.uasset"
+Road90DegTurn_Lane3            at "Content/Static/Road/St_Road_Curve_Road7.uasset"
+Road90DegTurn_Lane3            at "Content/Static/Road/St_Road_Curve_Road8.uasset"
+Road90DegTurn_Lane3            at "Content/Static/Road/St_Road_Curve_Road9.uasset"
+Road90DegTurn_Sidewalk0        at "Content/Static/SideWalk/St_Road_Curve_Sidewalk1.uasset"
+Road90DegTurn_Sidewalk1        at "Content/Static/SideWalk/St_Road_Curve_Sidewalk2.uasset"
+Road90DegTurn_Sidewalk2        at "Content/Static/SideWalk/St_Road_Curve_Sidewalk3.uasset"
+Road90DegTurn_Sidewalk3        at "Content/Static/SideWalk/St_Road_Curve_Sidewalk4.uasset"
+Road90DegTurn_LaneMarking      at "Content/Static/Road/St_Road_Curve_LaneMarking.uasset"
 
-RoadTIntersection_Lane0        at &quot;Content/Static/Road/St_Road_TCross_Road1.uasset&quot;
-RoadTIntersection_Lane1        at &quot;Content/Static/Road/St_Road_TCross_Road2.uasset&quot;
-RoadTIntersection_Lane2        at &quot;Content/Static/Road/St_Road_TCross_Road3.uasset&quot;
-RoadTIntersection_Lane3        at &quot;Content/Static/Road/St_Road_TCross_Road4.uasset&quot;
-RoadTIntersection_Lane3        at &quot;Content/Static/Road/St_Road_TCross_Road5.uasset&quot;
-RoadTIntersection_Lane3        at &quot;Content/Static/Road/St_Road_TCross_Road6.uasset&quot;
-RoadTIntersection_Lane3        at &quot;Content/Static/Road/St_Road_TCross_Road7.uasset&quot;
-RoadTIntersection_Lane3        at &quot;Content/Static/Road/St_Road_TCross_Road8.uasset&quot;
-RoadTIntersection_Lane3        at &quot;Content/Static/Road/St_Road_TCross_Road9.uasset&quot;
-RoadTIntersection_Sidewalk0    at &quot;Content/Static/SideWalk/St_Road_TCross_Sidewalk1.uasset&quot;
-RoadTIntersection_Sidewalk1    at &quot;Content/Static/SideWalk/St_Road_TCross_Sidewalk2.uasset&quot;
-RoadTIntersection_Sidewalk2    at &quot;Content/Static/SideWalk/St_Road_TCross_Sidewalk3.uasset&quot;
-RoadTIntersection_Sidewalk3    at &quot;Content/Static/SideWalk/St_Road_TCross_Sidewalk4.uasset&quot;
-RoadTIntersection_LaneMarking  at &quot;Content/Static/RoadLines/St_Road_TCross_LaneMarking.uasset&quot;
+RoadTIntersection_Lane0        at "Content/Static/Road/St_Road_TCross_Road1.uasset"
+RoadTIntersection_Lane1        at "Content/Static/Road/St_Road_TCross_Road2.uasset"
+RoadTIntersection_Lane2        at "Content/Static/Road/St_Road_TCross_Road3.uasset"
+RoadTIntersection_Lane3        at "Content/Static/Road/St_Road_TCross_Road4.uasset"
+RoadTIntersection_Lane3        at "Content/Static/Road/St_Road_TCross_Road5.uasset"
+RoadTIntersection_Lane3        at "Content/Static/Road/St_Road_TCross_Road6.uasset"
+RoadTIntersection_Lane3        at "Content/Static/Road/St_Road_TCross_Road7.uasset"
+RoadTIntersection_Lane3        at "Content/Static/Road/St_Road_TCross_Road8.uasset"
+RoadTIntersection_Lane3        at "Content/Static/Road/St_Road_TCross_Road9.uasset"
+RoadTIntersection_Sidewalk0    at "Content/Static/SideWalk/St_Road_TCross_Sidewalk1.uasset"
+RoadTIntersection_Sidewalk1    at "Content/Static/SideWalk/St_Road_TCross_Sidewalk2.uasset"
+RoadTIntersection_Sidewalk2    at "Content/Static/SideWalk/St_Road_TCross_Sidewalk3.uasset"
+RoadTIntersection_Sidewalk3    at "Content/Static/SideWalk/St_Road_TCross_Sidewalk4.uasset"
+RoadTIntersection_LaneMarking  at "Content/Static/RoadLines/St_Road_TCross_LaneMarking.uasset"
 
-RoadXIntersection_Lane0        at &quot;Content/Static/Road/St_Road_XCross_Road1.uasset&quot;
-RoadXIntersection_Lane1        at &quot;Content/Static/Road/St_Road_XCross_Road2.uasset&quot;
-RoadXIntersection_Lane2        at &quot;Content/Static/Road/St_Road_XCross_Road3.uasset&quot;
-RoadXIntersection_Lane3        at &quot;Content/Static/Road/St_Road_XCross_Road4.uasset&quot;
-RoadXIntersection_Lane3        at &quot;Content/Static/Road/St_Road_XCross_Road5.uasset&quot;
-RoadXIntersection_Lane3        at &quot;Content/Static/Road/St_Road_XCross_Road6.uasset&quot;
-RoadXIntersection_Lane3        at &quot;Content/Static/Road/St_Road_XCross_Road7.uasset&quot;
-RoadXIntersection_Lane3        at &quot;Content/Static/Road/St_Road_XCross_Road8.uasset&quot;
-RoadXIntersection_Lane3        at &quot;Content/Static/Road/St_Road_XCross_Road9.uasset&quot;
-RoadXIntersection_Sidewalk0    at &quot;Content/Static/SideWalk/St_Road_XCross_Sidewalk1.uasset&quot;
-RoadXIntersection_Sidewalk1    at &quot;Content/Static/SideWalk/St_Road_XCross_Sidewalk2.uasset&quot;
-RoadXIntersection_Sidewalk2    at &quot;Content/Static/SideWalk/St_Road_XCross_Sidewalk3.uasset&quot;
-RoadXIntersection_Sidewalk3    at &quot;Content/Static/SideWalk/St_Road_XCross_Sidewalk4.uasset&quot;
-RoadXIntersection_LaneMarking  at &quot;Content/Static/RoadLines/St_Road_XCross_LaneMarking.uasset&quot;
-</code></pre></div></p>
+RoadXIntersection_Lane0        at "Content/Static/Road/St_Road_XCross_Road1.uasset"
+RoadXIntersection_Lane1        at "Content/Static/Road/St_Road_XCross_Road2.uasset"
+RoadXIntersection_Lane2        at "Content/Static/Road/St_Road_XCross_Road3.uasset"
+RoadXIntersection_Lane3        at "Content/Static/Road/St_Road_XCross_Road4.uasset"
+RoadXIntersection_Lane3        at "Content/Static/Road/St_Road_XCross_Road5.uasset"
+RoadXIntersection_Lane3        at "Content/Static/Road/St_Road_XCross_Road6.uasset"
+RoadXIntersection_Lane3        at "Content/Static/Road/St_Road_XCross_Road7.uasset"
+RoadXIntersection_Lane3        at "Content/Static/Road/St_Road_XCross_Road8.uasset"
+RoadXIntersection_Lane3        at "Content/Static/Road/St_Road_XCross_Road9.uasset"
+RoadXIntersection_Sidewalk0    at "Content/Static/SideWalk/St_Road_XCross_Sidewalk1.uasset"
+RoadXIntersection_Sidewalk1    at "Content/Static/SideWalk/St_Road_XCross_Sidewalk2.uasset"
+RoadXIntersection_Sidewalk2    at "Content/Static/SideWalk/St_Road_XCross_Sidewalk3.uasset"
+RoadXIntersection_Sidewalk3    at "Content/Static/SideWalk/St_Road_XCross_Sidewalk4.uasset"
+RoadXIntersection_LaneMarking  at "Content/Static/RoadLines/St_Road_XCross_LaneMarking.uasset"
+</code></pre></div></div>
               
             </div>
           </div><footer>

@@ -100,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="_1">载具</h1>
+                <div><h1 id="_1">载具</h1>
 <p>VehicleControl 结构中的值直接传递给 PhysX Vehicle 插件（请参阅 <a href="https://github.com/carla-simulator/carla/blob/422d0de1c4ba34238d960a5405ab227044199e13/Unreal/CarlaUE4/Plugins/Carla/Source/Carla/Vehicle/CarlaWheeledVehicle.cpp#L78-L102">CarlaWheeledVehicle.cpp</a> ）。</p>
 <h1 id="fackermanncontroller">&lt;一&gt;、FAckermannController</h1>
 <h2 id="fackermanncontroller_1">一、<code>FAckermannController</code> 类</h2>
@@ -172,19 +172,19 @@ struct CARLA_API FVehicleAckermannControl
 {
   GENERATED_BODY()
 
-  UPROPERTY(Category = &quot;Vehicle Ackermann Control&quot;, EditAnywhere, BlueprintReadWrite)
+  UPROPERTY(Category = "Vehicle Ackermann Control", EditAnywhere, BlueprintReadWrite)
   float Steer = 0.0f;
 
-  UPROPERTY(Category = &quot;Vehicle Ackermann Control&quot;, EditAnywhere, BlueprintReadWrite)
+  UPROPERTY(Category = "Vehicle Ackermann Control", EditAnywhere, BlueprintReadWrite)
   float SteerSpeed = 0.0f;
 
-  UPROPERTY(Category = &quot;Vehicle Ackermann Control&quot;, EditAnywhere, BlueprintReadWrite)
+  UPROPERTY(Category = "Vehicle Ackermann Control", EditAnywhere, BlueprintReadWrite)
   float Speed = 0.0f;
 
-  UPROPERTY(Category = &quot;Vehicle Ackermann Control&quot;, EditAnywhere, BlueprintReadWrite)
+  UPROPERTY(Category = "Vehicle Ackermann Control", EditAnywhere, BlueprintReadWrite)
   float Acceleration = 0.0f;
 
-  UPROPERTY(Category = &quot;Vehicle Ackermann Control&quot;, EditAnywhere, BlueprintReadWrite)
+  UPROPERTY(Category = "Vehicle Ackermann Control", EditAnywhere, BlueprintReadWrite)
   float Jerk = 0.0f;
 };
 </code></pre></div>
@@ -193,17 +193,17 @@ struct CARLA_API FVehicleAckermannControl
 <p>​   此结构体运用了 Unreal Engine 的反射系统，具备在蓝图里进行读写操作的能力。它的每个属性都代表着一种特定的灯光状态，并且默认情况下这些灯光都是关闭的。</p>
 <p>​   新添加的 <code>Hazard</code> 属性用于表示车辆危险警示灯的状态，默认值为 <code>false</code>，即初始状态下危险警示灯是关闭的。和其他属性一样，它也可以在编辑器中编辑，并且能在蓝图里进行读写操作。</p>
 <div class="highlight"><pre><span></span><code>// 新增的危险警示灯状态属性
-  UPROPERTY(Category = &quot;Vehicle Lights&quot;, EditAnywhere, BlueprintReadWrite)
+  UPROPERTY(Category = "Vehicle Lights", EditAnywhere, BlueprintReadWrite)
   bool Hazard = false;
 </code></pre></div>
 <p>3.10车辆的阿克曼转向控制参数</p>
 <h3 id="311">3.11功能补充</h3>
 <p>在Vehicle/VehiclePhysicsControl.h**文件中添加新的设置</p>
 <div class="highlight"><pre><span></span><code>// 刹车设置
-UPROPERTY(Category = &quot;Vehicle Brake Physics Control&quot;, EditAnywhere, BlueprintReadWrite)
+UPROPERTY(Category = "Vehicle Brake Physics Control", EditAnywhere, BlueprintReadWrite)
  float BrakeForce = 0.0f;
 
-UPROPERTY(Category = &quot;Vehicle Brake Physics Control&quot;, EditAnywhere, BlueprintReadWrite)
+UPROPERTY(Category = "Vehicle Brake Physics Control", EditAnywhere, BlueprintReadWrite)
  float HandbrakeForce = 0.0f;
 </code></pre></div>
 <ul>
@@ -229,9 +229,9 @@ UPROPERTY(Category = &quot;Vehicle Brake Physics Control&quot;, EditAnywhere, Bl
 Turning：表示车辆正在转弯的状态。
 Parking：表示车辆正在停车的状态。</p>
 <div class="highlight"><pre><span></span><code>case ECarlaWheeledVehicleState::Turning:
-   return TEXT(&quot;Turning&quot;);
+   return TEXT("Turning");
 case ECarlaWheeledVehicleState::Parking:
-   return TEXT(&quot;Parking&quot;);
+   return TEXT("Parking");
 </code></pre></div>
 <p>注：该代码补充对应文档<strong>CarlaWheeledVehicleState.h</strong></p>
 <h1 id="wheeledvehicleaicontroller">&lt;二&gt;WheeledVehicleAIController 类代码文档</h1>
@@ -507,7 +507,7 @@ Tick：每帧执行的主逻辑流程
 <h2 id="_12">参考</h2>
 <ul>
 <li><a href="https://github.com/carla-simulator/carla/issues/1427">函数vehile.apply_control实际上如何工作的？</a></li>
-</ul>
+</ul></div>
               
             </div>
           </div><footer>

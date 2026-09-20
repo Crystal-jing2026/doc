@@ -100,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="carla">Carla 代理</h1>
+                <div><h1 id="carla">Carla 代理</h1>
 <p>Carla 代理脚本允许车辆沿着随机的、无限的路线行驶，或者采用最短的路线到达给定的目的地。代理遵守交通信号灯并对道路上的其他障碍物做出反应。提供三种代理类型。可以修改目标速度、制动距离、尾随行为等参数。可以根据用户的需要修改参与者类或将其用作基类来创建自定义代理。</p>
 <ul>
 <li><a href="#overview-of-agent-scripts"><strong>代理脚本概述</strong></a><ul>
@@ -115,7 +115,7 @@
 </li>
 <li><a href="#creating-an-agent"><strong>创建代理</strong></a></li>
 </ul>
-<hr />
+<hr>
 <h2 id="_1">代理脚本概述 <span id="overview-of-agent-scripts"></span></h2>
 <p>Carla 代理中涉及的主要脚本位于 <a href="https://github.com/OpenHUTB/hutb/tree/hutb/PythonAPI/carla/agents/navigation">PythonAPI/carla/agents/navigation</a> 中，它们分为两类： <strong>规划与控制</strong> 和 <strong>代理行为</strong>。</p>
 <h3 id="_2">规划与控制 <span id="planning-and-control"></span></h3>
@@ -130,7 +130,7 @@
 <li><strong><a href="https://github.com/OpenHUTB/hutb/blob/hutb/PythonAPI/carla/agents/navigation/behavior_agent.py">behavior_agent.py</a>:</strong> 包含一个实现更复杂的 <strong>行为代理</strong> 的类，它可以在尽可能短的距离内到达目标目的地，跟随交通信号灯、标志和速度限制，同时尾随其他车辆。有三种预定义的类型决定了代理的行为方式。</li>
 <li><strong><a href="https://github.com/OpenHUTB/hutb/blob/hutb/PythonAPI/carla/agents/navigation/behavior_types.py">behavior_types.py</a>:</strong> 包含影响 <strong>行为代理</strong> 的行为类型的参数：<a href="https://github.com/OpenHUTB/hutb/blob/04b87b07133148b660d0bbb773f58e754bb20cd7/PythonAPI/carla/agents/navigation/behavior_types.py#L7">谨慎</a> 、<a href="https://github.com/OpenHUTB/hutb/blob/04b87b07133148b660d0bbb773f58e754bb20cd7/PythonAPI/carla/agents/navigation/behavior_types.py#L18">正常</a> 和 <a href="https://github.com/OpenHUTB/hutb/blob/04b87b07133148b660d0bbb773f58e754bb20cd7/PythonAPI/carla/agents/navigation/behavior_types.py#L29">野蛮</a> 。</li>
 </ul>
-<hr />
+<hr>
 <h2 id="_4">实现一个代理 <span id="implement-an-agent"></span></h2>
 <p>本节将解释如何在您自己的脚本中使用示例 Carla 代理类。在本节的最后，您将了解如何运行一个示例脚本来显示不同代理的运行情况。</p>
 <p><strong>1.</strong> 导入要使用的代理类：</p>
@@ -145,7 +145,7 @@
 <span class="n">agent</span> <span class="o">=</span> <span class="n">BasicAgent</span><span class="p">(</span><span class="n">vehicle</span><span class="p">)</span>
 
 <span class="c1"># 启动具有攻击性配置文件的行为代理</span>
-<span class="n">agent</span> <span class="o">=</span> <span class="n">BehaviorAgent</span><span class="p">(</span><span class="n">vehicle</span><span class="p">,</span> <span class="n">behavior</span><span class="o">=</span><span class="s1">&#39;aggressive&#39;</span><span class="p">)</span>
+<span class="n">agent</span> <span class="o">=</span> <span class="n">BehaviorAgent</span><span class="p">(</span><span class="n">vehicle</span><span class="p">,</span> <span class="n">behavior</span><span class="o">=</span><span class="s1">'aggressive'</span><span class="p">)</span>
 </code></pre></div>
 <p>在 <a href="#behavior-types"><strong>behavior types</strong></a> 部分中阅读有关行为类型以及如何配置您自己的更多信息。</p>
 <p><strong>3.</strong> 您可以设置代理前往的目的地。如果您不为代理设置目的地，它将在地图上无休止地漫游。要设置目的地，请为代理提供 <a href="../python_api/#carlalocation">位置</a>：</p>
@@ -159,7 +159,7 @@
 <p><strong>6.</strong> 您可以检查代理是否已完成其轨迹并在发生这种情况时执行操作。一旦您的车辆到达目的地，以下代码段将结束模拟：</p>
 <div class="highlight"><pre><span></span><code><span class="k">while</span> <span class="kc">True</span><span class="err">：</span>
     <span class="k">if</span> <span class="n">agent</span><span class="o">.</span><span class="n">done</span><span class="err">（）：</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The taerget has been reached, stopping the simulation&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"The taerget has been reached, stopping the simulation"</span><span class="p">)</span>
         <span class="k">break</span>
 
     <span class="n">vehicle</span><span class="o">.</span><span class="n">apply_control</span><span class="p">(</span><span class="n">agent</span><span class="o">.</span><span class="n">run_step</span><span class="p">())</span>
@@ -168,7 +168,7 @@
 <div class="highlight"><pre><span></span><code><span class="k">while</span> <span class="kc">True</span><span class="err">：</span>
     <span class="k">if</span> <span class="n">agent</span><span class="o">.</span><span class="n">done</span><span class="p">():</span>   
         <span class="n">agent</span><span class="o">.</span><span class="n">set_destination</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">spawn_points</span><span class="p">)</span><span class="o">.</span><span class="n">location</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The target has been reached, searching for another target&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"The target has been reached, searching for another target"</span><span class="p">)</span>
     <span class="n">vehicle</span><span class="o">.</span><span class="n">apply_control</span><span class="p">(</span><span class="n">agent</span><span class="o">.</span><span class="n">run_step</span><span class="p">())</span>
 </code></pre></div>
 <p><strong>Basic Agent</strong> 提供了一些方法来操纵代理行为或遵循的程序路线：</p>
@@ -189,7 +189,7 @@ python3<span class="w"> </span>automatic_control.py<span class="w"> </span>--age
 <span class="c1"># 使用行为代理运行</span>
 python3<span class="w"> </span>automatic_control.py<span class="w"> </span>--agent<span class="o">=</span>Behavior<span class="w"> </span>--behavior<span class="o">=</span>aggressive
 </code></pre></div>
-<hr />
+<hr>
 <h2 id="_5">行为类型 <span id="behavior-types"></span></h2>
 <p>行为代理的行为类型在 <a href="https://github.com/OpenHUTB/hutb/blob/hutb/PythonAPI/carla/agents/navigation/behavior_types.py">behavior_types.py</a> 中定义。三个预配置的配置文件是 <strong>'cautious'</strong>、<strong>'normal'</strong> 和 <strong>'aggressive'</strong>。您可以使用设置的配置文件、修改它们或创建您自己的配置文件。可以调整以下变量：</p>
 <ul>
@@ -209,19 +209,19 @@ python3<span class="w"> </span>automatic_control.py<span class="w"> </span>--age
 </code></pre></div>
 <p><strong>2.</strong> 在 <a href="https://github.com/OpenHUTB/hutb/blob/hutb/PythonAPI/carla/agents/navigation/behavior_agent.py" title="行为代理">behavior_agent.py</a> 脚本中定义和实例化你的行为类型：</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 代理行为参数</span>
-<span class="k">if</span> <span class="n">behavior</span> <span class="o">==</span> <span class="s1">&#39;cautious&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="n">behavior</span> <span class="o">==</span> <span class="s1">'cautious'</span><span class="p">:</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_behavior</span> <span class="o">=</span> <span class="n">Cautious</span><span class="p">()</span>
 
-<span class="k">elif</span> <span class="n">behavior</span> <span class="o">==</span> <span class="s1">&#39;normal&#39;</span><span class="p">:</span>
+<span class="k">elif</span> <span class="n">behavior</span> <span class="o">==</span> <span class="s1">'normal'</span><span class="p">:</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_behavior</span> <span class="o">=</span> <span class="n">Normal</span><span class="p">()</span>
 
-<span class="k">elif</span> <span class="n">behavior</span> <span class="o">==</span> <span class="s1">&#39;aggressive&#39;</span><span class="p">:</span>
+<span class="k">elif</span> <span class="n">behavior</span> <span class="o">==</span> <span class="s1">'aggressive'</span><span class="p">:</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_behavior</span> <span class="o">=</span> <span class="n">Aggressive</span><span class="p">()</span>
 
-<span class="k">elif</span> <span class="n">behavior</span> <span class="o">==</span> <span class="s1">&#39;&lt;type_name&gt;&#39;</span><span class="p">:</span>
+<span class="k">elif</span> <span class="n">behavior</span> <span class="o">==</span> <span class="s1">'&lt;type_name&gt;'</span><span class="p">:</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_behavior</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">TypeName</span><span class="o">&gt;</span><span class="p">()</span>
 </code></pre></div>
-<hr />
+<hr>
 <h2 id="_7">创建代理 <span id="creating-an-agent"></span></h2>
 <p>Carla 代理只是用户可以运行的代理类型的示例。用户可以在 <strong>基础代理</strong> 的基础上创建自己的代理。可能性是无穷的。每个代理只需要两个元素，<strong>初始化</strong> <code>__init__</code> 和 <strong>运行步</strong> <code>run_step</code>。</p>
 <p>在下面查找自定义代理的最小布局示例：</p>
@@ -231,24 +231,24 @@ python3<span class="w"> </span>automatic_control.py<span class="w"> </span>--age
 
 <span class="k">class</span> <span class="nc">CustomAgent</span><span class="p">(</span><span class="n">BasicAgent</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vehicle</span><span class="p">,</span> <span class="n">target_speed</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        :param vehicle: 应用到本地规划器逻辑的参与者</span>
 <span class="sd">        :param target_speed: 车辆移动的速度（Km/h）</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">target_speed</span><span class="p">,</span> <span class="n">调试</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">run_step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        执行一步导航</span>
 <span class="sd">        :return: carla.VehicleControl</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="c1"># 在每个模拟步骤中采取的行动</span>
         <span class="n">control</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">VehicleControl</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">control</span>
 </code></pre></div>
 <p>查看 <a href="https://github.com/OpenHUTB/hutb/blob/hutb/PythonAPI/carla/agents/navigation/basic_agent.py" title="基本代理">basic_agent.py</a> 和 <a href="https://github.com/OpenHUTB/hutb/blob/hutb/PythonAPI/carla/agents/navigation/behavior_agent.py" title="行为代理">behavior_agent.py</a> 脚本以探索它们的结构和功能，以获取有关如何创建自己的更多想法。</p>
-<hr />
-<p>您可以探索提供的代理脚本、扩展它们或将它们用作创建自己的基准。如果您对代理有任何疑问，请随时在 <a href="https://github.com/OpenHUTB/hutb/discussions">论坛</a> 发帖。</p>
+<hr>
+<p>您可以探索提供的代理脚本、扩展它们或将它们用作创建自己的基准。如果您对代理有任何疑问，请随时在 <a href="https://github.com/OpenHUTB/hutb/discussions">论坛</a> 发帖。</p></div>
               
             </div>
           </div><footer>

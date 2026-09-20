@@ -100,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="contextcapture">基于ContextCapture的无人机倾斜摄影三维建模操作流程 —— 湖工商科技楼为例</h1>
+                <div><h1 id="contextcapture">基于ContextCapture的无人机倾斜摄影三维建模操作流程 —— 湖工商科技楼为例</h1>
 <p><strong>软件环境</strong>：Windows 11 + NVIDIA RTX 1060 + ContextCapture 2023.06（Master + Engine + Viewer）</p>
 <h2 id="_1">一、实验环境配置</h2>
 <table>
@@ -222,31 +222,31 @@
 <p>3）如图3所示，GPS数据记录齐全，解算精度满足后期真实景三维模型制图要求</p>
 <p>4）能识别微小地物，且清晰可见；</p>
 <p>5）影像色调统一、无色斑。</p>
-<p><img alt="" src="../../img/modules/prepared_img.jpg" /></p>
+<p><img alt="" src="../../img/modules/prepared_img.jpg"></p>
 <h3 id="2_1">2.三维重建软件操作流程</h3>
 <p>1）打开主要模块（ContextCapture Center Master）。选择添加影像，选择添加整个目录，导入照片数据，如下图所示。</p>
-<p><img alt="" src="../../img/modules/import_img.jpg" /></p>
+<p><img alt="" src="../../img/modules/import_img.jpg"></p>
 <div class="div" style="text-align: center"><i>照片数据导入</i></div>
 
 <p>2）点击主要模块右上角的提交空中三角测量计算，显示生产中如图5所示，同时需要打开引擎模块（ContextCapture Center Engine）如下图所示。</p>
-<p><img alt="" src="../../img/modules/open_engine.jpg" /></p>
+<p><img alt="" src="../../img/modules/open_engine.jpg"></p>
 <p>3）空三结束后检查照片利用率。数据完整才能进行三维重建如图7所示。</p>
-<p><img alt="" src="../../img/modules/check_data.jpg" /></p>
+<p><img alt="" src="../../img/modules/check_data.jpg"></p>
 <div class="div" style="text-align: center"><i>检查数据完整性</i></div>
 
 <p>4）点击三维视图可以看到生成的空三坐标和模型草图如图8所示。此时框选需要兴趣重建区域，提交重建任务。</p>
-<p><img alt="" src="../../img/modules/model_sketch.jpg" /></p>
+<p><img alt="" src="../../img/modules/model_sketch.jpg"></p>
 <div class="div" style="text-align: center"><i>模型草图</i></div>
 
 <p>5）根据自己电脑运行内存大小来设置生产瓦片大小和尺寸，实验中，将每块大小使用的运存控制在16GB以内（注意这一步，否则会生产失败！！！），分块后如图9所示。</p>
-<p><img alt="" src="../../img/modules/blocking_effect.jpg" /></p>
+<p><img alt="" src="../../img/modules/blocking_effect.jpg"></p>
 <div class="div" style="text-align: center"><i>分块效果图</i></div>
 
 <p>6）选择输出的FBX格式以及纹理压缩质量，颜色源等参考设置如图10所示。FBX项目全部参数如图11所示。</p>
-<p><img alt="" src="../../img/modules/param_setting.jpg" /></p>
+<p><img alt="" src="../../img/modules/param_setting.jpg"></p>
 <div class="div" style="text-align: center"><i>部分参数设置样式</i></div>
 
-<p><img alt="" src="../../img/modules/all_param.jpg" /></p>
+<p><img alt="" src="../../img/modules/all_param.jpg"></p>
 <div class="div" style="text-align: center"><i>FBX格式模型全部参数</i></div>
 
 <p><strong>注意：</strong></p>
@@ -331,17 +331,17 @@
 <h2 id="_5">七、三维模型效果展示</h2>
 <h3 id="1_2">1.模型展示</h3>
 <p>1）将模型的FBX格式导入第三方软件blender进行拼接，展示效果如图12和13所示。</p>
-<p><img alt="" src="../../img/modules/aerial_view.jpg" /></p>
+<p><img alt="" src="../../img/modules/aerial_view.jpg"></p>
 <div class="div" style="text-align: center"><i>湖南工商大学科技楼俯视效果</i></div>
 
-<p><img alt="" src="../../img/modules/3D_Effect.jpg" /></p>
+<p><img alt="" src="../../img/modules/3D_Effect.jpg"></p>
 <div class="div" style="text-align: center"><i>湖南工商大学科技楼立体效果</i></div>
 
 <h2 id="_6">参考</h2>
 <ul>
 <li><a href="../../adv_cesium/">倾斜模型导入Carla</a></li>
 <li><a href="https://mp.weixin.qq.com/s/B5L7MGMmtyf15IJjp8n9oA">003-基于ContextCapture的无人机倾斜摄影三维建模操作流程</a></li>
-</ul>
+</ul></div>
               
             </div>
           </div><footer>

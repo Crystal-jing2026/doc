@@ -100,28 +100,28 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="_1">虚幻引擎开发相关语法</h1>
+                <div><h1 id="_1">虚幻引擎开发相关语法</h1>
 <h2 id="_2">常用标记</h2>
 <h3 id="blueprintcallable">BlueprintCallable</h3>
 <p>表明此函数可在蓝图中被调用(当类被蓝图继承后才有效果)。比如（Unreal\CarlaUE4\Plugins\Carla\Source\Carla\OpenDrive\OpenDrive.h）：
-<div class="highlight"><pre><span></span><code><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="o">=</span><span class="s">&quot;CARLA|OpenDrive&quot;</span><span class="p">)</span>
+</p><div class="highlight"><pre><span></span><code><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="o">=</span><span class="s">"CARLA|OpenDrive"</span><span class="p">)</span>
 <span class="k">static</span><span class="w"> </span><span class="n">FString</span><span class="w"> </span><span class="n">LoadXODRFullPath</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">FString</span><span class="w"> </span><span class="o">&amp;</span><span class="n">FullPath</span><span class="p">);</span>
-</code></pre></div></p>
+</code></pre></div>
 <p>注意：如果<strong>函数参数</strong>是<strong>引用</strong>类型，则在蓝图中调用被当做<strong>输出</strong>针脚，如果传入参数是<strong>const修饰的引用类型</strong>，则在蓝图中被当做<strong>输入</strong>针脚：
-<div class="highlight"><pre><span></span><code><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">)</span>
+</p><div class="highlight"><pre><span></span><code><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">)</span>
 <span class="n">int32</span><span class="w"> </span><span class="n">CTime</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">int32</span><span class="o">&amp;</span><span class="w"> </span><span class="n">num</span><span class="p">);</span>
 </code></pre></div>
-<img alt="osm_interface" src="../../img/ue/input_const.jpg" /></p>
-<p><div class="highlight"><pre><span></span><code>UFUNCTION(BlueprintCallable)
+<img alt="osm_interface" src="../../img/ue/input_const.jpg">
+<p></p><div class="highlight"><pre><span></span><code>UFUNCTION(BlueprintCallable)
 int32 CTime(int32&amp; num)://被当做函数输出针脚使用
 </code></pre></div>
-<img alt="osm_interface" src="../../img/ue/output_ref.jpg" /></p>
+<img alt="osm_interface" src="../../img/ue/output_ref.jpg">
 <h3 id="uproperty">UPROPERTY 宏标记</h3>
 <p>用于将对象属性暴露到蓝图中操作，整型中只有int32能暴露到蓝图中。</p>
 <p>EditAnywhere：表示此属性可以在编辑器窗口中进行编辑也可在场景细节面板中编辑</p>
 <h2 id="_3">目录</h2>
 <p><code>内容浏览器</code>中的内容包括（打开右下角<code>视图选项</code>中的<code>显示插件内容</code>）：
-<div class="highlight"><pre><span></span><code>* 内容            （Unreal\CarlaUE4\Content）
+</p><div class="highlight"><pre><span></span><code>* 内容            （Unreal\CarlaUE4\Content）
 
 * Carla 内容       （Unreal\CarlaUE4\Plugins\Carla\Content）
 * Carla C++ 类    （Unreal\CarlaUE4\Plugins\Carla\Source）
@@ -131,11 +131,11 @@ int32 CTime(int32&amp; num)://被当做函数输出针脚使用
 
 * StreetMap 内容  （Unreal\CarlaUE4\Plugins\StreetMap\Content）
 * StreetMap C++ 类（Unreal\CarlaUE4\Plugins\StreetMap\Source）
-</code></pre></div></p>
+</code></pre></div>
 <h2 id="_4">参考</h2>
 <ul>
 <li><a href="https://zhuanlan.zhihu.com/p/564916815">UE4 C++ UObject和标记宏</a></li>
-</ul>
+</ul></div>
               
             </div>
           </div><footer>

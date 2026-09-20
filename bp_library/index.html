@@ -100,15 +100,15 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="_1"><a href="https://carla.readthedocs.io/en/latest/bp_library/">蓝图库</a></h1>
+                <div><h1 id="_1"><a href="https://carla.readthedocs.io/en/latest/bp_library/">蓝图库</a></h1>
 <p>蓝图库 (<a href="../python_api/#carlablueprintlibrary-class"><code>carla.BlueprintLibrary</code></a>) 是 Carla 中用于可用的所有内容 <a href="../python_api/#carla.ActorBlueprint"><code>carla.ActorBlueprint</code></a> 及其属性 (<a href="../python_api/#carla.ActorAttribute"><code>carla.ActorAttribute</code></a>) 的摘要。</p>
 <p>以下是打印所有参与者蓝图及其属性的示例代码：
-<div class="highlight"><pre><span></span><code><span class="n">blueprints</span> <span class="o">=</span> <span class="p">[</span><span class="n">bp</span> <span class="k">for</span> <span class="n">bp</span> <span class="ow">in</span> <span class="n">world</span><span class="o">.</span><span class="n">get_blueprint_library</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">)]</span>
+</p><div class="highlight"><pre><span></span><code><span class="n">blueprints</span> <span class="o">=</span> <span class="p">[</span><span class="n">bp</span> <span class="k">for</span> <span class="n">bp</span> <span class="ow">in</span> <span class="n">world</span><span class="o">.</span><span class="n">get_blueprint_library</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="s1">'*'</span><span class="p">)]</span>
 <span class="k">for</span> <span class="n">blueprint</span> <span class="ow">in</span> <span class="n">blueprints</span><span class="p">:</span>
    <span class="nb">print</span><span class="p">(</span><span class="n">blueprint</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
    <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="n">blueprint</span><span class="p">:</span>
-       <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  - </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">attr</span><span class="p">))</span>
-</code></pre></div></p>
+       <span class="nb">print</span><span class="p">(</span><span class="s1">'  - </span><span class="si">{}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">attr</span><span class="p">))</span>
+</code></pre></div>
 <p>查看 <a href="../core_actors/">蓝图的介绍</a>。</p>
 <h3 id="_2">控制器</h3>
 <ul>
@@ -2265,7 +2265,7 @@
 </li>
 </ul>
 </li>
-</ul>
+</ul></div>
               
             </div>
           </div><footer>

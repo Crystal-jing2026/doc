@@ -100,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <div class="admonition 警告">
+                <div><div class="admonition 警告">
 <p class="admonition-title">警告</p>
 <p>这是一项正在进行的工作！！这个版本的Carla不被认为是一个稳定的版本。在接下来的几个月里，这个分支可能会发生许多重大变化，这可能会破坏您所做的任何修改。我们建议你把这个分支当作实验性的。</p>
 </div>
@@ -116,8 +116,8 @@ CarlaSetup.bat
 </code></pre></div>
 <p>Setup.bat 脚本会安装所有必需的软件包，包括 Visual Studio 2022、Cmake、Python 软件包和虚幻引擎 5。它还会下载 Carla 内容并构建 Carla。因此，此批处理文件可能需要很长时间才能完成。</p>
 <p>启动x64 Native tools
-<div class="highlight"><pre><span></span><code>call<span class="w"> </span><span class="s2">&quot;C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat&quot;</span>
-</code></pre></div></p>
+</p><div class="highlight"><pre><span></span><code>call<span class="w"> </span><span class="s2">"C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat"</span>
+</code></pre></div>
 <div class="admonition 注意">
 <p class="admonition-title">注意</p>
 <p>运行<code>set PATH=D:\software\cmake-3.30.3-windows-x86_64\bin;%PATH%</code>设置cmake版本，并使用虚拟环境执行<code>Setup.bat</code>。</p>
@@ -158,7 +158,7 @@ CarlaSetup.bat
 </ul>
 <div class="highlight"><pre><span></span><code>cmake<span class="w"> </span>--build<span class="w"> </span>Build<span class="w"> </span>--target<span class="w"> </span>launch
 </code></pre></div>
-<p><img alt="" src="../img/build/ue5_launch.png" /></p>
+<p><img alt="" src="../img/build/ue5_launch.png"></p>
 <h2 id="carla-ue5_1">使用 Carla UE5 构建软件包</h2>
 <div class="admonition 警告">
 <p class="admonition-title">警告</p>
@@ -218,16 +218,16 @@ git<span class="w"> </span>fetch<span class="w"> </span>--unshallow
 </ul>
 <blockquote>
 <p>只克隆一层
-<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>--depth<span class="w"> </span><span class="m">1</span><span class="w"> </span>https://gitlab.scm321.com/ufx/xxxx.git
-</code></pre></div></p>
+</p><div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>--depth<span class="w"> </span><span class="m">1</span><span class="w"> </span>https://gitlab.scm321.com/ufx/xxxx.git
+</code></pre></div>
 </blockquote>
 <ul>
 <li>编译Carla依赖时出错：<code>HTTP/2 stream 1 was not closed cleanly: PROTOCOL_ERROR (err 1)</code></li>
 </ul>
 <blockquote>
 <p>解决：问题是由于HTTP/2引起的，在Git配置中禁用HTTP/2，改用HTTP/1.1
-<div class="highlight"><pre><span></span><code>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>http.version<span class="w"> </span>HTTP/1.1
-</code></pre></div></p>
+</p><div class="highlight"><pre><span></span><code>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>http.version<span class="w"> </span>HTTP/1.1
+</code></pre></div>
 </blockquote>
 <ul>
 <li>安装vs2022时出现win10 SDK安装错误：</li>
@@ -235,7 +235,7 @@ git<span class="w"> </span>fetch<span class="w"> </span>--unshallow
 <blockquote>
 <p>解决：通过 <a href="https://developer.microsoft.com/zh-cn/windows/downloads/sdk-archive/">链接</a> 下载版本<code>10.0.20348.0</code>的Win10 SDK进行安装。如果安装并启动vs2022后，仍出现：<code>找不到 windows sdk 版本 10.0.20348.0</code>的问题，则根据 <a href="https://blog.csdn.net/qq_74286834/article/details/142055699">链接</a> 进行修复即可。</p>
 <p>即将文件<code>C:\Windows Kits\10\DesignTime\CommonConfiguration\Neutral\UAP\10.0.20348.0\UAP.props</code>文件的第5行中<code>WindowsSdkDir</code>中增加<code>&lt;WindowsSdkDir Condition="'$(WindowsSdkDir)' == ''"&gt;</code>。</p>
-</blockquote>
+</blockquote></div>
               
             </div>
           </div><footer>

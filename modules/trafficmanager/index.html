@@ -100,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="traffic-manager">Traffic Manager</h1>
+                <div><h1 id="traffic-manager">Traffic Manager</h1>
 <h2 id="traffic-manager_1">什么是 Traffic Manager？</h2>
 <p>Traffic Manager（简称 TM）是 CARLA 模拟器中用于控制自动驾驶车辆行为的模块。它通过模拟真实的城市交通环境，生成符合交通规则的车辆行为，包括路径规划、避障、交通信号响应等。用户可以通过 TM 实现对车辆行为的细粒度控制，以满足特定的训练或测试需求。</p>
 <h2 id="_1">架构概览</h2>
@@ -166,7 +166,7 @@
 <li><strong>性能统计与帧控制</strong>：记录每阶段的执行耗时用于性能监控，并根据同步模式（sync mode）或固定步长设定统一推进仿真时间步长（delta time）。</li>
 </ul>
 <p>示例调度流程（伪代码）：</p>
-<p><div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">each</span><span class="w"> </span><span class="n">simulation</span><span class="w"> </span><span class="n">frame</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<p></p><div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">each</span><span class="w"> </span><span class="n">simulation</span><span class="w"> </span><span class="n">frame</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">ALSM</span><span class="p">.</span><span class="n">Update</span><span class="p">();</span><span class="w">                 </span><span class="c1">// 更新参与者生命周期与状态缓存</span>
 <span class="w">    </span><span class="n">LocalizationStage</span><span class="p">.</span><span class="n">Run</span><span class="p">();</span><span class="w">      </span><span class="c1">// 定位模块执行</span>
 <span class="w">    </span><span class="n">CollisionStage</span><span class="p">.</span><span class="n">Run</span><span class="p">();</span><span class="w">         </span><span class="c1">// 碰撞检测</span>
@@ -176,7 +176,7 @@
 <span class="w">    </span><span class="n">ApplyControlCommands</span><span class="p">();</span><span class="w">       </span><span class="c1">// 汇总控制命令，应用至服务器</span>
 <span class="p">}</span>
 </code></pre></div>
-控制循环作为 Traffic Manager 的主心骨，串联起整个行为决策链条，其效率与鲁棒性直接决定了多车自动驾驶仿真的实时性与稳定性。</p>
+控制循环作为 Traffic Manager 的主心骨，串联起整个行为决策链条，其效率与鲁棒性直接决定了多车自动驾驶仿真的实时性与稳定性。
 <p><strong>内存地图与网格路径（Local Map &amp; Waypoint Grid）</strong>：该模块负责将 CARLA 原始地图数据转化为高效结构化的拓扑图与稀疏导航路径点（Waypoints），用于支持定位、路径规划与避障等模块的快速查询与插值计算。它是构建交通规则感知与路径跟踪基础的核心组件之一，主要功能包括：</p>
 <ul>
 <li><strong>地图解析与拓扑构建</strong>：读取 CARLA 世界地图并转换为图结构，节点表示车道中的关键位置，边表示车道的连接关系，形成有向图用于路径搜索与行为建模。</li>
@@ -593,7 +593,7 @@
 </tr>
 </tbody>
 </table>
-<p>典型应用场景<br />
+<p>典型应用场景<br>
 Traffic Manager：生成复杂交通流测试自动驾驶系统的鲁棒性（如路口拥堵、行人突然穿越）。</p>
 <p>传感器：为感知算法提供训练数据。</p>
 <p>蓝图库：快速生成特定型号的车辆或传感器配置。</p>
@@ -704,7 +704,7 @@ Traffic Manager 可根据天气/时间系统的参数调整 NPC 行为：</p>
 <td>通过 API 动态调整 Traffic Manager 参数，适应不同测试需求（如极端场景、边缘案例）</td>
 </tr>
 </tbody>
-</table>
+</table></div>
               
             </div>
           </div><footer>

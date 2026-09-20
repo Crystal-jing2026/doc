@@ -100,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="_1"><a href="https://carla.readthedocs.io/en/latest/ref_sensors/">传感器参考</a></h1>
+                <div><h1 id="_1"><a href="https://carla.readthedocs.io/en/latest/ref_sensors/">传感器参考</a></h1>
 <ul>
 <li><a href="./"><strong>地面传感器</strong></a><ul>
 <li><a href="#collision-detector"><strong>碰撞检测器</strong></a></li>
@@ -169,7 +169,7 @@
 <p class="admonition-title">重要</p>
 <p>所有传感器都使用虚幻引擎左手坐标系（<strong>x</strong> - <em>向前</em>，<strong>y</strong> - <em>向右</em>，<strong>z</strong> - <em>向上</em>），并返回本地空间中的坐标。使用任何可视化软件时，请注意其坐标系。许多反转 Y 轴，因此直接可视化传感器数据可能会导致镜像输出。传感器的具体实现请参考<a href="../sensor/sensor_imp/">链接</a> 。</p>
 </div>
-<hr />
+<hr>
 <h2 id="_2">碰撞检测器 <span id="collision-detector"></span></h2>
 <ul>
 <li><strong>蓝图：</strong> sensor.other.collision</li>
@@ -220,7 +220,7 @@
 </tr>
 </tbody>
 </table>
-<hr />
+<hr>
 <h2 id="_4">深度相机 <span id="depth-camera"></span></h2>
 <ul>
 <li><strong>蓝图：</strong> sensor.camera.depth</li>
@@ -233,9 +233,9 @@ in_meters = 1000 * normalized
 </code></pre></div>
 <p>然后，应使用<a href="../python_api/#carla.ColorConverter">carla.colorConverter</a>将输出<a href="../python_api/#carla.Image">carla.Image</a>保存到磁盘，该 <a href="../python_api/#carla.ColorConverter">carla.colorConverter</a> 会将存储在 RGB 通道中的距离转换为包含该距离的 <strong>[0,1]</strong> 浮点数，然后将其转换为灰度。<a href="../python_api/#carla.ColorConverter">carla.colorConverter</a> 中有两个选项可获取深度视图：<strong>Depth</strong> 和 <strong>Logaritmic depth</strong>。两者的精度都是毫米级的，但对数方法可以为更近的物体提供更好的结果。</p>
 <div class="highlight"><pre><span></span><code><span class="o">...</span>
-<span class="n">raw_image</span><span class="o">.</span><span class="n">save_to_disk</span><span class="p">(</span><span class="s2">&quot;path/to/save/converted/image&quot;</span><span class="p">,</span><span class="n">carla</span><span class="o">.</span><span class="n">Depth</span><span class="p">)</span>
+<span class="n">raw_image</span><span class="o">.</span><span class="n">save_to_disk</span><span class="p">(</span><span class="s2">"path/to/save/converted/image"</span><span class="p">,</span><span class="n">carla</span><span class="o">.</span><span class="n">Depth</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="ImageDepth" src="../img/ref_sensors_depth.jpg" /></p>
+<p><img alt="ImageDepth" src="../img/ref_sensors_depth.jpg"></p>
 <h4 id="_5">相机基本属性</h4>
 <table>
 <thead>
@@ -369,7 +369,7 @@ in_meters = 1000 * normalized
 </tr>
 </tbody>
 </table>
-<hr />
+<hr>
 <h2 id="_8">全球导航卫星系统传感器 <span id="gnss-sensor"></span></h2>
 <ul>
 <li><strong>蓝图：</strong> sensor.other.gnss</li>
@@ -480,7 +480,7 @@ in_meters = 1000 * normalized
 </tr>
 </tbody>
 </table>
-<hr />
+<hr>
 <h2 id="_11"><a href="https://github.com/carla-simulator/carla/blob/dev/Unreal/CarlaUE4/Plugins/Carla/Source/Carla/Sensor/InertialMeasurementUnit.cpp">惯性测量单元传感器</a> <span id="imu-sensor"></span></h2>
 <ul>
 <li><strong>蓝图：</strong> sensor.other.imu</li>
@@ -619,7 +619,7 @@ in_meters = 1000 * normalized
 <p class="admonition-title">注意</p>
 <p>对于指南针，北为 0 弧度。东为 <em>pi</em> /2 弧度，南为 <em>pi</em> 弧度，西为 3 <em>pi</em> /2 弧度。在 Carla 的全局坐标系中，北为 Y 轴减小的方向。东为 X 轴增加的方向。转换为度数的指南针值等于 <code>90 - 偏航</code>。 </p>
 </div>
-<hr />
+<hr>
 <h2 id="_14">压线检测器 <span id="lane-invasion-detector"></span></h2>
 <ul>
 <li><strong>蓝图：</strong> sensor.other.lane_invasion</li>
@@ -672,7 +672,7 @@ in_meters = 1000 * normalized
 </tr>
 </tbody>
 </table>
-<hr />
+<hr>
 <h2 id="_16">激光雷达传感器 <span id="lidar-sensor"></span></h2>
 <ul>
 <li><strong>蓝图：</strong> sensor.lidar.ray_cast</li>
@@ -703,7 +703,7 @@ in_meters = 1000 * normalized
 <p>可以调整激光雷达的旋转以覆盖每个模拟步骤的特定角度（使用 <a href="../adv_synchrony_timestep/">固定的时间步长</a> ）。例如，每步旋转一次（整圈输出，如下图），旋转频率和模拟的 FPS 应该相等。 <br> 
 <strong>1.</strong> 设置传感器的频率 <code>sensors_bp['lidar'][0].set_attribute('rotation_frequency','10')</code>. <br> 
 <strong>2.</strong> 使用 <code>python3 config.py --fps=10</code> 运行模拟。</p>
-<p><img alt="LidarPointCloud" src="../img/lidar_point_cloud.jpg" /></p>
+<p><img alt="LidarPointCloud" src="../img/lidar_point_cloud.jpg"></p>
 <h4 id="_17">激光雷达属性</h4>
 <table>
 <thead>
@@ -942,12 +942,12 @@ in_meters = 1000 * normalized
 </ul>
 <p>传感器创建一个圆锥视图，该视图被转换为视野中的元素及其相对于传感器的速度的二维点图。这可用于塑造元素并评估它们的运动和方向。由于使用极坐标，这些点将集中在视图中心周围。</p>
 <p>测量的点作为<a href="../python_api/#carla.RadarDetection">carla.RadarDetection</a>数组包含在<a href="../python_api/#carla.RadarMeasurement">carla.RadarMeasurement</a>中，该数组指定它们的极坐标、距离和速度。雷达传感器提供的原始数据可以轻松转换为 <strong>numpy</strong> 可管理的格式：
-<div class="highlight"><pre><span></span><code><span class="c1"># 为了获得 numpy [[vel, azimuth, altitude, depth],...[,,,]]:</span>
-<span class="n">points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">frombuffer</span><span class="p">(</span><span class="n">radar_data</span><span class="o">.</span><span class="n">raw_data</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="s1">&#39;f4&#39;</span><span class="p">))</span>
+</p><div class="highlight"><pre><span></span><code><span class="c1"># 为了获得 numpy [[vel, azimuth, altitude, depth],...[,,,]]:</span>
+<span class="n">points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">frombuffer</span><span class="p">(</span><span class="n">radar_data</span><span class="o">.</span><span class="n">raw_data</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="s1">'f4'</span><span class="p">))</span>
 <span class="n">points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">radar_data</span><span class="p">),</span> <span class="mi">4</span><span class="p">))</span>
-</code></pre></div></p>
+</code></pre></div>
 <p>提供的脚本<code>manual_control.py</code>使用此传感器来显示正在检测的点，并在静态时将其绘制为白色，在向物体移动时将其绘制为红色，在远离物体时将其绘制为蓝色：</p>
-<p><img alt="ImageRadar" src="../img/ref_sensors_radar.jpg" /></p>
+<p><img alt="ImageRadar" src="../img/ref_sensors_radar.jpg"></p>
 <table>
 <thead>
 <tr>
@@ -1038,7 +1038,7 @@ in_meters = 1000 * normalized
 </tr>
 </tbody>
 </table>
-<hr />
+<hr>
 <h2 id="rgb">RGB 相机 <span id="rgb-camera"></span></h2>
 <ul>
 <li><strong>蓝图：</strong> sensor.camera.rgb</li>
@@ -1056,7 +1056,7 @@ in_meters = 1000 * normalized
 <li><strong>Depth of field:</strong> 模糊靠近或远离相机的物体。</li>
 </ul>
 <p><code>sensor_tick</code>告诉我们希望传感器捕获数据的速度有多快。值为 1.5 意味着我们希望传感器每半秒捕获一次数据。默认情况下，值 0.0 表示尽可能快。</p>
-<p><img alt="ImageRGB" src="../img/ref_sensors_rgb.jpg" /></p>
+<p><img alt="ImageRGB" src="../img/ref_sensors_rgb.jpg"></p>
 <p>其实现原理参考 <a href="../sensor/camera_analysis/">视觉传感器器系列实现原理分析</a> 。</p>
 <h4 id="_23">相机基本属性</h4>
 <table>
@@ -1398,7 +1398,7 @@ in_meters = 1000 * normalized
 </tr>
 </tbody>
 </table>
-<hr />
+<hr>
 <h2 id="_27">广角相机  <span id="wide-angle-cameras"></span></h2>
 <ul>
 <li><strong>RGB 蓝图:</strong> sensor.camera.rgb.wide_angle_lens</li>
@@ -1553,7 +1553,7 @@ in_meters = 1000 * normalized
 </tbody>
 </table>
 <p>具体效果请参考 <a href="https://mp.weixin.qq.com/s/GsEzR-R0xvIyUzSor6j6XQ">广角相机模拟效果及代码分析</a> 。</p>
-<hr />
+<hr>
 <h2 id="_29"><a href="https://github.com/carla-simulator/carla/pull/3755/files">鱼眼相机</a> <span id="fisheye-camera"></span></h2>
 <p><a href="https://zhuanlan.zhihu.com/p/340751380">鱼眼相机镜头</a> 是由十几个不同的透镜组合而成，在成像的过程中，入射光线经过不同程度的折射，投影到尺寸有限的成像平面上，使得鱼眼镜头拥有更大的视野范围。
 与针孔相机原理不同，鱼眼镜头采用非相似成像，在成像过程中引入畸变，通过对直径空间的压缩，突破成像视角的局限，从而达到广角成像。
@@ -1565,7 +1565,7 @@ in_meters = 1000 * normalized
 <p>Fisheye 相机充当常规鱼眼相机，从场景中捕捉图像。
 <a href="../python_api/#carla.ColorConverter">carla.colorConverter</a> 定义可用于 carla.ImageCube 的转换模式的类，以显示 <a href="../python_api/#carla.Sensor">carla.Sensor</a> 提供的信息。</p>
 <p>这里的 <code>sensor_tick</code> 表示我们希望传感器以多快的速度捕获数据。值为 1.5 表示我们希望传感器每 1.5 秒捕获一次数据。默认情况下，值为 0.0 表示尽可能快。</p>
-<p><img alt="FisheyeImage" src="../img/sensor/ref_sensors_fisheye.png" /></p>
+<p><img alt="FisheyeImage" src="../img/sensor/ref_sensors_fisheye.png"></p>
 <h4 id="_30">基本相机属性</h4>
 <table>
 <thead>
@@ -1659,7 +1659,7 @@ in_meters = 1000 * normalized
 </tbody>
 </table>
 <p><br></p>
-<hr />
+<hr>
 <h2 id="_32">责任敏感安全传感器 <span id="rss-sensor"></span></h2>
 <ul>
 <li><strong>蓝图：</strong> sensor.other.rss</li>
@@ -1840,7 +1840,7 @@ in_meters = 1000 * normalized
     <span class="n">actor_constellation_result</span><span class="o">.</span><span class="n">actor_dynamics</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_vehicle_parameters</span>
 
     <span class="n">actor_id</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
-    <span class="n">actor_type_id</span> <span class="o">=</span> <span class="s2">&quot;none&quot;</span>
+    <span class="n">actor_type_id</span> <span class="o">=</span> <span class="s2">"none"</span>
     <span class="k">if</span> <span class="n">actor_constellation_data</span><span class="o">.</span><span class="n">other_actor</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
         <span class="c1"># 为特定的参与者定制 actor_constellation_result</span>
         <span class="o">...</span>
@@ -1849,7 +1849,7 @@ in_meters = 1000 * normalized
         <span class="o">...</span>
     <span class="k">return</span> <span class="n">actor_constellation_result</span>
 </code></pre></div>
-<hr />
+<hr>
 <h2 id="_34">语义激光雷达传感器 <span id="semantic-lidar-sensor"></span></h2>
 <ul>
 <li><strong>蓝图：</strong> sensor.lidar.ray_cast_semantic</li>
@@ -1866,8 +1866,8 @@ in_meters = 1000 * normalized
 <li>语义激光雷达既不包含强度、衰减也不包含噪声模型属性。</li>
 </ul>
 <p>这些点是通过为垂直 FOV 中分布的每个通道添加激光来计算的。旋转是通过计算激光雷达在一帧中旋转的水平角度来模拟的。点云是通过在每个步骤中对每个激光进行光线投射来计算的。
-<div class="highlight"><pre><span></span><code><span class="nv">points_per_channel_each_step</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>points_per_second<span class="w"> </span>/<span class="w"> </span><span class="o">(</span>FPS<span class="w"> </span>*<span class="w"> </span>channels<span class="o">)</span>
-</code></pre></div></p>
+</p><div class="highlight"><pre><span></span><code><span class="nv">points_per_channel_each_step</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>points_per_second<span class="w"> </span>/<span class="w"> </span><span class="o">(</span>FPS<span class="w"> </span>*<span class="w"> </span>channels<span class="o">)</span>
+</code></pre></div>
 <p>激光雷达测量包含一个包，其中包含在某个时间 <code>1/FPS</code> 间隔内生成的所有点。在此间隔期间，物理不会更新，因此测量中的所有点都反映场景的相同“静态图片”。</p>
 <p>此输出包含激光雷达语义检测云，因此，可以对其进行迭代以检索其列表 <a href="../python_api/#carla.SemanticLidarDetection"><code>carla.SemanticLidarDetection</code></a>：</p>
 <div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">detection</span> <span class="ow">in</span> <span class="n">semantic_lidar_measurement</span><span class="p">:</span>
@@ -1876,7 +1876,7 @@ in_meters = 1000 * normalized
 <p>可以调整激光雷达的旋转以覆盖每个模拟步骤的特定角度（使用 <a href="../adv_synchrony_timestep/">固定的时间步长</a> ）。例如，每步旋转一次（整圈输出，如下图），旋转频率和模拟的FPS应该相等。 <br>
 <strong>1.</strong> 设置传感器的频率 <code>sensors_bp['lidar'][0].set_attribute('rotation_frequency','10')</code>。 <br>
 <strong>2.</strong> 使用 <code>python3 config.py --fps=10</code> 运行模拟。</p>
-<p><img alt="LidarPointCloud" src="../img/semantic_lidar_point_cloud.jpg" /></p>
+<p><img alt="LidarPointCloud" src="../img/semantic_lidar_point_cloud.jpg"></p>
 <h4 id="_35">语义激光雷达属性</h4>
 <p><br></p>
 <table>
@@ -1992,10 +1992,10 @@ in_meters = 1000 * normalized
 <li><strong>输出：</strong> 每步 <a href="../python_api/#carla.Image">carla.Image</a> （除非 <code>sensor_tick</code> 另有说明）。</li>
 </ul>
 <p>该摄像机根据其标签以不同的颜色显示它，从而对可见的每个物体进行分类（例如，行人与车辆的颜色不同）。当模拟开始时，场景中的每个元素都会使用标签创建。所以当参与者产生时就会发生这种情况。对象按其在项目中的相对文件路径进行分类。例如，存储在中的网格<code>Unreal/CarlaUE4/Content/Static/Pedestrians</code>被标记为<code>Pedestrian</code>。</p>
-<p><img alt="ImageSemanticSegmentation" src="../img/ref_sensors_semantic.jpg" /></p>
+<p><img alt="ImageSemanticSegmentation" src="../img/ref_sensors_semantic.jpg"></p>
 <p>服务器提供的图像的标签信息 <strong>编码在红色通道中</strong>： 红色值为 的像素<code>x</code>属于带有标签的对象<code>x</code>。这个原始的<a href="../python_api/#carla.Image">carla.Image</a>可以在<a href="../python_api/#carla.ColorConverter">carla.ColorConverter</a> 中的 <strong>CityScapesPalette</strong> 的帮助下存储和转换，以应用标签信息并通过语义分割显示图片。</p>
 <div class="highlight"><pre><span></span><code><span class="o">...</span>
-<span class="n">raw_image</span><span class="o">.</span><span class="n">save_to_disk</span><span class="p">(</span><span class="s2">&quot;path/to/save/converted/image&quot;</span><span class="p">,</span><span class="n">carla</span><span class="o">.</span><span class="n">cityScapesPalette</span><span class="p">)</span>
+<span class="n">raw_image</span><span class="o">.</span><span class="n">save_to_disk</span><span class="p">(</span><span class="s2">"path/to/save/converted/image"</span><span class="p">,</span><span class="n">carla</span><span class="o">.</span><span class="n">cityScapesPalette</span><span class="p">)</span>
 </code></pre></div>
 <p>目前可以使用以下标签（注意：从版本0.9.13到0.9.14数字所对应的标签发生了很大变化）：</p>
 <table>
@@ -2226,7 +2226,7 @@ in_meters = 1000 * normalized
 </tr>
 </tbody>
 </table>
-<hr />
+<hr>
 <h4 id="_39">相机镜头畸变属性</h4>
 <table>
 <thead>
@@ -2276,7 +2276,7 @@ in_meters = 1000 * normalized
 </tr>
 </tbody>
 </table>
-<hr />
+<hr>
 <h4 id="_40">输出属性</h4>
 <table>
 <thead>
@@ -2324,14 +2324,14 @@ in_meters = 1000 * normalized
 </tr>
 </tbody>
 </table>
-<hr />
+<hr>
 <h2 id="_41">实例分割相机 <span id="instance-segmentation-camera"></span></h2>
 <ul>
 <li><strong>蓝图：</strong> sensor.camera.instance_segmentation</li>
 <li><strong>输出：</strong> 每一步一个 <a href="../python_api/#carla.Image">carla.Image</a> （除非 <code>sensor_tick</code> 另有说明）。</li>
 </ul>
 <p>该相机根据类别和实例 ID 对视野中的每个对象进行分类。当模拟开始时，场景中的每个元素都会被创建为一个标签。因此，当生成一个参与者时就会发生这种情况。对象根据其在项目中的相对文件路径进行分类。例如，存储在 <code>Unreal/CarlaUE4/Content/Static/Pedestrians</code> 中的网格被标记为行人 <code>Pedestrian</code>。</p>
-<p><img alt="ImageInstanceSegmentation" src="../img/instance_segmentation.png" /></p>
+<p><img alt="ImageInstanceSegmentation" src="../img/instance_segmentation.png"></p>
 <p>服务器提供一张 <strong>在红色通道中编码了</strong> 标签信息的图像：红色值为 <code>x</code> 的像素属于带有标签 <code>x</code> 的对象。像素的绿色和蓝色值定义对象的唯一 ID。例如，8 位 RGB 值为 [10, 20, 55] 的像素是一辆具有唯一实例 ID <code>20-55</code> 的车辆（语义标签为 10）。</p>
 <h4 id="_42">基本相机属性</h4>
 <table>
@@ -2370,7 +2370,7 @@ in_meters = 1000 * normalized
 </tr>
 </tbody>
 </table>
-<hr />
+<hr>
 <h4 id="_43">相机镜头畸变属性</h4>
 <table>
 <thead>
@@ -2420,7 +2420,7 @@ in_meters = 1000 * normalized
 </tr>
 </tbody>
 </table>
-<hr />
+<hr>
 <h4 id="_44">输出属性</h4>
 <table>
 <thead>
@@ -2468,7 +2468,7 @@ in_meters = 1000 * normalized
 </tr>
 </tbody>
 </table>
-<hr />
+<hr>
 <h2 id="_45">动态视觉传感器相机 <span id="dvs-camera"></span></h2>
 <ul>
 <li><strong>蓝图：</strong> sensor.camera.dvs</li>
@@ -2483,11 +2483,11 @@ L(x,y,t) - L(x,y, t-\delta t) = pol C
 </p>
 <p>
 <script type="math/tex"> t-\delta t </script> 是该像素上最后一个事件被触发的时间，<code>pol</code>是根据亮度变化的符号来判断事件的极性(polarity)。<code>+1</code>当亮度增加时极性为正，<code>-1</code>当亮度减少时极性为负。工作原理如下图所示。标准相机以固定速率输出帧，从而在场景中不存在运动时发送冗余信息。相比之下，事件摄像机是数据驱动的传感器，能够以微秒延迟响应亮度变化。在绘图中，只要（带符号的）亮度变化随时间<code>t</code>超过一维<code>x</code>的对比度(contrast )阈值<code>C</code>，就会生成正（或负）事件（蓝点、红点） 。观察信号快速变化时事件率如何增长。</p>
-<p><img alt="DVSCameraWorkingPrinciple" src="../img/sensor_dvs_scheme.jpg" /></p>
+<p><img alt="DVSCameraWorkingPrinciple" src="../img/sensor_dvs_scheme.jpg"></p>
 <p>动态视觉传感器的当前实现在两个连续同步帧之间以统一采样方式工作。因此，为了模拟真实事件相机的高时间分辨率（微秒级），传感器需要以高频率执行（比传统相机的频率高得多）。实际上，Carla 汽车行驶速度越快，事件数量就会增加。因此，传感器频率应随着场景的动态而相应增加。用户应该在时间精度和计算成本之间找到平衡。</p>
 <p>提供的脚本 <a href="https://github.com/OpenHUTB/doc/blob/master/src/examples/manual_control.py"><code>manual_control.py</code></a> 使用动态视觉传感器摄像头来展示如何配置传感器、如何获取事件流以及如何以图像格式（通常称为事件框架）描述此类事件。</p>
 <p>请注意，由于动态视觉传感器摄像机的采样方法，如果两个连续同步帧之间没有像素差异，摄像机将不会返回图像。这总是发生在第一帧中，因为没有前一帧可供比较，并且在帧之间没有移动的情况下也是如此。</p>
-<p><img alt="DVSCameraWorkingPrinciple" src="../img/sensor_dvs.gif" /></p>
+<p><img alt="DVSCameraWorkingPrinciple" src="../img/sensor_dvs.gif"></p>
 <p>动态视觉传感器是一个相机，因此具有 RGB 相机中可用的所有属性。然而，事件摄像机的工作原理几乎没有什么独有的属性。</p>
 <h4 id="_46">动态视觉传感器相机属性</h4>
 <table>
@@ -2546,10 +2546,10 @@ L(x,y,t) - L(x,y, t-\delta t) = pol C
 </table>
 <p>对动态视觉传感器（DVS）模块生成的事件数据进行系统性仿真到真实差距 <a href="https://mp.weixin.qq.com/s/WjRkfObSu6cb2S2sQJbXcg">评估</a> 。</p>
 <p><br></p>
-<hr />
+<hr>
 <h2 id="_47">光流相机 <span id="optical-flow-camera"></span></h2>
 <p>光流相机捕捉从相机的角度感知的运动。该传感器记录的每个像素都对投影到图像平面的该点的速度进行编码。像素的速度在 [-2,2] 范围内编码。为了获得以像素为单位的运动，可以将该信息与图像大小一起缩放至[-2 * image_size, 2 * image_size]。</p>
-<p><img alt="optical_flow" src="../img/optical_flow.png" /></p>
+<p><img alt="optical_flow" src="../img/optical_flow.png"></p>
 <h4 id="_48">光流相机属性</h4>
 <table>
 <thead>
@@ -2684,7 +2684,7 @@ L(x,y,t) - L(x,y, t-\delta t) = pol C
 </tbody>
 </table>
 <p><br></p>
-<hr />
+<hr>
 <h2 id="v2x">V2X 传感器 <span id="v2x-sensor"></span></h2>
 <p>车联万物 (Vehicle-to-everything, V2X) 通信是未来协作智能交通系统应用的一个重要方面。在实际车辆中，这需要每辆车上都有一个专用的车载单元 (onboard unit, OBU)，能够通过无线信道发送和接收信息。根据地区（欧洲、中国、美国），使用不同的物理技术、协议和应用程序消息格式。</p>
 <p>Carla 目前支持模拟简单的广播无线信道和两条应用消息。尚不支持网络访问和转发协议。两条实现的消息分别是符合欧洲标准 ETSI 的 <a href="#cooperative-awareness-message"><em>协作感知消息</em></a> 和 <a href="#custom-v2x-message"><em>自定义消息</em></a> 类型，可用于传输任意字符串数据（例如 JSON）。V2X 通信有两种不同的传感器，可以单独使用，每种应用消息类型各一个。实现原理请参考<a href="../pdf/V2X_sensor.pdf">论文</a> 。</p>
@@ -2968,7 +2968,7 @@ sensor.send(message)
 </tbody>
 </table>
 <p><br></p>
-<hr />
+<hr>
 <h2 id="_54">带表面法线的激光雷达传感器 <span id="surface-normal-lidar-sensor"></span></h2>
 <ul>
 <li><strong>蓝图：</strong> sensor.lidar.ray_cast_surface_normals</li>
@@ -2976,14 +2976,14 @@ sensor.send(message)
 </ul>
 <p><a href="https://zhuanlan.zhihu.com/p/673449224">点云法线</a>可以提供该点所处平面的方向和朝向（密闭体的内部还是外部）信息，是利用泊松重建算法进行<strong>点云曲面重建</strong>的关键输入。</p>
 <p>该传感器与 <a href="#lidar-sensor">激光雷达传感器</a> 共享相同的接口。除了提供 <code>x, y, z</code> 坐标和强度值 <code>i</code> 之外，表面法线激光雷达传感器还会返回一个全局方向的表面法向量 <code>nx, ny, nz</code>。该向量表示激光束与表面相交点处的全局方向。实现代码参考 <a href="https://github.com/carla-simulator/carla/pull/8773">拉取请求</a> ，实现原理参考 <a href="https://arxiv.org/abs/2503.08601">论文</a> 。</p>
-<p><img alt="SurfaceNormalLidarPointCloud" src="../img/surface_normal_lidar_point_cloud.png" /></p>
-<hr />
+<p><img alt="SurfaceNormalLidarPointCloud" src="../img/surface_normal_lidar_point_cloud.png"></p>
+<hr>
 <h2 id="vr">VR 驾驶的自我传感器 <span id="ego_sensor"></span></h2>
 <ul>
 <li><strong>蓝图：</strong> harplab.dreyevr_vehicle.*</li>
 <li><strong>输出：</strong> 每步输出眼动仪数据（时间、凝视光线、2D瞳孔位置、瞳孔直径、眼睛开度、世界中的焦点等）、用户输入（油门、转向、刹车、转向信号等）、摄像头的图像。详细信息请参考 <a href="../interbehavior/#ego_sensor">VR 驾驶自我传感器</a> 。</li>
 </ul>
-<p><img alt="" src="../img/pedestrian/VR_demo.gif" /></p>
+<p><img alt="" src="../img/pedestrian/VR_demo.gif"></p></div>
               
             </div>
           </div><footer>

@@ -100,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="_1">客户端的详细实现模块</h1>
+                <div><h1 id="_1">客户端的详细实现模块</h1>
 <h2 id="simulator">模拟器 <a href="https://github.com/OpenHUTB/hutb/blob/hutb/LibCarla/source/carla/client/detail/Simulator.cpp">Simulator</a></h2>
 <p>作为客户端核心调度器：管理 Episode 生命周期、地图加载、帧同步、Actor 与传感器的创建与订阅，并桥接底层 _client 与高层 API。</p>
 <h2 id="episodeproxy">回合代理 <a href="https://github.com/OpenHUTB/hutb/blob/hutb/LibCarla/source/carla/client/detail/EpisodeProxy.cpp">EpisodeProxy</a></h2>
@@ -116,12 +116,12 @@
 <p><strong>核心目的</strong>：避免重复向服务器请求 Actor 描述信息，通过本地缓存 rpc::Actor 提升性能。</p>
 <p><strong>设计原理</strong></p>
 <ul>
-<li><strong>本地描述符缓存</strong>: 维护 <a href="https://github.com/OpenHUTB/hutb/blob/04b87b07133148b660d0bbb773f58e754bb20cd7/LibCarla/source/carla/client/detail/CachedActorList.h#L59">std::unordered_map<ActorId, rpc::Actor></a> 存储已知 Actor 的元信息（类型、属性、变换等）</li>
+<li><strong>本地描述符缓存</strong>: 维护 <a href="https://github.com/OpenHUTB/hutb/blob/04b87b07133148b660d0bbb773f58e754bb20cd7/LibCarla/source/carla/client/detail/CachedActorList.h#L59">std::unordered_map<actorid, rpc::actor></actorid,></a> 存储已知 Actor 的元信息（类型、属性、变换等）</li>
 <li><strong>线程安全</strong>: 所有操作用互斥锁（ <a href="https://github.com/OpenHUTB/hutb/blob/04b87b07133148b660d0bbb773f58e754bb20cd7/LibCarla/source/carla/client/detail/CachedActorList.h#L81">std::mutex</a> ）保护（该句代码后面即为被保护的共享数据，析构时自动解锁，即使发生异常也能正确解锁），支持多线程并发访问</li>
 <li><strong>增量更新</strong>: <a href="https://github.com/OpenHUTB/hutb/blob/04b87b07133148b660d0bbb773f58e754bb20cd7/LibCarla/source/carla/client/detail/CachedActorList.h#L86">只请求缺失的 Actor</a> ，已缓存的直接返回</li>
 </ul>
 <h2 id="callbacklist">回调列表 CallbackList</h2>
-<p><strong>核心目的</strong>：线程安全的回调函数管理器，支持 <a href="https://github.com/OpenHUTB/hutb/blob/04b87b07133148b660d0bbb773f58e754bb20cd7/LibCarla/source/carla/client/detail/CallbackList.h#L32">注册回调</a> 、<a href="https://github.com/OpenHUTB/hutb/blob/04b87b07133148b660d0bbb773f58e754bb20cd7/LibCarla/source/carla/client/detail/CallbackList.h#L25">触发所有回调</a> 、<a href="https://github.com/OpenHUTB/hutb/blob/04b87b07133148b660d0bbb773f58e754bb20cd7/LibCarla/source/carla/client/detail/CallbackList.h#L39">按ID移除回调</a> ，常用于事件通知、传感器数据分发等场景。</p>
+<p><strong>核心目的</strong>：线程安全的回调函数管理器，支持 <a href="https://github.com/OpenHUTB/hutb/blob/04b87b07133148b660d0bbb773f58e754bb20cd7/LibCarla/source/carla/client/detail/CallbackList.h#L32">注册回调</a> 、<a href="https://github.com/OpenHUTB/hutb/blob/04b87b07133148b660d0bbb773f58e754bb20cd7/LibCarla/source/carla/client/detail/CallbackList.h#L25">触发所有回调</a> 、<a href="https://github.com/OpenHUTB/hutb/blob/04b87b07133148b660d0bbb773f58e754bb20cd7/LibCarla/source/carla/client/detail/CallbackList.h#L39">按ID移除回调</a> ，常用于事件通知、传感器数据分发等场景。</p></div>
               
             </div>
           </div><footer>

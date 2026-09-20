@@ -100,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="_1"><a href="https://carla.readthedocs.io/en/latest/core_map/">第三、地图和导航</a></h1>
+                <div><h1 id="_1"><a href="https://carla.readthedocs.io/en/latest/core_map/">第三、地图和导航</a></h1>
 <p>在讨论了世界及其参与者之后，是时候将所有内容都放在适当的位置并了解地图以及参与者如何导航。</p>
 <ul>
 <li><a href="#the-map"><strong>地图</strong></a>  <ul>
@@ -135,7 +135,7 @@
 <li><a href="#left-handed-traffic"><strong>靠左行驶的交通</strong></a></li>
 <li><a href="#additional-maps"><strong>附加地图</strong></a></li>
 </ul>
-<hr />
+<hr>
 <h2 id="_2">地图 <span id="the-map"></span></h2>
 <p>地图包括城镇的三维模型及其道路定义。地图的道路定义基于 OpenDRIVE 文件，这是一种标准化的带注释的道路定义格式。<a href="http://www.opendrive.org/docs/OpenDRIVEFormatSpecRev1.4H.pdf">OpenDRIVE 1.4 标准</a> 定义道路、车道、路口等方式决定了 Python API 的功能以及决策背后的推理。</p>
 <p>Python API 充当高级查询系统来导航这些道路。它不断发展以提供更广泛的工具集。</p>
@@ -145,7 +145,7 @@
 <li><code>reload_world()</code> 使用相同的地图创建世界的新实例。</li>
 <li><code>load_world()</code> 改变当前地图并创建一个新世界。</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="n">world</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">load_world</span><span class="p">(</span><span class="s1">&#39;Town01&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">world</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">load_world</span><span class="p">(</span><span class="s1">'Town01'</span><span class="p">)</span>
 </code></pre></div>
 <p>每个地图都有一个与当前加载的城市名称匹配的<code>name</code>属性，例如 <em>Town01</em> 。要获取可用地图的列表：</p>
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">client</span><span class="o">.</span><span class="n">get_available_maps</span><span class="p">())</span>
@@ -218,8 +218,8 @@ world.enable_environment_objects(objects_to_toggle, False)
 world.enable_environment_objects(objects_to_toggle, True)
 </code></pre>
 <p>查看切换不同对象的示例：</p>
-<p><img alt="toggle_objects_gif" src="../img/objects_small.gif" /></p>
-<hr />
+<p><img alt="toggle_objects_gif" src="../img/objects_small.gif"></p>
+<hr>
 <h2 id="carla">在 Carla 中导航 <span id="navigation-in-carla"></span></h2>
 <p>Carla 中的导航是通过 Waypoint API （来自 <a href="../python_api/#carla.Waypoint"><code>carla.Waypoint</code></a> 和 <a href="../python_api/#carla.Map"><code>carla.Map</code></a> 的方法组合）进行管理。</p>
 <p>客户端必须首先与服务器通信以检索包含路径点信息的地图对象。这只需要一次，所有后续查询都在客户端执行。</p>
@@ -261,7 +261,7 @@ world.enable_environment_objects(objects_to_toggle, True)
 <p>使用以下示例将 OpenDRIVE 格式的 <strong>道路信息保存到磁盘</strong>：</p>
 <div class="highlight"><pre><span></span><code><span class="n">info_map</span> <span class="o">=</span> <span class="nb">map</span><span class="o">.</span><span class="n">to_opendrive</span><span class="p">()</span>
 </code></pre></div>
-<hr />
+<hr>
 <h2 id="carla_1">Carla 地图 <span id="carla-maps"></span></h2>
 <p>Carla 生态系统中有八个城镇，每个城镇都有两种地图，非分层地图和分层地图。<a href="https://carla.readthedocs.io/en/latest/python_api/#carlamaplayer">图层</a>是指地图中分组的对象，由以下部分组成：</p>
 <ul>
@@ -349,7 +349,7 @@ world.enable_environment_objects(objects_to_toggle, True)
 </tr>
 </tbody>
 </table>
-<p><img alt="" src="../img/hutb/hutb_air.jpg" /></p>
+<p><img alt="" src="../img/hutb/hutb_air.jpg"></p>
 <div class="admonition 注意">
 <p class="admonition-title">注意</p>
 <p>Town06 和 Town07 是附加内容，不包含在标准 CARLA 包中。请参阅 <a href="#additional-maps">附加地图部分</a> ，了解如何导入这些内容。<a href="https://git.code.tencent.com/OpenHUTB/Content">完整资产仓库链接</a>，获取所有地图资产仓库修改权限请发送邮件到 open@hutb.edu.cn</p>
@@ -366,8 +366,8 @@ world.unload_map_layer(carla.MapLayer.Buildings)
 world.load_map_layer(carla.MapLayer.Buildings)
 </code></pre>
 <p>查看按顺序加载和卸载所有层的示例：</p>
-<p><img alt="map-layers" src="../img/sublevels.gif" /></p>
-<hr />
+<p><img alt="map-layers" src="../img/sublevels.gif"></p>
+<hr>
 <h2 id="_13">自定义地图  <span id="custom-maps"></span></h2>
 <p>Carla 旨在针对专业应用程序进行可扩展和高度定制。因此，除了 Carla 中现有的许多地图和资产之外，还可以创建和导入新的地图、道路网络和资产，以填充 Carla 模拟中的定制环境。以下文档详细介绍了构建和集成自定义地图所需的步骤：</p>
 <ul>
@@ -381,10 +381,10 @@ world.load_map_layer(carla.MapLayer.Buildings)
 </ul>
 <h2 id="_14">靠左行驶的交通</h2>
 <p>CARLA 支持 OpenDRIVE 文件中定义的<strong>靠左行驶的交通</strong>(left-handed traffic, LHT)规则。要在任何道路上调用靠左行驶交通规则，请像这样在 OpenDRIVE XML 文件中应用左侧通行属性：</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;road</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Road 0&quot;</span><span class="w"> </span><span class="na">length=</span><span class="s">&quot;1.3310253693587601e+1&quot;</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">junction=</span><span class="s">&quot;-1&quot;</span><span class="w"> </span><span class="na">rule=</span><span class="s">&quot;LHT&quot;</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;road</span><span class="w"> </span><span class="na">name=</span><span class="s">"Road 0"</span><span class="w"> </span><span class="na">length=</span><span class="s">"1.3310253693587601e+1"</span><span class="w"> </span><span class="na">id=</span><span class="s">"0"</span><span class="w"> </span><span class="na">junction=</span><span class="s">"-1"</span><span class="w"> </span><span class="na">rule=</span><span class="s">"LHT"</span><span class="nt">&gt;</span>
 <span class="w">    </span><span class="nt">&lt;link&gt;</span>
-<span class="w">        </span><span class="nt">&lt;predecessor</span><span class="w"> </span><span class="na">elementType=</span><span class="s">&quot;road&quot;</span><span class="w"> </span><span class="na">elementId=</span><span class="s">&quot;3&quot;</span><span class="w"> </span><span class="na">contactPoint=</span><span class="s">&quot;end&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
-<span class="w">        </span><span class="nt">&lt;successor</span><span class="w"> </span><span class="na">elementType=</span><span class="s">&quot;road&quot;</span><span class="w"> </span><span class="na">elementId=</span><span class="s">&quot;10&quot;</span><span class="w"> </span><span class="na">contactPoint=</span><span class="s">&quot;start&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;predecessor</span><span class="w"> </span><span class="na">elementType=</span><span class="s">"road"</span><span class="w"> </span><span class="na">elementId=</span><span class="s">"3"</span><span class="w"> </span><span class="na">contactPoint=</span><span class="s">"end"</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;successor</span><span class="w"> </span><span class="na">elementType=</span><span class="s">"road"</span><span class="w"> </span><span class="na">elementId=</span><span class="s">"10"</span><span class="w"> </span><span class="na">contactPoint=</span><span class="s">"start"</span><span class="w"> </span><span class="nt">/&gt;</span>
 <span class="w">    </span><span class="nt">&lt;/link&gt;</span>
 ...
 <span class="nt">&lt;/road&gt;</span>
@@ -418,12 +418,12 @@ world.load_map_layer(carla.MapLayer.Buildings)
 </ul>
 </li>
 </ul>
-<hr />
+<hr>
 <h2 id="_16">工具</h2>
 <ul>
 <li><a href="https://cloudconvert.com/webp-to-gif">webp转gif</a></li>
 <li><a href="https://gifcompressor.com/zh/">gif压缩</a></li>
-</ul>
+</ul></div>
               
             </div>
           </div><footer>

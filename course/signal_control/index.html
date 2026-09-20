@@ -100,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="_1">手动信号控制</h1>
+                <div><h1 id="_1">手动信号控制</h1>
 <p>这是一个用于控制交通信号灯的Flask应用程序，通过 <a href="https://pan.baidu.com/s/15T1hGoWJ70tVmsTX7-zcSw?pwd=hutb">Carla模拟环境</a> 实现。用户可以通过指定交通信号灯的OpenDRIVE ID、颜色ID以及设置时长来控制交通信号灯的状态。交通信号灯的颜色设置包括绿灯、黄灯和红灯，分别对应颜色ID [1, 2, 3]。颜色持续时间以秒为单位。</p>
 <h4 id="_2">参数说明</h4>
 <p><a href="https://github.com/OpenHUTB/doc/blob/master/src/course/signal_control.py">脚本</a> 接收以下参数：</p>
@@ -131,12 +131,12 @@
 <p>应用程序的主要功能是根据用户提供的参数设置指定交通信号灯的颜色和持续时间。具体实现步骤如下：</p>
 <p>1.接收用户请求，并解析传入的参数。</p>
 <p>2.连接到Carla模拟服务器并获取当前世界对象。</p>
-<p><div class="highlight"><pre><span></span><code>client = carla.Client(&#39;localhost&#39;, 2000)
+<p></p><div class="highlight"><pre><span></span><code>client = carla.Client('localhost', 2000)
 client.set_timeout(10.0)  # 设置超时
 world = client.get_world()  # 获取世界对象
 </code></pre></div>
-3.查找指定的交通信号灯对象,输出修改前的灯光时间。</p>
-<p><div class="highlight"><pre><span></span><code>for traffic_light in traffic_lights:
+3.查找指定的交通信号灯对象,输出修改前的灯光时间。
+<p></p><div class="highlight"><pre><span></span><code>for traffic_light in traffic_lights:
     if float(traffic_light.get_opendrive_id()) == traffic_id:
         if color_id == 1:
             init_time = traffic_light.get_green_time()
@@ -145,37 +145,37 @@ world = client.get_world()  # 获取世界对象
         elif color_id == 3:
             init_time = traffic_light.get_red_time()
 </code></pre></div>
-4.跳转视角到该交通信号灯合适的位置。</p>
+4.跳转视角到该交通信号灯合适的位置。
 <div class="highlight"><pre><span></span><code>lights_setting = [
     [-6, carla.Transform(carla.Location(x=-220, y=-9, z=5), carla.Rotation(yaw=180))],
     [-5, carla.Transform(carla.Location(x=-260, y=35, z=5), carla.Rotation(yaw=-90))]
 ]
 </code></pre></div>
-<p><div class="highlight"><pre><span></span><code>spectator = world.get_spectator()
+<p></p><div class="highlight"><pre><span></span><code>spectator = world.get_spectator()
 for setting in lights_setting:
     if setting[0] == traffic_id:
         spectator.set_transform(setting[1])
         break
 </code></pre></div>
-5.根据颜色ID设置交通信号灯的持续时间。</p>
-<p><div class="highlight"><pre><span></span><code>for traffic_light in traffic_lights:
+5.根据颜色ID设置交通信号灯的持续时间。
+<p></p><div class="highlight"><pre><span></span><code>for traffic_light in traffic_lights:
     if float(traffic_light.get_opendrive_id()) == traffic_id:
         if color_id == 1:
             traffic_light.set_green_time(float(color_time))
-            color_name = &quot;绿色&quot;
+            color_name = "绿色"
         elif color_id == 2:
             traffic_light.set_yellow_time(float(color_time))
-            color_name = &quot;黄色&quot;
+            color_name = "黄色"
         elif color_id == 3:
             traffic_light.set_red_time(float(color_time))
-            color_name = &quot;红色&quot;
+            color_name = "红色"
 </code></pre></div>
-6.返回设置结果的JSON响应。</p>
+6.返回设置结果的JSON响应。
 <div class="highlight"><pre><span></span><code>response_data = {
-    &quot;id&quot;: traffic_id,
-    &quot;color&quot;: color_name,
-    &quot;init_time&quot;: init_time,
-    &quot;last_time&quot;: color_time
+    "id": traffic_id,
+    "color": color_name,
+    "init_time": init_time,
+    "last_time": color_time
 }
 </code></pre></div>
 <h4 id="_6">注意事项</h4>
@@ -185,7 +185,7 @@ for setting in lights_setting:
 <li>settings.no_rendering_mode = False 不能重复设置，否则即使修改交通信号灯时长也不会有效果。</li>
 </ul>
 <h4 id="_7">运行结果</h4>
-<p><img alt="" src="../../img/traffic_course_img/signal_control.gif" /></p>
+<p><img alt="" src="../../img/traffic_course_img/signal_control.gif"></p></div>
               
             </div>
           </div><footer>

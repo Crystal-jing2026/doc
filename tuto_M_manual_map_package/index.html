@@ -100,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="_1">手动包准备</h1>
+                <div><h1 id="_1">手动包准备</h1>
 <p>地图包遵循特定的文件夹结构，并且必须包含描述该结构的 <code>.json</code> 文件。我们的自动地图导入流程会自动创建此<code>.json</code>文件，但您也可以选择自行准备。包含您自己的<code>.json</code>文件将覆盖传递给<code>make import</code>命令的任何参数。</p>
 <ul>
 <li><a href="#standard-maps"><strong>标准地图</strong></a><ul>
@@ -114,7 +114,7 @@
 </ul>
 </li>
 </ul>
-<hr />
+<hr>
 <h2 id="_2">标准地图 <span id="standard-maps"></span></h2>
 <h3 id="_3">为标准地图创建文件夹结构 <span id="create-the-folder-structure-for-the-standard-maps"></span></h3>
 <ol>
@@ -153,7 +153,7 @@
 <span class="w">  </span>└──<span class="w"> </span>Map02
 <span class="w">      </span>└──<span class="w"> </span>Map02.fbx
 </code></pre></div>
-<hr />
+<hr>
 <h3 id="json">为标准地图创建 JSON 描述 <span id="create-the-json-description-for-the-standard-maps"></span></h3>
 <p>在包的根文件夹中创建一个 <code>.json</code> 文件。在包之后命名文件。 请注意，这将是发行版名称。文件的内容将描述 <strong>地图</strong> 和 <strong>道具</strong> 的 JSON 数组，以及每个地图和道具的基本信息。 </p>
 <p><strong>地图</strong> 需要以下参数：</p>
@@ -166,26 +166,26 @@
 <p><strong>Props</strong> 不属于本教材的一部分。该字段将留空。还有另一个关于如何 <a href="../tuto_A_add_props/">添加新道具</a> 的教程。  </p>
 <p>生成的 <code>.json</code> 文件应类似于以下内容：</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;maps&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="nt">"maps"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Map01&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;./Map01/Map01.fbx&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;use_carla_materials&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;xodr&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;./Map01/Map01.xodr&quot;</span>
+<span class="w">      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Map01"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"./Map01/Map01.fbx"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"use_carla_materials"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"xodr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"./Map01/Map01.xodr"</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Map02&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;./Map02/Map02.fbx&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;use_carla_materials&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;xodr&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;./Map02/Map02.xodr&quot;</span>
+<span class="w">      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Map02"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"./Map02/Map02.fbx"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"use_carla_materials"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"xodr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"./Map02/Map02.xodr"</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">],</span>
-<span class="w">  </span><span class="nt">&quot;props&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="nt">"props"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">  </span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
-<hr />
-<p>如果您对文档有任何疑问，可以在 <a href="https://github.com/OpenHUTB/doc/issues">讨论页面</a> 中提问。</p>
+<hr>
+<p>如果您对文档有任何疑问，可以在 <a href="https://github.com/OpenHUTB/doc/issues">讨论页面</a> 中提问。</p></div>
               
             </div>
           </div><footer>

@@ -100,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="setting-up-vr-mode">Setting up VR Mode</h1>
+                <div><h1 id="setting-up-vr-mode">Setting up VR Mode</h1>
 <h3 id="installing-carla">Installing Carla</h3>
 <p>Follow Carla's own installation guide <a href="https://carla.readthedocs.io/en/latest/build_linux/">here for Linux</a> and <a href="https://carla.readthedocs.io/en/latest/build_windows/">here for Windows</a>. This will also provide the information to build <a href="https://github.com/carlaunreal/unrealengine">Unreal Engine 4.26</a> which is required to build Carla.</p>
 <h2 id="setting-up-carla-for-vr-mode">Setting up Carla for VR mode</h2>
@@ -108,9 +108,9 @@
 <h3 id="windows-users-can-skip-section-iii-below-as-it-is-for-configuring-the-opengl-mode-for-linux-rendering">Windows users can skip <em>section III</em> below, as it is for configuring the <code>opengl</code> mode for Linux rendering</h3>
 <h3 id="i-prerequisites">I. Prerequisites</h3>
 <p>We'll need <a href="https://store.steampowered.com/app/250820/SteamVR/">SteamVR</a> to be installed and working with your VR headset. For both Linux &amp; Windows this application should be installable through the native <a href="https://store.steampowered.com/about/">Steam</a> application.</p>
-<p>For the remainder of my guides I used a <a href="https://enterprise.vive.com/us/product/vive-pro-eye-office/">HTC Vive Pro Eye</a> headset with <a href="https://www.valvesoftware.com/en/index/base-stations">Valve's lighthouse trackers</a>. Note that for this study we only need one tracker since this is primarily a seated VR experience and we won't be needing all 360&deg; of motion. </p>
+<p>For the remainder of my guides I used a <a href="https://enterprise.vive.com/us/product/vive-pro-eye-office/">HTC Vive Pro Eye</a> headset with <a href="https://www.valvesoftware.com/en/index/base-stations">Valve's lighthouse trackers</a>. Note that for this study we only need one tracker since this is primarily a seated VR experience and we won't be needing all 360° of motion. </p>
 <p>This setup makes my SteamVR overlay look like this:</p>
-<p><img alt="SteamVR" src="https://docs.google.com/drawings/d/e/2PACX-1vQofGTS8pATT58UxHzcVeWjhkYAqGw6PyrKpQ8GmK34p_1S1MehrKeUxNIpkAYB_D3T-s6v3d1_BMCl/pub?w=574&amp;h=261" /></p>
+<p><img alt="SteamVR" src="https://docs.google.com/drawings/d/e/2PACX-1vQofGTS8pATT58UxHzcVeWjhkYAqGw6PyrKpQ8GmK34p_1S1MehrKeUxNIpkAYB_D3T-s6v3d1_BMCl/pub?w=574&amp;h=261"></p>
 <p>Additionally, note that for the best experience in this driving simulator we will be using the <strong>Standing Only</strong> environment setup for the SteamVR play area. This should be calibrated each time by right clicking the pop-up indicator from above and selecting <code>"Run Room Setup"</code> for the standing-only mode you'll need calibrate two main features:
 1. Place the headset in the forward-facing direction of your posture, this will define the default forward orientation.
 2. Place the headset on a stable surface off the ground and measure its relative position from the ground to get a sense of scale. </p>
@@ -120,7 +120,7 @@
 - On Linux download the latest version (as of writing this guide is for UE4.23) and place the unzipped folder in <code>carla/Unreal/CarlaUE4/Plugins/</code> as explained in the <a href="https://github.com/ValveSoftware/steamvr_unreal_plugin#i-how-to-add-this-plugin-to-your-ue4-project">section I of Valve's README</a>
 - On Windows you can install SteamVR from within the <a href="https://www.unrealengine.com/marketplace/en-US/product/steamvr-input-for-unreal">UE4 Marketplace</a>, again the latest version is advised.</p>
 <p>As mentioned before, the current latest available version of SteamVR is for UE4.23 but our installation is for UE4.26. This is fine and will still function for our purposes, we'll simply have a skippable warning upon launching the editor. It will look something like this, just click <code>Yes</code>
-<img alt="SteamVRWarning" src="https://docs.google.com/drawings/d/e/2PACX-1vRmJfEeP6SmlzxgBhottJYmfrb72O7J3lztErcpmd97iBKFVAZe7DxPCGzBjyeqIfyRkeCyvafh1fTJ/pub?w=913&amp;h=205" /></p>
+<img alt="SteamVRWarning" src="https://docs.google.com/drawings/d/e/2PACX-1vRmJfEeP6SmlzxgBhottJYmfrb72O7J3lztErcpmd97iBKFVAZe7DxPCGzBjyeqIfyRkeCyvafh1fTJ/pub?w=913&amp;h=205"></p>
 <h3 id="iii-configuring-opengl-rendering">III. Configuring <code>opengl</code> rendering</h3>
 <p>*<em>Note this is not required if you're on Windows. The Windows version of Carla/UE4 works with Vulkan and DX11/12</em></p>
 <p>Unfortunately, we've had little success getting Vulkan VR support on Linux with UE4. Specifically due to this <a href="https://github.com/ValveSoftware/SteamVR-for-Linux/issues/404">bug</a>. There are supposedly workarounds but we haven't tested them. Note that if you don't want to use VR then using Vulkan on Linux is perfectly fine. </p>
@@ -132,7 +132,7 @@
       1. If you are getting a <code>Trying to force OpenGL RHI but the project does not have it in TargetedRHIs list.</code> error then you should look at this <a href="https://rhycesmith.com/2020/06/12/enable-opengl-and-disable-vulkan-in-unreal-engine-4-25/">guide</a> to reenable OpenGL. 
 2. You should now be able to simply <code>make launch</code> and have a working OpenGL backend renderer. There may be additional shader/texture compilation required after booting into the editor for the first time. </p>
 <p>Also note that since <code>openGL</code> is technically deprecated you'll get another harmless warning when launching the editor, again you can just click <code>Ok</code>: </p>
-<p><img alt="openGL" src="https://docs.google.com/drawings/d/e/2PACX-1vSn72GkhBOvmfa_vMnjTwvv9KPk34i6ZpHgMgpBjRPp_1_k0kF55TgjZHvGw2CfdJtckqENuNbNilhr/pub?w=556&amp;h=205" /></p>
+<p><img alt="openGL" src="https://docs.google.com/drawings/d/e/2PACX-1vSn72GkhBOvmfa_vMnjTwvv9KPk34i6ZpHgMgpBjRPp_1_k0kF55TgjZHvGw2CfdJtckqENuNbNilhr/pub?w=556&amp;h=205"></p>
 <h2 id="running-carla-in-vr-mode">Running Carla in VR mode</h2>
 <p>With all the installations done, we can move on to actually using Carla+UE4 with VR mode. These are the instructions to run it from scratch.</p>
 <ol>
@@ -150,8 +150,8 @@
 </thead>
 <tbody>
 <tr>
-<td><center> <img src = "https://docs.google.com/drawings/d/e/2PACX-1vQa2e3SJzFWLoOwg-sW1b1KFvsDsA13ak9MY1wxtG7ZqsbXhRC8LEe9kSEjJLE93vt4nksAkyBnflXN/pub?w=791&h=1008" alt="UE4DropDown" width=100%> </center></td>
-<td><center> <img src = "https://docs.google.com/drawings/d/e/2PACX-1vTmLv-DN3bI_uGFL6W-GSLJII_vtqajlkeEszPxPIl8pl7R6VT3LSDUEHWOVK_7HcA7PAYCl4a0jX4d/pub?w=518&h=287" alt="UE4DropDown" width=100%> </center></td>
+<td><center> <img src="https://docs.google.com/drawings/d/e/2PACX-1vQa2e3SJzFWLoOwg-sW1b1KFvsDsA13ak9MY1wxtG7ZqsbXhRC8LEe9kSEjJLE93vt4nksAkyBnflXN/pub?w=791&amp;h=1008" alt="UE4DropDown" width="100%"> </center></td>
+<td><center> <img src="https://docs.google.com/drawings/d/e/2PACX-1vTmLv-DN3bI_uGFL6W-GSLJII_vtqajlkeEszPxPIl8pl7R6VT3LSDUEHWOVK_7HcA7PAYCl4a0jX4d/pub?w=518&amp;h=287" alt="UE4DropDown" width="100%"> </center></td>
 </tr>
 </tbody>
 </table>
@@ -171,7 +171,7 @@
 <p>To get a much smoother experience you can run Carla with the flag <code>-quality-level=Low</code> instead of the default <code>-quality-level=Epic</code>. More information can be found in the <a href="https://carla.readthedocs.io/en/latest/adv_rendering_options/">Carla Rendering Documentation</a>.</p>
 <p>For our later purposes, we'd want to keep the <strong>full rendering distance</strong> which is provided in the <code>Epic</code> quality but not <code>Low</code>. But for improved performance we may want to tone down the graphical fidelity like <code>Low</code>, so we'll need to modify some source code and recompile the project. </p>
 <p>You can modify the <code>C++</code> file at <code>carla/Unreal/CarlaUE4/Plugins/Carla/Source/Carla/Settings/CarlaSettingsDelegate.cpp</code> on line 99 with:
-<div class="highlight"><pre><span></span><code><span class="k">case</span><span class="w"> </span><span class="no">EQualityLevel</span><span class="o">::</span><span class="no">Low</span><span class="p">:</span>
+</p><div class="highlight"><pre><span></span><code><span class="k">case</span><span class="w"> </span><span class="no">EQualityLevel</span><span class="o">::</span><span class="no">Low</span><span class="p">:</span>
 <span class="p">{</span>
 <span class="w">   </span><span class="c1">// execute tweaks for quality</span>
 <span class="w">   </span><span class="n">LaunchLowQualityCommands</span><span class="p">(</span><span class="n">InWorld</span><span class="p">);</span>
@@ -192,7 +192,7 @@ Simply change the <code>SetAllActorsDrawDistance</code> to match the case for <c
 <span class="w">   </span><span class="c1">// global settings for the low quality</span>
 <span class="w">   </span><span class="n">SetAllActorsDrawDistance</span><span class="p">(</span><span class="n">InWorld</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"> </span><span class="c1">// Full render distance</span>
 </code></pre></div>
-Now, recompiling the project with <code>make package</code> will have a <code>Low</code> quality preset with full rendering distance.</p>
+Now, recompiling the project with <code>make package</code> will have a <code>Low</code> quality preset with full rendering distance.</div>
               
             </div>
           </div><footer>

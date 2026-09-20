@@ -100,11 +100,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="_1">自带语义分割传感器实现路径</h2>
+                <div><h2 id="_1">自带语义分割传感器实现路径</h2>
 <p>本文从 Carla 出发，深入UE内部，来理解 Carla 中的视觉传感器及真值系统的实现原理。</p>
 <h3 id="1">1、知识铺垫</h3>
 <p>Carla RGB 摄像头传感器代码分析讲了 Camera 之间的继承关系。下图表达它们的层次关系：</p>
-<p><img alt="camera_inherit" src="../../img/sensor/camera_inherit.jpg" /></p>
+<p><img alt="camera_inherit" src="../../img/sensor/camera_inherit.jpg"></p>
 <ul>
 <li><strong>ASensor</strong> 完成 Carla 的抽象传感器功能；</li>
 <li><strong>ASceneCaptureSensor</strong> 实现UE渲染接口，<code>UTextureRenderTarget2D</code> 和 <code>USceneCaptureComponent2D</code> 的加入，并且 <code>USceneCaptureComponent2D</code> 控制着后处理（<code>FPostProcessingSetting</code>）参数；</li>
@@ -116,21 +116,21 @@
 <li>后处理材质放置位置</li>
 </ul>
 <p>从代码中去看，拿 <a href="https://github.com/OpenHUTB/carla/blob/ue4-dev/Unreal/CarlaUE4/Plugins/Carla/Source/Carla/Sensor/SemanticSegmentationCamera.cpp">语义分割相机</a> 举例，该传感器用了两个后处理材质：物理畸变模型、GroundTruth标注。
-<div class="highlight"><pre><span></span><code><span class="n">ASemanticSegmentationCamera</span><span class="o">::</span><span class="n">ASemanticSegmentationCamera</span><span class="p">(</span>
+</p><div class="highlight"><pre><span></span><code><span class="n">ASemanticSegmentationCamera</span><span class="o">::</span><span class="n">ASemanticSegmentationCamera</span><span class="p">(</span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">FObjectInitializer</span><span class="w"> </span><span class="o">&amp;</span><span class="n">ObjectInitializer</span><span class="p">)</span>
 <span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">Super</span><span class="p">(</span><span class="n">ObjectInitializer</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">  </span><span class="c1">// AddPostProcessingMaterial()在给定的路径上加载 UMaterialInstanceDynamic，并将其附加到具有权重的着色器列表中。</span>
 <span class="w">  </span><span class="n">AddPostProcessingMaterial</span><span class="p">(</span>
-<span class="w">      </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;Material&#39;/Carla/PostProcessingMaterials/PhysicLensDistortion.PhysicLensDistortion&#39;&quot;</span><span class="p">));</span>
+<span class="w">      </span><span class="n">TEXT</span><span class="p">(</span><span class="s">"Material'/Carla/PostProcessingMaterials/PhysicLensDistortion.PhysicLensDistortion'"</span><span class="p">));</span>
 <span class="w">  </span><span class="n">AddPostProcessingMaterial</span><span class="p">(</span>
-<span class="w">      </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;Material&#39;/Carla/PostProcessingMaterials/GTMaterial.GTMaterial&#39;&quot;</span><span class="p">));</span>
+<span class="w">      </span><span class="n">TEXT</span><span class="p">(</span><span class="s">"Material'/Carla/PostProcessingMaterials/GTMaterial.GTMaterial'"</span><span class="p">));</span>
 <span class="p">}</span>
-</code></pre></div></p>
+</code></pre></div>
 <p>从虚幻编辑器里面去找，该文件属于 Carla 插件带的材质，不属于场景内容文件，所以要在视图选项中选上<code>显示插件内容</code>，才能在左边的<code>内容浏览器</code>目录中看到<code>CARLA内容</code>。在<code>PostProcessingMaterials</code>路径下就可以看到<code>PhysicLensDistortion</code>和<code>GTMaterial</code>的材质文件。</p>
-<p><img alt="camera_inherit" src="../../img/sensor/display_plugin_content.jpg" /></p>
+<p><img alt="camera_inherit" src="../../img/sensor/display_plugin_content.jpg"></p>
 <p>点开后可以看到该材质文件的蓝图逻辑：</p>
-<p><img alt="material_bp" src="../../img/sensor/material_bp.jpg" /></p>
+<p><img alt="material_bp" src="../../img/sensor/material_bp.jpg"></p>
 <ul>
 <li>在虚幻编辑器里可视化相机</li>
 </ul>
@@ -138,15 +138,15 @@
 <p>下面用视频简单介绍一下 <code>UTextureRenderTarget2D</code> 和 <code>USceneCaptureComponent2D</code> 到底是什么：</p>
 <p>视频里主要做了几个操作：</p>
 <p>1.在<code>放置Actor</code>中搜索 <code>场景捕获2D(SceneCapture2D)</code> 拖入场景，会产生一个类似摄像机的物体；
-<img alt="material_bp" src="../../img/sensor/1_scene_capture.jpg" /></p>
+<img alt="material_bp" src="../../img/sensor/1_scene_capture.jpg"></p>
 <p>2.在<code>内容浏览器</code>空白处右键，创建一个 <code>材质和纹理 -&gt; 渲染目标(TextureRenderTarget2D)</code>，创建后重命名为<code>RenderTexture2D</code>。
-<img alt="material_bp" src="../../img/sensor/2_create_TextureRenderTarget2D.jpg" /></p>
+<img alt="material_bp" src="../../img/sensor/2_create_TextureRenderTarget2D.jpg"></p>
 <p>3.将画布渲染目标 <code>TextureRenderTarget2D</code> 指派给场景捕获2D <code>SceneCapture2D</code>
-<img alt="material_bp" src="../../img/sensor/3_assign_to_SceneCapture2D.jpg" /></p>
+<img alt="material_bp" src="../../img/sensor/3_assign_to_SceneCapture2D.jpg"></p>
 <p>4.给画布渲染目标 <code>TextureRenderTarget2D</code> 创建材质：右键画布渲染目标，选择
-<img alt="material_bp" src="../../img/sensor/4_create_material.jpg" /></p>
+<img alt="material_bp" src="../../img/sensor/4_create_material.jpg"></p>
 <p>5.双击打开内容浏览器中的<code>场景捕获2D</code>(RenderTexture2D)，选择不同的渲染输出内容（可以选法线、底色、LDR、HDR 等）可以看到不同的场景捕获效果。
-<img alt="material_bp" src="../../img/sensor/5_select_capture_source.jpg" /></p>
+<img alt="material_bp" src="../../img/sensor/5_select_capture_source.jpg"></p>
 <p>6.在 <code>后期处理体积</code> 里面，添加后处理材质，并选择从现有资产中添加</p>
 <p>7.加入不同的后处理材质，查看效果</p>
 <p>经过这些操作，大概就了解了它们分别是什么角色：<code>USceneCaptureComponent2D</code> 负责设置渲染的视角（FViewInfo）、传感器外参、后处理参数设置（FPostProcessSettings）、捕获源（Capture Source）等渲染需要的参数。
@@ -156,16 +156,16 @@
 <li>语义分割的后处理材质蓝图</li>
 </ul>
 <p>双击打开材质<code>Carla内容/PostProcessingMaterials/GTMaterial</code>
-<img alt="material_bp" src="../../img/sensor/GTMaterial.jpg" /></p>
+<img alt="material_bp" src="../../img/sensor/GTMaterial.jpg"></p>
 <p>首先该材质里引入了两个概念：场景深度、自定义深度。<code>场景深度</code>就是用于渲染的 Z-Depth，光栅渲染判断前后关系用的，在GBuffer中也存在；<code>自定义深度</code>，<code>自定义深度模具</code>值（Custom Depth Stentil Value），Carla 拿来做语义分割的标记，以 Actor 为单位，可以用来区分不同物体，最后根据这个与 Carla 内部逻辑，对图像进行上色（参考 <a href="../../tuto_D_create_semantic_tags/">创建语义标签</a> ）。</p>
 <p>比如，如路面是7，路线是6。</p>
-<p><img alt="material_bp" src="../../img/sensor/semantic_tags.jpg" /></p>
+<p><img alt="material_bp" src="../../img/sensor/semantic_tags.jpg"></p>
 <h3 id="_2">参考</h3>
 <ul>
 <li><a href="https://bbs.carla.org.cn/info/532d57cf2725474b8878a67282ef6e3f?csr=1">视觉传感器系列实现原理分析</a></li>
 <li><a href="https://blog.csdn.net/weixin_74205939/article/details/140893454">UE场景捕获2d 简单监视器效果</a></li>
 <li><a href="https://mazhengg.github.io/2019/03/29/%E4%B8%96%E7%95%8C%E3%80%81%E7%9B%B8%E6%9C%BA%E3%80%81%E5%9B%BE%E5%83%8F%E5%92%8C%E5%83%8F%E7%B4%A0%E5%9D%90%E6%A0%87%E4%B9%8B%E9%97%B4%E7%9A%84%E8%BD%AC%E6%8D%A2/">世界、相机、图像和像素坐标之间的转换</a> ：<a href="https://zhuanlan.zhihu.com/p/379269769">详细矩阵的参数信息</a> </li>
-</ul>
+</ul></div>
               
             </div>
           </div><footer>

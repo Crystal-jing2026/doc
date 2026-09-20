@@ -100,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="hutb-nurec">HUTB - NUREC 集成</h1>
+                <div><h1 id="hutb-nurec">HUTB - NUREC 集成</h1>
 <p>该模块集成了 HUTB 与 NVIDIA 的 NUREC（NVIDIA 神经重建引擎）。它允许您通过基于 NUREC 数据重建交通场景，在 HUTB 中重放真实世界的记录。</p>
 <h2 id="_1">概述</h2>
 <p>NUREC（NVIDIA 神经重建引擎）是一个利用传感器数据重建真实交通场景的框架。这种集成允许这些重建结果在 HUTB 模拟器中重现，从而在真实数据和模拟之间架起一座桥梁。</p>
@@ -207,15 +207,15 @@
 - 当 <code>reuse_container=True</code> （默认）时：如果服务容器已经存在，则会重复使用，防止多个实例同时运行
 - 当 <code>reuse_container=False</code> 时：每次都会创建一个新的服务容器，这对于测试或需要确保干净状态时很有用</p>
 <p>使用示例：
-<div class="highlight"><pre><span></span><code><span class="c1"># 重复使用现有容器（默认）</span>
+</p><div class="highlight"><pre><span></span><code><span class="c1"># 重复使用现有容器（默认）</span>
 <span class="n">scenario</span> <span class="o">=</span> <span class="n">NurecScenario</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">usdz_filename</span><span class="p">)</span>
 
 <span class="c1"># 强制新建容器</span>
 <span class="n">scenario</span> <span class="o">=</span> <span class="n">NurecScenario</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">usdz_filename</span><span class="p">,</span> <span class="n">reuse_container</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</code></pre></div></p>
+</code></pre></div>
 <h2 id="_6">工具</h2>
 <h3 id="_7">提取蓝图尺寸工具</h3>
-<p>有关蓝图提取工具的文档，请参阅 <a href="../tools/">tools.md</a> 。</p>
+<p>有关蓝图提取工具的文档，请参阅 <a href="../tools/">tools.md</a> 。</p></div>
               
             </div>
           </div><footer>

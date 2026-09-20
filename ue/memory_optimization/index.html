@@ -100,24 +100,24 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="_1">内存优化</h1>
+                <div><h1 id="_1">内存优化</h1>
 <h2 id="insights">Insights</h2>
 <p>1.运行 hutb\Build\engine\Engine\Binaries\Win64\UnrealInsights.exe,不会弹出界面，任务管理器中有后台进程；</p>
 <p>2.在虚幻编辑器中<code>执行独立进程游戏</code>或者打包的exe；</p>
 <p>这时会发现Insights自动创建并开始运行了一个Trace Sessions，持续记录到 hutb\Build\engine\Engine\Programs\UnrealInsights\Saved\TraceSessions*.utrace 文件中（也可以通过连接IP地址，获取到该计算机的UE程序，状态为LIVE实时）；</p>
-<p><img alt="" src="../../img/ue/insights_session_browser.jpg" /></p>
+<p><img alt="" src="../../img/ue/insights_session_browser.jpg"></p>
 <p>3.点击右下角 Open 按钮，弹出UnrealInsights窗口。如果发现没有持续trace，就使用trace.start命令</p>
-<p><img alt="" src="../../img/ue/insights.jpg" /></p>
+<p><img alt="" src="../../img/ue/insights.jpg"></p>
 <p>点突然变很高的柱，对应下方就是这一个横条最宽，这里就是问题所在。滑动鼠标滚轮放大下面的横条，可以看到具体的函数。</p>
 <p>内存溢出后的崩溃日志位于：hutb\Unreal\CarlaUE4\Saved\Logs*.log</p>
 <p>内存移除时的调用栈：
-<img alt="" src="../../img/ue/error_call_stack.jpg" /></p>
+<img alt="" src="../../img/ue/error_call_stack.jpg"></p>
 <p>发现一直在执行<code>__FSTREXP __FUNCTION__</code>，调用它的函数为：<code>USkeletalMeshComponent_TickAnimation</code>，猜测一直在新建<code>Bus-1</code>的骨骼网格组件。因为Town03 有 265 个生成点，冒烟测试时会一次性生成265台车。</p>
 <p>正常编辑器进程只占用 12-14 GB，崩溃时占用 33 GB。</p>
 <p>BYD_SONG 静态资产大小为 393 MB（正常的 AudiA2 比如只有11MB），256个就是 100 GB。</p>
 <p>测试：
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>..<span class="se">\e</span>xamples<span class="se">\g</span>enerate_traffic.py<span class="w"> </span>-p<span class="w"> </span><span class="m">3654</span><span class="w"> </span>-n<span class="w"> </span><span class="m">10</span><span class="w"> </span>--filterv<span class="w"> </span>vehicle.bydsong-1.bydsong-1
-</code></pre></div></p>
+</p><div class="highlight"><pre><span></span><code>python<span class="w"> </span>..<span class="se">\e</span>xamples<span class="se">\g</span>enerate_traffic.py<span class="w"> </span>-p<span class="w"> </span><span class="m">3654</span><span class="w"> </span>-n<span class="w"> </span><span class="m">10</span><span class="w"> </span>--filterv<span class="w"> </span>vehicle.bydsong-1.bydsong-1
+</code></pre></div>
 <h2 id="_2">参考</h2>
 <ul>
 <li>
@@ -186,17 +186,17 @@ ERROR
 ERROR: test_spawn_points (smoke.test_spawnpoints.TestSpawnpoints)
 ----------------------------------------------------------------------
 Traceback (most recent call last):
-  File &quot;D:\hutb\PythonAPI\test\smoke\__init__.py&quot;, line 55, in tearDown
+  File "D:\hutb\PythonAPI\test\smoke\__init__.py", line 55, in tearDown
     super(SyncSmokeTest, self).tearDown()
-  File &quot;D:\hutb\PythonAPI\test\smoke\__init__.py&quot;, line 24, in tearDown
-    self.client.load_world(&quot;Town03&quot;)
+  File "D:\hutb\PythonAPI\test\smoke\__init__.py", line 24, in tearDown
+    self.client.load_world("Town03")
 RuntimeError: time-out of 120000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:3654
 
 ======================================================================
 FAIL: test_spawn_points (smoke.test_spawnpoints.TestSpawnpoints)
 ----------------------------------------------------------------------
 Traceback (most recent call last):
-  File &quot;D:\hutb\PythonAPI\test\smoke\test_spawnpoints.py&quot;, line 71, in test_spawn_points
+  File "D:\hutb\PythonAPI\test\smoke\test_spawnpoints.py", line 71, in test_spawn_points
     self.assertFalse(
 AssertionError: True is not false : Spawn errors detected:
   - idx=12, bp=vehicle.bus-1.bus-1, actor_id=0, loc=(-77.887,33.207,0.649), rot=(-0.35,-90.16,-0.00), error=Spawn failed because of collision at spawn position
@@ -222,7 +222,7 @@ AssertionError: True is not false : Spawn errors detected:
 Ran 1 test in 407.589s
 
 FAILED (failures=1, errors=1)
-</code></pre></div>
+</code></pre></div></div>
               
             </div>
           </div><footer>

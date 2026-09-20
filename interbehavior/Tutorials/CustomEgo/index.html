@@ -100,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="egovehicle">如何添加您自己的 EgoVehicle</h1>
+                <div><h1 id="egovehicle">如何添加您自己的 EgoVehicle</h1>
 <p>本指南介绍如何从现有的 Carla 车辆添加您自己的自定义 EgoVehicle，然后您可以在 DReyeVR 中使用。展示将<strong>救护车</strong>添加为新的 DReyeVR EgoVehicle 所需的最少步骤。</p>
 <h2 id="_1">先决条件</h2>
 <ul>
@@ -135,7 +135,7 @@
 <li>在您的 <code>XYZ/</code> 文件夹中，您需要复制新的 BP_XYZ 资源（从编辑器执行此操作以便可以更新缓存路径）并在此处创建您可能需要的任何其他文件夹（例如，<code>Mesh</code>、<code>Mirrors</code>、<code>SteeringWheel</code>、<code>Tires</code> 是几个示例）。 </li>
 <li>
 <p>最好在编辑器中执行这些资产文件修改。您可以通过单击并拖动将文件从内容浏览器复制到其他文件夹，以获取此弹出窗口： </p>
-<p><img alt="CopyHere" src="../../Figures/EgoVehicle/CopyHere.jpg" /></p>
+<p><img alt="CopyHere" src="../../Figures/EgoVehicle/CopyHere.jpg"></p>
 </li>
 </ul>
 </li>
@@ -160,13 +160,13 @@
 <p><strong>注意</strong> 如果蓝图损坏，您应该首先尝试重新回到 <code>BaseVehiclePawn</code>（原始父级），然后再回到 DReyeVR <code>EgoVehicle</code>。</p>
 </li>
 <li>
-<p><img alt="EditClass" src="../../Figures/EgoVehicle/EditClassSettings.jpg" /></p>
+<p><img alt="EditClass" src="../../Figures/EgoVehicle/EditClassSettings.jpg"></p>
 <ul>
 <li>演示类设置按钮，用于编辑此BP的类实例</li>
 </ul>
 </li>
 <li>
-<p><img alt="Reparent" src="../../Figures/EgoVehicle/Reparent.jpg" /></p>
+<p><img alt="Reparent" src="../../Figures/EgoVehicle/Reparent.jpg"></p>
 <ul>
 <li>演示重新父级按钮，选择下拉菜单并搜索兼容的类以使用 <code>BaseVehiclePawn</code>s（Carla）或 <code>EgoVehicle</code>（DReyeVR）重新父级。</li>
 </ul>
@@ -185,11 +185,11 @@
 <span class="c1">/// IMPORTANT: make sure these match the ConfigFile AND Blueprint!!</span>
 <span class="c1">// We expect Config/EgoVehicle/XYZ.ini and Content/DReyeVR/EgoVehicles/XYZ/BP_XYZ.uasset</span>
 <span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">VehicleTypes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="s">&quot;TeslaM3&quot;</span><span class="p">,</span><span class="w">   </span><span class="c1">// Tesla Model 3 (Default)</span>
-<span class="w">    </span><span class="s">&quot;Mustang66&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Mustang66</span>
-<span class="w">    </span><span class="s">&quot;Jeep&quot;</span><span class="p">,</span><span class="w">      </span><span class="c1">// JeepWranglerRubicon</span>
-<span class="w">    </span><span class="s">&quot;Vespa&quot;</span><span class="w">      </span><span class="c1">// Vespa (2WheeledVehicles)</span>
-<span class="w">    </span><span class="s">&quot;Ambulance&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// &lt;-- the new vehicle! (for this tutorial)</span>
+<span class="w">    </span><span class="s">"TeslaM3"</span><span class="p">,</span><span class="w">   </span><span class="c1">// Tesla Model 3 (Default)</span>
+<span class="w">    </span><span class="s">"Mustang66"</span><span class="p">,</span><span class="w"> </span><span class="c1">// Mustang66</span>
+<span class="w">    </span><span class="s">"Jeep"</span><span class="p">,</span><span class="w">      </span><span class="c1">// JeepWranglerRubicon</span>
+<span class="w">    </span><span class="s">"Vespa"</span><span class="w">      </span><span class="c1">// Vespa (2WheeledVehicles)</span>
+<span class="w">    </span><span class="s">"Ambulance"</span><span class="p">,</span><span class="w"> </span><span class="c1">// &lt;-- the new vehicle! (for this tutorial)</span>
 <span class="w">    </span><span class="c1">// add more here</span>
 <span class="p">};</span>
 </code></pre></div></li>
@@ -209,12 +209,12 @@
 ...
 </code></pre></div></li>
 <li>然后，您可能需要编辑此文件的一些内容，以匹配可以从编辑器中获取的 EgoVehicle 规范。例如，下图显示我们要将 VRCameraRoot（头部位置）移动到 (<code>108, -40, 158</code>)。 <ul>
-<li><img alt="CameraRepos" src="../../Figures/EgoVehicle/CameraReposition.jpg" /></li>
+<li><img alt="CameraRepos" src="../../Figures/EgoVehicle/CameraReposition.jpg"></li>
 <li>您可能还希望将仪表板元素移动到适合您喜好的位置。 </li>
 </ul>
 </li>
 <li><strong>重要</strong> 您还需要为蓝图（组件列表中的 <code>BP_Ambulance</code>）启用<code>Start with Tick Enabled</code>，因为默认情况下，它们对于 Carla 车辆是禁用的：<ul>
-<li><img alt="ActorTick" src="../../Figures/EgoVehicle/ActorTick.jpg" /></li>
+<li><img alt="ActorTick" src="../../Figures/EgoVehicle/ActorTick.jpg"></li>
 </ul>
 </li>
 <li>
@@ -228,15 +228,15 @@
 </thead>
 <tbody>
 <tr>
-<td><img alt="Mirrors" src="../../Figures/EgoVehicle/SM_Mirror.jpg" /></td>
-<td><img alt="Wheel" src="../../Figures/EgoVehicle/SM_Wheel.jpg" /></td>
+<td><img alt="Mirrors" src="../../Figures/EgoVehicle/SM_Mirror.jpg"></td>
+<td><img alt="Wheel" src="../../Figures/EgoVehicle/SM_Wheel.jpg"></td>
 </tr>
 <tr>
 <td>- 现在，打开刚刚创建的 <code>Ambulance.ini</code> 文件，并开始更新字段（主要是转换）以匹配您关心的参数。重要的是，对于<code>[Blueprint]::Path</code> 条目，您可以通过右键单击内容查看器中的蓝图并选择<code>Copy Reference</code>来获取此路径。</td>
 <td></td>
 </tr>
 <tr>
-<td>- <img alt="CopyRef" src="../../Figures/EgoVehicle/CopyRef.jpg" /></td>
+<td>- <img alt="CopyRef" src="../../Figures/EgoVehicle/CopyRef.jpg"></td>
 <td></td>
 </tr>
 <tr>
@@ -258,7 +258,7 @@
 <h2 id="4-dreyevr">4. 将新车辆设置为 DReyeVR 默认车辆</h2>
 <p>在 <code>DReyeVRConfig.ini</code> 通用配置文件（用于非车辆特定参数）中，您应该设置默认生成的车辆。这将采用车辆的名称，在本例中为救护车<code>Ambulance</code>。 </p>
 <div class="highlight"><pre><span></span><code><span class="k">[EgoVehicle]</span>
-<span class="na">VehicleType</span><span class="o">=</span><span class="s">&quot;Ambulance&quot;</span>
+<span class="na">VehicleType</span><span class="o">=</span><span class="s">"Ambulance"</span>
 </code></pre></div>
 <p>就这样！现在您应该能够重新启动 <code>make launch</code> 了，当您按下 Play 时，您将开始使用新的 EgoVehicle。</p>
 <h2 id="4">4. [可选] 创建新动画</h2>
@@ -270,17 +270,17 @@
 </div>
 <h3 id="carladreyevr">为 Carla/DReyeVR 创建新动画蓝图的步骤</h3>
 <p>1.在 Ambulance/Mesh 目录中创建一个新的动画蓝图（如果有的话，否则在 <code>Ambulance</code> 内创建一个新的文件夹 <code>Mesh/</code>）。
-<img alt="CreateAnim" src="../../Figures/EgoVehicle/CreateAnim.jpg" /></p>
+<img alt="CreateAnim" src="../../Figures/EgoVehicle/CreateAnim.jpg"></p>
 <p>2.确保动画网格的父级设置为 <code>VehicleAnimInstance</code>，并且预览骨架设置为新车辆的骨架网格（例如 <code>SK_Ambulance_Skeleton</code>） 
 <a href="../../Figures/EgoVehicle/CreateAnimBP.jpg">CreateAnimBP</a></p>
 <p>3.将新资产命名为 <code>Anim_Ambulance</code> 并打开它。打开右下角的 AnimationGraph，如下所示：
-<img alt="AnimGraph" src="../../Figures/EgoVehicle/AnimGraph.jpg" /></p>
+<img alt="AnimGraph" src="../../Figures/EgoVehicle/AnimGraph.jpg"></p>
 <p>4.打开另一个附近的动画蓝图（例如 <code>Content/DReyeVR/EgoVehicle/TeslaM3/Mesh/Animation_model3</code>）并打开其 AnimationGraph 以复制连接到 Output Pose 的前三个蓝图节点，如下所示：
-<img alt="CopyAnim" src="../../Figures/EgoVehicle/CopyAnim.jpg" /></p>
+<img alt="CopyAnim" src="../../Figures/EgoVehicle/CopyAnim.jpg"></p>
 <p>5.然后，返回 <code>Anim_Ambulance</code>，粘贴刚刚复制的三个节点并将它们连接到输出姿势(Output Pose)： 
-<img alt="PasteAnim" src="../../Figures/EgoVehicle/PasteAnim.jpg" /></p>
+<img alt="PasteAnim" src="../../Figures/EgoVehicle/PasteAnim.jpg"></p>
 <p>6.最后，返回车辆蓝图（BP_Ambulance）并在组件部分选择网格，然后在（右侧）详细信息面板中将动画类更改为新的 <code>Anim_Ambulance</code>，如下所示：
-<img alt="AssignAnim" src="../../Figures/EgoVehicle/AssignAnim.jpg" /></p>
+<img alt="AssignAnim" src="../../Figures/EgoVehicle/AssignAnim.jpg"></p></div>
               
             </div>
           </div><footer>

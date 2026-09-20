@@ -100,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="carla">CARLA 设置</h1>
+                <div><h1 id="carla">CARLA 设置</h1>
 <p><em>本文档尚在编写中，可能不完整。</em></p>
 <h2 id="carla_1">Carla设置</h2>
 <p>CARLA 从 <code>CarlaSettings.ini</code> 文件中读取设置。此文件控制模拟的大部分方面，每次开始新情节时（每次加载关卡时）都会加载此文件。</p>
@@ -132,9 +132,9 @@
 <li>14 - SoftRainSunset</li>
 </ul>
 <p>例如，要选择中午有大雨的天气，请添加到 <code>CarlaSettings.ini</code>
-<div class="highlight"><pre><span></span><code>[CARLA/LevelSettings]
+</p><div class="highlight"><pre><span></span><code>[CARLA/LevelSettings]
 WeatherId=6
-</code></pre></div></p>
+</code></pre></div>
 <h2 id="_2">模拟器命令行选项</h2>
 <ul>
 <li><font color="#f8805a"><code>-carla-server</code></font>启动 CARLA 作为服务器，执行暂停，直到客户端连接。</li>
@@ -142,7 +142,7 @@ WeatherId=6
 <li><font color="#f8805a"><code>-carla-world-port=N</code></font>在端口 N 上监听客户端连接，代理端口分别设置为 N+1 和 N+2。激活服务器。</li>
 <li><font color="#f8805a"><code>-carla-no-hud</code></font>默认不显示HUD。</li>
 <li><font color="#f8805a"><code>-carla-no-networking</code></font>禁用网络。如果存在则覆盖<font color="#f8805a"><code>-carla-server</code></font>。</li>
-</ul>
+</ul></div>
               
             </div>
           </div><footer>

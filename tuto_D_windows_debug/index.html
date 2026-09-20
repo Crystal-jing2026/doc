@@ -100,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="windows">在 Windows 上进行模拟器的调试</h1>
+                <div><h1 id="windows">在 Windows 上进行模拟器的调试</h1>
 <ul>
 <li><a href="#debug_CarlaUE4"><strong>虚幻引擎Carla插件的调试</strong></a></li>
 <li><a href="#debug_LibCarla"><strong>调试LibCarla</strong></a><ul>
@@ -126,12 +126,12 @@
 </ul>
 </li>
 </ul>
-<p><img alt="CARLA Modules" src="../img/build_modules.jpg" /></p>
+<p><img alt="CARLA Modules" src="../img/build_modules.jpg"></p>
 <h2 id="carla">虚幻引擎Carla插件的调试 <span id="debug_CarlaUE4"></span></h2>
 <ol>
 <li>进入目录<code>carla/Unreal/CarlaUE4/</code>，右键文件<code>CarlaUE4.uproject</code>，选择运行<code>Generate Visual Studio project files</code>，在当前目录中将会生成VS的工程文件，双击打开<code>CarlaUE4.sln</code>。</li>
 </ol>
-<p><img alt="" src="../img/tuto_D_windows_debug/generate_vs_project_files.png" /></p>
+<p><img alt="" src="../img/tuto_D_windows_debug/generate_vs_project_files.png"></p>
 <div class="admonition 笔记">
 <p class="admonition-title">笔记</p>
 <p>如果右键菜单中未出现<code>Generate Visual Studio project files</code>选项，则到虚幻引擎的目录中运双击执行<code>engine\Engine\Binaries\Win64\UnrealVersionSelector.exe</code>，将虚幻引擎软件注册到系统中。如果报错：<code>The current folder does not contain an engine installation</code>，则检查是不是在Epic Games公司发布的引擎中执行，需要确保在带Carla插件中的虚幻引擎中进行执行。</p>
@@ -139,11 +139,11 @@
 <ol>
 <li>（调试数字孪生工具）在<code>解决方案</code>中展开<code>Games-&gt;CarlaUE4</code>，在想要查看的源代码行的最左侧单击增加断点（比如：<code>CarlaUE4-&gt;Plugins-&gt;CarlaTools-&gt;Source-&gt;CarlaTools-&gt;Private</code>的<code>OpenDriveToMap.cpp</code>的<code>GenerateTileStandalone()</code>），在菜单运行<code>调试(D)-&gt;开始调试(S)</code>，程序将在断点出暂停。通过<code>调式(D)-&gt;窗口(W)-&gt;监视(W)-&gt;监视 1</code>打开变量监视窗口，查看变量值是否异常。</li>
 </ol>
-<p><img alt="" src="../img/tuto_D_windows_debug/debug_project.png" /></p>
+<p><img alt="" src="../img/tuto_D_windows_debug/debug_project.png"></p>
 <ul>
 <li>
 <p>调试<strong>Carla服务端</strong>：断点打在<code>Carla/Game/CarlaEngine.cpp</code>的第87行，然后开始调式，在虚幻编辑器中点击<code>运行</code>则会在断点处停止。
-<img alt="" src="img/tuto_D_windows_debug/debug_carla_server.png" /></p>
+<img alt="" src="img/tuto_D_windows_debug/debug_carla_server.png"></p>
 </li>
 <li>
 <p>调式 <strong>虚幻编辑器启动</strong> ：断点打在<code>Carla/Vehicle/VehicleSpawnPoint.h</code>的第16行，通过vs启动调试后启动虚幻便器到75%时候会停止。</p>
@@ -182,8 +182,8 @@
 <h2 id="libcarla">调试 LibCarla <span id="debug_LibCarla"></span></h2>
 <h3 id="c-libcarla-client">使用 C++ 开始调试 LibCarla client <span id="cpp_client_debug"></span></h3>
 <p>先删除 Build 目录下的 boost, rpc, recast 的安装包、<code>hutb\Unreal\CarlaUE4\Plugins\Carla\CarlaDependencies</code>目录。
-<div class="highlight"><pre><span></span><code><span class="c1"># 在 Windows.mk 中将 IS_DEBUG 改为 true</span>
-</code></pre></div></p>
+</p><div class="highlight"><pre><span></span><code><span class="c1"># 在 Windows.mk 中将 IS_DEBUG 改为 true</span>
+</code></pre></div>
 <div class="admonition 注意">
 <p class="admonition-title">注意</p>
 <p>这里设置为调试模式时，启动编辑器可能会报错，因为其他模块会链接release版的rpc.lib，所以这里的方法只用于调试 LibCarla 的客户端。如果想要调试LibCarla服务端，需要加<code>hutb\Unreal\CarlaUE4\CarlaUE4.sln</code>工程的配置改为：<code>Debug Editor</code>（保证游戏和引擎都可以调试）。</p>
@@ -192,10 +192,10 @@
 <ul>
 <li>错误    LNK2038 检测到“_ITERATOR_DEBUG_LEVEL(迭代的调试级别)”的不匹配项: 值“2(链接的库为Debug)”不匹配值“0(当前工程为Release)”：引用了 release 的库</li>
 <li>LNK2038   检测到“RuntimeLibrary”的不匹配项: 值“MDd_DynamicDebug”不匹配值“MD_DynamicRelease”(SharedPCH.UnrealEd.h.obj 中)    ；项目为 CarlaUE4; 文件为：<code>Unreal\CarlaUE4\Intermediate\ProjectFiles\rpc.lib(format.obj)</code> （引用的需要是 debug，但SharedPCH.UnrealEd.h设置成 release）
-<div class="highlight"><pre><span></span><code>LNK2038 mismatch detected for &#39;RuntimeLibrary&#39;: 
-value &#39;MDd_DynamicDebug&#39; 文件对应的，依赖的lib
-doesn&#39;t match 
-value &#39;MD_DynamicRelease&#39; 项目对应的，当前的lib，一般都要和文件的对应
+<div class="highlight"><pre><span></span><code>LNK2038 mismatch detected for 'RuntimeLibrary': 
+value 'MDd_DynamicDebug' 文件对应的，依赖的lib
+doesn't match 
+value 'MD_DynamicRelease' 项目对应的，当前的lib，一般都要和文件的对应
 </code></pre></div>
 即：Release 库使用了 Debug 的库。</li>
 </ul>
@@ -208,44 +208,44 @@ PCH (PreCompiled Headers) 是一种宏管理方法，</p>
 <p>通过CppClient运行的客户端连接CarlaUE4.exe会显示<code>log_warning()</code>（LibCarla/source/carla/trafficmanager/InMemoryMap.cpp）的警告信息。</p>
 <p>1.打开<code>x64 Native Tools Command for VS 2019</code></p>
 <p><strong>1.1</strong> 并切换到目录<code>Util/InstallersWin</code>下，将<a href="https://github.com/OpenHUTB/carla/blob/ue4-dev/Util/InstallersWin/install_boost.bat"><code>install_boost.bat</code></a> 内的b2运行参数改为<code>variant=debug</code>（根据<code>Util/BuildTools/Setup.bat</code>里的安装Boost命令改编），（或者将 <a href="https://github.com/OpenHUTB/doc/blob/master/src/cmake/install_boost_debug.bat">install_boost_debug.bat</a> 拷贝到<code>Util/InstallerWin</code>目录下），然后运行<a href="https://github.com/OpenHUTB/doc/tree/master/src/cmake/install_boost_debug.bat"><code>install_boost_debug.bat</code></a> （或者设置同时编译 debug 和 release 版的 boost <code>variant=debug,release</code>）：
-<div class="highlight"><pre><span></span><code>install_boost_debug.bat<span class="w"> </span>--build-dir<span class="w"> </span>C:<span class="se">\b</span>uf<span class="w"> </span>--toolset<span class="w"> </span>msvc-14.2<span class="w"> </span>--version<span class="w"> </span><span class="m">1</span>.80.0<span class="w"> </span>-j<span class="w"> </span><span class="m">4</span>
+</p><div class="highlight"><pre><span></span><code>install_boost_debug.bat<span class="w"> </span>--build-dir<span class="w"> </span>C:<span class="se">\b</span>uf<span class="w"> </span>--toolset<span class="w"> </span>msvc-14.2<span class="w"> </span>--version<span class="w"> </span><span class="m">1</span>.80.0<span class="w"> </span>-j<span class="w"> </span><span class="m">4</span>
 </code></pre></div>
 或者 Setup.bat 中增加<code>-d</code>选项：
-<div class="highlight"><pre><span></span><code><span class="w">    </span>call<span class="w"> </span><span class="s2">&quot;%INSTALLERS_DIR%install_boost.bat&quot;</span>^
-<span class="w">    </span>--build-dir<span class="w"> </span><span class="s2">&quot;%INSTALLATION_DIR%&quot;</span>^
+<div class="highlight"><pre><span></span><code><span class="w">    </span>call<span class="w"> </span><span class="s2">"%INSTALLERS_DIR%install_boost.bat"</span>^
+<span class="w">    </span>--build-dir<span class="w"> </span><span class="s2">"%INSTALLATION_DIR%"</span>^
 <span class="w">    </span>--toolset<span class="w"> </span>%TOOLSET%^
 <span class="w">    </span>--version<span class="w"> </span>%BOOST_VERSION%^
 <span class="w">    </span>-j<span class="w"> </span>%NUMBER_OF_ASYNC_JOBS%^
 <span class="w">    </span>--build-all<span class="w"> </span>true^
 <span class="w">    </span>-d
 </code></pre></div>
-会自动将 boost 的库（debug 模式会生成带名字 <code>gd</code> 的库文件<code>Build\boost-1.86.0-install_debug\lib\libboost_atomic-vc143-mt-gd-x64-1_86.lib</code>）和头文件安装到目录<code>boost-1.80.0-install</code>里面。</p>
+会自动将 boost 的库（debug 模式会生成带名字 <code>gd</code> 的库文件<code>Build\boost-1.86.0-install_debug\lib\libboost_atomic-vc143-mt-gd-x64-1_86.lib</code>）和头文件安装到目录<code>boost-1.80.0-install</code>里面。
 <p><strong>1.2</strong> 将<a href="https://github.com/carla-simulator/carla/blob/dev/Util/InstallersWin/install_recast.bat"><code>install_recast.bat</code></a> 中的<code>Relase</code>改为<code>Debug</code>。
 将<code>-DCMAKE_CXX_FLAGS_RELASE="/MD /MP"</code>改为多线程调试DLL<code>-DCMAKE_CXX_FLAGS_DEBUG="/MDd /MP"</code>，（或者将 <a href="https://github.com/OpenHUTB/doc/blob/master/src/cmake/install_recast_debug.bat">install_recast_debug.bat</a> 拷贝到<code>Util/InstallerWin</code>目录下），然后运行<a href="https://github.com/OpenHUTB/doc/tree/master/src/cmake/install_recast_debug.bat"><code>install_recast_debug.bat</code></a> 。
-<div class="highlight"><pre><span></span><code><span class="c1"># 对于 vs 2019</span>
-install_recast_debug.bat<span class="w"> </span>--build-dir<span class="w"> </span>C:<span class="se">\b</span>uf<span class="w"> </span>--generator<span class="w"> </span><span class="s2">&quot;Visual Studio 16 2019&quot;</span>
-<span class="c1"># 对于 vs 2022，注意使用其他目录可能会报错：CMake Error: The source directory &quot;D:/hutb/Util&quot; does not appear to contain CMakeLists.txt.</span>
-install_recast.bat<span class="w"> </span>--build-dir<span class="w"> </span>D:<span class="se">\h</span>utb<span class="se">\B</span>uild<span class="w"> </span>--generator<span class="w"> </span><span class="s2">&quot;Visual Studio 17 2022&quot;</span><span class="w"> </span>--build-debug<span class="w"> </span><span class="nb">true</span>
+</p><div class="highlight"><pre><span></span><code><span class="c1"># 对于 vs 2019</span>
+install_recast_debug.bat<span class="w"> </span>--build-dir<span class="w"> </span>C:<span class="se">\b</span>uf<span class="w"> </span>--generator<span class="w"> </span><span class="s2">"Visual Studio 16 2019"</span>
+<span class="c1"># 对于 vs 2022，注意使用其他目录可能会报错：CMake Error: The source directory "D:/hutb/Util" does not appear to contain CMakeLists.txt.</span>
+install_recast.bat<span class="w"> </span>--build-dir<span class="w"> </span>D:<span class="se">\h</span>utb<span class="se">\B</span>uild<span class="w"> </span>--generator<span class="w"> </span><span class="s2">"Visual Studio 17 2022"</span><span class="w"> </span>--build-debug<span class="w"> </span><span class="nb">true</span>
 <span class="c1"># 生成的 hutb\Build\recast-install\lib\Recast-d.lib 比 release 版多了 -d</span>
-</code></pre></div></p>
+</code></pre></div>
 <p><strong>1.3</strong> 将<a href="https://github.com/carla-simulator/carla/blob/dev/Util/InstallersWin/install_rpclib.bat"><code>install_rpclib.bat</code></a> 中的<code>Relase</code>改为<code>Debug</code>，运行<a href="https://github.com/OpenHUTB/doc/tree/master/src/cmake/install_rpclib.bat"><code>install_rpclib.bat</code></a> 。
 将<code>-DCMAKE_CXX_FLAGS_RELASE="/MD /MP"</code>改为多线程调试DLL<code>-DCMAKE_CXX_FLAGS_DEBUG="/MDd /MP"</code>。或者将<a href="https://github.com/OpenHUTB/doc/blob/master/src/cmake/install_rpclib_debug.bat">install_rpclib_debug.bat</a> 拷贝到<code>Util/InstallerWin</code>目录下），然后运行：
-<div class="highlight"><pre><span></span><code>install_rpclib_debug.bat<span class="w"> </span>--build-dir<span class="w"> </span>C:<span class="se">\b</span>uf<span class="w"> </span>--generator<span class="w"> </span><span class="s2">&quot;Visual Studio 16 2019&quot;</span>
+</p><div class="highlight"><pre><span></span><code>install_rpclib_debug.bat<span class="w"> </span>--build-dir<span class="w"> </span>C:<span class="se">\b</span>uf<span class="w"> </span>--generator<span class="w"> </span><span class="s2">"Visual Studio 16 2019"</span>
 <span class="c1"># 对于 vs 2022</span>
-install_rpclib.bat<span class="w"> </span>--build-dir<span class="w"> </span>D:<span class="se">\h</span>utb<span class="se">\B</span>uild<span class="se">\d</span>ebug<span class="w"> </span>--generator<span class="w"> </span><span class="s2">&quot;Visual Studio 17 2022&quot;</span><span class="w"> </span>--build-debug<span class="w"> </span><span class="nb">true</span>
+install_rpclib.bat<span class="w"> </span>--build-dir<span class="w"> </span>D:<span class="se">\h</span>utb<span class="se">\B</span>uild<span class="se">\d</span>ebug<span class="w"> </span>--generator<span class="w"> </span><span class="s2">"Visual Studio 17 2022"</span><span class="w"> </span>--build-debug<span class="w"> </span><span class="nb">true</span>
 <span class="c1"># 生成的 hutb\Build\rpclib-install\lib\rpc.lib 文件名不变，debug 的版本文件变小了</span>
-</code></pre></div></p>
+</code></pre></div>
 <p><strong>2</strong>.将第1步生成的安装文件目录配置到<code>Examples\CppClient\CMakeLists.txt</code>中（也就是将 <a href="https://github.com/OpenHUTB/doc/blob/master/src/cmake/cpp_client_debug.txt">cpp_client_debug.txt</a> 拷贝到<code>Examples/CppClient</code>目录下并重命名为<code>CMakeLists.txt</code> ），对应的头文件和库文件都改为Debug版本（即将<code>C:\buf</code>目录下的<code>boost-1.80.0-install</code>、<code>recast-install</code>、<code>rpclib-install</code>3个文件夹拷贝到<code>Build\debug</code>目录下）；</p>
 <p><strong>3</strong>.在<code>main.cpp</code>中增加断点，并开始调试；
-<img alt="" src="../img/tuto_D_windows_debug/set_breakpoint_in_cpp_client.jpg" />
-<div class="highlight"><pre><span></span><code>auto<span class="w"> </span><span class="nv">world</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>client.LoadWorld<span class="o">(</span><span class="s2">&quot;town_name&quot;</span><span class="o">)</span><span class="p">;</span>
+<img alt="" src="../img/tuto_D_windows_debug/set_breakpoint_in_cpp_client.jpg">
+</p><div class="highlight"><pre><span></span><code>auto<span class="w"> </span><span class="nv">world</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>client.LoadWorld<span class="o">(</span><span class="s2">"town_name"</span><span class="o">)</span><span class="p">;</span>
 </code></pre></div>
 改为：
-<div class="highlight"><pre><span></span><code>auto<span class="w"> </span><span class="nv">world</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>client.LoadWorld<span class="o">(</span><span class="s2">&quot;Town10HD_Opt&quot;</span><span class="o">)</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code>auto<span class="w"> </span><span class="nv">world</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>client.LoadWorld<span class="o">(</span><span class="s2">"Town10HD_Opt"</span><span class="o">)</span><span class="p">;</span>
 </code></pre></div>
-即将<a href="https://github.com/OpenHUTB/doc/blob/master/src/cmake/main_debug.cpp">main_debug.cpp</a> 拷贝到<code>Examples/CppClient</code>目录下。</p>
+即将<a href="https://github.com/OpenHUTB/doc/blob/master/src/cmake/main_debug.cpp">main_debug.cpp</a> 拷贝到<code>Examples/CppClient</code>目录下。
 <p>4.使用VS2019打开<code>Examples/CppClient/CMakeLists.txt</code>，程序在断点停止后按F10运行下一步，按F11进入LibCarla中的函数实现。
-<img alt="" src="../img/tuto_D_windows_debug/stop_in_LibCarla.jpg" /></p>
+<img alt="" src="../img/tuto_D_windows_debug/stop_in_LibCarla.jpg"></p>
 <div class="admonition 注意">
 <p class="admonition-title">注意</p>
 <p>需要先启动Town10HT-Opt场景：需要从vs2019中使用调试模式启动虚幻编辑器并运行场景，如果使用编译后的场景执行<code>world.GetBlueprintLibrary()</code>会抛出异常。如果调式报错<code>错误   LNK1169 找到一个或多个多重定义的符号</code>，则表明当前工程有多个主函数的代码，需要删除<code>main.cpp</code>或者在Cmakelist.txt中指定需要编译包含住函数的的源代码<code>main_debug.cpp</code>。</p>
@@ -254,25 +254,25 @@ install_rpclib.bat<span class="w"> </span>--build-dir<span class="w"> </span>D:<
 <ul>
 <li>脚本<code>BuildLibCarla.bat</code>调用<code>cmake</code>命令进行构建：</li>
 </ul>
-<p><div class="highlight"><pre><span></span><code>cmake<span class="w"> </span>-G<span class="w"> </span>%GENERATOR%<span class="w"> </span>%PLATFORM%^
+<p></p><div class="highlight"><pre><span></span><code>cmake<span class="w"> </span>-G<span class="w"> </span>%GENERATOR%<span class="w"> </span>%PLATFORM%^
 <span class="w">  </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Server^
-<span class="w">  </span>-DCMAKE_CXX_FLAGS_RELEASE<span class="o">=</span><span class="s2">&quot;/MD /MP&quot;</span>^
-<span class="w">  </span>-DCMAKE_INSTALL_PREFIX<span class="o">=</span><span class="s2">&quot;%LIBCARLA_SERVER_INSTALL_PATH:\=/%&quot;</span>^
-<span class="w">  </span><span class="s2">&quot;%ROOT_PATH%&quot;</span>
+<span class="w">  </span>-DCMAKE_CXX_FLAGS_RELEASE<span class="o">=</span><span class="s2">"/MD /MP"</span>^
+<span class="w">  </span>-DCMAKE_INSTALL_PREFIX<span class="o">=</span><span class="s2">"%LIBCARLA_SERVER_INSTALL_PATH:\=/%"</span>^
+<span class="w">  </span><span class="s2">"%ROOT_PATH%"</span>
 </code></pre></div>
-其中，<code>-G</code>表示指定编译器版本（<code>set GENERATOR="Visual Studio 16 2019"</code>、<code>set PLATFORM=-A x64</code>）；</p>
+其中，<code>-G</code>表示指定编译器版本（<code>set GENERATOR="Visual Studio 16 2019"</code>、<code>set PLATFORM=-A x64</code>）；
 <p><code>-DCMAKE_BUILD_TYPE</code>的可选项包括：<code>Client</code>, <code>Server</code>, <code>Pytorch</code>, <code>ros2</code>；
 <code>-D CMAKE_BUILD_TYPE="Debug"</code>可选值包括：<code>Debug</code>, <code>Release</code>, <code>RelWithDebInfo</code>, <code>MinSizeRel</code>。</p>
 <p><code>CMAKE_CXX_FLAGS_RELEASE</code>设置编译类型 Release 时的编译选项；</p>
 <ul>
 <li>
 <p>调用以下命令在 <code>Build</code> 目录下生成<code>Makefile</code>文件：
-<div class="highlight"><pre><span></span><code>cmake<span class="w"> </span>--build<span class="w"> </span>.<span class="w"> </span>--config<span class="w"> </span>Release<span class="w"> </span>--target<span class="w"> </span>install<span class="w"> </span><span class="p">|</span><span class="w"> </span>findstr<span class="w"> </span>/V<span class="w"> </span><span class="s2">&quot;Up-to-date:&quot;</span>
-</code></pre></div></p>
+</p><div class="highlight"><pre><span></span><code>cmake<span class="w"> </span>--build<span class="w"> </span>.<span class="w"> </span>--config<span class="w"> </span>Release<span class="w"> </span>--target<span class="w"> </span>install<span class="w"> </span><span class="p">|</span><span class="w"> </span>findstr<span class="w"> </span>/V<span class="w"> </span><span class="s2">"Up-to-date:"</span>
+</code></pre></div>
 </li>
 <li>
 <p>使用VS打开<code>Build\libcarla-visualstudio\CARLA.sln</code>。使用命令<code>make client</code>打开的就是<code>LibCarla\cmake\client\CMakeLists.txt</code>对应的项目。（使用<code>make server</code>打开的则是<code>LibCarla\cmake\server\CMakeLists.txt</code>对应的项目）
-<img alt="" src="img/tuto_D_windows_debug/open_libcarla_proj.png" />
+<img alt="" src="img/tuto_D_windows_debug/open_libcarla_proj.png">
 （<code>Build</code>目录下还包括<code>osm2odr-visualstudio/SUMO.sln</code>的VS工程）。</p>
 </li>
 <li>
@@ -310,16 +310,16 @@ install_rpclib.bat<span class="w"> </span>--build-dir<span class="w"> </span>D:<
 查看pdb文件的工具，我们可以使用vs安装目录下的<code>C:\Program Files\Microsoft Visual Studio\2022\Community\DIA SDK\Samples\DIA2Dump</code>中的DIA2Dump工具。这个有源代码，需要打开<code>DIA2Dump.sln</code>重新编译就可以使用了。</p>
 <p><a href="https://learn.microsoft.com/en-us/visualstudio/debugger/debug-interface-access/dia2dump-sample?view=visualstudio">编译DiaDump</a> ：To build the Dia2Dump sample in Visual Studio</p>
 <p>运行DiaDump解析pdf文件：
-<div class="highlight"><pre><span></span><code>C:<span class="se">\P</span>rogram<span class="w"> </span>Files<span class="se">\M</span>icrosoft<span class="w"> </span>Visual<span class="w"> </span>Studio<span class="se">\2</span><span class="m">022</span><span class="se">\C</span>ommunity<span class="se">\D</span>IA<span class="w"> </span>SDK<span class="se">\S</span>amples<span class="se">\D</span>IA2Dump<span class="se">\x</span><span class="m">64</span><span class="se">\D</span>ebug&gt;Dia2Dump.exe<span class="w"> </span>D:<span class="se">\h</span>utb<span class="se">\U</span>nreal<span class="se">\C</span>arlaUE4<span class="se">\P</span>lugins<span class="se">\C</span>arla<span class="se">\B</span>inaries<span class="se">\W</span>in64<span class="se">\U</span>E4Editor-Carla.pdb<span class="w"> </span>&gt;&gt;<span class="w"> </span>D:<span class="se">\h</span>utb<span class="se">\U</span>nreal<span class="se">\C</span>arlaUE4<span class="se">\P</span>lugins<span class="se">\C</span>arla<span class="se">\B</span>inaries<span class="se">\W</span>in64<span class="se">\U</span>E4Editor-Carla.log
+</p><div class="highlight"><pre><span></span><code>C:<span class="se">\P</span>rogram<span class="w"> </span>Files<span class="se">\M</span>icrosoft<span class="w"> </span>Visual<span class="w"> </span>Studio<span class="se">\2</span><span class="m">022</span><span class="se">\C</span>ommunity<span class="se">\D</span>IA<span class="w"> </span>SDK<span class="se">\S</span>amples<span class="se">\D</span>IA2Dump<span class="se">\x</span><span class="m">64</span><span class="se">\D</span>ebug&gt;Dia2Dump.exe<span class="w"> </span>D:<span class="se">\h</span>utb<span class="se">\U</span>nreal<span class="se">\C</span>arlaUE4<span class="se">\P</span>lugins<span class="se">\C</span>arla<span class="se">\B</span>inaries<span class="se">\W</span>in64<span class="se">\U</span>E4Editor-Carla.pdb<span class="w"> </span>&gt;&gt;<span class="w"> </span>D:<span class="se">\h</span>utb<span class="se">\U</span>nreal<span class="se">\C</span>arlaUE4<span class="se">\P</span>lugins<span class="se">\C</span>arla<span class="se">\B</span>inaries<span class="se">\W</span>in64<span class="se">\U</span>E4Editor-Carla.log
 </code></pre></div>
-Compiland就是编译的单元，我们可以看到全路径信息。然后到对应的路径下查看是否源代码文件是否存在。</p>
+Compiland就是编译的单元，我们可以看到全路径信息。然后到对应的路径下查看是否源代码文件是否存在。
 <p>以上方法不能调试进入LibCarla模块的代码。</p>
 <h3 id="_2">记录日志 <span id="log_debug"></span></h3>
 <p>在需要查看信息的地方插入下面一行代码（这在 Python 中也会调用）：
-<div class="highlight"><pre><span></span><code><span class="n">log_warning</span><span class="p">(</span><span class="s">&quot;Debug info...&quot;</span><span class="p">);</span>
+</p><div class="highlight"><pre><span></span><code><span class="n">log_warning</span><span class="p">(</span><span class="s">"Debug info..."</span><span class="p">);</span>
 </code></pre></div>
 注意：再次启动编辑器不会生效，需要重命名（或移除）目录<code>Build\libcarla-visualstudio</code>?、
-<code>hutb\Unreal\CarlaUE4\Plugins\Carla\CarlaDependencies</code>x，</p>
+<code>hutb\Unreal\CarlaUE4\Plugins\Carla\CarlaDependencies</code>x，
 <p>都不行，因为 PythonAPI 需要 InMemoryMap.cpp 模块，所以需要重新构建 PythonAPI。</p>
 <p>而<code>log_debug(...)</code>只在调式构建（单元测试）中会打印信息，默认的模式是release构建。</p>
 <h3 id="python">Python 扩展模块 <span id="python_extension"></span></h3>
@@ -327,11 +327,11 @@ Compiland就是编译的单元，我们可以看到全路径信息。然后到�
 <h2 id="pythonapi">调试PythonAPI <span id="debug_Python_API"></span></h2>
 <p>boost_python库所在的目录为：<code>carla\Build\boost-1.80.0-install\lib\libboost_python37-vc142-mt-x64-1_80.lib</code>，<code>mt-x64</code>之间带有<code>gd</code>的是对应的调试版本。示例参考 <a href="../demo/boost_python/">链接</a> 。</p>
 <p>列出所有可用的命令：
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>setup.py<span class="w"> </span>--help-commands
-</code></pre></div></p>
+</p><div class="highlight"><pre><span></span><code>python<span class="w"> </span>setup.py<span class="w"> </span>--help-commands
+</code></pre></div>
 <p>构建命令：
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>setup.py<span class="w"> </span>build
-</code></pre></div></p>
+</p><div class="highlight"><pre><span></span><code>python<span class="w"> </span>setup.py<span class="w"> </span>build
+</code></pre></div>
 <h3 id="_3">构建调试版本 <span id="build_debug_version"></span></h3>
 <ol>
 <li>右键 <code>CARLA</code>解决方案，<code>添加</code>-&gt;<code>新建项目</code>-&gt;<code>Python应用程序</code>；</li>
@@ -349,14 +349,14 @@ Compiland就是编译的单元，我们可以看到全路径信息。然后到�
 <li>打开蓝图后，在所需要的模块上右键，添加断点；</li>
 <li>在虚幻编辑器中运行场景；</li>
 <li>会在蓝图断点处停止，可以在菜单栏中进行程序流程的控制和调试，比如进入、跳过、跳出等。
-<img alt="" src="../img/tuto_D_windows_debug/BP_debug.jpg" /></li>
+<img alt="" src="../img/tuto_D_windows_debug/BP_debug.jpg"></li>
 </ol>
 <p>从菜单<code>窗口-&gt;开发者工具</code>中的<code>蓝图调试器</code>，可以查看调用堆栈、变量值等信息，具体操作请查看<a href="https://dev.epicgames.com/documentation/zh-cn/unreal-engine/blueprint-debugging?application_version=4.27">蓝图调试</a> 。</p>
 <h2 id="_6">其他 <span id="other"></span></h2>
 <h3 id="openhutbexe">窗口关闭后 OpenHUTB.exe 进程仍然运行</h3>
-<p><div class="highlight"><pre><span></span><code>netstat<span class="w"> </span>-aon<span class="p">|</span>findstr<span class="w"> </span><span class="s2">&quot;2000&quot;</span>
+<p></p><div class="highlight"><pre><span></span><code>netstat<span class="w"> </span>-aon<span class="p">|</span>findstr<span class="w"> </span><span class="s2">"2000"</span>
 </code></pre></div>
-最后一个数字为进程ID（在任务管理器中也能看到）。</p>
+最后一个数字为进程ID（在任务管理器中也能看到）。
 <p>33848</p>
 <p>下载<a href="https://learn.microsoft.com/zh-cn/sysinternals/downloads/process-explorer">进程资源管理器</a>，右键<code>procexp64.exe</code>点击<strong>以管理员身份运行</strong>，在 Process Explorer 窗口中，找到目标进程(可以通过 PID 搜索)，使用菜单<code>Find-&gt;Findhandleor DLL...</code>搜索。</p>
 <p>view-&gt;选中[DLLs]，点击选中你要查看的程序，然后点击菜单栏的【view】--&gt;[lower pane]</p>
@@ -370,8 +370,8 @@ Compiland就是编译的单元，我们可以看到全路径信息。然后到�
 <p>1、先从VS工具栏中的第一个下拉菜单中选择设置<code>Development Editor</code></p>
 <p>2、在<code>解决方案</code>中右键项目<code>UE4</code>，选择<code>调试(Debug) -&gt; 进入单步执行新实例</code></p>
 <p>3、断点会停在<code>UnrealEngine\Engine\Source\Runtime\Launch\Private\Windows/LaunchWindows.cpp</code>主函数入口：
-<div class="highlight"><pre><span></span><code><span class="n">int32</span><span class="w"> </span><span class="n">WINAPI</span><span class="w"> </span><span class="n">WinMain</span><span class="p">(</span><span class="w"> </span><span class="n">_In_</span><span class="w"> </span><span class="n">HINSTANCE</span><span class="w"> </span><span class="n">hInInstance</span><span class="p">,</span><span class="w"> </span><span class="n">_In_opt_</span><span class="w"> </span><span class="n">HINSTANCE</span><span class="w"> </span><span class="n">hPrevInstance</span><span class="p">,</span><span class="w"> </span><span class="n">_In_</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">_In_</span><span class="w"> </span><span class="n">int32</span><span class="w"> </span><span class="n">nCmdShow</span><span class="w"> </span><span class="p">)</span>
-</code></pre></div></p>
+</p><div class="highlight"><pre><span></span><code><span class="n">int32</span><span class="w"> </span><span class="n">WINAPI</span><span class="w"> </span><span class="n">WinMain</span><span class="p">(</span><span class="w"> </span><span class="n">_In_</span><span class="w"> </span><span class="n">HINSTANCE</span><span class="w"> </span><span class="n">hInInstance</span><span class="p">,</span><span class="w"> </span><span class="n">_In_opt_</span><span class="w"> </span><span class="n">HINSTANCE</span><span class="w"> </span><span class="n">hPrevInstance</span><span class="p">,</span><span class="w"> </span><span class="n">_In_</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">_In_</span><span class="w"> </span><span class="n">int32</span><span class="w"> </span><span class="n">nCmdShow</span><span class="w"> </span><span class="p">)</span>
+</code></pre></div>
 <h3 id="vs2019-carlaue4-cmake">VS2019 打开 CarlaUE4 的 Cmake 工程 <span id="open_cmake_project"></span></h3>
 <p>windows操作系统下通过vs2019打开并编译carla：</p>
 <ol>
@@ -390,13 +390,13 @@ Compiland就是编译的单元，我们可以看到全路径信息。然后到�
 <ol>
 <li>
 <p>例如，导入测试链接：
-<div class="highlight"><pre><span></span><code>小地图：
+</p><div class="highlight"><pre><span></span><code>小地图：
 https://overpass-api.de/api/map?bbox=112.9088,28.2221,112.9172,28.2290
 大地图：
 https://overpass-api.de/api/map?bbox=112.8553,28.1931,112.9396,28.2504
 金醴高速：
 https://overpass-api.de/api/map?bbox=113.5293,27.6893,113.5516,27.7074
-</code></pre></div></p>
+</code></pre></div>
 </li>
 <li>
 <p><code>CarlaUE4-&gt;Plugins-&gt;CarlaTools-&gt;Source-&gt;CarlaTools-&gt;Private</code>的<code>OpenDriveToMap.cpp</code>463行<code>GenerateTileStandalone()</code> ，然后调用<code>ExecuteTileCommandlet()</code> : </p>
@@ -405,7 +405,7 @@ https://overpass-api.de/api/map?bbox=113.5293,27.6893,113.5516,27.7074
 <p>UCommandlet是 Unreal Engine 中用于实现命令行操作的基类。它允许开发者创建自定义的命令行命令，并在引擎启动时执行这些命令。这个类主要用于扩展引擎功能，提供自定义的命令行工具。</p>
 <ol>
 <li>ExecuteTileCommandlet() 调用的是<code>carla\Unreal\CarlaUE4\Plugins\CarlaTools\Intermediate\Build\Win64\UE4Editor\Inc\CarlaTools\OpenDriveToMap.gen.cpp</code>（反射文件gen）194行的
-<div class="highlight"><pre><span></span><code>static<span class="w"> </span>FName<span class="w"> </span><span class="nv">NAME_UOpenDriveToMap_ExecuteTileCommandlet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>FName<span class="o">(</span>TEXT<span class="o">(</span><span class="s2">&quot;ExecuteTileCommandlet&quot;</span><span class="o">))</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code>static<span class="w"> </span>FName<span class="w"> </span><span class="nv">NAME_UOpenDriveToMap_ExecuteTileCommandlet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>FName<span class="o">(</span>TEXT<span class="o">(</span><span class="s2">"ExecuteTileCommandlet"</span><span class="o">))</span><span class="p">;</span>
 void<span class="w"> </span>UOpenDriveToMap::ExecuteTileCommandlet<span class="o">()</span>
 <span class="o">{</span>
 <span class="w">    </span>ProcessEvent<span class="o">(</span>FindFunctionChecked<span class="o">(</span>NAME_UOpenDriveToMap_ExecuteTileCommandlet<span class="o">)</span>,NULL<span class="o">)</span><span class="p">;</span>
@@ -416,8 +416,8 @@ void<span class="w"> </span>UOpenDriveToMap::ExecuteTileCommandlet<span class="o
 </ol>
 <p><a href="https://neil3d.github.io/unreal/bp_in_depth.html">蓝图的字节码</a> ：在<code>engine\Engine\Source\Runtime\CoreUObject\Public\UObject\Script.h</code>这个文件中有一个<code>enum EExprToken</code>，这个枚举就是蓝图的字节码定义。引擎中使用一个全局查找表，把上述字节码映射到函数指针。在运行时，从一个字节码数组中逐个取出字节码，并查找函数指针，进行调用，也就完成了所谓的“字节码解释执行”的过程。</p>
 <p>改为
-<div class="highlight"><pre><span></span><code>void<span class="w"> </span>UOpenDriveToMap::GenerateTileStandalone<span class="o">(){</span>
-<span class="w">  </span>UE_LOG<span class="o">(</span>LogCarlaToolsMapGenerator,<span class="w"> </span>Log,<span class="w"> </span>TEXT<span class="o">(</span><span class="s2">&quot;UOpenDriveToMap::GenerateTileStandalone Function called&quot;</span><span class="o">))</span><span class="p">;</span>
+</p><div class="highlight"><pre><span></span><code>void<span class="w"> </span>UOpenDriveToMap::GenerateTileStandalone<span class="o">(){</span>
+<span class="w">  </span>UE_LOG<span class="o">(</span>LogCarlaToolsMapGenerator,<span class="w"> </span>Log,<span class="w"> </span>TEXT<span class="o">(</span><span class="s2">"UOpenDriveToMap::GenerateTileStandalone Function called"</span><span class="o">))</span><span class="p">;</span>
 
 <span class="w">  </span>//<span class="w"> </span>ExecuteTileCommandlet<span class="o">()</span><span class="p">;</span>
 <span class="w">  </span>GenerateTile<span class="o">()</span><span class="p">;</span>
@@ -427,16 +427,16 @@ void<span class="w"> </span>UOpenDriveToMap::ExecuteTileCommandlet<span class="o
 
 <span class="o">}</span>
 </code></pre></div>
-注意：大地图也只能生成一小片地图。</p>
+注意：大地图也只能生成一小片地图。
 <p>报错信息：
-<div class="highlight"><pre><span></span><code>D:\work\workspace\engine/Engine/Binanes\Win64\UE4Editor ../../../../carla/Unreal/CaraUE4/CaraUE4.uproject -run=GenerateTileCommandlet &quot; &quot; -FilePath= ../../../../carla/Unreal/CarlaUE4/Content/Custo
+</p><div class="highlight"><pre><span></span><code>D:\work\workspace\engine/Engine/Binanes\Win64\UE4Editor ../../../../carla/Unreal/CaraUE4/CaraUE4.uproject -run=GenerateTileCommandlet " " -FilePath= ../../../../carla/Unreal/CarlaUE4/Content/Custo
 [2024.04.30-06.58.10:090][ 0]LogInit: Executing Class /Script/CarlaTools.GenerateTileCommandlet
 [2024.04.30-06.58.10:090][ 0]LogOutputDevice: Warning:
 
 (0 frames)
-</code></pre></div></p>
+</code></pre></div>
 <p>崩溃日志：
-<div class="highlight"><pre><span></span><code>LoginId:bc22576a452b36c1831fe8942b55e57a
+</p><div class="highlight"><pre><span></span><code>LoginId:bc22576a452b36c1831fe8942b55e57a
 EpicAccountId:77cf3795af004e58a037e9c9d4a5aa0d
 
 Assertion failed: Pair != nullptr [File:D:\work\workspace\engine\Engine\Source\Runtime\Core\Public\Containers/Map.h] [Line: 621]
@@ -452,20 +452,20 @@ UE4Editor!__scrt_common_main_seh() [d:\agent\_work\2\s\src\vctools\crt\vcstartup
 kernel32
 ntdll
 </code></pre></div>
-可知：<code>OpenDriveMap-&gt;FilePath = ParamsMap["FilePath"];</code>报的错，应该是路径下.xodr文件不存在。</p>
+可知：<code>OpenDriveMap-&gt;FilePath = ParamsMap["FilePath"];</code>报的错，应该是路径下.xodr文件不存在。
 <p>崩溃日志位于：<code>engine\Engine\Binaries\Win64\CommandletParameters.txt</code>
 找到的命令行运行参数为：
-<div class="highlight"><pre><span></span><code> -run=GenerateTileCommandlet &quot; &quot; - F i l e P a t h = . . / . . / . . / . . / c a r l a / U n r e a l / C a r l a U E 4 / C o n t e n t / C u s t o m M a p s / t e s t _ 3 7 / O p e n D r i v e / t e s t _ 3 7 . x o d r &quot; &quot; - B a s e L e v e l N a m e = / G a m e / C u s t o m M a p s / t e s t _ 3 7 / t e s t _ 3 7 &quot; &quot; - G e o C o o r d s X = 2 7 . 6 8 9 3 0 1 &quot; &quot; - G e o C o o r d s Y = 1 1 3 . 5 2 9 2 9 7 &quot; &quot; - C T i l e X = 4 &quot; &quot; - C T i l e Y = 0 &quot; &quot; - A l l o w C o m m a n d l e t R e n d e r i n g
+</p><div class="highlight"><pre><span></span><code> -run=GenerateTileCommandlet " " - F i l e P a t h = . . / . . / . . / . . / c a r l a / U n r e a l / C a r l a U E 4 / C o n t e n t / C u s t o m M a p s / t e s t _ 3 7 / O p e n D r i v e / t e s t _ 3 7 . x o d r " " - B a s e L e v e l N a m e = / G a m e / C u s t o m M a p s / t e s t _ 3 7 / t e s t _ 3 7 " " - G e o C o o r d s X = 2 7 . 6 8 9 3 0 1 " " - G e o C o o r d s Y = 1 1 3 . 5 2 9 2 9 7 " " - C T i l e X = 4 " " - C T i l e Y = 0 " " - A l l o w C o m m a n d l e t R e n d e r i n g
 </code></pre></div>
-参数多了很多空格</p>
+参数多了很多空格
 <p>正确应该为：
-<div class="highlight"><pre><span></span><code>D:<span class="se">\w</span>ork<span class="se">\w</span>orkspace<span class="se">\e</span>ngine<span class="se">\E</span>ngine<span class="se">\B</span>inaries<span class="se">\W</span>in64<span class="se">\U</span>E4Editor<span class="w"> </span>../../../../carla/Unreal/CarlaUE4/CarlaUE4.uproject<span class="w"> </span>-run<span class="o">=</span>GenerateTileCommandlet<span class="w"> </span>-FilePath<span class="o">=</span>../../../../carla/Unreal/CarlaUE4/Content/CustomMaps/test_37/OpenDrive/test_37.xodr<span class="w"> </span>-BaseLevelName<span class="o">=</span>/Game/CustomMaps/test_37/test_37<span class="w"> </span>-GeoCoordsX<span class="o">=</span><span class="m">27</span>.689301<span class="w"> </span>-GeoCoordsY<span class="o">=</span><span class="m">113</span>.529297<span class="w"> </span>-CTileX<span class="o">=</span><span class="m">4</span><span class="w"> </span>-CTileY<span class="o">=</span><span class="m">0</span><span class="w"> </span>-AllowCommandletRendering
+</p><div class="highlight"><pre><span></span><code>D:<span class="se">\w</span>ork<span class="se">\w</span>orkspace<span class="se">\e</span>ngine<span class="se">\E</span>ngine<span class="se">\B</span>inaries<span class="se">\W</span>in64<span class="se">\U</span>E4Editor<span class="w"> </span>../../../../carla/Unreal/CarlaUE4/CarlaUE4.uproject<span class="w"> </span>-run<span class="o">=</span>GenerateTileCommandlet<span class="w"> </span>-FilePath<span class="o">=</span>../../../../carla/Unreal/CarlaUE4/Content/CustomMaps/test_37/OpenDrive/test_37.xodr<span class="w"> </span>-BaseLevelName<span class="o">=</span>/Game/CustomMaps/test_37/test_37<span class="w"> </span>-GeoCoordsX<span class="o">=</span><span class="m">27</span>.689301<span class="w"> </span>-GeoCoordsY<span class="o">=</span><span class="m">113</span>.529297<span class="w"> </span>-CTileX<span class="o">=</span><span class="m">4</span><span class="w"> </span>-CTileY<span class="o">=</span><span class="m">0</span><span class="w"> </span>-AllowCommandletRendering
 
 D:<span class="se">\w</span>ork<span class="se">\w</span>orkspace<span class="se">\e</span>ngine<span class="se">\E</span>ngine<span class="se">\B</span>inaries<span class="se">\W</span>in64<span class="se">\U</span>E4Editor-Cmd<span class="w"> </span>D:/work/workspace/carla/Unreal/CarlaUE4/CarlaUE4.uproject<span class="w"> </span>-run<span class="o">=</span>GenerateTileCommandlet<span class="w"> </span>-FilePath<span class="o">=</span>D:/work/workspace/carla/Unreal/CarlaUE4/Content/CustomMaps/test_37/OpenDrive/test_37.xodr<span class="w"> </span>-BaseLevelName<span class="o">=</span>/Game/CustomMaps/test_37/test_37<span class="w"> </span>-GeoCoordsX<span class="o">=</span><span class="m">27</span>.689301<span class="w"> </span>-GeoCoordsY<span class="o">=</span><span class="m">113</span>.529297<span class="w"> </span>-CTileX<span class="o">=</span><span class="m">4</span><span class="w"> </span>-CTileY<span class="o">=</span><span class="m">0</span><span class="w"> </span>-AllowCommandletRendering
 </code></pre></div>
 直接命令行运行报错（必须确保不是Commandlet启动，而必须是Editor启动）：
 <div class="highlight"><pre><span></span><code>LogWindows: Error: Assertion failed: !IsRunningCommandlet() [File:D:/work/workspace/engine/Engine/Plugins/Developer/RenderDocPlugin/Source/RenderDocPlugin/Private/SRenderDocPluginEditorExtension.cpp] [Line: 107]
-</code></pre></div></p>
+</code></pre></div>
 <p>问题的根源：Windows不支持使用Commandlet方式，而是可以直接调用<code>GenerateTile();</code>生成地图瓦片。</p>
 <p>解决办法：使用最新的 <code>ue4-dev</code> 分支代码，对应的 <a href="https://github.com/OpenHUTB/carla/commit/6886d25c13097dbb94b84afda513bf6ecc4ea73e">代码修改</a> 、<a href="https://github.com/OpenHUTB/carla/commit/6ffcdbeec9eaaa6586c5e8a77de13d449acc55da">空指针问题</a> 。使用 <code>RemoveFromRoot()</code> 将其从根对象列表中移除。这允许垃圾回收机制回收该对象所占用的内存。</p>
 <h3 id="vs-ue"><a href="https://ue5wiki.com/wiki/14373/">VS 调试 UE 项目</a>  <span id="debug_UE_with_vs2019"></span></h3>
@@ -476,8 +476,8 @@ D:<span class="se">\w</span>ork<span class="se">\w</span>orkspace<span class="se
 <h3 id="_8">问题 <span id="problems"></span></h3>
 <p>崩溃于<code>engine\Engine\Source\Runtime\CoreUObject\Private\UObject\ScriptCore.cpp</code>1990行<code>Function-&gt;Invoke(this, NewStack, ReturnValueAddress);</code>
 弹出报错信息框：
-<div class="highlight"><pre><span></span><code>Failed to open descriptor file ./../../../carla/Unreal/CarlaUE4/CarlaUE4.uproject
-</code></pre></div></p>
+</p><div class="highlight"><pre><span></span><code>Failed to open descriptor file ./../../../carla/Unreal/CarlaUE4/CarlaUE4.uproject
+</code></pre></div>
 <ul>
 <li>
 <p><a href="http://www.piaoyi.org/c-sharp/Visual-Studio-2019-Intellisense.html">VS跳转代码太慢</a> </p>
@@ -504,9 +504,9 @@ D:<span class="se">\w</span>ork<span class="se">\w</span>orkspace<span class="se
 <p>包含所有软件依赖，双击<code>launch.bat</code>启动软件。</p>
 <h4 id="vs2019">VS2019社区版安装</h4>
 <p>解压安装包：
-<div class="highlight"><pre><span></span><code>7z<span class="w"> </span>x<span class="w"> </span>filename.zip<span class="w"> </span>-o.
+</p><div class="highlight"><pre><span></span><code>7z<span class="w"> </span>x<span class="w"> </span>filename.zip<span class="w"> </span>-o.
 </code></pre></div>
-新电脑运行<code>NativeDesktop.exe</code>出现<code>此版本的Windows不支持此产品，请尝试升级Windows。</code></p>
+新电脑运行<code>NativeDesktop.exe</code>出现<code>此版本的Windows不支持此产品，请尝试升级Windows。</code>
 <h3 id="_11">技巧 <span id="trick"></span></h3>
 <ul>
 <li>
@@ -521,11 +521,11 @@ D:<span class="se">\w</span>ork<span class="se">\w</span>orkspace<span class="se
 </li>
 <li>
 <p>改变ubuntu终端显示语言（桌面系统中文，终端提示英文）
-    <div class="highlight"><pre><span></span><code>vim<span class="w"> </span>~/.bashrc
+    </p><div class="highlight"><pre><span></span><code>vim<span class="w"> </span>~/.bashrc
 <span class="nb">export</span><span class="w"> </span><span class="nv">LANGUAGE</span><span class="o">=</span>en_US<span class="w"> </span>
 <span class="nb">export</span><span class="w"> </span><span class="nv">LANG</span><span class="o">=</span>en_US.UTF-8
 <span class="nb">source</span><span class="w"> </span>~/.bashrc
-</code></pre></div></p>
+</code></pre></div>
 </li>
 <li>
 <p>UE4C++ 调试时监控变量显示 “变量已经被优化，因此不可见”</p>
@@ -552,7 +552,7 @@ D:<span class="se">\w</span>ork<span class="se">\w</span>orkspace<span class="se
 <li><a href="../tuto_D_bat/">bat脚本</a></li>
 <li><a href="../libcarla/">LibCarla 说明</a></li>
 <li><a href="../CarlaUE4/">CarlaUE4 说明</a></li>
-</ul>
+</ul></div>
               
             </div>
           </div><footer>

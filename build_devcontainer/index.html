@@ -100,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="hutb-docker">HUTB Docker 开发环境</h1>
+                <div><h1 id="hutb-docker">HUTB Docker 开发环境</h1>
 <p>HUTB 可以完全在 Docker 容器内构建和开发。这种方法消除了对依赖项、Python 版本或系统配置的担忧——一切都已在 Dockerfile 中设置完毕。例如，Dockerfile 支持多个 Python 版本，并预装了所有必需的库。</p>
 <p>我们提供两种基于 Docker 的 HUTB 构建方法：<strong>单体模式</strong>和<strong>轻量级模式</strong>。</p>
 <p><strong>单体模式</strong>和<strong>轻量级模式</strong>之间的选择取决于您的预期用途，以及磁盘空间、构建时间等因素，以及您更喜欢完全独立的环境（单体架构）还是重用本地编译的引擎（轻量级架构）。</p>
@@ -118,7 +118,7 @@
 <li>需要将主机上现有的 <a href="https://github.com/OpenHUTB/engine">模拟引擎</a> 构建版本挂载到容器中。</li>
 <li>构建速度快得多，但依赖于本地编译的模拟引擎文件夹。</li>
 </ul>
-<hr />
+<hr>
 <h2 id="docker">构建 Docker 镜像</h2>
 <h3 id="_3">单体模式</h3>
 <p>如前所述，单体构建会将 <a href="https://github.com/OpenHUTB/engine">模拟引擎</a> 和 HUTB 打包到一个 Docker 镜像中。此过程可能需要几个小时，生成的镜像大小可能超过 200 GB。</p>
@@ -171,75 +171,75 @@ Util/Docker/run.sh<span class="w"> </span>--dev
 <p class="admonition-title">注意</p>
 <p>请确保 <code>UE4_ROOT</code> 环境变量指向已编译的模拟引擎构建的根目录。</p>
 </div>
-<p><div class="highlight"><pre><span></span><code>Util/Docker/run.sh<span class="w"> </span>--dev
+<p></p><div class="highlight"><pre><span></span><code>Util/Docker/run.sh<span class="w"> </span>--dev
 </code></pre></div>
-进入容器后，您可以继续执行正常的 HUTB 构建步骤：</p>
+进入容器后，您可以继续执行正常的 HUTB 构建步骤：
 <div class="highlight"><pre><span></span><code>./Update.sh
 make<span class="w"> </span>PythonAPI
 make<span class="w"> </span>CarlaUE4Editor
-make<span class="w"> </span>package<span class="w"> </span><span class="nv">ARGS</span><span class="o">=</span><span class="s2">&quot;--python-version=3.10,3.11,3.12&quot;</span>
+make<span class="w"> </span>package<span class="w"> </span><span class="nv">ARGS</span><span class="o">=</span><span class="s2">"--python-version=3.10,3.11,3.12"</span>
 </code></pre></div>
-<hr />
+<hr>
 <h2 id="devcontainer-hutb">使用 Devcontainer 进行 HUTB 服务器/客户端开发</h2>
 <p>您可以使用轻量模式方案的<strong>Visual Studio Code devcontainer</strong>。此设置会将主机上的目录（包括 UE4）挂载到 Docker 环境中。请注意，单体镜像不太适合 devcontainers，因为它将所有内容都存储在镜像内部。</p>
 <p>在您的 HUTB 存储库中创建一个<code>.devcontainer/devcontainer.json</code>，包含以下内容的文件：</p>
 <h2 id="name-carla-ue4-dev-image-carla-developmentue4-2004-initializecommand-utildockerbuildsh-dev-ubuntu-distro-2004-we-do-not-need-to-set-remoteuser-if-the-dockerfiles-default-user-is-already-correct-but-you-can-if-you-want-to-be-explicit-also-updateremoteuseruid-can-be-false-since-our-dockerfile-already-set-the-user-to-our-exact-uidgid-updateremoteuseruid-false-customizations-vscode-settings-terminalintegrateddefaultprofilelinux-bash-extensions-ms-vscodecpptools-note1-do-not-pass-user-here-we-want-the-dockerfile-default-user-not-an-override-note3-ensure-ue4_root-environment-variable-is-defined-in-host-runargs-rm-runtime-nvidia-name-carla-ue4-development-2004-env-nvidia_visible_devicesall-env-nvidia_driver_capabilitiesall-env-ue4_rootworkspacesunreal-engine-env-carla_ue4_rootworkspacescarla-env-displaylocalenvdisplay-volume-tmpx11-unixtmpx11-unix-volume-varrundockersockvarrundockersock-volume-localenvue4_rootworkspacesunreal-engine-mount-sourcecarla-development-ue4-2004targethomecarla-gpus-all"><div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CARLA UE4 Dev&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;image&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;carla-development:ue4-20.04&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CARLA UE4 Dev"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"carla-development:ue4-20.04"</span><span class="p">,</span>
 
-<span class="w">    </span><span class="nt">&quot;initializeCommand&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;./Util/Docker/build.sh --dev --ubuntu-distro 20.04&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"initializeCommand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"./Util/Docker/build.sh --dev --ubuntu-distro 20.04"</span><span class="p">,</span>
 
-<span class="w">    </span><span class="c1">// We do NOT need to set &quot;remoteUser&quot; if the Dockerfile&#39;s default user is already correct</span>
-<span class="w">    </span><span class="c1">// but you can if you want to be explicit. Also &quot;updateRemoteUserUID&quot; can be false, since</span>
+<span class="w">    </span><span class="c1">// We do NOT need to set "remoteUser" if the Dockerfile's default user is already correct</span>
+<span class="w">    </span><span class="c1">// but you can if you want to be explicit. Also "updateRemoteUserUID" can be false, since</span>
 <span class="w">    </span><span class="c1">// our Dockerfile already set the user to our exact UID/GID.</span>
-<span class="w">    </span><span class="nt">&quot;updateRemoteUserUID&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"updateRemoteUserUID"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
 
-<span class="w">    </span><span class="nt">&quot;customizations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;vscode&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;settings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;terminal.integrated.defaultProfile.linux&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;bash&quot;</span>
+<span class="w">    </span><span class="nt">"customizations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"vscode"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"terminal.integrated.defaultProfile.linux"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bash"</span>
 <span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="nt">&quot;extensions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">          </span><span class="s2">&quot;ms-vscode.cpptools&quot;</span>
+<span class="w">        </span><span class="nt">"extensions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="s2">"ms-vscode.cpptools"</span>
 <span class="w">        </span><span class="p">]</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">},</span>
 
 <span class="w">    </span><span class="c1">// NOTE1: DO NOT pass --user here (we want the Dockerfile default user, not an override)</span>
 <span class="w">    </span><span class="c1">// NOTE3: Ensure UE4_ROOT environment variable is defined in host</span>
-<span class="w">    </span><span class="nt">&quot;runArgs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">      </span><span class="s2">&quot;--rm&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;--runtime&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;nvidia&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;--name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;carla-ue4-development-20.04&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;--env&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;NVIDIA_VISIBLE_DEVICES=all&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;--env&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;NVIDIA_DRIVER_CAPABILITIES=all&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;--env&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;UE4_ROOT=/workspaces/unreal-engine&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;--env&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;CARLA_UE4_ROOT=/workspaces/carla&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;--env&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;DISPLAY=${localEnv:DISPLAY}&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;--volume&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;/tmp/.X11-unix:/tmp/.X11-unix&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;--volume&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;/var/run/docker.sock:/var/run/docker.sock&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;--volume&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;${localEnv:UE4_ROOT}:/workspaces/unreal-engine&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;--mount&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;source=carla-development-ue4-20.04,target=/home/carla&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;--gpus&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;all&quot;</span>
+<span class="w">    </span><span class="nt">"runArgs"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="s2">"--rm"</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">"--runtime"</span><span class="p">,</span><span class="w"> </span><span class="s2">"nvidia"</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">"--name"</span><span class="p">,</span><span class="w"> </span><span class="s2">"carla-ue4-development-20.04"</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">"--env"</span><span class="p">,</span><span class="w"> </span><span class="s2">"NVIDIA_VISIBLE_DEVICES=all"</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">"--env"</span><span class="p">,</span><span class="w"> </span><span class="s2">"NVIDIA_DRIVER_CAPABILITIES=all"</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">"--env"</span><span class="p">,</span><span class="w"> </span><span class="s2">"UE4_ROOT=/workspaces/unreal-engine"</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">"--env"</span><span class="p">,</span><span class="w"> </span><span class="s2">"CARLA_UE4_ROOT=/workspaces/carla"</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">"--env"</span><span class="p">,</span><span class="w"> </span><span class="s2">"DISPLAY=${localEnv:DISPLAY}"</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">"--volume"</span><span class="p">,</span><span class="w"> </span><span class="s2">"/tmp/.X11-unix:/tmp/.X11-unix"</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">"--volume"</span><span class="p">,</span><span class="w"> </span><span class="s2">"/var/run/docker.sock:/var/run/docker.sock"</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">"--volume"</span><span class="p">,</span><span class="w"> </span><span class="s2">"${localEnv:UE4_ROOT}:/workspaces/unreal-engine"</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">"--mount"</span><span class="p">,</span><span class="w"> </span><span class="s2">"source=carla-development-ue4-20.04,target=/home/carla"</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">"--gpus"</span><span class="p">,</span><span class="w"> </span><span class="s2">"all"</span>
 <span class="w">    </span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div></h2>
 <h2 id="_7">提示与已知问题</h2>
 <ol>
 <li>
-<p><strong>在主机上运行二进制文件</strong><br />
+<p><strong>在主机上运行二进制文件</strong><br>
 <strong>请勿</strong>在容器内构建完成后直接在主机上运行 <code>make launch</code>或<code>make launch-only</code>，因为容器内部路径（例如 <code>/workspaces/unreal-engine</code>）与主机环境不匹配。 如果您需要通过主机访问 HUTB 二进制文件，请先构建一个交付包（<code>make package</code> ），然后在主机上从<code>Dist/</code>中生成的文件运行它们。</p>
 </li>
 <li>
-<p><strong><code>./Update.sh</code> 中截断输出</strong><br />
+<p><strong><code>./Update.sh</code> 中截断输出</strong><br>
    有时，在 HUTB 代码库中运行 <code>./Update.sh</code> 可能会截断日志输出。一种解决方法是将输出重定向到一个文件，然后使用 tail 命令查看该文件。</p>
 </li>
 <li>
-<p><strong>音频支持</strong><br />
+<p><strong>音频支持</strong><br>
    ALSA 和 PulseAudio 未预先配置，因此在容器内执行某些脚本时可能会看到音频警告。</p>
 </li>
 </ol>
-<hr />
+<hr></div>
               
             </div>
           </div><footer>

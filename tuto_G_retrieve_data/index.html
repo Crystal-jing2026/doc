@@ -100,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="_1">检索模拟数据</h1>
+                <div><h1 id="_1">检索模拟数据</h1>
 <p>在 Carla 中，学习一种有效的方法来检索模拟数据至关重要。这个整体教程适合新手和经验丰富的用户。它从头开始，逐渐深入探讨 Carla 中可用的许多选项。</p>
 <p>首先，使用自定义设置和流量初始化模拟。一辆自车将在城市中漫游，可选地配备一些基本传感器。记录模拟，以便以后查询以找到亮点。之后，原始模拟被回放，并被利用到极限。可以添加新的传感器来检索一致的数据。天气条件是可以改变的。记录器甚至可以用于测试具有不同输出的特定场景。 </p>
 <ul>
@@ -154,7 +154,7 @@
 </li>
 <li><a href="#tutorial-scripts"><strong>教程脚本</strong></a>  </li>
 </ul>
-<hr />
+<hr>
 <h2 id="_2">概述 <span id="overview"></span></h2>
 <p>在检索模拟数据的过程中存在一些常见错误。模拟器中充斥着传感器、存储无用的数据或努力寻找特定事件都是一些例子。然而，可以提供该过程的一些概要。目标是确保数据可以检索和复制，并且可以随意检查和更改模拟。</p>
 <div class="admonition 笔记">
@@ -190,7 +190,7 @@
 <p class="admonition-title">重要</p>
 <p>本教程需要一些 Python 知识。</p>
 </div>
-<hr />
+<hr>
 <h2 id="_3">设置模拟 <span id="set-the-simulation"></span></h2>
 <p>要做的第一件事是将模拟设置为所需的环境。</p>
 <p>运行 Carla。 </p>
@@ -200,10 +200,10 @@
 <h3 id="_4">地图设置 <span id="map-setting"></span></h3>
 <p>选择要运行模拟的地图。查看 <a href="../core_map/#carla-maps">地图文档</a> 以了解有关其特定属性的更多信息。在本教程中，选择 <strong>Town07</strong> 。</p>
 <p>打开一个新终端。使用 <strong>config.py</strong> 脚本更改地图。</p>
-<p><div class="highlight"><pre><span></span><code>cd /opt/carla/PythonAPI/utils
+<p></p><div class="highlight"><pre><span></span><code>cd /opt/carla/PythonAPI/utils
 python3 config.py --map Town01
 </code></pre></div>
-该脚本可以启用不同的设置。其中一些将在教程中提及，另一些则不会。下面有一个简短的总结。</p>
+该脚本可以启用不同的设置。其中一些将在教程中提及，另一些则不会。下面有一个简短的总结。
 <details>
 <summary> <b>config.py</b> 中的可选参数  </summary>
 
@@ -228,7 +228,7 @@ python3 config.py --map Town01
 </code></pre></div>
 </details>
 <p><br></p>
-<p><img alt="tuto_map" src="../img/tuto_map.jpg" /></p>
+<p><img alt="tuto_map" src="../img/tuto_map.jpg"></p>
 <div class="div" style="text-align: center"><i>Town07 的空中视角</i></div>
 
 <style>
@@ -274,10 +274,10 @@ python3<span class="w"> </span>environment.py<span class="w"> </span>--clouds<sp
 </code></pre></div>
 </details>
 <p><br></p>
-<p><img alt="tuto_weather" src="../img/tuto_weather.jpg" /></p>
+<p><img alt="tuto_weather" src="../img/tuto_weather.jpg"></p>
 <div class="div" style="text-align: center"><i>使用天气改变</i></div>
 
-<hr />
+<hr>
 <h2 id="_6">设置交通流量 <span id="set-traffic"></span></h2>
 <p>模拟交通是让地图栩栩如生的最佳方法之一。还需要检索城市环境的数据。在 Carla 中有不同的选择可以实现这一点。</p>
 <h3 id="carla">Carla 交通和行人 <span id="carla-traffic-and-pedestrians"></span></h3>
@@ -304,7 +304,7 @@ python3<span class="w"> </span>spawn_npc.py<span class="w"> </span>-n<span class
 </code></pre></div>
 </details>
 <p><br></p>
-<p><img alt="tuto_spawning" src="../img/tuto_spawning.jpg" /></p>
+<p><img alt="tuto_spawning" src="../img/tuto_spawning.jpg"></p>
 <div class="div" style="text-align: center"><i>生成车辆以模拟交通</i></div>
 
 <h3 id="sumo">SUMO 协同模拟交通 <span id="sumo-co-simulation-traffic"></span></h3>
@@ -321,25 +321,25 @@ sudo<span class="w"> </span>apt-get<span class="w"> </span>update
 sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>sumo<span class="w"> </span>sumo-tools<span class="w"> </span>sumo-doc
 </code></pre></div></li>
 <li>设置环境变量 SUMO_HOME。
-<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;export SUMO_HOME=/usr/share/sumo&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">source</span><span class="w"> </span>~/.bashrc
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">"export SUMO_HOME=/usr/share/sumo"</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">source</span><span class="w"> </span>~/.bashrc
 </code></pre></div></li>
 <li>在 Carla 服务器打开的情况下，运行 <a href="https://github.com/carla-simulator/carla/blob/master/Co-Simulation/Sumo/run_synchronization.py">SUMO-Carla 同步脚本</a> 。 
 <div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/carla/Co-Simulation/Sumo
 python3<span class="w"> </span>run_synchronization.py<span class="w"> </span>examples/Town01.sumocfg<span class="w"> </span>--sumo-gui
 </code></pre></div></li>
 <li>SUMO 窗口应该已打开。<strong>按“运行”</strong> 以在两个模拟中启动交通流量。
-<div class="highlight"><pre><span></span><code>&gt; &quot;Play&quot; on SUMO window.
+<div class="highlight"><pre><span></span><code>&gt; "Play" on SUMO window.
 </code></pre></div></li>
 </ul>
 <p>该脚本生成的流量是 Carla 团队创建的示例。默认情况下，它会沿着相同的路线生成相同的车辆。用户可以在 SUMO 中更改这些内容。</p>
-<p><img alt="tuto_sumo" src="../img/tuto_sumo.jpg" /></p>
+<p><img alt="tuto_sumo" src="../img/tuto_sumo.jpg"></p>
 <div class="div" style="text-align: center"><i>SUMO 和 Carla 协同模拟交通</i></div>
 
 <div class="admonition 警告">
 <p class="admonition-title">警告</p>
 <p>目前，SUMO 联合模拟还是测试版功能。车辆没有物理特性，也不考虑 Carla 交通信号灯。</p>
 </div>
-<hr />
+<hr>
 <h2 id="_7">设置自车 <span id="set-the-ego-vehicle"></span></h2>
 <p>从现在到记录器停止的那一刻，将会有一些属于 <a href="https://github.com/OpenHUTB/doc/tree/master/src/tutorial/tutorial_ego.py"><strong>tutorial_ego.py</strong></a> 的代码片段。该脚本生成自车，可选一些传感器，并记录模拟，直到用户完成脚本。</p>
 <h3 id="_8">生成自车 <span id="spawn-the-ego-vehicle"></span></h3>
@@ -348,12 +348,12 @@ python3<span class="w"> </span>run_synchronization.py<span class="w"> </span>exa
 <div class="highlight"><pre><span></span><code><span class="c1"># --------------</span>
 <span class="c1"># 生成自车</span>
 <span class="c1"># --------------</span>
-<span class="n">ego_bp</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">get_blueprint_library</span><span class="p">()</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;vehicle.tesla.model3&#39;</span><span class="p">)</span>
-<span class="n">ego_bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">&#39;role_name&#39;</span><span class="p">,</span><span class="s1">&#39;ego&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Ego role_name is set&#39;</span><span class="p">)</span>
-<span class="n">ego_color</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">ego_bp</span><span class="o">.</span><span class="n">get_attribute</span><span class="p">(</span><span class="s1">&#39;color&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">recommended_values</span><span class="p">)</span>
-<span class="n">ego_bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">&#39;color&#39;</span><span class="p">,</span><span class="n">ego_color</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Ego color is set&#39;</span><span class="p">)</span>
+<span class="n">ego_bp</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">get_blueprint_library</span><span class="p">()</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'vehicle.tesla.model3'</span><span class="p">)</span>
+<span class="n">ego_bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">'role_name'</span><span class="p">,</span><span class="s1">'ego'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">Ego role_name is set'</span><span class="p">)</span>
+<span class="n">ego_color</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">ego_bp</span><span class="o">.</span><span class="n">get_attribute</span><span class="p">(</span><span class="s1">'color'</span><span class="p">)</span><span class="o">.</span><span class="n">recommended_values</span><span class="p">)</span>
+<span class="n">ego_bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">'color'</span><span class="p">,</span><span class="n">ego_color</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">Ego color is set'</span><span class="p">)</span>
 
 <span class="n">spawn_points</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">get_map</span><span class="p">()</span><span class="o">.</span><span class="n">get_spawn_points</span><span class="p">()</span>
 <span class="n">number_of_spawn_points</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">spawn_points</span><span class="p">)</span>
@@ -362,9 +362,9 @@ python3<span class="w"> </span>run_synchronization.py<span class="w"> </span>exa
     <span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">spawn_points</span><span class="p">)</span>
     <span class="n">ego_transform</span> <span class="o">=</span> <span class="n">spawn_points</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">ego_vehicle</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">spawn_actor</span><span class="p">(</span><span class="n">ego_bp</span><span class="p">,</span><span class="n">ego_transform</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Ego is spawned&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">Ego is spawned'</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span> 
-    <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s1">&#39;Could not found any spawn points&#39;</span><span class="p">)</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s1">'Could not found any spawn points'</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="_9">放置观察者 <span id="place-the-spectator"></span></h3>
 <p>观察者参与者控制模拟视图。通过脚本移动它是可选的，但它可能有助于找到自车。 </p>
@@ -375,7 +375,7 @@ python3<span class="w"> </span>run_synchronization.py<span class="w"> </span>exa
 <span class="n">world_snapshot</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">wait_for_tick</span><span class="p">()</span> 
 <span class="n">spectator</span><span class="o">.</span><span class="n">set_transform</span><span class="p">(</span><span class="n">ego_vehicle</span><span class="o">.</span><span class="n">get_transform</span><span class="p">())</span>
 </code></pre></div>
-<hr />
+<hr>
 <h2 id="_10">设置基本传感器 <span id="set-basic-sensors"></span></h2>
 <p>生成任何传感器的过程都非常相似。 </p>
 <p><strong>1.</strong> 使用库查找传感器蓝图。</p>
@@ -392,21 +392,21 @@ python3<span class="w"> </span>run_synchronization.py<span class="w"> </span>exa
 </ul>
 <p>设置属性后，就可以生成传感器了。脚本将摄像机放置在汽车引擎盖中，并指向前方。它将捕捉汽车的前视图。</p>
 <p>每一步都会以 <a href="../python_api/#carla.Image">carla.Image</a> 的形式检索数据。Listen 方法将它们保存到磁盘。路径可以随意改变。每张图像的名称均根据拍摄镜头的模拟帧进行编码。 </p>
-<p><div class="highlight"><pre><span></span><code><span class="c1"># --------------</span>
+<p></p><div class="highlight"><pre><span></span><code><span class="c1"># --------------</span>
 <span class="c1"># 生成附着的到车辆上的RGB相机</span>
 <span class="c1"># --------------</span>
 <span class="n">cam_bp</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="n">cam_bp</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">get_blueprint_library</span><span class="p">()</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;sensor.camera.rgb&#39;</span><span class="p">)</span>
-<span class="n">cam_bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s2">&quot;image_size_x&quot;</span><span class="p">,</span><span class="nb">str</span><span class="p">(</span><span class="mi">1920</span><span class="p">))</span>
-<span class="n">cam_bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s2">&quot;image_size_y&quot;</span><span class="p">,</span><span class="nb">str</span><span class="p">(</span><span class="mi">1080</span><span class="p">))</span>
-<span class="n">cam_bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s2">&quot;fov&quot;</span><span class="p">,</span><span class="nb">str</span><span class="p">(</span><span class="mi">105</span><span class="p">))</span>  <span class="c1"># 图像的视场角(Field of View)</span>
+<span class="n">cam_bp</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">get_blueprint_library</span><span class="p">()</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'sensor.camera.rgb'</span><span class="p">)</span>
+<span class="n">cam_bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s2">"image_size_x"</span><span class="p">,</span><span class="nb">str</span><span class="p">(</span><span class="mi">1920</span><span class="p">))</span>
+<span class="n">cam_bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s2">"image_size_y"</span><span class="p">,</span><span class="nb">str</span><span class="p">(</span><span class="mi">1080</span><span class="p">))</span>
+<span class="n">cam_bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s2">"fov"</span><span class="p">,</span><span class="nb">str</span><span class="p">(</span><span class="mi">105</span><span class="p">))</span>  <span class="c1"># 图像的视场角(Field of View)</span>
 <span class="n">cam_location</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Location</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">cam_rotation</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Rotation</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">180</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">cam_transform</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Transform</span><span class="p">(</span><span class="n">cam_location</span><span class="p">,</span><span class="n">cam_rotation</span><span class="p">)</span>
 <span class="n">ego_cam</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">spawn_actor</span><span class="p">(</span><span class="n">cam_bp</span><span class="p">,</span><span class="n">cam_transform</span><span class="p">,</span><span class="n">attach_to</span><span class="o">=</span><span class="n">ego_vehicle</span><span class="p">,</span> <span class="n">attachment_type</span><span class="o">=</span><span class="n">carla</span><span class="o">.</span><span class="n">AttachmentType</span><span class="o">.</span><span class="n">Rigid</span><span class="p">)</span>
-<span class="n">ego_cam</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="k">lambda</span> <span class="n">image</span><span class="p">:</span> <span class="n">image</span><span class="o">.</span><span class="n">save_to_disk</span><span class="p">(</span><span class="s1">&#39;tutorial/output/</span><span class="si">%.6d</span><span class="s1">.jpg&#39;</span> <span class="o">%</span> <span class="n">image</span><span class="o">.</span><span class="n">frame</span><span class="p">))</span>
+<span class="n">ego_cam</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="k">lambda</span> <span class="n">image</span><span class="p">:</span> <span class="n">image</span><span class="o">.</span><span class="n">save_to_disk</span><span class="p">(</span><span class="s1">'tutorial/output/</span><span class="si">%.6d</span><span class="s1">.jpg'</span> <span class="o">%</span> <span class="n">image</span><span class="o">.</span><span class="n">frame</span><span class="p">))</span>
 </code></pre></div>
-<img alt="tuto_rgb" src="../img/tuto_rgb.jpg" /></p>
+<img alt="tuto_rgb" src="../img/tuto_rgb.jpg">
 <div class="div" style="text-align: center"><i>RGB 相机输出</i></div>
 
 <h3 id="_11">检测器 <span id="viewing"></span></h3>
@@ -424,44 +424,44 @@ python3<span class="w"> </span>run_synchronization.py<span class="w"> </span>exa
 <li><strong><code>only_dynamics</code></strong> 确定是否应考虑静态对象。默认情况下，任何对象都会被考虑。</li>
 </ul>
 <p>该脚本将障碍物检测器设置为仅考虑动态对象。如果车辆与任何静态物体发生碰撞，碰撞传感器都会检测到。</p>
-<p><div class="highlight"><pre><span></span><code><span class="c1"># --------------</span>
+<p></p><div class="highlight"><pre><span></span><code><span class="c1"># --------------</span>
 <span class="c1"># 向自车添加碰撞传感器</span>
 <span class="c1"># --------------</span>
-<span class="n">col_bp</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">get_blueprint_library</span><span class="p">()</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;sensor.other.collision&#39;</span><span class="p">)</span>
+<span class="n">col_bp</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">get_blueprint_library</span><span class="p">()</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'sensor.other.collision'</span><span class="p">)</span>
 <span class="n">col_location</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Location</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">col_rotation</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Rotation</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">col_transform</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Transform</span><span class="p">(</span><span class="n">col_location</span><span class="p">,</span><span class="n">col_rotation</span><span class="p">)</span>
 <span class="n">ego_col</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">spawn_actor</span><span class="p">(</span><span class="n">col_bp</span><span class="p">,</span><span class="n">col_transform</span><span class="p">,</span><span class="n">attach_to</span><span class="o">=</span><span class="n">ego_vehicle</span><span class="p">,</span> <span class="n">attachment_type</span><span class="o">=</span><span class="n">carla</span><span class="o">.</span><span class="n">AttachmentType</span><span class="o">.</span><span class="n">Rigid</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">col_callback</span><span class="p">(</span><span class="n">colli</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Collision detected:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">colli</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Collision detected:</span><span class="se">\n</span><span class="s2">"</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">colli</span><span class="p">)</span><span class="o">+</span><span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
 <span class="n">ego_col</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="k">lambda</span> <span class="n">colli</span><span class="p">:</span> <span class="n">col_callback</span><span class="p">(</span><span class="n">colli</span><span class="p">))</span>
 
 <span class="c1"># --------------</span>
 <span class="c1"># 向自车添加压线传感器</span>
 <span class="c1"># --------------</span>
-<span class="n">lane_bp</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">get_blueprint_library</span><span class="p">()</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;sensor.other.lane_invasion&#39;</span><span class="p">)</span>
+<span class="n">lane_bp</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">get_blueprint_library</span><span class="p">()</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'sensor.other.lane_invasion'</span><span class="p">)</span>
 <span class="n">lane_location</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Location</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">lane_rotation</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Rotation</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">lane_transform</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Transform</span><span class="p">(</span><span class="n">lane_location</span><span class="p">,</span><span class="n">lane_rotation</span><span class="p">)</span>
 <span class="n">ego_lane</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">spawn_actor</span><span class="p">(</span><span class="n">lane_bp</span><span class="p">,</span><span class="n">lane_transform</span><span class="p">,</span><span class="n">attach_to</span><span class="o">=</span><span class="n">ego_vehicle</span><span class="p">,</span> <span class="n">attachment_type</span><span class="o">=</span><span class="n">carla</span><span class="o">.</span><span class="n">AttachmentType</span><span class="o">.</span><span class="n">Rigid</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">lane_callback</span><span class="p">(</span><span class="n">lane</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Lane invasion detected:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">lane</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Lane invasion detected:</span><span class="se">\n</span><span class="s2">"</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">lane</span><span class="p">)</span><span class="o">+</span><span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
 <span class="n">ego_lane</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="k">lambda</span> <span class="n">lane</span><span class="p">:</span> <span class="n">lane_callback</span><span class="p">(</span><span class="n">lane</span><span class="p">))</span>
 
 <span class="c1"># --------------</span>
 <span class="c1"># 向自车添加障碍物检测传感器</span>
 <span class="c1"># --------------</span>
-<span class="n">obs_bp</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">get_blueprint_library</span><span class="p">()</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;sensor.other.obstacle&#39;</span><span class="p">)</span>
-<span class="n">obs_bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s2">&quot;only_dynamics&quot;</span><span class="p">,</span><span class="nb">str</span><span class="p">(</span><span class="kc">True</span><span class="p">))</span>
+<span class="n">obs_bp</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">get_blueprint_library</span><span class="p">()</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'sensor.other.obstacle'</span><span class="p">)</span>
+<span class="n">obs_bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s2">"only_dynamics"</span><span class="p">,</span><span class="nb">str</span><span class="p">(</span><span class="kc">True</span><span class="p">))</span>
 <span class="n">obs_location</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Location</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">obs_rotation</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Rotation</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">obs_transform</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Transform</span><span class="p">(</span><span class="n">obs_location</span><span class="p">,</span><span class="n">obs_rotation</span><span class="p">)</span>
 <span class="n">ego_obs</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">spawn_actor</span><span class="p">(</span><span class="n">obs_bp</span><span class="p">,</span><span class="n">obs_transform</span><span class="p">,</span><span class="n">attach_to</span><span class="o">=</span><span class="n">ego_vehicle</span><span class="p">,</span> <span class="n">attachment_type</span><span class="o">=</span><span class="n">carla</span><span class="o">.</span><span class="n">AttachmentType</span><span class="o">.</span><span class="n">Rigid</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">obs_callback</span><span class="p">(</span><span class="n">obs</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Obstacle detected:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">obs</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Obstacle detected:</span><span class="se">\n</span><span class="s2">"</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">obs</span><span class="p">)</span><span class="o">+</span><span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
 <span class="n">ego_obs</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="k">lambda</span> <span class="n">obs</span><span class="p">:</span> <span class="n">obs_callback</span><span class="p">(</span><span class="n">obs</span><span class="p">))</span>
 </code></pre></div>
-<img alt="tuto_detectors" src="../img/tuto_detectors.jpg" /></p>
+<img alt="tuto_detectors" src="../img/tuto_detectors.jpg">
 <div class="div" style="text-align: center"><i>检测传感器输出</i></div>
 
 <h3 id="_12">其他传感器 <span id="other-sensors"></span></h3>
@@ -478,33 +478,33 @@ python3<span class="w"> </span>run_synchronization.py<span class="w"> </span>exa
 <div class="highlight"><pre><span></span><code><span class="c1"># --------------</span>
 <span class="c1"># 给自车添加全球导航卫星系统传感器 </span>
 <span class="c1"># --------------</span>
-<span class="n">gnss_bp</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">get_blueprint_library</span><span class="p">()</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;sensor.other.gnss&#39;</span><span class="p">)</span>
+<span class="n">gnss_bp</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">get_blueprint_library</span><span class="p">()</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'sensor.other.gnss'</span><span class="p">)</span>
 <span class="n">gnss_location</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Location</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">gnss_rotation</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Rotation</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">gnss_transform</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Transform</span><span class="p">(</span><span class="n">gnss_location</span><span class="p">,</span><span class="n">gnss_rotation</span><span class="p">)</span>
-<span class="n">gnss_bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s2">&quot;sensor_tick&quot;</span><span class="p">,</span><span class="nb">str</span><span class="p">(</span><span class="mf">3.0</span><span class="p">))</span>
+<span class="n">gnss_bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s2">"sensor_tick"</span><span class="p">,</span><span class="nb">str</span><span class="p">(</span><span class="mf">3.0</span><span class="p">))</span>
 <span class="n">ego_gnss</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">spawn_actor</span><span class="p">(</span><span class="n">gnss_bp</span><span class="p">,</span><span class="n">gnss_transform</span><span class="p">,</span><span class="n">attach_to</span><span class="o">=</span><span class="n">ego_vehicle</span><span class="p">,</span> <span class="n">attachment_type</span><span class="o">=</span><span class="n">carla</span><span class="o">.</span><span class="n">AttachmentType</span><span class="o">.</span><span class="n">Rigid</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">gnss_callback</span><span class="p">(</span><span class="n">gnss</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;GNSS measure:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">gnss</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"GNSS measure:</span><span class="se">\n</span><span class="s2">"</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">gnss</span><span class="p">)</span><span class="o">+</span><span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
 <span class="n">ego_gnss</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="k">lambda</span> <span class="n">gnss</span><span class="p">:</span> <span class="n">gnss_callback</span><span class="p">(</span><span class="n">gnss</span><span class="p">))</span>
 
 <span class="c1"># --------------</span>
 <span class="c1"># 给自车添加 IMU 传感器 </span>
 <span class="c1"># --------------</span>
-<span class="n">imu_bp</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">get_blueprint_library</span><span class="p">()</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;sensor.other.imu&#39;</span><span class="p">)</span>
+<span class="n">imu_bp</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">get_blueprint_library</span><span class="p">()</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'sensor.other.imu'</span><span class="p">)</span>
 <span class="n">imu_location</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Location</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">imu_rotation</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Rotation</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">imu_transform</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Transform</span><span class="p">(</span><span class="n">imu_location</span><span class="p">,</span><span class="n">imu_rotation</span><span class="p">)</span>
-<span class="n">imu_bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s2">&quot;sensor_tick&quot;</span><span class="p">,</span><span class="nb">str</span><span class="p">(</span><span class="mf">3.0</span><span class="p">))</span>
+<span class="n">imu_bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s2">"sensor_tick"</span><span class="p">,</span><span class="nb">str</span><span class="p">(</span><span class="mf">3.0</span><span class="p">))</span>
 <span class="n">ego_imu</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">spawn_actor</span><span class="p">(</span><span class="n">imu_bp</span><span class="p">,</span><span class="n">imu_transform</span><span class="p">,</span><span class="n">attach_to</span><span class="o">=</span><span class="n">ego_vehicle</span><span class="p">,</span> <span class="n">attachment_type</span><span class="o">=</span><span class="n">carla</span><span class="o">.</span><span class="n">AttachmentType</span><span class="o">.</span><span class="n">Rigid</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">imu_callback</span><span class="p">(</span><span class="n">imu</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;IMU measure:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">imu</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"IMU measure:</span><span class="se">\n</span><span class="s2">"</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">imu</span><span class="p">)</span><span class="o">+</span><span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
 <span class="n">ego_imu</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="k">lambda</span> <span class="n">imu</span><span class="p">:</span> <span class="n">imu_callback</span><span class="p">(</span><span class="n">imu</span><span class="p">))</span>
 </code></pre></div>
-<p><img alt="tuto_other" src="../img/tuto_other.jpg" /></p>
+<p><img alt="tuto_other" src="../img/tuto_other.jpg"></p>
 <div class="div" style="text-align: center"><i>全球导航卫星系统和惯性测量单元传感器输出</i></div>
 
-<hr />
+<hr>
 <h2 id="_13">设置高级传感器 <span id="set-advanced-sensors"></span></h2>
 <p>脚本 <a href="https://github.com/OpenHUTB/doc/tree/master/src/tutorial/tutorial_replay.py"><strong>tutorial_replay.py</strong></a> 除其他外还包含更多传感器的定义。它们的工作方式与基本的相同，但理解可能有点困难。</p>
 <h3 id="_14">深度相机 <span id="深度相机"></span></h3>
@@ -519,15 +519,15 @@ python3<span class="w"> </span>run_synchronization.py<span class="w"> </span>exa
 <span class="c1"># 给自主车添加深度相机 </span>
 <span class="c1"># --------------</span>
 <span class="n">depth_cam</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="n">depth_bp</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">get_blueprint_library</span><span class="p">()</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;sensor.camera.depth&#39;</span><span class="p">)</span>
+<span class="n">depth_bp</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">get_blueprint_library</span><span class="p">()</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'sensor.camera.depth'</span><span class="p">)</span>
 <span class="n">depth_location</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Location</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">depth_rotation</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Rotation</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">180</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">depth_transform</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Transform</span><span class="p">(</span><span class="n">depth_location</span><span class="p">,</span><span class="n">depth_rotation</span><span class="p">)</span>
 <span class="n">depth_cam</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">spawn_actor</span><span class="p">(</span><span class="n">depth_bp</span><span class="p">,</span><span class="n">depth_transform</span><span class="p">,</span><span class="n">attach_to</span><span class="o">=</span><span class="n">ego_vehicle</span><span class="p">,</span> <span class="n">attachment_type</span><span class="o">=</span><span class="n">carla</span><span class="o">.</span><span class="n">AttachmentType</span><span class="o">.</span><span class="n">Rigid</span><span class="p">)</span>
 <span class="c1"># This time, a color converter is applied to the image, to get the semantic segmentation view</span>
-<span class="n">depth_cam</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="k">lambda</span> <span class="n">image</span><span class="p">:</span> <span class="n">image</span><span class="o">.</span><span class="n">save_to_disk</span><span class="p">(</span><span class="s1">&#39;tutorial/new_depth_output/</span><span class="si">%.6d</span><span class="s1">.jpg&#39;</span> <span class="o">%</span> <span class="n">image</span><span class="o">.</span><span class="n">frame</span><span class="p">,</span><span class="n">carla</span><span class="o">.</span><span class="n">ColorConverter</span><span class="o">.</span><span class="n">LogarithmicDepth</span><span class="p">))</span>
+<span class="n">depth_cam</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="k">lambda</span> <span class="n">image</span><span class="p">:</span> <span class="n">image</span><span class="o">.</span><span class="n">save_to_disk</span><span class="p">(</span><span class="s1">'tutorial/new_depth_output/</span><span class="si">%.6d</span><span class="s1">.jpg'</span> <span class="o">%</span> <span class="n">image</span><span class="o">.</span><span class="n">frame</span><span class="p">,</span><span class="n">carla</span><span class="o">.</span><span class="n">ColorConverter</span><span class="o">.</span><span class="n">LogarithmicDepth</span><span class="p">))</span>
 </code></pre></div>
-<p><img alt="tuto_depths" src="../img/tuto_depths.jpg" /></p>
+<p><img alt="tuto_depths" src="../img/tuto_depths.jpg"></p>
 <div class="div" style="text-align: center"><i>深度相机输出（左侧为简单转换，右侧为对数转换）</i></div>
 
 <h3 id="_15">语义分割相机 <span id="语义分割相机"></span></h3>
@@ -538,18 +538,18 @@ python3<span class="w"> </span>run_synchronization.py<span class="w"> </span>exa
 <span class="c1"># 给自主车添加一个新的语义分割相机</span>
 <span class="c1"># --------------</span>
 <span class="n">sem_cam</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="n">sem_bp</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">get_blueprint_library</span><span class="p">()</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;sensor.camera.semantic_segmentation&#39;</span><span class="p">)</span>
-<span class="n">sem_bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s2">&quot;image_size_x&quot;</span><span class="p">,</span><span class="nb">str</span><span class="p">(</span><span class="mi">1920</span><span class="p">))</span>
-<span class="n">sem_bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s2">&quot;image_size_y&quot;</span><span class="p">,</span><span class="nb">str</span><span class="p">(</span><span class="mi">1080</span><span class="p">))</span>
-<span class="n">sem_bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s2">&quot;fov&quot;</span><span class="p">,</span><span class="nb">str</span><span class="p">(</span><span class="mi">105</span><span class="p">))</span>
+<span class="n">sem_bp</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">get_blueprint_library</span><span class="p">()</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'sensor.camera.semantic_segmentation'</span><span class="p">)</span>
+<span class="n">sem_bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s2">"image_size_x"</span><span class="p">,</span><span class="nb">str</span><span class="p">(</span><span class="mi">1920</span><span class="p">))</span>
+<span class="n">sem_bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s2">"image_size_y"</span><span class="p">,</span><span class="nb">str</span><span class="p">(</span><span class="mi">1080</span><span class="p">))</span>
+<span class="n">sem_bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s2">"fov"</span><span class="p">,</span><span class="nb">str</span><span class="p">(</span><span class="mi">105</span><span class="p">))</span>
 <span class="n">sem_location</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Location</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">sem_rotation</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Rotation</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">180</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">sem_transform</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Transform</span><span class="p">(</span><span class="n">sem_location</span><span class="p">,</span><span class="n">sem_rotation</span><span class="p">)</span>
 <span class="n">sem_cam</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">spawn_actor</span><span class="p">(</span><span class="n">sem_bp</span><span class="p">,</span><span class="n">sem_transform</span><span class="p">,</span><span class="n">attach_to</span><span class="o">=</span><span class="n">ego_vehicle</span><span class="p">,</span> <span class="n">attachment_type</span><span class="o">=</span><span class="n">carla</span><span class="o">.</span><span class="n">AttachmentType</span><span class="o">.</span><span class="n">Rigid</span><span class="p">)</span>
 <span class="c1"># 这次，将颜色转换器应用于图像，以获得语义分割视图</span>
-<span class="n">sem_cam</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="k">lambda</span> <span class="n">image</span><span class="p">:</span> <span class="n">image</span><span class="o">.</span><span class="n">save_to_disk</span><span class="p">(</span><span class="s1">&#39;tutorial/new_sem_output/</span><span class="si">%.6d</span><span class="s1">.jpg&#39;</span> <span class="o">%</span> <span class="n">image</span><span class="o">.</span><span class="n">frame</span><span class="p">,</span><span class="n">carla</span><span class="o">.</span><span class="n">ColorConverter</span><span class="o">.</span><span class="n">CityScapesPalette</span><span class="p">))</span>
+<span class="n">sem_cam</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="k">lambda</span> <span class="n">image</span><span class="p">:</span> <span class="n">image</span><span class="o">.</span><span class="n">save_to_disk</span><span class="p">(</span><span class="s1">'tutorial/new_sem_output/</span><span class="si">%.6d</span><span class="s1">.jpg'</span> <span class="o">%</span> <span class="n">image</span><span class="o">.</span><span class="n">frame</span><span class="p">,</span><span class="n">carla</span><span class="o">.</span><span class="n">ColorConverter</span><span class="o">.</span><span class="n">CityScapesPalette</span><span class="p">))</span>
 </code></pre></div>
-<p><img alt="tuto_sem" src="../img/tuto_sem.jpg" /></p>
+<p><img alt="tuto_sem" src="../img/tuto_sem.jpg"></p>
 <div class="div" style="text-align: center"><i>语义分割相机输出</i></div>
 
 <h3 id="_16">激光雷达光线投射传感器 <span id="激光雷达光线投射传感器"></span></h3>
@@ -570,27 +570,27 @@ python3<span class="w"> </span>run_synchronization.py<span class="w"> </span>exa
 <span class="c1"># 相自车添加新的激光雷达传感器</span>
 <span class="c1"># --------------</span>
 <span class="n">lidar_cam</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="n">lidar_bp</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">get_blueprint_library</span><span class="p">()</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;sensor.lidar.ray_cast&#39;</span><span class="p">)</span>
-<span class="n">lidar_bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">&#39;channels&#39;</span><span class="p">,</span><span class="nb">str</span><span class="p">(</span><span class="mi">32</span><span class="p">))</span>
-<span class="n">lidar_bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">&#39;points_per_second&#39;</span><span class="p">,</span><span class="nb">str</span><span class="p">(</span><span class="mi">90000</span><span class="p">))</span>
-<span class="n">lidar_bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">&#39;rotation_frequency&#39;</span><span class="p">,</span><span class="nb">str</span><span class="p">(</span><span class="mi">40</span><span class="p">))</span>
-<span class="n">lidar_bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">&#39;range&#39;</span><span class="p">,</span><span class="nb">str</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
+<span class="n">lidar_bp</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">get_blueprint_library</span><span class="p">()</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'sensor.lidar.ray_cast'</span><span class="p">)</span>
+<span class="n">lidar_bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">'channels'</span><span class="p">,</span><span class="nb">str</span><span class="p">(</span><span class="mi">32</span><span class="p">))</span>
+<span class="n">lidar_bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">'points_per_second'</span><span class="p">,</span><span class="nb">str</span><span class="p">(</span><span class="mi">90000</span><span class="p">))</span>
+<span class="n">lidar_bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">'rotation_frequency'</span><span class="p">,</span><span class="nb">str</span><span class="p">(</span><span class="mi">40</span><span class="p">))</span>
+<span class="n">lidar_bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">'range'</span><span class="p">,</span><span class="nb">str</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
 <span class="n">lidar_location</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Location</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">lidar_rotation</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Rotation</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">lidar_transform</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Transform</span><span class="p">(</span><span class="n">lidar_location</span><span class="p">,</span><span class="n">lidar_rotation</span><span class="p">)</span>
 <span class="n">lidar_sen</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">spawn_actor</span><span class="p">(</span><span class="n">lidar_bp</span><span class="p">,</span><span class="n">lidar_transform</span><span class="p">,</span><span class="n">attach_to</span><span class="o">=</span><span class="n">ego_vehicle</span><span class="p">)</span>
-<span class="n">lidar_sen</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="k">lambda</span> <span class="n">point_cloud</span><span class="p">:</span> <span class="n">point_cloud</span><span class="o">.</span><span class="n">save_to_disk</span><span class="p">(</span><span class="s1">&#39;tutorial/new_lidar_output/</span><span class="si">%.6d</span><span class="s1">.ply&#39;</span> <span class="o">%</span> <span class="n">point_cloud</span><span class="o">.</span><span class="n">frame</span><span class="p">))</span>
+<span class="n">lidar_sen</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="k">lambda</span> <span class="n">point_cloud</span><span class="p">:</span> <span class="n">point_cloud</span><span class="o">.</span><span class="n">save_to_disk</span><span class="p">(</span><span class="s1">'tutorial/new_lidar_output/</span><span class="si">%.6d</span><span class="s1">.ply'</span> <span class="o">%</span> <span class="n">point_cloud</span><span class="o">.</span><span class="n">frame</span><span class="p">))</span>
 </code></pre></div>
 <p><em>.ply</em> 输出可以使用 <strong>Meshlab</strong> 进行可视化。</p>
 <p><strong>1.</strong> 安装 <a href="http://www.meshlab.net/#download">Meshlab</a> 。
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span>-y
+</p><div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span>-y
 sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>meshlab
 </code></pre></div>
 <strong>2.</strong> 打开 Meshlab 。
 <div class="highlight"><pre><span></span><code>meshlab
 </code></pre></div>
-<strong>3.</strong> 打开其中一个 <em>.ply</em> 文件。 <code>File &gt; Import mesh...</code> </p>
-<p><img alt="tuto_lidar" src="../img/tuto_lidar.jpg" /></p>
+<strong>3.</strong> 打开其中一个 <em>.ply</em> 文件。 <code>File &gt; Import mesh...</code> 
+<p><img alt="tuto_lidar" src="../img/tuto_lidar.jpg"></p>
 <div class="div" style="text-align: center"><i>经过Meshlab处理后的激光雷达输出</i></div>
 
 <h3 id="_17">雷达传感器 <span id="雷达传感器"></span></h3>
@@ -613,10 +613,10 @@ sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w
 <span class="c1"># 给自主车添加新的雷达传感器</span>
 <span class="c1"># --------------</span>
 <span class="n">rad_cam</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="n">rad_bp</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">get_blueprint_library</span><span class="p">()</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;sensor.other.radar&#39;</span><span class="p">)</span>
-<span class="n">rad_bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">&#39;horizontal_fov&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="mi">35</span><span class="p">))</span>
-<span class="n">rad_bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">&#39;vertical_fov&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
-<span class="n">rad_bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">&#39;range&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
+<span class="n">rad_bp</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">get_blueprint_library</span><span class="p">()</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'sensor.other.radar'</span><span class="p">)</span>
+<span class="n">rad_bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">'horizontal_fov'</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="mi">35</span><span class="p">))</span>
+<span class="n">rad_bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">'vertical_fov'</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
+<span class="n">rad_bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">'range'</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
 <span class="n">rad_location</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Location</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
 <span class="n">rad_rotation</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Rotation</span><span class="p">(</span><span class="n">pitch</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 <span class="n">rad_transform</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Transform</span><span class="p">(</span><span class="n">rad_location</span><span class="p">,</span><span class="n">rad_rotation</span><span class="p">)</span>
@@ -651,10 +651,10 @@ sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w
             <span class="n">color</span><span class="o">=</span><span class="n">carla</span><span class="o">.</span><span class="n">Color</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
 <span class="n">rad_ego</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="k">lambda</span> <span class="n">radar_data</span><span class="p">:</span> <span class="n">rad_callback</span><span class="p">(</span><span class="n">radar_data</span><span class="p">))</span>
 </code></pre></div>
-<p><img alt="tuto_radar" src="../img/tuto_radar.jpg" /></p>
+<p><img alt="tuto_radar" src="../img/tuto_radar.jpg"></p>
 <div class="div" style="text-align: center"><i>雷达输出。车辆停在交通信号灯处，因此其前面的静态元素显示为白色</i></div>
 
-<hr />
+<hr>
 <h2 id="_18">非渲染模式 <span id="no-rendering-mode"></span></h2>
 <p><a href="../adv_rendering_options/">无渲染模式</a> 对于运行初始模拟非常有用，稍后将再次播放该模拟以检索数据。特别是如果该模拟存在一些极端条件，例如交通密集。 </p>
 <h3 id="_19">快速模拟 <span id="simulate-at-a-fast-pace"></span></h3>
@@ -683,7 +683,7 @@ python3 no_rendering_mode.py --no-rendering
 <span class="w">  </span>--host<span class="w"> </span>H<span class="w">             </span>主机服务器的IP地址（默认值：127.0.0.1）
 <span class="w">  </span>-p<span class="w"> </span>P,<span class="w"> </span>--port<span class="w"> </span>P<span class="w">       </span>要监听的<span class="w"> </span>TCP<span class="w"> </span>端口（默认值：2000）
 <span class="w">  </span>--res<span class="w"> </span>WIDTHxHEIGHT<span class="w">   </span>窗口分辨率（默认值：1280x720）
-<span class="w">  </span>--filter<span class="w"> </span>PATTERN<span class="w">     </span>动作者过滤器（默认值：<span class="s2">&quot;vehicle.*&quot;</span>）
+<span class="w">  </span>--filter<span class="w"> </span>PATTERN<span class="w">     </span>动作者过滤器（默认值：<span class="s2">"vehicle.*"</span>）
 <span class="w">  </span>--map<span class="w"> </span>TOWN<span class="w">           </span>在指定的城镇开始新的轮次
 <span class="w">  </span>--no-rendering<span class="w">       </span>关闭服务器渲染
 <span class="w">  </span>--show-triggers<span class="w">      </span>显示交通标志的触发框
@@ -692,21 +692,21 @@ python3 no_rendering_mode.py --no-rendering
 </code></pre></div>
 </details>
 <p><br></p>
-<p><img alt="tuto_no_rendering" src="../img/tuto_no_rendering.jpg" /></p>
+<p><img alt="tuto_no_rendering" src="../img/tuto_no_rendering.jpg"></p>
 <div class="div" style="text-align: center"><i>no_rendering_mode.py 在 Town07 中运行</i></div>
 
 <div class="admonition 笔记">
 <p class="admonition-title">笔记</p>
 <p>在此模式下，基于 GPU 的传感器将检索空数据。摄像头没用，但探测器等其他传感器可以正常工作。</p>
 </div>
-<hr />
+<hr>
 <h2 id="_21">记录和检索数据 <span id="record-and-retrieve-data"></span></h2>
 <h3 id="_22">开始记录 <span id="start-recording"></span></h3>
 <p><a href="../adv_recorder/"><strong>记录器</strong></a> 可以随时启动。脚本从一开始就这样做，以便捕捉一切，包括第一批参与者的产生。如果没有详细路径，日志将保存到<code>CarlaUE4/Saved</code>。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># --------------</span>
 <span class="c1"># 开始记录</span>
 <span class="c1"># --------------</span>
-<span class="n">client</span><span class="o">.</span><span class="n">start_recorder</span><span class="p">(</span><span class="s1">&#39;~/tutorial/recorder/recording01.log&#39;</span><span class="p">)</span>
+<span class="n">client</span><span class="o">.</span><span class="n">start_recorder</span><span class="p">(</span><span class="s1">'~/tutorial/recorder/recording01.log'</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="_23">捕获并记录 <span id="capture-and-record"></span></h3>
 <p>有许多不同的方法可以做到这一点。大多数情况下，它会因为让它四处漫游或手动控制而出现故障。产生的传感器的数据将被即时检索。请务必在记录时进行检查，以确保一切设置正确。</p>
@@ -717,7 +717,7 @@ python3 no_rendering_mode.py --no-rendering
 <span class="c1"># 捕获数据</span>
 <span class="c1"># --------------</span>
 <span class="n">ego_vehicle</span><span class="o">.</span><span class="n">set_autopilot</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Ego autopilot enabled&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">Ego autopilot enabled'</span><span class="p">)</span>
 
 <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
     <span class="n">world_snapshot</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">wait_for_tick</span><span class="p">()</span>
@@ -739,7 +739,7 @@ python3 manual_control.py
 <span class="c1"># --------------</span>
 <span class="n">client</span><span class="o">.</span><span class="n">stop_recorder</span><span class="p">()</span>
 </code></pre></div>
-<hr />
+<hr>
 <h2 id="_25">利用记录 <span id="exploit-the-recording"></span></h2>
 <p>到目前为止，模拟已经被记录下来。现在，是时候检查记录，找到最引人注目的时刻，并利用它们。这些步骤集中在脚本 <a href="https://github.com/OpenHUTB/doc/tree/master/src/tutorial/tutorial_replay.py"><strong>tutorial_replay.py</strong></a> 中。该大纲由注释的不同代码段构成。</p>
 <p>现在是运行新模拟的时候了。</p>
@@ -754,23 +754,23 @@ python3 manual_control.py
 <span class="c1"># 查询记录</span>
 <span class="c1"># --------------</span>
 <span class="c1"># 仅显示记录中最重要的事件。</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">client</span><span class="o">.</span><span class="n">show_recorder_file_info</span><span class="p">(</span><span class="s2">&quot;~/tutorial/recorder/recording01.log&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">client</span><span class="o">.</span><span class="n">show_recorder_file_info</span><span class="p">(</span><span class="s2">"~/tutorial/recorder/recording01.log"</span><span class="p">,</span> <span class="kc">False</span><span class="p">))</span>
 <span class="c1"># 展示参与者在 10 秒内不动 1 米。</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">client</span><span class="o">.</span><span class="n">show_recorder_actors_blocked</span><span class="p">(</span><span class="s2">&quot;~/tutorial/recorder/recording01.log&quot;</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">client</span><span class="o">.</span><span class="n">show_recorder_actors_blocked</span><span class="p">(</span><span class="s2">"~/tutorial/recorder/recording01.log"</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
 <span class="c1"># 过滤车辆“v”和“a”以及任何其他类型的参与者之间的碰撞 </span>
-<span class="nb">print</span><span class="p">(</span><span class="n">client</span><span class="o">.</span><span class="n">show_recorder_collisions</span><span class="p">(</span><span class="s2">&quot;~/tutorial/recorder/recording01.log&quot;</span><span class="p">,</span><span class="s1">&#39;v&#39;</span><span class="p">,</span><span class="s1">&#39;a&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">client</span><span class="o">.</span><span class="n">show_recorder_collisions</span><span class="p">(</span><span class="s2">"~/tutorial/recorder/recording01.log"</span><span class="p">,</span><span class="s1">'v'</span><span class="p">,</span><span class="s1">'a'</span><span class="p">))</span>
 </code></pre></div>
 <div class="admonition 笔记">
 <p class="admonition-title">笔记</p>
 <p>记录器不需要打开即可进行查询。</p>
 </div>
-<p><img alt="tuto_query_frames" src="../img/tuto_query_frames.jpg" /></p>
+<p><img alt="tuto_query_frames" src="../img/tuto_query_frames.jpg"></p>
 <div class="div" style="text-align: center"><i>显示重要事件的查询。这是自车产生的框架。</i></div>
 
-<p><img alt="tuto_query_blocked" src="../img/tuto_query_blocked.jpg" /></p>
+<p><img alt="tuto_query_blocked" src="../img/tuto_query_blocked.jpg"></p>
 <div class="div" style="text-align: center"><i>查询显示参与者被阻止。在此模拟中，自车保持阻塞状态 100 秒。</i></div>
 
-<p><img alt="tuto_query_collisions" src="../img/tuto_query_collisions.jpg" /></p>
+<p><img alt="tuto_query_collisions" src="../img/tuto_query_collisions.jpg"></p>
 <div class="div" style="text-align: center"><i>显示自车与“其他”类型对象之间的碰撞的查询</i></div>
 
 <div class="admonition 笔记">
@@ -783,7 +783,7 @@ python3 manual_control.py
 <div class="highlight"><pre><span></span><code><span class="c1"># --------------</span>
 <span class="c1"># 重播记录片段</span>
 <span class="c1"># --------------</span>
-<span class="n">client</span><span class="o">.</span><span class="n">replay_file</span><span class="p">(</span><span class="s2">&quot;~/tutorial/recorder/recording01.log&quot;</span><span class="p">,</span><span class="mi">45</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">client</span><span class="o">.</span><span class="n">replay_file</span><span class="p">(</span><span class="s2">"~/tutorial/recorder/recording01.log"</span><span class="p">,</span><span class="mi">45</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div>
 <p>以下是现在可以做的事情的列表。</p>
 <ul>
@@ -815,7 +815,7 @@ python3 manual_control.py
 <p>新的模拟与记录没有严格的联系。它可以随时修改，即使记录器停止，模拟也会继续。</p>
 <p>这对于用户来说是有利可图的。例如，可以通过回放几秒钟前的模拟并生成或销毁参与者来强制或避免碰撞。在特定时刻结束记录也很有用。这样做，车辆可能会采取不同的路径。</p>
 <p>改变条件并扰乱模拟。没有什么可失去的，因为记录器允许初始模拟始终可以重新进行。这是充分发挥 Carla 潜力的关键。</p>
-<hr />
+<hr>
 <h2 id="_31">教程脚本 <span id="tutorial-scripts"></span></h2>
 <p>下面是收集本教程代码片段的两个脚本。大多数代码都带有注释，因为需要对其进行修改以适应特定目的。</p>
 <details>
@@ -833,19 +833,19 @@ python3 manual_control.py
     <span class="n">argparser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span>
         <span class="n">description</span><span class="o">=</span><span class="vm">__doc__</span><span class="p">)</span>
     <span class="n">argparser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
-        <span class="s1">&#39;--host&#39;</span><span class="p">,</span>
-        <span class="n">metavar</span><span class="o">=</span><span class="s1">&#39;H&#39;</span><span class="p">,</span>
-        <span class="n">default</span><span class="o">=</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span>
-        <span class="n">help</span><span class="o">=</span><span class="s1">&#39;IP of the host server (default: 127.0.0.1)&#39;</span><span class="p">)</span>
+        <span class="s1">'--host'</span><span class="p">,</span>
+        <span class="n">metavar</span><span class="o">=</span><span class="s1">'H'</span><span class="p">,</span>
+        <span class="n">default</span><span class="o">=</span><span class="s1">'127.0.0.1'</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s1">'IP of the host server (default: 127.0.0.1)'</span><span class="p">)</span>
     <span class="n">argparser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
-        <span class="s1">&#39;-p&#39;</span><span class="p">,</span> <span class="s1">&#39;--port&#39;</span><span class="p">,</span>
-        <span class="n">metavar</span><span class="o">=</span><span class="s1">&#39;P&#39;</span><span class="p">,</span>
+        <span class="s1">'-p'</span><span class="p">,</span> <span class="s1">'--port'</span><span class="p">,</span>
+        <span class="n">metavar</span><span class="o">=</span><span class="s1">'P'</span><span class="p">,</span>
         <span class="n">default</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span>
         <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span>
-        <span class="n">help</span><span class="o">=</span><span class="s1">&#39;TCP port to listen to (default: 2000)&#39;</span><span class="p">)</span>
+        <span class="n">help</span><span class="o">=</span><span class="s1">'TCP port to listen to (default: 2000)'</span><span class="p">)</span>
     <span class="n">args</span> <span class="o">=</span> <span class="n">argparser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
 
-    <span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%(levelname)s</span><span class="s1">: </span><span class="si">%(message)s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="s1">'</span><span class="si">%(levelname)s</span><span class="s1">: </span><span class="si">%(message)s</span><span class="s1">'</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
 
     <span class="n">client</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">host</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">port</span><span class="p">)</span>
     <span class="n">client</span><span class="o">.</span><span class="n">set_timeout</span><span class="p">(</span><span class="mf">10.0</span><span class="p">)</span>
@@ -864,20 +864,20 @@ python3 manual_control.py
         <span class="c1"># --------------</span>
         <span class="c1"># 开始记录</span>
         <span class="c1"># --------------</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        client.start_recorder(&#39;~/tutorial/recorder/recording01.log&#39;)</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        client.start_recorder('~/tutorial/recorder/recording01.log')</span>
+<span class="sd">        """</span>
 
         <span class="c1"># --------------</span>
         <span class="c1"># 生成自主载具</span>
         <span class="c1"># --------------</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        ego_bp = world.get_blueprint_library().find(&#39;vehicle.tesla.model3&#39;)</span>
-<span class="sd">        ego_bp.set_attribute(&#39;role_name&#39;,&#39;ego&#39;)</span>
-<span class="sd">        print(&#39;\nEgo role_name is set&#39;)</span>
-<span class="sd">        ego_color = random.choice(ego_bp.get_attribute(&#39;color&#39;).recommended_values)</span>
-<span class="sd">        ego_bp.set_attribute(&#39;color&#39;,ego_color)</span>
-<span class="sd">        print(&#39;\nEgo color is set&#39;)</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        ego_bp = world.get_blueprint_library().find('vehicle.tesla.model3')</span>
+<span class="sd">        ego_bp.set_attribute('role_name','ego')</span>
+<span class="sd">        print('\nEgo role_name is set')</span>
+<span class="sd">        ego_color = random.choice(ego_bp.get_attribute('color').recommended_values)</span>
+<span class="sd">        ego_bp.set_attribute('color',ego_color)</span>
+<span class="sd">        print('\nEgo color is set')</span>
 
 <span class="sd">        spawn_points = world.get_map().get_spawn_points()</span>
 <span class="sd">        number_of_spawn_points = len(spawn_points)</span>
@@ -886,115 +886,115 @@ python3 manual_control.py
 <span class="sd">            random.shuffle(spawn_points)</span>
 <span class="sd">            ego_transform = spawn_points[0]</span>
 <span class="sd">            ego_vehicle = world.spawn_actor(ego_bp,ego_transform)</span>
-<span class="sd">            print(&#39;\nEgo is spawned&#39;)</span>
+<span class="sd">            print('\nEgo is spawned')</span>
 <span class="sd">        else: </span>
-<span class="sd">            logging.warning(&#39;Could not found any spawn points&#39;)</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">            logging.warning('Could not found any spawn points')</span>
+<span class="sd">        """</span>
 
         <span class="c1"># --------------</span>
         <span class="c1"># 给自主载具添加 RGB 相机传感器</span>
         <span class="c1"># --------------</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        cam_bp = None</span>
-<span class="sd">        cam_bp = world.get_blueprint_library().find(&#39;sensor.camera.rgb&#39;)</span>
-<span class="sd">        cam_bp.set_attribute(&quot;image_size_x&quot;,str(1920))</span>
-<span class="sd">        cam_bp.set_attribute(&quot;image_size_y&quot;,str(1080))</span>
-<span class="sd">        cam_bp.set_attribute(&quot;fov&quot;,str(105))</span>
+<span class="sd">        cam_bp = world.get_blueprint_library().find('sensor.camera.rgb')</span>
+<span class="sd">        cam_bp.set_attribute("image_size_x",str(1920))</span>
+<span class="sd">        cam_bp.set_attribute("image_size_y",str(1080))</span>
+<span class="sd">        cam_bp.set_attribute("fov",str(105))</span>
 <span class="sd">        cam_location = carla.Location(2,0,1)</span>
 <span class="sd">        cam_rotation = carla.Rotation(0,180,0)</span>
 <span class="sd">        cam_transform = carla.Transform(cam_location,cam_rotation)</span>
 <span class="sd">        ego_cam = world.spawn_actor(cam_bp,cam_transform,attach_to=ego_vehicle, attachment_type=carla.AttachmentType.Rigid)</span>
-<span class="sd">        ego_cam.listen(lambda image: image.save_to_disk(&#39;~/tutorial/output/%.6d.jpg&#39; % image.frame))</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        ego_cam.listen(lambda image: image.save_to_disk('~/tutorial/output/%.6d.jpg' % image.frame))</span>
+<span class="sd">        """</span>
 
         <span class="c1"># --------------</span>
         <span class="c1"># 给自主载具添加碰撞传感器</span>
         <span class="c1"># --------------</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        col_bp = world.get_blueprint_library().find(&#39;sensor.other.collision&#39;)</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        col_bp = world.get_blueprint_library().find('sensor.other.collision')</span>
 <span class="sd">        col_location = carla.Location(0,0,0)</span>
 <span class="sd">        col_rotation = carla.Rotation(0,0,0)</span>
 <span class="sd">        col_transform = carla.Transform(col_location,col_rotation)</span>
 <span class="sd">        ego_col = world.spawn_actor(col_bp,col_transform,attach_to=ego_vehicle, attachment_type=carla.AttachmentType.Rigid)</span>
 <span class="sd">        def col_callback(colli):</span>
-<span class="sd">            print(&quot;Collision detected:\n&quot;+str(colli)+&#39;\n&#39;)</span>
+<span class="sd">            print("Collision detected:\n"+str(colli)+'\n')</span>
 <span class="sd">        ego_col.listen(lambda colli: col_callback(colli))</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="c1"># --------------</span>
         <span class="c1"># 给自主载具添加压线传感器</span>
         <span class="c1"># --------------</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        lane_bp = world.get_blueprint_library().find(&#39;sensor.other.lane_invasion&#39;)</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        lane_bp = world.get_blueprint_library().find('sensor.other.lane_invasion')</span>
 <span class="sd">        lane_location = carla.Location(0,0,0)</span>
 <span class="sd">        lane_rotation = carla.Rotation(0,0,0)</span>
 <span class="sd">        lane_transform = carla.Transform(lane_location,lane_rotation)</span>
 <span class="sd">        ego_lane = world.spawn_actor(lane_bp,lane_transform,attach_to=ego_vehicle, attachment_type=carla.AttachmentType.Rigid)</span>
 <span class="sd">        def lane_callback(lane):</span>
-<span class="sd">            print(&quot;Lane invasion detected:\n&quot;+str(lane)+&#39;\n&#39;)</span>
+<span class="sd">            print("Lane invasion detected:\n"+str(lane)+'\n')</span>
 <span class="sd">        ego_lane.listen(lambda lane: lane_callback(lane))</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="c1"># --------------</span>
         <span class="c1"># 给自主载具添加障碍物传感器</span>
         <span class="c1"># --------------</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        obs_bp = world.get_blueprint_library().find(&#39;sensor.other.obstacle&#39;)</span>
-<span class="sd">        obs_bp.set_attribute(&quot;only_dynamics&quot;,str(True))</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        obs_bp = world.get_blueprint_library().find('sensor.other.obstacle')</span>
+<span class="sd">        obs_bp.set_attribute("only_dynamics",str(True))</span>
 <span class="sd">        obs_location = carla.Location(0,0,0)</span>
 <span class="sd">        obs_rotation = carla.Rotation(0,0,0)</span>
 <span class="sd">        obs_transform = carla.Transform(obs_location,obs_rotation)</span>
 <span class="sd">        ego_obs = world.spawn_actor(obs_bp,obs_transform,attach_to=ego_vehicle, attachment_type=carla.AttachmentType.Rigid)</span>
 <span class="sd">        def obs_callback(obs):</span>
-<span class="sd">            print(&quot;Obstacle detected:\n&quot;+str(obs)+&#39;\n&#39;)</span>
+<span class="sd">            print("Obstacle detected:\n"+str(obs)+'\n')</span>
 <span class="sd">        ego_obs.listen(lambda obs: obs_callback(obs))</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="c1"># --------------</span>
         <span class="c1"># 给自主载具添加全球导航卫星系统传感器</span>
         <span class="c1"># --------------</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        gnss_bp = world.get_blueprint_library().find(&#39;sensor.other.gnss&#39;)</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        gnss_bp = world.get_blueprint_library().find('sensor.other.gnss')</span>
 <span class="sd">        gnss_location = carla.Location(0,0,0)</span>
 <span class="sd">        gnss_rotation = carla.Rotation(0,0,0)</span>
 <span class="sd">        gnss_transform = carla.Transform(gnss_location,gnss_rotation)</span>
-<span class="sd">        gnss_bp.set_attribute(&quot;sensor_tick&quot;,str(3.0))</span>
+<span class="sd">        gnss_bp.set_attribute("sensor_tick",str(3.0))</span>
 <span class="sd">        ego_gnss = world.spawn_actor(gnss_bp,gnss_transform,attach_to=ego_vehicle, attachment_type=carla.AttachmentType.Rigid)</span>
 <span class="sd">        def gnss_callback(gnss):</span>
-<span class="sd">            print(&quot;GNSS measure:\n&quot;+str(gnss)+&#39;\n&#39;)</span>
+<span class="sd">            print("GNSS measure:\n"+str(gnss)+'\n')</span>
 <span class="sd">        ego_gnss.listen(lambda gnss: gnss_callback(gnss))</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="c1"># --------------</span>
         <span class="c1"># 给自主载具添加 IMU 传感器</span>
         <span class="c1"># --------------</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        imu_bp = world.get_blueprint_library().find(&#39;sensor.other.imu&#39;)</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        imu_bp = world.get_blueprint_library().find('sensor.other.imu')</span>
 <span class="sd">        imu_location = carla.Location(0,0,0)</span>
 <span class="sd">        imu_rotation = carla.Rotation(0,0,0)</span>
 <span class="sd">        imu_transform = carla.Transform(imu_location,imu_rotation)</span>
-<span class="sd">        imu_bp.set_attribute(&quot;sensor_tick&quot;,str(3.0))</span>
+<span class="sd">        imu_bp.set_attribute("sensor_tick",str(3.0))</span>
 <span class="sd">        ego_imu = world.spawn_actor(imu_bp,imu_transform,attach_to=ego_vehicle, attachment_type=carla.AttachmentType.Rigid)</span>
 <span class="sd">        def imu_callback(imu):</span>
-<span class="sd">            print(&quot;IMU measure:\n&quot;+str(imu)+&#39;\n&#39;)</span>
+<span class="sd">            print("IMU measure:\n"+str(imu)+'\n')</span>
 <span class="sd">        ego_imu.listen(lambda imu: imu_callback(imu))</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="c1"># --------------</span>
         <span class="c1"># 在自主载具生成的位置放置观察者</span>
         <span class="c1"># --------------</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        spectator = world.get_spectator()</span>
 <span class="sd">        world_snapshot = world.wait_for_tick() </span>
 <span class="sd">        spectator.set_transform(ego_vehicle.get_transform())</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="c1"># --------------</span>
         <span class="c1"># 对自车启用自动驾驶</span>
         <span class="c1"># --------------</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        ego_vehicle.set_autopilot(True)</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="c1"># --------------</span>
         <span class="c1"># 游戏循环。阻止脚本完成。</span>
@@ -1028,14 +1028,14 @@ python3 manual_control.py
                 <span class="n">ego_imu</span><span class="o">.</span><span class="n">destroy</span><span class="p">()</span>
             <span class="n">ego_vehicle</span><span class="o">.</span><span class="n">destroy</span><span class="p">()</span>
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
 
     <span class="k">try</span><span class="p">:</span>
         <span class="n">main</span><span class="p">()</span>
     <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
         <span class="k">pass</span>
     <span class="k">finally</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Done with tutorial_ego.&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">Done with tutorial_ego.'</span><span class="p">)</span>
 </code></pre></div>
 </details>
 <p><br></p>
@@ -1053,7 +1053,7 @@ python3 manual_control.py
 <span class="kn">import</span> <span class="nn">random</span>
 
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-    <span class="n">client</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="s1">'127.0.0.1'</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
     <span class="n">client</span><span class="o">.</span><span class="n">set_timeout</span><span class="p">(</span><span class="mf">10.0</span><span class="p">)</span>
 
     <span class="k">try</span><span class="p">:</span>
@@ -1070,124 +1070,124 @@ python3 manual_control.py
         <span class="c1"># --------------</span>
         <span class="c1"># 查询记录</span>
         <span class="c1"># --------------</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        # Show the most important events in the recording.  </span>
-<span class="sd">        print(client.show_recorder_file_info(&quot;~/tutorial/recorder/recording05.log&quot;,False))</span>
+<span class="sd">        print(client.show_recorder_file_info("~/tutorial/recorder/recording05.log",False))</span>
 <span class="sd">        # Show actors not moving 1 meter in 10 seconds.  </span>
-<span class="sd">        #print(client.show_recorder_actors_blocked(&quot;~/tutorial/recorder/recording04.log&quot;,10,1))</span>
+<span class="sd">        #print(client.show_recorder_actors_blocked("~/tutorial/recorder/recording04.log",10,1))</span>
 <span class="sd">        # Show collisions between any type of actor.  </span>
-<span class="sd">        #print(client.show_recorder_collisions(&quot;~/tutorial/recorder/recording04.log&quot;,&#39;v&#39;,&#39;a&#39;))</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        #print(client.show_recorder_collisions("~/tutorial/recorder/recording04.log",'v','a'))</span>
+<span class="sd">        """</span>
 
         <span class="c1"># --------------</span>
         <span class="c1"># 重现记录中的一段片段</span>
         <span class="c1"># --------------</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        client.replay_file(&quot;~/tutorial/recorder/recording03.log&quot;,0,30,0)</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        client.replay_file("~/tutorial/recorder/recording03.log",0,30,0)</span>
+<span class="sd">        """</span>
 
         <span class="c1"># --------------</span>
         <span class="c1"># 设置播放模拟条件</span>
         <span class="c1"># --------------</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        ego_vehicle = world.get_actor(322) #Store the ID from the simulation or query the recording to find out</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="c1"># --------------</span>
         <span class="c1"># 让自主载具生成点放置观察者</span>
         <span class="c1"># --------------</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        spectator = world.get_spectator()</span>
 <span class="sd">        world_snapshot = world.wait_for_tick() </span>
 <span class="sd">        spectator.set_transform(ego_vehicle.get_transform())</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="c1"># --------------</span>
         <span class="c1"># 改变天气状况</span>
         <span class="c1"># --------------</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        weather = world.get_weather()</span>
 <span class="sd">        weather.sun_altitude_angle = -30</span>
 <span class="sd">        weather.fog_density = 65</span>
 <span class="sd">        weather.fog_distance = 10</span>
 <span class="sd">        world.set_weather(weather)</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="c1"># --------------</span>
         <span class="c1"># 给自主载具添加 RGB 相机</span>
         <span class="c1"># --------------</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        cam_bp = None</span>
-<span class="sd">        cam_bp = world.get_blueprint_library().find(&#39;sensor.camera.rgb&#39;)</span>
+<span class="sd">        cam_bp = world.get_blueprint_library().find('sensor.camera.rgb')</span>
 <span class="sd">        cam_location = carla.Location(2,0,1)</span>
 <span class="sd">        cam_rotation = carla.Rotation(0,180,0)</span>
 <span class="sd">        cam_transform = carla.Transform(cam_location,cam_rotation)</span>
-<span class="sd">        cam_bp.set_attribute(&quot;image_size_x&quot;,str(1920))</span>
-<span class="sd">        cam_bp.set_attribute(&quot;image_size_y&quot;,str(1080))</span>
-<span class="sd">        cam_bp.set_attribute(&quot;fov&quot;,str(105))</span>
+<span class="sd">        cam_bp.set_attribute("image_size_x",str(1920))</span>
+<span class="sd">        cam_bp.set_attribute("image_size_y",str(1080))</span>
+<span class="sd">        cam_bp.set_attribute("fov",str(105))</span>
 <span class="sd">        ego_cam = world.spawn_actor(cam_bp,cam_transform,attach_to=ego_vehicle, attachment_type=carla.AttachmentType.Rigid)</span>
-<span class="sd">        ego_cam.listen(lambda image: image.save_to_disk(&#39;~/tutorial/new_rgb_output/%.6d.jpg&#39; % image.frame))</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        ego_cam.listen(lambda image: image.save_to_disk('~/tutorial/new_rgb_output/%.6d.jpg' % image.frame))</span>
+<span class="sd">        """</span>
 
         <span class="c1"># --------------</span>
         <span class="c1"># 给自主载具添加对数深度相机</span>
         <span class="c1"># --------------</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        depth_cam = None</span>
-<span class="sd">        depth_bp = world.get_blueprint_library().find(&#39;sensor.camera.depth&#39;)</span>
-<span class="sd">        depth_bp.set_attribute(&quot;image_size_x&quot;,str(1920))</span>
-<span class="sd">        depth_bp.set_attribute(&quot;image_size_y&quot;,str(1080))</span>
-<span class="sd">        depth_bp.set_attribute(&quot;fov&quot;,str(105))</span>
+<span class="sd">        depth_bp = world.get_blueprint_library().find('sensor.camera.depth')</span>
+<span class="sd">        depth_bp.set_attribute("image_size_x",str(1920))</span>
+<span class="sd">        depth_bp.set_attribute("image_size_y",str(1080))</span>
+<span class="sd">        depth_bp.set_attribute("fov",str(105))</span>
 <span class="sd">        depth_location = carla.Location(2,0,1)</span>
 <span class="sd">        depth_rotation = carla.Rotation(0,180,0)</span>
 <span class="sd">        depth_transform = carla.Transform(depth_location,depth_rotation)</span>
 <span class="sd">        depth_cam = world.spawn_actor(depth_bp,depth_transform,attach_to=ego_vehicle, attachment_type=carla.AttachmentType.Rigid)</span>
 <span class="sd">        # This time, a color converter is applied to the image, to get the semantic segmentation view</span>
-<span class="sd">        depth_cam.listen(lambda image: image.save_to_disk(&#39;~/tutorial/de_log/%.6d.jpg&#39; % image.frame,carla.ColorConverter.LogarithmicDepth))</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        depth_cam.listen(lambda image: image.save_to_disk('~/tutorial/de_log/%.6d.jpg' % image.frame,carla.ColorConverter.LogarithmicDepth))</span>
+<span class="sd">        """</span>
         <span class="c1"># --------------</span>
         <span class="c1"># 给自主载具添加深度相机</span>
         <span class="c1"># --------------</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        depth_cam02 = None</span>
-<span class="sd">        depth_bp02 = world.get_blueprint_library().find(&#39;sensor.camera.depth&#39;)</span>
-<span class="sd">        depth_bp02.set_attribute(&quot;image_size_x&quot;,str(1920))</span>
-<span class="sd">        depth_bp02.set_attribute(&quot;image_size_y&quot;,str(1080))</span>
-<span class="sd">        depth_bp02.set_attribute(&quot;fov&quot;,str(105))</span>
+<span class="sd">        depth_bp02 = world.get_blueprint_library().find('sensor.camera.depth')</span>
+<span class="sd">        depth_bp02.set_attribute("image_size_x",str(1920))</span>
+<span class="sd">        depth_bp02.set_attribute("image_size_y",str(1080))</span>
+<span class="sd">        depth_bp02.set_attribute("fov",str(105))</span>
 <span class="sd">        depth_location02 = carla.Location(2,0,1)</span>
 <span class="sd">        depth_rotation02 = carla.Rotation(0,180,0)</span>
 <span class="sd">        depth_transform02 = carla.Transform(depth_location02,depth_rotation02)</span>
 <span class="sd">        depth_cam02 = world.spawn_actor(depth_bp02,depth_transform02,attach_to=ego_vehicle, attachment_type=carla.AttachmentType.Rigid)</span>
 <span class="sd">        # This time, a color converter is applied to the image, to get the semantic segmentation view</span>
-<span class="sd">        depth_cam02.listen(lambda image: image.save_to_disk(&#39;~/tutorial/de/%.6d.jpg&#39; % image.frame,carla.ColorConverter.Depth))</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        depth_cam02.listen(lambda image: image.save_to_disk('~/tutorial/de/%.6d.jpg' % image.frame,carla.ColorConverter.Depth))</span>
+<span class="sd">        """</span>
 
         <span class="c1"># --------------</span>
         <span class="c1"># 给自主载具添加语义分割相机</span>
         <span class="c1"># --------------</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        sem_cam = None</span>
-<span class="sd">        sem_bp = world.get_blueprint_library().find(&#39;sensor.camera.semantic_segmentation&#39;)</span>
-<span class="sd">        sem_bp.set_attribute(&quot;image_size_x&quot;,str(1920))</span>
-<span class="sd">        sem_bp.set_attribute(&quot;image_size_y&quot;,str(1080))</span>
-<span class="sd">        sem_bp.set_attribute(&quot;fov&quot;,str(105))</span>
+<span class="sd">        sem_bp = world.get_blueprint_library().find('sensor.camera.semantic_segmentation')</span>
+<span class="sd">        sem_bp.set_attribute("image_size_x",str(1920))</span>
+<span class="sd">        sem_bp.set_attribute("image_size_y",str(1080))</span>
+<span class="sd">        sem_bp.set_attribute("fov",str(105))</span>
 <span class="sd">        sem_location = carla.Location(2,0,1)</span>
 <span class="sd">        sem_rotation = carla.Rotation(0,180,0)</span>
 <span class="sd">        sem_transform = carla.Transform(sem_location,sem_rotation)</span>
 <span class="sd">        sem_cam = world.spawn_actor(sem_bp,sem_transform,attach_to=ego_vehicle, attachment_type=carla.AttachmentType.Rigid)</span>
 <span class="sd">        # This time, a color converter is applied to the image, to get the semantic segmentation view</span>
-<span class="sd">        sem_cam.listen(lambda image: image.save_to_disk(&#39;~/tutorial/new_sem_output/%.6d.jpg&#39; % image.frame,carla.ColorConverter.CityScapesPalette))</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        sem_cam.listen(lambda image: image.save_to_disk('~/tutorial/new_sem_output/%.6d.jpg' % image.frame,carla.ColorConverter.CityScapesPalette))</span>
+<span class="sd">        """</span>
 
         <span class="c1"># --------------</span>
         <span class="c1"># 给自主载具添加新的雷达传感器</span>
         <span class="c1"># --------------</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        rad_cam = None</span>
-<span class="sd">        rad_bp = world.get_blueprint_library().find(&#39;sensor.other.radar&#39;)</span>
-<span class="sd">        rad_bp.set_attribute(&#39;horizontal_fov&#39;, str(35))</span>
-<span class="sd">        rad_bp.set_attribute(&#39;vertical_fov&#39;, str(20))</span>
-<span class="sd">        rad_bp.set_attribute(&#39;range&#39;, str(20))</span>
+<span class="sd">        rad_bp = world.get_blueprint_library().find('sensor.other.radar')</span>
+<span class="sd">        rad_bp.set_attribute('horizontal_fov', str(35))</span>
+<span class="sd">        rad_bp.set_attribute('vertical_fov', str(20))</span>
+<span class="sd">        rad_bp.set_attribute('range', str(20))</span>
 <span class="sd">        rad_location = carla.Location(x=2.8, z=1.0)</span>
 <span class="sd">        rad_rotation = carla.Rotation(pitch=5)</span>
 <span class="sd">        rad_transform = carla.Transform(rad_location,rad_rotation)</span>
@@ -1222,24 +1222,24 @@ python3 manual_control.py
 <span class="sd">                    persistent_lines=False,</span>
 <span class="sd">                    color=carla.Color(r, g, b))</span>
 <span class="sd">        rad_ego.listen(lambda radar_data: rad_callback(radar_data))</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="c1"># --------------</span>
         <span class="c1"># 给自主载具添加激光雷达传感器</span>
         <span class="c1"># --------------</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        lidar_cam = None</span>
-<span class="sd">        lidar_bp = world.get_blueprint_library().find(&#39;sensor.lidar.ray_cast&#39;)</span>
-<span class="sd">        lidar_bp.set_attribute(&#39;channels&#39;,str(32))</span>
-<span class="sd">        lidar_bp.set_attribute(&#39;points_per_second&#39;,str(90000))</span>
-<span class="sd">        lidar_bp.set_attribute(&#39;rotation_frequency&#39;,str(40))</span>
-<span class="sd">        lidar_bp.set_attribute(&#39;range&#39;,str(20))</span>
+<span class="sd">        lidar_bp = world.get_blueprint_library().find('sensor.lidar.ray_cast')</span>
+<span class="sd">        lidar_bp.set_attribute('channels',str(32))</span>
+<span class="sd">        lidar_bp.set_attribute('points_per_second',str(90000))</span>
+<span class="sd">        lidar_bp.set_attribute('rotation_frequency',str(40))</span>
+<span class="sd">        lidar_bp.set_attribute('range',str(20))</span>
 <span class="sd">        lidar_location = carla.Location(0,0,2)</span>
 <span class="sd">        lidar_rotation = carla.Rotation(0,0,0)</span>
 <span class="sd">        lidar_transform = carla.Transform(lidar_location,lidar_rotation)</span>
 <span class="sd">        lidar_sen = world.spawn_actor(lidar_bp,lidar_transform,attach_to=ego_vehicle,attachment_type=carla.AttachmentType.Rigid)</span>
-<span class="sd">        lidar_sen.listen(lambda point_cloud: point_cloud.save_to_disk(&#39;/home/adas/Desktop/tutorial/new_lidar_output/%.6d.ply&#39; % point_cloud.frame))</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        lidar_sen.listen(lambda point_cloud: point_cloud.save_to_disk('/home/adas/Desktop/tutorial/new_lidar_output/%.6d.ply' % point_cloud.frame))</span>
+<span class="sd">        """</span>
 
         <span class="c1"># --------------</span>
         <span class="c1"># 游戏循环。阻止脚本完成。</span>
@@ -1268,17 +1268,17 @@ python3 manual_control.py
                 <span class="n">lidar_sen</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
                 <span class="n">lidar_sen</span><span class="o">.</span><span class="n">destroy</span><span class="p">()</span>
             <span class="n">ego_vehicle</span><span class="o">.</span><span class="n">destroy</span><span class="p">()</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Nothing to be done.&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">Nothing to be done.'</span><span class="p">)</span>
 
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
 
     <span class="k">try</span><span class="p">:</span>
         <span class="n">main</span><span class="p">()</span>
     <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
         <span class="k">pass</span>
     <span class="k">finally</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Done with tutorial_replay.&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">Done with tutorial_replay.'</span><span class="p">)</span>
 </code></pre></div>
 </details>
 <p><br></p>
@@ -1286,7 +1286,7 @@ python3 manual_control.py
 <ul>
 <li><a href="https://github.com/leunark/carla-dataset-gen"><strong>训练数据生成</strong></a> — 生成各种驾驶场景并捕获各种传感器数据。</li>
 </ul>
-<hr />
+<hr>
 <p>这是关于如何从模拟中正确检索数据的总结。确保尝试一下，改变模拟器的条件，尝试传感器设置。可能性是无止境。</p>
 <p>请访问论坛，发表在阅读过程中想到的任何疑问或建议。</p>
 <div text-align: center>
@@ -1296,7 +1296,7 @@ python3 manual_control.py
 讨论页面</a>
 </p>
 </div>
-</div>
+</div></div>
               
             </div>
           </div><footer>

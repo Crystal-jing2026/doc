@@ -100,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="_1">虚幻引擎</h1>
+                <div><h1 id="_1">虚幻引擎</h1>
 <ul>
 <li><a href="#documentation"><strong>文档</strong></a><ul>
 <li><a href="#baisc_concept">理解基础概念</a></li>
@@ -163,8 +163,8 @@
 </li>
 <li>
 <p>源代码版引擎的缓存路径位于项目的DeriveDataCache目录下：<code>hutb\Unreal\CarlaUE4\DerivedDataCache</code>（定义在<code>engine\Engine\Config\BaseEngine.ini</code>的<code>[InstalledDerivedDataBackendGraph]</code>变量组中）
-<div class="highlight"><pre><span></span><code><span class="nv">Boot</span><span class="o">=(</span><span class="nv">Type</span><span class="o">=</span>Boot,<span class="w"> </span><span class="nv">Filename</span><span class="o">=</span><span class="s2">&quot;%ENGINEUSERDIR%DerivedDataCache/Boot.ddc&quot;</span>,<span class="w"> </span><span class="nv">MaxCacheSize</span><span class="o">=</span><span class="m">512</span><span class="o">)</span>
-</code></pre></div></p>
+</p><div class="highlight"><pre><span></span><code><span class="nv">Boot</span><span class="o">=(</span><span class="nv">Type</span><span class="o">=</span>Boot,<span class="w"> </span><span class="nv">Filename</span><span class="o">=</span><span class="s2">"%ENGINEUSERDIR%DerivedDataCache/Boot.ddc"</span>,<span class="w"> </span><span class="nv">MaxCacheSize</span><span class="o">=</span><span class="m">512</span><span class="o">)</span>
+</code></pre></div>
 </li>
 <li>
 <p><a href="https://blog.csdn.net/qq_43497224/article/details/129336509">PIE 和 SIE</a></p>
@@ -180,18 +180,18 @@
 <p>你也可以点击 控制（Possess） 功能的快捷键（F8）来从在编辑器中模拟（SIE）切换到在编辑器中运行（PIE）。</p>
 <h2 id="_11">加速构建过程  <span id="speed_up"></span></h2>
 <p>每次执行hutb的make的操作时，都会出现
-<div class="highlight"><pre><span></span><code>Using &#39;git status&#39; to determine working set for adaptive non-unity build (D:\work\workspace\UnrealEngine).
-Waiting for &#39;git status&#39; command to complete
+</p><div class="highlight"><pre><span></span><code>Using 'git status' to determine working set for adaptive non-unity build (D:\work\workspace\UnrealEngine).
+Waiting for 'git status' command to complete
 Target is up to date
 Total execution time: 2.38 seconds
 </code></pre></div>
-可以 <a href="https://github.com/adamrehn/ue4-docker/commit/9cf1375c33098a2787b5f514fd0ff36167a12b96">移除虚幻引擎的<code>.git</code>目录</a> 来禁用 UBT 的 <code>git status</code> 调用，达到加速构建流程的作用。</p>
+可以 <a href="https://github.com/adamrehn/ue4-docker/commit/9cf1375c33098a2787b5f514fd0ff36167a12b96">移除虚幻引擎的<code>.git</code>目录</a> 来禁用 UBT 的 <code>git status</code> 调用，达到加速构建流程的作用。
 <p>此功能用于从 Unity 构建中排除大多数迭代文件。这应该会降低编译速度（如果你经常构建引擎，这个功能确实很有用，但大多数情况下并非如此）。</p>
 <p>要禁用此行为，您可以更改 <code>Engine\Saved\UnrealBuildTool\BuildConfiguration.xml</code> 里的<code>&lt;Configuration&gt; &lt;/Configuration&gt;</code>中添加：
-<div class="highlight"><pre><span></span><code>  &lt;SourceFileWorkingSet&gt;
+</p><div class="highlight"><pre><span></span><code>  &lt;SourceFileWorkingSet&gt;
     &lt;Provider&gt;None&lt;/Provider&gt;
   &lt;/SourceFileWorkingSet&gt;
-</code></pre></div></p>
+</code></pre></div>
 <h2 id="_12">插件 <span id="plugin"></span></h2>
 <h3 id="usd">USD</h3>
 <p>Universal Scene Description (USD) 是通用场景描述，一个开放且可扩展的生态系统，用于在 3D 世界中描述、组合、模拟和协作，最初由皮克斯动画工作室发明；是 Omniverse 使用的文件格式，人称元宇宙的 HTML。</p>
@@ -200,18 +200,18 @@ Total execution time: 2.38 seconds
 <h2 id="_13">编译  <span id="compilation"></span></h2>
 <h6 id="make-launch">make launch启动引擎编辑器时报错</h6>
 <p>报错信息：
-<div class="highlight"><pre><span></span><code>无法启动D:/hutb/Build/engine/Engine/Binaries/Win64/ShaderCompileWorker.exe
+</p><div class="highlight"><pre><span></span><code>无法启动D:/hutb/Build/engine/Engine/Binaries/Win64/ShaderCompileWorker.exe
 需要编译ShaderCompileWorker。
 </code></pre></div>
-原因：<code>D:\hutb\Build\engine\Engine\Binaries\Win64</code>目录下没有编译出<code>ShaderCompileWorker.exe</code>。</p>
+原因：<code>D:\hutb\Build\engine\Engine\Binaries\Win64</code>目录下没有编译出<code>ShaderCompileWorker.exe</code>。
 <p>因为没有VS2019，导致Build.bat中执行<code>call "%ProgramFiles(x86)%\Microsoft Visual Studio\2019\Community\MSBuild\Current\bin\MSBuild.exe" UE4.sln  /p:Configuration="Development Editor" /p:Platform="Win64" /p:Project="UnrealBuildTool" /p:OutputPath=.\</code>没有成功</p>
 <h6 id="ueoverride">编译UE时报错：使用“override”声明的成员函数不能重写基类成员</h6>
 <p>出错位置：<code>D:\work\workspace\UnrealEngine\Engine\Source\Runtime\CoreUObject\Public\UObject\CoreNet.h</code> 345 行
-<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="n">FArchive</span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">FSoftObjectPath</span><span class="o">&amp;</span><span class="w"> </span><span class="n">Value</span><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
-</code></pre></div></p>
+</p><div class="highlight"><pre><span></span><code><span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="n">FArchive</span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">FSoftObjectPath</span><span class="o">&amp;</span><span class="w"> </span><span class="n">Value</span><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
+</code></pre></div>
 <h6 id="airsim">编译AirSim后，启动编译器崩溃</h6>
 <p>报错信息：
-<div class="highlight"><pre><span></span><code>Assertion failed: ResourceTableFrameCounter == INDEX_NONE [File:D:/work/workspace/UnrealEngine/Engine/Source/Runtime/Windows/D3D11RHI/Private/D3D11Texture.cpp] [Line: 2260]
+</p><div class="highlight"><pre><span></span><code>Assertion failed: ResourceTableFrameCounter == INDEX_NONE [File:D:/work/workspace/UnrealEngine/Engine/Source/Runtime/Windows/D3D11RHI/Private/D3D11Texture.cpp] [Line: 2260]
 
 UE4Editor_Core!AssertFailedImplV() [D:\work\workspace\UnrealEngine\Engine\Source\Runtime\Core\Private\Misc\AssertionMacros.cpp:104]
 UE4Editor_Core!FDebug::CheckVerifyFailedImpl() [D:\work\workspace\UnrealEngine\Engine\Source\Runtime\Core\Private\Misc\AssertionMacros.cpp:461]
@@ -222,20 +222,20 @@ UE4Editor_Engine!FTexture2DUpdate::DoFinishUpdate() [D:\work\workspace\UnrealEng
 UE4Editor_Engine!FTexture2DStreamIn_DDC_AsyncCreate::Finalize() [D:\work\workspace\UnrealEngine\Engine\Source\Runtime\Engine\Private\Streaming\Texture2DStreamIn_DDC_AsyncCreate.cpp:84]
 UE4Editor_Engine!TRenderAssetUpdate&lt;FTexture2DUpdateContext&gt;::TickInternal() [D:\work\workspace\UnrealEngine\Engine\Source\Runtime\Engine\Private\Streaming\RenderAssetUpdate.inl:76]
 UE4Editor_Engine!&lt;lambda_c13beac94fedf293002b1e0b20710a81&gt;::operator()() [D:\work\workspace\UnrealEngine\Engine\Source\Runtime\Engine\Private\Streaming\RenderAssetUpdate.cpp:270]
-UE4Editor_Engine!TEnqueueUniqueRenderCommandType&lt;`FRenderAssetUpdate::ScheduleRenderTask&#39;::`2&#39;::RenderAssetUpdateCommandName,&lt;lambda_c13beac94fedf293002b1e0b20710a81&gt; &gt;::DoTask() [D:\work\workspace\UnrealEngine\Engine\Source\Runtime\RenderCore\Public\RenderingThread.h:183]
-UE4Editor_Engine!TGraphTask&lt;TEnqueueUniqueRenderCommandType&lt;`FRenderAssetUpdate::ScheduleRenderTask&#39;::`2&#39;::RenderAssetUpdateCommandName,&lt;lambda_c13beac94fedf293002b1e0b20710a81&gt; &gt; &gt;::ExecuteTask() [D:\work\workspace\UnrealEngine\Engine\Source\Runtime\Core\Public\Async\TaskGraphInterfaces.h:886]
+UE4Editor_Engine!TEnqueueUniqueRenderCommandType&lt;`FRenderAssetUpdate::ScheduleRenderTask'::`2'::RenderAssetUpdateCommandName,&lt;lambda_c13beac94fedf293002b1e0b20710a81&gt; &gt;::DoTask() [D:\work\workspace\UnrealEngine\Engine\Source\Runtime\RenderCore\Public\RenderingThread.h:183]
+UE4Editor_Engine!TGraphTask&lt;TEnqueueUniqueRenderCommandType&lt;`FRenderAssetUpdate::ScheduleRenderTask'::`2'::RenderAssetUpdateCommandName,&lt;lambda_c13beac94fedf293002b1e0b20710a81&gt; &gt; &gt;::ExecuteTask() [D:\work\workspace\UnrealEngine\Engine\Source\Runtime\Core\Public\Async\TaskGraphInterfaces.h:886]
 UE4Editor_Core!FNamedTaskThread::ProcessTasksNamedThread() [D:\work\workspace\UnrealEngine\Engine\Source\Runtime\Core\Private\Async\TaskGraph.cpp:709]
 UE4Editor_Core!FNamedTaskThread::ProcessTasksUntilQuit() [D:\work\workspace\UnrealEngine\Engine\Source\Runtime\Core\Private\Async\TaskGraph.cpp:601]
 UE4Editor_RenderCore!RenderingThreadMain() [D:\work\workspace\UnrealEngine\Engine\Source\Runtime\RenderCore\Private\RenderingThread.cpp:373]
 UE4Editor_RenderCore!FRenderingThread::Run() [D:\work\workspace\UnrealEngine\Engine\Source\Runtime\RenderCore\Private\RenderingThread.cpp:509]
 UE4Editor_Core!FRunnableThreadWin::Run() [D:\work\workspace\UnrealEngine\Engine\Source\Runtime\Core\Private\Windows\WindowsRunnableThread.cpp:86]
-</code></pre></div></p>
+</code></pre></div>
 <blockquote>
 <p><a href="https://github.com/carla-simulator/carla/issues/6201#issuecomment-1436199677">原因</a> ：把Ue4NoEditor的附加地图包和从源码编译的ue4editor搞混了，所以把附加地图的引擎文件夹文件放到了unreal4.26.2的文件夹里。</p>
 <p>未使用的 <a href="https://github.com/carla-simulator/carla/issues/6075#issuecomment-1623373687">暂时解决办法</a> ：直接注释掉 D3D11Texture.cpp 中引发错误的那行代码 (l. 2260) 。 或者 <a href="https://forums.unrealengine.com/t/ue-4-26-built-from-source-crashes-when-opening-project/739873/10">改配置文件</a></p>
 </blockquote>
 <p>Carla 编辑器运行崩溃：
-<div class="highlight"><pre><span></span><code>LoginId:bc22576a452b36c1831fe8942b55e57a
+</p><div class="highlight"><pre><span></span><code>LoginId:bc22576a452b36c1831fe8942b55e57a
 EpicAccountId:77cf3795af004e58a037e9c9d4a5aa0d
 
 Unhandled Exception: EXCEPTION_STACK_OVERFLOW
@@ -246,20 +246,20 @@ sdk_legacy_steering_wheel_x64
 user32
 user32
 sdk_legacy_steering_wheel_x64
-</code></pre></div></p>
+</code></pre></div>
 <h6 id="vs2022ue426">使用vs2022编译UE4.26时候报错</h6>
-<p><div class="highlight"><pre><span></span><code>LIN110 无法打开文件“D:\work\workspace\UnrealEngine\Engine\Binaries\Win64\UE4Editor-Engine.dll”
+<p></p><div class="highlight"><pre><span></span><code>LIN110 无法打开文件“D:\work\workspace\UnrealEngine\Engine\Binaries\Win64\UE4Editor-Engine.dll”
 LIN110 无法打开文件“D:\work\workspace\UnrealEngine\Engine\Binaries\Win64\UE4Editor-UnrealEd.dll”
 LIN110 无法打开文件“D:\work\workspace\UnrealEngine\Engine\Binaries\Win64\UE4Editor-Chaos.dll”
 LIN110 无法打开文件“D:\work\workspace\UnrealEngine\Engine\Binaries\Win64\UE4Editor-DetailCustomization.dll”
 </code></pre></div>
-在对应目录中存在。</p>
+在对应目录中存在。
 <p><a href="https://forums.unrealengine.com/t/link-fatal-error-lnk1104-cannot-open-file/287530/11">解决</a> ：使用<code>资源监视器</code>找到<code>UEEditor.exe</code>对应的进程，结束进程，然后就可以启动虚幻编辑器了（原因不明）。</p>
 <h6 id="detected-compiler-newer-than-visual-studio-2019-please-update-min-version-checking-in-windowsplatformcompilersetuph">编译警告：Detected compiler newer than Visual Studio 2019, please update min version checking in WindowsPlatformCompilerSetup.h</h6>
 <h5 id="cpu">如何修改编译使用的CPU核心数量</h5>
 <p>修改Engine\Saved\UnrealBuildTool\BuildConfiguration.xml文件中的配置：
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;</span>
-<span class="nt">&lt;Configuration</span><span class="w"> </span><span class="na">xmlns=</span><span class="s">&quot;https://www.unrealengine.com/BuildConfiguration&quot;</span><span class="nt">&gt;</span>
+</p><div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8" ?&gt;</span>
+<span class="nt">&lt;Configuration</span><span class="w"> </span><span class="na">xmlns=</span><span class="s">"https://www.unrealengine.com/BuildConfiguration"</span><span class="nt">&gt;</span>
 <span class="w">    </span><span class="nt">&lt;ProjectFileGenerator&gt;</span>
 <span class="w">        </span><span class="nt">&lt;Format&gt;</span>VisualStudio2019<span class="nt">&lt;/Format&gt;</span>
 <span class="w">    </span><span class="nt">&lt;/ProjectFileGenerator&gt;</span>
@@ -268,48 +268,48 @@ LIN110 无法打开文件“D:\work\workspace\UnrealEngine\Engine\Binaries\Win64
 <span class="w">        </span><span class="nt">&lt;MaxProcessorCount&gt;</span>24<span class="nt">&lt;/MaxProcessorCount&gt;</span>
 <span class="w">    </span><span class="nt">&lt;/ParallelExecutor&gt;</span>
 <span class="nt">&lt;/Configuration&gt;</span>
-</code></pre></div></p>
+</code></pre></div>
 <p>否则还可能 <a href="https://ue5wiki.com/wiki/5cc4f8a/">报错</a> ：
-<div class="highlight"><pre><span></span><code>  c1xx: fatal error C1076: 编译器限制: 达到内部堆限制
+</p><div class="highlight"><pre><span></span><code>  c1xx: fatal error C1076: 编译器限制: 达到内部堆限制
   [3/37] DReyeVRGameMode.gen.cpp
   c1xx: error C3859: 未能创建 PCH 的虚拟内存
   c1xx: note: 系统返回代码 1455: The paging file is too small for this operation to complete.
-</code></pre></div></p>
-<h6 id="_14">打包时候报错：</h6>
-<p><div class="highlight"><pre><span></span><code>Package ../../../../../Unreal/CarlaUE4/Content/Carla/Content/Matrials/HutbCity/BeiMen/Default_Material.uasset has malformed tag
 </code></pre></div>
-检查是否没有拉取大文件。</p>
+<h6 id="_14">打包时候报错：</h6>
+<p></p><div class="highlight"><pre><span></span><code>Package ../../../../../Unreal/CarlaUE4/Content/Carla/Content/Matrials/HutbCity/BeiMen/Default_Material.uasset has malformed tag
+</code></pre></div>
+检查是否没有拉取大文件。
 <h2 id="_15">源代码管理  <span id="src_management"></span></h2>
 <h6 id="openhutb"><a href="https://www.cnblogs.com/gjmhome/p/14061090.html">从原来的仓库迁移到OpenHUTB的引擎仓库</a></h6>
 <p>1.修改文件<code>.git/config</code>远端的仓库地址
-<div class="highlight"><pre><span></span><code><span class="o">[</span>remote<span class="w"> </span><span class="s2">&quot;origin&quot;</span><span class="o">]</span>
+</p><div class="highlight"><pre><span></span><code><span class="o">[</span>remote<span class="w"> </span><span class="s2">"origin"</span><span class="o">]</span>
 <span class="w">    </span><span class="nv">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>https://github.com/OpenHUTB/engine.git
 <span class="w">    </span><span class="nv">fetch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>+refs/heads/*:refs/remotes/origin/*
-</code></pre></div></p>
+</code></pre></div>
 <p>2.合并两个不相关的仓库：
-<div class="highlight"><pre><span></span><code>git<span class="w"> </span>pull<span class="w"> </span>-f<span class="w"> </span>origin<span class="w"> </span>hutb<span class="w"> </span>--allow-unrelated-histories
-</code></pre></div></p>
+</p><div class="highlight"><pre><span></span><code>git<span class="w"> </span>pull<span class="w"> </span>-f<span class="w"> </span>origin<span class="w"> </span>hutb<span class="w"> </span>--allow-unrelated-histories
+</code></pre></div>
 <p>3.丢弃本地提交，强制回到线上最新版本：
-<div class="highlight"><pre><span></span><code>git<span class="w"> </span>reset<span class="w"> </span>--hard<span class="w"> </span>origin/hutb
-</code></pre></div></p>
+</p><div class="highlight"><pre><span></span><code>git<span class="w"> </span>reset<span class="w"> </span>--hard<span class="w"> </span>origin/hutb
+</code></pre></div>
 <h2 id="_16">常见问题  <span id="faq"></span></h2>
 <h6 id="carlaue4exe">CarlaUE4.exe 崩溃的日志保存目录</h6>
 <p>.dmp 文件分析要求本机中有崩溃发生版本对应的符号表文件（CarlaUE4.pdb 文件），使用 VS 2022 （VS 2019 的步骤类似）分析 .dmp 文件步骤如下：</p>
-<p><div class="highlight"><pre><span></span><code><span class="c1"># CarlaUE4.exe崩溃后的日志目录</span>
+<p></p><div class="highlight"><pre><span></span><code><span class="c1"># CarlaUE4.exe崩溃后的日志目录</span>
 C:<span class="se">\U</span>sers<span class="se">\A</span>dministrator<span class="se">\A</span>ppData<span class="se">\L</span>ocal<span class="se">\C</span>arlaUE4<span class="se">\S</span>aved<span class="se">\C</span>rashes
 <span class="c1"># 启动引擎编辑器时崩溃的日志目录</span>
 hutb<span class="se">\U</span>nreal<span class="se">\C</span>arlaUE4<span class="se">\S</span>aved<span class="se">\C</span>rashes<span class="se">\U</span>E4CC-Windows-<span class="o">{</span>ID<span class="o">}</span><span class="se">\C</span>arlaUE4.log
 </code></pre></div>
-附：崩溃日志的保存目录和项目名有关：<code>C:\Users\{Your Windows Username}\AppData\Local{Project Name}\Saved\Crashes\</code></p>
+附：崩溃日志的保存目录和项目名有关：<code>C:\Users\{Your Windows Username}\AppData\Local{Project Name}\Saved\Crashes\</code>
 <h6 id="minidump">引擎 MiniDump 崩溃现场的恢复</h6>
 <p>1.找到崩溃时生成的 .dmp 文件，使用 VS 2022 打开，如下图所示：
-<img alt="" src="../../img/tuto_D_windows_debug/open_dump.jpg" /></p>
+<img alt="" src="../../img/tuto_D_windows_debug/open_dump.jpg"></p>
 <p>（打开文件后会有转储摘要、系统信息、引用模块的说明，但这些信息并不直观）。</p>
 <p>点击设置符号路径。该按钮在界面右侧，用于指定 CarlaUE4.pdb 文件的路径。</p>
 <p>2.选择 .pdb 文件的路径，路径为编译好的 HUTB 源码的 <code>D:\hutb\Unreal\CarlaUE4\Binaries\Win64</code> 路径下，点击确定</p>
-<p><img alt="" src="../../img/tuto_D_windows_debug/select_pdb.jpg" /></p>
+<p><img alt="" src="../../img/tuto_D_windows_debug/select_pdb.jpg"></p>
 <p>3.点击 "使用 仅限本机 进行调试"，成功复现崩溃现场</p>
-<p><img alt="" src="../../img/tuto_D_windows_debug/restore_scene.jpg" /></p>
+<p><img alt="" src="../../img/tuto_D_windows_debug/restore_scene.jpg"></p>
 <p>然后就可以在VS右下角的<code>调用堆栈</code>中查看堆栈中代码报错的行。</p>
 <h6 id="pie">编辑器中运行(PIE)场景时添加命令行参数</h6>
 <p>在自动测试时，需要在<code>CarlaUE4.exe</code>后面添加一些参数，操作步骤如下：</p>
@@ -343,7 +343,7 @@ hutb<span class="se">\U</span>nreal<span class="se">\C</span>arlaUE4<span class=
 <li>
 <p><a href="https://zhuanlan.zhihu.com/p/649610542">Unreal 的 MiniDump 机制调研</a></p>
 </li>
-</ul>
+</ul></div>
               
             </div>
           </div><footer>

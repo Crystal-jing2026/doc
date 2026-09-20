@@ -100,25 +100,25 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="carlapytorch-jit">CARLA–PyTorch JIT 轮子动力学推理模块</h1>
+                <div><h1 id="carlapytorch-jit">CARLA–PyTorch JIT 轮子动力学推理模块</h1>
 <blockquote>
 <p>该文档详细说明了代码中各模块的功能与调用流程，方便开发者快速理解与使用。</p>
 </blockquote>
-<hr />
+<hr>
 <h2 id="_1">目录</h2>
 <ul>
-<li><a href="#1-项目概述">1. 项目概述</a></li>
-<li><a href="#2-依赖与头文件">2. 依赖与头文件</a></li>
-<li><a href="#3-全局辅助函数">3. 全局辅助函数</a></li>
-<li><a href="#4-carlalearning-命名空间">4. carla::learning 命名空间</a></li>
-<li><a href="#5-NeuralModelImpl-结构体">5. NeuralModelImpl 结构体</a></li>
-<li><a href="f3#6-NeuralModel-类接口">6. NeuralModel 类接口</a></li>
-<li><a href="#7-整体调用流程">7. 整体调用流程</a></li>
+<li><a href="#1-%E9%A1%B9%E7%9B%AE%E6%A6%82%E8%BF%B0">1. 项目概述</a></li>
+<li><a href="#2-%E4%BE%9D%E8%B5%96%E4%B8%8E%E5%A4%B4%E6%96%87%E4%BB%B6">2. 依赖与头文件</a></li>
+<li><a href="#3-%E5%85%A8%E5%B1%80%E8%BE%85%E5%8A%A9%E5%87%BD%E6%95%B0">3. 全局辅助函数</a></li>
+<li><a href="#4-carlalearning-%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4">4. carla::learning 命名空间</a></li>
+<li><a href="#5-NeuralModelImpl-%E7%BB%93%E6%9E%84%E4%BD%93">5. NeuralModelImpl 结构体</a></li>
+<li><a href="f3#6-NeuralModel-%E7%B1%BB%E6%8E%A5%E5%8F%A3">6. NeuralModel 类接口</a></li>
+<li><a href="#7-%E6%95%B4%E4%BD%93%E8%B0%83%E7%94%A8%E6%B5%81%E7%A8%8B">7. 整体调用流程</a></li>
 </ul>
-<hr />
+<hr>
 <h2 id="1">1. 项目概述</h2>
 <p>本模块在 <strong>CARLA 仿真环境</strong> 中实现了 <strong>轮子动力学计算</strong> 与 <strong>PyTorch JIT 模型推理</strong> 之间的链接。开发者可通过该模块将 CARLA 中的轮子动力学数据转换为适合深度学习模型处理的 PyTorch 张量，并通过加载的模型执行高效推理。该技术集成帮助开发者快速实现仿真数据驱动的自动驾驶算法测试与优化。</p>
-<p><img alt="该模块的各个函数关系图" src="../../img/carla_learning_pytorch_structure.svg" /></p>
+<p><img alt="该模块的各个函数关系图" src="../../img/carla_learning_pytorch_structure.svg"></p>
 <p>本模块提供以下功能特性：</p>
 <ol>
 <li><strong>数据高效转换</strong>：原地转换仿真数据为PyTorch张量，无额外内存开销。</li>
@@ -126,7 +126,7 @@
 <li><strong>结果精确提取</strong>：快速从推理输出提取轮子力、扭矩等动力学数据。</li>
 <li><strong>扩展性良好</strong>：方便开发者自定义扩展功能。</li>
 </ol>
-<hr />
+<hr>
 <h2 id="2">2. 依赖与头文件</h2>
 <ul>
 <li><strong>源码参考</strong>：<a href="https://openhutb.github.io/carla_cpp/dd/d8c/pytorch_8cpp_source.html">pytorch.h 源码</a></li>
@@ -135,7 +135,7 @@
 <li><strong>tensorexpr_fuser</strong>：JIT优化控制，平衡性能与兼容性</li>
 <li><strong>CUDACachingAllocator</strong>：手动控制CUDA缓存，优化内存使用</li>
 </ul>
-<hr />
+<hr>
 <h2 id="3">3. 全局辅助函数</h2>
 <h3 id="31-add_mark">3.1 add_mark</h3>
 <ul>
@@ -143,7 +143,7 @@
 <li><strong>参数说明</strong>：<code>text</code>（标记文本，无实际功能）</li>
 <li><strong>源码参考</strong>：<a href="https://openhutb.github.io/carla_cpp/dd/d8c/pytorch_8cpp_source.html#L20">pytorch.cpp</a></li>
 </ul>
-<hr />
+<hr>
 <h2 id="4-carlalearning">4. carla::learning 命名空间</h2>
 <p>封装轮子动力学与深度模型推理相关函数。- 源码参考：<a href="https://openhutb.github.io/carla_cpp/dd/d8c/pytorch_8cpp_source.html#L25">pytorch.cpp</a></p>
 <h3 id="41-test_learning">4.1 test_learning</h3>
@@ -167,7 +167,7 @@
 <ul>
 <li><strong>作用</strong>：动态推理专用输出解析，与GetWheelTensorOutput逻辑一致</li>
 </ul>
-<hr />
+<hr>
 <h2 id="5-neuralmodelimpl">5. NeuralModelImpl 结构体</h2>
 <ul>
 <li><strong>内部实现核心结构体</strong>- 源码参考：<a href="https://openhutb.github.io/carla_cpp/dd/d8c/pytorch_8cpp_source.html#L135">pytorch.cpp</a></li>
@@ -180,7 +180,7 @@
 <li><strong>作用</strong>：CUDA模式下的数据转换，附加设备标识</li>
 <li><strong>用途</strong>：并行多轮子推理</li>
 </ul>
-<hr />
+<hr>
 <h2 id="6-neuralmodel">6. NeuralModel 类接口</h2>
 <p>对外提供完整模型加载、设置输入、执行推理、获取输出的流程控制。- 源码参考：<a href="https://openhutb.github.io/carla_cpp/dd/d8c/pytorch_8cpp_source.html#L187">pytorch.cpp</a></p>
 <h3 id="61">6.1 构造与析构</h3>
@@ -212,16 +212,16 @@
 <ul>
 <li>获取推理结果，包含所有轮子状态信息</li>
 </ul>
-<hr />
+<hr>
 <h2 id="7">7. 整体调用流程</h2>
 <p>模块典型使用流程：</p>
-<p><img alt="该模块的各个函数关系图" src="../../img/neural_model_flow.svg" /></p>
+<p><img alt="该模块的各个函数关系图" src="../../img/neural_model_flow.svg"></p>
 <p><strong>Step-by-Step示例：</strong></p>
 <ol>
 <li><strong>模型加载</strong></li>
 </ol>
 <div class="highlight"><pre><span></span><code><span class="n">NeuralModel</span><span class="w"> </span><span class="n">model</span><span class="p">;</span>
-<span class="n">model</span><span class="p">.</span><span class="n">LoadModel</span><span class="p">(</span><span class="s">&quot;mymodel.pt&quot;</span><span class="p">,</span><span class="w"> </span><span class="cm">/*device=*/</span><span class="mi">0</span><span class="p">);</span>
+<span class="n">model</span><span class="p">.</span><span class="n">LoadModel</span><span class="p">(</span><span class="s">"mymodel.pt"</span><span class="p">,</span><span class="w"> </span><span class="cm">/*device=*/</span><span class="mi">0</span><span class="p">);</span>
 </code></pre></div>
 <ol>
 <li><strong>准备并设置输入</strong></li>
@@ -245,7 +245,7 @@
 <div class="highlight"><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">outs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">model</span><span class="p">.</span><span class="n">GetOutputs</span><span class="p">();</span>
 <span class="c1">// 使用 outs.wheel0 至 outs.wheel3 的结果</span>
 </code></pre></div>
-<p>通过以上流程，开发者可高效地在CARLA仿真中集成深度学习推理，提升自动驾驶仿真效果与性能。</p>
+<p>通过以上流程，开发者可高效地在CARLA仿真中集成深度学习推理，提升自动驾驶仿真效果与性能。</p></div>
               
             </div>
           </div><footer>

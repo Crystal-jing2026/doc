@@ -100,14 +100,14 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="quickstart-extras">Quickstart extras</h1>
+                <div><h1 id="quickstart-extras">Quickstart extras</h1>
 <p>The following sections contain additional options and details for installing and running a packaged version of the CARLA simulator.</p>
 <ul>
 <li><strong><a href="#command-line-options">Command-line options</a></strong>  </li>
 <li><strong><a href="#config-script">Config script</a></strong></li>
 <li><strong><a href="#import-additional-assets">Import additional assets</a></strong>  </li>
 </ul>
-<hr />
+<hr>
 <h2 id="command-line-options">Command-line options</h2>
 <p>There are some configuration options available when launching CARLA and they can be used as follows:</p>
 <div class="highlight"><pre><span></span><code><span class="w">    </span>./CarlaUE4.sh<span class="w"> </span>-carla-rpc-port<span class="o">=</span><span class="m">3000</span>
@@ -120,7 +120,7 @@
 <li><code>-quality-level={Low,Epic}</code> - Change graphics quality level. Find out more in <a href="../adv_rendering_options/">rendering options</a>.  </li>
 <li><strong><a href="https://docs.unrealengine.com/en-US/Programming/Basics/CommandLineArguments">List of Unreal Engine 4 command-line arguments</a>.</strong> - There are a lot of options provided by Unreal Engine however not all of these are available in CARLA.  </li>
 </ul>
-<hr />
+<hr>
 <h2 id="config-script">Config script</h2>
 <p>The script <a href="https://github.com/carla-simulator/carla/blob/master/PythonAPI/util/config.py"><code>PythonAPI/util/config.py</code></a> provides more configuration options and should be run when the server has been started:</p>
 <div class="highlight"><pre><span></span><code>./config.py<span class="w"> </span>--no-rendering<span class="w">      </span><span class="c1"># Disable rendering</span>
@@ -129,7 +129,7 @@
 
 ./config.py<span class="w"> </span>--help<span class="w"> </span><span class="c1"># Check all the available configuration options</span>
 </code></pre></div>
-<hr />
+<hr>
 <h2 id="import-additional-assets">Import additional assets</h2>
 <p>Each release has its own additional package of extra assets and maps. These are stored separately to reduce the size of the build, so they can only be imported after the main package has been installed. </p>
 <p><strong>1.</strong> <a href="https://github.com/carla-simulator/carla/blob/master/Docs/download.md">Download</a> the appropriate package for your desired version of CARLA.</p>
@@ -150,7 +150,7 @@ Move the compressed archive to the <em>Import</em> folder and run the following 
 </ul>
 </li>
 </ul>
-<hr />
+<hr></div>
               
             </div>
           </div><footer>

@@ -100,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="ros-1-ros">ROS 1 的 ROS 桥接安装</h1>
+                <div><h1 id="ros-1-ros">ROS 1 的 ROS 桥接安装</h1>
 <p>本节介绍如何在 Linux 上安装 ROS 桥接器以与 ROS 1 一起使用。您将找到先决条件、安装步骤、如何运行基本包以确保一切正常运行以及运行测试的命令。</p>
 <ul>
 <li><a href="#before-you-begin"><strong>在你开始之前</strong></a><ul>
@@ -118,7 +118,7 @@
 <p class="admonition-title">重要</p>
 <p>ROS 桥尚未在 Windows 中进行测试。</p>
 </div>
-<hr />
+<hr>
 <h2 id="_1">在你开始之前</h2>
 <p>在使用 ROS 桥之前，您需要满足以下软件要求：</p>
 <ul>
@@ -130,7 +130,7 @@
 <li>根据您的需要，可能需要额外的 ROS 软件包。强烈建议使用 <a href="https://wiki.ros.org/rviz">rviz</a> 来可视化 ROS 数据。</li>
 <li>Carla 0.9.7 或更高版本 — 以前的版本与 ROS 桥不兼容。按照 <a href="https://carla.readthedocs.io/en/latest/start_quickstart/">快速启动安装</a> 或针对 <a href="https://carla.readthedocs.io/en/latest/build_linux/">Linux</a> 进行构建。建议尽可能将 ROS 桥接版本与 Carla 版本匹配。</li>
 </ul>
-<hr />
+<hr>
 <h2 id="ros">ROS 桥安装</h2>
 <p>有两个选项可用于安装 ROS 桥接器：</p>
 <ul>
@@ -140,7 +140,7 @@
 <p>下面详细介绍这两种方法。</p>
 <div class="admonition 重要">
 <p class="admonition-title">重要</p>
-<p>要安装 0.9.10 之前的 ROS 桥接器版本，您可以在 <a href="https://carla.readthedocs.io/en/0.9.10/ros_installation/">此处</a> 找到旧版本的 Carla 文档中的说明。使用窗口右下角的面板更改为适当版本的文档。 <img alt="docs_version_panel" src="../img/docs_version_panel.jpg" /></p>
+<p>要安装 0.9.10 之前的 ROS 桥接器版本，您可以在 <a href="https://carla.readthedocs.io/en/0.9.10/ros_installation/">此处</a> 找到旧版本的 Carla 文档中的说明。使用窗口右下角的面板更改为适当版本的文档。 <img alt="docs_version_panel" src="../img/docs_version_panel.jpg"></p>
 </div>
 <h3 id="a-debian">A. 使用 Debian 存储库</h3>
 <div class="admonition 笔记">
@@ -148,50 +148,50 @@
 <p>此安装方法仅适用于 Ubuntu 18.04。对于其他支持的发行版，请参阅 <a href="#b-using-the-source-repository">B 部分：使用源存储库</a> 。</p>
 </div>
 <p><strong>1.</strong> 在您的系统中设置 Debian 存储库：
-<div class="highlight"><pre><span></span><code><span class="w">    </span>sudo<span class="w"> </span>apt-key<span class="w"> </span>adv<span class="w"> </span>--keyserver<span class="w"> </span>keyserver.ubuntu.com<span class="w"> </span>--recv-keys<span class="w"> </span>1AF1527DE64CB8D9
-<span class="w">    </span>sudo<span class="w"> </span>add-apt-repository<span class="w"> </span><span class="s2">&quot;deb [arch=amd64] http://dist.carla.org/carla </span><span class="k">$(</span>lsb_release<span class="w"> </span>-sc<span class="k">)</span><span class="s2"> main&quot;</span>
-</code></pre></div></p>
+</p><div class="highlight"><pre><span></span><code><span class="w">    </span>sudo<span class="w"> </span>apt-key<span class="w"> </span>adv<span class="w"> </span>--keyserver<span class="w"> </span>keyserver.ubuntu.com<span class="w"> </span>--recv-keys<span class="w"> </span>1AF1527DE64CB8D9
+<span class="w">    </span>sudo<span class="w"> </span>add-apt-repository<span class="w"> </span><span class="s2">"deb [arch=amd64] http://dist.carla.org/carla </span><span class="k">$(</span>lsb_release<span class="w"> </span>-sc<span class="k">)</span><span class="s2"> main"</span>
+</code></pre></div>
 <p><strong>2.</strong> 安装ROS桥：</p>
 <blockquote>
 <ul>
 <li>
 <p>最新版本：
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="c1"># 更新Debian包索引</span>
+</p><div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="c1"># 更新Debian包索引</span>
 sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>carla-ros-bridge<span class="w"> </span><span class="c1"># 安装最新的ROS桥接版本，或更新当前的安装</span>
-</code></pre></div></p>
+</code></pre></div>
 </li>
 <li>
 <p>通过向命令添加版本标签来安装特定版本：
-<div class="highlight"><pre><span></span><code>apt-cache<span class="w"> </span>madison<span class="w"> </span>carla-ros-bridge<span class="w"> </span><span class="c1"># 列出ROS桥接的可用版本</span>
+</p><div class="highlight"><pre><span></span><code>apt-cache<span class="w"> </span>madison<span class="w"> </span>carla-ros-bridge<span class="w"> </span><span class="c1"># 列出ROS桥接的可用版本</span>
 sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>carla-ros-bridge<span class="o">=</span><span class="m">0</span>.9.10-1<span class="w"> </span><span class="c1"># 在这种情况下，“0.9.10”指的是ROS桥接版本，“1”指的是Debian版本</span>
-</code></pre></div></p>
+</code></pre></div>
 </li>
 </ul>
 </blockquote>
 <p><strong>3.</strong> 检查 <code>/opt/</code> 文件夹中ROS桥是否已安装成功。</p>
 <h3 id="b">B. 使用源存储库</h3>
 <p><strong>1.</strong> 创建catkin工作区：
-<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>-p<span class="w"> </span>~/carla-ros-bridge/catkin_ws/src
-</code></pre></div></p>
+</p><div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>-p<span class="w"> </span>~/carla-ros-bridge/catkin_ws/src
+</code></pre></div>
 <p><strong>2.</strong> 克隆 ROS 桥存储库和子模块：
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/carla-ros-bridge
+</p><div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/carla-ros-bridge
 git<span class="w"> </span>clone<span class="w"> </span>--recurse-submodules<span class="w"> </span>https://github.com/carla-simulator/ros-bridge.git<span class="w"> </span>catkin_ws/src/ros-bridge
-</code></pre></div></p>
+</code></pre></div>
 <p><strong>5.</strong> 根据您安装的 ROS 版本设置 ROS 环境：
-<div class="highlight"><pre><span></span><code><span class="nb">source</span><span class="w"> </span>/opt/ros/&lt;melodic/noetic&gt;/setup.bash
+</p><div class="highlight"><pre><span></span><code><span class="nb">source</span><span class="w"> </span>/opt/ros/&lt;melodic/noetic&gt;/setup.bash
 </code></pre></div>
 <strong>6.</strong> 安装所需的 ros 依赖项：
 <div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>catkin_ws
 rosdep<span class="w"> </span>update
 rosdep<span class="w"> </span>install<span class="w"> </span>--from-paths<span class="w"> </span>src<span class="w"> </span>--ignore-src<span class="w"> </span>-r
-</code></pre></div></p>
+</code></pre></div>
 <p><strong>7.</strong> 构建ROS桥：
-<div class="highlight"><pre><span></span><code>catkin<span class="w"> </span>build<span class="w">   </span><span class="c1"># alternatively catkin_make</span>
-</code></pre></div></p>
-<hr />
+</p><div class="highlight"><pre><span></span><code>catkin<span class="w"> </span>build<span class="w">   </span><span class="c1"># alternatively catkin_make</span>
+</code></pre></div>
+<hr>
 <h2 id="ros_1">运行 ROS 桥</h2>
 <p><strong>1.</strong> 按照安装 Carla 时使用的安装方法启动 Carla 服务器：
-<div class="highlight"><pre><span></span><code><span class="c1"># 包版本在 carla 根文件夹</span>
+</p><div class="highlight"><pre><span></span><code><span class="c1"># 包版本在 carla 根文件夹</span>
 ./CarlaUE4.sh
 
 <span class="c1"># Debian 安装在 `opt/carla-simulator/`</span>
@@ -199,7 +199,7 @@ rosdep<span class="w"> </span>install<span class="w"> </span>--from-paths<span c
 
 <span class="c1"># 从 carla 根文件夹中的源版本构建</span>
 make<span class="w"> </span>launch
-</code></pre></div></p>
+</code></pre></div>
 <p><strong>2.</strong> 将正确的 Carla 模块添加到您的 Python 路径：</p>
 <div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">CARLA_ROOT</span><span class="o">=</span>&lt;path-to-carla&gt;
 <span class="nb">export</span><span class="w"> </span><span class="nv">PYTHONPATH</span><span class="o">=</span><span class="nv">$PYTHONPATH</span>:<span class="nv">$CARLA_ROOT</span>/PythonAPI/carla/dist/carla-&lt;carla_version_and_arch&gt;.egg:<span class="nv">$CARLA_ROOT</span>/PythonAPI/carla
@@ -236,7 +236,7 @@ roslaunch<span class="w"> </span>carla_ros_bridge<span class="w"> </span>carla_r
     python -c 'import carla;print("Success")' # python2
 </code></pre>
 </div>
-<hr />
+<hr>
 <h2 id="_2">测试</h2>
 <p>使用 catkin 执行测试：</p>
 <p><strong>1.</strong> 构建包：</p>
@@ -245,7 +245,7 @@ roslaunch<span class="w"> </span>carla_ros_bridge<span class="w"> </span>carla_r
 <p><strong>2.</strong> 运行测试：</p>
 <div class="highlight"><pre><span></span><code>rostest<span class="w"> </span>carla_ros_bridge<span class="w"> </span>ros_bridge_client.test
 </code></pre></div>
-<hr />
+<hr></div>
               
             </div>
           </div><footer>

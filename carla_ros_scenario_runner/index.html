@@ -100,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="carla-ros-scenario-runner">Carla ROS Scenario Runner</h1>
+                <div><h1 id="carla-ros-scenario-runner">Carla ROS Scenario Runner</h1>
 <p>The <a href="https://github.com/carla-simulator/ros-bridge/tree/master/carla_ros_scenario_runner">CARLA ROS Scenario Runner 包</a> 是一个包装器，用于通过 ROS 使用 CARLA <a href="https://github.com/carla-simulator/scenario_runner">Scenario Runner</a> 执行 <a href="https://www.asam.net/standards/detail/openscenario/">OpenScenarios</a> 。 </p>
 <ul>
 <li><a href="#before_you_begin"><strong>在你开始之前</strong></a></li>
@@ -112,7 +112,7 @@
 </ul>
 </li>
 </ul>
-<hr />
+<hr>
 <h2 id="_1">在你开始之前 <span id="before_you_begin"></span></h2>
 <ul>
 <li>按照 Scenario Runner <a href="https://github.com/carla-simulator/scenario_runner/blob/master/Docs/getting_started.md">入门”教程</a> 安装 Scenario Runner。</li>
@@ -127,17 +127,17 @@
 <p>目前不支持更改地图。每个场景都需要使用当前活动的地图。</p>
 </div>
 <p><a href="https://github.com/carla-simulator/ros-bridge/blob/master/carla_ad_demo/config/FollowLeadingVehicle.xosc">此处</a> 提供了一个示例场景。特别重要的是 <a href="https://github.com/carla-simulator/ros-bridge/blob/master/carla_ad_demo/config/FollowLeadingVehicle.xosc#L78">ROS 控制器</a> 的设置：</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;Controller</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;EgoVehicleAgent&quot;</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;Controller</span><span class="w"> </span><span class="na">name=</span><span class="s">"EgoVehicleAgent"</span><span class="nt">&gt;</span>
 <span class="w">    </span><span class="nt">&lt;Properties&gt;</span>
-<span class="w">        </span><span class="nt">&lt;Property</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;module&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;carla_ros_scenario_runner.ros_vehicle_control&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
-<span class="w">        </span><span class="nt">&lt;Property</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;launch&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;carla_ad_agent.launch&quot;</span><span class="nt">/&gt;</span>
-<span class="w">        </span><span class="nt">&lt;Property</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;launch-package&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;carla_ad_agent&quot;</span><span class="nt">/&gt;</span>
-<span class="w">        </span><span class="nt">&lt;Property</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;path_topic_name&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;waypoints&quot;</span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;Property</span><span class="w"> </span><span class="na">name=</span><span class="s">"module"</span><span class="w"> </span><span class="na">value=</span><span class="s">"carla_ros_scenario_runner.ros_vehicle_control"</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;Property</span><span class="w"> </span><span class="na">name=</span><span class="s">"launch"</span><span class="w"> </span><span class="na">value=</span><span class="s">"carla_ad_agent.launch"</span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;Property</span><span class="w"> </span><span class="na">name=</span><span class="s">"launch-package"</span><span class="w"> </span><span class="na">value=</span><span class="s">"carla_ad_agent"</span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;Property</span><span class="w"> </span><span class="na">name=</span><span class="s">"path_topic_name"</span><span class="w"> </span><span class="na">value=</span><span class="s">"waypoints"</span><span class="nt">/&gt;</span>
 <span class="w">    </span><span class="nt">&lt;/Properties&gt;</span>
 <span class="nt">&lt;/Controller&gt;</span>
 </code></pre></div>
 <p>上面的代码示例显示了一个正在启动的 <a href="../carla_ad_agent/"><code>carla_ad_agent</code></a> 实例。任何附加内容<code>&lt;Property&gt;</code>都应作为 ROS 参数附加（名称:=值）。</p>
-<hr />
+<hr>
 <h2 id="ros-scenario-runner_1">运行 ROS Scenario Runner <span id="run_ros_scenario_runner"></span></h2>
 <p><strong>1.</strong> 运行 ROS Scenario Runner 包：</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ROS 1</span>
@@ -148,12 +148,12 @@ ros2<span class="w"> </span>launch<span class="w"> </span>carla_ros_scenario_run
 </code></pre></div>
 <p><strong>2.</strong> 运行场景：</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ROS 1</span>
-rosservice<span class="w"> </span>call<span class="w"> </span>/scenario_runner/execute_scenario<span class="w"> </span><span class="s2">&quot;{ &#39;scenario&#39;: { &#39;scenario_file&#39;: &#39;&lt;full_path_to_openscenario_file&gt;&#39; } }&quot;</span>
+rosservice<span class="w"> </span>call<span class="w"> </span>/scenario_runner/execute_scenario<span class="w"> </span><span class="s2">"{ 'scenario': { 'scenario_file': '&lt;full_path_to_openscenario_file&gt;' } }"</span>
 
 <span class="c1"># ROS 2</span>
-ros2<span class="w"> </span>service<span class="w"> </span>call<span class="w"> </span>/scenario_runner/execute_scenario<span class="w"> </span>carla_ros_scenario_runner_types/srv/ExecuteScenario<span class="w"> </span><span class="s2">&quot;{ &#39;scenario&#39;: { &#39;scenario_file&#39;: &#39;&lt;full_path_to_openscenario_file&gt;&#39; } }&quot;</span>
+ros2<span class="w"> </span>service<span class="w"> </span>call<span class="w"> </span>/scenario_runner/execute_scenario<span class="w"> </span>carla_ros_scenario_runner_types/srv/ExecuteScenario<span class="w"> </span><span class="s2">"{ 'scenario': { 'scenario_file': '&lt;full_path_to_openscenario_file&gt;' } }"</span>
 </code></pre></div>
-<hr />
+<hr>
 <h2 id="ros">ROS 应用程序接口 <span id="ros_api"></span></h2>
 <h3 id="_2">服务 <span id="services"></span></h3>
 <table>
@@ -212,7 +212,7 @@ ros2<span class="w"> </span>service<span class="w"> </span>call<span class="w"> 
 </tr>
 </tbody>
 </table>
-<p><br></p>
+<p><br></p></div>
               
             </div>
           </div><footer>

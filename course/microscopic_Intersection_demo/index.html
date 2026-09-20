@@ -100,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="3d-spectatorpy">路口微观3D 动画演示运动场景spectator.py</h1>
+                <div><h1 id="3d-spectatorpy">路口微观3D 动画演示运动场景spectator.py</h1>
 <h4 id="_1"><strong>介绍</strong></h4>
 <p>此脚本连接到Carla模拟环境，并定期切换湖工商附近的四个预设路口视角。通过不断改变观察者（Spectator）的视角，用户可以观察到不同路口的交通状况。</p>
 <ul>
@@ -131,7 +131,7 @@
 <h4 id="_3"><strong>运行</strong></h4>
 <p>此示例支持设置  <strong>spectator</strong>  视角来观察交通路口运动情形。</p>
 <p>以下示例通过预定义 <strong>spectator</strong> 对象视角的位置 <strong>Location</strong> 和旋转角度 <strong>pitch</strong> 来进行视角的更换</p>
-<div class="highlight"><pre><span></span><code>client = carla.Client(&#39;localhost&#39;, 2000)
+<div class="highlight"><pre><span></span><code>client = carla.Client('localhost', 2000)
 client.set_timeout(10)
 world = client.get_world()
 spectator_transform = [
@@ -157,7 +157,7 @@ while True:
         start_time = time.time()
 </code></pre></div>
 <h5 id="_5">运行结果：</h5>
-<p><img alt="" src="../../img/traffic_course_img/1.gif" /></p>
+<p><img alt="" src="../../img/traffic_course_img/1.gif"></p></div>
               
             </div>
           </div><footer>

@@ -100,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="_1">修改车辆模型</h1>
+                <div><h1 id="_1">修改车辆模型</h1>
 <p>您可能有兴趣在 DReyeVR 提供的功能之外，为车辆网格本身添加新功能。在本指南中，我们将帮助您熟悉一些工具和基本要求，以及我们如何修改原始 CARLA Tesla 静态网格以具有动态方向盘的示例。</p>
 <p>请注意，为了继续，我们假设您可以访问以下软件：</p>
 <ul>
@@ -152,27 +152,27 @@
 <p>建议对此导出使用最高的 <a href="../LODs/">LOD</a> 设置，因为此车辆将始终靠近相机，因此具有多个 LOD 是毫无意义的，并且它使导入到 Blender 变得更简单。</p>
 <p>为此，只需双击静态网格，然后在左侧的“资产详细信息(Asset Details)”窗格中，在“LOD 设置(LOD Settings)”中将“LOD数量(Number of LODs)”滑块向下拖动到1，然后单击“应用更改(Apply Changes)”，如下所示。</p>
 <ul>
-<li><img alt="LODs" src="../../Figures/Model/LOD1.jpg" /></li>
+<li><img alt="LODs" src="../../Figures/Model/LOD1.jpg"></li>
 </ul>
 <h3 id="blender">导出到 blender</h3>
 <p>现在，回到 <code>内容浏览器(Content Browser)</code>中，您可以右键单击文件，然后选择 <code>Asset Actions(资产操作) -&gt; Export(导出)</code>，并为结果要导出的<code>.FBX</code>文件指定一个位置。</p>
 <ul>
-<li><img alt="Export" src="../../Figures/Model/Export.jpg" /></li>
+<li><img alt="Export" src="../../Figures/Model/Export.jpg"></li>
 </ul>
 <h3 id="blender_1">在 Blender 中建模</h3>
 <p>现在，打开一个新的 Blender 窗口并删除默认生成的立方体。然后转到 <code>File(文件) -&gt; Import(导入) -&gt; FBX (.fbx)</code>并选择刚刚创建的文件。</p>
 <p>现在，您应该看到一个简单的 Blender 窗口，其中包含车辆，如下所示：</p>
 <ul>
-<li><img alt="BlenderSolid" src="../../Figures/Model/BlenderSolid.jpg" /></li>
+<li><img alt="BlenderSolid" src="../../Figures/Model/BlenderSolid.jpg"></li>
 </ul>
 <p>要使用 <code>WASD</code> 控件切换移动，请按 <code>shift +</code> ` 。向车内移动可以找到方向盘的位置。</p>
 <p>最简单的方法（我发现）有效地提取方向盘，因此使用线框模式选择所有顶点，即使是那些在实体渲染中不可见的顶点。要进入线框模式，请按<code>z</code>，然后选择<code>wireframe(线框)</code>（应该是最左边的选项）。然后你应该看到这样的内容：</p>
 <ul>
-<li><img alt="WireframeWheel" src="../../Figures/Model/WireframeWheel.jpg" /></li>
+<li><img alt="WireframeWheel" src="../../Figures/Model/WireframeWheel.jpg"></li>
 </ul>
 <p>然后，要实际选择正确的顶点，我们需要在视口左上角从 <code>Object Mode(对象模式)</code> 更改为 <code>编辑模式(Edit Mode)</code> 。然后，我们需要以这样的方式定位我们的相机，以尽量减少被选择不需要的顶点，并使用我们想要的任何选择技术（我喜欢套索(lasso)选择）来选择整个方向盘，如下所示：</p>
 <ul>
-<li><img alt="SelectedWheel" src="../../Figures/Model/SelectedWheel.jpg" /></li>
+<li><img alt="SelectedWheel" src="../../Figures/Model/SelectedWheel.jpg"></li>
 </ul>
 <div class="admonition 注意">
 <p class="admonition-title">注意</p>
@@ -188,8 +188,8 @@
 </thead>
 <tbody>
 <tr>
-<td><img alt="WireFrameGotWheel" src="../../Figures/Model/WheelOut.jpg" /></td>
-<td><img alt="SolidOut" src="../../Figures/Model/VehicleAndWheel.jpg" /></td>
+<td><img alt="WireFrameGotWheel" src="../../Figures/Model/WheelOut.jpg"></td>
+<td><img alt="SolidOut" src="../../Figures/Model/VehicleAndWheel.jpg"></td>
 </tr>
 </tbody>
 </table>
@@ -217,8 +217,8 @@
 </thead>
 <tbody>
 <tr>
-<td><img alt="Reparent" src="../../Figures/Model/AnimClassOption.jpg" /></td>
-<td><img alt="AnimGraph" src="../../Figures/Model/AnimGraph.jpg" /></td>
+<td><img alt="Reparent" src="../../Figures/Model/AnimClassOption.jpg"></td>
+<td><img alt="AnimGraph" src="../../Figures/Model/AnimGraph.jpg"></td>
 </tr>
 </tbody>
 </table>
@@ -238,7 +238,7 @@
 <p>最后，您可以删除新导入的 PhysicsAsset 文件，因为它不再被使用（我选择使用普通的 TeslaM3 文件）</p>
 <p>在<code>BP_EgoVehicle_DReyeVR</code>中，您终于可以编辑<code>Mesh (Inherited) -&gt; Details -&gt; Mesh</code>字段，以使用我们刚刚更新的新 SM（粉红色下划线）。由于这会清除 <code>动画(Animation)</code>部分，因此您还需要更新<code>Mesh (Inherited) -&gt; Animation -&gt; Anim Class</code>字段以使用我们刚刚创建的新动画类。</p>
 <p>现在，DReyeVR EgoVehicle 应该可以完全驾驶，并且像以前一样运行，但现在驾驶座上没有方向盘了！</p>
-<p><img alt="NoWheel" src="../../Figures/Model/NoWheel.jpg" /></p>
+<p><img alt="NoWheel" src="../../Figures/Model/NoWheel.jpg"></p>
 <h2 id="3">3. 重新安装动力学方向盘</h2>
 <h3 id="ue4">导入到 UE4</h3>
 <p>现在，我们想将方向盘导入回引擎，以便在运行时动态生成、放置和更新它。</p>
@@ -254,8 +254,8 @@
 </thead>
 <tbody>
 <tr>
-<td><img alt="RotWheel" src="../../Figures/Model/WheelRot.jpg" /></td>
-<td><img alt="SelectedWheel" src="../../Figures/Model/SelectSMWheel.jpg" /></td>
+<td><img alt="RotWheel" src="../../Figures/Model/WheelRot.jpg"></td>
+<td><img alt="SelectedWheel" src="../../Figures/Model/SelectSMWheel.jpg"></td>
 </tr>
 </tbody>
 </table>
@@ -270,7 +270,7 @@
 <p>我们将不再需要任何其他方向盘资产，请随意删除它们。</p>
 </div>
 <p>在代码中添加虚幻组件的一般策略是在构造函数中生成它们，然后将它们的引用与它们的 C++ API 一起使用。对于我们的例子，我们只需要一个构造函数和一个 tick 方法（参见 <a href="https://github.com/OpenHUTB/hutb/blob/hutb/Unreal/CarlaUE4/Source/CarlaUE4/DReyeVR/EgoVehicle.cpp">EgoVehicle::ConstructSteeringWheel &amp; EgoVehicle::TickSteeringWheel</a> ）。</p>
-<p>现在，当您四处行驶时，享受连接到 EgoVehicle 的响应灵敏方向盘资产！</p>
+<p>现在，当您四处行驶时，享受连接到 EgoVehicle 的响应灵敏方向盘资产！</p></div>
               
             </div>
           </div><footer>

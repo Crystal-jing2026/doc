@@ -100,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="rviz-carla">RVIZ Carla 插件</h1>
+                <div><h1 id="rviz-carla">RVIZ Carla 插件</h1>
 <p><a href="https://github.com/carla-simulator/ros-bridge/tree/master/rviz_carla_plugin">RVIZ 插件</a> 提供了基于 <a href="https://wiki.ros.org/rviz">RVIZ</a> ROS包的可视化工具。</p>
 <ul>
 <li><a href="#run-ros-bridge-with-rviz"><strong>使用 RVIZ 运行 ROS 桥</strong></a></li>
@@ -112,9 +112,9 @@
 </ul>
 </li>
 </ul>
-<hr />
+<hr>
 <h2 id="rviz-ros">使用 RVIZ 运行 ROS 桥</h2>
-<p><img alt="ros_rviz" src="../img/ros_rviz.png" /></p>
+<p><img alt="ros_rviz" src="../img/ros_rviz.png"></p>
 <p>RVIZ 插件需要一个名为 <code>ego_vehicle</code> 的自主车辆。要查看 ROS 桥与 RVIZ 配合使用的示例，请在运行的 Carla 服务器上执行以下命令：</p>
 <p><strong>1.</strong> 在启用 RVIZ 的情况下启动 ROS 桥：</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ROS 1</span>
@@ -144,7 +144,7 @@ roslaunch<span class="w"> </span>carla_manual_control<span class="w"> </span>car
 <span class="c1"># ROS 2</span>
 ros2<span class="w"> </span>launch<span class="w"> </span>carla_manual_control<span class="w"> </span>carla_manual_control.launch.py
 </code></pre></div>
-<hr />
+<hr>
 <h2 id="rviz">RVIZ 插件的功能</h2>
 <ul>
 <li><strong>自主车辆状态可视化</strong> - 可视化车辆位置和控制。</li>
@@ -154,7 +154,7 @@ ros2<span class="w"> </span>launch<span class="w"> </span>carla_manual_control<s
 <li><strong>播放/暂停模拟</strong> - 如果以同步模式启动，您可以播放和暂停模拟。</li>
 <li><strong>手动覆盖自主车辆控制</strong> - 使用 <a href="https://github.com/ros-visualization/visualization_tutorials">RVIZ Visualization Tutorials</a> 可视化教程中的驱动小部件和从扭曲转换为车辆控制的 <a href="https://github.com/carla-simulator/ros-bridge/blob/master/carla_twist_to_control">节点</a> ，通过鼠标驾驶车辆。 </li>
 </ul>
-<hr />
+<hr>
 <h2 id="ros">ROS 应用程序接口</h2>
 <h4 id="_1">订阅</h4>
 <table>
@@ -244,7 +244,7 @@ ros2<span class="w"> </span>launch<span class="w"> </span>carla_manual_control<s
 </tr>
 </tbody>
 </table>
-<p><br></p>
+<p><br></p></div>
               
             </div>
           </div><footer>

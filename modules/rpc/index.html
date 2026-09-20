@@ -100,42 +100,42 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="libcarla-rpc">LibCarla 远程过程调用（RPC）详细说明文档</h1>
+                <div><h1 id="libcarla-rpc">LibCarla 远程过程调用（RPC）详细说明文档</h1>
 <h1 id="_1">目录</h1>
 <ul>
-<li><a href="#引言">1.引言</a></li>
-<li><a href="#11-文档目的">1.1 文档目的</a></li>
-<li><a href="#12-libcarla与rpc背景">1.2 LibCarla与RPC背景</a></li>
-<li><a href="#13-文档结构">1.3 文档结构</a></li>
-<li><a href="#文件一maplayercpp">2.文件一：MapLayer.cpp</a></li>
-<li><a href="#21-文件概述">2.1 文件概述</a></li>
-<li><a href="#22-功能详解">2.2 功能详解</a></li>
-<li><a href="#23-枚举值与映射">2.3 枚举值与映射</a></li>
-<li><a href="#24-代码解析">2.4 代码解析</a></li>
-<li><a href="#25-使用场景">2.5 使用场景</a></li>
-<li><a href="#26-扩展建议">2.6 扩展建议</a></li>
-<li><a href="#文件二materialparametercpp">3.文件二：MaterialParameter.cpp</a></li>
-<li><a href="#31-文件概述">3.1 文件概述</a></li>
-<li><a href="#32-功能详解">3.2 功能详解</a></li>
-<li><a href="#33-枚举值与映射">3.3 枚举值与映射</a></li>
-<li><a href="#34-代码解析">3.4 代码解析</a></li>
-<li><a href="#35-使用场景">3.5 使用场景</a></li>
-<li><a href="#36-扩展建议">3.6 扩展建议</a></li>
-<li><a href="#文件三weatherparameterscpp">4.文件三：WeatherParameters.cpp</a></li>
-<li><a href="#41-文件概述">4.1 文件概述</a></li>
-<li><a href="#42-功能详解">4.2 功能详解</a></li>
-<li><a href="#43-天气参数说明">4.3 天气参数说明</a></li>
-<li><a href="#44-预定义天气场景">4.4 预定义天气场景</a></li>
-<li><a href="#45-代码解析">4.5 代码解析</a></li>
-<li><a href="#46-使用场景">4.6 使用场景</a></li>
-<li><a href="#47-扩展建议">4.7 扩展建议</a></li>
-<li><a href="#集成与使用场景">5.集成与使用场景</a></li>
-<li><a href="#51-与carla仿真器的集成">5.1 与Carla仿真器的集成</a></li>
-<li><a href="#52-实际应用场景">5.2 实际应用场景</a></li>
-<li><a href="#53-性能优化">5.3 性能优化</a></li>
-<li><a href="#总结与扩展建议">6.总结与扩展建议</a></li>
-<li><a href="#61-总结">6.1 总结</a></li>
-<li><a href="#62-扩展建议">6.2 扩展建议</a></li>
+<li><a href="#%E5%BC%95%E8%A8%80">1.引言</a></li>
+<li><a href="#11-%E6%96%87%E6%A1%A3%E7%9B%AE%E7%9A%84">1.1 文档目的</a></li>
+<li><a href="#12-libcarla%E4%B8%8Erpc%E8%83%8C%E6%99%AF">1.2 LibCarla与RPC背景</a></li>
+<li><a href="#13-%E6%96%87%E6%A1%A3%E7%BB%93%E6%9E%84">1.3 文档结构</a></li>
+<li><a href="#%E6%96%87%E4%BB%B6%E4%B8%80maplayercpp">2.文件一：MapLayer.cpp</a></li>
+<li><a href="#21-%E6%96%87%E4%BB%B6%E6%A6%82%E8%BF%B0">2.1 文件概述</a></li>
+<li><a href="#22-%E5%8A%9F%E8%83%BD%E8%AF%A6%E8%A7%A3">2.2 功能详解</a></li>
+<li><a href="#23-%E6%9E%9A%E4%B8%BE%E5%80%BC%E4%B8%8E%E6%98%A0%E5%B0%84">2.3 枚举值与映射</a></li>
+<li><a href="#24-%E4%BB%A3%E7%A0%81%E8%A7%A3%E6%9E%90">2.4 代码解析</a></li>
+<li><a href="#25-%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF">2.5 使用场景</a></li>
+<li><a href="#26-%E6%89%A9%E5%B1%95%E5%BB%BA%E8%AE%AE">2.6 扩展建议</a></li>
+<li><a href="#%E6%96%87%E4%BB%B6%E4%BA%8Cmaterialparametercpp">3.文件二：MaterialParameter.cpp</a></li>
+<li><a href="#31-%E6%96%87%E4%BB%B6%E6%A6%82%E8%BF%B0">3.1 文件概述</a></li>
+<li><a href="#32-%E5%8A%9F%E8%83%BD%E8%AF%A6%E8%A7%A3">3.2 功能详解</a></li>
+<li><a href="#33-%E6%9E%9A%E4%B8%BE%E5%80%BC%E4%B8%8E%E6%98%A0%E5%B0%84">3.3 枚举值与映射</a></li>
+<li><a href="#34-%E4%BB%A3%E7%A0%81%E8%A7%A3%E6%9E%90">3.4 代码解析</a></li>
+<li><a href="#35-%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF">3.5 使用场景</a></li>
+<li><a href="#36-%E6%89%A9%E5%B1%95%E5%BB%BA%E8%AE%AE">3.6 扩展建议</a></li>
+<li><a href="#%E6%96%87%E4%BB%B6%E4%B8%89weatherparameterscpp">4.文件三：WeatherParameters.cpp</a></li>
+<li><a href="#41-%E6%96%87%E4%BB%B6%E6%A6%82%E8%BF%B0">4.1 文件概述</a></li>
+<li><a href="#42-%E5%8A%9F%E8%83%BD%E8%AF%A6%E8%A7%A3">4.2 功能详解</a></li>
+<li><a href="#43-%E5%A4%A9%E6%B0%94%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E">4.3 天气参数说明</a></li>
+<li><a href="#44-%E9%A2%84%E5%AE%9A%E4%B9%89%E5%A4%A9%E6%B0%94%E5%9C%BA%E6%99%AF">4.4 预定义天气场景</a></li>
+<li><a href="#45-%E4%BB%A3%E7%A0%81%E8%A7%A3%E6%9E%90">4.5 代码解析</a></li>
+<li><a href="#46-%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF">4.6 使用场景</a></li>
+<li><a href="#47-%E6%89%A9%E5%B1%95%E5%BB%BA%E8%AE%AE">4.7 扩展建议</a></li>
+<li><a href="#%E9%9B%86%E6%88%90%E4%B8%8E%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF">5.集成与使用场景</a></li>
+<li><a href="#51-%E4%B8%8Ecarla%E4%BB%BF%E7%9C%9F%E5%99%A8%E7%9A%84%E9%9B%86%E6%88%90">5.1 与Carla仿真器的集成</a></li>
+<li><a href="#52-%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF">5.2 实际应用场景</a></li>
+<li><a href="#53-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96">5.3 性能优化</a></li>
+<li><a href="#%E6%80%BB%E7%BB%93%E4%B8%8E%E6%89%A9%E5%B1%95%E5%BB%BA%E8%AE%AE">6.总结与扩展建议</a></li>
+<li><a href="#61-%E6%80%BB%E7%BB%93">6.1 总结</a></li>
+<li><a href="#62-%E6%89%A9%E5%B1%95%E5%BB%BA%E8%AE%AE">6.2 扩展建议</a></li>
 </ul>
 <h2 id="1">1. 引言</h2>
 <h3 id="11">1.1 文档目的</h3>
@@ -159,7 +159,7 @@
 <li><strong>第5节</strong>：集成与使用场景。</li>
 <li><strong>第6节</strong>：总结与扩展建议。</li>
 </ul>
-<hr />
+<hr>
 <h2 id="2-maplayercpp">2. 文件一：MapLayer.cpp</h2>
 <h3 id="21">2.1 文件概述</h3>
 <p><code>MapLayer.cpp</code> 定义了一个函数 <code>MapLayerToString</code>，用于将 <code>MapLayer</code> 枚举值转换为对应的字符串表示。该功能在Carla的RPC通信中起到桥梁作用，将内部枚举值转换为人类可读的字符串，便于调试、日志记录和数据序列化。</p>
@@ -265,25 +265,25 @@
 </table>
 <h3 id="24">2.4 代码解析</h3>
 <p>以下是完整代码及逐行分析：</p>
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;MapLayer.h&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">"MapLayer.h"</span>
 
 <span class="k">namespace</span><span class="w"> </span><span class="nn">carla</span><span class="w"> </span><span class="p">{</span>
 <span class="k">namespace</span><span class="w"> </span><span class="nn">rpc</span><span class="w"> </span><span class="p">{</span>
 
 <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="nf">MapLayerToString</span><span class="p">(</span><span class="n">MapLayer</span><span class="w"> </span><span class="n">MapLayerValue</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">switch</span><span class="p">(</span><span class="n">MapLayerValue</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">MapLayer</span><span class="o">::</span><span class="no">None</span><span class="p">:</span><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;None&quot;</span><span class="p">;</span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">MapLayer</span><span class="o">::</span><span class="no">Buildings</span><span class="p">:</span><span class="w">       </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;Buildings&quot;</span><span class="p">;</span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">MapLayer</span><span class="o">::</span><span class="no">Decals</span><span class="p">:</span><span class="w">          </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;Decals&quot;</span><span class="p">;</span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">MapLayer</span><span class="o">::</span><span class="no">Foliage</span><span class="p">:</span><span class="w">         </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;Foliage&quot;</span><span class="p">;</span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">MapLayer</span><span class="o">::</span><span class="no">Ground</span><span class="p">:</span><span class="w">          </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;Ground&quot;</span><span class="p">;</span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">MapLayer</span><span class="o">::</span><span class="no">ParkedVehicles</span><span class="p">:</span><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;Parked_Vehicles&quot;</span><span class="p">;</span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">MapLayer</span><span class="o">::</span><span class="no">Particles</span><span class="p">:</span><span class="w">       </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;Particles&quot;</span><span class="p">;</span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">MapLayer</span><span class="o">::</span><span class="no">Props</span><span class="p">:</span><span class="w">           </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;Props&quot;</span><span class="p">;</span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">MapLayer</span><span class="o">::</span><span class="no">StreetLights</span><span class="p">:</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;StreetLights&quot;</span><span class="p">;</span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">MapLayer</span><span class="o">::</span><span class="no">Walls</span><span class="p">:</span><span class="w">           </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;Walls&quot;</span><span class="p">;</span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">MapLayer</span><span class="o">::</span><span class="no">All</span><span class="p">:</span><span class="w">             </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;All&quot;</span><span class="p">;</span>
-<span class="w">    </span><span class="k">default</span><span class="o">:</span><span class="w">                        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;Invalid&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">MapLayer</span><span class="o">::</span><span class="no">None</span><span class="p">:</span><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s">"None"</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">MapLayer</span><span class="o">::</span><span class="no">Buildings</span><span class="p">:</span><span class="w">       </span><span class="k">return</span><span class="w"> </span><span class="s">"Buildings"</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">MapLayer</span><span class="o">::</span><span class="no">Decals</span><span class="p">:</span><span class="w">          </span><span class="k">return</span><span class="w"> </span><span class="s">"Decals"</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">MapLayer</span><span class="o">::</span><span class="no">Foliage</span><span class="p">:</span><span class="w">         </span><span class="k">return</span><span class="w"> </span><span class="s">"Foliage"</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">MapLayer</span><span class="o">::</span><span class="no">Ground</span><span class="p">:</span><span class="w">          </span><span class="k">return</span><span class="w"> </span><span class="s">"Ground"</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">MapLayer</span><span class="o">::</span><span class="no">ParkedVehicles</span><span class="p">:</span><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="s">"Parked_Vehicles"</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">MapLayer</span><span class="o">::</span><span class="no">Particles</span><span class="p">:</span><span class="w">       </span><span class="k">return</span><span class="w"> </span><span class="s">"Particles"</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">MapLayer</span><span class="o">::</span><span class="no">Props</span><span class="p">:</span><span class="w">           </span><span class="k">return</span><span class="w"> </span><span class="s">"Props"</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">MapLayer</span><span class="o">::</span><span class="no">StreetLights</span><span class="p">:</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">"StreetLights"</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">MapLayer</span><span class="o">::</span><span class="no">Walls</span><span class="p">:</span><span class="w">           </span><span class="k">return</span><span class="w"> </span><span class="s">"Walls"</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">MapLayer</span><span class="o">::</span><span class="no">All</span><span class="p">:</span><span class="w">             </span><span class="k">return</span><span class="w"> </span><span class="s">"All"</span><span class="p">;</span>
+<span class="w">    </span><span class="k">default</span><span class="o">:</span><span class="w">                        </span><span class="k">return</span><span class="w"> </span><span class="s">"Invalid"</span><span class="p">;</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 
@@ -301,7 +301,7 @@
 <li><strong>调试与日志</strong>：</li>
 <li>开发者在调试时可以通过日志输出当前加载的地图层。例如：
      <div class="highlight"><pre><span></span><code><span class="n">MapLayer</span><span class="w"> </span><span class="n">layer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MapLayer</span><span class="o">::</span><span class="n">Buildings</span><span class="p">;</span>
-<span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Current layer: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">MapLayerToString</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"> </span><span class="c1">// 输出: Current layer: Buildings</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"Current layer: "</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">MapLayerToString</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"> </span><span class="c1">// 输出: Current layer: Buildings</span>
 </code></pre></div></li>
 <li><strong>RPC通信</strong>：</li>
 <li>客户端通过RPC接口向服务器发送地图层配置，字符串格式便于序列化（如JSON或Protobuf）。</li>
@@ -315,7 +315,7 @@
 <li><strong>多语言支持</strong>：为字符串添加国际化支持（如中文描述：<code>"建筑物"</code> 而非 <code>"Buildings"</code>）。</li>
 <li><strong>日志级别</strong>：集成日志框架（如Carla的日志系统），在无效输入时记录警告。</li>
 </ul>
-<hr />
+<hr>
 <h2 id="3-materialparametercpp">3. 文件二：MaterialParameter.cpp</h2>
 <h3 id="31">3.1 文件概述</h3>
 <p><code>MaterialParameter.cpp</code> 定义了一个函数 <code>MaterialParameterToString</code>，用于将 <code>MaterialParameter</code> 枚举值转换为对应的字符串表示。该功能支持材质参数的序列化、调试和通信，广泛应用于Carla的渲染管道和材质管理。</p>
@@ -378,18 +378,18 @@
 </table>
 <h3 id="34">3.4 代码解析</h3>
 <p>以下是完整代码及逐行分析：</p>
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;MaterialParameter.h&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">"MaterialParameter.h"</span>
 
 <span class="k">namespace</span><span class="w"> </span><span class="nn">carla</span><span class="w"> </span><span class="p">{</span>
 <span class="k">namespace</span><span class="w"> </span><span class="nn">rpc</span><span class="w"> </span><span class="p">{</span>
 
 <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="nf">MaterialParameterToString</span><span class="p">(</span><span class="n">MaterialParameter</span><span class="w"> </span><span class="n">material_parameter</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">switch</span><span class="p">(</span><span class="n">material_parameter</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">MaterialParameter</span><span class="o">::</span><span class="no">Tex_Normal</span><span class="p">:</span><span class="w">                         </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;Normal&quot;</span><span class="p">;</span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">MaterialParameter</span><span class="o">::</span><span class="no">Tex_Ao_Roughness_Metallic_Emissive</span><span class="p">:</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;AO / Roughness / Metallic / Emissive&quot;</span><span class="p">;</span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">MaterialParameter</span><span class="o">::</span><span class="no">Tex_Diffuse</span><span class="p">:</span><span class="w">                       </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;Diffuse&quot;</span><span class="p">;</span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">MaterialParameter</span><span class="o">::</span><span class="no">Tex_Emissive</span><span class="p">:</span><span class="w">                      </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;Emissive&quot;</span><span class="p">;</span>
-<span class="w">    </span><span class="k">default</span><span class="o">:</span><span class="w">                                                   </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;Invalid&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">MaterialParameter</span><span class="o">::</span><span class="no">Tex_Normal</span><span class="p">:</span><span class="w">                         </span><span class="k">return</span><span class="w"> </span><span class="s">"Normal"</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">MaterialParameter</span><span class="o">::</span><span class="no">Tex_Ao_Roughness_Metallic_Emissive</span><span class="p">:</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="s">"AO / Roughness / Metallic / Emissive"</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">MaterialParameter</span><span class="o">::</span><span class="no">Tex_Diffuse</span><span class="p">:</span><span class="w">                       </span><span class="k">return</span><span class="w"> </span><span class="s">"Diffuse"</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">MaterialParameter</span><span class="o">::</span><span class="no">Tex_Emissive</span><span class="p">:</span><span class="w">                      </span><span class="k">return</span><span class="w"> </span><span class="s">"Emissive"</span><span class="p">;</span>
+<span class="w">    </span><span class="k">default</span><span class="o">:</span><span class="w">                                                   </span><span class="k">return</span><span class="w"> </span><span class="s">"Invalid"</span><span class="p">;</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 
@@ -407,7 +407,7 @@
 <li><strong>材质调试</strong>：</li>
 <li>开发者可以通过字符串输出检查当前材质参数：
      <div class="highlight"><pre><span></span><code><span class="n">MaterialParameter</span><span class="w"> </span><span class="n">param</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MaterialParameter</span><span class="o">::</span><span class="n">Tex_Diffuse</span><span class="p">;</span>
-<span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Material param: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">MaterialParameterToString</span><span class="p">(</span><span class="n">param</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"> </span><span class="c1">// 输出: Material param: Diffuse</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"Material param: "</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">MaterialParameterToString</span><span class="p">(</span><span class="n">param</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"> </span><span class="c1">// 输出: Material param: Diffuse</span>
 </code></pre></div></li>
 <li><strong>材质序列化</strong>：</li>
 <li>在RPC通信中，客户端可以发送字符串形式的材质参数，服务器解析后应用到渲染对象。</li>
@@ -421,7 +421,7 @@
 <li><strong>参数扩展</strong>：增加更多材质参数（如透明度、折射率），适应复杂的渲染需求。</li>
 <li><strong>错误日志</strong>：在无效输入时记录详细错误信息，便于调试。</li>
 </ul>
-<hr />
+<hr>
 <h2 id="4-weatherparameterscpp">4. 文件三：WeatherParameters.cpp</h2>
 <h3 id="41">4.1 文件概述</h3>
 <p><code>WeatherParameters.cpp</code> 定义了 <code>WeatherParameters</code> 类型的静态成员变量，提供了多种天气条件的预定义参数配置。这些参数用于模拟真实世界的天气场景（如晴天、雨天、夜晚、沙尘暴等），并通过RPC接口在客户端与服务器之间传递。</p>
@@ -573,7 +573,7 @@
 </table>
 <h3 id="45">4.5 代码解析</h3>
 <p>以下是部分代码及分析：</p>
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;carla/rpc/WeatherParameters.h&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">"carla/rpc/WeatherParameters.h"</span>
 
 <span class="k">namespace</span><span class="w"> </span><span class="nn">carla</span><span class="w"> </span><span class="p">{</span>
 <span class="k">namespace</span><span class="w"> </span><span class="nn">rpc</span><span class="w"> </span><span class="p">{</span>
@@ -617,7 +617,7 @@
 <li><strong>新天气类型</strong>：添加雾霾、雪天等天气场景。</li>
 <li><strong>参数验证</strong>：添加参数范围检查，防止无效值（如云量 &gt; 100.0）。</li>
 </ul>
-<hr />
+<hr>
 <h2 id="5">5. 集成与使用场景</h2>
 <h3 id="51-carla">5.1 与Carla仿真器的集成</h3>
 <p>上述文件通过LibCarla的RPC模块与Carla仿真器集成：
@@ -625,9 +625,9 @@
 - <strong>服务器</strong>：解析请求，调用LibCarla函数（如 <code>MapLayerToString</code>）处理数据，更新仿真环境。
 - <strong>通信协议</strong>：通常基于TCP/IP，使用序列化格式（如JSON或Protobuf）传递字符串数据。</p>
 <p>示例（Python客户端）：
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">carla</span>
+</p><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">carla</span>
 
-<span class="n">client</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="s1">'localhost'</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
 <span class="n">world</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_world</span><span class="p">()</span>
 
 <span class="c1"># 设置天气</span>
@@ -636,7 +636,7 @@
 
 <span class="c1"># 加载特定地图层</span>
 <span class="n">world</span><span class="o">.</span><span class="n">load_map_layer</span><span class="p">(</span><span class="n">carla</span><span class="o">.</span><span class="n">MapLayer</span><span class="o">.</span><span class="n">Buildings</span><span class="p">)</span>  <span class="c1"># 内部调用 MapLayerToString</span>
-</code></pre></div></p>
+</code></pre></div>
 <h3 id="52">5.2 实际应用场景</h3>
 <ol>
 <li><strong>自动驾驶测试</strong>：</li>
@@ -653,7 +653,7 @@
 <li><strong>缓存字符串</strong>：对于频繁调用的 <code>MapLayerToString</code> 和 <code>MaterialParameterToString</code>，可缓存结果以提高性能。</li>
 <li><strong>参数精简</strong>：在 <code>WeatherParameters</code> 中，忽略未设置的参数（<code>-1.0</code>），减少传输数据量。</li>
 </ul>
-<hr />
+<hr>
 <h2 id="6">6. 总结与扩展建议</h2>
 <h3 id="61">6.1 总结</h3>
 <p><code>MapLayer.cpp</code>、<code>MaterialParameter.cpp</code> 和 <code>WeatherParameters.cpp</code> 是LibCarla中RPC功能的核心组件：
@@ -676,7 +676,7 @@
 <li><strong>新功能</strong>：</li>
 <li>增加季节性天气（如雪、冰雹）。</li>
 <li>支持动态地图层组合（如仅加载建筑物和道路）。</li>
-</ol>
+</ol></div>
               
             </div>
           </div><footer>

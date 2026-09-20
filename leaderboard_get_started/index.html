@@ -100,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="20">开始使用排行榜 2.0</h1>
+                <div><h1 id="20">开始使用排行榜 2.0</h1>
 <div class="admonition 笔记">
 <p class="admonition-title">笔记</p>
 <p>本页信息涉及最新版本 Leaderboard 2.0。如果您使用的是以前版本的排行榜，请参阅排行榜 1.0 入门说明。</p>
@@ -160,8 +160,8 @@ pip3<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </
 </code></pre></div>
 <h3 id="ros">基于 ROS 的代理</h3>
 <p>首先，下载并安装适当的 ROS 或 ROS2 发行版。 Leaderboard 2.0 支持 ROS Melodic、ROS Noetic 和 ROS2 Foxy。然后，克隆并构建 ROS 或 ROS2 的 Carla ROS 桥存储库。确保 leaderboard-2.0 在克隆 Carla ROS Bridge 存储库时指定分支：
-<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>--recurse-submodules<span class="w"> </span>-b<span class="w"> </span>leaderboard-2.0<span class="w"> </span>--single-branch<span class="w"> </span>https://github.com/carla-simulator/ros-bridge
-</code></pre></div></p>
+</p><div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>--recurse-submodules<span class="w"> </span>-b<span class="w"> </span>leaderboard-2.0<span class="w"> </span>--single-branch<span class="w"> </span>https://github.com/carla-simulator/ros-bridge
+</code></pre></div>
 <h2 id="_3">定义环境变量</h2>
 <p>我们需要确保不同的模块可以找到彼此。</p>
 <ul>
@@ -173,23 +173,23 @@ pip3<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </
 <div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">CARLA_ROOT</span><span class="o">=</span>PATH_TO_CARLA_ROOT
 <span class="nb">export</span><span class="w"> </span><span class="nv">SCENARIO_RUNNER_ROOT</span><span class="o">=</span>PATH_TO_SCENARIO_RUNNER
 <span class="nb">export</span><span class="w"> </span><span class="nv">LEADERBOARD_ROOT</span><span class="o">=</span>PATH_TO_LEADERBOARD
-<span class="nb">export</span><span class="w"> </span><span class="nv">PYTHONPATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">CARLA_ROOT</span><span class="si">}</span><span class="s2">/PythonAPI/carla/&quot;</span>:<span class="s2">&quot;</span><span class="si">${</span><span class="nv">SCENARIO_RUNNER_ROOT</span><span class="si">}</span><span class="s2">&quot;</span>:<span class="s2">&quot;</span><span class="si">${</span><span class="nv">LEADERBOARD_ROOT</span><span class="si">}</span><span class="s2">&quot;</span>:<span class="s2">&quot;</span><span class="si">${</span><span class="nv">CARLA_ROOT</span><span class="si">}</span><span class="s2">/PythonAPI/carla/dist/carla-0.9.14-py3.7-linux-x86_64.egg&quot;</span>:<span class="si">${</span><span class="nv">PYTHONPATH</span><span class="si">}</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">PYTHONPATH</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">CARLA_ROOT</span><span class="si">}</span><span class="s2">/PythonAPI/carla/"</span>:<span class="s2">"</span><span class="si">${</span><span class="nv">SCENARIO_RUNNER_ROOT</span><span class="si">}</span><span class="s2">"</span>:<span class="s2">"</span><span class="si">${</span><span class="nv">LEADERBOARD_ROOT</span><span class="si">}</span><span class="s2">"</span>:<span class="s2">"</span><span class="si">${</span><span class="nv">CARLA_ROOT</span><span class="si">}</span><span class="s2">/PythonAPI/carla/dist/carla-0.9.14-py3.7-linux-x86_64.egg"</span>:<span class="si">${</span><span class="nv">PYTHONPATH</span><span class="si">}</span>
 </code></pre></div>
 <p>请记住<code>.bashrc</code>使用以下命令来使这些更改生效：
-<div class="highlight"><pre><span></span><code><span class="nb">source</span><span class="w"> </span>~/.bashrc
-</code></pre></div></p>
+</p><div class="highlight"><pre><span></span><code><span class="nb">source</span><span class="w"> </span>~/.bashrc
+</code></pre></div>
 <h1 id="_4">创建带有排行榜的自治代理</h1>
 <h2 id="_5">排行榜的第一步</h2>
 <p>排行榜将负责运行您的自主代理，并评估其在多条路线的不同交通情况下的行为。为了更好地理解这个过程，让我们运行一个基本代理。</p>
 <p>在一个终端中运行 Carla 服务器。
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span><span class="si">${</span><span class="nv">CARLA_ROOT</span><span class="si">}</span>
+</p><div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span><span class="si">${</span><span class="nv">CARLA_ROOT</span><span class="si">}</span>
 ./CarlaUE4.sh<span class="w"> </span>-quality-level<span class="o">=</span>Epic<span class="w"> </span>-world-port<span class="o">=</span><span class="m">2000</span><span class="w"> </span>-resx<span class="o">=</span><span class="m">800</span><span class="w"> </span>-resy<span class="o">=</span><span class="m">600</span>
-</code></pre></div></p>
+</code></pre></div>
 <p>在另一个终端中，导航到<code>${LEADERBOARD_ROOT}</code>.虽然排行榜是使用<code>leaderboard_evaluator.py</code> python 脚本运行的，但使用的参数数量可能会让使用终端直接执行此操作感到非常不舒服。因此，建议使用 bash 脚本。排行榜提供的<code>run_leaderboard.sh</code>脚本正是这样做的。运行脚本：</p>
 <div class="highlight"><pre><span></span><code>./run_leaderboard.sh
 </code></pre></div>
 <p>这将启动一个 pygame 窗口，让您可以选择手动控制代理。按照彩色路径点指示的路线到达目的地。该脚本加载 Town 12 中的两条路线。</p>
-<p><img alt="motif_large" src="../img/leaderboard/Town12route.png" />
+<p><img alt="motif_large" src="../img/leaderboard/Town12route.png">
 遵循路线并遵守交通规则，直到到达目的地。</p>
 <div class="admonition 笔记">
 <p class="admonition-title">笔记</p>
@@ -223,7 +223,7 @@ pip3<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">leaderboard.autoagents.autonomous_agent</span> <span class="kn">import</span> <span class="n">AutonomousAgent</span>
 
 <span class="k">def</span> <span class="nf">get_entry_point</span><span class="p">():</span>
-    <span class="k">return</span> <span class="s1">&#39;MyAgent&#39;</span>
+    <span class="k">return</span> <span class="s1">'MyAgent'</span>
 
 <span class="k">class</span> <span class="nc">MyAgent</span><span class="p">(</span><span class="n">AutonomousAgent</span><span class="p">):</span>
 <span class="o">...</span>
@@ -243,18 +243,18 @@ pip3<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </
 <p>您还必须覆盖传感器方法，该方法定义了您的代理所需的所有传感器。</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">sensors</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="n">sensors</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="p">{</span><span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;sensor.camera.rgb&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;Center&#39;</span><span class="p">,</span>
-         <span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="mf">0.7</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">:</span> <span class="mf">1.60</span><span class="p">,</span> <span class="s1">&#39;roll&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;pitch&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;yaw&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;width&#39;</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span> <span class="s1">&#39;height&#39;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> <span class="s1">&#39;fov&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">},</span>
-        <span class="p">{</span><span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;sensor.lidar.ray_cast&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;LIDAR&#39;</span><span class="p">,</span>
-         <span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="mf">0.7</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">0.4</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">:</span> <span class="mf">1.60</span><span class="p">,</span> <span class="s1">&#39;roll&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;pitch&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;yaw&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">45.0</span><span class="p">},</span>
-        <span class="p">{</span><span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;sensor.other.radar&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;RADAR&#39;</span><span class="p">,</span>
-         <span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="mf">0.7</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">0.4</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">:</span> <span class="mf">1.60</span><span class="p">,</span> <span class="s1">&#39;roll&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;pitch&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;yaw&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">45.0</span><span class="p">,</span> <span class="s1">&#39;fov&#39;</span><span class="p">:</span> <span class="mi">30</span><span class="p">},</span>
-        <span class="p">{</span><span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;sensor.other.gnss&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;GPS&#39;</span><span class="p">,</span>
-         <span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="mf">0.7</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">0.4</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">:</span> <span class="mf">1.60</span><span class="p">},</span>
-        <span class="p">{</span><span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;sensor.other.imu&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;IMU&#39;</span><span class="p">,</span>
-         <span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="mf">0.7</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">0.4</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">:</span> <span class="mf">1.60</span><span class="p">,</span> <span class="s1">&#39;roll&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;pitch&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;yaw&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">45.0</span><span class="p">},</span>
-        <span class="p">{</span><span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;sensor.opendrive_map&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;OpenDRIVE&#39;</span><span class="p">,</span> <span class="s1">&#39;reading_frequency&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
-        <span class="p">{</span><span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;sensor.speedometer&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;Speed&#39;</span><span class="p">},</span>
+        <span class="p">{</span><span class="s1">'type'</span><span class="p">:</span> <span class="s1">'sensor.camera.rgb'</span><span class="p">,</span> <span class="s1">'id'</span><span class="p">:</span> <span class="s1">'Center'</span><span class="p">,</span>
+         <span class="s1">'x'</span><span class="p">:</span> <span class="mf">0.7</span><span class="p">,</span> <span class="s1">'y'</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">'z'</span><span class="p">:</span> <span class="mf">1.60</span><span class="p">,</span> <span class="s1">'roll'</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">'pitch'</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">'yaw'</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">'width'</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span> <span class="s1">'height'</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> <span class="s1">'fov'</span><span class="p">:</span> <span class="mi">100</span><span class="p">},</span>
+        <span class="p">{</span><span class="s1">'type'</span><span class="p">:</span> <span class="s1">'sensor.lidar.ray_cast'</span><span class="p">,</span> <span class="s1">'id'</span><span class="p">:</span> <span class="s1">'LIDAR'</span><span class="p">,</span>
+         <span class="s1">'x'</span><span class="p">:</span> <span class="mf">0.7</span><span class="p">,</span> <span class="s1">'y'</span><span class="p">:</span> <span class="o">-</span><span class="mf">0.4</span><span class="p">,</span> <span class="s1">'z'</span><span class="p">:</span> <span class="mf">1.60</span><span class="p">,</span> <span class="s1">'roll'</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">'pitch'</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">'yaw'</span><span class="p">:</span> <span class="o">-</span><span class="mf">45.0</span><span class="p">},</span>
+        <span class="p">{</span><span class="s1">'type'</span><span class="p">:</span> <span class="s1">'sensor.other.radar'</span><span class="p">,</span> <span class="s1">'id'</span><span class="p">:</span> <span class="s1">'RADAR'</span><span class="p">,</span>
+         <span class="s1">'x'</span><span class="p">:</span> <span class="mf">0.7</span><span class="p">,</span> <span class="s1">'y'</span><span class="p">:</span> <span class="o">-</span><span class="mf">0.4</span><span class="p">,</span> <span class="s1">'z'</span><span class="p">:</span> <span class="mf">1.60</span><span class="p">,</span> <span class="s1">'roll'</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">'pitch'</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">'yaw'</span><span class="p">:</span> <span class="o">-</span><span class="mf">45.0</span><span class="p">,</span> <span class="s1">'fov'</span><span class="p">:</span> <span class="mi">30</span><span class="p">},</span>
+        <span class="p">{</span><span class="s1">'type'</span><span class="p">:</span> <span class="s1">'sensor.other.gnss'</span><span class="p">,</span> <span class="s1">'id'</span><span class="p">:</span> <span class="s1">'GPS'</span><span class="p">,</span>
+         <span class="s1">'x'</span><span class="p">:</span> <span class="mf">0.7</span><span class="p">,</span> <span class="s1">'y'</span><span class="p">:</span> <span class="o">-</span><span class="mf">0.4</span><span class="p">,</span> <span class="s1">'z'</span><span class="p">:</span> <span class="mf">1.60</span><span class="p">},</span>
+        <span class="p">{</span><span class="s1">'type'</span><span class="p">:</span> <span class="s1">'sensor.other.imu'</span><span class="p">,</span> <span class="s1">'id'</span><span class="p">:</span> <span class="s1">'IMU'</span><span class="p">,</span>
+         <span class="s1">'x'</span><span class="p">:</span> <span class="mf">0.7</span><span class="p">,</span> <span class="s1">'y'</span><span class="p">:</span> <span class="o">-</span><span class="mf">0.4</span><span class="p">,</span> <span class="s1">'z'</span><span class="p">:</span> <span class="mf">1.60</span><span class="p">,</span> <span class="s1">'roll'</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">'pitch'</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">'yaw'</span><span class="p">:</span> <span class="o">-</span><span class="mf">45.0</span><span class="p">},</span>
+        <span class="p">{</span><span class="s1">'type'</span><span class="p">:</span> <span class="s1">'sensor.opendrive_map'</span><span class="p">,</span> <span class="s1">'id'</span><span class="p">:</span> <span class="s1">'OpenDRIVE'</span><span class="p">,</span> <span class="s1">'reading_frequency'</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
+        <span class="p">{</span><span class="s1">'type'</span><span class="p">:</span> <span class="s1">'sensor.speedometer'</span><span class="p">,</span> <span class="s1">'id'</span><span class="p">:</span> <span class="s1">'Speed'</span><span class="p">},</span>
     <span class="p">]</span>
     <span class="k">return</span> <span class="n">sensors</span>
 </code></pre></div>
@@ -325,7 +325,7 @@ pip3<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </
 <li><strong>routes_testing.xml</strong>: 拟用作验证数据的26条路线（58.9公里）。</li>
 </ul>
 <h2 id="_10">基准</h2>
-<p>Brady Zhou 在 <a href="https://arxiv.org/abs/1912.12294">Learning by Cheating</a> 的基础上创造了一套出色的 <a href="https://github.com/bradyz/2020_CARLA_challenge/">starter kit</a> 。</p>
+<p>Brady Zhou 在 <a href="https://arxiv.org/abs/1912.12294">Learning by Cheating</a> 的基础上创造了一套出色的 <a href="https://github.com/bradyz/2020_CARLA_challenge/">starter kit</a> 。</p></div>
               
             </div>
           </div><footer>

@@ -100,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="windows">Windows 下的构建</h1>
+                <div><h1 id="windows">Windows 下的构建</h1>
 <p>本指南详细介绍了如何在 Windows 上从源代码构建 HUTB。有两个部分。第一部分详细介绍系统要求和所需软件的安装，第二部分详细介绍如何实际构建和运行 HUTB。</p>
 <p>构建过程很长（4小时或更长时间）并且涉及多种软件。强烈建议在开始之前完整阅读该指南。</p>
 <p>如果您遇到错误或困难，请查看 <strong><a href="../build_faq/">常见问题解答</a></strong> 页面，其中提供了最常见问题的解决方案。或者使用 <a href="https://github.com/OpenHUTB/hutb/discussions">HUTB 论坛</a> 发布您可能有的任何疑问。</p>
@@ -129,7 +129,7 @@
 </li>
 <li><a href="#error"><strong>报错</strong></a></li>
 </ul>
-<hr />
+<hr>
 <h2 id="_1">第一部分：先决条件 <span id="system-requirements"></span></h2>
 <p>在本节中，您将找到开始构建 HUTB 之前所需的系统要求、次要和主要软件安装以及 Python 依赖项的详细信息。</p>
 <h3 id="_2">系统要求 <span id="system-requirements"></span></h3>
@@ -170,13 +170,13 @@ pip3<span class="w"> </span>install<span class="w"> </span>--user<span class="w"
 <h4 id="_5">主要软件安装 <span id="major-installations"></span></h4>
 <h5 id="visual-studio-2019">Visual Studio 2019 <span id="visual-studio-2019"></span></h5>
 <p>从 <a href="https://developerinsider.co/download-visual-studio-2019-web-installer-iso-community-professional-enterprise">此处</a> 获取 2019 版 Visual Studio 。选择 <strong>社区</strong> 作为免费版本。使用 <strong>Visual Studio 安装程序</strong> 安装三个附加元素： 
-<img alt="" src="../img/build/download_vs_2019.png" /></p>
+<img alt="" src="../img/build/download_vs_2019.png"></p>
 <ul>
 <li><strong>.NET framework 4.6.2</strong>. 在 <em>Workloads</em> 部分中，选择 <strong>.NET 桌面开发</strong> ，然后在右侧的安装详细信息面板中选择 <code>.NET Framework 4.6.2 development tools</code>。这是构建虚幻引擎所必需的。</li>
 <li><strong>x64 Visual C++ Toolset.</strong> 在 <em>工作负载</em> 部分中，选择 <strong>使用 C++ 的桌面开发</strong> 。这将启用用于构建的 x64 命令提示符。通过按 <code>Windows</code> 按钮并搜索 <code>x64</code> 来检查它是否已正确安装。小心 <strong>不要打开<code>x86_x64</code>提示</strong>。</li>
 <li><strong>Windows 10 SDK 10.0.18362.0</strong> 在右侧的 <em>安装详细信息</em> 部分中选择它，或者转到 <em>Indivdual Components</em> 选项卡并在 <em>SDKs, libraries, and frameworks</em> 标题下查看。</li>
 </ul>
-<p><img alt="" src="../img/build/vs_2019_install_options.png" /></p>
+<p><img alt="" src="../img/build/vs_2019_install_options.png"></p>
 <div class="admonition 重要">
 <p class="admonition-title">重要</p>
 <p>其他 Visual Studio 版本可能会导致冲突。即使这些已被卸载，某些寄存器也可能仍然存在。要从计算机中彻底清除 Visual Studio，请转到<code>C:\Program Files (x86)\Microsoft Visual Studio\Installer\resources\app\layout</code>并运行 <code>.\InstallCleanup.exe -full</code>。</p>
@@ -197,7 +197,7 @@ pip3<span class="w"> </span>install<span class="w"> </span>--user<span class="w"
 <div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>--depth<span class="w"> </span><span class="m">1</span><span class="w"> </span>-b<span class="w"> </span>hutb<span class="w"> </span>https://github.com/OpenHUTB/engine.git<span class="w"> </span>.
 </code></pre></div>
 <p>或者打开 <a href="https://github.com/OpenHUTB/engine">UnrealEngine</a> 进行项目文件下载：
-<img alt="" src="../img/build/unreal_engine_download.png" /></p>
+<img alt="" src="../img/build/unreal_engine_download.png"></p>
 <div class="admonition 笔记">
 <p class="admonition-title">笔记</p>
 <p>虚幻引擎文件夹尽可能靠近<code>C:\\</code>，因为如果路径超过一定长度，<code>Setup.bat</code>则会在步骤 3 中返回错误。</p>
@@ -217,18 +217,18 @@ GenerateProjectFiles.bat
 </li>
 <li>
 <p>在解决方案资源管理器中，右键单击<code>UE4</code>并选择<code>Build</code>。
-<img alt="" src="../img/build/ue4_build.png" /></p>
+<img alt="" src="../img/build/ue4_build.png"></p>
 </li>
 </ol>
 </blockquote>
 <p>以下是编译过程中可能遇到的错误：
-<img alt="" src="../img/build/ue4_build_error.png" /></p>
+<img alt="" src="../img/build/ue4_build_error.png"></p>
 <p>在默认情况下，Unreal Engine 使用 CPU 的所有核心进行编译。这可能导致内存不足的问题，尤其是在高性能电脑但内存有限的情况下。为避免此问题，可以通过以下两种方式解决：减少 CPU 核心使用数量。增加虚拟内存。以下是通过修改 CPU 核心数来优化编译的详细解决方案：</p>
 <p>（1）您需要修改 <strong>BuildConfiguration.xml</strong> 文件中的设置。文件路径如下：
 <code>~/UnrealEngine\Engine\Saved\UnrealBuildTool\BuildConfiguration.xml</code></p>
 <p>（2）打开 <strong>BuildConfiguration.xml</strong> 文件，并添加或修改以下内容（使用7核进行编译）：
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;</span>
-<span class="nt">&lt;Configuration</span><span class="w"> </span><span class="na">xmlns=</span><span class="s">&quot;https://www.unrealengine.com/BuildConfiguration&quot;</span><span class="nt">&gt;</span>
+</p><div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8" ?&gt;</span>
+<span class="nt">&lt;Configuration</span><span class="w"> </span><span class="na">xmlns=</span><span class="s">"https://www.unrealengine.com/BuildConfiguration"</span><span class="nt">&gt;</span>
 <span class="w">  </span><span class="nt">&lt;BuildConfiguration&gt;</span>
 <span class="w">    </span><span class="nt">&lt;ProcessorCountMultiplier&gt;</span>7<span class="nt">&lt;/ProcessorCountMultiplier&gt;</span>
 <span class="w">    </span><span class="nt">&lt;MaxParallelActions&gt;</span>7<span class="nt">&lt;/MaxParallelActions&gt;</span>
@@ -244,18 +244,18 @@ GenerateProjectFiles.bat
 <span class="w">    </span><span class="nt">&lt;bStopCompilationAfterErrors&gt;</span>true<span class="nt">&lt;/bStopCompilationAfterErrors&gt;</span>
 <span class="w">  </span><span class="nt">&lt;/ParallelExecutor&gt;</span>
 <span class="nt">&lt;/Configuration&gt;</span>
-</code></pre></div></p>
+</code></pre></div>
 <ul>
 <li>编译shader的线程控制</li>
 </ul>
 <p>这个需要去BaseEngine.ini去找。同样有好几个层级，工程目录下也有。 比较关键的是
-<div class="highlight"><pre><span></span><code><span class="k">[DevOptions.Shaders]</span>
+</p><div class="highlight"><pre><span></span><code><span class="k">[DevOptions.Shaders]</span>
 <span class="na">...</span>
 <span class="na">NumUnusedShaderCompilingThreads</span><span class="o">=</span><span class="s">3</span>
 <span class="c1">; Make sure the game has enough cores available to maintain reasonable performance</span>
 <span class="na">NumUnusedShaderCompilingThreadsDuringGame</span><span class="o">=</span><span class="s">4</span>
 </code></pre></div>
-把这两个数字调大一点，尤其是第一个。越大预留的线程越多，ShaderCompiler调度的线程就越少。</p>
+把这两个数字调大一点，尤其是第一个。越大预留的线程越多，ShaderCompiler调度的线程就越少。
 <p>（3）清理配置文件。完成编译后，在执行 <code>make launch</code> 之前，务必删除 <code>BuildConfiguration.xml</code> 文件中新增的内容。否则，可能导致程序运行时出现卡顿或性能下降的问题。</p>
 <p><strong>4.</strong> 设置虚幻引擎变量</p>
 <p>需要设置一个环境变量，以便 HUTB 可以找到虚幻引擎的安装文件夹。这允许用户选择要使用哪个特定版本的虚幻引擎。如果未指定环境变量，HUTB 将在 Windows 注册表中搜索虚幻引擎并使用在那里找到的第一个版本。</p>
@@ -266,9 +266,9 @@ GenerateProjectFiles.bat
 <li>单击<code>New...</code>以创建变量。</li>
 <li>为变量<code>UE4_ROOT</code>命名并选择所需虚幻引擎安装的安装文件夹的路径。</li>
 </ol>
-<p><img alt="" src="../img/build/set_ue4_root.png" /></p>
+<p><img alt="" src="../img/build/set_ue4_root.png"></p>
 <p><strong>5.</strong> 编译解决方案后，您可以打开引擎，通过启动可执行文件 <code>Engine\Binaries\Win64\UE4Editor.exe</code> 来检查所有内容是否已正确安装。</p>
-<p><img alt="" src="./img/build/launch_ue4_editor.png" /></p>
+<p><img alt="" src="./img/build/launch_ue4_editor.png"></p>
 <div class="admonition 笔记">
 <p class="admonition-title">笔记</p>
 <p>如果安装成功，虚幻引擎的版本选择器应该能够识别。您可以通过右键单击任何<code>.uproject</code>文件并选择 <code>Switch Unreal Engine version</code> 来检查这一点。您应该会看到一个弹出窗口，显示<code>Source Build at PATH</code>是您选择的安装路径。如果您在右键单击<code>.uproject</code>文件或<code>Generate Visual Studio project files</code>时看不到此选择器，则虚幻引擎安装出现问题，您可能需要重新正确安装。</p>
@@ -277,7 +277,7 @@ GenerateProjectFiles.bat
 <p class="admonition-title">重要</p>
 <p>到目前为止发生了很多事情。强烈建议在继续之前重新启动计算机。</p>
 </div>
-<hr />
+<hr>
 <h2 id="hutb">第二部分：构建 HUTB <span id="part-two-build-carla"></span></h2>
 <h3 id="hutb_1">克隆 HUTB 存储库 <span id="clone-the-carla-repository"></span></h3>
 <div class="build-buttons">
@@ -304,18 +304,18 @@ git<span class="w"> </span>clone<span class="w"> </span>https://OpenHUTB:T8w6TYB
 <ol>
 <li>从 Carla 根目录，导航到<code>\Util\ContentVersions.txt</code>。本文档包含所有 Carla 版本的资产链接（将当中的 PUT_FILE_ID_HERE 替换为对应版本ID）。 如这里要下载 0.9.15 版本，即把 PUT_FILE_ID_HERE 替换为对应版本 ID：20231108 c5101a5</li>
 <li>提取 <code>Unreal\CarlaUE4\Content\Carla</code> 中的资产。如果该路径不存在，请创建它。
-<img alt="" src="../img/build/content_versions.png" /></li>
+<img alt="" src="../img/build/content_versions.png"></li>
 <li>使用类似于以下内容的命令提取文件：</li>
 </ol>
-<p><div class="highlight"><pre><span></span><code>tar<span class="w"> </span>-xvzf<span class="w"> </span>&lt;assets_file_name&gt;.tar.gz.tar<span class="w"> </span>-C<span class="w"> </span>C:<span class="se">\p</span>ath<span class="se">\t</span>o<span class="se">\c</span>arla<span class="se">\U</span>nreal<span class="se">\C</span>arlaUE4<span class="se">\C</span>ontent<span class="se">\C</span>arla
+<p></p><div class="highlight"><pre><span></span><code>tar<span class="w"> </span>-xvzf<span class="w"> </span>&lt;assets_file_name&gt;.tar.gz.tar<span class="w"> </span>-C<span class="w"> </span>C:<span class="se">\p</span>ath<span class="se">\t</span>o<span class="se">\c</span>arla<span class="se">\U</span>nreal<span class="se">\C</span>arlaUE4<span class="se">\C</span>ontent<span class="se">\C</span>arla
 </code></pre></div>
 下载好后解压到下图这个文件夹（注意是把所有解压的文件放到<code>Unreal/CARLAUE4/Content/CARLA</code> 下，不是刚刚下载的压缩包解压到当前文件夹）像下面这样格式。否则后面执行 make launch 会失败。
-<img alt="" src="../img/build/extracted_content.png" /></p>
+<img alt="" src="../img/build/extracted_content.png">
 <h3 id="hutb_2">构建 HUTB <span id="build-carla"></span></h3>
 <p>本节概述了构建 HUTB 的命令。</p>
 <ul>
 <li>命令应通过 VS 2019 的 <strong>x64 Native Tools Command Prompt for VS 2019</strong> 执行。通过单击该Windows键并搜索 来打开它x64，或者运行<code>call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvars64.bat"</code>。
-<img alt="" src="../img/build/vs_command_prompt.png" /></li>
+<img alt="" src="../img/build/vs_command_prompt.png"></li>
 <li>所有命令都应在根 HUTB 文件夹中运行。</li>
 </ul>
 <p>HUTB 的构建过程分为两部分：编译客户端和编译服务器。</p>
@@ -324,7 +324,7 @@ git<span class="w"> </span>clone<span class="w"> </span>https://OpenHUTB:T8w6TYB
 <p>以下命令编译 Python API 客户端：</p>
 <div class="highlight"><pre><span></span><code>make<span class="w"> </span>PythonAPI
 </code></pre></div>
-<p><img alt="" src="../img/build/make_PythonAPI.png" /></p>
+<p><img alt="" src="../img/build/make_PythonAPI.png"></p>
 <div class="admonition 注意">
 <p class="admonition-title">注意</p>
 <p>常见错误问题分析：<code>make PythonAPI</code> 执行时运行的是 <code>CARLA\Util\BuildTools</code> 文件夹下的 <code>setup.bash</code> 脚本，<code>setup.bash</code> 脚本包含了许多依赖包的下载和安装。而 <code>setup.bash</code> 脚本中依赖包下载和安装脚本又分别位于 <code>CARLA\Util\InstallersWin</code> 中。因此当执行 <code>make PythonAPI</code> 时遇到依赖包下载和安装失败时，可以分别运行各个脚本进行单独安装，注意的是在 InstallersWin 中运行单独的脚本会直接安装在 InstallersWin 中，需要复制到 <code>CARLA\Build</code> 文件夹下。</p>
@@ -356,7 +356,7 @@ git<span class="w"> </span>clone<span class="w"> </span>https://OpenHUTB:T8w6TYB
 <p>以下命令编译并启动虚幻引擎。每次您想要启动服务器或使用虚幻引擎编辑器时运行此命令：</p>
 <div class="highlight"><pre><span></span><code>make<span class="w"> </span>launch
 </code></pre></div>
-<p><img alt="" src="../img/build/make_launch.png" /></p>
+<p><img alt="" src="../img/build/make_launch.png"></p>
 <ul>
 <li><strong>问题一</strong>：</li>
 <li><code>make PythonAPI</code> 或者 <code>make launch</code> 的时候会遇到 <code>cmakelist.txt</code> 的错误，说没有这个文件，这可能是编译的时候由于网速问题，导致一些本该下载的东西直接跳过了，比如这个 txt，解决方法就是重新编译，最好是重新下载 CARLA 这个文件，然后重新编译，网速好的情况下应该就不会出现这个问题。</li>
@@ -370,7 +370,7 @@ git<span class="w"> </span>clone<span class="w"> </span>https://OpenHUTB:T8w6TYB
 <p class="admonition-title">笔记</p>
 <p>如果编译过程中出现中文乱码，为了便于寻找编译错误，可以使用<code>chcp 65001</code>命令将编码方式修改为UTF-8（选择“属性”。在“属性”&gt;&gt;“选项”一栏中，就可以看到当前代码页的编码方式）。</p>
 </div>
-<p><img alt="" src="../img/ue/ue4_editor.png" /></p>
+<p><img alt="" src="../img/ue/ue4_editor.png"></p>
 <div class="admonition 注意">
 <p class="admonition-title">注意</p>
 <p><strong>NumPy 2 错误</strong>: <code>make launch</code> 命令可能会受到 NumPy 2 版本冲突的影响，请使用 PIP 命令检查 Python 安装中的 NumPy 版本：<code>python3 -m pip show numpy</code>。如果版本为 <em>2.0.0</em> 或更高，则需要降级到 <em>numpy&lt;2.0.0</em> 版本。 </p>
@@ -456,67 +456,67 @@ python3<span class="w"> </span>dynamic_weather.py<span class="w"> </span>
 </tbody>
 </table>
 <p>构建一个 egg 分发包（binary distribution），会在当前目录下的“dist”目录内创建一个“egg”文件，文件名格式就是”项目名-版本号-Python版本.egg”：
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>setup.py<span class="w"> </span>bdist_egg
-</code></pre></div></p>
+</p><div class="highlight"><pre><span></span><code>python<span class="w"> </span>setup.py<span class="w"> </span>bdist_egg
+</code></pre></div>
 <p>构建一个 wheel 分发包，egg 包是过时的，whl 包是新的标准：
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>setup.py<span class="w"> </span>bdist_wheel
-</code></pre></div></p>
+</p><div class="highlight"><pre><span></span><code>python<span class="w"> </span>setup.py<span class="w"> </span>bdist_wheel
+</code></pre></div>
 <p>脚本<code>setup.py</code>中的<code>ext_modules</code>参数用于构建 C 和 C++ 扩展扩展包。其是 Extension 实例的列表，每一个 Extension 实例描述了一个独立的扩展模块，扩展模块可以设置扩展包名，头文件、源文件、链接库及其路径、宏定义和编辑参数等。</p>
 <p>当你安装一个包后，这个包需要你不断修改，这时就采用这种安装方法：<code>python setup.py develop</code>。仅在<code>Python37/Lib/site-packages</code>目录下生成链接文件<code>carla.egg-link</code> 指向 <code>carla/PythonAPI/carla/source</code>和<code>../</code>。</p>
 <p>而<code>python setup.py install</code>在<code>Python37\Lib\site-packages\carla-0.9.15-py3.7-win-amd64.egg</code>目录下生成运行包，包括<code>libcarla.cp37-win_amd64.pyd</code>。</p>
 <h3 id="_8">其他 <span id="other"></span></h3>
 <p>如果想重新编译LibCarla或者使用从其他地方拷贝过来的Build目录下的文件，需要删除<code>Build/libcarla-visualstudio</code>目录，然后重新运行编译命令（否则<code>PythonAPI\carla\dependencies</code>目录不会生成，生成.whl文件时遍历的不到依赖库，报错：<code>NotADirectoryError: [WinError 267] 目录名称无效。: 'dependencies/lib'</code>）：
-<div class="highlight"><pre><span></span><code>make<span class="w"> </span>LibCarla
+</p><div class="highlight"><pre><span></span><code>make<span class="w"> </span>LibCarla
 </code></pre></div>
-则服务端文件<code>carla_server.lib</code>生成至<code>carla\Unreal\CarlaUE4\Plugins\Carla\CarlaDependencies\</code>，客户端文件<code>carla_client.lib</code>生成至<code>carla\PythonAPI\carla\dependencies\</code>。</p>
+则服务端文件<code>carla_server.lib</code>生成至<code>carla\Unreal\CarlaUE4\Plugins\Carla\CarlaDependencies\</code>，客户端文件<code>carla_client.lib</code>生成至<code>carla\PythonAPI\carla\dependencies\</code>。
 <p>启动vs2019环境的命令：
-<div class="highlight"><pre><span></span><code>call<span class="w"> </span><span class="s2">&quot;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvars64.bat&quot;</span>
+</p><div class="highlight"><pre><span></span><code>call<span class="w"> </span><span class="s2">"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvars64.bat"</span>
 <span class="nb">set</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span>C:<span class="se">\s</span>oftware<span class="se">\m</span>ake-4.4.1<span class="se">\b</span>in<span class="p">;</span>%PATH%
 <span class="nb">echo</span><span class="w"> </span>%PATH%
-</code></pre></div></p>
+</code></pre></div>
 <p>启动Python虚拟环境报错：<code>CondaError: Run 'conda init' before 'conda activate'</code></p>
 <blockquote>
 <p>使用Anaconda Powershell Prompt打开，或者：
-<div class="highlight"><pre><span></span><code>conda<span class="w"> </span>init<span class="w"> </span>cmd.exe<span class="w">  </span><span class="c1"># 先执行这个，然后再激活虚拟环境</span>
+</p><div class="highlight"><pre><span></span><code>conda<span class="w"> </span>init<span class="w"> </span>cmd.exe<span class="w">  </span><span class="c1"># 先执行这个，然后再激活虚拟环境</span>
 conda<span class="w"> </span>activate<span class="w"> </span>carla_cpp
-</code></pre></div></p>
+</code></pre></div>
 </blockquote>
 <p>报chrono模块的错：<code>D:/work/workspace/carla/Unreal/CarlaUE4/Plugins/Carla/Source/Carla/Sensor/V2X/PathLossModel.cpp(176): error C3861: “DrawDebugLine”: 找不到标识符</code>、
-<div class="highlight"><pre><span></span><code>D:/work/workspace/carla/Unreal/CarlaUE4/Plugins/Carla/Source/Carla/Sensor/V2X/PathLossModel.cpp(542): error C2027: 使用了未定义类型“URandomEngine”
+</p><div class="highlight"><pre><span></span><code>D:/work/workspace/carla/Unreal/CarlaUE4/Plugins/Carla/Source/Carla/Sensor/V2X/PathLossModel.cpp(542): error C2027: 使用了未定义类型“URandomEngine”
 D:/work/workspace/carla/Unreal/CarlaUE4/Plugins/Carla/Source/Carla/Sensor/V2XSensor.cpp(189): error C2653: “UCarlaStatics”: 不是类或命名空间名称
 D:/work/workspace/carla/Unreal/CarlaUE4/Plugins/Carla/Source/Carla/Sensor/V2XSensor.cpp(189): error C3861: “GetCurrentEpisode”: 找不到标识符
-</code></pre></div></p>
+</code></pre></div>
 <blockquote>
 <p>解决：先使用VS编译后，然后再用命令行启动则可，原因不明。</p>
 </blockquote>
 <p>Unreal/CarlaUE4/Plugins/Carla/Source/Carla/Sensor/V2XSensor.cpp添加头文件
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Carla/Game/CarlaStatics.h&quot;</span>
-</code></pre></div></p>
+</p><div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">"Carla/Game/CarlaStatics.h"</span>
+</code></pre></div>
 <p>报错：
-<div class="highlight"><pre><span></span><code>D:/work/workspace/carla/Unreal/CarlaUE4/Plugins/Carla/Source/Carla/Sensor/V2X/PathLossModel.cpp(176): error C3861: “DrawDebugLine”: 找不到标识符
+</p><div class="highlight"><pre><span></span><code>D:/work/workspace/carla/Unreal/CarlaUE4/Plugins/Carla/Source/Carla/Sensor/V2X/PathLossModel.cpp(176): error C3861: “DrawDebugLine”: 找不到标识符
 </code></pre></div>
 解决：Unreal/CarlaUE4/Plugins/Carla/Source/Carla/Sensor/V2X/PathLossModel.cpp添加头文件
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;DrawDebugHelpers.h&quot;</span>
-</code></pre></div></p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">"DrawDebugHelpers.h"</span>
+</code></pre></div>
 <p>报错：
-<div class="highlight"><pre><span></span><code>错误  C2027   使用了未定义类型“URandomEngine” CarlaUE4    D:\work\workspace\carla\Unreal\CarlaUE4\Plugins\Carla\Source\Carla\Sensor\V2X\PathLossModel.cpp 542 
-</code></pre></div></p>
+</p><div class="highlight"><pre><span></span><code>错误  C2027   使用了未定义类型“URandomEngine” CarlaUE4    D:\work\workspace\carla\Unreal\CarlaUE4\Plugins\Carla\Source\Carla\Sensor\V2X\PathLossModel.cpp 542 
+</code></pre></div>
 <p>解决：<code>Unreal\CarlaUE4\Plugins\Carla\Source\Carla\Sensor\V2X\PathLossModel.cpp</code>中添加头文件：
-<div class="highlight"><pre><span></span><code>#include &quot;Carla/Util/RandomEngine.h&quot;
-</code></pre></div></p>
+</p><div class="highlight"><pre><span></span><code>#include "Carla/Util/RandomEngine.h"
+</code></pre></div>
 <p>执行<code>make PythonAPI</code>时候报错：<code>无法加载文件Microsoft.PowerShell_profile.ps1...因为在此系统上禁止运行脚本</code>：
-<div class="highlight"><pre><span></span><code><span class="c1"># 使用管理员权限启动PowerShell，修改当前用户权限</span>
+</p><div class="highlight"><pre><span></span><code><span class="c1"># 使用管理员权限启动PowerShell，修改当前用户权限</span>
 Set-ExecutionPolicy<span class="w"> </span>-ExecutionPolicy<span class="w"> </span>RemoteSigned<span class="w"> </span>-Scope<span class="w"> </span>CurrentUser
 <span class="c1"># 弹出选择项后选择`A`</span>
-</code></pre></div></p>
+</code></pre></div>
 <p>执行<code>make PythonAPI</code>时报错：
-<div class="highlight"><pre><span></span><code>-[BuildPythonAPI]: [Batch params]: --py3
+</p><div class="highlight"><pre><span></span><code>-[BuildPythonAPI]: [Batch params]: --py3
 信息: 用提供的模式无法找到文件。
 -[BuildPythonAPI]: [ERROR] An error ocurred while executing the py.
 -[BuildPythonAPI]: [ERROR] Possible causes:
--[BuildPythonAPI]: [ERROR]  - Make sure &quot;py&quot; is installed.
+-[BuildPythonAPI]: [ERROR]  - Make sure "py" is installed.
 -[BuildPythonAPI]: [ERROR]  - py = python launcher. This utility is bundled with Python installation but not installed by default.
--[BuildPythonAPI]: [ERROR]  - Make sure it is available on your Windows &quot;py&quot;.
+-[BuildPythonAPI]: [ERROR]  - Make sure it is available on your Windows "py".
 make: *** [Util/BuildTools/Windows.mk:62: PythonAPI] Error 1
 </code></pre></div>
 报错位置：<code>BuildPythonAPI.bat</code>：
@@ -528,34 +528,34 @@ make: *** [Util/BuildTools/Windows.mk:62: PythonAPI] Error 1
 <div class="highlight"><pre><span></span><code><span class="sb">```</span>shell
 where<span class="w"> </span>python<span class="w"> </span><span class="m">1</span>&gt;nul
 <span class="k">if</span><span class="w"> </span>%errorlevel%<span class="w"> </span>neq<span class="w"> </span><span class="m">0</span><span class="w"> </span>goto<span class="w"> </span>error_py
-</code></pre></div></p>
+</code></pre></div>
 <h2 id="_9">报错排查 <span id="error"></span></h2>
 <p>当执行 make 相关命令报错时，可以顺着 bat 脚本的<strong>构建流程</strong>，在可能报错的地方加上 <code>echo</code> 语句输出所需查看变量的值是否正确，并加上 <code>pause</code> 命令暂停执行。</p>
-<p><img alt="" src="../img/tuto_D_windows_debug/file_specification_build_tools.png" /></p>
+<p><img alt="" src="../img/tuto_D_windows_debug/file_specification_build_tools.png"></p>
 <p>以下为一些常见的报错信息和解决办法：</p>
 <ul>
 <li>
 <p>执行 <code>make PythonAPI</code>报错：
-    &gt; <div class="highlight"><pre><span></span><code>Cmake Error: The source directory &quot;XX/Build/**-source&quot; does not exist
+    &gt; </p><div class="highlight"><pre><span></span><code>Cmake Error: The source directory "XX/Build/**-source" does not exist
 </code></pre></div>
-    &gt; 解决：Build目录下的对应依赖的源代码不存在，可能因为网络问题没下载好，或者手动下载。保证有这个源码后然后再继续编译。</p>
+    &gt; 解决：Build目录下的对应依赖的源代码不存在，可能因为网络问题没下载好，或者手动下载。保证有这个源码后然后再继续编译。
 </li>
 <li>
 <p>执行<code>make osm2odr</code>报错：
-    &gt; <div class="highlight"><pre><span></span><code>CMake Error: The source directory &quot;D:/work/workspace/carla/Build/osm2odr-visualstudio/x64&quot; does not appear to contain CMakeLists.txt.
+    &gt; </p><div class="highlight"><pre><span></span><code>CMake Error: The source directory "D:/work/workspace/carla/Build/osm2odr-visualstudio/x64" does not appear to contain CMakeLists.txt.
 Specify --help for usage, or press the help button on the CMake GUI.
 Error: could not load cache
 </code></pre></div>
-    &gt; 从其他地方把<code>Build\osm2odr-visualstudio\CMakeCache.txt</code>拷贝过来，修改里面对应的目录为当前工程的目录。</p>
+    &gt; 从其他地方把<code>Build\osm2odr-visualstudio\CMakeCache.txt</code>拷贝过来，修改里面对应的目录为当前工程的目录。
 </li>
 </ul>
-<hr />
+<hr>
 <ul>
 <li>
 <p>执行<code>make PythonAPI</code>报错：
-    &gt; <div class="highlight"><pre><span></span><code>libcarla.obj : error LNK2001: 无法解析的外部符号 &quot;class std::basic_string&lt;char,struct std::char_traits&lt;char&gt;,class std::allocator&lt;char&gt; &gt; __cdecl osm2odr::ConvertOSMToOpenDRIVE(class std::basic_string&lt;char,struct std::char_traits&lt;char&gt;,class std::allocator&lt;char&gt; &gt;,struct osm2odr::OSM2ODRSettings)&quot; (?ConvertOSMToOpenDRIVE@osm2odr@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V23@UOSM2ODRSettings@1@@Z)
+    &gt; </p><div class="highlight"><pre><span></span><code>libcarla.obj : error LNK2001: 无法解析的外部符号 "class std::basic_string&lt;char,struct std::char_traits&lt;char&gt;,class std::allocator&lt;char&gt; &gt; __cdecl osm2odr::ConvertOSMToOpenDRIVE(class std::basic_string&lt;char,struct std::char_traits&lt;char&gt;,class std::allocator&lt;char&gt; &gt;,struct osm2odr::OSM2ODRSettings)" (?ConvertOSMToOpenDRIVE@osm2odr@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V23@UOSM2ODRSettings@1@@Z)
 </code></pre></div>
-    &gt; 从其他编译成功的地方将<code>PythonAPI\carla\dependencies\lib\osm2odr.lib</code>拷贝过来。</p>
+    &gt; 从其他编译成功的地方将<code>PythonAPI\carla\dependencies\lib\osm2odr.lib</code>拷贝过来。
 </li>
 <li>
 <p>同一台机器中之前安装过vs，再安装时报错：<code>无法安装  Microsoft.VisualStudio.Debugger.JustInTime.Msi</code>
@@ -595,9 +595,9 @@ Error: could not load cache
 <p>使用<code>make Python</code>编译 HUTB 0.9.13 时报错：<code>osm2odr.lib(GeoConvHelper.obj) : error LNK2001: 无法解析的外部符号 proj_create</code>：</p>
 <blockquote>
 <p>删除位于Build目录下的proj源代码和安装目录，然后运行下面命令（参数改为对应的Build目录）：
-<div class="highlight"><pre><span></span><code>install_proj.bat<span class="w"> </span>--build-dir<span class="w"> </span>D:<span class="se">\w</span>ork<span class="se">\D</span>ReyeVR<span class="se">\c</span>arla<span class="se">\B</span>uild
+</p><div class="highlight"><pre><span></span><code>install_proj.bat<span class="w"> </span>--build-dir<span class="w"> </span>D:<span class="se">\w</span>ork<span class="se">\D</span>ReyeVR<span class="se">\c</span>arla<span class="se">\B</span>uild
 </code></pre></div>
-如果还报错sqlite的错误，需要把<code>sqlite3-install</code>和<code>sqlite3-src</code>删除后重新编译。</p>
+如果还报错sqlite的错误，需要把<code>sqlite3-install</code>和<code>sqlite3-src</code>删除后重新编译。
 </blockquote>
 </li>
 <li>
@@ -607,7 +607,7 @@ Error: could not load cache
 </li>
 </ul>
 <p>以上为常见 bat 脚本执行报错的解决方法，如果是更深入 C++ 层次的错误，请参考 <a href="../tuto_D_windows_debug/">在 Windows 上进行模拟器的调试</a> 。</p>
-<hr />
+<hr>
 <h2 id="_10">参考</h2>
 <ul>
 <li>
@@ -629,7 +629,7 @@ Error: could not load cache
 <p><a href="https://github.com/ZhilingResearch/Libra">车载HUD设计与验证平台文档</a> ：<a href="https://g06o7xylva3.feishu.cn/docx/M4dQdH8saoenDTx1w4Ac07i0nNe">文档</a> 包括：当前驾驶车辆工况、导航路径引导、提示周围环境信息、接管提升和辅助、个性化娱乐功能。。</p>
 </li>
 </ul>
-<hr />
+<hr>
 <p>有关本指南的任何问题， 请阅读 <strong><a href="../build_faq/">常见问题解答</a></strong> 页面或在 <a href="https://github.com/OpenHUTB/hutb/discussions">OpenHUTB 论坛</a> 中发帖。</p>
 <p>现在您已经构建了 HUTB，接下来了解如何更新 HUTB 构建或在模拟中迈出第一步，并学习一些核心概念。</p>
 <div class="build-buttons">
@@ -644,7 +644,7 @@ Error: could not load cache
 第一步</a>
 </p>
 
-</div>
+</div></div>
               
             </div>
           </div><footer>

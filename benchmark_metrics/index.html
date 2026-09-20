@@ -100,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="_1">计算的基准性能指标</h1>
+                <div><h1 id="_1">计算的基准性能指标</h1>
 <p>本页介绍了性能指标模块。此模块用于根据代理在基准测试期间执行的操作计算结果摘要。</p>
 <h2 id="_2">提供性能指标</h2>
 <p>驾驶基准性能指标模块提供以下性能指标：</p>
@@ -142,35 +142,35 @@
 <p>默认参数为：</p>
 <div class="highlight"><pre><span></span><code><span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">metrics_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Property to return the parameters for the metrics module</span>
 <span class="sd">    Could be redefined depending on the needs of the user.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">return</span> <span class="p">{</span>
 
-        <span class="s1">&#39;intersection_offroad&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;frames_skip&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
-                                 <span class="s1">&#39;frames_recount&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
-                                 <span class="s1">&#39;threshold&#39;</span><span class="p">:</span> <span class="mf">0.3</span>
+        <span class="s1">'intersection_offroad'</span><span class="p">:</span> <span class="p">{</span><span class="s1">'frames_skip'</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+                                 <span class="s1">'frames_recount'</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+                                 <span class="s1">'threshold'</span><span class="p">:</span> <span class="mf">0.3</span>
                                  <span class="p">},</span>
-        <span class="s1">&#39;intersection_otherlane&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;frames_skip&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
-                                   <span class="s1">&#39;frames_recount&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
-                                   <span class="s1">&#39;threshold&#39;</span><span class="p">:</span> <span class="mf">0.4</span>
+        <span class="s1">'intersection_otherlane'</span><span class="p">:</span> <span class="p">{</span><span class="s1">'frames_skip'</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+                                   <span class="s1">'frames_recount'</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+                                   <span class="s1">'threshold'</span><span class="p">:</span> <span class="mf">0.4</span>
                                    <span class="p">},</span>
-        <span class="s1">&#39;collision_other&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;frames_skip&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
-                            <span class="s1">&#39;frames_recount&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
-                            <span class="s1">&#39;threshold&#39;</span><span class="p">:</span> <span class="mi">400</span>
+        <span class="s1">'collision_other'</span><span class="p">:</span> <span class="p">{</span><span class="s1">'frames_skip'</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+                            <span class="s1">'frames_recount'</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+                            <span class="s1">'threshold'</span><span class="p">:</span> <span class="mi">400</span>
                             <span class="p">},</span>
-        <span class="s1">&#39;collision_vehicles&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;frames_skip&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
-                               <span class="s1">&#39;frames_recount&#39;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
-                               <span class="s1">&#39;threshold&#39;</span><span class="p">:</span> <span class="mi">400</span>
+        <span class="s1">'collision_vehicles'</span><span class="p">:</span> <span class="p">{</span><span class="s1">'frames_skip'</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+                               <span class="s1">'frames_recount'</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
+                               <span class="s1">'threshold'</span><span class="p">:</span> <span class="mi">400</span>
                                <span class="p">},</span>
-        <span class="s1">&#39;collision_pedestrians&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;frames_skip&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
-                                  <span class="s1">&#39;frames_recount&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
-                                  <span class="s1">&#39;threshold&#39;</span><span class="p">:</span> <span class="mi">300</span>
+        <span class="s1">'collision_pedestrians'</span><span class="p">:</span> <span class="p">{</span><span class="s1">'frames_skip'</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+                                  <span class="s1">'frames_recount'</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+                                  <span class="s1">'threshold'</span><span class="p">:</span> <span class="mi">300</span>
                                   <span class="p">},</span>
 
           <span class="p">}</span>
-</code></pre></div>
+</code></pre></div></div>
               
             </div>
           </div><footer>

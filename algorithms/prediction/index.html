@@ -100,10 +100,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="_1">预测</h1>
+                <div><h1 id="_1">预测</h1>
 <h2 id="_2">预测模块介绍</h2>
 <p>预测在自动驾驶中发挥着关键作用，可以确定道路代理可能采取的行动以确保安全导航。在本文档中，我们概述了当前的方法，从简单的 <a href="#CVM">恒速运动</a> 预测器到更先进的运动变换器 <a href="#MT">Motion Transformer</a>。</p>
-<h2 id="_3">恒速运动预测器<a name="CVM"/></h2>
+<h2 id="_3">恒速运动预测器<a name="CVM"></a></h2>
 <h3 id="_4">概述</h3>
 <p>等速模型是最基本但有效的预测方法<a href="#ref1"><sup>[1]</sup></a>，假设实体以恒定速度继续其当前轨迹。在这里，我们通过 Runge-Kutta 4 (RK4) 积分对运动学自行车模型进行正向模拟，假设没有加速度和转向角。</p>
 <h3 id="_5">适用性和局限性</h3>
@@ -112,8 +112,8 @@
 <li><strong>局限性</strong>: ：在城市或拥挤的地区，该模型可能无法捕获代理的不稳定运动。</li>
 </ul>
 <h3 id="_6">数学模型</h3>
-<p><img alt="kine_bicycle_model" src="../../img/ecosys_iss/kine_bicycle_model.png" /></p>
-<p><center><em>自行车运动模型</em></center></p>
+<p><img alt="kine_bicycle_model" src="../../img/ecosys_iss/kine_bicycle_model.png"></p>
+<p></p><center><em>自行车运动模型</em></center>
 <p> </p>
 
 <p>控制自行车运动模型的主要方程是：</p>
@@ -153,11 +153,11 @@
 <li>障碍物最少的开放区域。</li>
 </ul>
 <p>在 ISS 中，采用等速模型来预测结构化道路环境中的运动。</p>
-<h2 id="motion-transformer">Motion Transformer<a name="MT"/></h2>
+<h2 id="motion-transformer">Motion Transformer<a name="MT"></a></h2>
 <h3 id="_8">概述</h3>
 <p>Motion Transformer<a href="#ref2"><sup>[2]</sup></a>是一种最先进的模型，它考虑历史数据来预测未来的轨迹。该框架将运动预测建模为全局意图定位和局部运动细化的联合优化。除了考虑道路结构的全局信息之外，该方法还通过适应可学习的运动查询来合并不同的运动模式。Motion Transformer的整体结构如下图所示。</p>
-<p><img alt="kine_bicycle_model" src="../../img/ecosys_iss/motion_transformer.png" /></p>
-<p><center> <em>motion transformer 的结构<a href="#ref2"><sup>[2]</sup></a></em> </center></p>
+<p><img alt="kine_bicycle_model" src="../../img/ecosys_iss/motion_transformer.png"></p>
+<p></p><center> <em>motion transformer 的结构<a href="#ref2"><sup>[2]</sup></a></em> </center>
 <p> </p>
 
 <h3 id="motion-transformer_1">为什么选择 Motion Transformer?</h3>
@@ -183,7 +183,7 @@
 <ol>
     <li id="ref1">Schöller C, Aravantinos V, Lay F, et al. "What the constant velocity model can teach us about pedestrian motion prediction." In IEEE Robotics and Automation Letters, 2020, 5(2): 1696-1703.</li>
     <li id="ref2">Shi S, Jiang L, Dai D, et al. "Motion transformer with global intention localization and local movement refinement." In Advances in Neural Information Processing Systems, 2022, 35: 6531-6543.</li>
-</ol>
+</ol></div>
               
             </div>
           </div><footer>

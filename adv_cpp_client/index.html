@@ -100,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="c">C++ 客户端示例</h1>
+                <div><h1 id="c">C++ 客户端示例</h1>
 <p>要构建C++客户端示例，您需要安装<code>make</code>。在构建C++客户端之前，您需要构建 Carla，并按照您平台的相关  <a href="../build_carla/">构建说明</a> 进行操作。</p>
 <p>导航到 Carla 存储库中的<code>Examples/CppClient</code> 文件夹并打开一个终端。您将在此目录中找到一个 Makefile。要在Linux中构建并运行它，请在命令提示符下执行<code>make run</code>。在Windows中，在同一目录中创建一个名为<code>CMakeLists.txt</code>的文件，并添加 <a href="https://github.com/OpenHUTB/doc/tree/master/src/cmake/CMakeLists.txt">此文件</a> 中的内容，然后运行<code>cmake</code>。</p>
 <p>这个C++示例将连接到服务器，生成一辆车，并在销毁和终止车辆之前对其应用命令。</p>
@@ -147,13 +147,13 @@
 <span class="n">std</span><span class="o">::</span><span class="n">mt19937_64</span><span class="w"> </span><span class="nf">rng</span><span class="p">((</span><span class="n">std</span><span class="o">::</span><span class="n">random_device</span><span class="p">())());</span>
 <span class="p">...</span>
 <span class="k">auto</span><span class="w"> </span><span class="n">town_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RandomChoice</span><span class="p">(</span><span class="n">client</span><span class="p">.</span><span class="n">GetAvailableMaps</span><span class="p">(),</span><span class="w"> </span><span class="n">rng</span><span class="p">);</span>
-<span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Loading world: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">town_name</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"Loading world: "</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">town_name</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
 <span class="k">auto</span><span class="w"> </span><span class="n">world</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">client</span><span class="p">.</span><span class="n">LoadWorld</span><span class="p">(</span><span class="n">town_name</span><span class="p">);</span>
 </code></pre></div>
 <h3 id="_3">随机选择一辆车</h3>
 <p>接下来，我们将获取蓝图库，过滤车辆并选择一个随机的车辆蓝图：</p>
 <div class="highlight"><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="n">blueprint_library</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">world</span><span class="p">.</span><span class="n">GetBlueprintLibrary</span><span class="p">();</span>
-<span class="k">auto</span><span class="w"> </span><span class="n">vehicles</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">blueprint_library</span><span class="o">-&gt;</span><span class="n">Filter</span><span class="p">(</span><span class="s">&quot;vehicle&quot;</span><span class="p">);</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">vehicles</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">blueprint_library</span><span class="o">-&gt;</span><span class="n">Filter</span><span class="p">(</span><span class="s">"vehicle"</span><span class="p">);</span>
 <span class="k">auto</span><span class="w"> </span><span class="n">blueprint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RandomChoice</span><span class="p">(</span><span class="o">*</span><span class="n">vehicles</span><span class="p">,</span><span class="w"> </span><span class="n">rng</span><span class="p">);</span>
 </code></pre></div>
 <p>现在我们需要找到一个位置，从地图上的生成点生成车辆。我们将获得一个指向地图对象的指针引用，然后选择一个随机生成点（确保您已初始化随机数生成器）：</p>
@@ -162,7 +162,7 @@
 </code></pre></div>
 <p>现在我们有了蓝图和生成位置，我们现在可以使用 <code>world.SpawnActor(...)</code> 方法生成车辆。</p>
 <div class="highlight"><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="n">actor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">world</span><span class="p">.</span><span class="n">SpawnActor</span><span class="p">(</span><span class="n">blueprint</span><span class="p">,</span><span class="w"> </span><span class="n">transform</span><span class="p">);</span>
-<span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Spawned &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">actor</span><span class="o">-&gt;</span><span class="n">GetDisplayId</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"Spawned "</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">actor</span><span class="o">-&gt;</span><span class="n">GetDisplayId</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">'\n'</span><span class="p">;</span>
 <span class="c1">// 检索指向车辆对象的指针</span>
 <span class="k">auto</span><span class="w"> </span><span class="n">vehicle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">boost</span><span class="o">::</span><span class="n">static_pointer_cast</span><span class="o">&lt;</span><span class="n">cc</span><span class="o">::</span><span class="n">Vehicle</span><span class="o">&gt;</span><span class="p">(</span><span class="n">actor</span><span class="p">);</span>
 </code></pre></div>
@@ -192,7 +192,7 @@
 <span class="nv">BINDIR</span><span class="o">=</span><span class="k">$(</span>CURDIR<span class="k">)</span>/bin
 <span class="nv">INSTALLDIR</span><span class="o">=</span><span class="k">$(</span>CURDIR<span class="k">)</span>/libcarla-install
 <span class="nv">TOOLCHAIN</span><span class="o">=</span><span class="k">$(</span>CURDIR<span class="k">)</span>/ToolChain.cmake
-</code></pre></div>
+</code></pre></div></div>
               
             </div>
           </div><footer>

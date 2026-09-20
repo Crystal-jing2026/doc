@@ -100,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="_1">如何发布</h1>
+                <div><h1 id="_1">如何发布</h1>
 <blockquote>
 <p><em>本文档适用于想要发布新版本的开发人员。</em></p>
 </blockquote>
@@ -163,33 +163,33 @@
 参考<a href="https://github.com/chiefGui/ue-from-source?tab=readme-ov-file#step-by-step-1">链接</a> 进行虚幻引擎的发布。</p>
 <p>3.使用 Visual Studio 打开 <code>UE4.shn</code> 。</p>
 <p>4.在右侧边栏，您应该会看到一个<code>解决方案资源管理器</code>面板。展开<code>Programs</code>文件夹并找到<code>AutomationTool</code>项目（<code>Engine\Source\Programs\AutomationTool</code>）：
-<img alt="Image" src="../img/ue/AutomationTool.png" /></p>
+<img alt="Image" src="../img/ue/AutomationTool.png"></p>
 <p>5.右键单击它并选择<code>生成(Build)</code>，应该很快。</p>
 <p>6.运行安装软件的构建脚本：（如果没有）安装 <a href="https://developer.microsoft.com/en-us/windows/downloads/windows-10-sdk">Windows 10 SDK</a> ;</p>
 <p>将文件 <a href="https://github.com/OpenHUTB/doc/tree/master/src/bat/GenerateInstalledBuild.bat"><code>GenerateInstalledBuild.bat</code></a> 拷贝到虚幻引擎源代码的根目录，然后点击运行。</p>
 <p>如果一切顺利，您应该会看到<code>LocalBuilds</code>与该文件夹处于同一级别的<code>Engine</code>文件夹，并且控制台中没有错误。(还包括一个 InstalledDDC 文件夹：DerivedDataCache)。</p>
 <p>或者到虚幻引擎源代码主目录中运行下面命令：
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>Engine<span class="se">\B</span>inaries<span class="se">\D</span>otNET
-AutomationTool.exe<span class="w"> </span>BuildGraph<span class="w"> </span>-target<span class="o">=</span><span class="s2">&quot;Make Installed Build Win64&quot;</span><span class="w"> </span>-script<span class="o">=</span>Engine/Build/InstalledEngineBuild.xml<span class="w"> </span>-set:HostPlatformOnly<span class="o">=</span><span class="nb">true</span>
-</code></pre></div></p>
+</p><div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>Engine<span class="se">\B</span>inaries<span class="se">\D</span>otNET
+AutomationTool.exe<span class="w"> </span>BuildGraph<span class="w"> </span>-target<span class="o">=</span><span class="s2">"Make Installed Build Win64"</span><span class="w"> </span>-script<span class="o">=</span>Engine/Build/InstalledEngineBuild.xml<span class="w"> </span>-set:HostPlatformOnly<span class="o">=</span><span class="nb">true</span>
+</code></pre></div>
 <ul>
 <li>
 <p>运行<code>`GenerateInstalledBuild.bat</code>时从报错日志中发现的错误：
-<div class="highlight"><pre><span></span><code>ERROR: Visual Studio 2017 must be installed in order to build this target.
+</p><div class="highlight"><pre><span></span><code>ERROR: Visual Studio 2017 must be installed in order to build this target.
 </code></pre></div>
-解决：下载 <a href="https://pan.baidu.com/s/1n2fJvWff4pbtMe97GOqtvQ?pwd=hutb">链接</a> 的<code>software/Build Binary</code>中的 <code>vs_Community_2017.exe</code> 或 <code>3d5_VisualStudio20171509.rar</code>进行安装。</p>
+解决：下载 <a href="https://pan.baidu.com/s/1n2fJvWff4pbtMe97GOqtvQ?pwd=hutb">链接</a> 的<code>software/Build Binary</code>中的 <code>vs_Community_2017.exe</code> 或 <code>3d5_VisualStudio20171509.rar</code>进行安装。
 </li>
 <li>
 <p>运行<code>`GenerateInstalledBuild.bat</code>时候报错：
-<div class="highlight"><pre><span></span><code>Unable to find installation of PDBCOPY.EXE
+</p><div class="highlight"><pre><span></span><code>Unable to find installation of PDBCOPY.EXE
 </code></pre></div>
-解决：参考 <a href="https://pan.baidu.com/s/1n2fJvWff4pbtMe97GOqtvQ?pwd=hutb">链接</a> 的<code>software/Build Binary</code>目录 或者 <a href="https://arenas0.com/2018/12/03/UE4_Learn_Build_Binary/">链接</a> 从 <a href="https://pan.baidu.com/s/1Y0PQeHCMQh7Ln12d_p_Rzw">百度网盘</a> 下载<code>X64 Debuggers And Tools-x64_en-us.msi</code>安装。</p>
+解决：参考 <a href="https://pan.baidu.com/s/1n2fJvWff4pbtMe97GOqtvQ?pwd=hutb">链接</a> 的<code>software/Build Binary</code>目录 或者 <a href="https://arenas0.com/2018/12/03/UE4_Learn_Build_Binary/">链接</a> 从 <a href="https://pan.baidu.com/s/1Y0PQeHCMQh7Ln12d_p_Rzw">百度网盘</a> 下载<code>X64 Debuggers And Tools-x64_en-us.msi</code>安装。
 </li>
 <li>
 <p>无法启动
-<div class="highlight"><pre><span></span><code>无法启动此程序，因为计算机中丢失XINPUT1_3.dll。尝试重新安装该程
+</p><div class="highlight"><pre><span></span><code>无法启动此程序，因为计算机中丢失XINPUT1_3.dll。尝试重新安装该程
 </code></pre></div>
-解决：参考 <a href="http://www.codefaq.cn/category/Windows/">链接</a> 安装 DirectX Redist (June 2010)。</p>
+解决：参考 <a href="http://www.codefaq.cn/category/Windows/">链接</a> 安装 DirectX Redist (June 2010)。
 </li>
 </ul>
 <h2 id="_5">设计</h2>
@@ -203,13 +203,13 @@ AutomationTool.exe<span class="w"> </span>BuildGraph<span class="w"> </span>-tar
 <p>转到 https://pypi.org/manage/account/#api-tokens 并创建一个新的 API 令牌；不要将其范围限制在特定项目中，因为您正在创建一个新项目。</p>
 <p>在复制并保存令牌之前请勿关闭页面 - 您将不会再看到该令牌。</p>
 <p>在$HOME/.pypirc文件中加入：
-<div class="highlight"><pre><span></span><code><span class="o">[</span>pypi<span class="o">]</span>
+</p><div class="highlight"><pre><span></span><code><span class="o">[</span>pypi<span class="o">]</span>
 <span class="w">  </span><span class="nv">username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>__token__
 <span class="w">  </span><span class="nv">password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>pypi-AgEIcHlwaS5*******************
-</code></pre></div></p>
+</code></pre></div>
 <ol>
 <li>生成可发布的whl文件
-<div class="highlight"><pre><span></span><code>make<span class="w"> </span>PythonAPI<span class="w"> </span><span class="nv">ARGS</span><span class="o">=</span><span class="s2">&quot;--chrono&quot;</span>
+<div class="highlight"><pre><span></span><code>make<span class="w"> </span>PythonAPI<span class="w"> </span><span class="nv">ARGS</span><span class="o">=</span><span class="s2">"--chrono"</span>
 </code></pre></div></li>
 <li>发布到 <a href="https://pypi.org/project/hutb/">PyPi</a> ：
 <div class="highlight"><pre><span></span><code><span class="c1"># 删除文件 carla/PythonAPI/carla/dist/hutb-1.0.0-py3.7-win-amd64.egg</span>
@@ -226,7 +226,7 @@ twine<span class="w"> </span>upload<span class="w"> </span>dist/*<span class="w"
 通过解压<code>PythonAPI\carla\dist\hutb-2.2-cp310-cp310-win_amd64.whl</code>发现：元数据版本<code>Metadata-Version</code>为2.4，不在支持的版本之列。</li>
 </ol>
 <p>解决：将 3.9~3.13 版本的whl文件用7zip打开，并编辑（F4）<code>hutb-2.2.dist-info\METADATA</code>，将<code>Metadata-Version</code>改为2.2，然后保存。</p>
-<hr />
+<hr>
 <h3 id="pip">pip 连接服务端时自动安装模拟器</h3>
 <div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>hutb<span class="se">\P</span>ythonAPI<span class="se">\c</span>arla
 python<span class="w"> </span>setup.py<span class="w"> </span>build
@@ -243,37 +243,37 @@ pip<span class="w"> </span>uninstall<span class="w"> </span>hutb<span class="w">
 <span class="c1"># 测试用用例：</span>
 python<span class="w"> </span>..<span class="se">\u</span>til<span class="se">\c</span>onfig.py<span class="w"> </span>-l
 </code></pre></div>
-<hr />
+<hr>
 <h3 id="mkdocs">发布自定义 mkdocs</h3>
 <ul>
 <li>
 <p>打包并发布
-   <div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/OpenHUTB/mkdocs.git
+   </p><div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/OpenHUTB/mkdocs.git
 <span class="nb">cd</span><span class="w"> </span>mkdocs
-pip<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;build&lt;0.10.0&#39;</span>
+pip<span class="w"> </span>install<span class="w"> </span><span class="s1">'build&lt;0.10.0'</span>
 <span class="c1"># 修mkdocs代码改后，将 `mkdocs\__init__.py` 中的版本号+1：</span>
 python<span class="w"> </span>-m<span class="w"> </span>build
 twine<span class="w"> </span>upload<span class="w"> </span>dist/*
 <span class="c1"># 用户名为`__token__`，密码为token。</span>
-</code></pre></div></p>
+</code></pre></div>
 </li>
 <li>
 <p>开发 hutb-doc
-   <div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>mkdocs
+   </p><div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>mkdocs
 pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.<span class="w"> </span>--force-reinstall
-</code></pre></div></p>
+</code></pre></div>
 </li>
 <li>
 <p>上传提示代理报错：
-   <div class="highlight"><pre><span></span><code>requests.exceptions.ProxyError: HTTPSConnectionPool(host=&#39;upload.pypi.org&#39;, port=443): Max retries exceeded with url: /legacy/ (Caused by ProxyError(&#39;Unable to connect to proxy&#39;, SSLError(SSLZeroReturnError(6, &#39;TLS/SSL connection has been closed (EOF) (_ssl.c:1149)&#39;))))
+   </p><div class="highlight"><pre><span></span><code>requests.exceptions.ProxyError: HTTPSConnectionPool(host='upload.pypi.org', port=443): Max retries exceeded with url: /legacy/ (Caused by ProxyError('Unable to connect to proxy', SSLError(SSLZeroReturnError(6, 'TLS/SSL connection has been closed (EOF) (_ssl.c:1149)'))))
 </code></pre></div>
-   解决：关闭系统代理即可解决。</p>
+   解决：关闭系统代理即可解决。
 </li>
 <li>
 <p>上传，出现权限不够等错误注意 mkdocs 版本号+1，需要修改 <a href="https://github.com/OpenHUTB/mkdocs/blob/master/mkdocs/__init__.py">__init__.py</a> 。：
-   <div class="highlight"><pre><span></span><code><span class="c1"># 如果报错 requests.exceptions.ChunkedEncodingError: (&#39;Connection broken: IncompleteRead(13780 bytes read, 8681 more expected)&#39;, IncompleteRead(13780 bytes read, 8681 more expected))</span>
+   </p><div class="highlight"><pre><span></span><code><span class="c1"># 如果报错 requests.exceptions.ChunkedEncodingError: ('Connection broken: IncompleteRead(13780 bytes read, 8681 more expected)', IncompleteRead(13780 bytes read, 8681 more expected))</span>
 twine<span class="w"> </span>upload<span class="w"> </span>dist/*<span class="w"> </span>--repository-url<span class="w"> </span>https://pypi.org/project/hutb-doc/
-</code></pre></div></p>
+</code></pre></div>
 </li>
 <li>
 <p>如果出现 twine 命令找不到的问题：<code>twine : The term 'twine' is not recognized as the name of a cmdlet, function, script file, or operable program.</code></p>
@@ -281,16 +281,16 @@ twine<span class="w"> </span>upload<span class="w"> </span>dist/*<span class="w"
 </ul>
 <p>解决：pip 安装解决不了，可以使用本地twine.exe的绝对路径，比如：<code>C:\Users\Administrator\.conda\envs\ppt2pdf\Scripts\twine.exe upload dist/*</code>。</p>
 <p>注意：使用 Python 3.7 上传时会报错：
-   <div class="highlight"><pre><span></span><code>ERROR    InvalidDistribution: Metadata is missing required fields: Name, Version.
+   </p><div class="highlight"><pre><span></span><code>ERROR    InvalidDistribution: Metadata is missing required fields: Name, Version.
       Make sure the distribution includes the files where those fields are specified, and is using a supported
       Metadata-Version: 1.0, 1.1, 1.2, 2.0, 2.1, 2.2.
 </code></pre></div>
-  解决：需要使用高版本 Python，比如 Python 3.8.20。</p>
+  解决：需要使用高版本 Python，比如 Python 3.8.20。
 <ul>
 <li>
 <p>使用方法：
-   <div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>hubt-doc<span class="w"> </span>-i<span class="w"> </span>https://pypi.org/simple
-</code></pre></div></p>
+   </p><div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>hubt-doc<span class="w"> </span>-i<span class="w"> </span>https://pypi.org/simple
+</code></pre></div>
 </li>
 <li>
 <p><a href="../dev/mkdocs/">mkdocs 详细说明</a>。</p>
@@ -311,11 +311,11 @@ twine<span class="w"> </span>upload<span class="w"> </span>dist/*<span class="w"
 <h3 id="gitee">发布到gitee</h3>
 <p><a href="../dev/gitee/">解决上传出熬过100M大文件的问题</a> 。</p>
 <h3 id="huggingface">发布到 huggingface</h3>
-<p><div class="highlight"><pre><span></span><code><span class="c1"># 添加远程仓库链接</span>
+<p></p><div class="highlight"><pre><span></span><code><span class="c1"># 添加远程仓库链接</span>
 git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>huggingface<span class="w"> </span>https://huggingface.co/datasets/OpenHUTB/Content.git
 git<span class="w"> </span>push<span class="w"> </span>huggingface
 <span class="c1"># 配置 Token</span>
-python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span><span class="s2">&quot;huggingface_hub[cli]&quot;</span>
+python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span><span class="s2">"huggingface_hub[cli]"</span>
 huggingface-cli<span class="w"> </span>login
 </code></pre></div>
 注意：不能使用用户名密码进行推送，配置Token方法：
@@ -323,11 +323,11 @@ huggingface-cli<span class="w"> </span>login
 git<span class="w"> </span>clone<span class="w"> </span>https://huggingface.co/datasets/OpenHUTB/hutb
 git<span class="w"> </span>add<span class="w"> </span>hutb.zip
 <span class="c1"># git lfs ls-files</span>
-git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;init&quot;</span>
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"init"</span>
 git<span class="w"> </span>remote<span class="w"> </span>set-url<span class="w"> </span>origin<span class="w">  </span>https://OpenHUTB:&lt;token&gt;@huggingface.co/datasets/OpenHUTB/hutb
 <span class="c1"># git remote set-url origin https://&lt;user_name&gt;:&lt;token&gt;@huggingface.co/&lt;repo_path&gt;</span>
 git<span class="w"> </span>push
-</code></pre></div></p>
+</code></pre></div>
 <h3 id="_11"><a href="https://blog.csdn.net/csdn_ad986ad/article/details/135417415">发布到微软商城</a></h3>
 <p><a href="https://blog.csdn.net/dounick/article/details/105643285"><strong>对hutb_downloader.exe进行签名</strong></a> 。</p>
 <ol>
@@ -339,11 +339,11 @@ git<span class="w"> </span>push
 </li>
 </ol>
 <p>确认 makeappx.exe 是否存在，比如：
-<div class="highlight"><pre><span></span><code>C:\Program Files (x86)\Windows Kits\10\bin\10.0.26100.0\x64
-</code></pre></div></p>
+</p><div class="highlight"><pre><span></span><code>C:\Program Files (x86)\Windows Kits\10\bin\10.0.26100.0\x64
+</code></pre></div>
 <p>问题：
-<div class="highlight"><pre><span></span><code>包 URL 应以 https:// 开头，并且应指向版本控制、可下载的包。
-</code></pre></div></p>
+</p><div class="highlight"><pre><span></span><code>包 URL 应以 https:// 开头，并且应指向版本控制、可下载的包。
+</code></pre></div>
 <ul>
 <li><a href="https://zhuanlan.zhihu.com/p/29736004658">自签名</a></li>
 <li><a href="https://www.cnblogs.com/oboth-zl/p/17638705.html">使用MSIX Packaging Tool工具修改msix程序包</a></li>
@@ -351,13 +351,13 @@ git<span class="w"> </span>push
 <h3 id="git">自定义最小化 git</h3>
 <p>使用 <a href="https://github.com/git-for-windows/git/releases/download/v2.40.0-rc1.windows.1/PortableGit-2.40.0-rc1-64-bit.7z.exe">2.40便携版</a> 进行瘦身：
 测试命令：
-<div class="highlight"><pre><span></span><code><span class="c1">rem 第一次</span>
+</p><div class="highlight"><pre><span></span><code><span class="c1">rem 第一次</span>
 .\git clone https://OpenHUTB:T8w6TYB_r71gGTP3A02B@git.code.tencent.com/OpenHUTB/lfs_demo.git  <span class="p">&amp;&amp;</span>  <span class="k">cd</span> lfs_demo  <span class="p">&amp;&amp;</span> D:\hutb\git\bin\git.exe lfs pull  <span class="p">&amp;&amp;</span> <span class="k">cd</span> ..
 <span class="c1">rem 后面每次</span>
-<span class="k">del</span> /q lfs_demo\*.*  <span class="p">&amp;&amp;</span> <span class="k">rd</span> /s /q <span class="s2">&quot;lfs_demo&quot;</span>  <span class="p">&amp;&amp;</span> .\git clone https://OpenHUTB:T8w6TYB_r71gGTP3A02B@git.code.tencent.com/OpenHUTB/lfs_demo.git  <span class="p">&amp;&amp;</span>  <span class="k">cd</span> lfs_demo  <span class="p">&amp;&amp;</span> D:\hutb\git\bin\git.exe lfs pull  <span class="p">&amp;&amp;</span> <span class="k">cd</span> ..
+<span class="k">del</span> /q lfs_demo\*.*  <span class="p">&amp;&amp;</span> <span class="k">rd</span> /s /q <span class="s2">"lfs_demo"</span>  <span class="p">&amp;&amp;</span> .\git clone https://OpenHUTB:T8w6TYB_r71gGTP3A02B@git.code.tencent.com/OpenHUTB/lfs_demo.git  <span class="p">&amp;&amp;</span>  <span class="k">cd</span> lfs_demo  <span class="p">&amp;&amp;</span> D:\hutb\git\bin\git.exe lfs pull  <span class="p">&amp;&amp;</span> <span class="k">cd</span> ..
 </code></pre></div>
 原来有314M，
-删除技巧：</p>
+删除技巧：
 <ol>
 <li>一个目录下的dll全部删除，把运行拉取大文件缺少的dll留下；</li>
 <li>exe文件使用二分法进行删除</li>
@@ -368,12 +368,12 @@ git<span class="w"> </span>push
    MinGit-2.40.0-rc1-busybox-32-bit.zip 没有git-lfs功能</p>
 <p>其他尝试：</p>
 <p>下载源码：
-<div class="highlight"><pre><span></span><code><span class="c1">rem 下载</span>
-powershell -Command <span class="s2">&quot;(New-Object System.Net.WebClient).DownloadFile(&#39;https://github.com/git/git/archive/refs/tags/v2.40.3.zip&#39;, &#39;git_v2.40.3.zip&#39;)&quot;</span>
+</p><div class="highlight"><pre><span></span><code><span class="c1">rem 下载</span>
+powershell -Command <span class="s2">"(New-Object System.Net.WebClient).DownloadFile('https://github.com/git/git/archive/refs/tags/v2.40.3.zip', 'git_v2.40.3.zip')"</span>
 <span class="c1">rem 解压</span>
-powershell -Command <span class="s2">&quot;Expand-Archive &#39;git_v2.40.3.zip&#39; -DestinationPath &#39;.&#39; -Force&quot;</span>
+powershell -Command <span class="s2">"Expand-Archive 'git_v2.40.3.zip' -DestinationPath '.' -Force"</span>
 <span class="k">cd</span> git-2.40.3
-</code></pre></div></p>
+</code></pre></div>
 <ul>
 <li>
 <p><a href="https://github.com/git-for-windows/git/releases">包含windows补丁的git</a> 。</p>
@@ -393,25 +393,25 @@ powershell -Command <span class="s2">&quot;Expand-Archive &#39;git_v2.40.3.zip&#
 </ul>
 <h2 id="_12">问题</h2>
 <p>点击打包后的文件出现错误：
-<div class="highlight"><pre><span></span><code>TypeError: expected str, bytes or os.PathLike object, not _io.BytesIO
+</p><div class="highlight"><pre><span></span><code>TypeError: expected str, bytes or os.PathLike object, not _io.BytesIO
 </code></pre></div>
 解决：
 <div class="highlight"><pre><span></span><code><span class="n">pygame</span><span class="o">.</span><span class="n">font</span><span class="o">.</span><span class="n">Font</span><span class="p">(</span><span class="n">pygame</span><span class="o">.</span><span class="n">font</span><span class="o">.</span><span class="n">get_default_font</span><span class="p">(),</span> <span class="mi">20</span><span class="p">)</span>
 </code></pre></div>
-获得的字体文件为<code>freesansbold.ttf</code>，最后将字体文件拷贝到和exe文件相同的路径，然后执行即可。</p>
+获得的字体文件为<code>freesansbold.ttf</code>，最后将字体文件拷贝到和exe文件相同的路径，然后执行即可。
 <ul>
 <li>The following component(s) are required to run this program: Microsoft Visual C++ Runtime</li>
 </ul>
 <p>dll所在路径：C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Redist\MSVC\14.44.35112\x64\Microsoft.VC143.CRT*.dll</p>
 <p>解决：vc_redist.x64.exe（位于：C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Redist\MSVC\14.44.35112）
-<div class="highlight"><pre><span></span><code><span class="c1">rem 安装命令</span>
+</p><div class="highlight"><pre><span></span><code><span class="c1">rem 安装命令</span>
 VC_redist.x64.exe /install /quiet /norestart
-</code></pre></div></p>
+</code></pre></div>
 <h2 id="_13">参考</h2>
 <ul>
 <li><a href="https://natapp.cn/article/config_ini">内网穿透</a></li>
 <li><a href="https://stackoverflow.com/questions/79791079/twine-error-with-recent-setuptools-build-but-previous-ones-fine-invaliddistribu">元数据检查</a></li>
-</ul>
+</ul></div>
               
             </div>
           </div><footer>

@@ -100,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="carla">从源代码构建 Carla</h1>
+                <div><h1 id="carla">从源代码构建 Carla</h1>
 <p>用户可以从源代码构建 Carla 以用于开发目的。如果您想要向 Carla 添加额外的特性或功能，或者想要使用虚幻编辑器创建资源或操作地图，则建议您这样做。</p>
 <p>构建说明适用于 Linux 和 Windows。您还可以在 Docker 容器中构建 Carla，以便部署在 AWS、Azure 或 Google 云服务中。访问 <a href="https://github.com/OpenHUTB/carla"><strong>Carla GitHub</strong></a> 并克隆存储库。</p>
 <ul>
@@ -154,12 +154,12 @@ git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"
 <h4 id="ubuntu">Ubuntu 下的配置</h4>
 <p>Linux 科学上网配置<a href="https://opclash.com/article/302.html">教程</a> 。下载<a href="https://github.com/zhongfly/Clash-premium-backup/releases/download/2023-09-05-gdcc8d87/clash-linux-amd64-n2023-09-05-gdcc8d87.gz">clash</a> 。</p>
 <p>首次启动<code>clash</code>，会新建文件<code>~/.config/clash/config.yaml</code>：
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span><span class="nv">$HOME</span>/.config/clash/
+</p><div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span><span class="nv">$HOME</span>/.config/clash/
 </code></pre></div>
-<img alt="ImageDepth" src="../img/build/agent_config.jpg" />
-将Clash中的订阅地址写入<code>config.yaml</code>文件。</p>
+<img alt="ImageDepth" src="../img/build/agent_config.jpg">
+将Clash中的订阅地址写入<code>config.yaml</code>文件。
 <p>打开 Ubuntu 的“设置”管理，在“网络”内将“网络代理”的“自动”改为“手动”，根据以下内容进行填写 HTTP、HTTPS 和 Socks 地址
-<div class="highlight"><pre><span></span><code><span class="c1"># HTTP 代理</span>
+</p><div class="highlight"><pre><span></span><code><span class="c1"># HTTP 代理</span>
 <span class="m">127</span>.0.0.1:7890
 
 <span class="c1"># HTTPS 代理</span>
@@ -167,7 +167,7 @@ git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"
 
 <span class="c1"># Socks 主机</span>
 <span class="m">127</span>.0.0.1:7891
-</code></pre></div></p>
+</code></pre></div>
 <ul>
 <li>stellar
 先从<a href="https://stellar.dog/signup?c=vyhcgy">链接2</a>中注册并下载Ubuntu的客户端
@@ -175,12 +175,12 @@ git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"
 sudo<span class="w"> </span>dpkg<span class="w"> </span>-i<span class="w"> </span>stellar_10.2.2_amd64.deb
 <span class="c1"># 登录账号后启动代理</span>
 </code></pre></div>
-<img alt="" src="../img/dev/stellar.png" /></li>
+<img alt="" src="../img/dev/stellar.png"></li>
 </ul>
 <p>如果不能正常代理上网，尝试使用全局模式。</p>
 <h4 id="tortoisegit">TortoiseGit 网络代理配置</h4>
 <p>如果使用TortoiseGit作为git的图形化界面软件，首页在文件资源管理器空白位置右键，选择<code>TortoiseGit-&gt;Setting</code>，然后在弹出的界面进行如下配置：
-<img alt="ImageDepth" src="../img/build/internet.jpg" /></p>
+<img alt="ImageDepth" src="../img/build/internet.jpg"></p>
 <h3 id="vscode-c"><a href="https://zhuanlan.zhihu.com/p/679355387">VScode C++开发调式环境配置</a></h3>
 <p>1.下载<code>software/gcc/x86_64-8.1.0-release-win32-seh-rt_v6-rev0.7z</code>文件到本地并解压</p>
 <p>2.将<code>mingw64/bin/</code>路径添加到PATH路径，使用命令<code>gcc -v</code>验证配置已生效；</p>
@@ -201,7 +201,7 @@ sudo<span class="w"> </span>dpkg<span class="w"> </span>-i<span class="w"> </spa
 </ul>
 <!--
 - 官方CI/CD [链接](http://158.109.8.172:8080/login?from=%2F) （西班牙 加泰罗尼亚的IP）。
--->
+--></div>
               
             </div>
           </div><footer>

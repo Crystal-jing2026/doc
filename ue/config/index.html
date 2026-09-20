@@ -100,14 +100,14 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="_1">配置说明</h1>
+                <div><h1 id="_1">配置说明</h1>
 <p>配置文件位于<code>carla\Unreal\CarlaUE4\Config</code></p>
 <h2 id="_2"><a href="https://blog.csdn.net/u010385624/article/details/89926061">加载原理</a></h2>
 <h2 id="defaultengineini">DefaultEngine.ini</h2>
-<p><div class="highlight"><pre><span></span><code><span class="o">[</span>/Script/EngineSettings.GameMapsSettings<span class="o">]</span>
+<p></p><div class="highlight"><pre><span></span><code><span class="o">[</span>/Script/EngineSettings.GameMapsSettings<span class="o">]</span>
 <span class="nv">TransitionMap</span><span class="o">=</span>/Game/Carla/Maps/Town03.Town03
 </code></pre></div>
-对于地图切换（也即关卡切换），UE还提供了 <a href="https://blog.csdn.net/ttod/article/details/135868749">无缝切换</a> （Seamless Travel）和非无缝切换（Non-Seamless Travel），无缝切换使用<strong>异步</strong>加载关卡资源，是<strong>非阻塞式</strong>切换，而非无缝切换即为前面介绍的同步加载关卡资源，是阻塞式切换（传送门），在网络联机游戏中，无缝切换不会导致网络断开，而非无缝会导致网络断开后重连，UE推荐在网络联机游戏中使用无缝切换，感兴趣可以看看官方文档（有点晦涩难懂T_T，因此需要深入研究一番）。</p>
+对于地图切换（也即关卡切换），UE还提供了 <a href="https://blog.csdn.net/ttod/article/details/135868749">无缝切换</a> （Seamless Travel）和非无缝切换（Non-Seamless Travel），无缝切换使用<strong>异步</strong>加载关卡资源，是<strong>非阻塞式</strong>切换，而非无缝切换即为前面介绍的同步加载关卡资源，是阻塞式切换（传送门），在网络联机游戏中，无缝切换不会导致网络断开，而非无缝会导致网络断开后重连，UE推荐在网络联机游戏中使用无缝切换，感兴趣可以看看官方文档（有点晦涩难懂T_T，因此需要深入研究一番）。
 <div class="admonition 注意">
 <p class="admonition-title">注意</p>
 <p>无缝切换和关卡流送都是异步加载关卡资源的，但它们是不同的，关卡流送只是在当前World添加SubLevel，并不会切换World，而无缝切换会销毁之前的World而创建新的World。</p>
@@ -120,7 +120,7 @@
 <span class="nv">Version</span><span class="o">=</span><span class="m">5</span>
 </code></pre></div>
 <h2 id="_3">参考</h2>
-<p><a href="https://blog.csdn.net/ttod/article/details/135868749">无缝切换</a></p>
+<p><a href="https://blog.csdn.net/ttod/article/details/135868749">无缝切换</a></p></div>
               
             </div>
           </div><footer>

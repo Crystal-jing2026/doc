@@ -100,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="_1"><a href="https://carla.readthedocs.io/en/latest/foundations/">基础</a></h1>
+                <div><h1 id="_1"><a href="https://carla.readthedocs.io/en/latest/foundations/">基础</a></h1>
 <p>本页介绍了 Carla 服务器和客户端如何通过 API 进行操作和通信所需的基本概念。Carla 使用服务器-客户端架构运行，其中 Carla 服务器运行模拟并由客户端向其发送指令。客户端代码使用 <a href="../python_api/"><strong>API</strong></a> 与服务器进行通信。要使用 Python API，您必须通过 <code>pip</code> 安装该模块：</p>
 <div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>carla-simulator<span class="w"> </span><span class="c1"># Python 2</span>
 pip3<span class="w"> </span>install<span class="w"> </span>carla-simulator<span class="w"> </span><span class="c1"># Python 3</span>
@@ -135,18 +135,18 @@ pip3<span class="w"> </span>install<span class="w"> </span>carla-simulator<span 
 </li>
 <li><a href="#advanced_step"><strong>进阶步骤</strong></a></li>
 </ul>
-<hr />
+<hr>
 <h2 id="_2">世界和客户端 <span id="world-and-client"></span></h2>
 <h3 id="_3">客户端 <span id="client"></span></h3>
 <p><strong>客户端</strong> 是用户运行以请求模拟中的信息或更改的模块。客户端使用 IP 和特定端口运行。它通过终端与服务器通信。可以有许多客户端同时运行。高级多客户端管理需要对 Carla 和 <a href="../adv_synchrony_timestep/">同步</a> 有透彻的了解。</p>
 <p>使用 Carla 客户端对象设置客户端：</p>
-<div class="highlight"><pre><span></span><code><span class="n">client</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">client</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="s1">'localhost'</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
 </code></pre></div>
 <p>这会将客户端设置为与本地计算机上 <code>localhost</code> 运行的 Carla 服务器进行通信。或者，如果在单独的计算机上运行客户端，则可以使用网络计算机的 IP 地址。第二个参数是端口号。默认情况下，Carla 服务器将在端口 2000 上运行，如有必要，您可以在启动 Carla 时在设置中更改此设置。</p>
 <p>客户端对象可用于多种功能，包括加载新地图、记录模拟和初始化交通管理器：</p>
-<div class="highlight"><pre><span></span><code><span class="n">client</span><span class="o">.</span><span class="n">load_world</span><span class="p">(</span><span class="s1">&#39;Town07&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">client</span><span class="o">.</span><span class="n">load_world</span><span class="p">(</span><span class="s1">'Town07'</span><span class="p">)</span>
 
-<span class="n">client</span><span class="o">.</span><span class="n">start_recorder</span><span class="p">(</span><span class="s1">&#39;recording.log&#39;</span><span class="p">)</span>
+<span class="n">client</span><span class="o">.</span><span class="n">start_recorder</span><span class="p">(</span><span class="s1">'recording.log'</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="_4">世界 <span id="world"></span></h3>
 <p><strong>世界</strong> 是代表模拟的对象。它充当一个抽象层，包含生成参与者、改变天气、获取世界当前状态等的主要方法。每个模拟只有一个世界。当地图改变时，它会被销毁并替换为新的。</p>
@@ -200,19 +200,19 @@ pip3<span class="w"> </span>install<span class="w"> </span>carla-simulator<span 
 </div>
 <h3 id="_9">设置同步模式 <span id="setting-synchronous-mode"></span></h3>
 <p>同步模式和异步模式之间的更改只是布尔状态的问题。
-<div class="highlight"><pre><span></span><code><span class="n">settings</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">get_settings</span><span class="p">()</span>
+</p><div class="highlight"><pre><span></span><code><span class="n">settings</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">get_settings</span><span class="p">()</span>
 <span class="n">settings</span><span class="o">.</span><span class="n">synchronous_mode</span> <span class="o">=</span> <span class="kc">True</span> <span class="c1"># 启用同步模式</span>
 <span class="n">settings</span><span class="o">.</span><span class="n">fixed_delta_seconds</span> <span class="o">=</span> <span class="mf">0.05</span>
 <span class="n">world</span><span class="o">.</span><span class="n">apply_settings</span><span class="p">(</span><span class="n">settings</span><span class="p">)</span>
-</code></pre></div></p>
+</code></pre></div>
 <div class="admonition 警告">
 <p class="admonition-title">警告</p>
 <p>如果启用了同步模式，并且正在运行交通管理器，则也必须将其设置为同步模式。阅读 <a href="../adv_traffic_manager/#synchronous-mode">本文</a> 以了解如何操作。</p>
 </div>
 <p>要禁用同步模式，只需将变量设置为 <code>False</code> 或使用脚本 <a href="https://github.com/OpenHUTB/doc/blob/master/src/util/config.py"><code>PythonAPI/util/config.py</code></a> 。
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>PythonAPI/util<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>python3<span class="w"> </span>config.py<span class="w"> </span>--no-sync<span class="w"> </span><span class="c1"># 禁用同步模式</span>
+</p><div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>PythonAPI/util<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>python3<span class="w"> </span>config.py<span class="w"> </span>--no-sync<span class="w"> </span><span class="c1"># 禁用同步模式</span>
 </code></pre></div>
-同步模式无法使用脚本启用，只能禁用。启用同步模式使服务器等待客户端节拍。使用此脚本，用户无法在需要时发送节拍。 </p>
+同步模式无法使用脚本启用，只能禁用。启用同步模式使服务器等待客户端节拍。使用此脚本，用户无法在需要时发送节拍。 
 <h3 id="_10">使用同步模式 <span id="using-synchronous-mode"></span></h3>
 <p>同步模式与缓慢的客户端应用程序以及需要不同元素（例如传感器）之间的同步时特别相关。如果客户端太慢而服务器没有等待，就会出现信息溢出。客户将无法管理一切，并且会丢失或混合。同样，对于许多传感器和异步情况，不可能知道所有传感器是否都在模拟中使用同一时刻的数据。</p>
 <p>以下代码片段扩展了前一个代码片段。客户端创建一个摄像头传感器，将当前步骤的图像数据存储在队列中，并从队列中检索后发送节拍给服务器。可以在 <a href="https://github.com/carla-simulator/carla/blob/master/PythonAPI/examples/synchronous_mode.py">此处</a> 找到有关多个传感器的更复杂的示例。</p>
@@ -256,10 +256,10 @@ pip3<span class="w"> </span>install<span class="w"> </span>carla-simulator<span 
 </ul>
 <h3 id="_12">记录 <span id="recording"></span></h3>
 <p>要开始记录，只需要一个文件名。在文件名中使用<code>\</code>,<code>/</code>或<code>:</code>字符会将其定义为绝对路径。如果没有详细路径，文件将保存在<code>CarlaUE4/Saved</code>。</p>
-<div class="highlight"><pre><span></span><code><span class="n">client</span><span class="o">.</span><span class="n">start_recorder</span><span class="p">(</span><span class="s2">&quot;/home/carla/recording01.log&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">client</span><span class="o">.</span><span class="n">start_recorder</span><span class="p">(</span><span class="s2">"/home/carla/recording01.log"</span><span class="p">)</span>
 </code></pre></div>
 <p>默认情况下，记录器设置为仅存储回放模拟所需的信息。为了保存前面提到的所有信息，<code>additional_data</code>必须在开始记录时配置参数。</p>
-<div class="highlight"><pre><span></span><code><span class="n">client</span><span class="o">.</span><span class="n">start_recorder</span><span class="p">(</span><span class="s2">&quot;/home/carla/recording01.log&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">client</span><span class="o">.</span><span class="n">start_recorder</span><span class="p">(</span><span class="s2">"/home/carla/recording01.log"</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
 <div class="admonition 笔记">
 <p class="admonition-title">笔记</p>
@@ -274,7 +274,7 @@ pip3<span class="w"> </span>install<span class="w"> </span>carla-simulator<span 
 </div>
 <h3 id="_13">模拟回放 <span id="simulation-playback"></span></h3>
 <p>可以在模拟过程中的任何时刻开始播放。除了日志文件的路径之外，此方法还需要一些参数。</p>
-<div class="highlight"><pre><span></span><code><span class="n">client</span><span class="o">.</span><span class="n">replay_file</span><span class="p">(</span><span class="s2">&quot;recording01.log&quot;</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">camera</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">client</span><span class="o">.</span><span class="n">replay_file</span><span class="p">(</span><span class="s2">"recording01.log"</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">camera</span><span class="p">)</span>
 </code></pre></div>
 <table>
 <thead>
@@ -305,16 +305,16 @@ pip3<span class="w"> </span>install<span class="w"> </span>carla-simulator<span 
 <p><br></p>
 <h3 id="_14">记录器文件格式 <span id="recorder-file-format"></span></h3>
 <p>记录器以 <a href="../ref_recorder_binary_file_format/"><strong>本文档</strong></a> 中指定的自定义二进制文件格式保存所有数据。</p>
-<hr />
+<hr>
 <h2 id="_15">渲染 <span id="rendering"></span></h2>
 <p>Carla 提供了许多有关渲染质量和效率的选项。在最基本的层面上，Carla 提供了两种质量选项，可以在高规格和低规格硬件上运行并获得最佳效果：</p>
 <h3 id="_16">史诗模式 <span id="epic_mode"></span></h3>
 <p><code>./CarlaUE4.sh -quality-level=Epic</code></p>
-<p><img alt="Epic mode screenshot" src="../img/rendering_quality_epic.jpg" />
+<p><img alt="Epic mode screenshot" src="../img/rendering_quality_epic.jpg">
 <em>史诗模式截图</em></p>
 <h3 id="_17">低质量模式 <span id="low_quality"></span></h3>
 <p><code>./CarlaUE4.sh -quality-level=Low</code></p>
-<p><img alt="Low mode screenshot" src="../img/rendering_quality_low.jpg" />
+<p><img alt="Low mode screenshot" src="../img/rendering_quality_low.jpg">
 <em>低质量模式截图</em></p>
 <p>Carla 还提供暂停渲染或离屏渲染的选项，以便更有效地记录或运行模拟。</p>
 <p>有关渲染选项的更多详细信息，请参见 <a href="../adv_rendering_options/"><strong>此处</strong></a>。</p>
@@ -329,7 +329,7 @@ pip3<span class="w"> </span>install<span class="w"> </span>carla-simulator<span 
 <li><a href="../adv_synchrony_timestep/"><strong>模拟时间和同步</strong></a>。关于模拟时间和服务器-客户端通信的所有内容。</li>
 <li><strong><a href="../adv_sumo/">SUMO协同模拟</a></strong>：在 Carla 和 SUMO 交通模拟器之间运行协同模拟。</li>
 <li><strong><a href="../adv_traffic_manager/">交通管理器</a></strong>：该模块负责所有设置为自动驾驶模式的车辆。它模拟城市中的交通，使模拟看起来像一个真实的城市环境。</li>
-</ul>
+</ul></div>
               
             </div>
           </div><footer>

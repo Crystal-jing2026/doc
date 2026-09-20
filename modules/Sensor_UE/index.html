@@ -100,54 +100,54 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="carlaunreal">CarlaUnreal 传感器模块详细说明文档</h1>
+                <div><h1 id="carlaunreal">CarlaUnreal 传感器模块详细说明文档</h1>
 <h1 id="_1">目录</h1>
 <ul>
-<li><a href="#概述">概述</a></li>
-<li><a href="#文件详细说明">文件详细说明</a></li>
+<li><a href="#%E6%A6%82%E8%BF%B0">概述</a></li>
+<li><a href="#%E6%96%87%E4%BB%B6%E8%AF%A6%E7%BB%86%E8%AF%B4%E6%98%8E">文件详细说明</a></li>
 <li><a href="#1-collisionsensorcpp">1. CollisionSensor.cpp</a><ul>
-<li><a href="#文件路径">文件路径</a></li>
-<li><a href="#功能">功能</a></li>
-<li><a href="#代码结构">代码结构</a></li>
-<li><a href="#依赖关系">依赖关系</a></li>
-<li><a href="#使用方法">使用方法</a></li>
-<li><a href="#数据输出格式">数据输出格式</a></li>
-<li><a href="#性能和优化">性能和优化</a></li>
+<li><a href="#%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%84">文件路径</a></li>
+<li><a href="#%E5%8A%9F%E8%83%BD">功能</a></li>
+<li><a href="#%E4%BB%A3%E7%A0%81%E7%BB%93%E6%9E%84">代码结构</a></li>
+<li><a href="#%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB">依赖关系</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95">使用方法</a></li>
+<li><a href="#%E6%95%B0%E6%8D%AE%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F">数据输出格式</a></li>
+<li><a href="#%E6%80%A7%E8%83%BD%E5%92%8C%E4%BC%98%E5%8C%96">性能和优化</a></li>
 </ul>
 </li>
 <li><a href="#2-customv2xsensorcpp">2. CustomV2XSensor.cpp</a><ul>
-<li><a href="#文件路径-1">文件路径</a></li>
-<li><a href="#功能-1">功能</a></li>
-<li><a href="#代码结构-1">代码结构</a></li>
-<li><a href="#依赖关系-1">依赖关系</a></li>
-<li><a href="#使用方法-1">使用方法</a></li>
-<li><a href="#数据输出格式-1">数据输出格式</a></li>
-<li><a href="#性能和优化-1">性能和优化</a></li>
+<li><a href="#%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%84-1">文件路径</a></li>
+<li><a href="#%E5%8A%9F%E8%83%BD-1">功能</a></li>
+<li><a href="#%E4%BB%A3%E7%A0%81%E7%BB%93%E6%9E%84-1">代码结构</a></li>
+<li><a href="#%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB-1">依赖关系</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95-1">使用方法</a></li>
+<li><a href="#%E6%95%B0%E6%8D%AE%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F-1">数据输出格式</a></li>
+<li><a href="#%E6%80%A7%E8%83%BD%E5%92%8C%E4%BC%98%E5%8C%96-1">性能和优化</a></li>
 </ul>
 </li>
 <li><a href="#3-depthcameracpp">3. DepthCamera.cpp</a><ul>
-<li><a href="#文件路径-2">文件路径</a></li>
-<li><a href="#功能-2">功能</a></li>
-<li><a href="#代码结构-2">代码结构</a></li>
-<li><a href="#依赖关系-2">依赖关系</a></li>
-<li><a href="#使用方法-2">使用方法</a></li>
-<li><a href="#数据输出格式-2">数据输出格式</a></li>
-<li><a href="#性能和优化-2">性能和优化</a></li>
+<li><a href="#%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%84-2">文件路径</a></li>
+<li><a href="#%E5%8A%9F%E8%83%BD-2">功能</a></li>
+<li><a href="#%E4%BB%A3%E7%A0%81%E7%BB%93%E6%9E%84-2">代码结构</a></li>
+<li><a href="#%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB-2">依赖关系</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95-2">使用方法</a></li>
+<li><a href="#%E6%95%B0%E6%8D%AE%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F-2">数据输出格式</a></li>
+<li><a href="#%E6%80%A7%E8%83%BD%E5%92%8C%E4%BC%98%E5%8C%96-2">性能和优化</a></li>
 </ul>
 </li>
 <li><a href="#4-dvscameracpp">4. DVSCamera.cpp</a><ul>
-<li><a href="#文件路径-3">文件路径</a></li>
-<li><a href="#功能-3">功能</a></li>
-<li><a href="#代码结构-3">代码结构</a></li>
-<li><a href="#依赖关系-3">依赖关系</a></li>
-<li><a href="#使用方法-3">使用方法</a></li>
-<li><a href="#数据输出格式-3">数据输出格式</a></li>
-<li><a href="#性能和优化-3">性能和优化</a></li>
+<li><a href="#%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%84-3">文件路径</a></li>
+<li><a href="#%E5%8A%9F%E8%83%BD-3">功能</a></li>
+<li><a href="#%E4%BB%A3%E7%A0%81%E7%BB%93%E6%9E%84-3">代码结构</a></li>
+<li><a href="#%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB-3">依赖关系</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95-3">使用方法</a></li>
+<li><a href="#%E6%95%B0%E6%8D%AE%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F-3">数据输出格式</a></li>
+<li><a href="#%E6%80%A7%E8%83%BD%E5%92%8C%E4%BC%98%E5%8C%96-3">性能和优化</a></li>
 </ul>
 </li>
-<li><a href="#集成和扩展">集成和扩展</a></li>
-<li><a href="#依赖关系总结">依赖关系总结</a></li>
-<li><a href="#扩展建议">扩展建议</a></li>
+<li><a href="#%E9%9B%86%E6%88%90%E5%92%8C%E6%89%A9%E5%B1%95">集成和扩展</a></li>
+<li><a href="#%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB%E6%80%BB%E7%BB%93">依赖关系总结</a></li>
+<li><a href="#%E6%89%A9%E5%B1%95%E5%BB%BA%E8%AE%AE">扩展建议</a></li>
 </ul>
 <p>本文档详细介绍CarlaUnreal插件中传感器模块的四个具体实现文件：<code>CollisionSensor.cpp</code>、<code>CustomV2XSensor.cpp</code>、<code>DepthCamera.cpp</code> 和 <code>DVSCamera.cpp</code>。这些文件实现了Carla自动驾驶仿真器中不同类型的传感器功能，用于在Unreal Engine环境中模拟自动驾驶车辆的感知系统。文档旨在为开发者提供深入的技术参考，包括功能、实现逻辑、配置方法和使用场景。</p>
 <h2 id="_2">概述</h2>
@@ -211,12 +211,12 @@
 <li>设置传感器ID和位置（通常与所有者Actor对齐）。</li>
 <li><strong>Python API示例</strong>：
    <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">carla</span>
-<span class="n">client</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="s1">'localhost'</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
 <span class="n">world</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_world</span><span class="p">()</span>
 <span class="n">blueprint_library</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">get_blueprint_library</span><span class="p">()</span>
-<span class="n">collision_bp</span> <span class="o">=</span> <span class="n">blueprint_library</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;sensor.other.collision&#39;</span><span class="p">)</span>
+<span class="n">collision_bp</span> <span class="o">=</span> <span class="n">blueprint_library</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'sensor.other.collision'</span><span class="p">)</span>
 <span class="n">collision_sensor</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">spawn_actor</span><span class="p">(</span><span class="n">collision_bp</span><span class="p">,</span> <span class="n">carla</span><span class="o">.</span><span class="n">Transform</span><span class="p">(),</span> <span class="n">attach_to</span><span class="o">=</span><span class="n">vehicle</span><span class="p">)</span>
-<span class="n">collision_sensor</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="k">lambda</span> <span class="n">event</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Collision with </span><span class="si">{</span><span class="n">event</span><span class="o">.</span><span class="n">other_actor</span><span class="o">.</span><span class="n">type_id</span><span class="si">}</span><span class="s2">, impulse: </span><span class="si">{</span><span class="n">event</span><span class="o">.</span><span class="n">normal_impulse</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span>
+<span class="n">collision_sensor</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="k">lambda</span> <span class="n">event</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Collision with </span><span class="si">{</span><span class="n">event</span><span class="o">.</span><span class="n">other_actor</span><span class="o">.</span><span class="n">type_id</span><span class="si">}</span><span class="s2">, impulse: </span><span class="si">{</span><span class="n">event</span><span class="o">.</span><span class="n">normal_impulse</span><span class="si">}</span><span class="s2">"</span><span class="p">))</span>
 </code></pre></div></li>
 <li><strong>ROS2集成</strong>：</li>
 <li>启用ROS2支持后，传感器数据以特定格式（包含变换和冲量）发送到ROS2话题。</li>
@@ -226,9 +226,9 @@
 <ul>
 <li><strong>序列化数据</strong>：
   <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;actor&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;ac</span><span class="kc">t</span><span class="err">or_id&gt;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;ac</span><span class="kc">t</span><span class="err">or_</span><span class="kc">t</span><span class="err">ype&gt;</span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;other_actor&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;o</span><span class="kc">t</span><span class="err">her_ac</span><span class="kc">t</span><span class="err">or_id&gt;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;o</span><span class="kc">t</span><span class="err">her_ac</span><span class="kc">t</span><span class="err">or_</span><span class="kc">t</span><span class="err">ype&gt;</span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;normal_impulse&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;x&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;</span><span class="kc">fl</span><span class="err">oa</span><span class="kc">t</span><span class="err">&gt;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;y&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;</span><span class="kc">fl</span><span class="err">oa</span><span class="kc">t</span><span class="err">&gt;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;z&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;</span><span class="kc">fl</span><span class="err">oa</span><span class="kc">t</span><span class="err">&gt;</span><span class="p">}</span>
+<span class="w">  </span><span class="nt">"actor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;ac</span><span class="kc">t</span><span class="err">or_id&gt;</span><span class="p">,</span><span class="w"> </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;ac</span><span class="kc">t</span><span class="err">or_</span><span class="kc">t</span><span class="err">ype&gt;</span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"other_actor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;o</span><span class="kc">t</span><span class="err">her_ac</span><span class="kc">t</span><span class="err">or_id&gt;</span><span class="p">,</span><span class="w"> </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;o</span><span class="kc">t</span><span class="err">her_ac</span><span class="kc">t</span><span class="err">or_</span><span class="kc">t</span><span class="err">ype&gt;</span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"normal_impulse"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"x"</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;</span><span class="kc">fl</span><span class="err">oa</span><span class="kc">t</span><span class="err">&gt;</span><span class="p">,</span><span class="w"> </span><span class="nt">"y"</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;</span><span class="kc">fl</span><span class="err">oa</span><span class="kc">t</span><span class="err">&gt;</span><span class="p">,</span><span class="w"> </span><span class="nt">"z"</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;</span><span class="kc">fl</span><span class="err">oa</span><span class="kc">t</span><span class="err">&gt;</span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div></li>
 <li><strong>ROS2数据</strong>：包含传感器变换（相对于父Actor）和冲量向量。</li>
@@ -304,14 +304,14 @@
 <li>附加到车辆Actor，指定场景（如<code>EScenario::Urban</code>）。</li>
 <li><strong>Python API示例</strong>：
    <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">carla</span>
-<span class="n">client</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="s1">'localhost'</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
 <span class="n">world</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_world</span><span class="p">()</span>
 <span class="n">blueprint_library</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">get_blueprint_library</span><span class="p">()</span>
-<span class="n">v2x_bp</span> <span class="o">=</span> <span class="n">blueprint_library</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;sensor.other.custom_v2x&#39;</span><span class="p">)</span>
-<span class="n">v2x_bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">&#39;transmit_power&#39;</span><span class="p">,</span> <span class="s1">&#39;23.0&#39;</span><span class="p">)</span>
-<span class="n">v2x_bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">&#39;receiver_sensitivity&#39;</span><span class="p">,</span> <span class="s1">&#39;-90.0&#39;</span><span class="p">)</span>
+<span class="n">v2x_bp</span> <span class="o">=</span> <span class="n">blueprint_library</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'sensor.other.custom_v2x'</span><span class="p">)</span>
+<span class="n">v2x_bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">'transmit_power'</span><span class="p">,</span> <span class="s1">'23.0'</span><span class="p">)</span>
+<span class="n">v2x_bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">'receiver_sensitivity'</span><span class="p">,</span> <span class="s1">'-90.0'</span><span class="p">)</span>
 <span class="n">v2x_sensor</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">spawn_actor</span><span class="p">(</span><span class="n">v2x_bp</span><span class="p">,</span> <span class="n">carla</span><span class="o">.</span><span class="n">Transform</span><span class="p">(),</span> <span class="n">attach_to</span><span class="o">=</span><span class="n">vehicle</span><span class="p">)</span>
-<span class="n">v2x_sensor</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="k">lambda</span> <span class="n">data</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Received V2X message: </span><span class="si">{</span><span class="n">data</span><span class="o">.</span><span class="n">message</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span>
+<span class="n">v2x_sensor</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="k">lambda</span> <span class="n">data</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Received V2X message: </span><span class="si">{</span><span class="n">data</span><span class="o">.</span><span class="n">message</span><span class="si">}</span><span class="s2">"</span><span class="p">))</span>
 </code></pre></div></li>
 <li><strong>发送消息</strong>：</li>
 <li>通过蓝图或代码调用<code>Send(FString)</code>发送自定义消息。</li>
@@ -322,8 +322,8 @@
 <li><strong>序列化数据</strong>：
   <div class="highlight"><pre><span></span><code><span class="p">[</span>
 <span class="w">  </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;user_defined_string&gt;&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;power&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;</span><span class="kc">fl</span><span class="err">oa</span><span class="kc">t</span><span class="err">&gt;</span><span class="w"> </span><span class="c1">// 接收功率（dBm）</span>
+<span class="w">    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;user_defined_string&gt;"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"power"</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;</span><span class="kc">fl</span><span class="err">oa</span><span class="kc">t</span><span class="err">&gt;</span><span class="w"> </span><span class="c1">// 接收功率（dBm）</span>
 <span class="w">  </span><span class="p">},</span>
 <span class="w">  </span><span class="err">...</span>
 <span class="p">]</span>
@@ -388,17 +388,17 @@
 <li><strong>Python API示例</strong>：
    <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">carla</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="n">client</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="s1">'localhost'</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
 <span class="n">world</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_world</span><span class="p">()</span>
 <span class="n">blueprint_library</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">get_blueprint_library</span><span class="p">()</span>
-<span class="n">depth_bp</span> <span class="o">=</span> <span class="n">blueprint_library</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;sensor.camera.depth&#39;</span><span class="p">)</span>
-<span class="n">depth_bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">&#39;image_size_x&#39;</span><span class="p">,</span> <span class="s1">&#39;1280&#39;</span><span class="p">)</span>
-<span class="n">depth_bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">&#39;image_size_y&#39;</span><span class="p">,</span> <span class="s1">&#39;720&#39;</span><span class="p">)</span>
+<span class="n">depth_bp</span> <span class="o">=</span> <span class="n">blueprint_library</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'sensor.camera.depth'</span><span class="p">)</span>
+<span class="n">depth_bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">'image_size_x'</span><span class="p">,</span> <span class="s1">'1280'</span><span class="p">)</span>
+<span class="n">depth_bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">'image_size_y'</span><span class="p">,</span> <span class="s1">'720'</span><span class="p">)</span>
 <span class="n">depth_camera</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">spawn_actor</span><span class="p">(</span><span class="n">depth_bp</span><span class="p">,</span> <span class="n">carla</span><span class="o">.</span><span class="n">Transform</span><span class="p">(</span><span class="n">carla</span><span class="o">.</span><span class="n">Location</span><span class="p">(</span><span class="n">z</span><span class="o">=</span><span class="mf">2.5</span><span class="p">)),</span> <span class="n">attach_to</span><span class="o">=</span><span class="n">vehicle</span><span class="p">)</span>
 <span class="n">depth_camera</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="k">lambda</span> <span class="n">image</span><span class="p">:</span> <span class="n">process_depth_image</span><span class="p">(</span><span class="n">image</span><span class="p">))</span>
 <span class="k">def</span> <span class="nf">process_depth_image</span><span class="p">(</span><span class="n">image</span><span class="p">):</span>
     <span class="n">array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">frombuffer</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">raw_data</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">height</span><span class="p">,</span> <span class="n">image</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Depth image shape: </span><span class="si">{</span><span class="n">array</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Depth image shape: </span><span class="si">{</span><span class="n">array</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </code></pre></div></li>
 <li><strong>数据处理</strong>：</li>
 <li>深度图像以<code>FColor</code>格式传输，通常需要转换为浮点深度值（参考Carla文档）。</li>
@@ -497,17 +497,17 @@
 <li>附加到车辆或固定位置。</li>
 <li><strong>Python API示例</strong>：
    <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">carla</span>
-<span class="n">client</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="s1">'localhost'</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
 <span class="n">world</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_world</span><span class="p">()</span>
 <span class="n">blueprint_library</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">get_blueprint_library</span><span class="p">()</span>
-<span class="n">dvs_bp</span> <span class="o">=</span> <span class="n">blueprint_library</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;sensor.camera.dvs&#39;</span><span class="p">)</span>
-<span class="n">dvs_bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">&#39;positive_threshold&#39;</span><span class="p">,</span> <span class="s1">&#39;0.3&#39;</span><span class="p">)</span>
-<span class="n">dvs_bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">&#39;use_log&#39;</span><span class="p">,</span> <span class="s1">&#39;True&#39;</span><span class="p">)</span>
+<span class="n">dvs_bp</span> <span class="o">=</span> <span class="n">blueprint_library</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'sensor.camera.dvs'</span><span class="p">)</span>
+<span class="n">dvs_bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">'positive_threshold'</span><span class="p">,</span> <span class="s1">'0.3'</span><span class="p">)</span>
+<span class="n">dvs_bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">'use_log'</span><span class="p">,</span> <span class="s1">'True'</span><span class="p">)</span>
 <span class="n">dvs_camera</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">spawn_actor</span><span class="p">(</span><span class="n">dvs_bp</span><span class="p">,</span> <span class="n">carla</span><span class="o">.</span><span class="n">Transform</span><span class="p">(</span><span class="n">carla</span><span class="o">.</span><span class="n">Location</span><span class="p">(</span><span class="n">z</span><span class="o">=</span><span class="mf">2.5</span><span class="p">)),</span> <span class="n">attach_to</span><span class="o">=</span><span class="n">vehicle</span><span class="p">)</span>
 <span class="n">dvs_camera</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="k">lambda</span> <span class="n">data</span><span class="p">:</span> <span class="n">process_dvs_events</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
 <span class="k">def</span> <span class="nf">process_dvs_events</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;DVS event: x=</span><span class="si">{</span><span class="n">event</span><span class="o">.</span><span class="n">x</span><span class="si">}</span><span class="s2">, y=</span><span class="si">{</span><span class="n">event</span><span class="o">.</span><span class="n">y</span><span class="si">}</span><span class="s2">, t=</span><span class="si">{</span><span class="n">event</span><span class="o">.</span><span class="n">t</span><span class="si">}</span><span class="s2">, polarity=</span><span class="si">{</span><span class="n">event</span><span class="o">.</span><span class="n">polarity</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"DVS event: x=</span><span class="si">{</span><span class="n">event</span><span class="o">.</span><span class="n">x</span><span class="si">}</span><span class="s2">, y=</span><span class="si">{</span><span class="n">event</span><span class="o">.</span><span class="n">y</span><span class="si">}</span><span class="s2">, t=</span><span class="si">{</span><span class="n">event</span><span class="o">.</span><span class="n">t</span><span class="si">}</span><span class="s2">, polarity=</span><span class="si">{</span><span class="n">event</span><span class="o">.</span><span class="n">polarity</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </code></pre></div></li>
 <li><strong>ROS2集成</strong>：</li>
 <li>事件流以<code>DVSEvent</code>格式发送到ROS2话题（如<code>/carla/&lt;vehicle_id&gt;/dvs</code>）。</li>
@@ -517,7 +517,7 @@
 <ul>
 <li><strong>序列化数据</strong>：
   <div class="highlight"><pre><span></span><code><span class="p">[</span>
-<span class="w">  </span><span class="p">{</span><span class="nt">&quot;x&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;i</span><span class="kc">nt</span><span class="err">&gt;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;y&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;i</span><span class="kc">nt</span><span class="err">&gt;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;t&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;ui</span><span class="kc">nt</span><span class="mi">64</span><span class="err">&gt;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;polarity&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;bool&gt;</span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span><span class="nt">"x"</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;i</span><span class="kc">nt</span><span class="err">&gt;</span><span class="p">,</span><span class="w"> </span><span class="nt">"y"</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;i</span><span class="kc">nt</span><span class="err">&gt;</span><span class="p">,</span><span class="w"> </span><span class="nt">"t"</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;ui</span><span class="kc">nt</span><span class="mi">64</span><span class="err">&gt;</span><span class="p">,</span><span class="w"> </span><span class="nt">"polarity"</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;bool&gt;</span><span class="p">},</span>
 <span class="w">  </span><span class="err">...</span>
 <span class="p">]</span>
 </code></pre></div></li>
@@ -578,7 +578,7 @@
 <li>为<code>CustomV2XSensor</code>支持更多消息类型（如DENM）。</li>
 <li>为<code>DepthCamera</code>添加自定义后处理效果。</li>
 <li>为<code>DVSCamera</code>支持彩色事件生成。</li>
-</ul>
+</ul></div>
               
             </div>
           </div><footer>

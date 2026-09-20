@@ -100,47 +100,47 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="_1">目录</h1>
+                <div><h1 id="_1">目录</h1>
 <ul>
 <li>
-<h1 id="fcarlaserver"><a href="#FCarlaServer-类说明文档">FCarlaServer 类说明文档</a></h1>
+<h1 id="fcarlaserver"><a href="#FCarlaServer-%E7%B1%BB%E8%AF%B4%E6%98%8E%E6%96%87%E6%A1%A3">FCarlaServer 类说明文档</a></h1>
 </li>
 <li>
-<h2 id="_2"><a href="#类成员函数">类成员函数</a></h2>
+<h2 id="_2"><a href="#%E7%B1%BB%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0">类成员函数</a></h2>
 </li>
-<li><a href="#构造函数与析构函数">构造函数与析构函数</a></li>
-<li><a href="#服务器启动与停止">服务器启动与停止</a></li>
-<li><a href="#场景管理">场景管理</a></li>
-<li><a href="#服务器运行">服务器运行</a></li>
-<li><a href="#数据流管理">数据流管理</a></li>
+<li><a href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E4%B8%8E%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0">构造函数与析构函数</a></li>
+<li><a href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%90%AF%E5%8A%A8%E4%B8%8E%E5%81%9C%E6%AD%A2">服务器启动与停止</a></li>
+<li><a href="#%E5%9C%BA%E6%99%AF%E7%AE%A1%E7%90%86">场景管理</a></li>
+<li><a href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%90%E8%A1%8C">服务器运行</a></li>
+<li><a href="#%E6%95%B0%E6%8D%AE%E6%B5%81%E7%AE%A1%E7%90%86">数据流管理</a></li>
 <li>
-<p><a href="#多-gpu-路由器与流服务器">多 GPU 路由器与流服务器</a></p>
-</li>
-<li>
-<h2 id="fpimpl"><a href="#内部类-fpimpl">内部类 FPimpl</a></h2>
-</li>
-<li><a href="#fpimpl-类成员">FPimpl 类成员</a></li>
-<li>
-<p><a href="#fpimpl-类私有函数">FPimpl 类私有函数</a></p>
+<p><a href="#%E5%A4%9A-gpu-%E8%B7%AF%E7%94%B1%E5%99%A8%E4%B8%8E%E6%B5%81%E6%9C%8D%E5%8A%A1%E5%99%A8">多 GPU 路由器与流服务器</a></p>
 </li>
 <li>
-<h2 id="_3"><a href="#辅助宏">辅助宏</a></h2>
+<h2 id="fpimpl"><a href="#%E5%86%85%E9%83%A8%E7%B1%BB-fpimpl">内部类 FPimpl</a></h2>
+</li>
+<li><a href="#fpimpl-%E7%B1%BB%E6%88%90%E5%91%98">FPimpl 类成员</a></li>
+<li>
+<p><a href="#fpimpl-%E7%B1%BB%E7%A7%81%E6%9C%89%E5%87%BD%E6%95%B0">FPimpl 类私有函数</a></p>
+</li>
+<li>
+<h2 id="_3"><a href="#%E8%BE%85%E5%8A%A9%E5%AE%8F">辅助宏</a></h2>
 </li>
 </ul>
-<hr />
+<hr>
 <ul>
 <li>
-<h1 id="carla"><a href="#carla-服务器响应状态说明文档">Carla 服务器响应状态说明文档</a></h1>
+<h1 id="carla"><a href="#carla-%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%93%8D%E5%BA%94%E7%8A%B6%E6%80%81%E8%AF%B4%E6%98%8E%E6%96%87%E6%A1%A3">Carla 服务器响应状态说明文档</a></h1>
 </li>
 <li>
-<h2 id="ecarlaserverresponse"><a href="#枚举类型-ecarlaserverresponse">枚举类型 ECarlaServerResponse</a></h2>
+<h2 id="ecarlaserverresponse"><a href="#%E6%9E%9A%E4%B8%BE%E7%B1%BB%E5%9E%8B-ecarlaserverresponse">枚举类型 ECarlaServerResponse</a></h2>
 </li>
 <li>
-<h2 id="carlagetstringerror"><a href="#函数-carlagetstringerror">函数 CarlaGetStringError</a></h2>
+<h2 id="carlagetstringerror"><a href="#%E5%87%BD%E6%95%B0-carlagetstringerror">函数 CarlaGetStringError</a></h2>
 </li>
-<li><a href="#函数原型">函数原型</a></li>
+<li><a href="#%E5%87%BD%E6%95%B0%E5%8E%9F%E5%9E%8B">函数原型</a></li>
 </ul>
-<hr />
+<hr>
 <h1 id="fcarlaserver_1">FCarlaServer 类说明文档</h1>
 <p><code>FCarlaServer</code> 是 CARLA 模拟器中用于管理服务器通信与模拟控制的核心类。该类主要负责：
    - 启动和停止RPC和数据流服务器；
@@ -202,7 +202,7 @@
 </ul>
 <h3 id="gpu">多 GPU 路由器与流服务器</h3>
 <ul>
-<li><strong>std::shared_ptr<carla::multigpu::Router> GetSecondaryServer()</strong></li>
+<li><strong>std::shared_ptr<carla::multigpu::router> GetSecondaryServer()</carla::multigpu::router></strong></li>
 <li>
 <p>获取指向多 GPU 路由器（multigpu::Router）的共享指针，这个路由器可能用于在多 GPU 环境下对数据等进行路由转发、调度等功能，返回的是智能指针便于内存管理。</p>
 </li>
@@ -256,7 +256,7 @@
 <p>构造函数，初始化 RPC 服务器、流服务器和多 GPU 路由器。</p>
 </li>
 <li>
-<p><strong>std::shared_ptr<carla::multigpu::Router> GetSecondaryServer()</strong></p>
+<p><strong>std::shared_ptr<carla::multigpu::router> GetSecondaryServer()</carla::multigpu::router></strong></p>
 </li>
 <li>
 <p>获取多 GPU 路由器的共享指针。</p>
@@ -274,7 +274,7 @@
 <p>广播流对象，用于向多个客户端广播数据。</p>
 </li>
 <li>
-<p><strong>std::shared_ptr<carla::multigpu::Router> SecondaryServer</strong></p>
+<p><strong>std::shared_ptr<carla::multigpu::router> SecondaryServer</carla::multigpu::router></strong></p>
 </li>
 <li>
 <p>多 GPU 路由器对象，用于在多 GPU 环境下进行数据路由。</p>
@@ -424,7 +424,7 @@
 <p>```cpp
 FString CarlaGetStringError(ECarlaServerResponse Response);
   ECarlaServerResponse ErrorCode = ECarlaServerResponse::ActorNotFound;
-  FString ErrorMsg = CarlaGetStringError(ErrorCode); // 返回 "Actor not found"</p>
+  FString ErrorMsg = CarlaGetStringError(ErrorCode); // 返回 "Actor not found"</p></div>
               
             </div>
           </div><footer>

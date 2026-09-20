@@ -100,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="_1">虚拟现实</h1>
+                <div><h1 id="_1">虚拟现实</h1>
 <h2 id="1">1. 模块化架构与扩展性</h2>
 <ul>
 <li>
@@ -134,14 +134,14 @@
 <li>
 <p>配置文件类（<code>ConfigFile</code>类）</p>
 <p>使用 INI格式 存储参数（如车辆属性、声音设置、眼动追踪配置），支持运行时热加载。例如：
-<div class="highlight"><pre><span></span><code><span class="n">GeneralParams</span><span class="p">.</span><span class="n">Get</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;CameraParams&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;VignetteIntensity&quot;</span><span class="p">);</span>
+</p><div class="highlight"><pre><span></span><code><span class="n">GeneralParams</span><span class="p">.</span><span class="n">Get</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="s">"CameraParams"</span><span class="p">,</span><span class="w"> </span><span class="s">"VignetteIntensity"</span><span class="p">);</span>
 </code></pre></div>
-通过 ConfigFileData 比较记录与回放配置，确保一致性。</p>
+通过 ConfigFileData 比较记录与回放配置，确保一致性。
 </li>
 <li>
 <p><code>DefaultEngine.ini</code> 配置文件
     VR 模式
-    <div class="highlight"><pre><span></span><code><span class="o">[</span>/Script/EngineSettings.GameMapsSettings<span class="o">]</span>
+    </p><div class="highlight"><pre><span></span><code><span class="o">[</span>/Script/EngineSettings.GameMapsSettings<span class="o">]</span>
 <span class="nv">EditorStartupMap</span><span class="o">=</span>/Game/Carla/Maps/Town03.Town03
 <span class="nv">LocalMapOptions</span><span class="o">=</span>
 <span class="nv">TransitionMap</span><span class="o">=</span>/Game/Carla/Maps/Town03.Town03
@@ -153,7 +153,7 @@
 <span class="nv">GameInstanceClass</span><span class="o">=</span>/Script/Carla.CarlaGameInstance
 <span class="nv">GlobalDefaultGameMode</span><span class="o">=</span>/Script/CarlaUE4.DReyeVRGameMode
 <span class="nv">GlobalDefaultServerGameMode</span><span class="o">=</span>/Script/CarlaUE4.DReyeVRGameMode
-</code></pre></div></p>
+</code></pre></div>
 </li>
 <li>
 <p>车辆参数动态加载</p>
@@ -210,8 +210,8 @@
 <li>
 <p>资源管理</p>
 <p>使用UTexture2D动态生成十字准星、方块纹理，减少内存占用。例如：
-<div class="highlight"><pre><span></span><code>GenerateSquareImage(ReticleSrc, ReticleSize, FColor::Red);
-</code></pre></div></p>
+</p><div class="highlight"><pre><span></span><code>GenerateSquareImage(ReticleSrc, ReticleSize, FColor::Red);
+</code></pre></div>
 </li>
 </ul>
 <h2 id="7-carla">7. 与Carla模拟器的深度集成</h2>
@@ -232,7 +232,7 @@
 <li>沉浸感：集成VR设备和眼动追踪，提升用户体验。</li>
 <li>可扩展性：支持自定义传感器和后处理效果，便于算法研究与原型开发。</li>
 </ul>
-<p>未来改进方向可能包括优化眼动追踪性能、增加更多车辆物理模型，以及完善多平台输入支持。</p>
+<p>未来改进方向可能包括优化眼动追踪性能、增加更多车辆物理模型，以及完善多平台输入支持。</p></div>
               
             </div>
           </div><footer>

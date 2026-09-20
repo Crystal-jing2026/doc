@@ -100,42 +100,42 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="_1">自定义车辆运行轨迹</h1>
+                <div><h1 id="_1">自定义车辆运行轨迹</h1>
 <p>​   车辆运动支持定义车辆运动起点和目标位置，为每辆车指定随机速度值，使其沿轨迹移动时不会发生碰撞或模拟碰撞，看到车辆沿指定轨迹行驶以到达其目标位置。</p>
 <p>​   本示例设计了一个  <a href="https://github.com/OpenHUTB/doc/blob/master/src/course/navigation/automatic_control_revised.py"><strong>automatic_control_revised.py</strong></a>  脚本进行实现</p>
-<p><img alt="" src="../../img/traffic_course_img/4.gif" /></p>
+<p><img alt="" src="../../img/traffic_course_img/4.gif"></p>
 <p><strong>注意</strong>  需要将 <a href="https://github.com/OpenHUTB/doc/tree/master/src/carla_agent"><strong>agents</strong></a> 文件夹位置添加到代码环境变量中，或者复制该文件夹使其与本示例脚本同级。</p>
 <p><a href="https://pan.baidu.com/s/15T1hGoWJ70tVmsTX7-zcSw?pwd=hutb"><strong>湖工商场景</strong></a><strong>(WindowsNoEditor)</strong></p>
 <p>自定义一些生成位置的起始点坐标<span id="definePoint"></span></p>
 <div class="highlight"><pre><span></span><code><span class="n">diming</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;北门&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="mf">224.2</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="mf">1.7</span><span class="p">,</span> <span class="s2">&quot;z&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
-    <span class="s2">&quot;西门&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">146</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">161</span><span class="p">,</span> <span class="s2">&quot;z&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">},</span>
-    <span class="s2">&quot;楚枫桥&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="mf">1.8</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">15.9</span><span class="p">,</span> <span class="s2">&quot;z&quot;</span><span class="p">:</span> <span class="mi">30</span><span class="p">},</span>
-    <span class="s2">&quot;楚枫轩&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="mf">14.8</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="mf">64.7</span><span class="p">,</span> <span class="s2">&quot;z&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">},</span>
-    <span class="s2">&quot;日新楼&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="mi">58</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">75</span><span class="p">,</span> <span class="s2">&quot;z&quot;</span><span class="p">:</span> <span class="mi">30</span><span class="p">},</span>
-    <span class="s2">&quot;体育馆&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="mi">160</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">265</span><span class="p">,</span> <span class="s2">&quot;z&quot;</span><span class="p">:</span> <span class="mi">40</span><span class="p">},</span>
-    <span class="s2">&quot;湘江楼&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">2.4</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="s2">&quot;z&quot;</span><span class="p">:</span> <span class="mi">30</span><span class="p">},</span>
-    <span class="s2">&quot;科技楼&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">97.4</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">217</span><span class="p">,</span> <span class="s2">&quot;z&quot;</span><span class="p">:</span> <span class="mi">15</span><span class="p">},</span>
+    <span class="s2">"北门"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"x"</span><span class="p">:</span> <span class="mf">224.2</span><span class="p">,</span> <span class="s2">"y"</span><span class="p">:</span> <span class="mf">1.7</span><span class="p">,</span> <span class="s2">"z"</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
+    <span class="s2">"西门"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"x"</span><span class="p">:</span> <span class="o">-</span><span class="mi">146</span><span class="p">,</span> <span class="s2">"y"</span><span class="p">:</span> <span class="o">-</span><span class="mi">161</span><span class="p">,</span> <span class="s2">"z"</span><span class="p">:</span> <span class="mi">10</span><span class="p">},</span>
+    <span class="s2">"楚枫桥"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"x"</span><span class="p">:</span> <span class="mf">1.8</span><span class="p">,</span> <span class="s2">"y"</span><span class="p">:</span> <span class="o">-</span><span class="mf">15.9</span><span class="p">,</span> <span class="s2">"z"</span><span class="p">:</span> <span class="mi">30</span><span class="p">},</span>
+    <span class="s2">"楚枫轩"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"x"</span><span class="p">:</span> <span class="mf">14.8</span><span class="p">,</span> <span class="s2">"y"</span><span class="p">:</span> <span class="mf">64.7</span><span class="p">,</span> <span class="s2">"z"</span><span class="p">:</span> <span class="mi">20</span><span class="p">},</span>
+    <span class="s2">"日新楼"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"x"</span><span class="p">:</span> <span class="mi">58</span><span class="p">,</span> <span class="s2">"y"</span><span class="p">:</span> <span class="o">-</span><span class="mi">75</span><span class="p">,</span> <span class="s2">"z"</span><span class="p">:</span> <span class="mi">30</span><span class="p">},</span>
+    <span class="s2">"体育馆"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"x"</span><span class="p">:</span> <span class="mi">160</span><span class="p">,</span> <span class="s2">"y"</span><span class="p">:</span> <span class="o">-</span><span class="mi">265</span><span class="p">,</span> <span class="s2">"z"</span><span class="p">:</span> <span class="mi">40</span><span class="p">},</span>
+    <span class="s2">"湘江楼"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"x"</span><span class="p">:</span> <span class="o">-</span><span class="mf">2.4</span><span class="p">,</span> <span class="s2">"y"</span><span class="p">:</span> <span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="s2">"z"</span><span class="p">:</span> <span class="mi">30</span><span class="p">},</span>
+    <span class="s2">"科技楼"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"x"</span><span class="p">:</span> <span class="o">-</span><span class="mf">97.4</span><span class="p">,</span> <span class="s2">"y"</span><span class="p">:</span> <span class="o">-</span><span class="mi">217</span><span class="p">,</span> <span class="s2">"z"</span><span class="p">:</span> <span class="mi">15</span><span class="p">},</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>定义命令行参数</p>
 <div class="highlight"><pre><span></span><code> <span class="n">argparser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span>
         <span class="n">description</span><span class="o">=</span><span class="vm">__doc__</span><span class="p">)</span>
     <span class="n">argparser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
-        <span class="s1">&#39;--s&#39;</span><span class="p">,</span>
-        <span class="n">default</span><span class="o">=</span><span class="s2">&quot;北门&quot;</span><span class="p">,</span>
+        <span class="s1">'--s'</span><span class="p">,</span>
+        <span class="n">default</span><span class="o">=</span><span class="s2">"北门"</span><span class="p">,</span>
         <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
     <span class="n">argparser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
-        <span class="s1">&#39;--e&#39;</span><span class="p">,</span>
-        <span class="n">default</span><span class="o">=</span><span class="s2">&quot;西门&quot;</span><span class="p">,</span>
+        <span class="s1">'--e'</span><span class="p">,</span>
+        <span class="n">default</span><span class="o">=</span><span class="s2">"西门"</span><span class="p">,</span>
         <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
     <span class="n">argparser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
-        <span class="s1">&#39;--speed&#39;</span><span class="p">,</span>
+        <span class="s1">'--speed'</span><span class="p">,</span>
         <span class="n">default</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
         <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
 </code></pre></div>
 <p>获取模拟时间对象及设置</p>
-<div class="highlight"><pre><span></span><code><span class="n">client</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">client</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="s1">'localhost'</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
 <span class="n">client</span><span class="o">.</span><span class="n">set_timeout</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 <span class="n">world</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_world</span><span class="p">()</span>
 <span class="n">origin_settings</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">get_settings</span><span class="p">()</span>
@@ -156,8 +156,8 @@
 <span class="n">spawn_rotation</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Rotation</span><span class="p">(</span><span class="n">yaw</span><span class="o">=</span><span class="mi">180</span><span class="p">)</span>
 <span class="n">spawn_point</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Transform</span><span class="p">(</span><span class="n">spawn_location</span><span class="p">,</span> <span class="n">spawn_rotation</span><span class="p">)</span> <span class="c1">#车辆起点</span>
 <span class="c1"># 生成车辆</span>
-<span class="n">ego_vehicle_bp</span> <span class="o">=</span> <span class="n">blueprint_library</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;vehicle.audi.tt&#39;</span><span class="p">)</span>
-<span class="n">ego_vehicle_bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">&#39;color&#39;</span><span class="p">,</span> <span class="s1">&#39;100, 250, 250&#39;</span><span class="p">)</span>
+<span class="n">ego_vehicle_bp</span> <span class="o">=</span> <span class="n">blueprint_library</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'vehicle.audi.tt'</span><span class="p">)</span>
+<span class="n">ego_vehicle_bp</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">'color'</span><span class="p">,</span> <span class="s1">'100, 250, 250'</span><span class="p">)</span>
 <span class="n">vehicle</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">spawn_actor</span><span class="p">(</span><span class="n">ego_vehicle_bp</span><span class="p">,</span> <span class="n">spawn_point</span><span class="p">)</span>
 <span class="c1">#推进模拟环境时间</span>
 <span class="n">world</span><span class="o">.</span><span class="n">tick</span><span class="p">()</span>
@@ -166,7 +166,7 @@
 <div class="highlight"><pre><span></span><code> <span class="c1"># 设置初始速度</span>
  <span class="n">vehicle</span><span class="o">.</span><span class="n">set_target_velocity</span><span class="p">(</span><span class="n">carla</span><span class="o">.</span><span class="n">Vector3D</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">speed</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
 <span class="c1"># 创建代理</span>
-<span class="n">agent</span> <span class="o">=</span> <span class="n">BehaviorAgent</span><span class="p">(</span><span class="n">vehicle</span><span class="p">,</span> <span class="n">behavior</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">)</span>
+<span class="n">agent</span> <span class="o">=</span> <span class="n">BehaviorAgent</span><span class="p">(</span><span class="n">vehicle</span><span class="p">,</span> <span class="n">behavior</span><span class="o">=</span><span class="s1">'normal'</span><span class="p">)</span>
 <span class="n">destination</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Location</span><span class="p">(</span><span class="n">locations</span><span class="p">[</span><span class="n">args</span><span class="o">.</span><span class="n">e</span><span class="p">])</span>
 <span class="n">start</span> <span class="o">=</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">get_location</span><span class="p">()</span>
 <span class="c1"># 生成轨迹</span>
@@ -174,7 +174,7 @@
 </code></pre></div>
 <p>给目标车辆设置多个相机传感器。这些相机可以提供不同的视角,用于观察和记录车辆在模拟环境中的行为。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 查找相机蓝图</span>
-<span class="n">camera_bp</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">get_blueprint_library</span><span class="p">()</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;sensor.camera.rgb&#39;</span><span class="p">)</span>
+<span class="n">camera_bp</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">get_blueprint_library</span><span class="p">()</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'sensor.camera.rgb'</span><span class="p">)</span>
 
 <span class="c1"># 设置Camera的附加类型Camera跟随车辆</span>
 <span class="n">Atment_SpringArmGhost</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">AttachmentType</span><span class="o">.</span><span class="n">SpringArmGhost</span>
@@ -217,7 +217,7 @@
 
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">agent</span><span class="o">.</span><span class="n">_local_planner</span><span class="o">.</span><span class="n">_waypoints_queue</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;======== Success=============&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">'======== Success============='</span><span class="p">)</span>
         <span class="k">break</span>
 
     <span class="c1"># top view</span>
@@ -249,7 +249,7 @@
     <span class="n">vehicle</span><span class="o">.</span><span class="n">apply_control</span><span class="p">(</span><span class="n">control</span><span class="p">)</span>
 </code></pre></div>
 <h6 id="_2">轨迹生成<span id="generateTrajectory"></span></h6>
-<p><img alt="" src="../../img/traffic_course_img/5.png" /></p>
+<p><img alt="" src="../../img/traffic_course_img/5.png"></p></div>
               
             </div>
           </div><footer>

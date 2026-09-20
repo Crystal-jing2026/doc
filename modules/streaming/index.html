@@ -100,47 +100,47 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1><a href="#streaming">Streaming</a></h1>
-<h1><a href="#什么是-streaming">什么是 Streaming?</a></h1>
+                <div><h1><a href="#streaming">Streaming</a></h1>
+<h1><a href="#%E4%BB%80%E4%B9%88%E6%98%AF-streaming">什么是 Streaming?</a></h1>
 
 <ul>
-<li><a href="#结构化设计">结构化设计</a></li>
+<li><a href="#%E7%BB%93%E6%9E%84%E5%8C%96%E8%AE%BE%E8%AE%A1">结构化设计</a></li>
 </ul>
-<h2 id="_1"><a href="#架构">架构</a></h2>
+<h2 id="_1"><a href="#%E6%9E%B6%E6%9E%84">架构</a></h2>
 <ul>
-<li><a href="#概述">概述</a></li>
-<li><a href="#数据流管理">数据流管理</a></li>
-<li><a href="#事件驱动">事件驱动</a></li>
-<li><a href="#流式计算">流式计算</a></li>
-<li><a href="#异步处理">异步处理</a></li>
-<li><a href="#缓存管理">缓存管理</a></li>
-<li><a href="#流优化">流优化</a></li>
-<li><a href="#配置管理">配置管理</a></li>
+<li><a href="#%E6%A6%82%E8%BF%B0">概述</a></li>
+<li><a href="#%E6%95%B0%E6%8D%AE%E6%B5%81%E7%AE%A1%E7%90%86">数据流管理</a></li>
+<li><a href="#%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8">事件驱动</a></li>
+<li><a href="#%E6%B5%81%E5%BC%8F%E8%AE%A1%E7%AE%97">流式计算</a></li>
+<li><a href="#%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%86">异步处理</a></li>
+<li><a href="#%E7%BC%93%E5%AD%98%E7%AE%A1%E7%90%86">缓存管理</a></li>
+<li><a href="#%E6%B5%81%E4%BC%98%E5%8C%96">流优化</a></li>
+<li><a href="#%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86">配置管理</a></li>
 </ul>
-<h2 id="streaming"><a href="#使用streaming">使用Streaming</a></h2>
+<h2 id="streaming"><a href="#%E4%BD%BF%E7%94%A8streaming">使用Streaming</a></h2>
 <ul>
-<li><a href="#数据输入与输出">数据输入与输出</a></li>
-<li><a href="#创建streaming实例">创建Streaming实例</a></li>
-<li><a href="#配置流式任务">配置流式任务</a></li>
-<li><a href="#停止streaming">停止Streaming</a></li>
+<li><a href="#%E6%95%B0%E6%8D%AE%E8%BE%93%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA">数据输入与输出</a></li>
+<li><a href="#%E5%88%9B%E5%BB%BAstreaming%E5%AE%9E%E4%BE%8B">创建Streaming实例</a></li>
+<li><a href="#%E9%85%8D%E7%BD%AE%E6%B5%81%E5%BC%8F%E4%BB%BB%E5%8A%A1">配置流式任务</a></li>
+<li><a href="#%E5%81%9C%E6%AD%A2streaming">停止Streaming</a></li>
 </ul>
-<h2 id="_2"><a href="#运行模式">运行模式</a></h2>
+<h2 id="_2"><a href="#%E8%BF%90%E8%A1%8C%E6%A8%A1%E5%BC%8F">运行模式</a></h2>
 <ul>
-<li><a href="#streaming服务端和客户端">Streaming服务端和客户端</a></li>
-<li><a href="#多客户端并发">多客户端并发</a></li>
-<li><a href="#多streaming任务">多Streaming任务</a></li>
-<li><a href="#端点配置与多地址支持">端点配置与多地址支持</a></li>
+<li><a href="#streaming%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%92%8C%E5%AE%A2%E6%88%B7%E7%AB%AF">Streaming服务端和客户端</a></li>
+<li><a href="#%E5%A4%9A%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%B9%B6%E5%8F%91">多客户端并发</a></li>
+<li><a href="#%E5%A4%9Astreaming%E4%BB%BB%E5%8A%A1">多Streaming任务</a></li>
+<li><a href="#%E7%AB%AF%E7%82%B9%E9%85%8D%E7%BD%AE%E4%B8%8E%E5%A4%9A%E5%9C%B0%E5%9D%80%E6%94%AF%E6%8C%81">端点配置与多地址支持</a></li>
 </ul>
-<h2 id="_3"><a href="#其他模式">其他模式</a></h2>
+<h2 id="_3"><a href="#%E5%85%B6%E4%BB%96%E6%A8%A1%E5%BC%8F">其他模式</a></h2>
 <ul>
-<li><a href="#同步模式">同步模式</a></li>
-<li><a href="#多端点-streaming">多端点 Streaming</a></li>
+<li><a href="#%E5%90%8C%E6%AD%A5%E6%A8%A1%E5%BC%8F">同步模式</a></li>
+<li><a href="#%E5%A4%9A%E7%AB%AF%E7%82%B9-streaming">多端点 Streaming</a></li>
 </ul>
 <h1 id="streaming_1"><a href="#streaming">Streaming</a></h1>
-<h1 id="streaming_2"><a href="#什么是-streaming">什么是 Streaming?</a></h1>
-<p><strong>Streaming</strong> 是 <strong>CARLA 仿真环境中的流式数据传输模块</strong>，负责 <strong>服务器端创建数据流、客户端订阅流，并进行高效的数据传输</strong>。<br />
+<h1 id="streaming_2"><a href="#%E4%BB%80%E4%B9%88%E6%98%AF-streaming">什么是 Streaming?</a></h1>
+<p><strong>Streaming</strong> 是 <strong>CARLA 仿真环境中的流式数据传输模块</strong>，负责 <strong>服务器端创建数据流、客户端订阅流，并进行高效的数据传输</strong>。<br>
 该模块适用于 <strong>实时传感器数据传输、分布式仿真、远程数据处理</strong> 等应用场景，并支持 <strong>TCP/UDP、同步/异步模式、多客户端订阅</strong> 等功能，确保仿真数据能够高效传输到多个订阅客户端。</p>
-<h2 id="_4"><a href="#结构化设计">结构化设计</a></h2>
+<h2 id="_4"><a href="#%E7%BB%93%E6%9E%84%E5%8C%96%E8%AE%BE%E8%AE%A1">结构化设计</a></h2>
 <p>结构化设计是一种 <strong>模块化的软件架构方法</strong>，通过 <strong>高内聚、低耦合的方式</strong> 组织系统，使其更易维护和扩展。</p>
 <p>Streaming 组件采用 <strong>结构化设计</strong>，通过 <strong>模块化拆分</strong>，将数据流管理、客户端订阅和传输机制解耦，提高了系统的 <strong>可扩展性</strong> 和 <strong>维护性</strong>。</p>
 <p>在 Streaming 组件中，<strong>结构化设计</strong> 体现在 <strong>服务器（Server）、客户端（Client）、数据流（Stream）、Token 机制（Token）和通信端点（EndPoint）</strong> 的 <strong>分层管理</strong>，实现 <strong>清晰的模块拆分</strong>，确保数据流的 <strong>高效传输</strong> 和 <strong>动态管理</strong>。</p>
@@ -152,9 +152,9 @@
 <li><strong>通信端点（EndPoint）</strong> 作为 <strong>网络接口</strong>，处理数据流的输入输出，确保流的高效传输和路由管理。</li>
 </ul>
 <p>数据流组件 <strong>独立于服务器和客户端运行</strong>，避免强依赖关系，使得 Streaming 组件能够 <strong>灵活适配多种实时数据场景</strong>，如 <strong>日志分析、视频流、金融交易和自动驾驶</strong>。</p>
-<h1 id="_5"><a href="#架构">架构</a></h1>
-<h2 id="_6"><a href="#概述">概述</a></h2>
-<p><pre class="mermaid"><code>flowchart TD
+<h1 id="_5"><a href="#%E6%9E%B6%E6%9E%84">架构</a></h1>
+<h2 id="_6"><a href="#%E6%A6%82%E8%BF%B0">概述</a></h2>
+<p></p><pre class="mermaid"><code>flowchart TD
     Client["Client - 订阅流 - 取消订阅流"]
     Server["Server - 创建流 - 关闭流"]
     Stream["Stream - 服务器向客户端传输数据"]
@@ -169,8 +169,8 @@
 
 
 </code></pre>
-该架构图展示了 <strong>Client（客户端）</strong>、<strong>Server（服务器）</strong>、<strong>Stream（数据流）</strong>、<strong>Token（令牌）</strong> 和 <strong>EndPoint（端点）</strong> 之间的交互关系。<strong>服务器创建数据流（Stream），客户端通过网络端点（EndPoint）连接服务器并订阅流（使用唯一标识 Token），服务器向订阅的客户端推送数据。</strong></p>
-<h2 id="_7"><a href="#数据流管理">数据流管理</a></h2>
+该架构图展示了 <strong>Client（客户端）</strong>、<strong>Server（服务器）</strong>、<strong>Stream（数据流）</strong>、<strong>Token（令牌）</strong> 和 <strong>EndPoint（端点）</strong> 之间的交互关系。<strong>服务器创建数据流（Stream），客户端通过网络端点（EndPoint）连接服务器并订阅流（使用唯一标识 Token），服务器向订阅的客户端推送数据。</strong>
+<h2 id="_7"><a href="#%E6%95%B0%E6%8D%AE%E6%B5%81%E7%AE%A1%E7%90%86">数据流管理</a></h2>
 <p>Streaming 组件的 <strong>数据流管理</strong> 主要关注 <strong>数据的高效传输</strong>、<strong>流量控制</strong> 和 <strong>访问权限管理</strong>，确保数据流的稳定性和可靠性。</p>
 <h3 id="_8"><strong>关键概念</strong></h3>
 <ul>
@@ -190,7 +190,7 @@
 <li><strong>访问控制</strong> 通过 <code>Token</code> 机制限制数据流权限，防止未授权访问。</li>
 <li><strong>异步并发机制</strong> 使用 <code>Boost.Asio</code> 进行线程管理，提高系统吞吐能力，支持多个客户端同时订阅数据流。</li>
 </ul>
-<h2 id="_11"><a href="#事件驱动">事件驱动</a></h2>
+<h2 id="_11"><a href="#%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8">事件驱动</a></h2>
 <p><code>streaming</code> 模块采用了 <strong>事件驱动模型</strong> 来管理客户端与服务器之间的异步通信。该模块利用 <code>Boost.Asio</code> 提供的 <strong>异步 I/O 机制</strong> 来处理事件，确保数据传输的 <strong>高效性</strong> 和 <strong>非阻塞特性</strong>。</p>
 <h3 id="_12">事件触发机制</h3>
 <ol>
@@ -217,7 +217,7 @@
 </li>
 <li><code>Boost.Asio</code> 的 <code>io_context.run()</code> 负责驱动整个事件循环，确保所有 I/O 事件（读、写、连接）都能 <strong>异步执行</strong>，不会阻塞主线程，提高系统吞吐量。</li>
 </ol>
-<h2 id="_13"><a href="#流式计算">流式计算</a></h2>
+<h2 id="_13"><a href="#%E6%B5%81%E5%BC%8F%E8%AE%A1%E7%AE%97">流式计算</a></h2>
 <p><code>streaming</code> 模块中的 <code>Stream.h</code> 文件实现了 <strong>流式计算</strong> 模型，专注于高效处理大规模、连续的数据流。该模块支持 <strong>多客户端订阅流</strong>，并结合 <strong>Boost.Asio</strong> 进行 <strong>异步数据传输</strong>，使系统能够在不等待数据完全到达的情况下，按数据块处理数据流。</p>
 <h3 id="_14">核心概念</h3>
 <ul>
@@ -245,7 +245,7 @@
 </li>
 <li><code>Token.h</code> 结合 <code>MsgPack</code> 进行数据序列化，提升传输效率，支持跨平台数据交互。</li>
 </ul>
-<h2 id="_16"><a href="#异步处理">异步处理</a></h2>
+<h2 id="_16"><a href="#%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%86">异步处理</a></h2>
 <ol>
 <li>
 <p><strong>服务器异步运行</strong></p>
@@ -300,35 +300,35 @@
 </li>
 <li>boost::asio::ip::tcp::resolver 解析域名，支持 <strong>跨网段通信</strong>。</li>
 </ol>
-<h2 id="_17"><a href="#缓存管理">缓存管理</a></h2>
+<h2 id="_17"><a href="#%E7%BC%93%E5%AD%98%E7%AE%A1%E7%90%86">缓存管理</a></h2>
 <p><code>streaming</code> 模块中的 <strong>缓存管理（Buffer Management）</strong> 旨在优化数据的存储和传输，减少 I/O 操作，提高系统吞吐量。</p>
 <h2 id="_18">关键概念</h2>
 <ul>
 <li>
-<p><strong>数据缓冲（Buffering）</strong><br />
+<p><strong>数据缓冲（Buffering）</strong><br>
 <code>Stream.h</code> 使用 <strong>流状态（MultiStreamState）</strong> 来管理数据的存储和传输，并采用缓存策略，减少直接访问网络或磁盘的开销。只有被客户端订阅的数据流才会被缓存，等待合适的时机发送。未被客户端订阅的数据流不会长时间存储，而是直接丢弃，以优化资源使用。</p>
 </li>
 <li>
-<p><strong>流控制（Flow Control）</strong><br />
+<p><strong>流控制（Flow Control）</strong><br>
  服务器端 <code>Server.h</code> 通过 <strong>低级 TCP 服务器（<code>low_level::Server&lt;detail::tcp::Server&gt;</code>）</strong> 进行流控制，动态调整数据流速率，防止网络拥塞。令牌机制（Token）管理客户端订阅，影响数据传输策略。</p>
 </li>
 <li>
-<p><strong>缓存清理（Buffer Cleanup）</strong><br />
+<p><strong>缓存清理（Buffer Cleanup）</strong><br>
 <code>Server.h</code> 通过 <strong>CloseStream()</strong> 释放未使用的流，回收资源，避免内存占用。</p>
 </li>
 </ul>
 <h2 id="_19">关键实现</h2>
 <ul>
 <li>
-<p><strong>数据预存储</strong><br />
+<p><strong>数据预存储</strong><br>
 <code>Client.h</code> 发送数据时，<code>Stream.h</code> 先将数据存入 <strong>流状态管理器</strong>，等待合适的时机发送，以减少网络开销。</p>
 </li>
 <li>
-<p><strong>分块处理</strong><br />
+<p><strong>分块处理</strong><br>
   缓存采用 <strong>分块机制</strong>（Chunking），一次处理固定大小的数据块，减少资源占用，提高吞吐率。</p>
 </li>
 <li>
-<p><strong>动态分配</strong><br />
+<p><strong>动态分配</strong><br>
 <code>Server.h</code> 结合 <strong>低级 TCP 服务器</strong> 进行动态内存管理，根据订阅情况调整缓冲区大小，提高资源利用率。</p>
 </li>
 </ul>
@@ -338,7 +338,7 @@
 <li><strong>流控制</strong> 通过 <strong>令牌订阅机制</strong>，保证数据传输稳定，防止网络拥堵。  </li>
 <li><strong>缓存清理</strong> 通过 <strong>CloseStream() 释放未使用的流</strong>，避免内存泄漏，保持系统长期稳定运行。  </li>
 </ul>
-<h2 id="_21"><a href="#流优化">流优化</a></h2>
+<h2 id="_21"><a href="#%E6%B5%81%E4%BC%98%E5%8C%96">流优化</a></h2>
 <p><code>streaming</code> 模块中的 <strong>流优化（Stream Optimization）</strong> 主要关注数据流的管理和调度，以提升传输效率、减少延迟，并优化系统的整体吞吐量。</p>
 <h3 id="_22">关键概念</h3>
 <ul>
@@ -357,7 +357,7 @@
 <li><code>streaming</code> 模块主要提供 <strong>流的管理、订阅和并发处理</strong>。</li>
 <li><strong>线程池和异步传输</strong> 提高了流的并发能力，减少阻塞，提高吞吐量。</li>
 </ul>
-<h2 id="_25"><a href="#配置管理">配置管理</a></h2>
+<h2 id="_25"><a href="#%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86">配置管理</a></h2>
 <h2 id="_26"><strong>概述</strong></h2>
 <p><code>streaming</code> 模块用于在服务器和客户端之间建立高效的数据流通信，依赖 <code>boost::asio</code> 进行网络传输，并使用 <code>carla::ThreadPool</code> 进行线程管理。现介绍该模块的配置方式，包括网络端口设置、线程池管理和依赖项安装等。</p>
 <h2 id="_27"><strong>环境要求</strong></h2>
@@ -385,11 +385,11 @@ sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w
 <span class="n">server</span><span class="p">.</span><span class="n">Run</span><span class="p">();</span>
 </code></pre></div>
 <p><strong>指定 IP 地址和端口</strong></p>
-<div class="highlight"><pre><span></span><code><span class="n">carla</span><span class="o">::</span><span class="n">streaming</span><span class="o">::</span><span class="n">Server</span><span class="w"> </span><span class="n">server</span><span class="p">(</span><span class="s">&quot;192.168.1.100&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">8080</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="n">carla</span><span class="o">::</span><span class="n">streaming</span><span class="o">::</span><span class="n">Server</span><span class="w"> </span><span class="n">server</span><span class="p">(</span><span class="s">"192.168.1.100"</span><span class="p">,</span><span class="w"> </span><span class="mi">8080</span><span class="p">);</span>
 <span class="n">server</span><span class="p">.</span><span class="n">Run</span><span class="p">();</span>
 </code></pre></div>
 <p><strong>使用动态端点解析</strong></p>
-<div class="highlight"><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="n">endpoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">carla</span><span class="o">::</span><span class="n">streaming</span><span class="o">::</span><span class="n">make_endpoint</span><span class="o">&lt;</span><span class="n">boost</span><span class="o">::</span><span class="n">asio</span><span class="o">::</span><span class="n">ip</span><span class="o">::</span><span class="n">tcp</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;127.0.0.1&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">8080</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="n">endpoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">carla</span><span class="o">::</span><span class="n">streaming</span><span class="o">::</span><span class="n">make_endpoint</span><span class="o">&lt;</span><span class="n">boost</span><span class="o">::</span><span class="n">asio</span><span class="o">::</span><span class="n">ip</span><span class="o">::</span><span class="n">tcp</span><span class="o">&gt;</span><span class="p">(</span><span class="s">"127.0.0.1"</span><span class="p">,</span><span class="w"> </span><span class="mi">8080</span><span class="p">);</span>
 </code></pre></div>
 <p><strong>服务器获取本地端点</strong></p>
 <div class="highlight"><pre><span></span><code><span class="n">server</span><span class="p">.</span><span class="n">GetLocalEndpoint</span><span class="p">();</span>
@@ -415,7 +415,7 @@ sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w
 <h2 id="_29"><strong>示例配置</strong></h2>
 <h3 id="_30"><strong>服务器端配置示例</strong></h3>
 <div class="highlight"><pre><span></span><code><span class="c1">// 包含Carla Streaming库中的Server头文件</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;carla/streaming/Server.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">"carla/streaming/Server.h"</span>
 
 <span class="c1">// 主函数</span>
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -431,12 +431,12 @@ sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w
 </code></pre></div>
 <h3 id="_31"><strong>客户端订阅示例</strong></h3>
 <div class="highlight"><pre><span></span><code><span class="c1">// 包含Carla Streaming库中的Client头文件</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;carla/streaming/Client.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">"carla/streaming/Client.h"</span>
 
 <span class="c1">// 主函数</span>
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// 创建一个Carla流媒体客户端实例，连接到本地IP地址127.0.0.1</span>
-<span class="w">    </span><span class="n">carla</span><span class="o">::</span><span class="n">streaming</span><span class="o">::</span><span class="n">Client</span><span class="w"> </span><span class="n">client</span><span class="p">(</span><span class="s">&quot;127.0.0.1&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">carla</span><span class="o">::</span><span class="n">streaming</span><span class="o">::</span><span class="n">Client</span><span class="w"> </span><span class="n">client</span><span class="p">(</span><span class="s">"127.0.0.1"</span><span class="p">);</span>
 
 <span class="w">    </span><span class="c1">// 创建一个流媒体令牌（Token），用于订阅特定的数据流</span>
 <span class="w">    </span><span class="n">carla</span><span class="o">::</span><span class="n">streaming</span><span class="o">::</span><span class="n">Token</span><span class="w"> </span><span class="n">token</span><span class="p">;</span>
@@ -444,7 +444,7 @@ sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w
 <span class="w">    </span><span class="c1">// 使用客户端订阅指定的数据流，并提供一个回调函数来处理接收到的消息</span>
 <span class="w">    </span><span class="n">client</span><span class="p">.</span><span class="n">Subscribe</span><span class="p">(</span><span class="n">token</span><span class="p">,</span><span class="w"> </span><span class="p">[](</span><span class="k">auto</span><span class="w"> </span><span class="n">msg</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// 当接收到消息时，打印消息内容到控制台</span>
-<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Received: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">msg</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"Received: "</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">msg</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
 <span class="w">    </span><span class="p">});</span>
 
 <span class="w">    </span><span class="c1">// 启动客户端，开始接收和处理数据流</span>
@@ -462,9 +462,9 @@ sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w
 <li>依赖 <code>Boost.Asio</code> 进行 <strong>异步网络通信</strong>，用户需确保 <strong>正确安装依赖</strong>。</li>
 </ul>
 <p>该模块适用于 <strong>高吞吐量、低延迟</strong> 的流式数据传输场景，例如 <strong>自动驾驶仿真、远程传感器数据采集、实时流处理</strong>。</p>
-<h1 id="streaming_3"><a href="#使用-streaming">使用 Streaming</a></h1>
+<h1 id="streaming_3"><a href="#%E4%BD%BF%E7%94%A8-streaming">使用 Streaming</a></h1>
 <p>Streaming 组件用于在服务器和客户端之间进行高效的数据流传输。它依赖 <code>boost::asio</code> 进行网络通信，并使用 <code>carla::ThreadPool</code> 进行线程管理。</p>
-<h2 id="_33"><a href="#数据输入与输出">数据输入与输出</a></h2>
+<h2 id="_33"><a href="#%E6%95%B0%E6%8D%AE%E8%BE%93%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA">数据输入与输出</a></h2>
 <p>Streaming 主要用于 <strong>服务器向客户端单向发送数据</strong>，多个客户端可以通过流令牌（Token）订阅相同的流。如果没有客户端订阅，该流中的数据将被丢弃。</p>
 <table>
 <thead>
@@ -492,10 +492,10 @@ sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w
 <div class="highlight"><pre><span></span><code><span class="n">Stream</span><span class="w"> </span><span class="n">my_stream</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">server</span><span class="p">.</span><span class="n">MakeStream</span><span class="p">();</span><span class="w"> </span><span class="c1">// 创建流</span>
 <span class="n">Token</span><span class="w"> </span><span class="n">my_token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">server</span><span class="p">.</span><span class="n">GetToken</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="c1">// 获取流的 Token</span>
 <span class="n">client</span><span class="p">.</span><span class="n">Subscribe</span><span class="p">(</span><span class="n">my_token</span><span class="p">,</span><span class="w"> </span><span class="p">[](</span><span class="k">auto</span><span class="w"> </span><span class="n">msg</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;收到数据: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">msg</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"> </span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"收到数据: "</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">msg</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"> </span>
 <span class="p">});</span>
 </code></pre></div>
-<h2 id="streaming_4"><a href="#创建-streaming-实例">创建 Streaming 实例</a></h2>
+<h2 id="streaming_4"><a href="#%E5%88%9B%E5%BB%BA-streaming-%E5%AE%9E%E4%BE%8B">创建 Streaming 实例</a></h2>
 <p>Streaming 由 <strong>服务器（Server）</strong> 和 <strong>客户端（Client）</strong> 组成。</p>
 <table>
 <thead>
@@ -521,13 +521,13 @@ sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w
 <span class="n">Stream</span><span class="w"> </span><span class="n">stream</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">server</span><span class="p">.</span><span class="n">MakeStream</span><span class="p">();</span><span class="w"> </span><span class="c1">// 创建新的流</span>
 </code></pre></div>
 <h3 id="client">客户端（Client）</h3>
-<div class="highlight"><pre><span></span><code><span class="n">Client</span><span class="w"> </span><span class="n">client</span><span class="p">(</span><span class="s">&quot;127.0.0.1&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// 连接到服务器</span>
+<div class="highlight"><pre><span></span><code><span class="n">Client</span><span class="w"> </span><span class="n">client</span><span class="p">(</span><span class="s">"127.0.0.1"</span><span class="p">);</span><span class="w"> </span><span class="c1">// 连接到服务器</span>
 <span class="n">client</span><span class="p">.</span><span class="n">Run</span><span class="p">();</span><span class="w"> </span><span class="c1">// 启动客户端</span>
 <span class="n">client</span><span class="p">.</span><span class="n">Subscribe</span><span class="p">(</span><span class="n">my_token</span><span class="p">,</span><span class="w"> </span><span class="p">[](</span><span class="k">auto</span><span class="w"> </span><span class="n">msg</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;收到消息：&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">msg</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"收到消息："</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">msg</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
 <span class="p">});</span>
 </code></pre></div>
-<h2 id="_35"><a href="#配置流式任务">配置流式任务</a></h2>
+<h2 id="_35"><a href="#%E9%85%8D%E7%BD%AE%E6%B5%81%E5%BC%8F%E4%BB%BB%E5%8A%A1">配置流式任务</a></h2>
 <p>Streaming 支持<strong>同步模式</strong>和<strong>异步模式</strong>，可调整服务器与客户端的运行方式。</p>
 <table>
 <thead>
@@ -559,7 +559,7 @@ sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w
 <h3 id="_39">配置服务器超时</h3>
 <div class="highlight"><pre><span></span><code><span class="n">server</span><span class="p">.</span><span class="n">SetTimeout</span><span class="p">(</span><span class="n">boost</span><span class="o">::</span><span class="n">posix_time</span><span class="o">::</span><span class="n">seconds</span><span class="p">(</span><span class="mi">10</span><span class="p">));</span><span class="w"> </span><span class="c1">// 设置 10 秒超时</span>
 </code></pre></div>
-<h2 id="streaming_5"><a href="#停止-streaming">停止 Streaming</a></h2>
+<h2 id="streaming_5"><a href="#%E5%81%9C%E6%AD%A2-streaming">停止 Streaming</a></h2>
 <p>Streaming 组件在 <strong>服务器关闭时会自动停止</strong>，但手动管理资源可确保所有订阅的客户端和服务器任务都正常释放。</p>
 <table>
 <thead>
@@ -601,12 +601,12 @@ sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w
 <li>异步模式适用于高吞吐量应用，确保 <code>worker_threads</code> 数量适配任务需求。</li>
 </ul>
 </blockquote>
-<h1 id="_43"><a href="#运行模式">运行模式</a></h1>
-<h2 id="streaming_6"><a href="#streaming-服务器端和客户端">Streaming 服务器端和客户端</a></h2>
+<h1 id="_43"><a href="#%E8%BF%90%E8%A1%8C%E6%A8%A1%E5%BC%8F">运行模式</a></h1>
+<h2 id="streaming_6"><a href="#streaming-%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E5%92%8C%E5%AE%A2%E6%88%B7%E7%AB%AF">Streaming 服务器端和客户端</a></h2>
 <h3 id="_44">概述</h3>
-<p>Streaming 模块采用客户端-服务器 (Client-Server) 架构，服务器端 <code>Server</code> 负责创建和管理数据流，客户端 <code>Client</code> 负责订阅流并接收数据。<br />
+<p>Streaming 模块采用客户端-服务器 (Client-Server) 架构，服务器端 <code>Server</code> 负责创建和管理数据流，客户端 <code>Client</code> 负责订阅流并接收数据。<br>
 该架构允许多个客户端同时连接到服务器并接收同一数据流，实现高效的数据共享。</p>
-<hr />
+<hr>
 <h3 id="server_1">服务器端（Server）</h3>
 <p><code>Server</code> 主要功能：
 - 管理数据流：创建、关闭数据流，并管理流的生命周期。
@@ -692,7 +692,7 @@ sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w
 
 <span class="c1">// 订阅数据流并设置回调</span>
 <span class="n">client</span><span class="p">.</span><span class="n">Subscribe</span><span class="p">(</span><span class="n">token</span><span class="p">,</span><span class="w"> </span><span class="p">[](</span><span class="k">auto</span><span class="w"> </span><span class="n">data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Received Data: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"Received Data: "</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
 <span class="p">});</span>
 
 <span class="c1">// 启动客户端</span>
@@ -702,9 +702,9 @@ sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w
 <span class="c1">// std::thread clientThread([&amp;client]() { client.Run(); });</span>
 <span class="c1">// clientThread.detach();</span>
 </code></pre></div>
-<h2 id="_49"><a href="#多客户端并发">多客户端并发</a></h2>
+<h2 id="_49"><a href="#%E5%A4%9A%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%B9%B6%E5%8F%91">多客户端并发</a></h2>
 <h3 id="_50">概述</h3>
-<p>Streaming 模块支持多个客户端同时订阅同一个流，数据流可被多个客户端共享，不影响彼此。<br />
+<p>Streaming 模块支持多个客户端同时订阅同一个流，数据流可被多个客户端共享，不影响彼此。<br>
 在 <code>Stream.h</code> 中，<code>Stream</code> 采用 <code>MultiStreamState</code> 机制，允许多个客户端同时接收同一数据流。</p>
 <h3 id="_51">代码解析</h3>
 <div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="n">Stream</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">detail</span><span class="o">::</span><span class="n">Stream</span><span class="o">&lt;</span><span class="n">detail</span><span class="o">::</span><span class="n">MultiStreamState</span><span class="o">&gt;</span><span class="p">;</span>
@@ -715,7 +715,7 @@ sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w
 <span class="n">client2</span><span class="p">.</span><span class="n">Subscribe</span><span class="p">(</span><span class="n">token</span><span class="p">,</span><span class="w"> </span><span class="n">callback</span><span class="p">);</span>
 <span class="n">client3</span><span class="p">.</span><span class="n">Subscribe</span><span class="p">(</span><span class="n">token</span><span class="p">,</span><span class="w"> </span><span class="n">callback</span><span class="p">);</span>
 </code></pre></div>
-<h2 id="streaming_7"><a href="#多Streaming任务">多Streaming任务</a></h2>
+<h2 id="streaming_7"><a href="#%E5%A4%9AStreaming%E4%BB%BB%E5%8A%A1">多Streaming任务</a></h2>
 <h3 id="_53">概述</h3>
 <p>服务器支持多个 <code>Stream</code> 并行运行，每个 <code>Stream</code> 由唯一 <code>Token</code> 识别，不同客户端可以订阅不同的流，互不干扰。</p>
 <h4 id="_54">代码解析</h4>
@@ -729,7 +729,7 @@ sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w
 <span class="n">Stream</span><span class="w"> </span><span class="n">stream1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">server</span><span class="p">.</span><span class="n">MakeStream</span><span class="p">();</span><span class="w"> </span><span class="c1">// 通过服务器创建第一个流</span>
 <span class="n">Stream</span><span class="w"> </span><span class="n">stream2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">server</span><span class="p">.</span><span class="n">MakeStream</span><span class="p">();</span><span class="w"> </span><span class="c1">// 通过服务器创建第二个流</span>
 </code></pre></div>
-<h2 id="_56"><a href="#端点配置与多地址支持">端点配置与多地址支持</a></h2>
+<h2 id="_56"><a href="#%E7%AB%AF%E7%82%B9%E9%85%8D%E7%BD%AE%E4%B8%8E%E5%A4%9A%E5%9C%B0%E5%9D%80%E6%94%AF%E6%8C%81">端点配置与多地址支持</a></h2>
 <h3 id="_57">概述</h3>
 <p>Streaming 支持灵活的 <strong>端点 (EndPoint)</strong> 配置，可以使用 IP 地址或端口定义服务器端和客户端的连接方式。</p>
 <h4 id="_58">代码解析</h4>
@@ -742,7 +742,7 @@ sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w
 </code></pre></div>
 <h4 id="_59">示例</h4>
 <div class="highlight"><pre><span></span><code><span class="c1">// 创建一个 Streaming 服务器，监听本机 127.0.0.1（即 localhost）上的 8080 端口</span>
-<span class="n">Server</span><span class="w"> </span><span class="n">server</span><span class="p">(</span><span class="s">&quot;127.0.0.1&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">8080</span><span class="p">);</span>
+<span class="n">Server</span><span class="w"> </span><span class="n">server</span><span class="p">(</span><span class="s">"127.0.0.1"</span><span class="p">,</span><span class="w"> </span><span class="mi">8080</span><span class="p">);</span>
 
 <span class="c1">// 启动服务器，使其开始运行并接受客户端的连接</span>
 <span class="n">server</span><span class="p">.</span><span class="n">Run</span><span class="p">();</span>
@@ -754,16 +754,16 @@ sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w
 <li>服务器支持多个 Streaming 任务，每个任务由 <code>Token</code> 识别，客户端可分别订阅不同流。</li>
 <li>服务器和客户端支持灵活的端点配置，允许自定义 IP 地址、端口，适用于不同的网络环境。</li>
 </ul>
-<h1 id="_61"><a href="#其他模式">其他模式</a></h1>
-<h2 id="_62"><a href="#同步模式">同步模式</a></h2>
+<h1 id="_61"><a href="#%E5%85%B6%E4%BB%96%E6%A8%A1%E5%BC%8F">其他模式</a></h1>
+<h2 id="_62"><a href="#%E5%90%8C%E6%AD%A5%E6%A8%A1%E5%BC%8F">同步模式</a></h2>
 <p>在同步模式下，服务器端的 <code>Server</code> 类可以通过 <code>SetSynchronousMode</code> 方法控制是否以同步方式运行。同步模式主要用于需要严格按照时序进行数据传输的场景，比如模拟器同步数据流。</p>
 <p>在 <code>Server.h</code> 文件中，可以看到 <code>SetSynchronousMode(bool is_synchro)</code> 方法，它用于控制服务器端的同步模式开关：
-<div class="highlight"><pre><span></span><code><span class="c1">// 设置服务器的同步模式</span>
+</p><div class="highlight"><pre><span></span><code><span class="c1">// 设置服务器的同步模式</span>
 <span class="kt">void</span><span class="w"> </span><span class="nf">SetSynchronousMode</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">is_synchro</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">_server</span><span class="p">.</span><span class="n">SetSynchronousMode</span><span class="p">(</span><span class="n">is_synchro</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
-此外，<code>Run()</code> 方法用于同步启动服务器，而 <code>AsyncRun(size_t worker_threads)</code> 则支持异步多线程运行。</p>
+此外，<code>Run()</code> 方法用于同步启动服务器，而 <code>AsyncRun(size_t worker_threads)</code> 则支持异步多线程运行。
 <div class="highlight"><pre><span></span><code><span class="c1">// 以同步方式运行服务器</span>
 <span class="kt">void</span><span class="w"> </span><span class="nf">Run</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">_pool</span><span class="p">.</span><span class="n">Run</span><span class="p">();</span>
@@ -774,13 +774,13 @@ sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w
 <span class="w">  </span><span class="n">_pool</span><span class="p">.</span><span class="n">AsyncRun</span><span class="p">(</span><span class="n">worker_threads</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="streaming_8"><a href="#多端点-streaming">多端点 Streaming</a></h2>
+<h2 id="streaming_8"><a href="#%E5%A4%9A%E7%AB%AF%E7%82%B9-streaming">多端点 Streaming</a></h2>
 <p>多端点 Streaming 主要依赖 <code>EndPoint.h</code> 中的 <code>EndPoint</code> 相关类，该类提供了 <code>FullyDefinedEndPoint</code> 和 <code>PartiallyDefinedEndPoint</code> 两种端点类型。</p>
 <p>在 <code>Server.h</code> 中，<code>Server</code> 类使用 <code>make_endpoint&lt;protocol_type&gt;(address, port)</code> 方法创建端点，并支持外部地址绑定：
-<div class="highlight"><pre><span></span><code><span class="c1">// 服务器构造函数，绑定到指定地址和端口</span>
+</p><div class="highlight"><pre><span></span><code><span class="c1">// 服务器构造函数，绑定到指定地址和端口</span>
 <span class="k">explicit</span><span class="w"> </span><span class="n">Server</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">address</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">port</span><span class="p">)</span>
 <span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">_server</span><span class="p">(</span><span class="n">_pool</span><span class="p">.</span><span class="n">io_context</span><span class="p">(),</span><span class="w"> </span><span class="n">make_endpoint</span><span class="o">&lt;</span><span class="n">protocol_type</span><span class="o">&gt;</span><span class="p">(</span><span class="n">address</span><span class="p">,</span><span class="w"> </span><span class="n">port</span><span class="p">))</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div></p>
+</code></pre></div>
 <p>对于客户端 <code>Client.h</code>，客户端通过 <code>Subscribe(const Token &amp;token, Functor &amp;&amp;callback)</code> 订阅流，并在 <code>UnSubscribe(const Token &amp;token)</code> 取消订阅。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// 客户端订阅数据流</span>
 <span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">Functor</span><span class="o">&gt;</span>
@@ -793,7 +793,7 @@ sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w
 <span class="w">  </span><span class="n">_client</span><span class="p">.</span><span class="n">UnSubscribe</span><span class="p">(</span><span class="n">token</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>这些机制确保了服务器和多个客户端之间的高效数据传输，并允许多个客户端同时订阅同一个数据流，从而实现多端点 Streaming。</p>
+<p>这些机制确保了服务器和多个客户端之间的高效数据传输，并允许多个客户端同时订阅同一个数据流，从而实现多端点 Streaming。</p></div>
               
             </div>
           </div><footer>

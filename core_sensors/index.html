@@ -100,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="_1"><a href="https://carla.readthedocs.io/en/latest/core_sensors/">传感器和数据</a></h1>
+                <div><h1 id="_1"><a href="https://carla.readthedocs.io/en/latest/core_sensors/">传感器和数据</a></h1>
 <p>传感器是从周围环境中检索数据的参与者。它们对于为驾驶代理创造学习环境至关重要。</p>
 <p>本页总结了开始处理传感器所需的一切。它介绍了可用的类型及其生命周期的分步指南。每个传感器的详细信息可以在 <a href="../ref_sensors/">传感器参考</a> 中找到。</p>
 <ul>
@@ -118,7 +118,7 @@
 </ul>
 </li>
 </ul>
-<hr />
+<hr>
 <h2 id="_2">传感器逐步介绍 <span id="sensors-step-by-step"></span></h2>
 <p><a href="../python_api/#carla.Sensor">carla.Sensor</a> 类定义了一种特殊类型的参与者，能够测量和传输数据。</p>
 <ul>
@@ -131,13 +131,13 @@
 <p>与其他参与者一样，找到蓝图并设置特定属性。这在处理传感器时至关重要。他们的属性将决定所获得的结果。这些在 <a href="../ref_sensors/">传感器参考</a> 中有详细介绍。</p>
 <p>以下示例设置仪表板高清摄像头。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 找到传感器蓝图。</span>
-<span class="n">blueprint</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">get_blueprint_library</span><span class="p">()</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;sensor.camera.rgb&#39;</span><span class="p">)</span>
+<span class="n">blueprint</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">get_blueprint_library</span><span class="p">()</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'sensor.camera.rgb'</span><span class="p">)</span>
 <span class="c1"># 修改蓝图属性来设置图像分辨率和视野</span>
-<span class="n">blueprint</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">&#39;image_size_x&#39;</span><span class="p">,</span> <span class="s1">&#39;1920&#39;</span><span class="p">)</span>
-<span class="n">blueprint</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">&#39;image_size_y&#39;</span><span class="p">,</span> <span class="s1">&#39;1080&#39;</span><span class="p">)</span>
-<span class="n">blueprint</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">&#39;fov&#39;</span><span class="p">,</span> <span class="s1">&#39;110&#39;</span><span class="p">)</span>
+<span class="n">blueprint</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">'image_size_x'</span><span class="p">,</span> <span class="s1">'1920'</span><span class="p">)</span>
+<span class="n">blueprint</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">'image_size_y'</span><span class="p">,</span> <span class="s1">'1080'</span><span class="p">)</span>
+<span class="n">blueprint</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">'fov'</span><span class="p">,</span> <span class="s1">'110'</span><span class="p">)</span>
 <span class="c1"># 设置传感器捕获之间的时间（以秒为单位）</span>
-<span class="n">blueprint</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">&#39;sensor_tick&#39;</span><span class="p">,</span> <span class="s1">&#39;1.0&#39;</span><span class="p">)</span>
+<span class="n">blueprint</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">'sensor_tick'</span><span class="p">,</span> <span class="s1">'1.0'</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="_4">生成 <span id="spawning"></span></h3>
 <p>传感器可以放置在地图上的任何位置。通常情况下，它们会附加到父级 Actor（例如车辆）上，以便在模拟环境中移动，就像物理安装在车辆上的传感器一样。<code>spawn_actor()</code> 方法需要一个从蓝图库中选择的传感器蓝图和一个变换参数。对于未附加的传感器，变换参数将定义其在 CARLA 世界中的绝对位置。<code>attach_to</code> 参数定义了要将传感器附加到的 Actor。对于附加到 Actor 的传感器，变换参数定义了其在 Actor 坐标系中相对于 Actor 的相对位置。</p>
@@ -169,7 +169,7 @@
 <span class="k">def</span> <span class="nf">callback</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">actor_id</span> <span class="ow">in</span> <span class="n">event</span><span class="p">:</span>
         <span class="n">vehicle</span> <span class="o">=</span> <span class="n">world_ref</span><span class="p">()</span><span class="o">.</span><span class="n">get_actor</span><span class="p">(</span><span class="n">actor_id</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Vehicle too close: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">type_id</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">'Vehicle too close: </span><span class="si">%s</span><span class="s1">'</span> <span class="o">%</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">type_id</span><span class="p">)</span>
 
 <span class="n">sensor02</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="n">callback</span><span class="p">)</span>
 </code></pre></div>
@@ -207,7 +207,7 @@
 <p class="admonition-title">重要</p>
 <p><code>is_listening</code>是一种传感器方法，用于检查传感器是否有通过<code>listen</code>注册的回调。<code>stop()</code>是一种停止传感器监听的 <strong>传感器方法</strong> 。<code>sensor_tick</code>是一个<strong>蓝图属性</strong>，用于设置接收数据之间的模拟时间。</p>
 </div>
-<hr />
+<hr>
 <h2 id="_7">传感器类型 <span id="types-of-sensors"></span></h2>
 <h3 id="_8">相机 <span id="cameras"></span></h3>
 <p>从他们的角度拍摄世界。对于返回 <a href="../python_api#carlaimage">carla.Image</a> 的相机，您可以使用辅助类<a href="../python_api/#carla.ColorConverter">carla.ColorConverter</a> 修改图像以表示不同的信息。</p>
@@ -261,7 +261,7 @@
 </tbody>
 </table>
 <p><br></p>
-<hr />
+<hr>
 <h3 id="_9">检测器 <span id="detectors"></span></h3>
 <p>当附加的对象注册特定事件时获取数据。 </p>
 <ul>
@@ -340,7 +340,7 @@
 </tr>
 </tbody>
 </table>
-<hr />
+<hr>
 <p>这是传感器的包装以及它们如何检索模拟数据。 </p>
 <p>Carla 的介绍到此结束。然而，还有很多东西需要学习。</p>
 <ul>
@@ -371,7 +371,7 @@ Python API 参考</a>
 <a href="https://github.com/OpenHUTB/doc/issues" target="_blank" class="btn btn-neutral" title="Go to the CARLA forum">
 讨论页面</a>
 </p>
-</div>
+</div></div>
               
             </div>
           </div><footer>

@@ -100,19 +100,19 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="_1">编码标准</h1>
+                <div><h1 id="_1">编码标准</h1>
 <ul>
 <li><a href="#general"><strong>一般</strong></a>  </li>
 <li><a href="#python"><strong>Python</strong></a>  </li>
 <li><a href="#c++"><strong>C++</strong></a>  </li>
 </ul>
-<hr />
+<hr>
 <h2 id="_2">一般 <span id="general"></span></h2>
 <ul>
 <li>使用空格，而不是制表符。</li>
 <li>避免添加尾随空格，因为它会在差异中产生噪音。</li>
 </ul>
-<hr />
+<hr>
 <h2 id="python">Python <span id="python"></span></h2>
 <ul>
 <li>注释不应超过 80 列，代码不应超过 120 列。</li>
@@ -120,7 +120,7 @@
 <li><a href="https://www.pylint.org/">Pylint</a> 不应给出任何错误或警告（很少有例外适用于外部类，如 <code>numpy</code> 和 <code>pygame</code>，请参阅我们的 <code>.pylintrc</code>）。</li>
 <li>Python 代码遵循 <a href="https://www.python.org/dev/peps/pep-0008/">PEP8 风格指南</a>（尽可能使用<code>autopep8</code>）。</li>
 </ul>
-<hr />
+<hr>
 <h2 id="c">C++ <span id="c++"></span></h2>
 <ul>
 <li>注释不应超过 80 列，如果可以使代码更清晰，在极少数情况下代码可能会稍微超出此限制。</li>
@@ -136,8 +136,8 @@
 <li><a href="https://zhuanlan.zhihu.com/p/720080149">安装和配置 clang-format 和 VSCode插件</a></li>
 </ul>
 <p>检查是否安装成功：
-<div class="highlight"><pre><span></span><code>clang-format<span class="w"> </span>--version
-</code></pre></div></p>
+</p><div class="highlight"><pre><span></span><code>clang-format<span class="w"> </span>--version
+</code></pre></div>
 <ul>
 <li>
 <p>安装 VSCode 插件 clang-foramt</p>
@@ -147,14 +147,14 @@
 </li>
 </ul>
 <p>Clang-format: Assume Filename（规则，引用项目目录下的文件）
-  <div class="highlight"><pre><span></span><code>./.clang-format
+  </p><div class="highlight"><pre><span></span><code>./.clang-format
 </code></pre></div>
   Clang-format: Executable （可执行文件 clang-format.exe 的绝对路径）
   <div class="highlight"><pre><span></span><code>D:\software\llvm\bin\clang-format.exe
 </code></pre></div>
   Clang-format: Style（使用项目根目录下的.clang-format文件）
   <div class="highlight"><pre><span></span><code>file:D:\hutb\Build\AirSim\.clang-format
-</code></pre></div></p>
+</code></pre></div>
 <ul>
 <li>打开.cpp文件后，按<code>Alt+Shift+F</code>即可格式化当前文件</li>
 </ul>
@@ -164,7 +164,7 @@
 <li><a href="https://zh-google-styleguide.readthedocs.io/en/latest/google-python-styleguide/python_style_rules.html">Google Python风格规范</a> </li>
 <li><a href="https://blog.csdn.net/voidccc/article/details/37599203">一张图总结谷歌 C++ 编程规范</a></li>
 </ul>
-<p><img alt="" src="../img/dev/google_cpp_style_guide.jpg" /></p>
+<p><img alt="" src="../img/dev/google_cpp_style_guide.jpg"></p></div>
               
             </div>
           </div><footer>

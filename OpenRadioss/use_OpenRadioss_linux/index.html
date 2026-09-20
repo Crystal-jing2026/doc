@@ -100,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="linux-openradioss">Linux 下 OpenRadioss 的编译</h2>
+                <div><h2 id="linux-openradioss">Linux 下 OpenRadioss 的编译</h2>
 <h3 id="_1">环境</h3>
 <ul>
 <li>
@@ -277,7 +277,7 @@
 </code></pre>
 <p>在命令行输入 <code>bash process_k.sh zug_test3_RS 1</code>即可。其中<code>process_k.sh</code>是脚本名字，<code>zug_test3_RS</code>是模型名字，<code>1</code>是并行进程数。</p>
 <h4 id="_9">运行结果</h4>
-<p><img alt="弹性LS-DYNA" src="../figure/image.png" /></p>
+<p><img alt="弹性LS-DYNA" src="../figure/image.png"></p>
 <h4 id="_10">总结</h4>
 <p>在使用Openadioss 处理LS-DYNA 格式的文件时，需要 .k 文件。这个文件其实是可以直接放在LS-DYNA 上进行计算的。这里提供了一种其他的计算方式——使用OpenRadioss。</p>
 <h4 id="to-do">To Do</h4>
@@ -479,21 +479,21 @@ EOS_TAG：状态方程的标签
 </tbody>
 </table>
 <p>弹塑性应力——应变曲线
-<img alt="弹性LS-DYNA" src="../figure/yingli.png" /></p>
+<img alt="弹性LS-DYNA" src="../figure/yingli.png"></p>
 <p>真实应力形变
 * 真实应力：考虑当前或真实横截面积$A_{true}$的应力
   <script type="math/tex; mode=display">\sigma_{true}=\frac{P_x}{A_{true}}</script>
 * 在塑性变形范围内，塑性变形横截面积永久减小
 * 继续使用工程应力不再准确
- <img alt="弹性LS-DYN" src="../figure/tanxing.png" /></p>
+ <img alt="弹性LS-DYN" src="../figure/tanxing.png"></p>
 <p>#### MAT1 定义方式
  这个关键词用胡克定律定义了一种各向同性的线弹性材料。这个定律表示应力和应变之间的线性关系。它可用于桁架，梁(仅3型)，壳和实体元件。
  格式
- <img alt="弹性LS-DYNA" src="../figure/MAT1geshi.png" />
+ <img alt="弹性LS-DYNA" src="../figure/MAT1geshi.png">
  定义
- <img alt="Alt text" src="../figure/MAT1dingyi.png" />
+ <img alt="Alt text" src="../figure/MAT1dingyi.png">
  例子
- <img alt="Alt text" src="../figure/MAT1lizi.png" /></p>
+ <img alt="Alt text" src="../figure/MAT1lizi.png"></p>
 <p>原理：</p>
 <ul>
 <li>该材料适用于纯粹的弹性材料。材料的性能只取决于两个因素：</li>
@@ -554,7 +554,7 @@ CALL HM_GET_FLOATV('MAT_NU',   ANU   ,IS_AVAILABLE,LSUBMODEL,UNITAB)
     .                C1=TITR,
     .                C2='YOUNG''S MODULUS')
     ENDIF
-    IF(ANU==HALF)ANU=ZEP499                <br />
+    IF(ANU==HALF)ANU=ZEP499                <br>
 C
     G=YOUNG/(TWO<em>(ONE+ANU))
     C0=ZERO
@@ -1242,7 +1242,7 @@ C-----------
     PM(199) = RHOEXT
     PM(200) = EINT_EXT
     PM(201) = INCGAS
-</code></pre>
+</code></pre></div>
               
             </div>
           </div><footer>

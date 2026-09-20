@@ -100,19 +100,19 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="vegetation">Vegetation(植被)模块说明文档</h1>
+                <div><h1 id="vegetation">Vegetation(植被)模块说明文档</h1>
 <h1 id="basevegetationactor">BaseVegetationActor 植被物理模拟模块说明文档</h1>
 <ul>
-<li><a href="#1-模块概述">1. 模块概述</a></li>
-<li><a href="#2-详细设计说明">2. 详细设计说明</a></li>
-<li><a href="#21-植被物理参数系统fspringbasedvegetationparameters">2.1 植被物理参数系统（FSpringBasedVegetationParameters）</a></li>
-<li><a href="#22-骨骼物理建模fskeletonbone-fskeletonjoint">2.2 骨骼物理建模（FSkeletonBone, FSkeletonJoint）</a></li>
-<li><a href="#23-植被基类abasevegetationactor">2.3 植被基类（ABaseVegetationActor）</a></li>
-<li><a href="#24-弹簧模拟组件uspringbasedvegetationcomponent">2.4 弹簧模拟组件（USpringBasedVegetationComponent）</a></li>
-<li><a href="#3-使用方法详解">3. 使用方法详解</a></li>
-<li><a href="#4-技术机制与注意事项">4. 技术机制与注意事项</a></li>
+<li><a href="#1-%E6%A8%A1%E5%9D%97%E6%A6%82%E8%BF%B0">1. 模块概述</a></li>
+<li><a href="#2-%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1%E8%AF%B4%E6%98%8E">2. 详细设计说明</a></li>
+<li><a href="#21-%E6%A4%8D%E8%A2%AB%E7%89%A9%E7%90%86%E5%8F%82%E6%95%B0%E7%B3%BB%E7%BB%9Ffspringbasedvegetationparameters">2.1 植被物理参数系统（FSpringBasedVegetationParameters）</a></li>
+<li><a href="#22-%E9%AA%A8%E9%AA%BC%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1fskeletonbone-fskeletonjoint">2.2 骨骼物理建模（FSkeletonBone, FSkeletonJoint）</a></li>
+<li><a href="#23-%E6%A4%8D%E8%A2%AB%E5%9F%BA%E7%B1%BBabasevegetationactor">2.3 植被基类（ABaseVegetationActor）</a></li>
+<li><a href="#24-%E5%BC%B9%E7%B0%A7%E6%A8%A1%E6%8B%9F%E7%BB%84%E4%BB%B6uspringbasedvegetationcomponent">2.4 弹簧模拟组件（USpringBasedVegetationComponent）</a></li>
+<li><a href="#3-%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E8%AF%A6%E8%A7%A3">3. 使用方法详解</a></li>
+<li><a href="#4-%E6%8A%80%E6%9C%AF%E6%9C%BA%E5%88%B6%E4%B8%8E%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9">4. 技术机制与注意事项</a></li>
 </ul>
-<hr />
+<hr>
 <h2 id="1">1. 模块概述</h2>
 <p>本模块用于人车模拟器中的植物物理动画控制，结合弹簧力学与骨骼动力学建模，实现植物对象（如草、树枝）的自然运动模拟。</p>
 <p>该模块主要由以下 4 个核心文件组成：</p>
@@ -121,7 +121,7 @@
 <li><code>SpringBasedVegetationComponent.h</code> / <code>.cpp</code></li>
 </ul>
 <p>其功能包括植被弹簧参数建模、骨架结构描述、动力学求解、碰撞反馈与编辑器交互支持。</p>
-<hr />
+<hr>
 <h2 id="2">2. 详细设计说明</h2>
 <h3 id="21-fspringbasedvegetationparameters">2.1 植被物理参数系统（FSpringBasedVegetationParameters）</h3>
 <p>该结构体描述了植被动画模拟中核心的弹簧参数，定义于 <code>BaseVegetationActor.h</code>。主要字段包括：</p>
@@ -159,7 +159,7 @@
 <li>通过 Tick 每帧推进物理求解，处理多个骨骼点联动。</li>
 <li>使用 Eigen 实现矩阵变换、力矩求解、高效模拟。</li>
 </ul>
-<hr />
+<hr>
 <h2 id="3">3. 使用方法详解</h2>
 <ol>
 <li>在场景中放置继承自 <code>ABaseVegetationActor</code> 的蓝图或 C++ 对象。</li>
@@ -171,7 +171,7 @@
 <span class="n">SpringActor</span><span class="o">-&gt;</span><span class="n">SpringParameters</span><span class="p">.</span><span class="n">BaseSpringStrength</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1200.0f</span><span class="p">;</span>
 <span class="n">SpringActor</span><span class="o">-&gt;</span><span class="n">SetParametersToComponent</span><span class="p">();</span>
 </code></pre></div>
-<hr />
+<hr>
 <h2 id="4">4. 技术机制与注意事项</h2>
 <ul>
 <li>所有力学运算基于 Eigen 三维向量矩阵库完成。</li>
@@ -180,7 +180,7 @@
 <li>模拟粒度可控：可通过调整骨骼数量、质量矩阵降低性能开销。</li>
 <li>建议限制 <code>ForceMaxDistance</code> 以避免远程对象影响植被模拟。</li>
 </ul>
-<hr />
+<hr>
 <h2 id="1fspringbasedvegetationparameters">1.植被物理参数系统（FSpringBasedVegetationParameters）</h2>
 <p>该结构体定义在 <code>BaseVegetationActor.h</code>，其作用是统一存储所有控制植被物理行为的可调参数，便于在运行时从组件同步参数、在编辑器中配置或蓝图控制中调整。</p>
 <h3 id="_1">参数说明：</h3>
@@ -240,13 +240,13 @@
 </tr>
 <tr>
 <td><code>Skeleton</code></td>
-<td>TArray<FSkeletonJoint></td>
+<td>TArray<fskeletonjoint></fskeletonjoint></td>
 <td>包含所有骨骼节点的定义。</td>
 </tr>
 </tbody>
 </table>
 <p>这些参数通过组件接口与 Actor 接口双向同步，确保模拟中数值一致。</p>
-<hr />
+<hr>
 <h2 id="2uspringbasedvegetationcomponent">2.弹簧模拟组件（USpringBasedVegetationComponent）</h2>
 <p>定义于 <code>SpringBasedVegetationComponent.h</code> 与 <code>.cpp</code> 中。是实现动态物理模拟的核心模块。继承自 <code>UActorComponent</code>。</p>
 <h3 id="_2">核心成员：</h3>
@@ -271,7 +271,7 @@
 <li><strong>旋转更新</strong>：采用矩阵指数或四元数近似实现角度更新，避免万向锁问题。</li>
 <li><strong>碰撞检测</strong>：使用 Unreal 的 Capsule 组件与 Actor 距离判断是否交互，若触发则添加附加力矩。</li>
 </ul>
-<hr />
+<hr>
 <h2 id="3_1">3.使用方法详解</h2>
 <h3 id="_4">蓝图接口说明</h3>
 <ul>
@@ -283,7 +283,7 @@
 → 调用 SetParametersToComponent
 → 修改 BaseSpringStrength / Gravity 等参数
 → 调用 GetParametersFromComponent 查看反馈结果
-</code></pre></div>
+</code></pre></div></div>
               
             </div>
           </div><footer>

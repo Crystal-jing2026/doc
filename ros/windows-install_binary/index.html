@@ -100,20 +100,20 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <p><a href="https://docs.ros.org/en/foxy/Installation/Windows-Install-Binary.html">Windows 平台下的ROS二进制安装</a> </p>
+                <div><p><a href="https://docs.ros.org/en/foxy/Installation/Windows-Install-Binary.html">Windows 平台下的ROS二进制安装</a> </p>
 <h1 id="_1">安装依赖</h1>
 <h2 id="chocolatey">安装 Chocolatey</h2>
 <p>1.根据<a href="https://chocolatey.org/install?_gl=1*1t2vzhg*_ga*MjA0Njg1OTQ3NC4xNzI3MzQ2NDc2*_ga_0WDD29GGN2*MTcyNzM0NjQ3Ni4xLjEuMTcyNzM0NjUxMS4wLjAuMA..">链接</a> 安装chocolate</p>
 <p>使用 <code>PowerShell</code> 运行<code>Get-ExecutionPolicy</code>，如果返回<code>Restricted</code>，然后以管理员身份运行<code>Set-ExecutionPolicy AllSigned</code>。
 ```shell script
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
-<div class="highlight"><pre><span></span><code>然后运行以下脚本安装 Chocolatey：
+</p><div class="highlight"><pre><span></span><code>然后运行以下脚本安装 Chocolatey：
 ```shell
-Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString(&#39;https://community.chocolatey.org/install.ps1&#39;))
-</code></pre></div></p>
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+</code></pre></div>
 <p>如果没有看到任何错误，输入<code>choco</code> 或者 <code>choco -?</code>检查安装 Chocolatey 是否成功。</p>
 <h2 id="python">安装Python</h2>
-<p>打开命令行并通过输入以下命令</p>
+<p>打开命令行并通过输入以下命令</p></div>
               
             </div>
           </div><footer>

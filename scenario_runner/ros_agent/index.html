@@ -100,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="ros">基于ROS的挑战代理</h1>
+                <div><h1 id="ros">基于ROS的挑战代理</h1>
 <p>与 ROS 的 CARLA 接口通常通过 <a href="https://github.com/carla-simulator/ros-bridge">CARLA ROS Bridge</a> 完成。在挑战模式下，此桥接功能由 RosAgent 提供。它对传感器使用相同的主题和消息类型，但不发布 tf 转换。</p>
 <h1 id="_1">要求</h1>
 <ul>
@@ -130,7 +130,7 @@ class MyRosAgent(RosAgent):
 roslaunch $TEAM_CODE_ROOT/challenge.launch
 </code></pre>
 <h2 id="_5">测试</h2>
-<p>一般来说，挑战执行是无头的。为了进行诊断，您仍然可以使用 rviz 或 rqt 等 ros 工具。此外，您可以使用carla_ros_bridge 中的 <a href="https://github.com/carla-simulator/ros-bridge/tree/master/carla_manual_control">carla_manual_control</a> 进行可视化（并控制车辆）。</p>
+<p>一般来说，挑战执行是无头的。为了进行诊断，您仍然可以使用 rviz 或 rqt 等 ros 工具。此外，您可以使用carla_ros_bridge 中的 <a href="https://github.com/carla-simulator/ros-bridge/tree/master/carla_manual_control">carla_manual_control</a> 进行可视化（并控制车辆）。</p></div>
               
             </div>
           </div><footer>

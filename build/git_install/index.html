@@ -100,14 +100,14 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="git">Git 安装</h2>
+                <div><h2 id="git">Git 安装</h2>
 <ol>
 <li>打开 Git 的官方网站：https://git-scm.com/download/win。</li>
 <li>根据操作平台版本（32 位或 64 位）选择适合的安装包，点击下载。</li>
 <li>下载完成后，双击安装包启动安装程序。</li>
 <li>按照安装向导完成安装，建议保留默认设置（包括将 Git 添加到平台 PATH）。</li>
 <li>安装完成后，在终端（或 cmd 命令提示符）中输入git -v，出现如下图所示版本号即表示安装成功。
-<img alt="" src="../../img/build/git.png" /></li>
+<img alt="" src="../../img/build/git.png"></li>
 <li>生成 SSH 密钥</li>
 <li>
 <p>打开 cmd 命令提示符或终端，输入以下命令生成 SSH 密钥：
@@ -128,11 +128,11 @@
 </li>
 <li>登录到 GitHub 管理平台 <a href="https://github.com">https://github.com</a> ：
 在右上角点击头像，选择 <strong>Settings</strong>（设置）。在左侧导航栏选择 <strong>SSH and GPG keys</strong>，点击 <strong>New SSH key</strong>。粘贴公钥内容，设置描述名称（如“Libra 项目”）后点击 <code>Add SSH key</code> 确定。
-<img alt="" src="../../img/build/git.png" /></li>
+<img alt="" src="../../img/build/git.png"></li>
 <li>配置完成后，使用 <code>ssh -T git@github.com</code> 命令测试 SSH 是否成功连接 GitHub：
 若第一次使用，需手动输入 <code>yes</code> 并按 Enter 回车确定。出现如下图所示提示即表示连接成功。
-<img alt="" src="../../img/build/ssh_connection.png" /></li>
-</ol>
+<img alt="" src="../../img/build/ssh_connection.png"></li>
+</ol></div>
               
             </div>
           </div><footer>

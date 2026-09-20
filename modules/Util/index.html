@@ -100,42 +100,42 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="util">Util 模块技术文档</h1>
+                <div><h1 id="util">Util 模块技术文档</h1>
 <h1 id="_1">目录</h1>
 <ul>
-<li><a href="#1-概述">1. 概述</a></li>
-<li><a href="#11-util模块与其它模块的调用关系图">1.1 Util模块与其它模块的调用关系图</a></li>
-<li><a href="#12-util模块中类的关系图">1.2 Util模块中类的关系图</a></li>
-<li><a href="#13-util模块关键类表">1.3 Util模块关键类表</a></li>
-<li><a href="#2-util核心功能类">2. Util核心功能类</a></li>
-<li><a href="#21-uactorattacheractor-附加器">2.1 UActorAttacher：Actor 附加器</a><ul>
-<li><a href="#211-概要">2.1.1 概要</a></li>
-<li><a href="#212-关键方法详解">2.1.2 关键方法详解</a></li>
+<li><a href="#1-%E6%A6%82%E8%BF%B0">1. 概述</a></li>
+<li><a href="#11-util%E6%A8%A1%E5%9D%97%E4%B8%8E%E5%85%B6%E5%AE%83%E6%A8%A1%E5%9D%97%E7%9A%84%E8%B0%83%E7%94%A8%E5%85%B3%E7%B3%BB%E5%9B%BE">1.1 Util模块与其它模块的调用关系图</a></li>
+<li><a href="#12-util%E6%A8%A1%E5%9D%97%E4%B8%AD%E7%B1%BB%E7%9A%84%E5%85%B3%E7%B3%BB%E5%9B%BE">1.2 Util模块中类的关系图</a></li>
+<li><a href="#13-util%E6%A8%A1%E5%9D%97%E5%85%B3%E9%94%AE%E7%B1%BB%E8%A1%A8">1.3 Util模块关键类表</a></li>
+<li><a href="#2-util%E6%A0%B8%E5%BF%83%E5%8A%9F%E8%83%BD%E7%B1%BB">2. Util核心功能类</a></li>
+<li><a href="#21-uactorattacheractor-%E9%99%84%E5%8A%A0%E5%99%A8">2.1 UActorAttacher：Actor 附加器</a><ul>
+<li><a href="#211-%E6%A6%82%E8%A6%81">2.1.1 概要</a></li>
+<li><a href="#212-%E5%85%B3%E9%94%AE%E6%96%B9%E6%B3%95%E8%AF%A6%E8%A7%A3">2.1.2 关键方法详解</a></li>
 </ul>
 </li>
-<li><a href="#22-aactorwithrandomengine随机引擎注入器">2.2 AActorWithRandomEngine：随机引擎注入器</a><ul>
-<li><a href="#221-概要">2.2.1 概要</a></li>
-<li><a href="#222-关键方法详解">2.2.2 关键方法详解</a></li>
-<li><a href="#223-使用示例">2.2.3 使用示例</a></li>
+<li><a href="#22-aactorwithrandomengine%E9%9A%8F%E6%9C%BA%E5%BC%95%E6%93%8E%E6%B3%A8%E5%85%A5%E5%99%A8">2.2 AActorWithRandomEngine：随机引擎注入器</a><ul>
+<li><a href="#221-%E6%A6%82%E8%A6%81">2.2.1 概要</a></li>
+<li><a href="#222-%E5%85%B3%E9%94%AE%E6%96%B9%E6%B3%95%E8%AF%A6%E8%A7%A3">2.2.2 关键方法详解</a></li>
+<li><a href="#223-%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B">2.2.3 使用示例</a></li>
 </ul>
 </li>
-<li><a href="#23-boundingbox相关类">2.3 BoundingBox相关类</a><ul>
-<li><a href="#231-fboundingbox边界框结构">2.3.1 FBoundingBox：边界框结构</a></li>
-<li><a href="#232-uboundingboxcalculator边界框计算器">2.3.2 UBoundingBoxCalculator：边界框计算器</a></li>
+<li><a href="#23-boundingbox%E7%9B%B8%E5%85%B3%E7%B1%BB">2.3 BoundingBox相关类</a><ul>
+<li><a href="#231-fboundingbox%E8%BE%B9%E7%95%8C%E6%A1%86%E7%BB%93%E6%9E%84">2.3.1 FBoundingBox：边界框结构</a></li>
+<li><a href="#232-uboundingboxcalculator%E8%BE%B9%E7%95%8C%E6%A1%86%E8%AE%A1%E7%AE%97%E5%99%A8">2.3.2 UBoundingBoxCalculator：边界框计算器</a></li>
 </ul>
 </li>
-<li><a href="#24-fdebugshapedrawer调试形状绘制器">2.4 FDebugShapeDrawer：调试形状绘制器</a><ul>
-<li><a href="#241-概要">2.4.1 概要</a></li>
-<li><a href="#242-使用场景">2.4.2 使用场景</a></li>
-<li><a href="#243-关键方法详解">2.4.3 关键方法详解</a></li>
+<li><a href="#24-fdebugshapedrawer%E8%B0%83%E8%AF%95%E5%BD%A2%E7%8A%B6%E7%BB%98%E5%88%B6%E5%99%A8">2.4 FDebugShapeDrawer：调试形状绘制器</a><ul>
+<li><a href="#241-%E6%A6%82%E8%A6%81">2.4.1 概要</a></li>
+<li><a href="#242-%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF">2.4.2 使用场景</a></li>
+<li><a href="#243-%E5%85%B3%E9%94%AE%E6%96%B9%E6%B3%95%E8%AF%A6%E8%A7%A3">2.4.3 关键方法详解</a></li>
 </ul>
 </li>
-<li><a href="#25-fnavigationmesh导航网格管理器">2.5 FNavigationMesh：导航网格管理器</a><ul>
-<li><a href="#251-概要">2.5.1 概要</a></li>
-<li><a href="#252-关键方法详解">2.5.2 关键方法详解</a></li>
-<li><a href="#253-使用示例">2.5.3 使用示例</a></li>
-<li><a href="#254-注意事项">2.5.4 注意事项</a></li>
-<li><a href="#255-扩展功能">2.5.5 扩展功能</a></li>
+<li><a href="#25-fnavigationmesh%E5%AF%BC%E8%88%AA%E7%BD%91%E6%A0%BC%E7%AE%A1%E7%90%86%E5%99%A8">2.5 FNavigationMesh：导航网格管理器</a><ul>
+<li><a href="#251-%E6%A6%82%E8%A6%81">2.5.1 概要</a></li>
+<li><a href="#252-%E5%85%B3%E9%94%AE%E6%96%B9%E6%B3%95%E8%AF%A6%E8%A7%A3">2.5.2 关键方法详解</a></li>
+<li><a href="#253-%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B">2.5.3 使用示例</a></li>
+<li><a href="#254-%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9">2.5.4 注意事项</a></li>
+<li><a href="#255-%E6%89%A9%E5%B1%95%E5%8A%9F%E8%83%BD">2.5.5 扩展功能</a></li>
 </ul>
 </li>
 </ul>
@@ -361,7 +361,7 @@
 <h4 id="212">2.1.2 关键方法详解</h4>
 <ol>
 <li><code>AttachActors</code>
-<div class="highlight"><pre><span></span><code><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="o">=</span><span class="s">&quot;CARLA|Actor Attacher&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="o">=</span><span class="s">"CARLA|Actor Attacher"</span><span class="p">)</span>
 <span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">AttachActors</span><span class="p">(</span><span class="n">AActor</span><span class="w"> </span><span class="o">*</span><span class="n">Child</span><span class="p">,</span><span class="w"> </span><span class="n">AActor</span><span class="w"> </span><span class="o">*</span><span class="n">Parent</span><span class="p">,</span><span class="w"> </span><span class="n">EAttachmentType</span><span class="w"> </span><span class="n">AttachmentType</span><span class="p">);</span>
 </code></pre></div></li>
 <li>作用：根据传入的AttachmentType分发到三种附加实现方式，最后执行<code>Child-&gt;SetOwner(Parent)</code>，将子 Actor 的所有者设为父 Actor</li>
@@ -373,7 +373,7 @@
 </li>
 <li>
 <p><code>UActorAttacher_AttachActorsWithSpringArm</code>
-<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">UActorAttacher_AttachActorsWithSpringArm</span><span class="p">(</span><span class="n">AActor</span><span class="w"> </span><span class="o">*</span><span class="n">Child</span><span class="p">,</span><span class="w"> </span><span class="n">AActor</span><span class="w"> </span><span class="o">*</span><span class="n">Parent</span><span class="p">)</span>
+</p><div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">UActorAttacher_AttachActorsWithSpringArm</span><span class="p">(</span><span class="n">AActor</span><span class="w"> </span><span class="o">*</span><span class="n">Child</span><span class="p">,</span><span class="w"> </span><span class="n">AActor</span><span class="w"> </span><span class="o">*</span><span class="n">Parent</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">  </span><span class="c1">// 1. 动态创建 SpringArmComponent</span>
 <span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">SpringArm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NewObject</span><span class="o">&lt;</span><span class="n">USpringArmComponent</span><span class="o">&gt;</span><span class="p">(</span><span class="n">Parent</span><span class="p">);</span>
@@ -405,7 +405,7 @@
 <span class="w">      </span><span class="n">FAttachmentTransformRules</span><span class="o">::</span><span class="n">KeepRelativeTransform</span><span class="p">);</span>
 <span class="w">  </span><span class="n">ChildComp</span><span class="o">-&gt;</span><span class="n">RegisterComponent</span><span class="p">();</span>
 <span class="p">}</span>
-</code></pre></div></p>
+</code></pre></div>
 </li>
 <li>作用：利用 <code>USpringArmComponent</code> 自动实现带碰撞测试的“弹簧臂”跟随，使子 Actor 始终保持与父 Actor 之间的指定距离和方向</li>
 <li>关键变量：</li>
@@ -440,7 +440,7 @@
 </li>
 <li>
 <p><code>SetSeed</code>
-<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">AActorWithRandomEngine::SetSeed</span><span class="p">(</span><span class="n">int32</span><span class="w"> </span><span class="n">InSeed</span><span class="p">)</span>
+</p><div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">AActorWithRandomEngine::SetSeed</span><span class="p">(</span><span class="n">int32</span><span class="w"> </span><span class="n">InSeed</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">  </span><span class="n">Seed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">InSeed</span><span class="p">;</span>
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">RandomEngine</span><span class="p">)</span>
@@ -448,7 +448,7 @@
 <span class="w">    </span><span class="n">RandomEngine</span><span class="o">-&gt;</span><span class="n">Initialize</span><span class="p">(</span><span class="n">Seed</span><span class="p">);</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div></p>
+</code></pre></div>
 </li>
 <li>作用：设置新的种子值，并重新初始化随机引擎，以改变随机行为的序列。</li>
 <li>关键变量：</li>
@@ -457,7 +457,7 @@
 <li><code>seed</code>：当前使用的种子值，默认值为 123456789。</li>
 </ol>
 <p>#### 2.2.3 使用示例
-<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">AMyRandomActor</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">AActorWithRandomEngine</span>
+</p><div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">AMyRandomActor</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">AActorWithRandomEngine</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="n">GENERATED_BODY</span><span class="p">()</span>
 
@@ -468,18 +468,18 @@
 
 <span class="w">        </span><span class="c1">// 使用随机引擎生成一个 0 到 100 之间的整数</span>
 <span class="w">        </span><span class="n">int32</span><span class="w"> </span><span class="n">RandomValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetRandomEngine</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">GetUniformIntInRange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">);</span>
-<span class="w">        </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Log</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;Generated Random Value: %d&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">RandomValue</span><span class="p">);</span>
+<span class="w">        </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Log</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">"Generated Random Value: %d"</span><span class="p">),</span><span class="w"> </span><span class="n">RandomValue</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">};</span>
 <span class="c1">// 创建一个继承自 AActorWithRandomEngine 的自定义 Actor</span>
 </code></pre></div>
-- 说明：此示例展示了如何在自定义的 <code>AMyRandomActor</code> 中复用 <code>AActorWithRandomEngine</code> 提供的随机引擎功能，并在游戏开始时生成一个 0–100 范围内的随机整数并输出日志。</p>
+- 说明：此示例展示了如何在自定义的 <code>AMyRandomActor</code> 中复用 <code>AActorWithRandomEngine</code> 提供的随机引擎功能，并在游戏开始时生成一个 0–100 范围内的随机整数并输出日志。
 <h2 id="23-boundingbox">2.3 BoundingBox相关类</h2>
 <h3 id="231-fboundingbox">2.3.1 FBoundingBox：边界框结构</h3>
 <h4 id="_2">概要</h4>
 <p><code>FBoundingBox</code>是一个BlueprintType的USTRUCT，用于在C++与BluePrint间传递和操作三维边界框信息。HUTB 中所有 Actor（车辆、行人、交通标志、静态网格等）均可通过该结构表示其局部边界框，方便后续在世界或摄像机坐标下进行投影、碰撞检测或可视化渲染。</p>
 <h4 id="_3">成员详解</h4>
-<p><div class="highlight"><pre><span></span><code><span class="n">USTRUCT</span><span class="p">(</span><span class="n">BlueprintType</span><span class="p">)</span>
+<p></p><div class="highlight"><pre><span></span><code><span class="n">USTRUCT</span><span class="p">(</span><span class="n">BlueprintType</span><span class="p">)</span>
 <span class="k">struct</span><span class="w"> </span><span class="nc">CARLA_API</span><span class="w"> </span><span class="n">FBoundingBox</span>
 <span class="p">{</span>
 <span class="w">  </span><span class="n">GENERATED_BODY</span><span class="p">()</span>
@@ -499,7 +499,7 @@
 </code></pre></div>
 - Origin：包围盒中心点在父 Actor 局部坐标系下的位置；
 - Extent：包围盒在三个轴上的半尺寸，用于计算 Min/Max 边界；
-- Rotation：包围盒相对于父 Actor 局部坐标系的欧拉旋转。该设计借鉴自 Unreal 引擎中 UBoxComponent 的中心/Extent/Rotation 表示。</p>
+- Rotation：包围盒相对于父 Actor 局部坐标系的欧拉旋转。该设计借鉴自 Unreal 引擎中 UBoxComponent 的中心/Extent/Rotation 表示。
 <h3 id="232-uboundingboxcalculator">2.3.2 UBoundingBoxCalculator：边界框计算器</h3>
 <h4 id="_4">概要</h4>
 <p><code>UBoundingBoxCalculator</code> 是一个派生自 <code>UBlueprintFunctionLibrary</code> 的静态函数集，负责根据不同 Actor 或网格类型，提取或合成对应的 FBoundingBox 信息。</p>
@@ -623,7 +623,7 @@
 </ul>
 <h3 id="243">2.4.3 关键方法详解</h3>
 <p>1.<code>FDebugShapeDrawer::Draw</code>
-<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">FDebugShapeDrawer::Draw</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">carla</span><span class="o">::</span><span class="n">rpc</span><span class="o">::</span><span class="n">DebugShape</span><span class="w"> </span><span class="o">&amp;</span><span class="n">Shape</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</p><div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">FDebugShapeDrawer::Draw</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">carla</span><span class="o">::</span><span class="n">rpc</span><span class="o">::</span><span class="n">DebugShape</span><span class="w"> </span><span class="o">&amp;</span><span class="n">Shape</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">Visitor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FShapeVisitor</span><span class="p">(</span><span class="n">World</span><span class="p">,</span><span class="w"> </span><span class="n">Shape</span><span class="p">.</span><span class="n">color</span><span class="p">,</span><span class="w"> </span><span class="n">Shape</span><span class="p">.</span><span class="n">life_time</span><span class="p">,</span><span class="w"> </span><span class="n">Shape</span><span class="p">.</span><span class="n">persistent_lines</span><span class="p">);</span>
 <span class="w">  </span><span class="n">boost</span><span class="o">::</span><span class="n">variant2</span><span class="o">::</span><span class="n">visit</span><span class="p">(</span><span class="n">Visitor</span><span class="p">,</span><span class="w"> </span><span class="n">Shape</span><span class="p">.</span><span class="n">primitive</span><span class="p">);</span>
 <span class="p">}</span>
@@ -631,9 +631,9 @@
 - 作用：根据传入的<code>DebugShape</code>对象，调用相应的绘制方法在世界或 HUD 上渲染调试形状。
 - 实现细节：
   - 构造<code>FShapeVisitor</code>对象，传入当前世界引用、颜色、生命周期和持久化标志。
-  - 使用<code>boost::variant2::visit</code>访问<code>Shape.primitive</code>，根据实际的形状类型调用对应的绘制方法。</p>
+  - 使用<code>boost::variant2::visit</code>访问<code>Shape.primitive</code>，根据实际的形状类型调用对应的绘制方法。
 <p>2.<code>FShapeVisitor::operator() (Arrow)</code>
-<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">FShapeVisitor::operator</span><span class="p">()(</span><span class="k">const</span><span class="w"> </span><span class="n">Shape</span><span class="o">::</span><span class="n">Arrow</span><span class="w"> </span><span class="o">&amp;</span><span class="n">Arrow</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span>
+</p><div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">FShapeVisitor::operator</span><span class="p">()(</span><span class="k">const</span><span class="w"> </span><span class="n">Shape</span><span class="o">::</span><span class="n">Arrow</span><span class="w"> </span><span class="o">&amp;</span><span class="n">Arrow</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">FVector</span><span class="w"> </span><span class="n">Begin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FVector</span><span class="p">(</span><span class="n">Arrow</span><span class="p">.</span><span class="n">line</span><span class="p">.</span><span class="n">begin</span><span class="p">);</span>
 <span class="w">  </span><span class="n">FVector</span><span class="w"> </span><span class="n">End</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">FVector</span><span class="p">(</span><span class="n">Arrow</span><span class="p">.</span><span class="n">line</span><span class="p">.</span><span class="n">end</span><span class="p">);</span>
 <span class="w">  </span><span class="c1">// 坐标转换</span>
@@ -663,7 +663,7 @@
 - 解析：
   - 通过 <code>LargeMapManager</code> 将全局坐标转换为本地坐标，保证在大地图下的位置准确性。
   - 计算箭头方向向量 <code>Diff</code> 并生成变换 <code>Transform</code>，用于定位箭头头部。
-  - 使用 <code>DrawLines</code> 绘制箭头的主干及四个箭头分支，提高可视化效果。</p>
+  - 使用 <code>DrawLines</code> 绘制箭头的主干及四个箭头分支，提高可视化效果。
 <h2 id="25-fnavigationmesh">2.5 FNavigationMesh：导航网格管理器</h2>
 <h3 id="251">2.5.1 概要</h3>
 <p><code>FNavigationMesh</code> 是 HUTB 中用于与引擎导航网格系统交互的工具类，位于 <code>CarlaUE4/Plugins/Carla/Source/Carla/Util/NavigationMesh.*</code>。其主要功能是加载与指定地图名称相关联的导航网格数据，支持路径查询和导航功能。该类通过读取存储为 <code>.bin</code> 文件的导航网格数据，为仿真中的路径规划和智能体导航提供支持。</p>
@@ -702,7 +702,7 @@
 </li>
 </ul>
 <h3 id="253">2.5.3 使用示例</h3>
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Carla/Util/NavigationMesh.h&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">"Carla/Util/NavigationMesh.h"</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">LoadNavigationMeshData</span><span class="p">(</span><span class="n">FString</span><span class="w"> </span><span class="n">MapName</span><span class="p">)</span>
 <span class="p">{</span>
@@ -712,12 +712,12 @@
 <span class="w">    </span><span class="c1">// 检查加载结果</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">MeshData</span><span class="p">.</span><span class="n">Num</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Log</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;Navigation Mesh data loaded successfully for map &#39;%s&#39;&quot;</span><span class="p">),</span><span class="w"> </span><span class="o">*</span><span class="n">MapName</span><span class="p">);</span>
+<span class="w">        </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Log</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">"Navigation Mesh data loaded successfully for map '%s'"</span><span class="p">),</span><span class="w"> </span><span class="o">*</span><span class="n">MapName</span><span class="p">);</span>
 <span class="w">        </span><span class="c1">// 进一步处理加载的导航网格数据</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">else</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Error</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;Failed to load Navigation Mesh data for map &#39;%s&#39;&quot;</span><span class="p">),</span><span class="w"> </span><span class="o">*</span><span class="n">MapName</span><span class="p">);</span>
+<span class="w">        </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Error</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">"Failed to load Navigation Mesh data for map '%s'"</span><span class="p">),</span><span class="w"> </span><span class="o">*</span><span class="n">MapName</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -740,7 +740,7 @@
 <li><strong>动态更新</strong>：</li>
 <li>支持在运行时动态更新导航网格，以适应场景中动态变化的障碍物或路径。</li>
 </ul>
-<p>通过 <code>FNavigationMesh</code> 类，HUTB 仿真系统能够高效地加载和管理导航网格数据，为智能体的路径规划和导航功能提供坚实的基础。</p>
+<p>通过 <code>FNavigationMesh</code> 类，HUTB 仿真系统能够高效地加载和管理导航网格数据，为智能体的路径规划和导航功能提供坚实的基础。</p></div>
               
             </div>
           </div><footer>

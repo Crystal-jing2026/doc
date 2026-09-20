@@ -100,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="camerapy">配置多视角摄像头camera.py</h1>
+                <div><h1 id="camerapy">配置多视角摄像头camera.py</h1>
 <h4 id="_1"><strong>介绍</strong></h4>
 <p>此脚本连接到CARLA模拟环境，在车辆的左右两侧设置相机，并使用Pygame显示相机捕获的实时图像。系统采用多进程架构，确保左右相机图像分别在不同窗口中实时显示。</p>
 <ul>
@@ -145,28 +145,28 @@
     <span class="bp">self</span><span class="o">.</span><span class="n">camera_right</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">world</span><span class="o">.</span><span class="n">spawn_actor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">camera_bp</span><span class="p">(),</span> <span class="n">right_camera_transform</span><span class="p">,</span> <span class="n">attach_to</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">car</span><span class="p">)</span>
     <span class="c1">#监听左右相机图像</span>
     <span class="n">weak_self</span> <span class="o">=</span> <span class="n">weakref</span><span class="o">.</span><span class="n">ref</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">camera_left</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="k">lambda</span> <span class="n">image</span><span class="p">:</span> <span class="n">weak_self</span><span class="p">()</span><span class="o">.</span><span class="n">set_image</span><span class="p">(</span><span class="n">weak_self</span><span class="p">,</span> <span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">image</span><span class="p">))</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">camera_right</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="k">lambda</span> <span class="n">image</span><span class="p">:</span> <span class="n">weak_self</span><span class="p">()</span><span class="o">.</span><span class="n">set_image</span><span class="p">(</span><span class="n">weak_self</span><span class="p">,</span> <span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">image</span><span class="p">))</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">camera_left</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="k">lambda</span> <span class="n">image</span><span class="p">:</span> <span class="n">weak_self</span><span class="p">()</span><span class="o">.</span><span class="n">set_image</span><span class="p">(</span><span class="n">weak_self</span><span class="p">,</span> <span class="s1">'left'</span><span class="p">,</span> <span class="n">image</span><span class="p">))</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">camera_right</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="k">lambda</span> <span class="n">image</span><span class="p">:</span> <span class="n">weak_self</span><span class="p">()</span><span class="o">.</span><span class="n">set_image</span><span class="p">(</span><span class="n">weak_self</span><span class="p">,</span> <span class="s1">'right'</span><span class="p">,</span> <span class="n">image</span><span class="p">))</span>
 </code></pre></div>
 <p>在车辆的左右两侧生成相机，并设置监听器捕获相机图像。</p>
 <h5 id="_6">图像处理</h5>
 <div class="highlight"><pre><span></span><code>@staticmethod
 def set_image(weak_self, side, img):
     self = weak_self()
-    if side == &#39;left&#39;:
+    if side == 'left':
         self.image_left = img
-    elif side == &#39;right&#39;:
+    elif side == 'right':
         self.image_right = img
 
 def get_image_array(self, side):
-    if side == &#39;left&#39; and self.image_left is not None:
-        array = np.frombuffer(self.image_left.raw_data, dtype=np.dtype(&quot;uint8&quot;))
+    if side == 'left' and self.image_left is not None:
+        array = np.frombuffer(self.image_left.raw_data, dtype=np.dtype("uint8"))
         array = array.reshape((VIEW_HEIGHT, VIEW_WIDTH, 4))
         array = array[:, :, :3]  # Drop alpha channel
         array = array[:, :, ::-1]  # Convert from BGRA to RGB
         return array
-    elif side == &#39;right&#39; and self.image_right is not None:
-        array = np.frombuffer(self.image_right.raw_data, dtype=np.dtype(&quot;uint8&quot;))
+    elif side == 'right' and self.image_right is not None:
+        array = np.frombuffer(self.image_right.raw_data, dtype=np.dtype("uint8"))
         array = array.reshape((VIEW_HEIGHT, VIEW_WIDTH, 4))
         array = array[:, :, :3]  # Drop alpha channel
         array = array[:, :, ::-1]  # Convert from BGRA to RGB
@@ -178,9 +178,9 @@ def get_image_array(self, side):
 <h5 id="_7">渲染函数</h5>
 <div class="highlight"><pre><span></span><code>def render(queue, side, x, y):
     pygame.init()
-    os.environ[&#39;SDL_VIDEO_WINDOW_POS&#39;] = f&quot;{x},{y}&quot;
+    os.environ['SDL_VIDEO_WINDOW_POS'] = f"{x},{y}"
     display = pygame.display.set_mode((VIEW_WIDTH, VIEW_HEIGHT), pygame.HWSURFACE | pygame.DOUBLEBUF)
-    pygame.display.set_caption(f&#39;{side.capitalize()} Camera&#39;)
+    pygame.display.set_caption(f'{side.capitalize()} Camera')
     clock = pygame.time.Clock()
 
     try:
@@ -201,10 +201,10 @@ def get_image_array(self, side):
 <p>使用Pygame显示左右相机捕获的图像。</p>
 <h5 id="_8">多线程</h5>
 <p>为了在CARLA模拟环境中创建两个窗口来显示车辆的左右视角，我们需要利用Pygame和多进程来实现。</p>
-<div class="highlight"><pre><span></span><code> left_process = multiprocessing.Process(target=render, args=(left_queue, &#39;left&#39;, 0, 100))
- right_process = multiprocessing.Process(target=render, args=(right_queue, &#39;right&#39;, VIEW_WIDTH + 10, 100))
+<div class="highlight"><pre><span></span><code> left_process = multiprocessing.Process(target=render, args=(left_queue, 'left', 0, 100))
+ right_process = multiprocessing.Process(target=render, args=(right_queue, 'right', VIEW_WIDTH + 10, 100))
 </code></pre></div>
-<p><img alt="" src="../../img/traffic_course_img/2.gif" /></p>
+<p><img alt="" src="../../img/traffic_course_img/2.gif"></p></div>
               
             </div>
           </div><footer>

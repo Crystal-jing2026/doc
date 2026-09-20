@@ -100,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="dreyevr">使用 <code>DReyeVR</code></h1>
+                <div><h1 id="dreyevr">使用 <code>DReyeVR</code></h1>
 <p>现在您已启动并运行 DReyeVR，本指南将重点介绍一些对使用 DReyeVR 的研究人员有用的功能：</p>
 <ul>
 <li><a href="./#maneuvering-the-ego-vehicle">操纵自主车辆</a></li>
@@ -111,7 +111,7 @@
 <li><a href="./#synchronized-replay-frame-capture">带帧捕获的同步重放</a></li>
 <li><a href="./#other-guides">其他指南</a></li>
 </ul>
-<p><img alt="UsageSchematic" src="../Figures/Usage/UsageSchematic.jpg" /></p>
+<p><img alt="UsageSchematic" src="../Figures/Usage/UsageSchematic.jpg"></p>
 <h1 id="_1">操纵自主车辆</h1>
 <p>这些控制方案在 VR 和非 VR 中均有效。主要区别在于，在 VR 中，您可以通过头部跟踪来移动相机姿势和方向，但在平面模式（非 VR）中，您需要像在第一人称游戏中一样使用鼠标。</p>
 <ul>
@@ -140,7 +140,7 @@
 <li><strong>相机调整</strong> - 使用方向盘表面的 4 个方向键 (2) 调整 X 和 Y 轴，使用 +/- 按钮 (5) 调整 Z 轴</li>
 </ul>
 </li>
-<li><img alt="LogiWheel" src="../Figures/Usage/g923.jpg" /> 图片来源：<a href="https://www.logitech.com/assets/65932/2/g923-racing-wheel-qsg.pdf">Logitech g923 manual</a></li>
+<li><img alt="LogiWheel" src="../Figures/Usage/g923.jpg"> 图片来源：<a href="https://www.logitech.com/assets/65932/2/g923-racing-wheel-qsg.pdf">Logitech g923 manual</a></li>
 </ul>
 <div class="admonition 注意">
 <p class="admonition-title">注意</p>
@@ -158,11 +158,11 @@
 <p class="admonition-title">注意</p>
 <p>需要使用 <code>PythonAPI/carla\dist/carla-0.9.13-cp37-cp37m-win_amd64.whl</code> 安装 carla 包</p>
 </div>
-<p><div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span><span class="nv">$CARLA_ROOT</span>/PythonAPI/examples/<span class="w"> </span><span class="c1"># 进入 carla/ 目录</span>
+<p></p><div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span><span class="nv">$CARLA_ROOT</span>/PythonAPI/examples/<span class="w"> </span><span class="c1"># 进入 carla/ 目录</span>
 
 ./schematic_mode.py
 </code></pre></div>
-<img alt="" src="../Figures/Usage/schematic_mode.jpg" /></p>
+<img alt="" src="../Figures/Usage/schematic_mode.jpg">
 <h3 id="pythonapi-dreyevr">使用 PythonAPI 记录 DReyeVR 传感器数据</h3>
 <div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span><span class="nv">$CARLA_ROOT</span>/PythonAPI/examples/
 
@@ -170,7 +170,7 @@
 ./DReyeVR_logging.py<span class="w"> </span><span class="c1"># 直接在标准输出stdout中打印</span>
 
 <span class="c1"># 或者如果已经在运行 roscore (带 rospy)</span>
-./DReyeVR_logging.py<span class="w"> </span>--rh<span class="w"> </span><span class="s1">&#39;192.168.X.Y&#39;</span><span class="w"> </span>--rp<span class="w"> </span><span class="m">11311</span><span class="w"> </span><span class="c1"># 传递 roscore 主机名和端口号</span>
+./DReyeVR_logging.py<span class="w"> </span>--rh<span class="w"> </span><span class="s1">'192.168.X.Y'</span><span class="w"> </span>--rp<span class="w"> </span><span class="m">11311</span><span class="w"> </span><span class="c1"># 传递 roscore 主机名和端口号</span>
 </code></pre></div>
 <ul>
 <li>我们支持在 Ubuntu 20.04 LTS 主机上使用 <code>rospy</code> 进行 ROS 数据流传输。如果您有兴趣为此目的使用虚拟机，我们建议您查看 <a href="../Tools/VirtualMachine/README.md"><code>VirtualMachine/README.md</code></a> ，因为设置相当复杂。</li>
@@ -207,7 +207,7 @@
 <li><code>find_ego_sensor</code> 接收 <code>carla.libcarla.World</code> 实例并返回世界上存在的 DReyeVR 眼动仪 (<code>carla.libcarla.Sensor</code>)，该眼动仪应附加到生成的 EgoVehicle（如果生成了 EgoVehicle）</li>
 </ul>
 <p>然后，在您的脚本中，您可以遵循我们在 <code>diagram_mode.py</code> 中使用的技术，例如：
-<div class="highlight"><pre><span></span><code><span class="n">world</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get_world</span><span class="p">()</span>
+</p><div class="highlight"><pre><span></span><code><span class="n">world</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get_world</span><span class="p">()</span>
 
 <span class="c1"># 找到自主车辆</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">hero_actor</span> <span class="o">=</span> <span class="n">find_ego_vehicle</span><span class="p">(</span><span class="n">world</span><span class="p">)</span>
@@ -218,18 +218,18 @@
 <span class="bp">self</span><span class="o">.</span><span class="n">sensor</span> <span class="o">=</span> <span class="n">DReyeVRSensor</span><span class="p">(</span><span class="n">world</span><span class="p">)</span> 
 <span class="bp">self</span><span class="o">.</span><span class="n">sensor</span><span class="o">.</span><span class="n">ego_sensor</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sensor</span><span class="o">.</span><span class="n">update</span><span class="p">)</span>  <span class="c1"># 订阅读出 readout</span>
 </code></pre></div>
-现在您可以继续使用 <code>self.sensor.ego_sensor</code> 作为标准 <a href="https://github.com/carla-simulator/carla/blob/master/Docs/python_api.md#carlasensor"><code>carla.libcarla.Sensor</code></a> 对象，并使用 <code>self.hero_actor</code> 作为标准 <a href="https://github.com/carla-simulator/carla/blob/master/Docs/python_api.md#carlavehicle"><code>carla.libcarla.Vehicle</code></a> 对象。</p>
+现在您可以继续使用 <code>self.sensor.ego_sensor</code> 作为标准 <a href="https://github.com/carla-simulator/carla/blob/master/Docs/python_api.md#carlasensor"><code>carla.libcarla.Sensor</code></a> 对象，并使用 <code>self.hero_actor</code> 作为标准 <a href="https://github.com/carla-simulator/carla/blob/master/Docs/python_api.md#carlavehicle"><code>carla.libcarla.Vehicle</code></a> 对象。
 <h1 id="_4">记录/重放一个场景</h1>
 <h2 id="_5">动机</h2>
 <p>记录实验场景通常很有用，以便在后期重现并进行进一步分析。我们必须稍微增强记录器和重放器，以尊重我们的自我载体在世界中的持久性，但其他所有功能均保持不变。我们还重现了自我传感器数据（包括 HMD 姿势和方向），以便实验者可以看到参与者在每个节拍中都在看什么。有关 Carla 记录器的完整说明，请参阅其 <a href="../../adv_recorder/">文档</a> 。</p>
 <h2 id="_6">记录</h2>
 <p>开始录制的最简单方法是使用方便的 <code>PythonAPI</code> 脚本。
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span><span class="nv">$CARLA_ROOT</span>/PythonAPI/examples/
+</p><div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span><span class="nv">$CARLA_ROOT</span>/PythonAPI/examples/
 <span class="c1"># 这开始了与 10 辆自动驾驶汽车的记录</span>
 ./start_recording.py<span class="w"> </span>-n<span class="w"> </span><span class="m">10</span><span class="w">  </span><span class="c1"># 更改 -n 参数以更改车辆数量（默认为 10）</span>
 ...
 <span class="c1"># 使用 SIGINT（中断）停止记录</span>
-</code></pre></div></p>
+</code></pre></div>
 <ul>
 <li>
 <p>请注意，如果加载了新的世界，记录将停止，因此如果您想改变世界，请确保在世界加载后重新启动记录。</p>
@@ -260,9 +260,9 @@
 </ul>
 <h2 id="_7">重放</h2>
 <p>通过 PythonAPI 开始重放会话，如下所示：
-<div class="highlight"><pre><span></span><code><span class="c1"># 请注意，这并不依赖于是否处于 VR 模式。</span>
+</p><div class="highlight"><pre><span></span><code><span class="c1"># 请注意，这并不依赖于是否处于 VR 模式。</span>
 ./start_replaying.py<span class="w"> </span><span class="c1"># 这将启动重放会话</span>
-</code></pre></div></p>
+</code></pre></div>
 <div class="admonition 注意">
 <p class="admonition-title">注意</p>
 <p>在重放模式下，所有用户输入都将被忽略，以支持重放输入。但是，您仍然可以使用以下级别控制：</p>
@@ -296,7 +296,7 @@
 <p>通常，理想的做法是通过 <a href="https://carla-scenariorunner.readthedocs.io/en/latest/">ScenarioRunner</a> 解析场景，从而策划实验。</p>
 <p>为此，我们创建了一个方便的脚本，该脚本应该能够应对现有实现的一些怪癖。此脚本 ( <a href="../ScenarioRunner/run_experiment.py"><code>run_experiment.py</code></a> ) 将在加载新地图后自动开始为您记录，并使用唯一的文件名，所有这些都在单个客户端实例上进行，因此您无需担心记录错误或覆盖现有文件。</p>
 <p>使用 <code>scene_runner</code> v0.9.13，您应该已经设置了这些环境变量：
-<div class="highlight"><pre><span></span><code><span class="c1"># on bash (Linux)</span>
+</p><div class="highlight"><pre><span></span><code><span class="c1"># on bash (Linux)</span>
 <span class="nb">export</span><span class="w"> </span><span class="nv">CARLA_ROOT</span><span class="o">=</span>/PATH/TO/carla/
 <span class="nb">export</span><span class="w"> </span><span class="nv">SCENARIO_RUNNER_ROOT</span><span class="o">=</span>/PATH/TO/scenario_runner/
 <span class="nb">export</span><span class="w"> </span><span class="nv">PYTHONPATH</span><span class="o">=</span><span class="nv">$PYTHONPATH</span>:<span class="si">${</span><span class="nv">CARLA_ROOT</span><span class="si">}</span>/PythonAPI/carla/dist/carla-0.9.13-py3.7-linux-x86_64.egg<span class="w">                                           </span>
@@ -315,21 +315,21 @@
 然后运行我们的演示示例，使用以下命令：
 <div class="highlight"><pre><span></span><code><span class="c1"># on bash (Linux)</span>
 <span class="nb">cd</span><span class="w"> </span><span class="nv">$SCENARIO_RUNNER_ROOT</span><span class="w"> </span><span class="c1"># go to scenario-runner</span>
-./run_experiment.py<span class="w"> </span>--title<span class="w"> </span><span class="s2">&quot;dreyevr_experiment&quot;</span><span class="w"> </span>--route<span class="w"> </span><span class="nv">$SCENARIO_RUNNER_ROOT</span>/srunner/data/routes_custom.xml<span class="w"> </span><span class="nv">$SCENARIO_RUNNER_ROOT</span>/srunner/data/town05_scenarios.json<span class="w"> </span><span class="m">0</span>
+./run_experiment.py<span class="w"> </span>--title<span class="w"> </span><span class="s2">"dreyevr_experiment"</span><span class="w"> </span>--route<span class="w"> </span><span class="nv">$SCENARIO_RUNNER_ROOT</span>/srunner/data/routes_custom.xml<span class="w"> </span><span class="nv">$SCENARIO_RUNNER_ROOT</span>/srunner/data/town05_scenarios.json<span class="w"> </span><span class="m">0</span>
 
 <span class="c1"># on Windows x64 Visual C++ Toolset</span>
 <span class="nb">cd</span><span class="w"> </span>%SCENARIO_RUNNER_ROOT%<span class="w"> </span><span class="c1"># go to scenario-runner</span>
-python<span class="w"> </span>run_experiment.py<span class="w"> </span>--title<span class="w"> </span><span class="s2">&quot;dreyevr_experiment&quot;</span><span class="w"> </span>--route<span class="w"> </span>%SCENARIO_RUNNER_ROOT%<span class="se">\s</span>runner<span class="se">\d</span>ata<span class="se">\r</span>outes_custom.xml<span class="w"> </span>%SCENARIO_RUNNER_ROOT%<span class="se">\s</span>runner<span class="se">\d</span>ata<span class="se">\t</span>own05_scenarios.json<span class="w"> </span><span class="m">0</span>
+python<span class="w"> </span>run_experiment.py<span class="w"> </span>--title<span class="w"> </span><span class="s2">"dreyevr_experiment"</span><span class="w"> </span>--route<span class="w"> </span>%SCENARIO_RUNNER_ROOT%<span class="se">\s</span>runner<span class="se">\d</span>ata<span class="se">\r</span>outes_custom.xml<span class="w"> </span>%SCENARIO_RUNNER_ROOT%<span class="se">\s</span>runner<span class="se">\d</span>ata<span class="se">\t</span>own05_scenarios.json<span class="w"> </span><span class="m">0</span>
 </code></pre></div>
-请注意，您可以使用 <code>--title "your_experiment"</code> 将实验重命名为任何名称，并且生成的记录文件将在其文件名中包含此标题。</p>
+请注意，您可以使用 <code>--title "your_experiment"</code> 将实验重命名为任何名称，并且生成的记录文件将在其文件名中包含此标题。
 <h1 id="ai">将控制从手动切换到 AI（切换）</h1>
 <p>有时，在实验期间让 AI 接管自主车辆以用于研究目的很有用。借助 Carla 现有的 <a href="../adv_traffic_manager">基于 TrafficManager 的自动驾驶仪</a> ，在我们的模拟器中可以轻松做到这一点，它可以像驾驶任何其他 Carla 车辆一样驾驶我们的自主车辆。</p>
 <p>然而，为了启动自动驾驶仪，我们目前只支持使用 PythonAPI 执行此任务，因此我们创建了 <code>DReyeVR_AI.py</code> 来完成这项工作：
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span><span class="nv">$CARLA_ROOT</span>/PythonAPI/examples<span class="w"> </span><span class="c1"># 进入目录 carla PythonAPI</span>
+</p><div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span><span class="nv">$CARLA_ROOT</span>/PythonAPI/examples<span class="w"> </span><span class="c1"># 进入目录 carla PythonAPI</span>
 ./DReyeVR_AI.py<span class="w"> </span>-n<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="c1"># 不产生其他车辆，在 EgoVehicle 上启用自动驾驶仪</span>
-</code></pre></div></p>
+</code></pre></div>
 <p>在内部，AI 系统使用 Carla 车辆自动驾驶系统，因此可以在自定义 PythonAPI 脚本中启用此功能，而无需使用 <code>DReyeVR_AI.py</code>，方法是执行以下操作：
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">DReyeVR_utils</span> <span class="kn">import</span> <span class="n">find_ego_vehicle</span>
+</p><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">DReyeVR_utils</span> <span class="kn">import</span> <span class="n">find_ego_vehicle</span>
 <span class="o">...</span>
 
 <span class="n">world</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_world</span><span class="p">()</span>
@@ -339,8 +339,8 @@ python<span class="w"> </span>run_experiment.py<span class="w"> </span>--title<s
 <span class="n">DReyeVR_vehicle</span> <span class="o">=</span> <span class="n">find_ego_vehicle</span><span class="p">(</span><span class="n">world</span><span class="p">)</span>
 <span class="k">if</span> <span class="n">DReyeVR_vehicle</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
     <span class="n">DReyeVR_vehicle</span><span class="o">.</span><span class="n">set_autopilot</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">traffic_manager</span><span class="o">.</span><span class="n">get_port</span><span class="p">())</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Successfully set autopilot on ego vehicle&quot;</span><span class="p">)</span>
-</code></pre></div></p>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Successfully set autopilot on ego vehicle"</span><span class="p">)</span>
+</code></pre></div>
 <p>目前我们仅支持通过按键盘上的 <code>3</code> 键进行手动切换。这将为 Carla <a href="https://github.com/carla-simulator/carla/blob/0.9.13/Unreal/CarlaUE4/Plugins/Carla/Source/Carla/Vehicle/WheeledVehicleAIController.cpp">WheeledVehicleAIController</a> 提供输入优先级，它将遵循 Carla 的 TrafficManager 定义的某些路线。</p>
 <p>为了重新拥有车辆（将控制权交还给玩家），只需按 <code>1</code>。键盘输入的优先级自动高于自动驾驶仪。</p>
 <div class="admonition 可选">
@@ -368,8 +368,8 @@ python<span class="w"> </span>run_experiment.py<span class="w"> </span>--title<s
 <p>在整个开发过程中，我们发现，即使是修改 DReyeVR 中的小东西，也需要很长的重新编译/重新链接/重新烘焙等周期，因此我们希望找到一种可以大大减轻这种负担同时仍提供灵活性的方法。</p>
 <p>这就是我们开发 <a href="../DReyeVR/ConfigFile.h"><code>ConfigFile</code></a> 类和相应的 <a href="../Configs/DReyeVRConfig.ini"><code>DReyeVRConfig.ini</code></a>（以及每个车辆）“params”的原因，这样我们就可以在运行时读取文件来在模拟器中设置变量，而无需重新编译。</p>
 <p>使用我们的 params API 的过程很简单：
-<div class="highlight"><pre><span></span><code><span class="c1">// in, any class, say EgoVehicle.h</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;DReyeVRUtils.h&quot;</span><span class="c1"> // 确保包含了我们本地的头文件！</span>
+</p><div class="highlight"><pre><span></span><code><span class="c1">// in, any class, say EgoVehicle.h</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">"DReyeVRUtils.h"</span><span class="c1"> // 确保包含了我们本地的头文件！</span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">CARLAUE4_API</span><span class="w"> </span><span class="n">AEgoVehicle</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">ACarlaWheeledVehicle</span>
 <span class="p">{</span>
@@ -377,30 +377,30 @@ python<span class="w"> </span>run_experiment.py<span class="w"> </span>--title<s
 
 <span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">MyFavouriteNumber</span><span class="p">;</span><span class="w"> </span><span class="c1">// &lt;--你的新参数</span>
 <span class="p">}</span>
-</code></pre></div></p>
+</code></pre></div>
 <p>然后，选择该变量属于哪种类型的配置文件，目前我们有两种主要配置文件：模拟器范围的 <code>GeneralParams</code> 和每辆车的 <code>VehicleParams</code>。</p>
 <p><code>GeneralParams</code> 可以被视为可以从任何地方访问的全局模拟器配置文件，而 <code>VehicleParams</code> 则专门用于特定的 EgoVehicle（例如locations/specifications ），可以在  <a href="../Config/EgoVehicles/"><code>Config/EgoVehicles/</code></a> 中找到与可用的 DReyeVR EgoVehicles 匹配的配置文件。要了解有关这些内容的更多信息，请参阅 <a href="EgoVehicles.md">EgoVehicle.md</a> 。</p>
 <p>(对于一般参数)
-<div class="highlight"><pre><span></span><code><span class="k">[MyFavourites]</span>
+</p><div class="highlight"><pre><span></span><code><span class="k">[MyFavourites]</span>
 <span class="na">Number</span><span class="o">=</span><span class="s">867.5309</span><span class="w"> </span><span class="c1"># 您也可以写注释！</span>
 </code></pre></div>
-然后，您可以在任何您想要的地方通过指定区域和变量名称来获取参数： </p>
+然后，您可以在任何您想要的地方通过指定区域和变量名称来获取参数： 
 <div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">AEgoVehicle::SomeFunction</span><span class="p">()</span>
 <span class="p">{</span>
 <span class="w">  </span><span class="c1">// 可以使用这种格式直接分配给变量</span>
-<span class="w">  </span><span class="n">MyFavouriteNumber</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GeneralParams</span><span class="p">.</span><span class="n">Get</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;MyFavourites&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Number&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="n">MyFavouriteNumber</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GeneralParams</span><span class="p">.</span><span class="n">Get</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="s">"MyFavourites"</span><span class="p">,</span><span class="w"> </span><span class="s">"Number"</span><span class="p">);</span>
 
 <span class="w">  </span><span class="c1">// 或者通过引用传递变量并获取 Get 操作是否成功</span>
-<span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="n">bSuccess</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GeneralParams</span><span class="p">.</span><span class="n">Get</span><span class="p">(</span><span class="s">&quot;MyFavourites&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Number&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">MyFavouriteNumber</span><span class="p">);</span>
+<span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="n">bSuccess</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GeneralParams</span><span class="p">.</span><span class="n">Get</span><span class="p">(</span><span class="s">"MyFavourites"</span><span class="p">,</span><span class="w"> </span><span class="s">"Number"</span><span class="p">,</span><span class="w"> </span><span class="n">MyFavouriteNumber</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>如果你使用特定于车辆的参数，那么这需要在某些 EgoVehicle 的上下文中
-<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">SomeClass::SomeOtherFunction</span><span class="p">(</span><span class="n">AEgoVehicle</span><span class="w"> </span><span class="o">*</span><span class="n">Vehicle</span><span class="p">){</span>
+</p><div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">SomeClass::SomeOtherFunction</span><span class="p">(</span><span class="n">AEgoVehicle</span><span class="w"> </span><span class="o">*</span><span class="n">Vehicle</span><span class="p">){</span>
 <span class="w">  </span><span class="c1">// VehicleParams 是一个公有成员 </span>
 <span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">ConfigFile</span><span class="w"> </span><span class="o">&amp;</span><span class="n">VehicleSpecificParams</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Vehicle</span><span class="o">-&gt;</span><span class="n">GetVehicleParams</span><span class="p">();</span>
-<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">VehicleParam</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">VehicleSpecificParams</span><span class="p">.</span><span class="n">Get</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;VehicleParamSection&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;VariableName&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">VehicleParam</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">VehicleSpecificParams</span><span class="p">.</span><span class="n">Get</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="s">"VehicleParamSection"</span><span class="p">,</span><span class="w"> </span><span class="s">"VariableName"</span><span class="p">);</span>
 <span class="p">}</span>
-</code></pre></div></p>
+</code></pre></div>
 <p>而且，就像文件中的其他变量一样，您可以将它们捆绑并组织在同一个节标题下。</p>
 <p>我们内置的另一个有用功能是导入、导出和比较配置文件。这很有用，因为我们可以跟踪在记录特定示例时使用的配置文件，然后如果您尝试使用不同的<em>配置</em>参数重放此场景（例如，使用不同的车辆，或者在记录中没有后视镜的情况下启用后视镜），则在比较（差异）记录的配置文件（保存在 .log 文件中）和实时配置文件（当前正在运行的配置文件）时会出现一些警告。</p>
 <h1 id="_9">同步重放帧捕获</h1>
@@ -418,11 +418,11 @@ python<span class="w"> </span>run_experiment.py<span class="w"> </span>--title<s
 </ul>
 <p>（为方便起见，显示 Windows 路径，但 Linux/Mac 的目标路径类似）</p>
 <p>启用这些标志后，任何时候您启动重放，例如：
-<div class="highlight"><pre><span></span><code><span class="c1"># 在目录 PythonAPI/examples</span>
+</p><div class="highlight"><pre><span></span><code><span class="c1"># 在目录 PythonAPI/examples</span>
 ./start_replaying.py<span class="w"> </span>-f<span class="w"> </span>/PATH/TO/RECORDING/FILE<span class="w"> </span><span class="c1"># unix</span>
 
 python<span class="w"> </span>start_replaying.py<span class="w"> </span>-f<span class="w"> </span>/PATH/TO/RECORDING/FILE<span class="w"> </span><span class="c1"># windows</span>
-</code></pre></div></p>
+</code></pre></div>
 <h1 id="_13">其他指南</h1>
 <p>我们还编写了其他指南来满足更特殊的需求：</p>
 <ul>
@@ -468,7 +468,7 @@ python<span class="w"> </span>start_replaying.py<span class="w"> </span>-f<span 
 <li>有一个错误（我们不确定原因，在基本 carla 中也会出现），其中 <code>Town06/07/10HD</code> 未出现在<code>打包</code>版本中。<a href="https://carla.readthedocs.io/en/0.9.13/start_quickstart/#import-additional-assets">此处</a> 有一些文档。</li>
 </ul>
 </li>
-</ul>
+</ul></div>
               
             </div>
           </div><footer>

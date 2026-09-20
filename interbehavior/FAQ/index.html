@@ -100,14 +100,14 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="_1">常见问题</h1>
+                <div><h1 id="_1">常见问题</h1>
 <p>DReyeVR 安装和使用的大多数问题都列在这里。如果这份文档不是最新的，请查看我们的 <a href="https://github.com/OpenHUTB/hutb/issues">GitHub 问题</a> 页面，如果你遇到新的问题，可以创建一个新问题。</p>
-<hr />
+<hr>
 <h2 id="_2">什么是自车和自车传感器？</h2>
 <p>我们使用<a href="../../tuto_G_retrieve_data/#set-the-ego-vehicle">自车</a>的概念来区分 AI 控制的车辆和玩家驾驶的车辆。当你第一次启动 VR 驾驶时，你会在世界中生成一辆车，这就是自车(<a href="https://github.com/OpenHUTB/hutb/blob/hutb/Unreal/CarlaUE4/Source/CarlaUE4/DReyeVR/EgoVehicle.cpp">EgoVehicle</a>)。</p>
 <p>除了“EgoVehicle”之外，我们还使用一种名为 <a href="https://github.com/OpenHUTB/hutb/blob/hutb/Unreal/CarlaUE4/Source/CarlaUE4/DReyeVR/EgoSensor.cpp"><code>EgoSensor</code></a> 的组件（即“DReyeVR-sensor”）；该组件继承自 <a href="https://openhutb.github.io/doc/ref_sensors/">Carla 传感器</a> ，但具备专为 DReyeVR 设计的特性。EgoSensor 负责追踪多种数据，包括用户输入（键盘/鼠标/方向盘）、VR 头显（HMD）的朝向与位置（6 自由度）、第一人称视角的摄像机画面，以及眼动追踪传感器的数据。EgoSensor 所使用的底层数据结构定义在 <a href="https://github.com/OpenHUTB/hutb/blob/hutb/Unreal/CarlaUE4/Plugins/Carla/Source/Carla/Sensor/DReyeVRData.h"><code>DReyeVRData.h</code></a> 文件中，具体位于 <a href="https://github.com/OpenHUTB/hutb/blob/eb9aa2f12df647d74252de3176601ec70587a423/Unreal/CarlaUE4/Plugins/Carla/Source/Carla/Sensor/DReyeVRData.h#L149"><code>DReyeVR::AggregateData</code></a> 结构体内。</p>
 <p><strong>EgoVehicle</strong> 是由玩家控制的车辆，而 <strong>EgoSensor</strong> 是一个包含我们关注并需实时追踪的所有 DReyeVR 核心数据的传感器。</p>
-<hr />
+<hr>
 <h2 id="dreyevr-carla">DReyeVR 中支持哪些 Carla 功能？</h2>
 <p>由于 DReyeVR 的 EgoVehicle 继承自 <a href="https://github.com/OpenHUTB/hutb/blob/hutb/Unreal/CarlaUE4/Plugins/Carla/Source/Carla/Vehicle/CarlaWheeledVehicle.h"><code>ACarlaWheeledVehicle</code></a>，大多数标准的 Carla 车辆功能均可直接使用。我们需要修改记录与回放模块，以确保 <code>EgoSensor</code> 的各项功能（如头戴式显示器（Head-Mounted Display, HMD）位置/旋转、眼动追踪数据、用户输入等）都能被准确地记录和回放。</p>
 <p>然而，VR 驾驶贯穿始终的一个主要假设是：<strong>场景中同一时刻仅存在一辆“自车”（EgoVehicle）</strong>。这是因为每辆自车都会占用 VR 头显（HMD）系统和眼动追踪器资源，且属于开销极大的参与者（例如涉及实时后视镜渲染）。因此，我们不允许通过 Python API 生成新的自车参与者；若需访问自车，我们已通过 <a href="https://github.com/OpenHUTB/hutb/blob/hutb/PythonAPI/examples/DReyeVR_utils.py">DReyeVR_utils.py</a> 提供了一种实现机制，具体如下：</p>
@@ -196,7 +196,7 @@
 </tr>
 </tbody>
 </table>
-<hr />
+<hr>
 <h2 id="python-api-dreyevr">有哪些 Python API 脚本已在 DReyeVR 上进行了测试？</h2>
 <!-- (:heavy_check_mark: = YES, :white_check_mark: = sort of, :grey_question: = Unsure, :x: = NO) -->
 <p>以下 Python API 脚本已通过测试，应能与 DReyeVR 配合使用：</p>
@@ -356,7 +356,7 @@
 </tr>
 </tbody>
 </table>
-<hr />
+<hr>
 <h2 id="ego-vehicle">如何更改自车（ego-vehicle）的网格？</h2>
 <p>目前，我们为自车（EgoVehicle）使用了 Carla 提供的 <code>BP_TeslaM3</code> 网格模型，因为该模型具有高度精细的内部细节，且比例非常适合我们的应用场景。</p>
 <p>不过，自车（EgoVehicle）<strong>并不非得是</strong>特斯拉；事实上，它甚至不必是汽车，完全可以是摩托车手、消防车，或是其他继承自 <a href="https://github.com/OpenHUTB/hutb/blob/hutb/Unreal/CarlaUE4/Plugins/Carla/Source/Carla/Vehicle/CarlaWheeledVehicle.h"><code>ACarlaWheeledVehicle</code></a> 的“参与者”（Actor）。</p>
@@ -366,27 +366,27 @@
 <p class="admonition-title">笔记</p>
 <p>与之前的那些教程不同，您无需担心在蓝图中添加 UCameraComponent，因为这已由 <code>DReyeVR_Pawn</code> 处理。</p>
 </div>
-<hr />
+<hr>
 <h2 id="dreyevr">安装 DReyeVR 后，如何修改其文件？</h2>
 <p>安装 DReyeVR 后（请参阅 <a href="https://github.com/HARPLab/DReyeVR/tree/main/Scripts#make-install"><code>make install</code></a>），相关文件将作为源代码存在于您的 Carla 目录中，并能与 Carla 及 UE4 良好兼容。</p>
 <p>您可以查阅我们的 <a href="https://github.com/HARPLab/DReyeVR/tree/main/Scripts/Paths">对应关系文件</a> ，了解 DReyeVR 仓库中的文件在 Carla 仓库中的具体存放位置。</p>
 <p>例如，若要编辑 <a href="https://github.com/OpenHUTB/hutb/blob/hutb/Unreal/CarlaUE4/Source/CarlaUE4/DReyeVR/EgoVehicle.cpp">EgoVehicle.cpp</a> 文件，应修改位于 <a href="https://github.com/OpenHUTB/hutb/blob/hutb/Unreal/CarlaUE4/Source/CarlaUE4/DReyeVR/EgoVehicle.cpp">Unreal/CarlaUE4/Source/CarlaUE4/DReyeVR/EgoVehicle.cpp</a> 的文件。请忽略任何中间文件或生成的文件，因为它们本质上属于缓存内容，且会被重新生成。</p>
 <p>对于包括 DReyeVR <a href="https://github.com/OpenHUTB/hutb/blob/hutb/Unreal/CarlaUE4/Config/DReyeVRConfig.ini">参数</a> 、PythonAPI 文件、ScenarioRunner 等在内的所有文件，操作流程均相同。</p>
 <p>另一种方法是直接修改 DReyeVR 仓库中的文件，然后再次运行 <code>make install</code> 以覆盖旧文件。</p>
-<hr />
+<hr>
 <h2 id="_3">遇到罗技硬件问题？</h2>
 <p>首先，请确认您的罗技赛车硬件是否受我们使用的 <a href="https://github.com/HARPLab/LogitechWheelPlugin">LogitechWheelPlugin</a> 支持（支持的设备列表请参见 README 文件）。</p>
 <p>确认硬件兼容后，我们建议您使用 <a href="https://www.logitechg.com/en-us/innovation/g-hub.html">Logitech G Hub</a> 并确保操作系统能够检测到您的硬件。</p>
 <p>如果您的硬件在 DReyeVR 中出现异常（或完全没有反应），请尝试在 UE4 编辑器中启用 Logitech 详细日志记录模式。具体操作是，将 <a href="https://github.com/OpenHUTB/hutb/blob/hutb/Unreal/CarlaUE4/Config/DReyeVRConfig.ini">配置文件</a>  <code>[Hardware]</code> 部分中的 <code>LogUpdates</code> 参数值设置为 <code>True</code>。</p>
 <p>在启用详细日志记录的情况下，再次运行 <code>make launch</code> 以在 UE4 编辑器中启动 Carla。依次打开 <code>Window -&gt; Developer Tools -&gt; Output Log</code>，查看该关卡输出的所有日志。运行关卡，并确保打印出了以下字符串之一：
-<div class="highlight"><pre><span></span><code># is detected
+</p><div class="highlight"><pre><span></span><code># is detected
 Found a Logitech device (XYZ) connected on input 0
 
 # not detected
 Could not find Logitech device connected on input 0
-</code></pre></div></p>
+</code></pre></div>
 <p>建议您查看日志；现在，无论是否检测到状态变化（如按下按钮、旋转轴或踩下踏板），日志都会在每个节拍（更新周期​​）输出信息。如果系统能检测到这些操作却没有任何响应，请提交 Issue 告知我们 :)</p>
-<hr />
+<hr>
 <h2 id="modulenotfounderror-no-module-named-dreyevr_utils">ModuleNotFoundError: No module named 'DReyeVR_utils'</h2>
 <p>当运行 DReyeVR 专用的 PythonAPI 脚本，且您的 Python 环境无法找到 <a href="https://github.com/OpenHUTB/hutb/blob/hutb/PythonAPI/examples/DReyeVR_utils.py">DReyeVR_utils.py</a> 时，就会出现这种情况。</p>
 <p>我们可以通过将 <a href="https://github.com/OpenHUTB/hutb/tree/hutb/PythonAPI/examples">PythonAPI/examples</a> 添加到 PYTHONPATH 来解决这个问题，具体如下：</p>
@@ -412,12 +412,12 @@ Could not find Logitech device connected on input 0
 <p class="admonition-title">注意</p>
 <p>如果您使用 <code>conda</code>，将这些路径添加到 PYTHONPATH 的方式可能会有所不同。如果是这种情况，请参阅 <a href="https://github.com/HARPLab/DReyeVR/blob/main/Docs/Install.md#optionalusing-conda-for-the-pythonapi"><code>Install.md#using-conda-for-pythonapi</code></a> （相关问题：<a href="https://github.com/HARPLab/DReyeVR/issues/16">#16</a>）。</p>
 </div>
-<hr />
+<hr>
 <h2 id="make-no-rule-to-make-target-install-stop">make: *** No rule to make target 'install'.  Stop.</h2>
 <p>如果您在 Carla 目录下运行 <code>make install</code> 命令，则很可能出现这种情况。</p>
 <p><code>make install</code> 命令仅在从 DReyeVR 目录调用时才有效。</p>
 <p>相关问题：<a href="https://github.com/HARPLab/DReyeVR/issues/7">#7</a>。</p>
-<hr />
+<hr>
 <h2 id="assertion-failed-px-0-file-shared_ptrhpp">Assertion failed: px != 0, file shared_ptr.hpp</h2>
 <p>如果在安装 DReyeVR 后运行 PythonAPI 脚本时未重新执行 <code>make PythonAPI</code> 命令，可能会出现这种情况。</p>
 <p>将 DReyeVR 安装到 Carla 后，您还需要重新构建 PythonAPI（此过程也会重新构建 LibCarla），以确保 DReyeVR 与 PythonAPI 之间的兼容功能正常运作。</p>
@@ -429,18 +429,18 @@ make<span class="w"> </span>install<span class="w"> </span><span class="nv">CARL
 make<span class="w"> </span>PythonAPI<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>make<span class="w"> </span>launch
 </code></pre></div>
 <p>相关问题：<a href="https://github.com/HARPLab/DReyeVR/issues/12">#12</a>  </p>
-<hr />
+<hr>
 <h2 id="error-invalid-command-bdist_wheel">error: invalid command 'bdist_wheel'</h2>
 <p>当您构建 PythonAPI 且输出包含以下内容时，会出现这种情况：</p>
-<div class="highlight"><pre><span></span><code>error: invalid command &#39;bdist_wheel&#39;
+<div class="highlight"><pre><span></span><code>error: invalid command 'bdist_wheel'
 
--[BuildPythonAPI]: Carla lib for python has been successfully installed in &quot;...&quot;!
+-[BuildPythonAPI]: Carla lib for python has been successfully installed in "..."!
 </code></pre></div>
 <p>虽然日志 <code>[BuildPythonAPI]</code> 显示"successfuly installed"，但这其实是 (carla) 的一个 bug，安装实际上失败了，错误信息如上所述。您应该检查构建日志中是否出现任何错误信息。</p>
 <p>（感谢 <a href="https://github.com/SteadyBits">@SteadyBits</a> 的解答！）您应该确保通过 <code>pip install wheel</code> 安装 <code>wheel</code> 包。您可以检查 <code>PYTHONPATH</code> 来确认 <code>wheel</code> 包是否已安装。</p>
 <p>然后，重新构建 PythonAPI (<code>make PythonAPI</code>) 应该会成功，而不会出现<code>error: invalid command</code>的错误信息。</p>
 <p>相关问题：<a href="https://github.com/HARPLab/DReyeVR/issues/19#issuecomment-1118695739">#19</a></p>
-<hr />
+<hr></div>
               
             </div>
           </div><footer>

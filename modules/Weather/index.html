@@ -100,21 +100,21 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="_1">目录</h1>
+                <div><h1 id="_1">目录</h1>
 <ul>
 <li>
-<h1 id="_2"><a href="#天气">天气</a></h1>
+<h1 id="_2"><a href="#%E5%A4%A9%E6%B0%94">天气</a></h1>
 </li>
 <li>
-<h2 id="_3"><a href="#调用流程">调用流程</a></h2>
+<h2 id="_3"><a href="#%E8%B0%83%E7%94%A8%E6%B5%81%E7%A8%8B">调用流程</a></h2>
 </li>
 <li>
-<h2 id="_4"><a href="#蓝图">蓝图</a></h2>
+<h2 id="_4"><a href="#%E8%93%9D%E5%9B%BE">蓝图</a></h2>
 </li>
 <li>
-<h2 id="_5"><a href="#代码概述">代码概述</a></h2>
+<h2 id="_5"><a href="#%E4%BB%A3%E7%A0%81%E6%A6%82%E8%BF%B0">代码概述</a></h2>
 </li>
-<li><a href="#类定义与成员变量">类定义与成员变量</a></li>
+<li><a href="#%E7%B1%BB%E5%AE%9A%E4%B9%89%E4%B8%8E%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F">类定义与成员变量</a></li>
 </ul>
 <h1 id="_6">天气</h1>
 <h2 id="_7">调用流程</h2>
@@ -124,11 +124,11 @@
 <p>3.通过<a href="https://github.com/OpenHUTB/carla_cpp/blob/cd67e7a09f047dc9b0826f94c10f3232fc37bda6/LibCarla/source/carla/rpc/Client.h#L69">rpc/Client.h</a> 的 <code>async_call()</code>，最后使用<code>rpc::client</code>库中的<code>async_call()</code>进行远程调用服务端。具体天气类别位于 <a href="https://github.com/OpenHUTB/carla_cpp/blob/dev/LibCarla/source/carla/rpc/WeatherParameters.cpp">rpc/WeatherParameter.cpp</a> 。</p>
 <p>4.在<a href="https://github.com/OpenHUTB/carla_cpp/blob/dev/Unreal/CarlaUE4/Plugins/Carla/Source/Carla/Server/CarlaServer.cpp"><code>Server/CarlaServer.cpp</code></a> 中的<code>BIND_SYNC(set_weather_parameters)</code>开始服务端调用。</p>
 <p>5.在 <a href="https://github.com/OpenHUTB/carla_cpp/blob/cd67e7a09f047dc9b0826f94c10f3232fc37bda6/Unreal/CarlaUE4/Plugins/Carla/Source/Carla/Weather/Weather.cpp#L97C29-L98C1">Weather.cpp</a> 中的 <code>AWeather::ApplyWeather()</code> 调用 <a href="https://github.com/OpenHUTB/carla_cpp/blob/cd67e7a09f047dc9b0826f94c10f3232fc37bda6/Unreal/CarlaUE4/Plugins/Carla/Source/Carla/Weather/Weather.h#L59C3-L60C1"><code>void RefreshWeather(const FWeatherParameters &amp;WeatherParameters)</code></a> 调用真正改变天气的蓝图，方法实现位于<code>Weather.h</code>中的
-<div class="highlight"><pre><span></span><code>UFUNCTION<span class="o">(</span>BlueprintImplementableEvent<span class="o">)</span>
+</p><div class="highlight"><pre><span></span><code>UFUNCTION<span class="o">(</span>BlueprintImplementableEvent<span class="o">)</span>
 void<span class="w"> </span>RefreshWeather<span class="o">(</span>const<span class="w"> </span>FWeatherParameters<span class="w"> </span><span class="p">&amp;</span>WeatherParameters<span class="o">)</span><span class="p">;</span>
 </code></pre></div>
-它是一个在蓝图中实现的事件<code>UFUNCTION(BlueprintImplementableEvent)</code>。</p>
-<p><img alt="" src="../../img/modules/RefreshWeather.jpg" /></p>
+它是一个在蓝图中实现的事件<code>UFUNCTION(BlueprintImplementableEvent)</code>。
+<p><img alt="" src="../../img/modules/RefreshWeather.jpg"></p>
 <h2 id="_8">蓝图</h2>
 <p>BlueprintImplementableEvent 是 Unreal Engine 中的一种特殊的修饰符，用于在 C++ 代码中声明一个可以在 Blueprint 中实现的事件。这意味着你可以在 C++ 类中定义一个事件，并允许开发者在 Blueprint 中提供该事件的具体实现，而不需要编写 C++ 代码来实现该逻辑。这样就能够将游戏逻辑的实现与 C++ 代码解耦，使得逻辑的实现更加灵活，特别是在面向设计师的开发流程中非常有用。</p>
 <div class="admonition 笔记">
@@ -186,7 +186,7 @@ BlueprintImplementableEvent不能c++实现，只能调用蓝图函数。</p>
 <p>使用示例
 ```cpp
 // 创建AWeather对象
-AWeather* WeatherActor = NewObject<AWeather>();</p>
+AWeather* WeatherActor = NewObject<aweather>();</aweather></p>
 <p>// 创建天气参数对象
 FWeatherParameters NewWeather;
 NewWeather.Precipitation = 50.0f;
@@ -240,7 +240,7 @@ AWeather 类在构造函数中直接硬编码了两个后处理材质的路径�
 解决方案：
 通过 配置文件或动态资源加载 替代硬编码。例如：</p>
 <p>在配置文件中定义材质路径（如 DefaultWeather.ini），运行时读取并加载资源。
-使用 TSubclassOf<UMaterial> 类型的公开变量，允许在蓝图或编辑器中指定材质资源。</p>
+使用 TSubclassOf<umaterial> 类型的公开变量，允许在蓝图或编辑器中指定材质资源。</umaterial></p>
 <ol>
 <li>优化传感器后处理更新逻辑，减少冗余操作</li>
 </ol>
@@ -449,7 +449,7 @@ AWeather 类在构造函数中直接硬编码了两个后处理材质的路径�
 <h2 id="_25">参考</h2>
 <ul>
 <li><a href="../../tuto_M_custom_weather_landscape/">自定义地图：天气和景观</a></li>
-</ul>
+</ul></div>
               
             </div>
           </div><footer>

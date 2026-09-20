@@ -100,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="carla">CARLA 服务器</h1>
+                <div><h1 id="carla">CARLA 服务器</h1>
 <h2 id="_1">编译</h2>
 <p>提供了一些用于在 Linux 上构建和测试 CarlaServer 的脚本
 <code>shell script
@@ -157,9 +157,9 @@ type = 3  SemanticSegmentation  (Semantic Segmentation)
 <p>CarlaServer 实例是用 <code>carla_make_server()</code> 创建的，使用后应被<code>carla_server_free(ptr)</code>销毁。</p>
 <h2 id="_3">设计</h2>
 <p>C API 负责将请求分发到相应的服务器。有三个异步服务器，每个服务器都在自己的线程上运行。</p>
-<p><img alt="" src="../img/carla_server.jpg" /> </p>
+<p><img alt="" src="../img/carla_server.jpg"> </p>
 <p>从概念上讲，有两个服务器，即 <em>World Server</em> 和<em>Agent Server</em>。<code>World Server</code> 控制情节的初始化。每次通过 <code>RequestNewEpisode</code> 消息向 <code>World Server</code> 请求新情节时，都会启动新情节。情节准备就绪后，<code>World Server</code> 将启动 <code>Agent Server</code>。<code>Agent Server</code>有两个线程，一个用于发送测量流，另一个用于接收控制。两个代理线程都通过无锁双缓冲区与主线程通信，以加快消息和图像的流式传输。</p>
-<p>消息（protobuf）的编码和网络操作是异步执行的。</p>
+<p>消息（protobuf）的编码和网络操作是异步执行的。</p></div>
               
             </div>
           </div><footer>

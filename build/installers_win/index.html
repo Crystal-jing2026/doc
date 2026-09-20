@@ -100,16 +100,16 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="windows">Windows平台下的依赖安装脚本</h2>
+                <div><h2 id="windows">Windows平台下的依赖安装脚本</h2>
 <p>这些脚本位于<code>Util/InstallersWin/</code>目录下，包括 <code>install_boost.bat</code>、<code>install_chrono.bat</code>、<code>install_gtest.bat</code>、<code>install_proj.bat</code>、<code>install_recast.bat</code>、<code>install_rpclib.bat</code>、<code>install_sqlite3.bat</code>、XML文档解析C语言版<code>install_xercesc.bat</code>、<code>install_zlib.bat</code>。</p>
 <h3 id="_1">使用方法</h3>
 <p>脚本传入的命令相同，比如对于 install_boost 库的编译：
-<div class="highlight"><pre><span></span><code>install_boost.bat<span class="w"> </span>--build-dir<span class="w"> </span>C:<span class="se">\b</span>uf<span class="w"> </span>--toolset<span class="w"> </span>msvc-14.2<span class="w"> </span>--version<span class="w"> </span><span class="m">1</span>.80.0<span class="w"> </span>-j<span class="w"> </span><span class="m">4</span>
+</p><div class="highlight"><pre><span></span><code>install_boost.bat<span class="w"> </span>--build-dir<span class="w"> </span>C:<span class="se">\b</span>uf<span class="w"> </span>--toolset<span class="w"> </span>msvc-14.2<span class="w"> </span>--version<span class="w"> </span><span class="m">1</span>.80.0<span class="w"> </span>-j<span class="w"> </span><span class="m">4</span>
 </code></pre></div>
 - --build-dir：代码下载和生成安装文件的目录
 - --toolset：编译所使用的编译器，msvc-14.2表示vs2019
 - --version：表示所下载的软件的版本
-- -j：使用多少核心进行编译</p>
+- -j：使用多少核心进行编译</div>
               
             </div>
           </div><footer>

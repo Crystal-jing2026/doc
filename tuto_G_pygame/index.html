@@ -100,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="pygame">Pygame 用于车辆控制</h1>
+                <div><h1 id="pygame">Pygame 用于车辆控制</h1>
 <p><a href="https://www.pygame.org/news"><strong>PyGame</strong></a> 是一组跨平台的 Python 模块，可用于编写视频游戏。它提供了一种渲染 Carla 实时视觉输出的有用方法，以便监视传感器输出，例如摄像机。PyGame 还可以捕获键盘事件，因此它是控制车辆等参与者的好方法。</p>
 <p>在本教程中，我们将学习如何设置一个简单的 PyGame 界面，该界面使我们能够监控由交通管理器控制的地图周围的自动驾驶交通，然后使用键盘手动控制任何车辆。</p>
 <h2 id="_1">设置模拟器并初始化交通管理器</h2>
@@ -111,7 +111,7 @@
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="c1"># 连接到客户端并获取世界对象</span>
-<span class="n">client</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="s1">'localhost'</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
 <span class="n">world</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_world</span><span class="p">()</span>
 
 <span class="c1"># 以同步模式启动模拟器</span>
@@ -137,9 +137,9 @@
 <span class="n">spawn_points</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">get_map</span><span class="p">()</span><span class="o">.</span><span class="n">get_spawn_points</span><span class="p">()</span>
 
 <span class="c1"># 从蓝图库中选择一些模型</span>
-<span class="n">models</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;dodge&#39;</span><span class="p">,</span> <span class="s1">&#39;audi&#39;</span><span class="p">,</span> <span class="s1">&#39;model3&#39;</span><span class="p">,</span> <span class="s1">&#39;mini&#39;</span><span class="p">,</span> <span class="s1">&#39;mustang&#39;</span><span class="p">,</span> <span class="s1">&#39;lincoln&#39;</span><span class="p">,</span> <span class="s1">&#39;prius&#39;</span><span class="p">,</span> <span class="s1">&#39;nissan&#39;</span><span class="p">,</span> <span class="s1">&#39;crown&#39;</span><span class="p">,</span> <span class="s1">&#39;impala&#39;</span><span class="p">]</span>
+<span class="n">models</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'dodge'</span><span class="p">,</span> <span class="s1">'audi'</span><span class="p">,</span> <span class="s1">'model3'</span><span class="p">,</span> <span class="s1">'mini'</span><span class="p">,</span> <span class="s1">'mustang'</span><span class="p">,</span> <span class="s1">'lincoln'</span><span class="p">,</span> <span class="s1">'prius'</span><span class="p">,</span> <span class="s1">'nissan'</span><span class="p">,</span> <span class="s1">'crown'</span><span class="p">,</span> <span class="s1">'impala'</span><span class="p">]</span>
 <span class="n">blueprints</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">vehicle</span> <span class="ow">in</span> <span class="n">world</span><span class="o">.</span><span class="n">get_blueprint_library</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="s1">&#39;*vehicle*&#39;</span><span class="p">):</span>
+<span class="k">for</span> <span class="n">vehicle</span> <span class="ow">in</span> <span class="n">world</span><span class="o">.</span><span class="n">get_blueprint_library</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="s1">'*vehicle*'</span><span class="p">):</span>
     <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">model</span> <span class="ow">in</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">id</span> <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models</span><span class="p">):</span>
         <span class="n">blueprints</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">vehicle</span><span class="p">)</span>
 
@@ -166,7 +166,7 @@
 <div class="highlight"><pre><span></span><code><span class="c1"># 渲染对象以保持并传递 PyGame 表面</span>
 <span class="k">class</span> <span class="nc">RenderObject</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
-        <span class="n">init_image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">,(</span><span class="n">height</span><span class="p">,</span><span class="n">width</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;uint8&#39;</span><span class="p">)</span>
+        <span class="n">init_image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">,(</span><span class="n">height</span><span class="p">,</span><span class="n">width</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="n">dtype</span><span class="o">=</span><span class="s1">'uint8'</span><span class="p">)</span>
         <span class="c1"># 创建与阵列上的数据和格式最相似的新曲面</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">surface</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">surfarray</span><span class="o">.</span><span class="n">make_surface</span><span class="p">(</span><span class="n">init_image</span><span class="o">.</span><span class="n">swapaxes</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
 
@@ -267,22 +267,22 @@
 
 <span class="c1"># 初始化漂浮在车辆后面的摄像机</span>
 <span class="n">camera_init_trans</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Transform</span><span class="p">(</span><span class="n">carla</span><span class="o">.</span><span class="n">Location</span><span class="p">(</span><span class="n">x</span><span class="o">=-</span><span class="mi">5</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">3</span><span class="p">),</span> <span class="n">carla</span><span class="o">.</span><span class="n">Rotation</span><span class="p">(</span><span class="n">pitch</span><span class="o">=-</span><span class="mi">20</span><span class="p">))</span>
-<span class="n">camera_bp</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">get_blueprint_library</span><span class="p">()</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;sensor.camera.rgb&#39;</span><span class="p">)</span>
+<span class="n">camera_bp</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">get_blueprint_library</span><span class="p">()</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'sensor.camera.rgb'</span><span class="p">)</span>
 <span class="n">camera</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">spawn_actor</span><span class="p">(</span><span class="n">camera_bp</span><span class="p">,</span> <span class="n">camera_init_trans</span><span class="p">,</span> <span class="n">attach_to</span><span class="o">=</span><span class="n">ego_vehicle</span><span class="p">)</span>
 
 <span class="c1"># 使用 PyGame 回调启动相机</span>
 <span class="n">camera</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="k">lambda</span> <span class="n">image</span><span class="p">:</span> <span class="n">pygame_callback</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">renderObject</span><span class="p">))</span>
 
 <span class="c1"># 获取相机尺寸</span>
-<span class="n">image_w</span> <span class="o">=</span> <span class="n">camera_bp</span><span class="o">.</span><span class="n">get_attribute</span><span class="p">(</span><span class="s2">&quot;image_size_x&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">as_int</span><span class="p">()</span>
-<span class="n">image_h</span> <span class="o">=</span> <span class="n">camera_bp</span><span class="o">.</span><span class="n">get_attribute</span><span class="p">(</span><span class="s2">&quot;image_size_y&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">as_int</span><span class="p">()</span>
+<span class="n">image_w</span> <span class="o">=</span> <span class="n">camera_bp</span><span class="o">.</span><span class="n">get_attribute</span><span class="p">(</span><span class="s2">"image_size_x"</span><span class="p">)</span><span class="o">.</span><span class="n">as_int</span><span class="p">()</span>
+<span class="n">image_h</span> <span class="o">=</span> <span class="n">camera_bp</span><span class="o">.</span><span class="n">get_attribute</span><span class="p">(</span><span class="s2">"image_size_y"</span><span class="p">)</span><span class="o">.</span><span class="n">as_int</span><span class="p">()</span>
 
 <span class="c1"># 实例化渲染和车辆控制的对象</span>
 <span class="n">renderObject</span> <span class="o">=</span> <span class="n">RenderObject</span><span class="p">(</span><span class="n">image_w</span><span class="p">,</span> <span class="n">image_h</span><span class="p">)</span>
 <span class="n">controlObject</span> <span class="o">=</span> <span class="n">ControlObject</span><span class="p">(</span><span class="n">ego_vehicle</span><span class="p">)</span>
 </code></pre></div>
 <p>初始化 PyGame 接口。这将调用 PyGame 的新窗口。</p>
-<p><div class="highlight"><pre><span></span><code><span class="c1"># 初始化显示</span>
+<p></p><div class="highlight"><pre><span></span><code><span class="c1"># 初始化显示</span>
 <span class="n">pygame</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
 <span class="n">gameDisplay</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">set_mode</span><span class="p">((</span><span class="n">image_w</span><span class="p">,</span><span class="n">image_h</span><span class="p">),</span> <span class="n">pygame</span><span class="o">.</span><span class="n">HWSURFACE</span> <span class="o">|</span> <span class="n">pygame</span><span class="o">.</span><span class="n">DOUBLEBUF</span><span class="p">)</span>
 <span class="c1"># 在显示屏上绘制黑色</span>
@@ -290,7 +290,7 @@
 <span class="n">gameDisplay</span><span class="o">.</span><span class="n">blit</span><span class="p">(</span><span class="n">renderObject</span><span class="o">.</span><span class="n">surface</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
 <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">flip</span><span class="p">()</span>
 </code></pre></div>
-现在我们可以开始游戏循环了。该视图可以在地图中的不同车辆之间随机循环，并在交通管理器控制下可视化它们在交通中的旅程。按 TAB 键切换到随机选择的新车辆，按回车键可以通过键盘上的箭头键手动控制车辆。例如，如果需要挑战驾驶行为不稳定的代理，这种设置可能会很有用。可以调整选择逻辑以选择与代理驾驶的车辆接近的车辆。</p>
+现在我们可以开始游戏循环了。该视图可以在地图中的不同车辆之间随机循环，并在交通管理器控制下可视化它们在交通中的旅程。按 TAB 键切换到随机选择的新车辆，按回车键可以通过键盘上的箭头键手动控制车辆。例如，如果需要挑战驾驶行为不稳定的代理，这种设置可能会很有用。可以调整选择逻辑以选择与代理驾驶的车辆接近的车辆。
 <div class="highlight"><pre><span></span><code><span class="c1"># 游戏循环</span>
 <span class="n">crashed</span> <span class="o">=</span> <span class="kc">False</span>
 
@@ -335,7 +335,7 @@
 <span class="n">camera</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
 <span class="n">pygame</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
 </code></pre></div>
-<p><img alt="manual_control" src="../img/tuto_G_pygame/manual_control.gif" /></p>
+<p><img alt="manual_control" src="../img/tuto_G_pygame/manual_control.gif"></p></div>
               
             </div>
           </div><footer>

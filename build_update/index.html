@@ -100,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="carla">更新 Carla</h1>
+                <div><h1 id="carla">更新 Carla</h1>
 <ul>
 <li><a href="#update_commands_summary"><strong>更新命令摘要</strong></a>  </li>
 <li><a href="#get_latest_binary_release"><strong>获取最新的二进制版本</strong></a>  </li>
@@ -121,7 +121,7 @@ HUTB 论坛</a>
 </p>
 </div>
 
-<hr />
+<hr>
 <h2 id="_1">更新命令摘要 <span id="update_commands_summary"></span></h2>
 <details>
 <summary> 显示更新 HUTB 的命令行 </summary>
@@ -155,7 +155,7 @@ git<span class="w"> </span>clone<span class="w"> </span>https://bitbucket.org/ca
 </code></pre></div>
 </details>
 
-<hr />
+<hr>
 <h2 id="_2">获取最新的二进制版本 <span id="get_latest_binary_release"></span></h2>
 <p>二进制版本已预先打包，因此与 Carla 的特定版本相关联。要获取最新版本，请删除之前的版本，然后按照 <a href="../start_quickstart/">快速启动安装</a> 来获取所需的版本。 </p>
 <p>版本列在 Carla 仓库的 <strong>Development</strong> 中。还有一个高度实验性的 <strong>Nightly build</strong> ，其中包含 Carla 的最新状态。</p>
@@ -171,27 +171,27 @@ git<span class="w"> </span>clone<span class="w"> </span>https://bitbucket.org/ca
 </p>
 </div>
 
-<hr />
+<hr>
 <h2 id="linux-windows">更新 Linux 和 Windows 构建 <span id="update_linux_and_windows_build"></span></h2>
 <p>更新前请确保位于本地 <code>master</code> 分支。然后，将更改 merge 或rebase 到其他分支并解决可能的冲突。</p>
 <div class="highlight"><pre><span></span><code>git<span class="w"> </span>checkout<span class="w"> </span>master
 </code></pre></div>
 <h3 id="_3">清理构建 <span id="clean_the_build"></span></h3>
 <p>转到主 Carla 文件夹并删除先前构建生成的二进制文件和临时文件。
-<div class="highlight"><pre><span></span><code>make<span class="w"> </span>clean
-</code></pre></div></p>
+</p><div class="highlight"><pre><span></span><code>make<span class="w"> </span>clean
+</code></pre></div>
 <h3 id="origin">从 origin 拉取 <span id="pull_from_origin"></span></h3>
 <p>从 Carla 存储库中 <code>master</code> 分支获取当前版本。 
-<div class="highlight"><pre><span></span><code>git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>master
-</code></pre></div></p>
+</p><div class="highlight"><pre><span></span><code>git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>master
+</code></pre></div>
 <h3 id="_4">下载资产 <span id="download_the_assets"></span></h3>
 <p><strong>Linux.</strong>
-<div class="highlight"><pre><span></span><code>./Update.sh
-</code></pre></div></p>
+</p><div class="highlight"><pre><span></span><code>./Update.sh
+</code></pre></div>
 <p><strong>Windows.</strong></p>
-<p><strong>1.</strong> 删除 <code>Unreal\CarlaUE4\Content\Carla</code> 中之前的内容。<br />
-<strong>2.</strong> 转至 <code>\Util\ContentVersions.txt</code>。<br />
-<strong>3.</strong> 下载最新的 <code>latest</code> 的内容。<br />
+<p><strong>1.</strong> 删除 <code>Unreal\CarlaUE4\Content\Carla</code> 中之前的内容。<br>
+<strong>2.</strong> 转至 <code>\Util\ContentVersions.txt</code>。<br>
+<strong>3.</strong> 下载最新的 <code>latest</code> 的内容。<br>
 <strong>4.</strong> 在 <code>Unreal\CarlaUE4\Content\Carla</code> 抽取新的内容。</p>
 <div class="admonition 笔记">
 <p class="admonition-title">笔记</p>
@@ -201,7 +201,7 @@ git<span class="w"> </span>clone<span class="w"> </span>https://bitbucket.org/ca
 <p>在旁观者视图中运行服务器以确保一切正常。</p>
 <div class="highlight"><pre><span></span><code>make<span class="w"> </span>launch
 </code></pre></div>
-<hr />
+<hr>
 <h2 id="_6">获取开发版的资产 <span id="get_development_assets"></span></h2>
 <p>HUTB 团队使用仍在开发中的资产。这些模型和地图有一个 <a href="https://git.code.tencent.com/OpenHUTB/Content">git 仓库</a> （基于<a href="https://bitbucket.org/carla-simulator/carla-content">Carla 仓库</a>），HUTB 团队定期在其中推送最新更新。资产尚未完成，仅建议开发人员使用它们。</p>
 <p>为了处理这个存储库，建议安装 <a href="https://github.com/git-lfs/git-lfs/wiki/Installation">git-lfs</a>。存储库会定期修改，并且 <a href="https://blog.csdn.net/xun527/article/details/132207700">git-lfs 处理大型二进制文件</a> 的速度更快。</p>
@@ -209,8 +209,8 @@ git<span class="w"> </span>clone<span class="w"> </span>https://bitbucket.org/ca
 <div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://OpenHUTB:T8w6TYB_r71gGTP3A02B@git.code.tencent.com/OpenHUTB/Content.git<span class="w">  </span><span class="o">&amp;&amp;</span><span class="w">  </span><span class="nb">cd</span><span class="w"> </span>Content<span class="w">  </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>lfs<span class="w"> </span>pull
 </code></pre></div>
 <p>原始 Carla 资产的获取方法：
-<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://bitbucket.org/carla-simulator/carla-content<span class="w"> </span>Unreal/CarlaUE4/Content/Carla
-</code></pre></div></p>
+</p><div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://bitbucket.org/carla-simulator/carla-content<span class="w"> </span>Unreal/CarlaUE4/Content/Carla
+</code></pre></div>
 <div class="admonition 笔记">
 <p class="admonition-title">笔记</p>
 <p>在克隆存储库之前删除包含资产的 <code>/Carla</code> 文件夹。否则，将显示错误。</p>
@@ -222,7 +222,7 @@ git<span class="w"> </span>clone<span class="w"> </span>https://bitbucket.org/ca
 git<span class="w"> </span>lfs<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>master
 git<span class="w"> </span>push<span class="w"> </span>--force
 </code></pre></div></li>
-</ul>
+</ul></div>
               
             </div>
           </div><footer>

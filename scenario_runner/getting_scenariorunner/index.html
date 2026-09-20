@@ -100,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="scenariorunner"><a href="https://github.com/carla-simulator/scenario_runner/blob/master/Docs/getting_scenariorunner.md">获取 ScenarioRunner</a></h1>
+                <div><h1 id="scenariorunner"><a href="https://github.com/carla-simulator/scenario_runner/blob/master/Docs/getting_scenariorunner.md">获取 ScenarioRunner</a></h1>
 <p>本教程介绍如何下载 ScenarioRunner 并运行一个简单的示例来测试它。ScenarioRunner 需要 Carla 才能运行，并且必须与正在使用的 Carla 版本匹配。如果使用的 Carla 是从源代码构建的，请从源代码下载 ScenarioRunner。如果使用的 Carla 是包，请下载对应版本的ScenarioRunner。</p>
 <ul>
 <li><strong><a href="#installation-summary">安装总结</a></strong>  </li>
@@ -114,7 +114,7 @@
 </li>
 <li><strong><a href="#run-a-test">运行测试</a></strong>  </li>
 </ul>
-<hr />
+<hr>
 <h2 id="_1">安装总结</h2>
 <details>
    <summary>
@@ -161,7 +161,7 @@ git<span class="w"> </span>pull<span class="w"> </span>
 </code></pre></div>
 </details>
 
-<hr />
+<hr>
 <h2 id="a-scenariorunner">A. 下载 ScenarioRunner 发布版</h2>
 <p>ScenarioRunner 的版本是包含以下内容的软件包： </p>
 <ul>
@@ -187,7 +187,7 @@ git<span class="w"> </span>pull<span class="w"> </span>
 <li><a href="https://github.com/carla-simulator/scenario_runner/releases">Scenario Runner 发布版</a>  </li>
 </ul>
 <p>要运行最新版本或任何其他版本，请删除以前的版本并安装所需的版本。</p>
-<hr />
+<hr>
 <h2 id="b-scenariorunner">B. 从源代码下载 ScenarioRunner</h2>
 <p>ScenarioRunner 源存储库包含与最新开发版本 CARLA 一起运行的最具实验性的功能。它不需要构建，因为它只包含 ScenarioRunner 模块的 Python 代码。</p>
 <p><strong>1. 从源代码构建 CARLA。</strong> 按照文档在 <a href="https://carla.readthedocs.io/en/latest/build_linux/">Linux</a> 或 <a href="https://carla.readthedocs.io/en/latest/build_windows/">Windows</a> 上进行构建。</p>
@@ -208,7 +208,7 @@ git<span class="w"> </span>pull<span class="w"> </span>
 pip2<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>-r<span class="w"> </span>requirements.txt
 </code></pre></div>
 <ul>
-<li><strong>对于 Python 3.x</strong><br />
+<li><strong>对于 Python 3.x</strong><br>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>remove<span class="w"> </span>python3-networkx<span class="w"> </span><span class="c1">#if installed, remove old version of networkx</span>
 pip3<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>-r<span class="w"> </span>requirements.txt
 </code></pre></div></li>
@@ -220,10 +220,10 @@ pip3<span class="w"> </span>install<span class="w"> </span>--user<span class="w"
 <h3 id="_3">从源代码更新构建</h3>
 <p><strong>1. 更新 CARLA 构建</strong> 按照 <a href="https://carla.readthedocs.io/en/latest/build_update/">文档</a> 更新 CARLA。</p>
 <p><strong>2. 转到ScenarioRunner 主目录。</strong> 确保位于本地主分支中。</p>
-<p><div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/scenario_runner
+<p></p><div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/scenario_runner
 git<span class="w"> </span>branch<span class="w"> </span>master
 </code></pre></div>
-<strong>3. 从存储库中提取最新更改。</strong>  </p>
+<strong>3. 从存储库中提取最新更改。</strong>  
 <div class="highlight"><pre><span></span><code>git<span class="w"> </span>pull
 </code></pre></div>
 <p><strong>4. 添加环境变量和Python路径</strong> 这些是系统找到CARLA所必需的，并将PythonAPI添加到Python路径中。</p>
@@ -261,20 +261,20 @@ git<span class="w"> </span>branch<span class="w"> </span>master
 </div>
 <p>如需永久设置环境变量，请前往 <em>编辑该账户的环境变量</em> 。通过在 Windows 的搜索面板上输入 <em>env</em> 可以快速访问它。</p>
 <p>如果需要运行基于 OpenSCENARIO 2.0 格式的场景，请先安装graphviz和antlr：
-<div class="highlight"><pre><span></span><code>sudo apt-get install -y openjdk-17-jdk graphviz
+</p><div class="highlight"><pre><span></span><code>sudo apt-get install -y openjdk-17-jdk graphviz
 curl -O https://www.antlr.org/download/antlr-4.10.1-complete.jar
 sudo cp antlr-4.10.1-complete.jar /usr/local/lib/
 sudo gedit ~/.bashrc
 </code></pre></div>
 将环境变量添加到~/.bashrc中：
-<div class="highlight"><pre><span></span><code>export CLASSPATH=&quot;.:/usr/local/lib/antlr-4.10.1-complete.jar:$CLASSPATH&quot;
-alias antlr4=&#39;java -jar /usr/local/lib/antlr-4.10.1-complete.jar&#39;
-alias grun=&#39;java org.antlr.v4.gui.TestRig&#39;
+<div class="highlight"><pre><span></span><code>export CLASSPATH=".:/usr/local/lib/antlr-4.10.1-complete.jar:$CLASSPATH"
+alias antlr4='java -jar /usr/local/lib/antlr-4.10.1-complete.jar'
+alias grun='java org.antlr.v4.gui.TestRig'
 </code></pre></div>
 并使更改生效：
 <div class="highlight"><pre><span></span><code>source ~/.bashrc
-</code></pre></div></p>
-<hr />
+</code></pre></div>
+<hr>
 <h2 id="_4">运行测试</h2>
 <p>运行以下车辆示例。首先，您需要从 CARLA 获取最新的主分支。然后您必须将 CARLA Python API <a href="https://blog.csdn.net/weixin_39910452/article/details/109598890">包含到 Python 路径</a> 中：</p>
 <div class="admonition 重要">
@@ -299,8 +299,8 @@ make<span class="w"> </span>launch
 python<span class="w"> </span>scenario_runner.py<span class="w"> </span>--scenario<span class="w"> </span>FollowLeadingVehicle_1<span class="w"> </span>--reloadWorld
 </code></pre></div>
 <p>使用以下命令查看当前场景有哪些：
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>scenario_runner.py<span class="w"> </span>--list
-</code></pre></div></p>
+</p><div class="highlight"><pre><span></span><code>python<span class="w"> </span>scenario_runner.py<span class="w"> </span>--list
+</code></pre></div>
 <div class="admonition 注意">
 <p class="admonition-title">注意</p>
 <p>如果使用 Python 3.x 版本，请运行带有 <code>python3</code>. </p>
@@ -317,8 +317,8 @@ python<span class="w"> </span>manual_control.py
 <p><strong>4. 探索其他选择。</strong> 使用 标志运行场景运行器<code>--help</code>来探索其他命令行参数和一些基本描述。例如，为了避免自动（重新）加载 CARLA 世界，请跳过命令行选项<code>--reloadWorld</code>。 </p>
 <div class="highlight"><pre><span></span><code>python<span class="w"> </span>scenario_runner.py<span class="w"> </span>--help
 </code></pre></div>
-<hr />
-<p>ScenarioRunner 的安装过程至此结束。如果发生任何意外错误或问题，<a href="https://forum.carla.org/c/using-carla/scenario-runner">CARLA 论坛</a>向所有人开放。有一个ScenarioRunner类别用于发布有关此模块的问题和疑问。</p>
+<hr>
+<p>ScenarioRunner 的安装过程至此结束。如果发生任何意外错误或问题，<a href="https://forum.carla.org/c/using-carla/scenario-runner">CARLA 论坛</a>向所有人开放。有一个ScenarioRunner类别用于发布有关此模块的问题和疑问。</p></div>
               
             </div>
           </div><footer>

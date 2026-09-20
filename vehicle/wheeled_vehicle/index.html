@@ -100,10 +100,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="_1">车辆模型</h1>
+                <div><h1 id="_1">车辆模型</h1>
 <p>Carla 中的车辆模型包括<strong>3D模型</strong>和<strong>动力学模型</strong>两个方面。3D模型用于实现车辆的可视化渲染，可以在3D模型开发软件中设计、开发，并导入到 <a href="https://link.zhihu.com/?target=https%3A//docs.unrealengine.com/4.26/en-US/InteractiveExperiences/Vehicles/VehicleUserGuide/">虚幻引擎</a> 中使用。动力学模型用于实现车辆逼真的动态效果，Carla 中的车辆采用中的虚幻引擎中的 AWheeledVehicle 模型（核心是 <a href="https://developer.nvidia.cn/physx-sdk">NVIDIA的PhysX模型</a> ）。</p>
 <p>PhysX 考虑了不同的车轮数量，但是为了说明的简单，本节将车辆简化为两轮模型，将车体（簧上质量）简化为前轴质量和后轴质量，并通过悬架与车轮（簧下质量）相连，如下图所示。</p>
-<p><img alt="" src="../../img/vehicle/vehicle_body.jpg" /></p>
+<p><img alt="" src="../../img/vehicle/vehicle_body.jpg"></p>
 <p>在静止状态下，由力平衡和力矩平衡可由以下公式得到：</p>
 <p>
 <script type="math/tex; mode=display">
@@ -116,7 +116,7 @@
 </script>
 其中，<script type="math/tex"> M </script>、<script type="math/tex"> M_f </script> 和 <script type="math/tex"> M_r </script> 分别为总质量、前轴质量和后轴质量，<script type="math/tex"> X_{cm} </script>、<script type="math/tex"> X_f </script>、<script type="math/tex"> X_r </script> 分别为质心与几何中心的水平距离、前轴与几何中心的距离、后轴与几何中心的水平距离。</p>
 <p>仿真运行进行更新时，首先采用光线投射方法（raycast），进行悬架位置的计算，如下图。将车轮与地面的接触位置简化为一个轮胎触点，光线投射从车轮最高点开始，并沿着悬架舒张方向向下投射到车轮最低点为止，计算出车辆与地面的接触点以及车轮的位置，进而计算悬架的压缩量和弹簧力，并结合驱动力和行驶阻力计算簧上质量和簧下质量所有受到的外力。然后便可建立车辆各部件的方程，对各种状态进行求解。</p>
-<p><img alt="" src="../../img/vehicle/raycast.jpg" /></p>
+<p><img alt="" src="../../img/vehicle/raycast.jpg"></p>
 <h2 id="_2">车辆的添加和使用</h2>
 <p>车辆Vehicle作为交通参与者Actor的重要类型，其使用方式也按照交通参与者Actor的三个步骤，即：选取蓝图并生成（spawning）、操作（handling）、销毁（destruction）。</p>
 <h3 id="1spawning">（1）选取蓝图并生成（spawning）</h3>
@@ -247,7 +247,7 @@ F_{Y} = K_{Y} \times S_{Y} \times F_{N}
 <h1 id="_3">参考</h1>
 <ul>
 <li><a href="https://zhuanlan.zhihu.com/p/668724369">CARLA的车辆模型</a></li>
-</ul>
+</ul></div>
               
             </div>
           </div><footer>

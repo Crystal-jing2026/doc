@@ -100,12 +100,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <div class="admonition 笔记">
+                <div><div class="admonition 笔记">
 <p class="admonition-title">笔记</p>
 <p><strong>数字孪生工具</strong> 目前是一项 <strong>实验性功能</strong> ，现阶段尚未考虑投入生产。地图的某些部分可能未装饰或无纹理。因此它只能用于实验研究项目。</p>
 </div>
 <h1 id="_1"><a href="https://carla.readthedocs.io/en/latest/adv_digital_twin/">数字孪生工具</a></h1>
-<p><img alt="digital_twin_pipeline" src="../img/pipeline.png" /></p>
+<p><img alt="digital_twin_pipeline" src="../img/pipeline.png"></p>
 <ul>
 <li><a href="#build_osm_render"><strong>构建 OSM 渲染器</strong></a></li>
 <li><a href="#downloading-and-preparing-osm-map-data"><strong>下载并准备 OSM 地图数据</strong></a></li>
@@ -136,13 +136,13 @@
 <span class="w">  </span><span class="nv">importExe</span><span class="o">=</span>../../libosmscout-build/Import/Import
 <span class="c1">#######################################################</span>
 <span class="k">else</span>
-<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Cannot find Import executable!&quot;</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Cannot find Import executable!"</span>
 <span class="w">  </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
 <span class="k">fi</span>
 </code></pre></div>
 <p>然后继续按正常方式构建 Carla。Windows 用户无法选择使用 OSM 渲染器，必须直接使用 URL。</p>
 <h2 id="osm_1">下载并准备 OSM 地图数据 <span id="downloading-and-preparing-osm-map-data"></span></h2>
-<p><img alt="osm_website" src="../img/osm_export.png" /></p>
+<p><img alt="osm_website" src="../img/osm_export.png"></p>
 <p>在网络浏览器中，转到 <a href="https:/www.openstreetmap.org">OpenStreetMap 网站</a> 并选择您要使用的地图区域。定义您的区域，然后将数据导出为 <code>.osm</code> 文件，或者您可以使用 URL，如下所述。或者，您可以使用基于 OpenStreetMap 服务的其他工具（例如 <a href="https://download.geofabrik.de/">GeoFabrik</a> ，它允许从 OSM 数据中提取特定的地图区域（例如州或领地）。</p>
 <p>有两种方法可以使用 OSM 数据。使用 URL 或下载 OSM 文件：</p>
 <h3 id="url">使用 URL</h3>
@@ -159,24 +159,24 @@
 <h2 id="openstreetmap">OpenStreetMap 浏览器 <span id="openstreetmap-browser"></span></h2>
 <p>如果左下角的“内容浏览器”未看到“Carla内容”，到中间下面的“视图选项”中选中“显示插件内容”</p>
 <p>要打开 OSM 浏览器，请打开<strong>内容浏览器</strong>并导航至 <code>CarlaTools内容/OnroadMapGenerator</code>。右键单击 <em>UW_OnRoadMainWidget</em> 并从上下文菜单中选择 <em>运行编辑工具空间（Launch Editor Utility Widget）</em> 。这将打开该工具的界面。</p>
-<p><img alt="osm_interface_open" src="../img/digital_twins_widget.png" /></p>
+<p><img alt="osm_interface_open" src="../img/digital_twins_widget.png"></p>
 <p>该界面允许浏览已从 OSM 数据库下载并烘焙的 OSM 地图区域。首先，您应该在界面的 <em>Select OSM Database</em> 字段中输入上一步中存储处理后的 OSM 数据的目录位置。如果您直接使用 URL，请将其粘贴到 <code>OSM URL</code> 字段中，在这种情况下您将无法使用导航器。</p>
-<p><img alt="osm_interface" src="../img/digital_twins_interface.png" /></p>
+<p><img alt="osm_interface" src="../img/digital_twins_interface.png"></p>
 <p>使用方向箭头和缩放图标导航地图并找到要转换为 Carla 地图的道路网的一部分。您在预览中看到的方形区域将是地图的范围。在字段中输入适当的名称 <code>File Name</code> 然后按 <em>Generate</em> 开始程序生成过程。地图生成过程可能需要几分钟，如果您使用的是大区域，则可能需要更长的时间。</p>
 <p>先启动Carla服务，然后运行以下脚本从<code>.osm</code>文件中加载场景：
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>src/util/config.py<span class="w"> </span>-x<span class="w"> </span>*.xodr
-</code></pre></div></p>
+</p><div class="highlight"><pre><span></span><code>python<span class="w"> </span>src/util/config.py<span class="w"> </span>-x<span class="w"> </span>*.xodr
+</code></pre></div>
 <h2 id="_2">程序化场景生成 <span id="procedural-environment-generation"></span></h2>
 <h3 id="_3">道路装饰 <span id="road_painting"></span></h3>
 <p>该工具从 OSM 数据中提取道路网络作为地图的基础。路面装饰有逼真的表面不规则性、道路纹理和车道线、裂痕和轮胎印迹。</p>
-<p><img alt="road_markings" src="../img/road_surface.jpg" /></p>
+<p><img alt="road_markings" src="../img/road_surface.jpg"></p>
 <h3 id="_4">建筑物 <span id="building"></span></h3>
 <p>道路之间的空白区域填充有建筑物或开放区域，它们会调整其形状和尺寸以填充道路之间的空间。</p>
-<p><img alt="procedural_buildings" src="../img/procedural_building_generation.jpg" /></p>
+<p><img alt="procedural_buildings" src="../img/procedural_building_generation.jpg"></p>
 <p>程序生成工具从 OSM 数据中提取建筑物占地面积和高度信息，以生成具有相似尺寸的虚拟建筑物。详细的覆层用于模拟窗户、门和阳台。根据建筑面积的不同，采用不同的装修风格，最高的建筑为办公风格，较小的建筑根据建筑占地面积采用商业或住宅风格。</p>
-<p><img alt="procedural_cities" src="../img/digital_twins_vegetation.jpg" /></p>
+<p><img alt="procedural_cities" src="../img/digital_twins_vegetation.jpg"></p>
 <p>在下一步中还将植被添加到人行道中以获取更多细节。</p>
-<p><img alt="residential_building_style" src="../img/digital_twins_buildings.jpg" />
+<p><img alt="residential_building_style" src="../img/digital_twins_buildings.jpg">
 <em>数字孪生工具构建风格</em></p>
 <p>建筑物的风格多种多样，随机分布在整个城市，一个区域的建筑风格是根据从 OSM 数据中提取的建筑物的特征尺寸来选择的。</p>
 <h2 id="_5">生成地图 <span id="generate-the-map"></span></h2>
@@ -189,15 +189,15 @@
 <p><code>UOpenDriveToMap::GenerateTile()</code>生成每一个瓦片，调用<code>GenerateAll()</code>函数，进行 道路网格、车道线、生成点、地形、数目位置、生成完成等步骤。</p>
 <h2 id="_9">问题 <span id="problems"></span></h2>
 <p><code>carla\Unreal\CarlaUE4\Plugins\CarlaTools\Source\CarlaTools\Private\OpenDriveToMap.cpp</code>改为生成一个瓦片地图的函数，生成后的名字为<code>{NAME}_Tile_0_0</code>。
-<div class="highlight"><pre><span></span><code>//<span class="w"> </span>ExecuteTileCommandlet<span class="o">()</span><span class="p">;</span>
+</p><div class="highlight"><pre><span></span><code>//<span class="w"> </span>ExecuteTileCommandlet<span class="o">()</span><span class="p">;</span>
 GenerateTile<span class="o">()</span><span class="p">;</span>
 </code></pre></div>
 原因：
-生成瓦片的命令行程序位于<code>Unreal\CarlaUE4\Plugins\CarlaTools\Source\CarlaTools\Private\Commandlet\GenerateTileCommandlet.cpp</code>。</p>
+生成瓦片的命令行程序位于<code>Unreal\CarlaUE4\Plugins\CarlaTools\Source\CarlaTools\Private\Commandlet\GenerateTileCommandlet.cpp</code>。
 <p>移除<code>void UOpenDriveToMap::GenerateTile()</code>函数中的<code>// RemoveFromRoot();</code>语句，该语句清理FilePath变量导致下一次瓦片生成时FilePath变量乱码的问题，可以解决大地图只生成一个瓦片的问题。</p>
 <div class="highlight"><pre><span></span><code>
 </code></pre></div>
-<p>参考：UE 中的 <a href="../ue/ue_commandlet/">Commandlet</a> 解读。</p>
+<p>参考：UE 中的 <a href="../ue/ue_commandlet/">Commandlet</a> 解读。</p></div>
               
             </div>
           </div><footer>

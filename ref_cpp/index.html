@@ -100,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="c"><a href="https://carla.readthedocs.io/en/latest/ref_cpp/">C++ 参考</a></h1>
+                <div><h1 id="c"><a href="https://carla.readthedocs.io/en/latest/ref_cpp/">C++ 参考</a></h1>
 <h2 id="c_1">C++ 客户端</h2>
 <p>C++客户端可以在 Linux 上用<code>make</code>构建，在Windows上用<a href="https://github.com/OpenHUTB/doc/tree/master/src/cmake/CMakeLists.txt"><code>cmake</code></a> 构建。<code>CARLA_ROOT/Examples/CppClient/main.cpp</code>中的存储库中提供了一个C++客户端示例。这个示例展示了如何将C++客户端连接到 Carla 服务器，并使用 API 执行一些简单的任务。</p>
 <p>要构建示例C++客户端，请在存储库的<code>CARLA_ROOT/Examples/CppClient</code>目录中打开一个终端。在此文件夹中运行<code>make</code>，然后执行 <code>./bin/cpp_client</code> 来运行示例。该示例将从可用地图中选择一个随机地图，然后加载它。然后，它将生成一辆车并对该车应用控制。</p>
@@ -135,7 +135,7 @@ sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w
 <li>在vs2019中点击菜单<code>文件-&gt;打开-&gt;CMake</code>，打开<code>Examples/CppClient/CMakeLists.txt</code>；</li>
 <li>点击<code>管理配置</code>，添加新的配置<code>x64-release</code>；（注意：<code>x64-Debug</code>还有问题）；</li>
 <li>启动Carla服务端后，在vs2019中点击<code>调试-&gt;开始执行</code>。
-<img alt="" src="../img/tuto_D_windows_debug/config_cpp_client.jpg" /></li>
+<img alt="" src="../img/tuto_D_windows_debug/config_cpp_client.jpg"></li>
 </ol>
 <h2 id="_1">阅读</h2>
 <p><strong>HUD</strong>: Heads-up Displays, 头显。用户界面 （UI）和 头显 （HUD）是游戏向玩家提供游戏信息以及在某些情况下允许玩家与游戏互动的方式。HUD指的是游戏期间在屏幕上覆盖的状态和信息。HUD的目的是告知玩家当前游戏状态，即分数、生命值、游戏剩余时间等。 HUD通常是不可互动的，意味着玩家不能单击HUD的元素，因此 在HUD和用户界面难以分离的某些类型游戏中，这些元素会显示为灰色区域。</p>
@@ -145,9 +145,9 @@ sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w
 </code></pre></div>
 指定文件后缀名：
 <div class="highlight"><pre><span></span><code><span class="c1"># 26103行</span>
-git<span class="w"> </span>ls-files<span class="w"> </span><span class="s1">&#39;*.cpp&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>wc<span class="w"> </span>-l
+git<span class="w"> </span>ls-files<span class="w"> </span><span class="s1">'*.cpp'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>wc<span class="w"> </span>-l
 <span class="c1"># 34872行</span>
-git<span class="w"> </span>ls-files<span class="w"> </span><span class="s1">&#39;*.h&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>wc<span class="w"> </span>-l
+git<span class="w"> </span>ls-files<span class="w"> </span><span class="s1">'*.h'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>wc<span class="w"> </span>-l
 </code></pre></div></li>
 </ul>
 <h2 id="c_4">C++ 详细信息</h2>
@@ -157,7 +157,7 @@ git<span class="w"> </span>ls-files<span class="w"> </span><span class="s1">&#39
 <h2 id="_2">其他</h2>
 <ul>
 <li><a href="https://openhutb.github.io/carla_cpp/graph_legend.html">doxygen 生成图的解释</a></li>
-</ul>
+</ul></div>
               
             </div>
           </div><footer>

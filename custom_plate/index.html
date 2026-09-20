@@ -100,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="carla">自定义Carla中车辆的车牌</h1>
+                <div><h1 id="carla">自定义Carla中车辆的车牌</h1>
 <p>在Carla模拟环境中，默认的车辆车牌是预设的静态资产。如果需要自定义车辆车牌以满足特定的测试需求或增强场景的真实性，可以通过以下专业方法来替换Carla中车辆的车牌：</p>
 <h2 id="_1">自定义车辆车牌的步骤</h2>
 <p><strong>1.资产准备</strong></p>
@@ -116,24 +116,24 @@
 </li>
 </ul>
 <p>将图片直接拖至 <code>/Game/Carla/Static/GenericMaterials/Licenseplates</code>，右键选择创建材质</p>
-<p><img alt="" src="../img/plate/import_photo.png" /></p>
+<p><img alt="" src="../img/plate/import_photo.png"></p>
 <p><strong>2.材质替换</strong></p>
 <ul>
 <li>导航至<code>Carla/Blueprints/Vehicles</code>下的目标车辆，右键选择编辑。如下图所示：</li>
 </ul>
-<p><img alt="" src="../img/plate/vehicle.png" /></p>
+<p><img alt="" src="../img/plate/vehicle.png"></p>
 <ul>
 <li>进入车辆资产编辑界面后，双击网格体（VehicleMesh）继承，会出现车辆以及车辆所引用的资产。</li>
 </ul>
-<p><img alt="" src="../img/plate/edit_vehicle.png" /></p>
+<p><img alt="" src="../img/plate/edit_vehicle.png"></p>
 <ul>
 <li>将车辆放大，以便查看是否修改成功。</li>
 </ul>
-<p><img alt="" src="../img/plate/edit_vehicle1.png" /></p>
+<p><img alt="" src="../img/plate/edit_vehicle1.png"></p>
 <ul>
 <li>找到车辆车牌位置，将材路径替换为先前所准备的自定义材质。</li>
 </ul>
-<p><img alt="" src="../img/plate/plate.png" /></p>
+<p><img alt="" src="../img/plate/plate.png"></p>
 <p>这样，我们的车牌已经替换成功！回到主界面，点击编译运行，则出现我们想要的效果！ </p>
 <p><strong>3.测试</strong></p>
 <ul>
@@ -144,7 +144,7 @@
 <p>运行 Python 脚本在场景中添加已经被替换过车牌的车辆，调整视角，观察车牌。最后显示结果如下图所示：</p>
 </li>
 </ul>
-<p><img alt="" src="../img/plate/result.png" /></p>
+<p><img alt="" src="../img/plate/result.png"></p></div>
               
             </div>
           </div><footer>
