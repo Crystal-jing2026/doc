@@ -9,18 +9,17 @@
 ---
 ## 概述 <span id="overview"></span>
 
-此模式仅使用 OpenDRIVE 文件运行完整模拟，无需任何额外的几何图形或资产。为此，模拟器采用 OpenDRIVE 文件并程序化地创建时间三维网格来运行模拟。
+此模式仅使用 OpenDRIVE 文件运行完整模拟，无需任何额外的几何图形或资产。为此，模拟器采用 OpenDRIVE 文件并程序化地程序化地创建实时三维网格来运行模拟。
 
 生成的网格以简约的方式描述了道路定义。所有元素都将与 OpenDRIVE 文件对应，但除此之外，只有 void。为防止车辆掉出路面，采取了两项措施。
 
-* 在车辆流动最复杂的路口，车道稍宽一些。
+* 在车辆交互最复杂的路口，车道会做加宽处理。
 * 在道路的边界处创建了可见的墙壁，作为最后的安全措施。
 
 交通信号灯、停车标志和让行标志将即时生成。行人将在地图上显示的人行道和人行横道上导航。所有这些元素，以及道路上的每一个细节，都基于 OpenDRIVE 文件。由于独立模式直接使用 `.xodr`，因此其中的任何问题都会影响到模拟。这可能是一个问题，尤其是在许多车道混合的路口。
 
 !!! 重要的
-    仔细检查 OpenDRIVE 文件尤为重要，可以先使用 [bimant](https://opendrive.bimant.com/) 或 [odrviewer](https://odrviewer.io/) 进行初步在线查看。运行模拟时，其中的任何问题都会传播。
-
+    务必仔细校验 OpenDRIVE 文件，可以先用 [bimant](https://opendrive.bimant.com/) 或 [odrviewer](https://odrviewer.io/) 在线预览校验。OpenDRIVE 文件里的任何缺陷都会直接带入仿真。
 ![opendrive_standalone](img/opendrive_standalone.jpg)
 
 ---
@@ -34,9 +33,9 @@
 * __`vertex_distance`__ *（默认 2.0 米）* - 网格顶点之间的距离。距离越大，网格越不准确。但是，如果距离太小，生成的网格将太重而无法使用。
 * __`max_road_length`__ *（默认 50.0 米）* - 网格的一部分的最大长度。网格被分成几部分以减少渲染开销。如果一部分不可见，UE 将不会渲染它。部分越小，它们被丢弃的可能性就越大。但是，如果部分太小，UE 需要管理的对象太多，性能也会受到影响。
 * __`wall_height`__ *（默认为 1.0 米）* - 在道路边界上创建的附加墙的高度。这些可以防止车辆坠入虚空。
-* __`additional_width`__ *（默认为 0.6 米，每边 0.3）* — 应用于交叉路口的小宽度增量。这是防止车辆坠落的安全措施。
-* __`smooth_junctions`__ *(default True)* — 如果 __True__，OpenDRIVE 的一些信息将被重新解释以平滑连接处的最终网格。这样做是为了防止在不同车道相遇时可能发生的一些不准确。如果设置为 __False__，网格将完全按照 OpenDRIVE 中的描述生成。
-* __`enable_mesh_visibility`__ *(default True)* — 如果 __False__，网格将不会被渲染，这可以为模拟器节省大量渲染工作。
+* **`additional_width`** *（默认为 0.6 米，即路口单侧额外加宽 0.3 米）* — 路口车道的额外加宽量，用于防止车辆冲出路面，作为安全措施。
+* __`smooth_junctions`__ *(default True)* — 如果 __True__，OpenDRIVE 的一些信息将被重新解释以平滑连接处的最终网格。这样做是为了防止在不同车道相遇时可能发生的一些不准确。如果 __False__，网格将严格按照 OpenDRIVE 原始几何描述生成，不做平滑修正。
+* __`enable_mesh_visibility`__ *(default True)* — 如果 __False__，路网网格将不进行渲染，能够大幅降低模拟器渲染开销。
 
 
 为了轻松测试此功能，`PythonAPI/util/` 中的 [config.py](https://github.com/OpenHUTB/hutb/blob/hutb/PythonAPI/util/config.py) 脚本有一个新参数，`-x` 或`--xodr-path`。此参数需要一个带有 `.xodr` 文件路径的字符串，例如 `path/example.xodr`。如果使用此脚本生成网格，则使用的参数将始终为默认参数。
@@ -49,10 +48,9 @@ python3 config.py -x opendrive/TownBig.xodr
 
 
 !!! 重要的
-    __[client.generate_opendrive_world()](python_api.md#carla.Client.generate_opendrive_world)__ 使用 __OpenDRIVE 文件的内容解析为字符串__ 。相反，__[config.py](https://github.com/OpenHUTB/hutb/blob/hutb/PythonAPI/util/config.py)__ 脚本需要 __`.xodr` 文件的路径__。
-
+    **`client.generate_opendrive_world()`** 接收**读取到内存中的 OpenDRIVE 文本字符串**作为输入。而 `config.py` 脚本是直接传入 **`.xodr` 文件路径**，脚本内部会自动读取文件内容转为字符串再调用 API。
 !!! 笔记
-如果遇到`opendrive 无法正确解析`错误，请确保对`CarlaUE4/Content/Carla/Maps/OpenDrive/`目录有写权限。这是服务器正确解析`xodr`文件所必需的。
+如果遇到 `opendrive 无法正确解析` 报错，请确认进程拥有 `CarlaUE4/Content/Carla/Maps/OpenDrive/` 目录的写入权限。仿真服务解析 xodr 文件时需要在该目录生成临时文件。
 
 ---
 ## 网格生成 <span id="grid_generation"></span>
